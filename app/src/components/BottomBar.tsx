@@ -1,10 +1,25 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from "../ThemeContext";
-import { P, UI } from "../theme";
+import { MONO, P, UI } from "../theme";
+import { saveSpread } from "../pagination";
 import type { Book } from "../types";
 
-export function BottomBar({ book, activeChapter }: { book: Book | null; activeChapter: number }) {
+export function BottomBar({
+  book,
+  activeChapter,
+  spread,
+  spreadCount,
+  onPrev,
+  onNext,
+}: {
+  book: Book | null;
+  activeChapter: number;
+  spread: number;
+  spreadCount: number;
+  onPrev: () => void;
+  onNext: () => void;
+}) {
   const { c } = useTheme();
   const navigate = useNavigate();
 
@@ -12,12 +27,28 @@ export function BottomBar({ book, activeChapter }: { book: Book | null; activeCh
   const totalChapters = allChapters.length || 19;
   const titleOf = (n: number) => allChapters.find((ch) => ch.number === n)?.title.split(" — ")[0] ?? "";
 
-  const canPrev = activeChapter > 1;
-  const canNext = activeChapter < totalChapters;
+  const firstSpread = spread === 0;
+  const lastSpread = spread >= spreadCount - 1;
+  const canPrev = !(activeChapter === 1 && firstSpread);
+  const canNext = !(activeChapter === totalChapters && lastSpread);
+
   const green = c(...P.green);
   const muted = c(...P.faint);
   const bg = c(...P.panelBgAlt);
   const border = c(...P.borderSoft);
+
+  const prevLabel = firstSpread ? "← Previous Chapter" : "← Previous Page";
+  const nextLabel = lastSpread ? "Next Chapter →" : "Next Page →";
+  const prevSub = firstSpread
+    ? canPrev
+      ? `${activeChapter - 1}. ${titleOf(activeChapter - 1)}`
+      : null
+    : `${activeChapter}. ${titleOf(activeChapter)}`;
+  const nextSub = lastSpread
+    ? canNext
+      ? `${activeChapter + 1}. ${titleOf(activeChapter + 1)}`
+      : null
+    : `${activeChapter}. ${titleOf(activeChapter)}`;
 
   return (
     <div
@@ -36,24 +67,24 @@ export function BottomBar({ book, activeChapter }: { book: Book | null; activeCh
       }}
     >
       <button
-        onClick={() => canPrev && navigate(`/chapter/${activeChapter - 1}`)}
+        onClick={() => canPrev && onPrev()}
         disabled={!canPrev}
         style={{ display: "flex", alignItems: "center", gap: "6px", background: "none", border: "none", cursor: canPrev ? "pointer" : "not-allowed", opacity: canPrev ? 1 : 0.3, padding: 0 }}
       >
         <ChevronLeft size={15} color={green} strokeWidth={2} />
         <div style={{ textAlign: "left" }}>
           <div style={{ fontFamily: UI, fontSize: "7.5px", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: muted, lineHeight: 1, marginBottom: "2px" }}>
-            &larr; Previous Chapter
+            {prevLabel}
           </div>
-          {canPrev && (
+          {prevSub && (
             <div style={{ fontFamily: UI, fontSize: "10.5px", color: green, fontWeight: 500 }}>
-              {activeChapter - 1}. {titleOf(activeChapter - 1)}
+              {prevSub}
             </div>
           )}
         </div>
       </button>
 
-      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "5px" }}>
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "4px" }}>
         <div style={{ fontFamily: UI, fontSize: "7.5px", letterSpacing: "0.12em", textTransform: "uppercase", color: muted }}>
           Your Progress Through the Guide
         </div>
@@ -65,7 +96,10 @@ export function BottomBar({ book, activeChapter }: { book: Book | null; activeCh
             return (
               <button
                 key={ch}
-                onClick={() => navigate(`/chapter/${ch}`)}
+                onClick={() => {
+                  saveSpread(ch, 0);
+                  navigate(`/chapter/${ch}`);
+                }}
                 title={`${ch}. ${titleOf(ch)}`}
                 style={{
                   width: isActive ? "10px" : "7px",
@@ -82,20 +116,23 @@ export function BottomBar({ book, activeChapter }: { book: Book | null; activeCh
             );
           })}
         </div>
+        <div style={{ fontFamily: MONO, fontSize: "8px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: green }}>
+          Page {spread + 1} of {spreadCount}
+        </div>
       </div>
 
       <button
-        onClick={() => canNext && navigate(`/chapter/${activeChapter + 1}`)}
+        onClick={() => canNext && onNext()}
         disabled={!canNext}
         style={{ display: "flex", alignItems: "center", gap: "6px", background: "none", border: "none", cursor: canNext ? "pointer" : "not-allowed", opacity: canNext ? 1 : 0.3, padding: 0, textAlign: "right" }}
       >
         <div>
           <div style={{ fontFamily: UI, fontSize: "7.5px", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: muted, lineHeight: 1, marginBottom: "2px" }}>
-            Next Chapter &rarr;
+            {nextLabel}
           </div>
-          {canNext && (
+          {nextSub && (
             <div style={{ fontFamily: UI, fontSize: "10.5px", color: green, fontWeight: 500 }}>
-              {activeChapter + 1}. {titleOf(activeChapter + 1)}
+              {nextSub}
             </div>
           )}
         </div>

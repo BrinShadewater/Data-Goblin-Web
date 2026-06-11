@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useTheme } from "../ThemeContext";
 import { MONO, P, UI } from "../theme";
 import { GoblinIcon } from "./GoblinMascot";
+import { saveSpread } from "../pagination";
 import type { Book } from "../types";
 
 /** Table of contents grouped by region, built from book.json. */
@@ -53,7 +54,10 @@ export function LeftSidebar({ book, activeChapter }: { book: Book | null; active
               return (
                 <button
                   key={ch.number}
-                  onClick={() => navigate(`/chapter/${ch.number}`)}
+                  onClick={() => {
+                    saveSpread(ch.number, 0); // TOC click opens the chapter at its first spread
+                    navigate(`/chapter/${ch.number}`);
+                  }}
                   style={{
                     display: "flex",
                     alignItems: "baseline",
@@ -96,7 +100,10 @@ export function LeftSidebar({ book, activeChapter }: { book: Book | null; active
         <p style={{ fontFamily: UI, fontSize: "10.5px", color: text, lineHeight: 1.45, margin: "0 0 8px" }}>
           New to the guide?{" "}
           <button
-            onClick={() => navigate("/chapter/1")}
+            onClick={() => {
+              saveSpread(1, 0);
+              navigate("/chapter/1");
+            }}
             style={{ background: "none", border: "none", color: green, fontFamily: UI, fontSize: "10.5px", fontWeight: 700, cursor: "pointer", padding: 0, textDecoration: "underline" }}
           >
             Begin with Chapter 1.
