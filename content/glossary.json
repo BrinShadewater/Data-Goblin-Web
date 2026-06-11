@@ -1,0 +1,272 @@
+[
+ {
+  "term": "AGI (Artificial General Intelligence)",
+  "def": "A hypothesized future AI matching or exceeding human performance across most cognitive tasks. Whether it's achievable, when, and what \"intelligence\" even means in that sentence are all contested — the last one more than the field usually admits.",
+  "chapters": "Chs. 1, 2",
+  "letter": "A"
+ },
+ {
+  "term": "AIDA (Artificial Intelligence and Data Act)",
+  "def": "Canada's attempted comprehensive AI law, Part 3 of Bill C-27. Died with the January 2025 prorogation. Everything in this book about \"the regulatory vacuum\" is the AIDA-shaped hole.",
+  "chapters": "Chs. 10, 15",
+  "letter": "A"
+ },
+ {
+  "term": "Algorithmic management",
+  "def": "Running workers by software: AI-driven dispatch, scoring, scheduling, discipline. The boss is a dashboard; the appeal process is mostly vibes.",
+  "chapters": "Chs. 10, 14",
+  "letter": "A"
+ },
+ {
+  "term": "Alignment",
+  "def": "Fine-tuning aimed at making a model's behaviour match human values — which immediately raises the question *whose*. Not solved; jailbreaks are the proof.",
+  "chapters": "Ch. 2",
+  "letter": "A"
+ },
+ {
+  "term": "Attention",
+  "def": "The transformer mechanism that weighs every previous token when predicting the next one. The reason your chatbot remembers the pronoun from three paragraphs ago — and the reason the chips run hot.",
+  "chapters": "Ch. 2",
+  "letter": "A"
+ },
+ {
+  "term": "Behind-the-meter generation",
+  "def": "A power plant built for one customer, bypassing the public grid — Wonder Valley's natural-gas architecture. Fast to permit, easy to overlook in provincial carbon accounting.",
+  "chapters": "Ch. 6",
+  "letter": "B"
+ },
+ {
+  "term": "Bias (three senses)",
+  "def": "*Statistical*: systematic mathematical error. *Social*: systematic favouritism for or against groups of people. *Structural*: a system reproducing existing power and resource distributions even when the math is \"fair.\" Conversations that slide between these without flagging the switch are how everyone ends up shouting.",
+  "chapters": "Ch. 13",
+  "letter": "B"
+ },
+ {
+  "term": "Bias-mapping",
+  "def": "This book's core method: every source leans; the lean is nameable; naming it is not the same as dismissing the source. The goblin's whole personality, systematized.",
+  "chapters": "Chs. 1, 17",
+  "letter": "B"
+ },
+ {
+  "term": "CARE Principles",
+  "def": "Collective benefit, Authority to control, Responsibility, Ethics — the Global Indigenous Data Alliance's framework for Indigenous data governance, built as a counterweight to \"open data\" defaults.",
+  "chapters": "Ch. 9",
+  "letter": "C"
+ },
+ {
+  "term": "CLOUD Act",
+  "def": "US law (2018) compelling US-headquartered companies to produce data they hold *anywhere in the world* under US legal process. The reason \"the server is in Montréal\" doesn't end the sovereignty conversation.",
+  "chapters": "Ch. 9",
+  "letter": "C"
+ },
+ {
+  "term": "Colocation",
+  "def": "Renting space, power, and cooling in someone else's data centre. Much of \"Canadian\" cloud capacity physically lives here.",
+  "chapters": "Ch. 6",
+  "letter": "C"
+ },
+ {
+  "term": "Commissioned research",
+  "def": "Studies produced by professional research firms for the entity being studied. Not corruption; not independent measurement either. Check who paid for the cake.",
+  "chapters": "Ch. 7",
+  "letter": "C"
+ },
+ {
+  "term": "Common Crawl",
+  "def": "A nonprofit archive of the scraped web since 2008; the starting flour in most foundation-model recipes. Contains the best technical documentation on Earth and also every forum argument you've ever regretted.",
+  "chapters": "Ch. 3",
+  "letter": "C"
+ },
+ {
+  "term": "Deepfake",
+  "def": "Synthetic media depicting a real, identifiable person doing or saying something they didn't. Canadian criminal law covers the sexualized kind (Bill C-16); most of the rest is legally on its own.",
+  "chapters": "Ch. 12",
+  "letter": "D"
+ },
+ {
+  "term": "Embodied carbon",
+  "def": "The emissions baked into making the hardware — mining, fabbing, shipping — before the first prompt runs. Routinely excluded from per-prompt math, which is exactly why the goblin asks about scope.",
+  "chapters": "Chs. 4, 8",
+  "letter": "E"
+ },
+ {
+  "term": "Emergence",
+  "def": "Capabilities that show up at large scale that smaller models lack — or possibly an artifact of how we measure. Contested, like most exciting words.",
+  "chapters": "Ch. 2",
+  "letter": "E"
+ },
+ {
+  "term": "Fine-tuning",
+  "def": "The cheaper second stage of training that shapes a base model's behaviour for actual products. Pre-training decides what the model *knows*; fine-tuning decides how it *acts* in front of customers.",
+  "chapters": "Ch. 2",
+  "letter": "F"
+ },
+ {
+  "term": "Foundation model",
+  "def": "A large model trained on broad data that other applications build on — the substrate layer of the current AI economy, and the layer with the least training-data disclosure, per every edition of the FMTI.",
+  "chapters": "Chs. 2, 16",
+  "letter": "F"
+ },
+ {
+  "term": "Freely accessible vs. freely usable",
+  "def": "The distinction the phrase \"publicly available\" is designed to blur. Readable is not licensable. Your car is publicly visible.",
+  "chapters": "Ch. 3",
+  "letter": "F"
+ },
+ {
+  "term": "FMTI (Foundation Model Transparency Index)",
+  "def": "Stanford's annual scoring of major developers' disclosure across 100 indicators. Measures what companies *say*, not whether it's true — a feature to keep in mind in both directions.",
+  "chapters": "Ch. 16",
+  "letter": "F"
+ },
+ {
+  "term": "Hallucination",
+  "def": "The field's word for a model confidently producing falsehoods. A revealing word choice: it implies a system that normally perceives reality and occasionally slips, when the system never perceives reality at all and frequently happens to match it.",
+  "chapters": "Ch. 2",
+  "letter": "H"
+ },
+ {
+  "term": "Hyperscaler",
+  "def": "The handful of giants (AWS, Microsoft, Google, and peers) operating cloud infrastructure at global scale — including most of the capacity \"Canadian\" AI actually runs on.",
+  "chapters": "Ch. 6",
+  "letter": "H"
+ },
+ {
+  "term": "Indigenous data sovereignty",
+  "def": "The principle that Indigenous peoples retain ownership and governance of data about themselves, their communities, lands, and knowledge — collective rights, organized at the level of nations, predating the AI debate by decades. See OCAP, NISR, CARE.",
+  "chapters": "Ch. 9",
+  "letter": "I"
+ },
+ {
+  "term": "Inference",
+  "def": "What happens each time you use a trained model. Tiny per query; multiplied by billions of queries a day. The per-query number and the total head in opposite directions — see Jevons.",
+  "chapters": "Chs. 2, 8",
+  "letter": "I"
+ },
+ {
+  "term": "Inferential extraction",
+  "def": "What systems deduce about you from data that seemed harmless on its own. The data points were consented to; the introductions weren't.",
+  "chapters": "Ch. 10",
+  "letter": "I"
+ },
+ {
+  "term": "Jevons' paradox",
+  "def": "Efficiency gains that increase total consumption, because cheaper-per-use means used-everywhere. Watt's engine was the efficient one; Britain burned more coal. The single most load-bearing analytical tool in this book's environmental chapters.",
+  "chapters": "Ch. 8",
+  "letter": "J"
+ },
+ {
+  "term": "Law 25",
+  "def": "Quebec's modernized privacy law — automated-decision rights, GDPR-scale penalties, the strongest framework in Canada and the standing rebuke to everywhere else in Canada.",
+  "chapters": "Ch. 10",
+  "letter": "L"
+ },
+ {
+  "term": "Likeness rights / NIL",
+  "def": "A legal claim over your own name, image, likeness, and voice, enforceable against unauthorized use — the single mechanism where performer unions and deepfake-harm researchers converge from opposite directions.",
+  "chapters": "Chs. 11, 12",
+  "letter": "L"
+ },
+ {
+  "term": "LLM (Large Language Model)",
+  "def": "A transformer trained on enormous text corpora to predict the next token — which, scaled up, produces something that looks impressively like understanding and mechanically isn't.",
+  "chapters": "Ch. 2",
+  "letter": "L"
+ },
+ {
+  "term": "Model collapse",
+  "def": "Degradation that can occur when models train on the outputs of earlier models — the photocopier photocopying photocopies.",
+  "chapters": "Ch. 3",
+  "letter": "M"
+ },
+ {
+  "term": "NISR (National Inuit Strategy on Research)",
+  "def": "Inuit Tapiriit Kanatami's 2018 framework for Inuit governance of research, including control over data. Predates the generative-AI moment; applies to it anyway.",
+  "chapters": "Ch. 9",
+  "letter": "N"
+ },
+ {
+  "term": "OCAP Principles",
+  "def": "First Nations Ownership, Control, Access, and Possession of First Nations data — FNIGC's framework, est. 1998. The oldest and most operationally specific of the Indigenous data sovereignty frameworks.",
+  "chapters": "Ch. 9",
+  "letter": "O"
+ },
+ {
+  "term": "Parameter",
+  "def": "One of the millions-to-trillions of adjustable numbers inside a model. \"The model learned\" means \"the parameters moved.\"",
+  "chapters": "Ch. 2",
+  "letter": "P"
+ },
+ {
+  "term": "PIPEDA",
+  "def": "Canada's federal private-sector privacy law, vintage 2000 — old enough to have never met a smartphone, now refereeing foundation models.",
+  "chapters": "Ch. 10",
+  "letter": "P"
+ },
+ {
+  "term": "Pre-training",
+  "def": "The expensive first stage: building a base model from massive data. Establishes what the model knows, with no opinions yet about behaving in public.",
+  "chapters": "Ch. 2",
+  "letter": "P"
+ },
+ {
+  "term": "PUE (Power Usage Effectiveness)",
+  "def": "Total facility energy ÷ computing energy. 1.0 is perfect; the global average is ~1.5; only 22% of Canadian facilities will tell you theirs.",
+  "chapters": "Ch. 6",
+  "letter": "P"
+ },
+ {
+  "term": "RLHF (Reinforcement Learning from Human Feedback)",
+  "def": "Training a model to produce outputs humans rate highly. How chatbots got polite — and where a company's values quietly enter the product.",
+  "chapters": "Ch. 2",
+  "letter": "R"
+ },
+ {
+  "term": "Sovereign cloud",
+  "def": "Marketing term for Canadian-jurisdiction hosting. Answers *whose law* at the contract layer; says nothing about whose chips, whose capital, or whose data governance. See: maple leaf, invoice.",
+  "chapters": "Chs. 6, 9",
+  "letter": "S"
+ },
+ {
+  "term": "Synthetic data",
+  "def": "Training data generated by other AI systems. Scales nicely; see model collapse for the catch.",
+  "chapters": "Ch. 3",
+  "letter": "S"
+ },
+ {
+  "term": "TDM (Text and Data Mining) exception",
+  "def": "A copyright carve-out permitting computational analysis of protected works — the centrepiece of the Geist/Craig position, the EU model, and the creator organizations' objections, all at once.",
+  "chapters": "Ch. 11",
+  "letter": "T"
+ },
+ {
+  "term": "Token",
+  "def": "The unit a language model actually reads and writes — word fragments, roughly. You think in ideas; the model bills in tokens.",
+  "chapters": "Ch. 2",
+  "letter": "T"
+ },
+ {
+  "term": "Training",
+  "def": "The energy-intensive process of building a model from data, as distinct from *inference* (using it). Conflating the two is the original sin of most AI environmental arguments, in both directions.",
+  "chapters": "Chs. 2, 8",
+  "letter": "T"
+ },
+ {
+  "term": "Transformer",
+  "def": "The 2017 architecture (Vaswani et al., \"Attention Is All You Need\") under every current major model. One of its eight co-authors went home to Toronto and founded Cohere — Canadian content, certified.",
+  "chapters": "Ch. 2",
+  "letter": "T"
+ },
+ {
+  "term": "Voluntary Code of Conduct",
+  "def": "ISED's 2023 framework for responsible generative AI. Voluntary, as advertised: no enforcement, no penalties, and Microsoft never signed. Real as a signal; not law.",
+  "chapters": "Chs. 5, 15",
+  "letter": "V"
+ },
+ {
+  "term": "WUE (Water Usage Effectiveness)",
+  "def": "Litres of water per kWh of computing. Reported even less often than PUE, which takes doing.",
+  "chapters": "Ch. 6",
+  "letter": "W"
+ }
+]

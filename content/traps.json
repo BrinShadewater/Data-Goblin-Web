@@ -1,0 +1,116 @@
+{
+ "1": {
+  "chapter": 1,
+  "chapterTitle": "What AI Actually Is",
+  "trapTitle": "\"Intelligence\" is a neutral, technical word.",
+  "text": "The biggest trap in the entire conversation, set on page one. \"AI\" is an umbrella over wildly different techniques — a spam filter and a chatbot share a label, not a nature — and the definition of \"intelligence\" inside the umbrella has a contested history the field rarely mentions. Whoever gets to define the word usually wins the argument about whether the system \"works.\" Ask which definition is in play before you accept any claim built on it."
+ },
+ "2": {
+  "chapter": 2,
+  "chapterTitle": "How Machines Actually Learn",
+  "trapTitle": "It talks like it understands, so it understands.",
+  "text": "The mechanism is next-token prediction over patterns in training data. Output that *correlates with* understanding is not understanding — which is why the same system that drafts your brief flawlessly will also invent a court case with total confidence. Fluency is the costume; pattern-matching is the creature wearing it."
+ },
+ "3": {
+  "chapter": 3,
+  "chapterTitle": "Data as Raw Material",
+  "trapTitle": "\"Publicly available\" means fair game.",
+  "text": "Readable is not licensable. The news article you can access for free was published for reading, not for ingestion into a commercial training corpus — and the industry's favourite phrase is engineered to blur exactly that line. Your car is publicly visible. This has historically not settled who gets to drive it away."
+ },
+ "4": {
+  "chapter": 4,
+  "chapterTitle": "The Physical Layer",
+  "trapTitle": "AI lives in the cloud.",
+  "text": "The cloud is a building. The building is a 100-megawatt heater. The chips inside were fabricated in Taiwan on Dutch machines from minerals dug out of contested ground. Anything described to you as \"virtual\" has a street address, a water bill, and a supply chain — and someone lives downstream of each."
+ },
+ "5": {
+  "chapter": 5,
+  "chapterTitle": "Canada's AI Story",
+  "trapTitle": "The announcement is the policy.",
+  "text": "A strategy launch is one document in a five-document event: the announcement, the leaked draft, the civil-society response, the press critique, and the international reaction. Read only the press release and you'll know exactly what the government wished you knew. The diff between the draft and the launch is usually the most informative page."
+ },
+ "6": {
+  "chapter": 6,
+  "chapterTitle": "Infrastructure Reality",
+  "trapTitle": "Canadian data centres are efficient — the numbers say so.",
+  "text": "*Which* numbers? Only about 22% of Canadian facilities publish their efficiency metrics, against 71% globally. Every claim about Canadian data-centre performance is drawn from the minority that chose to disclose — survivorship bias in a parka. The silent majority is not silent because the news is good."
+ },
+ "7": {
+  "chapter": 7,
+  "chapterTitle": "Who Holds the Power",
+  "trapTitle": "\"A study found...\" means someone independent counted.",
+  "text": "Increasingly, the economic-impact numbers Canadian AI policy runs on were produced by research firms paid by the entity being measured. The methodology can be defensible and the framing can still belong to the client. Before you repeat a jobs-and-GDP figure, check who paid for the cake."
+ },
+ "8": {
+  "chapter": 8,
+  "chapterTitle": "Environment",
+  "trapTitle": "Per-query efficiency is improving, so AI's footprint is shrinking.",
+  "text": "Watt's steam engine was the efficient one — and Britain burned more coal, not less. Making a thing cheaper per use has never once reduced total use of it. Per-prompt energy falling and total consumption rising are not contradictions; they're the same phenomenon at two scales, and corporate disclosures choose the friendlier one."
+ },
+ "9": {
+  "chapter": 9,
+  "chapterTitle": "Sovereignty",
+  "trapTitle": "A \"sovereign cloud\" makes the data sovereign.",
+  "text": "A maple leaf on the invoice answers one question of three. Whose law can compel the data? Whose chips and software run the stack? Whose capital owns the company? And underneath all three: was anyone's land, consent, or collective data governance ever part of the conversation? Most \"sovereign AI\" claims pass one test and fail the rest quietly."
+ },
+ "10": {
+  "chapter": 10,
+  "chapterTitle": "Privacy & Surveillance",
+  "trapTitle": "\"I have nothing to hide — it's just my shopping history.\"",
+  "text": "No single data point betrays you. The search, the video, the heating-pad purchase are each innocent; the inference engine's entire job is introducing them to each other at a party you weren't invited to. You consented to the data points. Nothing covered the introductions — and the introductions are the product."
+ },
+ "11": {
+  "chapter": 11,
+  "chapterTitle": "IP & Copyright",
+  "trapTitle": "One side of the copyright fight must be lying.",
+  "text": "Geist and Craig are rigorous. So are TWUC and ACTRA. They reach opposite conclusions because they weigh different values inside the same statute — creator compensation against the social bargain of permitted uses. The trap is resolving a genuine disagreement prematurely because holding it open feels indecisive. Hold it open anyway."
+ },
+ "12": {
+  "chapter": 12,
+  "chapterTitle": "Misinformation & Deepfakes",
+  "trapTitle": "\"I can always tell.\"",
+  "text": "You can't, and neither could the commenters who kept \"detecting\" AI in fully practical film footage after the actual AI shots were removed. Detection confidence doesn't track what's synthetic — which cuts both ways: fake content gets believed, and real work gets disbelieved. A label, once applied, doesn't come off. That's the harm the prevalence statistics don't capture."
+ },
+ "13": {
+  "chapter": 13,
+  "chapterTitle": "Ethics, Bias & Fairness",
+  "trapTitle": "Bias is a data-cleaning problem.",
+  "text": "Cleaning the data reaches statistical bias. It doesn't reach the metric someone chose, the proxy someone picked, or the question of who the system was built to serve — and a system that's 99% accurate on average and 90% accurate on your face is not, for you, 99% accurate. Averages are where disparities go to do public relations."
+ },
+ "14": {
+  "chapter": 14,
+  "chapterTitle": "Jobs & Economy",
+  "trapTitle": "Either AI takes the jobs or it doesn't.",
+  "text": "The displacement-versus-augmentation framing hides the third thing actually happening: work shifting toward lower wages, less stability, and more surveillance while the aggregate employment numbers stay calm. \"No widespread unemployment\" and \"the captioning department no longer exists\" are both true sentences about the same country. Aggregates are where individual bad years go to disappear."
+ },
+ "15": {
+  "chapter": 15,
+  "chapterTitle": "How AI Is Governed in Canada",
+  "trapTitle": "Canada should just pass the EU AI Act.",
+  "text": "Every one-statute fix runs aground on the same rock: 1867. Healthcare, employment, education — the places AI actually touches a life — are mostly provincial jurisdiction, which is why Quebec can lead and Ottawa can't simply follow. Anyone selling you a single-law solution hasn't read the Constitution Act, and probably shouldn't be selling you anything."
+ },
+ "16": {
+  "chapter": 16,
+  "chapterTitle": "Transparency & Accountability",
+  "trapTitle": "They published a report, so they're transparent.",
+  "text": "Disclosure is not verification. A sustainability report measures what the company chose to measure, in the scope that flatters it, checked by nobody — self-marked homework with a nice cover. The question is never \"did they publish?\" It's \"can anyone outside the building check?\" Where the answer is no, the report is a press release with charts."
+ },
+ "17": {
+  "chapter": 17,
+  "chapterTitle": "Frameworks for Deciding",
+  "trapTitle": "A biased source is a dismissible source.",
+  "text": "The lean is not the lie. The union brief leans toward workers and contains verifiable evidence; the corporate paper leans toward the company and contains careful measurement. Dismissing a source because it leans throws away the evidence with the framing — and leaves you with only the sources whose lean you can't see, which is worse. Name the lean. Then use the source."
+ },
+ "18": {
+  "chapter": 18,
+  "chapterTitle": "What Canada Could Do",
+  "trapTitle": "It's inevitable — nothing can be done.",
+  "text": "Inevitability is a sales pitch, not a finding. The mechanisms exist and are mapped: likeness rights with a Danish precedent, disclosure regimes the provincial grid operators already half-built, Indigenous data governance frameworks waiting on one Treasury Board directive. What's missing is coordination, not feasibility — and \"nothing can be done\" is what the beneficiaries of nothing-being-done would prefer you conclude."
+ },
+ "19": {
+  "chapter": 19,
+  "chapterTitle": "Navigating the Conversation",
+  "trapTitle": "You finished the book, so you're done.",
+  "text": "The facts in this book started expiring the day it was printed; the method is the part that keeps. The final trap is treating the manual as an authority instead of a demonstration — the three pocket questions apply to the next AI claim you meet, and to this book's claims too. Especially those. Ask who counted. Ask what got left out. Ask to see the receipt."
+ }
+}
