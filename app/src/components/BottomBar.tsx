@@ -27,28 +27,59 @@ export function BottomBar({
   const totalChapters = allChapters.length || 19;
   const titleOf = (n: number) => allChapters.find((ch) => ch.number === n)?.title.split(" — ")[0] ?? "";
 
+  // Document chain: Front Matter (0) ↔ Ch1 … Ch19 ↔ Appendix (20). The end
+  // documents only join the chain once book.json advertises them.
+  const firstDoc = book?.frontMatter ? book.frontMatter.number : 1;
+  const lastDoc = book?.backMatter ? book.backMatter.number : totalChapters;
+  const isFrontDoc = book?.frontMatter && activeChapter === book.frontMatter.number;
+  const prevDoc = activeChapter - 1;
+  const nextDoc = activeChapter + 1;
+
+  /** "1. What AI Actually Is" for chapters; document title for front/back matter. */
+  const docName = (n: number) =>
+    book?.frontMatter && n === book.frontMatter.number
+      ? book.frontMatter.title
+      : book?.backMatter && n === book.backMatter.number
+        ? book.backMatter.title
+        : `${n}. ${titleOf(n)}`;
+
   const firstSpread = spread === 0;
   const lastSpread = spread >= spreadCount - 1;
-  const canPrev = !(activeChapter === 1 && firstSpread);
-  const canNext = !(activeChapter === totalChapters && lastSpread);
+  const canPrev = !(activeChapter <= firstDoc && firstSpread);
+  const canNext = !(activeChapter >= lastDoc && lastSpread);
 
   const green = c(...P.green);
   const muted = c(...P.faint);
   const bg = c(...P.panelBgAlt);
   const border = c(...P.borderSoft);
 
-  const prevLabel = firstSpread ? "← Previous Chapter" : "← Previous Page";
-  const nextLabel = lastSpread ? "Next Chapter →" : "Next Page →";
+  const prevLabel = !firstSpread
+    ? "← Previous Page"
+    : book?.frontMatter && prevDoc === book.frontMatter.number
+      ? "← Front Matter"
+      : book?.backMatter && activeChapter === book.backMatter.number
+        ? `← Chapter ${prevDoc}`
+        : "← Previous Chapter";
+  const nextLabel = !lastSpread
+    ? "Next Page →"
+    : isFrontDoc
+      ? "Begin Chapter 1 →"
+      : book?.backMatter && nextDoc === book.backMatter.number
+        ? "Source Library →"
+        : canNext
+          ? "Next Chapter →"
+          : "The End";
+  // Hide the subtitle when the label itself already names the destination.
   const prevSub = firstSpread
-    ? canPrev
-      ? `${activeChapter - 1}. ${titleOf(activeChapter - 1)}`
+    ? canPrev && prevDoc !== book?.frontMatter?.number
+      ? docName(prevDoc)
       : null
-    : `${activeChapter}. ${titleOf(activeChapter)}`;
+    : docName(activeChapter);
   const nextSub = lastSpread
-    ? canNext
-      ? `${activeChapter + 1}. ${titleOf(activeChapter + 1)}`
+    ? canNext && nextDoc !== book?.backMatter?.number
+      ? docName(nextDoc)
       : null
-    : `${activeChapter}. ${titleOf(activeChapter)}`;
+    : docName(activeChapter);
 
   return (
     <div

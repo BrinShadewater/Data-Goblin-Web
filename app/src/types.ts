@@ -13,11 +13,20 @@ export interface BookPart {
   chapters: BookChapterRef[];
 }
 
+/** TOC entry for the front matter (doc 0) / appendix (doc 20) — outside the 19-chapter parts array. */
+export interface BookEndMatterRef {
+  number: number;
+  title: string;
+  region: string;
+}
+
 export interface Book {
   title: string;
   subtitle: string;
   asOf: string;
+  frontMatter?: BookEndMatterRef;
   parts: BookPart[];
+  backMatter?: BookEndMatterRef;
   frontmatterMarkdown: string;
   appendixMarkdown: string;
 }

@@ -31,6 +31,9 @@ def part_of(n):
     return "", ""
 
 VERIFY_RE = re.compile(r"<!--\s*VERIFY[^>]*-->")
+GOBLIN_RE = re.compile(r"^> \*\*🧌 GOBLIN CHECK[^\n]*(?:\n>[^\n]*)*", re.M)
+
+SUBTITLE = "A Field Guide to AI, Power, and Data in Canada"
 
 def split_chapters(text):
     """Return (frontmatter, [(num, body)], appendix)."""
@@ -117,6 +120,107 @@ def parse_chapter(num, body):
         "verifyFlags": verify_flags,
     }
 
+# ---------------------------------------------------------------------------
+# Front matter (ch00) and Source Library Appendix (ch20) — same schema as
+# chapters so the app's pagination engine can render them unchanged.
+# ---------------------------------------------------------------------------
+
+def _split_on(prefix, text):
+    """Split text into (preamble, [{heading, markdown:[lines]}]) on a heading prefix."""
+    pre, secs, cur = [], [], None
+    for l in text.split("\n"):
+        if l.startswith(prefix):
+            if cur: secs.append(cur)
+            cur = {"heading": l[len(prefix):].strip(), "markdown": []}
+        elif cur is None:
+            pre.append(l)
+        else:
+            cur["markdown"].append(l)
+    if cur: secs.append(cur)
+    return "\n".join(pre), secs
+
+def _clean(md):
+    """Strip VERIFY comments and standalone --- rules; collapse extra blank lines."""
+    md = VERIFY_RE.sub("", md)
+    md = re.sub(r"^\s*---\s*$", "", md, flags=re.M)
+    return re.sub(r"\n{3,}", "\n\n", md).strip()
+
+def _goblin_checks(sections):
+    checks = []
+    for s in sections:
+        for m in GOBLIN_RE.finditer(s["markdown"]):
+            txt = re.sub(r"^> ?", "", m.group(0), flags=re.M).strip()
+            checks.append({"section": s["heading"], "markdown": txt})
+    return checks
+
+def parse_front_matter(front):
+    """Front matter -> chapter-shaped doc 0. Sections split on '## ' headings;
+    the title-page block (title, subtitle heading, byline) becomes startHere;
+    the prose '## Table of contents' is skipped (the app has a live TOC)."""
+    verify_flags = [v.strip() for v in VERIFY_RE.findall(front)]
+    pre, secs = _split_on("## ", front)
+    start = _clean(pre)
+    # The manuscript subtitle is itself a '## ' heading on line 2 — fold it
+    # (and its byline body) back into the title-page block.
+    if secs and secs[0]["heading"] == SUBTITLE:
+        sub = secs.pop(0)
+        body = _clean("\n".join(sub["markdown"]))
+        start = f"{start}\n\n## {sub['heading']}" + (f"\n\n{body}" if body else "")
+    sections = [
+        {"heading": s["heading"], "markdown": _clean("\n".join(s["markdown"]))}
+        for s in secs
+        if not s["heading"].lower().startswith("table of contents")
+    ]
+    return {
+        "number": 0,
+        "title": "Front Matter",
+        "part": "Front Matter",
+        "region": "The Trailhead",
+        "startHere": start.strip(),
+        "sections": sections,
+        "goblinChecks": _goblin_checks(sections),
+        "recap": [],
+        "biasLabel": "",
+        "sources": [],
+        "verifyFlags": verify_flags,
+    }
+
+def parse_appendix(appendix):
+    """Appendix body (text after the '# Source Library Appendix' line) ->
+    chapter-shaped doc 20. Sections split on '### '; the 'How to use this
+    appendix' intro becomes startHere (with the byline block prepended)."""
+    verify_flags = [v.strip() for v in VERIFY_RE.findall(appendix)]
+    pre, secs = _split_on("### ", appendix)
+    sub_m = re.search(r"^## (.+)$", pre, flags=re.M)
+    subtitle = sub_m.group(1).strip() if sub_m else ""
+    byline = _clean(re.sub(r"^##? .*$", "", pre, flags=re.M))
+    start_parts = [byline] if byline else []
+    sections = []
+    intro_found = False
+    for s in secs:
+        body = _clean("\n".join(s["markdown"]))
+        if not intro_found and s["heading"].lower().startswith("how to use this appendix"):
+            start_parts.append(body)
+            intro_found = True
+        else:
+            sections.append({"heading": s["heading"], "markdown": body})
+    if not intro_found and sections:
+        # Fallback: promote the first block of the first section.
+        start_parts.append(sections[0]["markdown"].split("\n\n")[0])
+    return {
+        "number": 20,
+        "title": "Source Library Appendix" + (f" — {subtitle}" if subtitle else ""),
+        "part": "Back Matter",
+        "region": "The Hoard",
+        "startHere": "\n\n".join(p for p in start_parts if p).strip(),
+        "sections": sections,
+        "goblinChecks": _goblin_checks(sections),
+        "recap": [],
+        "biasLabel": "",
+        "sources": [],
+        "verifyFlags": verify_flags,
+    }
+
 def parse_ledger(text):
     rows, section = [], ""
     for l in text.split("\n"):
@@ -169,23 +273,36 @@ def main():
     front, raw_chapters, appendix = split_chapters(text)
 
     chapters = [parse_chapter(n, b) for n, b in raw_chapters]
-    for ch in chapters:
+
+    # Front matter (doc 0) and appendix (doc 20) share the chapter schema so
+    # the reader paginates them with the same engine. They are NOT added to
+    # the 19-chapter parts array — anything counting chapters stays at 19.
+    front_doc = parse_front_matter(front)
+    appendix_doc = parse_appendix(appendix) if appendix else None
+    extra_docs = [front_doc] + ([appendix_doc] if appendix_doc else [])
+
+    for ch in chapters + extra_docs:
         with open(os.path.join(OUT, "chapters", f"ch{ch['number']:02d}.json"), "w", encoding="utf-8") as f:
             json.dump(ch, f, ensure_ascii=False, indent=1)
 
     book = {
         "title": "Data Goblin",
-        "subtitle": "A Field Guide to AI, Power, and Data in Canada",
+        "subtitle": SUBTITLE,
         "asOf": "June 2026",
+        "frontMatter": {"number": 0, "title": "Front Matter", "region": "The Trailhead"},
         "parts": [{"part": p, "region": r, "chapters": [
                     {"number": c["number"], "title": c["title"],
                      "goblinChecks": len(c["goblinChecks"]),
                      "openVerifyFlags": len(c["verifyFlags"])}
                     for c in chapters if c["number"] in rng]}
                   for rng, p, r in PARTS],
+        "backMatter": {"number": 20, "title": "Source Library Appendix", "region": "The Hoard"}
+                      if appendix_doc else None,
         "frontmatterMarkdown": VERIFY_RE.sub("", front),
         "appendixMarkdown": VERIFY_RE.sub("", "# Source Library Appendix" + appendix) if appendix else "",
     }
+    if book["backMatter"] is None:
+        del book["backMatter"]
     json.dump(book, open(os.path.join(OUT, "book.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
 
     receipts = parse_ledger(open(LEDG, encoding="utf-8").read())
@@ -201,6 +318,13 @@ def main():
 
     # ---- validation report ----
     print(f"chapters: {len(chapters)}")
+    print(f"front matter (ch00): {len(front_doc['sections'])} sections — "
+          + "; ".join(s["heading"] for s in front_doc["sections"]))
+    if appendix_doc:
+        print(f"appendix (ch20): {len(appendix_doc['sections'])} sections — "
+              + "; ".join(s["heading"].split(".")[0] for s in appendix_doc["sections"]))
+    else:
+        print("WARN: no appendix found — ch20.json not emitted")
     print(f"goblin checks total: {sum(len(c['goblinChecks']) for c in chapters)}")
     print(f"recap chapters: {sum(1 for c in chapters if c['recap'])} (bullets: {sum(len(c['recap']) for c in chapters)})")
     print(f"verify flags remaining: {sum(len(c['verifyFlags']) for c in chapters)}")
@@ -212,3 +336,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+# end of pipeline

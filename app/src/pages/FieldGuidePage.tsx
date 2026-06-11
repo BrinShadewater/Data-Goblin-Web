@@ -7,21 +7,46 @@ import { RightSidebar } from "../components/RightSidebar";
 import { BottomBar } from "../components/BottomBar";
 import { PagePanel } from "../components/PagePanel";
 import { useBook, useChapter, useTraps } from "../useContent";
-import { getSavedSpread, LAST_SPREAD, paginateChapter, saveSpread } from "../pagination";
+import { getSavedSpread, hasAnySavedSpread, LAST_SPREAD, paginateChapter, saveSpread } from "../pagination";
 
-const TOTAL_CHAPTERS = 19;
+/** Document chain: 0 = Front Matter, 1–19 = chapters, 20 = Source Library Appendix. */
+const FIRST_DOC = 0;
+const LAST_DOC = 20;
+
+/** Lowercase roman numeral for front-matter folios (— iv —). */
+function roman(n: number): string {
+  const vals: [number, string][] = [
+    [1000, "m"], [900, "cm"], [500, "d"], [400, "cd"], [100, "c"], [90, "xc"],
+    [50, "l"], [40, "xl"], [10, "x"], [9, "ix"], [5, "v"], [4, "iv"], [1, "i"],
+  ];
+  let out = "";
+  for (const [v, s] of vals) while (n >= v) { out += s; n -= v; }
+  return out;
+}
+
+/** Page folio per document: roman numerals for the front matter, A-n for the appendix. */
+const folio = (doc: number, page: number) =>
+  doc === 0 ? roman(page) : doc === 20 ? `A-${page}` : String(page);
 
 /**
  * The Field Guide: TOC sidebar / paginated two-page book spread / tools
- * sidebar / bottom progress bar. Routes "/" (chapter 1) and "/chapter/:num".
- * The spread is viewport-fitted; ArrowLeft/ArrowRight and the bottom-bar
- * buttons turn pages, crossing chapter boundaries at either end.
+ * sidebar / bottom progress bar. Routes "/" and "/chapter/:num", where :num
+ * runs 0 (front matter) through 20 (appendix). The spread is viewport-fitted;
+ * ArrowLeft/ArrowRight and the bottom-bar buttons turn pages, crossing
+ * document boundaries at either end.
  */
 export function FieldGuidePage() {
   const { c } = useTheme();
   const params = useParams<{ num?: string }>();
   const navigate = useNavigate();
-  const num = Math.max(1, Math.min(TOTAL_CHAPTERS, parseInt(params.num ?? "1", 10) || 1));
+  // "/" lands first-time visitors on the Front Matter title page; once any
+  // position is saved, it returns to chapter 1 as before. Computed once.
+  const [defaultDoc] = useState(() => (hasAnySavedSpread() ? 1 : FIRST_DOC));
+  const parsed = parseInt(params.num ?? "", 10);
+  const num =
+    params.num == null
+      ? defaultDoc
+      : Math.max(FIRST_DOC, Math.min(LAST_DOC, Number.isFinite(parsed) ? parsed : 1));
 
   const { data: book } = useBook();
   const { data: chapter, error } = useChapter(num);
@@ -55,7 +80,7 @@ export function FieldGuidePage() {
     if (!spreads) return;
     if (cur < total - 1) {
       setSpreadIdx(cur + 1);
-    } else if (num < TOTAL_CHAPTERS) {
+    } else if (num < LAST_DOC) {
       saveSpread(num + 1, 0);
       navigate(`/chapter/${num + 1}`);
     }
@@ -65,7 +90,7 @@ export function FieldGuidePage() {
     if (!spreads) return;
     if (cur > 0) {
       setSpreadIdx(cur - 1);
-    } else if (num > 1) {
+    } else if (num > FIRST_DOC) {
       saveSpread(num - 1, LAST_SPREAD); // clamped to the last spread on load
       navigate(`/chapter/${num - 1}`);
     }
@@ -149,7 +174,7 @@ export function FieldGuidePage() {
               chapter={chapter}
               blocks={spread.left}
               side="left"
-              pageNo={cur * 2 + 1}
+              folio={folio(num, cur * 2 + 1)}
               opener={cur === 0}
             />
             <PagePanel
@@ -157,7 +182,7 @@ export function FieldGuidePage() {
               chapter={chapter}
               blocks={spread.right}
               side="right"
-              pageNo={cur * 2 + 2}
+              folio={folio(num, cur * 2 + 2)}
             />
             {/* Book spine divider */}
             <div

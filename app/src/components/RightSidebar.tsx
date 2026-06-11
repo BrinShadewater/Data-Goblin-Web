@@ -71,7 +71,8 @@ export function RightSidebar({ chapter }: { chapter: Chapter }) {
       }}
     >
       <div style={{ fontFamily: MONO, fontSize: "8.5px", fontWeight: 800, letterSpacing: "0.2em", textTransform: "uppercase", color: muted, margin: "2px 2px 10px" }}>
-        Field Guide Tools · Ch. {chapter.number}
+        Field Guide Tools ·{" "}
+        {chapter.number === 0 ? "Front Matter" : chapter.number === 20 ? "Appendix" : `Ch. ${chapter.number}`}
       </div>
 
       {/* Goblin Notes */}
@@ -97,7 +98,9 @@ export function RightSidebar({ chapter }: { chapter: Chapter }) {
         />
       </Card>
 
-      {/* Suspicion Meter */}
+      {/* Suspicion Meter — only meaningful when the document cites sources
+          (the front matter and appendix have none, so it is hidden there). */}
+      {chapter.sources.length > 0 && (
       <Card icon={<GoblinIcon size={18} />} title="Suspicion Meter">
         <div
           title={`Computed, not random: ½·min(1, openVerifyFlags/4) + ½·(corporate-source share). This chapter: ${suspicion.openFlags} open verification flag${suspicion.openFlags === 1 ? "" : "s"}; ${Math.round(suspicion.corporateShare * 100)}% of ${suspicion.totalSources} sources are corporate self-disclosure.`}
@@ -114,17 +117,14 @@ export function RightSidebar({ chapter }: { chapter: Chapter }) {
           self-disclosure in its {suspicion.totalSources} sources ({Math.round(suspicion.corporateShare * 100)}%). Hover for the formula.
         </p>
       </Card>
+      )}
 
-      {/* Quest Items */}
+      {/* Quest Items — hidden when the document has no recap (front matter, appendix). */}
+      {chapter.recap.length > 0 && (
       <Card icon={<CheckSquare size={13} color={green} />} title="Quest Items">
         <p style={{ fontFamily: UI, fontSize: "9.5px", color: muted, margin: "0 0 8px", lineHeight: 1.45 }}>
           What you should carry out of this chapter. Check items off as you collect them.
         </p>
-        {chapter.recap.length === 0 && (
-          <p style={{ fontFamily: BODY, fontSize: "11.5px", fontStyle: "italic", color: muted, margin: 0 }}>
-            No recap items for this chapter.
-          </p>
-        )}
         {chapter.recap.map((item, i) => {
           const checked = done.includes(i);
           return (
@@ -163,8 +163,11 @@ export function RightSidebar({ chapter }: { chapter: Chapter }) {
           );
         })}
       </Card>
+      )}
 
-      {/* Show Receipts */}
+      {/* Show Receipts — hidden when the document cites no sources. */}
+      {chapter.sources.length > 0 && (
+      <>
       <button
         onClick={() => setReceiptsOpen((v) => !v)}
         style={{
@@ -222,6 +225,8 @@ export function RightSidebar({ chapter }: { chapter: Chapter }) {
             );
           })}
         </div>
+      )}
+      </>
       )}
     </aside>
   );

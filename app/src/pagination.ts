@@ -159,3 +159,20 @@ export function saveSpread(chapter: number, index: number): void {
     /* storage unavailable — position just won't persist */
   }
 }
+
+/**
+ * True if any reading position has ever been saved on this device. Used by
+ * the "/" route: first-time visitors land on the Front Matter title page;
+ * returning readers keep the existing behaviour (chapter 1 at its saved spread).
+ */
+export function hasAnySavedSpread(): boolean {
+  try {
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      if (key && key.startsWith("goblin-spread-ch")) return true;
+    }
+  } catch {
+    /* storage unavailable — treat as first visit */
+  }
+  return false;
+}

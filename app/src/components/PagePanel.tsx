@@ -115,7 +115,8 @@ function OpenerHeader({ chapter }: { chapter: Chapter }) {
           marginBottom: "12px",
         }}
       >
-        {chapter.region} · Chapter {chapter.number}
+        {chapter.region}
+        {chapter.number === 0 ? "" : chapter.number === 20 ? " · Appendix" : ` · Chapter ${chapter.number}`}
       </div>
       <h1
         style={{
@@ -170,13 +171,14 @@ export function PagePanel({
   chapter,
   blocks,
   side,
-  pageNo,
+  folio,
   opener = false,
 }: {
   chapter: Chapter;
   blocks: Block[];
   side: "left" | "right";
-  pageNo: number;
+  /** Preformatted page label: "7" for chapters, "iv" for front matter, "A-3" for the appendix. */
+  folio: string;
   opener?: boolean;
 }) {
   const { c } = useTheme();
@@ -210,7 +212,7 @@ export function PagePanel({
           flexShrink: 0,
         }}
       >
-        — {pageNo} —
+        — {folio} —
       </div>
     </div>
   );
