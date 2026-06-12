@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { HashRouter, Route, Routes, useLocation } from "react-router-dom";
 import { ThemeProvider, useTheme } from "./ThemeContext";
 import { ReaderProvider, useReader } from "./reader";
@@ -7,18 +7,17 @@ import { TopNav } from "./components/TopNav";
 import { MobileDrawer } from "./components/MobileDrawer";
 import { CookieNotice } from "./components/CookieNotice";
 import goblinFavicon from "./assets/goblin-head-icon.webp";
-
-// Route-level code splitting: page chunks load on demand, with search mounted
-// only after the user types a real query.
-const FieldGuidePage = lazy(() => import("./pages/FieldGuidePage").then((m) => ({ default: m.FieldGuidePage })));
-const ReceiptsPage = lazy(() => import("./pages/ReceiptsPage").then((m) => ({ default: m.ReceiptsPage })));
-const LootPage = lazy(() => import("./pages/LootPage").then((m) => ({ default: m.LootPage })));
-const MapPage = lazy(() => import("./pages/MapPage").then((m) => ({ default: m.MapPage })));
-const AboutPage = lazy(() => import("./pages/AboutPage").then((m) => ({ default: m.AboutPage })));
-const ContributePage = lazy(() => import("./pages/ContributePage").then((m) => ({ default: m.ContributePage })));
-const LandingPage = lazy(() => import("./pages/LandingPage").then((m) => ({ default: m.LandingPage })));
-const PrivacyPage = lazy(() => import("./pages/PrivacyPage").then((m) => ({ default: m.PrivacyPage })));
-const SearchOverlay = lazy(() => import("./components/SearchOverlay").then((m) => ({ default: m.SearchOverlay })));
+import {
+  AboutPage,
+  ContributePage,
+  FieldGuidePage,
+  LandingPage,
+  LootPage,
+  MapPage,
+  PrivacyPage,
+  ReceiptsPage,
+  SearchOverlay,
+} from "./lazyRoutes";
 
 function Shell() {
   const { c } = useTheme();

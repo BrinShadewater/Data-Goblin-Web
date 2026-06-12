@@ -6,6 +6,7 @@ import { useTheme } from "../ThemeContext";
 import { BODY, DISPLAY, MONO, P, RADIUS, TOKENS, UI } from "../theme";
 import { artUrl, useBook } from "../useContent";
 import { savePanel } from "../pagination";
+import { preloadReaderRoute } from "../lazyRoutes";
 import { NavIcon } from "../components/GoblinMascot";
 
 const HERO_ART = "panels/insight2-panel.webp";
@@ -57,6 +58,7 @@ export function LandingPage() {
   const wispPoint = useRef<{ x: number; y: number } | null>(null);
 
   const begin = () => {
+    preloadReaderRoute();
     savePanel(1, 0);
     navigate("/chapter/1");
   };
@@ -180,6 +182,8 @@ export function LandingPage() {
           <div style={{ display: "flex", flexWrap: "wrap", gap: "12px", alignItems: "center" }}>
             <button
               onClick={begin}
+              onMouseEnter={preloadReaderRoute}
+              onFocus={preloadReaderRoute}
               style={{
                 display: "inline-flex",
                 alignItems: "center",
@@ -200,6 +204,8 @@ export function LandingPage() {
             </button>
             <button
               onClick={() => navigate("/guide")}
+              onMouseEnter={preloadReaderRoute}
+              onFocus={preloadReaderRoute}
               style={{
                 display: "inline-flex",
                 alignItems: "center",
@@ -253,6 +259,8 @@ export function LandingPage() {
             <button
               key={item.to}
               onClick={() => navigate(item.to)}
+              onMouseEnter={item.to === "/guide" ? preloadReaderRoute : undefined}
+              onFocus={item.to === "/guide" ? preloadReaderRoute : undefined}
               style={{
                 display: "grid",
                 gridTemplateColumns: `${TOKENS.icon.landingFeature}px 1fr`,

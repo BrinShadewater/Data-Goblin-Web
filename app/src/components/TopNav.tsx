@@ -4,6 +4,7 @@ import { useTheme } from "../ThemeContext";
 import { useReader } from "../reader";
 import { DISPLAY, MONO, P, TOKENS, UI } from "../theme";
 import { isNavActive, NAV_ITEMS } from "../navigation";
+import { preloadReaderRoute } from "../lazyRoutes";
 import { GoblinIcon, NavIcon } from "./GoblinMascot";
 
 export function TopNav({
@@ -124,6 +125,8 @@ export function TopNav({
             key={l.to}
             to={l.to}
             end={l.to === "/"}
+            onMouseEnter={l.to === "/guide" ? preloadReaderRoute : undefined}
+            onFocus={l.to === "/guide" ? preloadReaderRoute : undefined}
             style={({ isActive }) => {
               const active = isActive || isNavActive(location.pathname, l);
               return ({
