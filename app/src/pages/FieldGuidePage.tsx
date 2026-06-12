@@ -1,6 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { X } from "lucide-react";
-import { useNavigate, useParams } from "react-router-dom";
 import { useTheme } from "../ThemeContext";
 import { useReader } from "../reader";
 import { BODY, MONO, P, RADIUS } from "../theme";
@@ -8,17 +6,16 @@ import { LeftSidebar } from "../components/LeftSidebar";
 import { GoblinTools, RightSidebar } from "../components/RightSidebar";
 import { BottomBar } from "../components/BottomBar";
 import { PagePanel } from "../components/PagePanel";
-import { chapterPath, fetchJson, useArtMap, useBook, useChapter, useTraps } from "../useContent";
+import { useBook } from "../useContent";
+import { folio } from "../readerUtils";
 import {
-  budgetsFor,
-  getSavedPanel,
-  hasAnySavedPosition,
-  LAST_PANEL,
-  paginatePanelsCached,
-  savePanel,
-} from "../pagination";
-import { getLastLocation, saveLastLocation, toggleBookmark, useBookmarks } from "../bookmarks";
-import { FIRST_DOC, folio, LAST_DOC, panelSnippet } from "../readerUtils";
+  useChapterRoute,
+  usePageNavigation,
+  usePaginatedChapter,
+  useReaderBookmark,
+  useSwipePaging,
+  useToolsSheet,
+} from "../readerHooks";
 
 /**
  * The Field Guide reader. Desktop (>1024px): TOC sidebar / two-page book
@@ -31,188 +28,16 @@ import { FIRST_DOC, folio, LAST_DOC, panelSnippet } from "../readerUtils";
  */
 export function FieldGuidePage() {
   const { c } = useTheme();
-  const { mode, dyslexic } = useReader();
+  const { mode } = useReader();
   const single = mode !== "desktop";
-  const step = single ? 1 : 2;
-  const params = useParams<{ num?: string }>();
-  const navigate = useNavigate();
 
-  // "/" resumes at the last-read location; first-time visitors land on the
-  // Front Matter title page. Computed once per mount.
-  const [defaultDoc] = useState(() => {
-    const last = getLastLocation();
-    if (last) return Math.max(FIRST_DOC, Math.min(LAST_DOC, Math.round(last.doc)));
-    return hasAnySavedPosition() ? 1 : FIRST_DOC;
-  });
-  const parsed = parseInt(params.num ?? "", 10);
-  const num =
-    params.num == null
-      ? defaultDoc
-      : Math.max(FIRST_DOC, Math.min(LAST_DOC, Number.isFinite(parsed) ? parsed : 1));
-
+  const num = useChapterRoute();
   const { data: book } = useBook();
-  const { data: chapter, error } = useChapter(num);
-  const { data: traps } = useTraps();
-  const trap = traps?.[String(num)] ?? null;
-
-  // Redirect out-of-range chapter numbers to the clamped chapter.
-  useEffect(() => {
-    if (params.num && String(num) !== params.num) navigate(`/chapter/${num}`, { replace: true });
-  }, [params.num, num, navigate]);
-
-  // Paginate the chapter into panels for the active mode + reading mode.
-  // Section-heading accents (art-map.json) are charged in the packer so
-  // pages with ornaments still fit their panels.
-  const { data: artMap } = useArtMap();
-  const accents = useMemo(() => artMap?.docs?.[String(num)]?.accents ?? [], [artMap, num]);
-  const artPanels = useMemo(() => artMap?.docs?.[String(num)]?.panels ?? [], [artMap, num]);
-  const budgets = useMemo(() => budgetsFor(mode, dyslexic), [mode, dyslexic]);
-  const panels = useMemo(
-    () => (chapter ? paginatePanelsCached(chapter, trap, budgets, accents, artPanels) : null),
-    [chapter, trap, budgets, accents, artPanels]
-  );
-
-  // Current panel index — restored from localStorage per chapter, clamped to
-  // the live panel count so stale positions recover gracefully. Desktop
-  // aligns to the spread's left (even) panel.
-  const [panelIdx, setPanelIdx] = useState(() => getSavedPanel(num));
-  useEffect(() => {
-    setPanelIdx(getSavedPanel(num));
-  }, [num]);
-  const panelCount = panels ? panels.length : 1;
-  const clamped = Math.max(0, Math.min(panelIdx, panelCount - 1));
-  const aligned = single ? clamped : clamped - (clamped % 2);
-  const pageCount = Math.max(1, Math.ceil(panelCount / step));
-  const page = Math.floor(aligned / step);
-  useEffect(() => {
-    if (panels) {
-      savePanel(num, aligned);
-      saveLastLocation(num, aligned);
-    }
-  }, [panels, num, aligned]);
-
-  // Prefetch the neighbouring document's JSON into the content cache when the
-  // reader is within ~3 page turns of a chapter boundary, so crossing it
-  // never shows the "Opening…" placeholder. fetchJson dedupes in-flight
-  // requests and cache hits are free, so refiring is harmless.
-  useEffect(() => {
-    if (!panels) return;
-    const turnsToEnd = Math.ceil((panelCount - (aligned + step)) / step);
-    if (num < LAST_DOC && turnsToEnd <= 3) {
-      fetchJson(chapterPath(num + 1)).catch(() => {});
-    }
-    if (num > FIRST_DOC && aligned / step <= 3) {
-      fetchJson(chapterPath(num - 1)).catch(() => {});
-    }
-  }, [panels, panelCount, aligned, step, num]);
-
-  const goNext = useCallback(() => {
-    if (!panels) return;
-    if (page < pageCount - 1) {
-      setPanelIdx(aligned + step);
-    } else if (num < LAST_DOC) {
-      savePanel(num + 1, 0);
-      navigate(`/chapter/${num + 1}`);
-    }
-  }, [panels, page, pageCount, aligned, step, num, navigate]);
-
-  const goPrev = useCallback(() => {
-    if (!panels) return;
-    if (page > 0) {
-      setPanelIdx(aligned - step);
-    } else if (num > FIRST_DOC) {
-      savePanel(num - 1, LAST_PANEL); // clamped to the last page on load
-      navigate(`/chapter/${num - 1}`);
-    }
-  }, [panels, page, aligned, step, num, navigate]);
-
-  // Arrow-key page turning — ignored while typing (Goblin Notes, search…).
-  useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      const el = e.target as HTMLElement | null;
-      if (
-        el &&
-        (el.tagName === "INPUT" || el.tagName === "TEXTAREA" || el.tagName === "SELECT" || el.isContentEditable)
-      ) {
-        return;
-      }
-      if (e.key === "ArrowRight") {
-        e.preventDefault();
-        goNext();
-      } else if (e.key === "ArrowLeft") {
-        e.preventDefault();
-        goPrev();
-      }
-    };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [goNext, goPrev]);
-
-  // ---- Bookmarks: 🔖 toggles a saved place for the visible panel(s).
-  const bookmarks = useBookmarks();
-  const bookmarked = bookmarks.some(
-    (b) => b.doc === num && b.panelIndex >= aligned && b.panelIndex < aligned + step
-  );
-  const onToggleBookmark = useCallback(() => {
-    if (!chapter || !panels) return;
-    const existing = bookmarks.find(
-      (b) => b.doc === num && b.panelIndex >= aligned && b.panelIndex < aligned + step
-    );
-    toggleBookmark(
-      existing ?? {
-        doc: num,
-        panelIndex: aligned,
-        chapterTitle:
-          num === 0 ? "Front Matter" : num === 20 ? "Appendix" : `${num}. ${chapter.title.split(" — ")[0]}`,
-        snippet: panelSnippet(panels[aligned] ?? [], chapter),
-        ts: Date.now(),
-      }
-    );
-  }, [chapter, panels, bookmarks, num, aligned, step]);
-
-  // ---- Swipe navigation (phone/tablet): horizontal intent only, never
-  // hijacks vertical scrolling, ignores swipes that start in form fields.
-  // Touches starting within 28px of either screen edge are ignored so the
-  // page-turn never fights the iOS Safari edge back/forward gesture.
-  const EDGE_GUARD = 28;
-  const touchStart = useRef<{ x: number; y: number } | null>(null);
-  const onTouchStart = (e: React.TouchEvent) => {
-    const el = e.target as HTMLElement | null;
-    if (el && (el.tagName === "INPUT" || el.tagName === "TEXTAREA" || el.tagName === "SELECT" || el.isContentEditable)) {
-      touchStart.current = null;
-      return;
-    }
-    const t0 = e.touches[0];
-    if (t0.clientX < EDGE_GUARD || t0.clientX > window.innerWidth - EDGE_GUARD) {
-      touchStart.current = null;
-      return;
-    }
-    touchStart.current = { x: t0.clientX, y: t0.clientY };
-  };
-  const onTouchEnd = (e: React.TouchEvent) => {
-    const start = touchStart.current;
-    touchStart.current = null;
-    if (!start) return;
-    const t0 = e.changedTouches[0];
-    const dx = t0.clientX - start.x;
-    const dy = t0.clientY - start.y;
-    if (Math.abs(dx) > 60 && Math.abs(dx) > 1.5 * Math.abs(dy)) {
-      if (dx < 0) goNext();
-      else goPrev();
-    }
-  };
-
-  // ---- Goblin tools bottom sheet (phone/tablet).
-  const [toolsOpen, setToolsOpen] = useState(false);
-  useEffect(() => {
-    if (!toolsOpen) return;
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setToolsOpen(false);
-    };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [toolsOpen]);
-  useEffect(() => setToolsOpen(false), [num]);
+  const { chapter, error, panels } = usePaginatedChapter(num);
+  const { aligned, page, pageCount, step, goNext, goPrev } = usePageNavigation({ num, panels, single });
+  const { bookmarked, onToggleBookmark } = useReaderBookmark({ num, chapter, panels, aligned, step });
+  const { onTouchStart, onTouchEnd } = useSwipePaging({ goNext, goPrev });
+  const { toolsOpen, setToolsOpen } = useToolsSheet(num);
 
   const spineShadow = c("rgba(60,50,30,0.22)", "rgba(0,0,0,0.55)");
   const pageShadow = c(
