@@ -18,7 +18,8 @@ const BUDGETS = {
   maxPublicArtRaw: 500 * 1024,
   maxResponsiveVariantRaw: 400 * 1024,
   totalOriginalPublicArtRaw: 6 * 1024 * 1024,
-  totalPublicArtRaw: 8 * 1024 * 1024,
+  totalResponsiveVariantRaw: 4.5 * 1024 * 1024,
+  totalPublicArtRaw: 10 * 1024 * 1024,
 };
 
 function fail(message) {
@@ -86,6 +87,7 @@ function main() {
   const originalArt = artFiles.filter((file) => !file.isVariant);
   const variantArt = artFiles.filter((file) => file.isVariant);
   const totalOriginalArt = originalArt.reduce((sum, file) => sum + file.raw, 0);
+  const totalVariantArt = variantArt.reduce((sum, file) => sum + file.raw, 0);
   const largestArt = [...originalArt].sort((a, b) => b.raw - a.raw)[0];
   const largestVariant = [...variantArt].sort((a, b) => b.raw - a.raw)[0];
   if (largestArt && largestArt.raw > BUDGETS.maxPublicArtRaw) {
@@ -97,6 +99,9 @@ function main() {
   if (totalOriginalArt > BUDGETS.totalOriginalPublicArtRaw) {
     fail(`original public/art total ${format(totalOriginalArt)} exceeds budget ${format(BUDGETS.totalOriginalPublicArtRaw)}.`);
   }
+  if (totalVariantArt > BUDGETS.totalResponsiveVariantRaw) {
+    fail(`responsive variant total ${format(totalVariantArt)} exceeds budget ${format(BUDGETS.totalResponsiveVariantRaw)}.`);
+  }
   if (totalArt > BUDGETS.totalPublicArtRaw) {
     fail(`public/art total ${format(totalArt)} exceeds budget ${format(BUDGETS.totalPublicArtRaw)}.`);
   }
@@ -104,7 +109,7 @@ function main() {
   console.log("Performance budgets passed.");
   console.log(`Largest JS chunks: ${jsFiles.slice(0, 5).map((file) => `${file.name} ${format(file.raw)} raw/${format(file.gzip)} gzip`).join(" · ")}`);
   if (largestArt) {
-    console.log(`Largest original art asset: ${path.relative(appDir, largestArt.filePath)} ${format(largestArt.raw)} · total originals ${format(totalOriginalArt)} · total with variants ${format(totalArt)}`);
+    console.log(`Largest original art asset: ${path.relative(appDir, largestArt.filePath)} ${format(largestArt.raw)} · total originals ${format(totalOriginalArt)} · variants ${format(totalVariantArt)} · total with variants ${format(totalArt)}`);
   }
 }
 

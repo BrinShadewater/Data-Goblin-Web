@@ -1,14 +1,10 @@
+import json
 from pathlib import Path
 from PIL import Image
 
 APP_DIR = Path(__file__).resolve().parents[1]
 ART_DIR = APP_DIR / "public" / "art"
-
-TARGETS = {
-    "panels/themap.webp": [640, 960],
-    "panels/insight2-panel.webp": [640, 960],
-    "panels/source-verification-panel.webp": [640, 960],
-}
+REGISTRY_PATH = APP_DIR / "src" / "image-registry.json"
 
 
 def format_kb(size: int) -> str:
@@ -28,9 +24,19 @@ def save_variant(source: Path, width: int) -> Path | None:
         return target
 
 
+def load_targets() -> dict[str, list[int]]:
+    registry = json.loads(REGISTRY_PATH.read_text(encoding="utf-8"))
+    targets: dict[str, list[int]] = {}
+    for rel, entry in registry["responsive"].items():
+        widths = [int(width) for width in entry["widths"] if int(width) < int(entry["width"])]
+        if widths:
+            targets[rel] = widths
+    return targets
+
+
 def main() -> None:
     written: list[Path] = []
-    for rel, widths in TARGETS.items():
+    for rel, widths in load_targets().items():
         source = ART_DIR / rel
         if not source.exists():
             raise FileNotFoundError(source)

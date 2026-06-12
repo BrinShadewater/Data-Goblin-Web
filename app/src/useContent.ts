@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { RESPONSIVE_ART } from "./imageRegistry";
 import type { ArtMap, Book, Chapter, GlossaryEntry, LinkEntry, Receipt, Traps } from "./types";
 
 // Runtime JSON loader with a module-level cache so each file is fetched once
@@ -74,14 +75,8 @@ export const useArtMap = () => useJson<ArtMap>("art-map.json");
 /** URL of an art asset; `rel` is an art-map path like "small/water.png". */
 export const artUrl = (rel: string) => `${import.meta.env.BASE_URL}art/${rel}`;
 
-const RESPONSIVE_ART_WIDTHS: Record<string, number[]> = {
-  "panels/themap.webp": [640, 960, 1024],
-  "panels/insight2-panel.webp": [640, 960, 1024],
-  "panels/source-verification-panel.webp": [640, 960, 1024],
-};
-
 export function artSrcSet(rel: string) {
-  const widths = RESPONSIVE_ART_WIDTHS[rel];
+  const widths = RESPONSIVE_ART[rel]?.widths;
   if (!widths) return undefined;
   const ext = rel.slice(rel.lastIndexOf("."));
   const base = rel.slice(0, -ext.length);

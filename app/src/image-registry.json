@@ -1,0 +1,29 @@
+{
+  "_readme": [
+    "Responsive art registry for app/public/art assets.",
+    "Paths are relative to public/art.",
+    "widths include the generated responsive variants plus the original source width.",
+    "priority assets are used directly by pages or above-the-fold reader surfaces.",
+    "content-panel assets are chapter plate art referenced through art-map.json."
+  ],
+  "responsive": {
+    "panels/themap.webp": { "role": "priority", "width": 1024, "height": 1024, "widths": [640, 960, 1024], "alt": "Fantasy map of Canada for Data Goblin, with the goblin standing in front" },
+    "panels/insight2-panel.webp": { "role": "priority", "width": 1024, "height": 1024, "widths": [640, 960, 1024], "alt": "Data Goblin inspecting receipts and evidence crystals" },
+    "panels/source-verification-panel.webp": { "role": "content-panel", "width": 1024, "height": 1024, "widths": [640, 960, 1024], "alt": "Data Goblin verifying sources and receipts" },
+    "panels/ai-innovation-panel.webp": { "role": "content-panel", "width": 1024, "height": 1024, "widths": [640, 960, 1024] },
+    "panels/data-analysis-panel.webp": { "role": "content-panel", "width": 1024, "height": 1024, "widths": [640, 960, 1024] },
+    "panels/data-colonialism-panel.webp": { "role": "content-panel", "width": 1024, "height": 1024, "widths": [640, 960, 1024] },
+    "panels/canadian-champions-panel.webp": { "role": "content-panel", "width": 1024, "height": 1024, "widths": [640, 960, 1024] },
+    "panels/data-infrastructure-panel.webp": { "role": "content-panel", "width": 1024, "height": 1024, "widths": [640, 960, 1024] },
+    "panels/ai-data-power-panel.webp": { "role": "content-panel", "width": 1024, "height": 1024, "widths": [640, 960, 1024] },
+    "panels/sovereign-cloud-panel.webp": { "role": "content-panel", "width": 1024, "height": 1024, "widths": [640, 960, 1024] },
+    "panels/sovereign-cloud-panel2.webp": { "role": "content-panel", "width": 1024, "height": 1024, "widths": [640, 960, 1024] },
+    "panels/algorithmic-impact-panel.webp": { "role": "content-panel", "width": 1024, "height": 1024, "widths": [640, 960, 1024] },
+    "panels/ai-safety-caisi-panel.webp": { "role": "content-panel", "width": 1024, "height": 1024, "widths": [640, 960, 1024] },
+    "panels/quebec-panel.webp": { "role": "content-panel", "width": 1024, "height": 1024, "widths": [640, 960, 1024] },
+    "panels/visualize-panel.webp": { "role": "content-panel", "width": 1024, "height": 1024, "widths": [640, 960, 1024] },
+    "panels/forward-panel.webp": { "role": "content-panel", "width": 1024, "height": 1024, "widths": [640, 960, 1024] },
+    "panels/evidence-trail-panel.webp": { "role": "content-panel", "width": 1024, "height": 1024, "widths": [640, 960, 1024] }
+  },
+  "ignoreUnused": ["apple-touch-icon.png", "favicon.png", "favicon.ico", "icons/*"]
+}
