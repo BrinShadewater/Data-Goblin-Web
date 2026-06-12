@@ -6,6 +6,7 @@ import { GoblinMascot, NavIcon } from "./GoblinMascot";
 import { Markdown } from "./Markdown";
 import { autolinkBlocks } from "../links";
 import { artUrl, useArtMap, useLinks } from "../useContent";
+import { displayRegion } from "../regionLabels";
 import type { Block } from "../pagination";
 import type { Chapter, Trap } from "../types";
 
@@ -54,7 +55,7 @@ function SectionHeading({ heading, first, accent }: { heading: string; first: bo
   );
   if (!accent) return h2;
   // Section-break ornament from art-map.json, right-aligned beside the heading.
-  const size = mode === "phone" ? 56 : 72;
+  const size = mode === "phone" ? 108 : 144;
   return (
     <div style={{ display: "flex", alignItems: "center", gap: "14px", margin }}>
       {h2}
@@ -92,7 +93,7 @@ export function GoblinTrapCard({ trap }: { trap: Trap }) {
       }}
     >
       <span style={{ flexShrink: 0, marginTop: "1px" }}>
-        <NavIcon name="alert-nav" size={22} />
+        <NavIcon name="alert-nav" size={33} />
       </span>
       <div>
         <div style={{ fontFamily: MONO, fontSize: "9px", fontWeight: 800, letterSpacing: "0.22em", textTransform: "uppercase", color: red, marginBottom: "4px" }}>
@@ -213,10 +214,9 @@ function OpenerHeader({ chapter }: { chapter: Chapter }) {
   const { data: artMap } = useArtMap();
   const [mainTitle, ...subParts] = chapter.title.split(" — ");
   const subtitle = subParts.join(" — ");
-  // Opener art from art-map.json replaces the mascot placeholder; the mascot
-  // itself stays only on the Front Matter title page (doc 0).
+  // Opener art from art-map.json replaces the mascot placeholder.
   const openerArt = artMap?.docs?.[String(chapter.number)]?.opener ?? null;
-  const artHeight = mode === "phone" ? 120 : 160;
+  const artHeight = mode === "phone" ? 170 : mode === "tablet" ? 220 : 250;
   return (
     <>
       <div
@@ -230,7 +230,7 @@ function OpenerHeader({ chapter }: { chapter: Chapter }) {
           marginBottom: "18px",
         }}
       >
-        {chapter.region}
+        {displayRegion(chapter.region)}
         {chapter.number === 0 ? "" : chapter.number === 20 ? " · Appendix" : ` · Chapter ${chapter.number}`}
       </div>
       <h1
@@ -262,10 +262,8 @@ function OpenerHeader({ chapter }: { chapter: Chapter }) {
           {subtitle}
         </div>
       )}
-      <div style={{ display: "flex", justifyContent: "center", margin: "10px 0 18px", minHeight: chapter.number === 0 || openerArt ? undefined : 0 }}>
-        {chapter.number === 0 ? (
-          <GoblinMascot size={artHeight} />
-        ) : openerArt ? (
+      <div style={{ display: "flex", justifyContent: "center", margin: "14px 0 22px", minHeight: chapter.number === 0 || openerArt ? undefined : 0 }}>
+        {openerArt ? (
           // Current opener stays eager (it is the page's hero); the fixed
           // height + reserved row prevent layout shift while it decodes.
           <img
@@ -277,16 +275,18 @@ function OpenerHeader({ chapter }: { chapter: Chapter }) {
             style={{
               height: `${artHeight}px`,
               width: "auto",
-              maxWidth: "75%",
+              maxWidth: "86%",
               objectFit: "contain",
               ...artBlendStyle(dark),
             }}
           />
+        ) : chapter.number === 0 ? (
+          <GoblinMascot size={artHeight} />
         ) : null}
       </div>
       <div style={{ display: "flex", alignItems: "center", gap: "12px", margin: "0 0 16px" }}>
         <div style={{ flex: 1, borderTop: `1px solid ${c(...P.border)}` }} />
-        <NavIcon name="trailmarker-nav" size={18} />
+        <NavIcon name="trailmarker-nav" size={41} />
         <div style={{ fontFamily: MONO, fontSize: "9.5px", fontWeight: 800, letterSpacing: "0.34em", textTransform: "uppercase", color: c(...P.faint) }}>
           Start Here
         </div>

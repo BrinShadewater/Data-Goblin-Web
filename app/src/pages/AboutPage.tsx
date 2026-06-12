@@ -1,8 +1,7 @@
 import { useTheme } from "../ThemeContext";
 import { BODY, DISPLAY, HAND, MONO, P, RADIUS, UI } from "../theme";
-import { GoblinMascot } from "../components/GoblinMascot";
 import { Markdown } from "../components/Markdown";
-import { useBook } from "../useContent";
+import { artUrl, useBook } from "../useContent";
 
 /** Pull the paragraph containing `marker` out of a markdown document. */
 function extractParagraph(md: string, marker: string): string | null {
@@ -22,7 +21,7 @@ const PRINCIPLES = [
 ];
 
 export function AboutPage() {
-  const { c } = useTheme();
+  const { c, dark } = useTheme();
   const { data: book } = useBook();
 
   const bg = c(...P.panelBg);
@@ -39,11 +38,23 @@ export function AboutPage() {
 
   return (
     <div style={{ flex: 1, overflowY: "auto", background: bg, padding: "32px clamp(16px, 5vw, 40px) 64px", transition: "background 0.3s" }}>
-      <div style={{ maxWidth: "780px", margin: "0 auto" }}>
+      <div style={{ maxWidth: "1120px", margin: "0 auto" }}>
         {/* Header */}
-        <div style={{ display: "flex", gap: "28px", alignItems: "flex-start", marginBottom: "32px", flexWrap: "wrap" }}>
-          <div style={{ flexShrink: 0, paddingTop: "4px" }}>
-            <GoblinMascot size={150} />
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 340px), 1fr))", gap: "32px", alignItems: "center", marginBottom: "32px" }}>
+          <div style={{ background: c(...P.pageBg), border: `1px solid ${border}`, borderRadius: "6px", padding: "18px", boxShadow: c("0 12px 32px rgba(60,50,30,0.16)", "0 12px 32px rgba(0,0,0,0.4)") }}>
+            <img
+              src={artUrl("panels/insight2-panel.webp")}
+              alt="Data Goblin inspecting receipts and evidence crystals"
+              decoding="async"
+              style={{
+                display: "block",
+                width: "100%",
+                maxHeight: "440px",
+                objectFit: "contain",
+                mixBlendMode: dark ? "normal" : "multiply",
+                opacity: dark ? 0.92 : 1,
+              }}
+            />
           </div>
           <div style={{ minWidth: "260px", flex: 1 }}>
             <div style={{ fontFamily: MONO, fontSize: "9px", fontWeight: 800, letterSpacing: "0.28em", textTransform: "uppercase", color: red, marginBottom: "8px" }}>

@@ -1,5 +1,5 @@
 import { ReactNode, useState } from "react";
-import { ArrowRight, CheckSquare, ChevronDown, ChevronUp, Square, X } from "lucide-react";
+import { ArrowRight, Check, CheckSquare, ChevronDown, ChevronUp, Copy, Square, X } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from "../ThemeContext";
 import { BODY, MONO, P, RADIUS, UI } from "../theme";
@@ -55,11 +55,11 @@ function Card({
   const header = (
     <>
       {icon}
-      <span style={{ fontFamily: MONO, fontSize: "8.5px", fontWeight: 800, letterSpacing: "0.2em", textTransform: "uppercase", color: c(...P.green), flex: 1, textAlign: "left" }}>
+      <span style={{ fontFamily: MONO, fontSize: "9.5px", fontWeight: 800, letterSpacing: "0.18em", textTransform: "uppercase", color: c(...P.green), flex: 1, textAlign: "left" }}>
         {title}
       </span>
       {storageKey &&
-        (open ? <ChevronUp size={13} color={c(...P.muted)} /> : <ChevronDown size={13} color={c(...P.muted)} />)}
+        (open ? <ChevronUp size={16} color={c(...P.muted)} /> : <ChevronDown size={16} color={c(...P.muted)} />)}
     </>
   );
   return (
@@ -68,8 +68,8 @@ function Card({
         background: c(...P.cardBg),
         border: `1px solid ${c(...P.borderSoft)}`,
         borderRadius: RADIUS,
-        padding: "12px 14px",
-        marginBottom: "10px",
+        padding: "14px 16px",
+        marginBottom: "12px",
         transition: "background 0.3s",
       }}
     >
@@ -80,20 +80,20 @@ function Card({
           style={{
             display: "flex",
             alignItems: "center",
-            gap: "7px",
+            gap: "9px",
             width: "100%",
             background: "none",
             border: "none",
             padding: 0,
             margin: open ? "0 0 9px" : 0,
             cursor: "pointer",
-            minHeight: "24px",
+            minHeight: "30px",
           }}
         >
           {header}
         </button>
       ) : (
-        <div style={{ display: "flex", alignItems: "center", gap: "7px", marginBottom: "9px" }}>{header}</div>
+        <div style={{ display: "flex", alignItems: "center", gap: "9px", marginBottom: "10px" }}>{header}</div>
       )}
       {open && children}
     </div>
@@ -111,9 +111,9 @@ export function BookmarksCard() {
   const border = c(...P.borderSoft);
 
   return (
-    <Card icon={<NavIcon name="journal-nav" size={17} />} title="Bookmarks" storageKey="bookmarks">
+    <Card icon={<NavIcon name="journal-nav" size={50} />} title="Bookmarks" storageKey="bookmarks">
       {bookmarks.length === 0 ? (
-        <p style={{ fontFamily: UI, fontSize: "10.5px", color: muted, margin: 0, lineHeight: 1.5 }}>
+        <p style={{ fontFamily: UI, fontSize: "12px", color: muted, margin: 0, lineHeight: 1.5 }}>
           No bookmarks yet. Tap the 🔖 in the page bar to save your place.
         </p>
       ) : (
@@ -130,10 +130,10 @@ export function BookmarksCard() {
               }}
               style={{ flex: 1, background: "none", border: "none", padding: 0, cursor: "pointer", textAlign: "left", minWidth: 0 }}
             >
-              <div style={{ fontFamily: UI, fontSize: "10.5px", fontWeight: 700, color: navy, marginBottom: "2px" }}>
+              <div style={{ fontFamily: UI, fontSize: "12px", fontWeight: 700, color: navy, marginBottom: "2px" }}>
                 {bm.chapterTitle}
               </div>
-              <div style={{ fontFamily: BODY, fontSize: "10.5px", color: body, lineHeight: 1.4, overflow: "hidden" }}>
+              <div style={{ fontFamily: BODY, fontSize: "12px", color: body, lineHeight: 1.4, overflow: "hidden" }}>
                 {bm.snippet}
               </div>
             </button>
@@ -142,7 +142,7 @@ export function BookmarksCard() {
               aria-label="Remove bookmark"
               style={{ background: "none", border: "none", padding: "2px", cursor: "pointer", color: muted, flexShrink: 0 }}
             >
-              <X size={12} />
+              <X size={15} />
             </button>
           </div>
         ))
@@ -158,6 +158,7 @@ export function BookmarksCard() {
 export function GoblinTools({ chapter, showBookmarks = false }: { chapter: Chapter; showBookmarks?: boolean }) {
   const { c } = useTheme();
   const [receiptsOpen, setReceiptsOpen] = useState(false);
+  const [copied, setCopied] = useState(false);
   const { data: links } = useLinks();
   const [note, setNote] = useLocalStorage<string>(`goblin-notes-ch${chapter.number}`, "");
   const [done, setDone] = useLocalStorage<number[]>(`goblin-quests-ch${chapter.number}`, []);
@@ -178,7 +179,7 @@ export function GoblinTools({ chapter, showBookmarks = false }: { chapter: Chapt
   return (
     <>
       {/* Goblin Notes */}
-      <Card icon={<NavIcon name="note-nav" size={17} />} title="Goblin Notes" storageKey="notes">
+      <Card icon={<NavIcon name="note-nav" size={50} />} title="Goblin Notes" storageKey="notes">
         <textarea
           value={note}
           onChange={(e) => setNote(e.target.value)}
@@ -191,30 +192,63 @@ export function GoblinTools({ chapter, showBookmarks = false }: { chapter: Chapt
             borderRadius: RADIUS,
             padding: "8px 10px",
             fontFamily: BODY,
-            fontSize: "13px",
+            fontSize: "14px",
             lineHeight: 1.55,
             color: body,
             resize: "vertical",
             outline: "none",
           }}
         />
+        <button
+          onClick={async () => {
+            try {
+              await navigator.clipboard.writeText(note);
+              setCopied(true);
+              window.setTimeout(() => setCopied(false), 1400);
+            } catch {
+              setCopied(false);
+            }
+          }}
+          disabled={note.trim().length === 0}
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: "7px",
+            marginTop: "9px",
+            background: "transparent",
+            border: `1px solid ${border}`,
+            borderRadius: RADIUS,
+            color: note.trim().length === 0 ? muted : green,
+            cursor: note.trim().length === 0 ? "not-allowed" : "pointer",
+            fontFamily: UI,
+            fontSize: "11px",
+            fontWeight: 800,
+            letterSpacing: "0.1em",
+            textTransform: "uppercase",
+            padding: "8px 10px",
+            opacity: note.trim().length === 0 ? 0.55 : 1,
+          }}
+        >
+          {copied ? <Check size={15} /> : <Copy size={15} />}
+          {copied ? "Copied" : "Copy Text"}
+        </button>
       </Card>
 
       {/* Suspicion Meter — only meaningful when the document cites sources
           (the front matter and appendix have none, so it is hidden there). */}
       {chapter.sources.length > 0 && (
-      <Card icon={<NavIcon name="insight-nav" size={17} />} title="Suspicion Meter">
+      <Card icon={<NavIcon name="insight-nav" size={50} />} title="Suspicion Meter">
         <div
           title={`Computed, not random: ½·min(1, openVerifyFlags/4) + ½·(corporate-source share). This chapter: ${suspicion.openFlags} open verification flag${suspicion.openFlags === 1 ? "" : "s"}; ${Math.round(suspicion.corporateShare * 100)}% of ${suspicion.totalSources} sources are corporate self-disclosure.`}
         >
           <div style={{ height: "10px", background: c("#ded6c2", "#1d2230"), borderRadius: "5px", overflow: "hidden", border: `1px solid ${border}` }}>
             <div style={{ width: `${pct}%`, height: "100%", background: meterColor, transition: "width 0.4s" }} />
           </div>
-          <div style={{ fontFamily: UI, fontSize: "11px", fontWeight: 700, color: meterColor, margin: "7px 0 4px" }}>
+          <div style={{ fontFamily: UI, fontSize: "12.5px", fontWeight: 700, color: meterColor, margin: "7px 0 4px" }}>
             {suspicion.label} ({pct}%)
           </div>
         </div>
-        <p style={{ fontFamily: UI, fontSize: "9.5px", lineHeight: 1.5, color: muted, margin: 0 }}>
+        <p style={{ fontFamily: UI, fontSize: "11px", lineHeight: 1.5, color: muted, margin: 0 }}>
           Computed from this chapter&rsquo;s open verification flags ({suspicion.openFlags}) and the share of corporate
           self-disclosure in its {suspicion.totalSources} sources ({Math.round(suspicion.corporateShare * 100)}%). Hover for the formula.
         </p>
@@ -223,8 +257,8 @@ export function GoblinTools({ chapter, showBookmarks = false }: { chapter: Chapt
 
       {/* Quest Items — hidden when the document has no recap (front matter, appendix). */}
       {chapter.recap.length > 0 && (
-      <Card icon={<NavIcon name="key-takeaways-nav" size={17} />} title="Quest Items" storageKey="quests" defaultOpen>
-        <p style={{ fontFamily: UI, fontSize: "9.5px", color: muted, margin: "0 0 8px", lineHeight: 1.45 }}>
+      <Card icon={<NavIcon name="key-takeaways-nav" size={50} />} title="Quest Items" storageKey="quests" defaultOpen>
+        <p style={{ fontFamily: UI, fontSize: "11px", color: muted, margin: "0 0 8px", lineHeight: 1.45 }}>
           What you should carry out of this chapter. Check items off as you collect them.
         </p>
         {chapter.recap.map((item, i) => {
@@ -235,25 +269,25 @@ export function GoblinTools({ chapter, showBookmarks = false }: { chapter: Chapt
               onClick={() => toggleQuest(i)}
               style={{
                 display: "flex",
-                gap: "8px",
+                gap: "9px",
                 alignItems: "flex-start",
                 width: "100%",
                 background: "none",
                 border: "none",
-                padding: "4px 0",
+                padding: "6px 0",
                 cursor: "pointer",
                 textAlign: "left",
               }}
             >
               {checked ? (
-                <CheckSquare size={13} color={green} style={{ flexShrink: 0, marginTop: "2px" }} />
+                <CheckSquare size={16} color={green} style={{ flexShrink: 0, marginTop: "2px" }} />
               ) : (
-                <Square size={13} color={muted} style={{ flexShrink: 0, marginTop: "2px" }} />
+                <Square size={16} color={muted} style={{ flexShrink: 0, marginTop: "2px" }} />
               )}
               <span
                 style={{
                   fontFamily: UI,
-                  fontSize: "11px",
+                  fontSize: "12.5px",
                   lineHeight: 1.45,
                   color: checked ? muted : body,
                   textDecoration: checked ? "line-through" : "none",
@@ -286,7 +320,7 @@ export function GoblinTools({ chapter, showBookmarks = false }: { chapter: Chapt
           padding: "10px 13px",
           cursor: "pointer",
           fontFamily: UI,
-          fontSize: "9.5px",
+          fontSize: "11px",
           fontWeight: 700,
           letterSpacing: "0.12em",
           textTransform: "uppercase",
@@ -296,12 +330,12 @@ export function GoblinTools({ chapter, showBookmarks = false }: { chapter: Chapt
         }}
       >
         {receiptsOpen ? "Hide Receipts" : "Show Receipts"}
-        <ArrowRight size={11} strokeWidth={2} />
+        <ArrowRight size={14} strokeWidth={2} />
       </button>
 
       {receiptsOpen && (
         <div style={{ background: c(...P.cardBg), border: `1px solid ${border}`, borderRadius: RADIUS, padding: "10px 12px" }}>
-          <div style={{ fontFamily: MONO, fontSize: "8px", fontWeight: 800, letterSpacing: "0.18em", textTransform: "uppercase", color: muted, marginBottom: "8px" }}>
+          <div style={{ fontFamily: MONO, fontSize: "9px", fontWeight: 800, letterSpacing: "0.16em", textTransform: "uppercase", color: muted, marginBottom: "8px" }}>
             Sources cited in this chapter ({chapter.sources.length})
           </div>
           {chapter.sources.map((s, i) => {
@@ -310,7 +344,7 @@ export function GoblinTools({ chapter, showBookmarks = false }: { chapter: Chapt
             const link = links ? matchSource(s, links) : null;
             return (
               <div key={i} style={{ marginBottom: "8px", paddingBottom: "8px", borderBottom: i < chapter.sources.length - 1 ? `1px solid ${border}` : "none" }}>
-                <p style={{ fontFamily: BODY, fontSize: "11px", color: body, margin: "0 0 3px", lineHeight: 1.45 }}>
+                <p style={{ fontFamily: BODY, fontSize: "12px", color: body, margin: "0 0 3px", lineHeight: 1.45 }}>
                   {link ? (
                     <a href={link.url} target="_blank" rel="noopener noreferrer" className="gob-link" style={{ color: c(...P.navy) }}>
                       {s}
@@ -322,7 +356,7 @@ export function GoblinTools({ chapter, showBookmarks = false }: { chapter: Chapt
                 <span
                   style={{
                     fontFamily: MONO,
-                    fontSize: "7.5px",
+                    fontSize: "8.5px",
                     fontWeight: 700,
                     letterSpacing: "0.1em",
                     textTransform: "uppercase",
@@ -356,11 +390,11 @@ export function RightSidebar({ chapter }: { chapter: Chapter }) {
         overflowY: "auto",
         background: c(...P.panelBgAlt),
         borderLeft: `1px solid ${c(...P.borderSoft)}`,
-        padding: "12px 12px 24px",
+        padding: "14px 14px 24px",
         transition: "background 0.3s",
       }}
     >
-      <div style={{ fontFamily: MONO, fontSize: "8.5px", fontWeight: 800, letterSpacing: "0.2em", textTransform: "uppercase", color: muted, margin: "2px 2px 10px" }}>
+      <div style={{ fontFamily: MONO, fontSize: "9.5px", fontWeight: 800, letterSpacing: "0.18em", textTransform: "uppercase", color: muted, margin: "2px 2px 12px" }}>
         Field Guide Tools ·{" "}
         {chapter.number === 0 ? "Front Matter" : chapter.number === 20 ? "Appendix" : `Ch. ${chapter.number}`}
       </div>

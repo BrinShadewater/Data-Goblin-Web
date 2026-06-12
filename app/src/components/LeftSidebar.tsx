@@ -4,6 +4,7 @@ import { MONO, P, UI } from "../theme";
 import { NavIcon } from "./GoblinMascot";
 import { savePanel } from "../pagination";
 import type { Book } from "../types";
+import { displayRegion } from "../regionLabels";
 
 /**
  * One TOC row — used for chapters and for the front-matter/appendix entries.
@@ -45,7 +46,7 @@ function TocItem({
         gap: touch ? "9px" : "7px",
         width: "100%",
         minHeight: touch ? "44px" : undefined,
-        padding: touch ? "12px 16px 12px 13px" : "5px 16px 5px 13px",
+        padding: touch ? "12px 16px 12px 13px" : "7px 18px 7px 15px",
         background: active ? navy : "transparent",
         borderLeft: active ? `3px solid ${navyDeep}` : "3px solid transparent",
         borderTop: "none",
@@ -65,16 +66,16 @@ function TocItem({
       <span
         style={{
           fontFamily: MONO,
-          fontSize: touch ? "10px" : "9px",
-          color: active ? c("rgba(255,255,255,0.6)", "rgba(13,16,24,0.6)") : partLabel,
-          minWidth: "18px",
+          fontSize: touch ? "10px" : "10px",
+          color: active ? c("rgba(255,255,255,0.68)", "rgba(13,16,24,0.68)") : partLabel,
+          minWidth: "22px",
           flexShrink: 0,
           fontWeight: 600,
         }}
       >
         {indexLabel}
       </span>
-      <span style={{ fontFamily: UI, fontSize: touch ? "13.5px" : "12px", fontWeight: active ? 600 : 400, color: active ? activeText : text, lineHeight: 1.35 }}>
+      <span style={{ fontFamily: UI, fontSize: touch ? "13.5px" : "14px", fontWeight: active ? 700 : 500, color: active ? activeText : text, lineHeight: 1.35 }}>
         {title}
       </span>
     </button>
@@ -85,14 +86,14 @@ function TocItem({
 function RegionLabel({ region, part }: { region: string; part?: string }) {
   const { c } = useTheme();
   return (
-    <div style={{ padding: "8px 16px 4px" }}>
+    <div style={{ padding: "10px 18px 5px" }}>
       {part && (
-        <div style={{ fontFamily: MONO, fontSize: "8px", fontWeight: 800, letterSpacing: "0.2em", textTransform: "uppercase", color: c(...P.faint) }}>
+        <div style={{ fontFamily: MONO, fontSize: "9px", fontWeight: 800, letterSpacing: "0.18em", textTransform: "uppercase", color: c(...P.faint) }}>
           {part}
         </div>
       )}
-      <div style={{ fontFamily: MONO, fontSize: "9px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: c(...P.navy), marginTop: part ? "2px" : 0 }}>
-        ◆ {region}
+      <div style={{ fontFamily: MONO, fontSize: "10px", fontWeight: 800, letterSpacing: "0.13em", textTransform: "uppercase", color: c(...P.navy), marginTop: part ? "2px" : 0 }}>
+        ◆ {displayRegion(region)}
       </div>
     </div>
   );
@@ -189,8 +190,8 @@ export function LeftSidebar({ book, activeChapter }: { book: Book | null; active
         transition: "background 0.3s",
       }}
     >
-      <div style={{ padding: "12px 16px 10px", borderBottom: `1px solid ${border}` }}>
-        <div style={{ fontFamily: MONO, fontSize: "8.5px", fontWeight: 800, letterSpacing: "0.22em", textTransform: "uppercase", color: navy }}>
+      <div style={{ padding: "14px 18px 12px", borderBottom: `1px solid ${border}` }}>
+        <div style={{ fontFamily: MONO, fontSize: "10px", fontWeight: 800, letterSpacing: "0.2em", textTransform: "uppercase", color: navy }}>
           Table of Contents
         </div>
       </div>
@@ -199,30 +200,30 @@ export function LeftSidebar({ book, activeChapter }: { book: Book | null; active
         <TocList book={book} activeChapter={activeChapter} />
       </div>
 
-      <div style={{ borderTop: `1px solid ${border}`, padding: "12px 16px", background: footerBg, transition: "background 0.3s" }}>
+      <div style={{ borderTop: `1px solid ${border}`, padding: "14px 18px", background: footerBg, transition: "background 0.3s" }}>
         <div style={{ display: "flex", alignItems: "center", gap: "6px", marginBottom: "5px" }}>
-          <NavIcon name="trailmarker-nav" size={15} />
-          <div style={{ fontFamily: MONO, fontSize: "8px", fontWeight: 800, letterSpacing: "0.2em", textTransform: "uppercase", color: green }}>
+          <NavIcon name="trailmarker-nav" size={45} />
+          <div style={{ fontFamily: MONO, fontSize: "9.5px", fontWeight: 800, letterSpacing: "0.18em", textTransform: "uppercase", color: green }}>
             Start Here
           </div>
         </div>
-        <p style={{ fontFamily: UI, fontSize: "11px", color: text, lineHeight: 1.45, margin: "0 0 8px" }}>
+        <p style={{ fontFamily: UI, fontSize: "13px", color: text, lineHeight: 1.45, margin: "0 0 8px" }}>
           New to the guide?{" "}
           <button
             onClick={() => {
               savePanel(1, 0);
               navigate("/chapter/1");
             }}
-            style={{ background: "none", border: "none", color: green, fontFamily: UI, fontSize: "11px", fontWeight: 700, cursor: "pointer", padding: 0, textDecoration: "underline" }}
+            style={{ background: "none", border: "none", color: green, fontFamily: UI, fontSize: "13px", fontWeight: 800, cursor: "pointer", padding: 0, textDecoration: "underline" }}
           >
             Begin with Chapter 1.
           </button>
         </p>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-          <span style={{ fontFamily: MONO, fontSize: "8px", color: partLabel, letterSpacing: "0.1em" }}>
+          <span style={{ fontFamily: MONO, fontSize: "9px", color: partLabel, letterSpacing: "0.1em" }}>
             {book ? `as of ${book.asOf}` : ""}
           </span>
-          <NavIcon name="canadian-icon" size={48} alt="Data Goblin — a field guide to AI, data and power in Canada" />
+          <NavIcon name="canadian-icon" size={131} alt="Data Goblin — a field guide to AI, data and power in Canada" />
         </div>
       </div>
     </aside>

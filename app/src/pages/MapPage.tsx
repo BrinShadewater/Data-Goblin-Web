@@ -1,7 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { useTheme } from "../ThemeContext";
 import { BODY, DISPLAY, MONO, P, RADIUS, UI } from "../theme";
-import { useBook } from "../useContent";
+import { artUrl, useBook } from "../useContent";
+import { displayRegion } from "../regionLabels";
 
 const REGION_NOTES: Record<string, string> = {
   "The Land": "Foundations — what AI actually is, how it learns, and what it is physically made of.",
@@ -13,7 +14,7 @@ const REGION_NOTES: Record<string, string> = {
 
 /** The five regions of the field guide, each listing its chapters. */
 export function MapPage() {
-  const { c } = useTheme();
+  const { c, dark } = useTheme();
   const navigate = useNavigate();
   const { data: book, error } = useBook();
 
@@ -28,8 +29,9 @@ export function MapPage() {
 
   return (
     <div style={{ flex: 1, overflowY: "auto", background: bg, padding: "32px clamp(16px, 5vw, 40px) 64px", transition: "background 0.3s" }}>
-      <div style={{ maxWidth: "960px", margin: "0 auto" }}>
-        <div style={{ marginBottom: "26px" }}>
+      <div style={{ maxWidth: "1180px", margin: "0 auto" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 360px), 1fr))", gap: "30px", alignItems: "center", marginBottom: "30px" }}>
+          <div>
           <div style={{ fontFamily: MONO, fontSize: "9px", fontWeight: 800, letterSpacing: "0.28em", textTransform: "uppercase", color: red, marginBottom: "8px" }}>
             Data Goblin Field Guide
           </div>
@@ -38,8 +40,24 @@ export function MapPage() {
           </h1>
           <p style={{ fontFamily: BODY, fontSize: "15.5px", color: body, lineHeight: 1.65, margin: 0, maxWidth: "620px" }}>
             The guide&rsquo;s nineteen chapters are organized into five regions. Pick a region, pick a chapter,
-            and the field guide opens to that page. <em style={{ color: muted }}>(Region crests coming.)</em>
+            and the field guide opens to that page.
           </p>
+          </div>
+          <div style={{ background: c(...P.pageBg), border: `1px solid ${border}`, borderRadius: "6px", padding: "18px", boxShadow: c("0 12px 34px rgba(60,50,30,0.18)", "0 12px 34px rgba(0,0,0,0.48)") }}>
+            <img
+              src={artUrl("panels/themap.webp")}
+              alt="Fantasy map of Canada for Data Goblin, with the goblin standing in front"
+              decoding="async"
+              style={{
+                display: "block",
+                width: "100%",
+                maxHeight: "470px",
+                objectFit: "contain",
+                mixBlendMode: dark ? "normal" : "multiply",
+                opacity: dark ? 0.92 : 1,
+              }}
+            />
+          </div>
         </div>
 
         {error && <p style={{ fontFamily: BODY, fontStyle: "italic", color: muted }}>Could not load the map. ({error})</p>}
@@ -51,7 +69,7 @@ export function MapPage() {
               <div style={{ fontFamily: MONO, fontSize: "8.5px", fontWeight: 800, letterSpacing: "0.22em", textTransform: "uppercase", color: muted, marginBottom: "4px" }}>
                 {part.part}
               </div>
-              <h2 style={{ fontFamily: DISPLAY, fontSize: "21px", fontWeight: 800, color: navy, margin: "0 0 8px" }}>{part.region}</h2>
+              <h2 style={{ fontFamily: DISPLAY, fontSize: "21px", fontWeight: 800, color: navy, margin: "0 0 8px" }}>{displayRegion(part.region)}</h2>
               <p style={{ fontFamily: BODY, fontSize: "13.5px", lineHeight: 1.6, color: muted, margin: "0 0 12px" }}>
                 {REGION_NOTES[part.region] ?? ""}
               </p>

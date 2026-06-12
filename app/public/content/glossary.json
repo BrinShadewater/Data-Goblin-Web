@@ -31,7 +31,7 @@
  },
  {
   "term": "Behind-the-meter generation",
-  "def": "A power plant built for one customer, bypassing the public grid — Wonder Valley's natural-gas architecture. Fast to permit, easy to overlook in provincial carbon accounting.",
+  "def": "A power plant built for one customer, bypassing the public grid — the architecture proposed for Wonder Valley, among others. As a category, faster to permit and harder for outside observers to track than grid-connected generation.",
   "chapters": "Ch. 6",
   "letter": "B"
  },
@@ -79,7 +79,7 @@
  },
  {
   "term": "Deepfake",
-  "def": "Synthetic media depicting a real, identifiable person doing or saying something they didn't. Canadian criminal law covers the sexualized kind (Bill C-16); most of the rest is legally on its own.",
+  "def": "Synthetic media depicting a real, identifiable person doing or saying something they didn't. Bill C-16, tabled December 2025, would extend Canadian criminal law to the sexualized kind; most of the rest is legally on its own.",
   "chapters": "Ch. 12",
   "letter": "D"
  },
@@ -187,7 +187,7 @@
  },
  {
   "term": "OCAP Principles",
-  "def": "First Nations Ownership, Control, Access, and Possession of First Nations data — FNIGC's framework, est. 1998. The oldest and most operationally specific of the Indigenous data sovereignty frameworks.",
+  "def": "First Nations Ownership, Control, Access, and Possession of First Nations data — FNIGC's framework, est. 1998. The oldest and most operationally specific of the Indigenous data sovereignty frameworks. OCAP® is a registered trademark of the First Nations Information Governance Centre.",
   "chapters": "Ch. 9",
   "letter": "O"
  },
@@ -253,13 +253,13 @@
  },
  {
   "term": "Transformer",
-  "def": "The 2017 architecture (Vaswani et al., \"Attention Is All You Need\") under every current major model. One of its eight co-authors went home to Toronto and founded Cohere — Canadian content, certified.",
+  "def": "The 2017 architecture (Vaswani et al., \"Attention Is All You Need\") under every current major model. One of its eight co-authors went home to Toronto and co-founded Cohere — Canadian content, certified.",
   "chapters": "Ch. 2",
   "letter": "T"
  },
  {
   "term": "Voluntary Code of Conduct",
-  "def": "ISED's 2023 framework for responsible generative AI. Voluntary, as advertised: no enforcement, no penalties, and Microsoft never signed. Real as a signal; not law.",
+  "def": "ISED's 2023 framework for responsible generative AI. Voluntary, as advertised: no enforcement, no penalties, and Microsoft had not signed as of June 2026. Real as a signal; not law.",
   "chapters": "Chs. 5, 15",
   "letter": "V"
  },

@@ -33,10 +33,11 @@ export interface Budgets {
   opener: number;
 }
 
-// Desktop budgets, calibrated for the 16px/1.65 reader type (was 1800/850 at
-// the old 13.5px/1.74 type — capacity scales with the font metrics).
-export const PANEL_BUDGET = 1350;
-export const OPENER_BUDGET = 630;
+// Desktop budgets, calibrated for the 16px/1.65 reader type and the taller
+// illustrated opener. The balanced packer should fill a page before turning,
+// while still leaving overflow scroll as a rare fallback for atomic callouts.
+export const PANEL_BUDGET = 1650;
+export const OPENER_BUDGET = 900;
 
 /**
  * Extra budget cost charged to a section heading that carries an accent
@@ -44,7 +45,7 @@ export const OPENER_BUDGET = 630;
  * ~72px of image against the ~1.9 chars/px panel metric, less the heading's
  * own row height that the image shares.
  */
-export const ACCENT_COST = 80;
+export const ACCENT_COST = 180;
 
 /**
  * Budget for the active viewport mode + reading mode. Phone panels hold

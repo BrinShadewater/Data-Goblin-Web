@@ -47,7 +47,7 @@ export function GoblinCheckCard({ children }: { children: ReactNode }) {
       }}
     >
       <div style={{ flexShrink: 0, marginTop: "2px" }}>
-        <NavIcon name="check-nav" size={26} />
+        <NavIcon name="check-nav" size={51} />
       </div>
       <div style={{ minWidth: 0 }}>
         <div
@@ -108,7 +108,7 @@ export function RecapBox({ children }: { children: ReactNode }) {
           marginBottom: "8px",
         }}
       >
-        <NavIcon name="chapter-recap-nav" size={18} />
+        <NavIcon name="chapter-recap-nav" size={36} />
         Chapter Recap
       </div>
       <div style={{ fontFamily: t.bodyFont, fontSize: `${t.callout}px`, lineHeight: t.bodyLh, letterSpacing: t.letterSpacing, wordSpacing: t.wordSpacing }}>
@@ -217,6 +217,7 @@ function MarkdownInner({ markdown, style }: { markdown: string; style?: CSSPrope
             const rel = typeof src === "string" ? src : "";
             const resolved = rel.startsWith("art/") ? artUrl(rel.slice(4)) : rel;
             const isIcon = rel.includes("/icons/");
+            const isSmallArt = rel.includes("/small/");
             return (
               <img
                 src={resolved}
@@ -225,8 +226,10 @@ function MarkdownInner({ markdown, style }: { markdown: string; style?: CSSPrope
                 decoding="async"
                 style={
                   isIcon
-                    ? { width: "22px", height: "22px", objectFit: "contain", display: "inline-block", verticalAlign: "-5px" }
-                    : { maxWidth: "100%", display: "block", margin: "10px auto" }
+                    ? { width: "48px", height: "48px", objectFit: "contain", display: "inline-block", verticalAlign: "-14px" }
+                    : isSmallArt
+                      ? { width: "264px", maxWidth: "100%", display: "block", margin: "12px auto", objectFit: "contain" }
+                      : { maxWidth: "100%", display: "block", margin: "10px auto" }
                 }
               />
             );
@@ -243,7 +246,7 @@ function MarkdownInner({ markdown, style }: { markdown: string; style?: CSSPrope
                   borderCollapse: "collapse",
                   width: "100%",
                   border: `1px solid ${border}`,
-                  fontSize: `${t.table}px`,
+                fontSize: `${t.table + 0.5}px`,
                   background: c(...P.cardBg),
                 }}
               >
@@ -256,7 +259,7 @@ function MarkdownInner({ markdown, style }: { markdown: string; style?: CSSPrope
             <th
               style={{
                 fontFamily: UI,
-                fontSize: "11px",
+                fontSize: "12px",
                 fontWeight: 800,
                 letterSpacing: "0.1em",
                 textTransform: "uppercase",
@@ -265,7 +268,7 @@ function MarkdownInner({ markdown, style }: { markdown: string; style?: CSSPrope
                 background: c(...P.greenBg),
                 borderBottom: `1px solid ${border}`,
                 borderRight: `1px solid ${border}`,
-                padding: "7px 10px",
+                padding: "8px 11px",
               }}
             >
               {children}
@@ -279,7 +282,7 @@ function MarkdownInner({ markdown, style }: { markdown: string; style?: CSSPrope
                 verticalAlign: "top",
                 borderBottom: `1px solid ${c(...P.borderSoft)}`,
                 borderRight: `1px solid ${c(...P.borderSoft)}`,
-                padding: "7px 10px",
+                padding: "9px 11px",
               }}
             >
               {children}

@@ -1,12 +1,13 @@
 import { Menu, Moon, Sun } from "lucide-react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useTheme } from "../ThemeContext";
 import { useReader } from "../reader";
 import { DISPLAY, MONO, P, UI } from "../theme";
 import { GoblinIcon, NavIcon } from "./GoblinMascot";
 
 export const LINKS: { to: string; label: string; icon: string }[] = [
-  { to: "/", label: "Field Guide", icon: "guidebook-nav" },
+  { to: "/", label: "Home", icon: "head-nav" },
+  { to: "/guide", label: "Field Guide", icon: "guidebook-nav" },
   { to: "/map", label: "Map", icon: "map-nav" },
   { to: "/loot", label: "Loot (Glossary)", icon: "chest-nav" },
   { to: "/receipts", label: "Receipts", icon: "data-nav" },
@@ -26,6 +27,7 @@ export function TopNav({
   const { c, dark, toggle } = useTheme();
   const { mode, dyslexic, toggleDyslexic } = useReader();
   const navigate = useNavigate();
+  const location = useLocation();
   const bg = c(...P.panelBg);
   const border = c(...P.border);
   const ink = c(...P.ink);
@@ -36,18 +38,18 @@ export function TopNav({
   const logo = (
     <button
       onClick={() => navigate("/")}
-      style={{ display: "flex", alignItems: "center", gap: "9px", background: "none", border: "none", cursor: "pointer", padding: 0, minWidth: 0 }}
+      style={{ display: "flex", alignItems: "center", gap: "11px", background: "none", border: "none", cursor: "pointer", padding: 0, minWidth: 0 }}
       aria-label="Data Goblin home"
     >
-      <GoblinIcon size={26} />
+      <GoblinIcon size={62} />
       <div style={{ textAlign: "left", minWidth: 0 }}>
-        <div style={{ fontFamily: DISPLAY, fontStyle: "italic", fontWeight: 800, fontSize: "16px", color: ink, lineHeight: 1 }}>
+        <div style={{ fontFamily: DISPLAY, fontStyle: "italic", fontWeight: 800, fontSize: "26px", color: ink, lineHeight: 0.95 }}>
           DATA GOBLIN
         </div>
         <div
           style={{
             fontFamily: MONO,
-            fontSize: "7.5px",
+            fontSize: "10.5px",
             letterSpacing: "0.18em",
             textTransform: "uppercase",
             color: muted,
@@ -72,7 +74,7 @@ export function TopNav({
           alignItems: "center",
           justifyContent: "space-between",
           gap: "10px",
-          height: "56px",
+          height: "72px",
           padding: "0 8px 0 14px",
           background: bg,
           borderBottom: `1px solid ${border}`,
@@ -112,8 +114,8 @@ export function TopNav({
         display: "flex",
         alignItems: "center",
         gap: "20px",
-        height: "52px",
-        padding: "0 20px",
+        height: "72px",
+        padding: "0 22px",
         background: bg,
         borderBottom: `1px solid ${border}`,
         flexShrink: 0,
@@ -124,29 +126,32 @@ export function TopNav({
     >
       {logo}
 
-      <nav style={{ display: "flex", alignItems: "center", gap: "2px", flex: 1 }}>
+      <nav style={{ display: "flex", alignItems: "center", gap: "4px", flex: 1 }}>
         {LINKS.map((l) => (
           <NavLink
             key={l.to}
             to={l.to}
             end={l.to === "/"}
-            style={({ isActive }) => ({
+            style={({ isActive }) => {
+              const active = isActive || (l.to === "/guide" && location.pathname.startsWith("/chapter/"));
+              return ({
               fontFamily: UI,
-              fontSize: "11px",
-              fontWeight: isActive ? 700 : 500,
+              fontSize: "13.5px",
+              fontWeight: active ? 700 : 500,
               letterSpacing: "0.06em",
               textTransform: "uppercase" as const,
-              color: isActive ? green : muted,
+              color: active ? green : muted,
               textDecoration: "none",
-              padding: "6px 10px",
-              borderBottom: isActive ? `2px solid ${green}` : "2px solid transparent",
+              padding: "9px 11px",
+              borderBottom: active ? `2px solid ${green}` : "2px solid transparent",
               transition: "color 0.15s",
               display: "inline-flex",
               alignItems: "center",
-              gap: "5px",
-            })}
+              gap: "7px",
+            });
+            }}
           >
-            <NavIcon name={l.icon} size={15} />
+            <NavIcon name={l.icon} size={48} />
             {l.label}
           </NavLink>
         ))}
@@ -160,10 +165,10 @@ export function TopNav({
           background: c(...P.inputBg),
           border: `1px solid ${border}`,
           borderRadius: "3px",
-          padding: "5px 10px",
+          padding: "7px 11px",
         }}
       >
-        <NavIcon name="search-nav" size={16} />
+        <NavIcon name="search-nav" size={45} />
         <input
           type="text"
           placeholder="Search the guide…"
@@ -174,9 +179,9 @@ export function TopNav({
             border: "none",
             outline: "none",
             fontFamily: UI,
-            fontSize: "11.5px",
+            fontSize: "13px",
             color: ink,
-            width: "150px",
+            width: "180px",
           }}
         />
       </div>
@@ -190,15 +195,15 @@ export function TopNav({
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          width: "30px",
-          height: "30px",
+          width: "38px",
+          height: "38px",
           background: dyslexic ? green : "none",
           border: `1px solid ${dyslexic ? green : border}`,
           borderRadius: "3px",
           cursor: "pointer",
           color: dyslexic ? c("#f4f0e0", "#0d1018") : muted,
           fontFamily: UI,
-          fontSize: "12px",
+          fontSize: "14px",
           fontWeight: 700,
           padding: 0,
         }}
@@ -213,8 +218,8 @@ export function TopNav({
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          width: "30px",
-          height: "30px",
+          width: "38px",
+          height: "38px",
           background: "none",
           border: `1px solid ${border}`,
           borderRadius: "3px",
@@ -222,7 +227,7 @@ export function TopNav({
           color: muted,
         }}
       >
-        {dark ? <Sun size={14} /> : <Moon size={14} />}
+        {dark ? <Sun size={18} /> : <Moon size={18} />}
       </button>
     </header>
   );

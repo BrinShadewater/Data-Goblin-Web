@@ -57,6 +57,7 @@ export function BottomBar({
   const canNext = !(activeChapter >= lastDoc && lastPage);
 
   const green = c(...P.green);
+  const red = c(...P.red);
   const muted = c(...P.faint);
   const bg = c(...P.panelBgAlt);
   const border = c(...P.borderSoft);
@@ -77,11 +78,11 @@ export function BottomBar({
         border: "none",
         cursor: "pointer",
         padding: 0,
-        color: bookmarked ? green : muted,
+        color: red,
         flexShrink: 0,
       }}
     >
-      <BookmarkIcon size={size >= 44 ? 20 : 16} fill={bookmarked ? green : "none"} strokeWidth={2} />
+      <BookmarkIcon size={size >= 36 ? 24 : 18} fill={bookmarked ? red : "none"} strokeWidth={2.2} />
     </button>
   );
 
@@ -185,7 +186,7 @@ export function BottomBar({
         alignItems: "center",
         justifyContent: "space-between",
         padding: "0 24px",
-        height: "48px",
+        height: "56px",
         flexShrink: 0,
         zIndex: 40,
         boxShadow: c("0 -1px 4px rgba(0,0,0,0.04)", "0 -1px 8px rgba(0,0,0,0.2)"),
@@ -197,13 +198,13 @@ export function BottomBar({
         disabled={!canPrev}
         style={{ display: "flex", alignItems: "center", gap: "6px", background: "none", border: "none", cursor: canPrev ? "pointer" : "not-allowed", opacity: canPrev ? 1 : 0.3, padding: 0 }}
       >
-        <ChevronLeft size={15} color={green} strokeWidth={2} />
+        <ChevronLeft size={20} color={green} strokeWidth={2} />
         <div style={{ textAlign: "left" }}>
-          <div style={{ fontFamily: UI, fontSize: "7.5px", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: muted, lineHeight: 1, marginBottom: "2px" }}>
+          <div style={{ fontFamily: UI, fontSize: "9px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: muted, lineHeight: 1, marginBottom: "3px" }}>
             {prevLabel}
           </div>
           {prevSub && (
-            <div style={{ fontFamily: UI, fontSize: "10.5px", color: green, fontWeight: 500 }}>
+            <div style={{ fontFamily: UI, fontSize: "12px", color: green, fontWeight: 600 }}>
               {prevSub}
             </div>
           )}
@@ -212,8 +213,8 @@ export function BottomBar({
 
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "4px" }}>
         <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
-          <NavIcon name="book-nav" size={16} />
-          <div style={{ fontFamily: UI, fontSize: "7.5px", letterSpacing: "0.12em", textTransform: "uppercase", color: muted }}>
+          <NavIcon name="book-nav" size={68} />
+          <div style={{ fontFamily: UI, fontSize: "9px", letterSpacing: "0.12em", textTransform: "uppercase", color: muted }}>
             Your Progress Through the Guide
           </div>
         </div>
@@ -231,11 +232,16 @@ export function BottomBar({
                 }}
                 title={`${ch}. ${titleOf(ch)}`}
                 style={{
-                  width: isActive ? "10px" : "7px",
-                  height: isActive ? "10px" : "7px",
+                  width: isActive ? "15px" : "8px",
+                  height: isActive ? "15px" : "8px",
                   borderRadius: "50%",
-                  background: isActive ? green : isDone ? c("#7a9a58", "#4a7a5a") : c("#bcb29a", "#2a3040"),
-                  border: isActive ? `2px solid ${c("#94b87e", "#3a6047")}` : "none",
+                  background: isActive
+                    ? `radial-gradient(circle at 35% 30%, ${c("#f2ffe7", "#e7ffd8")} 0%, ${c("#9fdc78", "#a6ff75")} 38%, ${green} 72%)`
+                    : isDone ? c("#7a9a58", "#4a7a5a") : c("#bcb29a", "#2a3040"),
+                  border: isActive ? `1px solid ${c("#e0ffd0", "#cbffb6")}` : "none",
+                  boxShadow: isActive
+                    ? c("0 0 0 3px rgba(159, 220, 120, 0.24), 0 0 16px rgba(45, 90, 39, 0.55)", "0 0 0 3px rgba(166, 255, 117, 0.18), 0 0 18px rgba(116, 184, 94, 0.75)")
+                    : "none",
                   transition: "all 0.2s",
                   flexShrink: 0,
                   cursor: "pointer",
@@ -251,23 +257,23 @@ export function BottomBar({
       </div>
 
       <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
-        {bookmarkBtn(30)}
+        {bookmarkBtn(36)}
         <button
           onClick={() => canNext && onNext()}
           disabled={!canNext}
           style={{ display: "flex", alignItems: "center", gap: "6px", background: "none", border: "none", cursor: canNext ? "pointer" : "not-allowed", opacity: canNext ? 1 : 0.3, padding: 0, textAlign: "right" }}
         >
           <div>
-            <div style={{ fontFamily: UI, fontSize: "7.5px", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: muted, lineHeight: 1, marginBottom: "2px" }}>
+            <div style={{ fontFamily: UI, fontSize: "9px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: muted, lineHeight: 1, marginBottom: "3px" }}>
               {nextLabel}
             </div>
             {nextSub && (
-              <div style={{ fontFamily: UI, fontSize: "10.5px", color: green, fontWeight: 500 }}>
+              <div style={{ fontFamily: UI, fontSize: "12px", color: green, fontWeight: 600 }}>
                 {nextSub}
               </div>
             )}
           </div>
-          <ChevronRight size={15} color={green} strokeWidth={2} />
+          <ChevronRight size={20} color={green} strokeWidth={2} />
         </button>
       </div>
     </div>

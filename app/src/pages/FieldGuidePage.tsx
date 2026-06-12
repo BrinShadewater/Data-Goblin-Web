@@ -416,12 +416,13 @@ export function FieldGuidePage() {
   // ------------------------------------------------------------------ desktop spread
   const left = panels?.[aligned] ?? [];
   const right = panels?.[aligned + 1] ?? [];
+  const singleArtSpread = left.length === 1 && left[0]?.kind === "panel" && right.length === 0;
 
   return (
     <div
       style={{
         display: "grid",
-        gridTemplateColumns: "215px 1fr 240px",
+        gridTemplateColumns: "260px minmax(0, 1fr) 280px",
         gridTemplateRows: "minmax(0, 1fr) auto",
         flex: 1,
         minHeight: 0,
@@ -434,7 +435,7 @@ export function FieldGuidePage() {
           minWidth: 0,
           minHeight: 0,
           background: c(...P.appBg),
-          padding: "16px 22px",
+          padding: "18px 28px",
           display: "flex",
           justifyContent: "center",
           transition: "background 0.3s",
@@ -446,9 +447,9 @@ export function FieldGuidePage() {
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "1fr 1fr",
+              gridTemplateColumns: singleArtSpread ? "1fr" : "1fr 1fr",
               width: "100%",
-              maxWidth: "1180px",
+              maxWidth: "1400px",
               height: "100%",
               boxShadow: pageShadow,
               borderRadius: "3px",
@@ -465,26 +466,30 @@ export function FieldGuidePage() {
               folio={folio(num, aligned + 1)}
               opener={aligned === 0}
             />
-            <PagePanel
-              key={`${num}-${aligned}-right`}
-              chapter={chapter}
-              blocks={right}
-              side="right"
-              folio={folio(num, aligned + 2)}
-            />
-            {/* Book spine divider */}
-            <div
-              style={{
-                position: "absolute",
-                top: 0,
-                bottom: 0,
-                left: "50%",
-                width: "26px",
-                transform: "translateX(-50%)",
-                background: `linear-gradient(to right, transparent, ${spineShadow} 48%, ${spineShadow} 52%, transparent)`,
-                pointerEvents: "none",
-              }}
-            />
+            {!singleArtSpread && (
+              <>
+                <PagePanel
+                  key={`${num}-${aligned}-right`}
+                  chapter={chapter}
+                  blocks={right}
+                  side="right"
+                  folio={folio(num, aligned + 2)}
+                />
+                {/* Book spine divider */}
+                <div
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    bottom: 0,
+                    left: "50%",
+                    width: "26px",
+                    transform: "translateX(-50%)",
+                    background: `linear-gradient(to right, transparent, ${spineShadow} 48%, ${spineShadow} 52%, transparent)`,
+                    pointerEvents: "none",
+                  }}
+                />
+              </>
+            )}
           </div>
         )}
       </div>

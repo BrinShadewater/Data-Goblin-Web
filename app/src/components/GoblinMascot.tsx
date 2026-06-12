@@ -36,6 +36,7 @@ export function GoblinIcon({ size = 20 }: { size?: number }) {
         display: "inline-block",
         verticalAlign: "middle",
         objectFit: "contain",
+        transform: "scale(1.16)",
       }}
     />
   );

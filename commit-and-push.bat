@@ -2,7 +2,7 @@
 REM Commit + push. Use: commit-and-push.bat "your message"
 REM Double-clicking prompts for a message (Enter = dated default).
 cd /d "%~dp0"
-set "MSG=%~1"
+set "MSG=%*"
 if not defined MSG set /p MSG="Commit message (Enter for default): "
 if not defined MSG set "MSG=Site update %date% %time%"
 echo ===== %date% %time% — %MSG% > push-log.txt

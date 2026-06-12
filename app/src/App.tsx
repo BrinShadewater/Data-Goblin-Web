@@ -5,6 +5,7 @@ import { ReaderProvider, useReader } from "./reader";
 import { P } from "./theme";
 import { TopNav } from "./components/TopNav";
 import { MobileDrawer } from "./components/MobileDrawer";
+import { CookieNotice } from "./components/CookieNotice";
 import { FieldGuidePage } from "./pages/FieldGuidePage";
 import goblinFavicon from "./assets/goblin-head-icon.webp";
 
@@ -15,6 +16,8 @@ const LootPage = lazy(() => import("./pages/LootPage").then((m) => ({ default: m
 const MapPage = lazy(() => import("./pages/MapPage").then((m) => ({ default: m.MapPage })));
 const AboutPage = lazy(() => import("./pages/AboutPage").then((m) => ({ default: m.AboutPage })));
 const ContributePage = lazy(() => import("./pages/ContributePage").then((m) => ({ default: m.ContributePage })));
+const LandingPage = lazy(() => import("./pages/LandingPage").then((m) => ({ default: m.LandingPage })));
+const PrivacyPage = lazy(() => import("./pages/PrivacyPage").then((m) => ({ default: m.PrivacyPage })));
 const SearchOverlay = lazy(() => import("./components/SearchOverlay").then((m) => ({ default: m.SearchOverlay })));
 
 function Shell() {
@@ -75,16 +78,19 @@ function Shell() {
         }
       >
         <Routes>
-          <Route path="/" element={<FieldGuidePage />} />
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/guide" element={<FieldGuidePage />} />
           <Route path="/chapter/:num" element={<FieldGuidePage />} />
           <Route path="/receipts" element={<ReceiptsPage />} />
           <Route path="/loot" element={<LootPage />} />
           <Route path="/map" element={<MapPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contribute" element={<ContributePage />} />
+          <Route path="/privacy" element={<PrivacyPage />} />
           <Route path="*" element={<FieldGuidePage />} />
         </Routes>
       </Suspense>
+      <CookieNotice />
       {/* Mounted only while a query is active: the search chunk (and its
           whole-book index fetch) loads on first real search, not on app load. */}
       {searchQuery.trim().length >= 2 && (
