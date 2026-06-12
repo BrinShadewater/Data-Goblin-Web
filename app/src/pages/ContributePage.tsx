@@ -30,6 +30,7 @@ export function ContributePage() {
   const [chapter, setChapter] = useState("");
   const [message, setMessage] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [submitHovered, setSubmitHovered] = useState(false);
 
   const bg = c(...P.panelBg);
   const cardBg = c(...P.cardBg);
@@ -154,9 +155,9 @@ export function ContributePage() {
 
               <button
                 type="submit"
-                style={{ display: "flex", alignItems: "center", gap: "8px", background: green, border: "none", borderRadius: RADIUS, padding: "10px 20px", fontFamily: UI, fontSize: "11px", fontWeight: 800, letterSpacing: "0.1em", textTransform: "uppercase", color: "#ffffff", cursor: "pointer", transition: "opacity 0.15s" }}
-                onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.85")}
-                onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
+                style={{ display: "flex", alignItems: "center", gap: "8px", background: green, border: "none", borderRadius: RADIUS, padding: "10px 20px", fontFamily: UI, fontSize: "11px", fontWeight: 800, letterSpacing: "0.1em", textTransform: "uppercase", color: "#ffffff", cursor: "pointer", transition: "opacity 0.15s", opacity: submitHovered ? 0.85 : 1 }}
+                onMouseEnter={() => setSubmitHovered(true)}
+                onMouseLeave={() => setSubmitHovered(false)}
               >
                 <Send size={12} />
                 Submit Report
