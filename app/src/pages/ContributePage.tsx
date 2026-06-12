@@ -2,12 +2,12 @@ import type { FormEvent } from "react";
 import { useState } from "react";
 import { PageHeading, StaticPageShell } from "../components/StaticPage";
 import {
-  buildContributionMailto,
   ContributionForm,
   ContributionSuccess,
   GuidelinesPanel,
   RevisionFlowCard,
 } from "../components/ContributeSections";
+import { buildContributionMailto } from "../contribute";
 
 export function ContributePage() {
   const [type, setType] = useState("factual");

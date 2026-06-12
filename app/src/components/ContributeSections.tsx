@@ -2,15 +2,14 @@ import type { FormEvent } from "react";
 import { AlertTriangle, BookOpen, FileCode2, GitBranch, Mail, Send, Terminal } from "lucide-react";
 import { useTheme } from "../ThemeContext";
 import { BODY, DISPLAY, HAND, MONO, P, RADIUS, UI } from "../theme";
+import { CONTRIBUTION_EMAIL, CONTRIBUTION_TYPES } from "../contribute";
 
-export const CONTRIBUTION_EMAIL = "Brinshadewater@gmail.com";
-
-const CONTRIBUTION_TYPES = [
-  { id: "factual", icon: <AlertTriangle size={14} />, label: "Factual Error", desc: "Something in the guide is incorrect or outdated." },
-  { id: "source", icon: <BookOpen size={14} />, label: "Missing Source", desc: "A claim is made without a receipt that should have one." },
-  { id: "chapter", icon: <GitBranch size={14} />, label: "Chapter Suggestion", desc: "A topic you think the guide should cover but doesn't." },
-  { id: "other", icon: <Mail size={14} />, label: "General Feedback", desc: "Anything else — tone, clarity, framing, accessibility." },
-];
+const CONTRIBUTION_TYPE_ICONS = {
+  factual: <AlertTriangle size={14} />,
+  source: <BookOpen size={14} />,
+  chapter: <GitBranch size={14} />,
+  other: <Mail size={14} />,
+};
 
 const GUIDELINES = [
   { title: "Be specific", body: 'Name the chapter and section. "Chapter 8, the section on Jevons\' paradox" is useful. "Something seemed wrong" is not.' },
@@ -25,31 +24,6 @@ const REVISION_STEPS = [
   { cmd: "site/update-content.sh  (or update-content.bat)", text: "Or run the one-step update script: it runs the pipeline, copies site/content into the app's public/content, and prints a summary of what changed." },
   { cmd: null, text: "Reload the site. Chapters, traps, receipts, and glossary all render from the regenerated JSON — nothing in the app is hardcoded." },
 ];
-
-export function contributionTypeLabel(type: string): string {
-  return CONTRIBUTION_TYPES.find((ct) => ct.id === type)?.label ?? "General Feedback";
-}
-
-export function buildContributionMailto({
-  type,
-  chapter,
-  message,
-}: {
-  type: string;
-  chapter: string;
-  message: string;
-}): string {
-  const label = contributionTypeLabel(type);
-  const subject = `Data Goblin contribution: ${label}`;
-  const body = [
-    `Type: ${label}`,
-    `Chapter / Section: ${chapter.trim() || "(not specified)"}`,
-    "",
-    "Report:",
-    message.trim(),
-  ].join("\n");
-  return `mailto:${CONTRIBUTION_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-}
 
 export function ContributionSuccess({ onReset }: { onReset: () => void }) {
   const { c } = useTheme();
@@ -126,7 +100,7 @@ export function ContributionTypeSelector({
               transition: "all 0.15s",
             }}
           >
-            <span style={{ color: value === ct.id ? green : muted, paddingTop: "1px", flexShrink: 0 }}>{ct.icon}</span>
+            <span style={{ color: value === ct.id ? green : muted, paddingTop: "1px", flexShrink: 0 }}>{CONTRIBUTION_TYPE_ICONS[ct.id]}</span>
             <div>
               <div style={{ fontFamily: UI, fontSize: "11px", fontWeight: 700, color: value === ct.id ? green : body, marginBottom: "2px" }}>{ct.label}</div>
               <div style={{ fontFamily: BODY, fontSize: "11px", color: muted, lineHeight: 1.45 }}>{ct.desc}</div>
