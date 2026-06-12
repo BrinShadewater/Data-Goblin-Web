@@ -1,7 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import type { PointerEvent } from "react";
 import { useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useTheme } from "../ThemeContext";
 import { BODY, DISPLAY, MONO, P, RADIUS, TOKENS, UI } from "../theme";
 import { artUrl, useBook } from "../useContent";
@@ -210,8 +210,8 @@ export function LandingPage() {
               Begin with Chapter 1
               <ArrowRight size={41} />
             </button>
-            <button
-              onClick={() => navigate("/guide")}
+            <Link
+              to="/guide"
               onMouseEnter={preloadReaderRoute}
               onFocus={preloadReaderRoute}
               style={{
@@ -227,11 +227,12 @@ export function LandingPage() {
                 fontSize: "15px",
                 fontWeight: 800,
                 padding: "14px 18px",
+                textDecoration: "none",
               }}
             >
               <NavIcon name="guidebook-nav" size={TOKENS.icon.landingPrimary} />
               Open the guide
-            </button>
+            </Link>
           </div>
         </div>
 
@@ -264,9 +265,9 @@ export function LandingPage() {
       <section style={{ maxWidth: "1480px", margin: "0 auto", padding: "0 clamp(20px, 5vw, 68px) 56px", position: "relative", zIndex: 1 }}>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(230px, 1fr))", gap: "12px" }}>
           {QUICK_LINKS.map((item) => (
-            <button
+            <Link
               key={item.to}
-              onClick={() => navigate(item.to)}
+              to={item.to}
               onMouseEnter={item.to === "/guide" ? preloadReaderRoute : undefined}
               onFocus={item.to === "/guide" ? preloadReaderRoute : undefined}
               style={{
@@ -280,6 +281,7 @@ export function LandingPage() {
                 padding: "16px",
                 cursor: "pointer",
                 minHeight: "112px",
+                textDecoration: "none",
               }}
             >
               <NavIcon name={item.icon} size={TOKENS.icon.landingFeature} />
@@ -291,7 +293,7 @@ export function LandingPage() {
                   {item.body}
                 </span>
               </span>
-            </button>
+            </Link>
           ))}
         </div>
       </section>
