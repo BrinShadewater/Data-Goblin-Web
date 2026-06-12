@@ -1,9 +1,10 @@
-import { ReactNode, useState } from "react";
-import { ArrowRight, Check, CheckSquare, ChevronDown, ChevronUp, Copy, Square, X } from "lucide-react";
+import { useState } from "react";
+import { ArrowRight, Check, CheckSquare, Copy, Square, X } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from "../ThemeContext";
 import { BODY, MONO, P, RADIUS, TOKENS, UI } from "../theme";
 import { NavIcon } from "./GoblinMascot";
+import { ToolCard } from "./ToolCard";
 import { classifySource, computeSuspicion, TAG_COLORS } from "../sources";
 import { matchSource } from "../links";
 import { useLinks } from "../useContent";
@@ -11,94 +12,6 @@ import { useLocalStorage } from "../useLocalStorage";
 import { removeBookmark, saveLastLocation, useBookmarks } from "../bookmarks";
 import { savePanel } from "../pagination";
 import type { Chapter } from "../types";
-
-/**
- * Sidebar card. When `storageKey` is given the card is collapsible via its
- * chevron header, and the collapsed state persists per card in localStorage
- * (goblin-card-{key}).
- */
-function Card({
-  icon,
-  title,
-  children,
-  storageKey,
-  defaultOpen = true,
-}: {
-  icon?: ReactNode;
-  title: string;
-  children: ReactNode;
-  storageKey?: string;
-  defaultOpen?: boolean;
-}) {
-  const { c } = useTheme();
-  const [open, setOpen] = useState<boolean>(() => {
-    if (!storageKey) return true;
-    try {
-      const v = localStorage.getItem(`goblin-card-${storageKey}`);
-      return v == null ? defaultOpen : v === "1";
-    } catch {
-      return defaultOpen;
-    }
-  });
-  const toggle = () => {
-    setOpen((o) => {
-      if (storageKey) {
-        try {
-          localStorage.setItem(`goblin-card-${storageKey}`, o ? "0" : "1");
-        } catch {
-          /* ignore */
-        }
-      }
-      return !o;
-    });
-  };
-  const header = (
-    <>
-      {icon}
-      <span style={{ fontFamily: MONO, fontSize: "9.5px", fontWeight: TOKENS.weight.toolLabel, letterSpacing: "0.18em", textTransform: "uppercase", color: c(...P.green), flex: 1, textAlign: "left" }}>
-        {title}
-      </span>
-      {storageKey &&
-        (open ? <ChevronUp size={16} color={c(...P.muted)} /> : <ChevronDown size={16} color={c(...P.muted)} />)}
-    </>
-  );
-  return (
-    <div
-      style={{
-        background: c(...P.cardBg),
-        border: `1px solid ${c(...P.borderSoft)}`,
-        borderRadius: RADIUS,
-        padding: "14px 16px",
-        marginBottom: "12px",
-        transition: "background 0.3s",
-      }}
-    >
-      {storageKey ? (
-        <button
-          onClick={toggle}
-          aria-expanded={open}
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "9px",
-            width: "100%",
-            background: "none",
-            border: "none",
-            padding: 0,
-            margin: open ? "0 0 9px" : 0,
-            cursor: "pointer",
-            minHeight: "30px",
-          }}
-        >
-          {header}
-        </button>
-      ) : (
-        <div style={{ display: "flex", alignItems: "center", gap: "9px", marginBottom: "10px" }}>{header}</div>
-      )}
-      {open && children}
-    </div>
-  );
-}
 
 /** Saved-bookmarks card: tap to jump, × to remove. */
 export function BookmarksCard() {
@@ -111,7 +24,7 @@ export function BookmarksCard() {
   const border = c(...P.borderSoft);
 
   return (
-    <Card icon={<NavIcon name="journal-nav" size={TOKENS.icon.sidebarTool} />} title="Bookmarks" storageKey="bookmarks">
+    <ToolCard icon={<NavIcon name="journal-nav" size={TOKENS.icon.sidebarTool} />} title="Bookmarks" storageKey="bookmarks">
       {bookmarks.length === 0 ? (
         <p style={{ fontFamily: UI, fontSize: "12px", color: muted, margin: 0, lineHeight: 1.5 }}>
           No bookmarks yet. Tap the 🔖 in the page bar to save your place.
@@ -147,7 +60,7 @@ export function BookmarksCard() {
           </div>
         ))
       )}
-    </Card>
+    </ToolCard>
   );
 }
 
@@ -179,7 +92,7 @@ export function GoblinTools({ chapter, showBookmarks = false }: { chapter: Chapt
   return (
     <>
       {/* Goblin Notes */}
-      <Card icon={<NavIcon name="note-nav" size={TOKENS.icon.sidebarTool} />} title="Goblin Notes" storageKey="notes">
+      <ToolCard icon={<NavIcon name="note-nav" size={TOKENS.icon.sidebarTool} />} title="Goblin Notes" storageKey="notes">
         <textarea
           value={note}
           onChange={(e) => setNote(e.target.value)}
@@ -232,12 +145,12 @@ export function GoblinTools({ chapter, showBookmarks = false }: { chapter: Chapt
           {copied ? <Check size={15} /> : <Copy size={15} />}
           {copied ? "Copied" : "Copy Text"}
         </button>
-      </Card>
+      </ToolCard>
 
       {/* Suspicion Meter — only meaningful when the document cites sources
           (the front matter and appendix have none, so it is hidden there). */}
       {chapter.sources.length > 0 && (
-      <Card icon={<NavIcon name="insight-nav" size={TOKENS.icon.sidebarTool} />} title="Suspicion Meter">
+      <ToolCard icon={<NavIcon name="insight-nav" size={TOKENS.icon.sidebarTool} />} title="Suspicion Meter">
         <div
           title={`Computed, not random: ½·min(1, openVerifyFlags/4) + ½·(corporate-source share). This chapter: ${suspicion.openFlags} open verification flag${suspicion.openFlags === 1 ? "" : "s"}; ${Math.round(suspicion.corporateShare * 100)}% of ${suspicion.totalSources} sources are corporate self-disclosure.`}
         >
@@ -252,12 +165,12 @@ export function GoblinTools({ chapter, showBookmarks = false }: { chapter: Chapt
           Computed from this chapter&rsquo;s open verification flags ({suspicion.openFlags}) and the share of corporate
           self-disclosure in its {suspicion.totalSources} sources ({Math.round(suspicion.corporateShare * 100)}%). Hover for the formula.
         </p>
-      </Card>
+      </ToolCard>
       )}
 
       {/* Quest Items — hidden when the document has no recap (front matter, appendix). */}
       {chapter.recap.length > 0 && (
-      <Card icon={<NavIcon name="key-takeaways-nav" size={TOKENS.icon.sidebarTool} />} title="Quest Items" storageKey="quests" defaultOpen>
+      <ToolCard icon={<NavIcon name="key-takeaways-nav" size={TOKENS.icon.sidebarTool} />} title="Quest Items" storageKey="quests" defaultOpen>
         <p style={{ fontFamily: UI, fontSize: "11px", color: muted, margin: "0 0 8px", lineHeight: 1.45 }}>
           What you should carry out of this chapter. Check items off as you collect them.
         </p>
@@ -298,7 +211,7 @@ export function GoblinTools({ chapter, showBookmarks = false }: { chapter: Chapt
             </button>
           );
         })}
-      </Card>
+      </ToolCard>
       )}
 
       {showBookmarks && <BookmarksCard />}
