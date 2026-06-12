@@ -38,7 +38,11 @@ export function useJson<T>(relPath: string | null): { data: T | null; error: str
   );
   const [error, setError] = useState<string | null>(null);
   useEffect(() => {
-    if (!relPath) return;
+    if (!relPath) {
+      setData(null);
+      setError(null);
+      return;
+    }
     let live = true;
     if (cache.has(relPath)) {
       setData(cache.get(relPath) as T);
