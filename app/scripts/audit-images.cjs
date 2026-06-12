@@ -4,6 +4,7 @@ const path = require("path");
 const appDir = path.resolve(__dirname, "..");
 const publicDir = path.join(appDir, "public");
 const artDir = path.join(publicDir, "art");
+const archiveDir = path.resolve(appDir, "..", "archived-art", "unused-public-art");
 const srcDir = path.join(appDir, "src");
 const contentDir = path.join(publicDir, "content");
 const registry = JSON.parse(fs.readFileSync(path.join(srcDir, "image-registry.json"), "utf8"));
@@ -116,6 +117,8 @@ function main() {
   const originals = artFiles.filter((file) => !file.isVariant);
   const variants = artFiles.filter((file) => file.isVariant);
   const total = artFiles.reduce((sum, file) => sum + file.size, 0);
+  const archivedTotal = walkFiles(archiveDir, (file) => /\.(webp|png|jpe?g|ico)$/i.test(file))
+    .reduce((sum, file) => sum + fs.statSync(file).size, 0);
   const oversized = originals.filter((file) => file.size >= 90 * 1024);
   const priority = oversized.filter((file) => file.role === "priority");
   const contentPanels = oversized.filter((file) => file.role === "content-panel");
@@ -123,7 +126,7 @@ function main() {
   const unused = originals.filter((file) => file.references.length === 0 && !isIgnoredUnused(file.rel));
   const missingVariants = checkRegistryVariants();
 
-  console.log(`Image audit: ${originals.length} originals · ${variants.length} variants · ${format(total)} total`);
+  console.log(`Image audit: ${originals.length} shipped originals · ${variants.length} variants · ${format(total)} shipped · ${format(archivedTotal)} archived`);
   printBucket("Priority responsive art", priority);
   printBucket("Responsive content panels over 90 kB", contentPanels);
   printBucket("Other referenced oversized originals", otherReferenced);

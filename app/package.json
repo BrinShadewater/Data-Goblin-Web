@@ -10,6 +10,7 @@
     "check:pagination": "node scripts/run-pagination-sanity.cjs",
     "check:contribute": "node scripts/check-contribute-mailto.cjs",
     "audit:images": "node scripts/audit-images.cjs",
+    "archive:unused-art": "node scripts/archive-unused-art.cjs",
     "generate:responsive-art": "python scripts/generate-responsive-art.py",
     "check:budgets": "node scripts/check-performance-budgets.cjs",
     "check:built-site": "node scripts/check-built-site-smoke.cjs",
