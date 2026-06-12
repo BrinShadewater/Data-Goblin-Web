@@ -1,7 +1,7 @@
 import { useTheme } from "../ThemeContext";
 import { BODY, DISPLAY, HAND, MONO, P, UI } from "../theme";
 import { Markdown } from "../components/Markdown";
-import { artUrl, useBook } from "../useContent";
+import { artSrcSet, artUrl, useBook } from "../useContent";
 import { Kicker, LoadingMessage, StaticCard, StaticPageShell } from "../components/StaticPage";
 
 /** Pull the paragraph containing `marker` out of a markdown document. */
@@ -43,6 +43,8 @@ export function AboutPage() {
           <div style={{ background: c(...P.pageBg), border: `1px solid ${border}`, borderRadius: "6px", padding: "18px", boxShadow: c("0 12px 32px rgba(60,50,30,0.16)", "0 12px 32px rgba(0,0,0,0.4)") }}>
             <img
               src={artUrl("panels/insight2-panel.webp")}
+              srcSet={artSrcSet("panels/insight2-panel.webp")}
+              sizes="(max-width: 760px) 92vw, 520px"
               alt="Data Goblin inspecting receipts and evidence crystals"
               loading="eager"
               fetchPriority="high"

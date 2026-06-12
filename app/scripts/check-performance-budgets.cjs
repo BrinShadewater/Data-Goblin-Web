@@ -16,7 +16,9 @@ const BUDGETS = {
   },
   anyJsChunkRaw: 390 * 1024,
   maxPublicArtRaw: 500 * 1024,
-  totalPublicArtRaw: 6 * 1024 * 1024,
+  maxResponsiveVariantRaw: 400 * 1024,
+  totalOriginalPublicArtRaw: 6 * 1024 * 1024,
+  totalPublicArtRaw: 8 * 1024 * 1024,
 };
 
 function fail(message) {
@@ -75,11 +77,25 @@ function main() {
     checkNamedChunk(jsFiles, prefix, budget);
   }
 
-  const artFiles = walkFiles(artDir).map((filePath) => ({ filePath, raw: fs.statSync(filePath).size }));
+  const artFiles = walkFiles(artDir).map((filePath) => ({
+    filePath,
+    raw: fs.statSync(filePath).size,
+    isVariant: /-\d+w\.webp$/.test(path.basename(filePath)),
+  }));
   const totalArt = artFiles.reduce((sum, file) => sum + file.raw, 0);
-  const largestArt = [...artFiles].sort((a, b) => b.raw - a.raw)[0];
+  const originalArt = artFiles.filter((file) => !file.isVariant);
+  const variantArt = artFiles.filter((file) => file.isVariant);
+  const totalOriginalArt = originalArt.reduce((sum, file) => sum + file.raw, 0);
+  const largestArt = [...originalArt].sort((a, b) => b.raw - a.raw)[0];
+  const largestVariant = [...variantArt].sort((a, b) => b.raw - a.raw)[0];
   if (largestArt && largestArt.raw > BUDGETS.maxPublicArtRaw) {
     fail(`${path.relative(appDir, largestArt.filePath)} is ${format(largestArt.raw)}, above max public art budget ${format(BUDGETS.maxPublicArtRaw)}.`);
+  }
+  if (largestVariant && largestVariant.raw > BUDGETS.maxResponsiveVariantRaw) {
+    fail(`${path.relative(appDir, largestVariant.filePath)} is ${format(largestVariant.raw)}, above responsive variant budget ${format(BUDGETS.maxResponsiveVariantRaw)}.`);
+  }
+  if (totalOriginalArt > BUDGETS.totalOriginalPublicArtRaw) {
+    fail(`original public/art total ${format(totalOriginalArt)} exceeds budget ${format(BUDGETS.totalOriginalPublicArtRaw)}.`);
   }
   if (totalArt > BUDGETS.totalPublicArtRaw) {
     fail(`public/art total ${format(totalArt)} exceeds budget ${format(BUDGETS.totalPublicArtRaw)}.`);
@@ -88,7 +104,7 @@ function main() {
   console.log("Performance budgets passed.");
   console.log(`Largest JS chunks: ${jsFiles.slice(0, 5).map((file) => `${file.name} ${format(file.raw)} raw/${format(file.gzip)} gzip`).join(" · ")}`);
   if (largestArt) {
-    console.log(`Largest art asset: ${path.relative(appDir, largestArt.filePath)} ${format(largestArt.raw)} · total art ${format(totalArt)}`);
+    console.log(`Largest original art asset: ${path.relative(appDir, largestArt.filePath)} ${format(largestArt.raw)} · total originals ${format(totalOriginalArt)} · total with variants ${format(totalArt)}`);
   }
 }
 

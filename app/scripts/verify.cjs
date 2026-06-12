@@ -43,6 +43,7 @@ if (process.platform === "win32") {
 } else {
   run("Production build", "npm", ["run", "build"]);
 }
+run("Image audit", process.execPath, [path.join(appDir, "scripts", "audit-images.cjs")]);
 run("Performance budgets", process.execPath, [path.join(appDir, "scripts", "check-performance-budgets.cjs")]);
 run("Built site smoke", process.execPath, [path.join(appDir, "scripts", "check-built-site-smoke.cjs")]);
 run("Browser smoke", process.execPath, [path.join(appDir, "scripts", "check-browser-smoke.cjs")]);

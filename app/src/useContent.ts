@@ -73,3 +73,19 @@ export const useArtMap = () => useJson<ArtMap>("art-map.json");
 
 /** URL of an art asset; `rel` is an art-map path like "small/water.png". */
 export const artUrl = (rel: string) => `${import.meta.env.BASE_URL}art/${rel}`;
+
+const RESPONSIVE_ART_WIDTHS: Record<string, number[]> = {
+  "panels/themap.webp": [640, 960, 1024],
+  "panels/insight2-panel.webp": [640, 960, 1024],
+  "panels/source-verification-panel.webp": [640, 960, 1024],
+};
+
+export function artSrcSet(rel: string) {
+  const widths = RESPONSIVE_ART_WIDTHS[rel];
+  if (!widths) return undefined;
+  const ext = rel.slice(rel.lastIndexOf("."));
+  const base = rel.slice(0, -ext.length);
+  return widths
+    .map((width) => `${artUrl(width === 1024 ? rel : `${base}-${width}w.webp`)} ${width}w`)
+    .join(", ");
+}

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useTheme } from "../ThemeContext";
 import { BODY, DISPLAY, MONO, P, RADIUS, UI } from "../theme";
-import { artUrl, useBook } from "../useContent";
+import { artSrcSet, artUrl, useBook } from "../useContent";
 import { displayRegion } from "../regionLabels";
 import { LoadingMessage, PageHeading, StaticPageShell } from "../components/StaticPage";
 
@@ -34,6 +34,8 @@ export function MapPage() {
         >
           <img
             src={artUrl("panels/themap.webp")}
+            srcSet={artSrcSet("panels/themap.webp")}
+            sizes="(max-width: 760px) 92vw, min(100vw, 810px)"
             alt="Fantasy map of Canada for Data Goblin, with the goblin standing in front"
             loading="eager"
             fetchPriority="high"

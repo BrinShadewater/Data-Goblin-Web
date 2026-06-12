@@ -9,6 +9,8 @@
     "preview": "vite preview",
     "check:pagination": "node scripts/run-pagination-sanity.cjs",
     "check:contribute": "node scripts/check-contribute-mailto.cjs",
+    "audit:images": "node scripts/audit-images.cjs",
+    "generate:responsive-art": "python scripts/generate-responsive-art.py",
     "check:budgets": "node scripts/check-performance-budgets.cjs",
     "check:built-site": "node scripts/check-built-site-smoke.cjs",
     "check:browser": "node scripts/check-browser-smoke.cjs",

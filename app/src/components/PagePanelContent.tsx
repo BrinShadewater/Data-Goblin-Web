@@ -3,7 +3,7 @@ import { useReader } from "../reader";
 import { DISPLAY, MONO, P, RADIUS, TOKENS, UI } from "../theme";
 import { GoblinMascot, NavIcon } from "./GoblinMascot";
 import { Markdown } from "./Markdown";
-import { artUrl, useArtMap } from "../useContent";
+import { artSrcSet, artUrl, useArtMap } from "../useContent";
 import { displayRegion } from "../regionLabels";
 import type { Block } from "../pagination";
 import type { Chapter, Trap } from "../types";
@@ -126,6 +126,8 @@ function ArtPlate({ src, caption }: { src: string; caption?: string | null }) {
     >
       <img
         src={artUrl(src)}
+        srcSet={artSrcSet(src)}
+        sizes="(max-width: 760px) 92vw, 42vw"
         alt={caption ?? "Field guide illustration"}
         decoding="async"
         style={{
@@ -244,6 +246,8 @@ export function OpenerHeader({ chapter }: { chapter: Chapter }) {
         {openerArt ? (
           <img
             src={artUrl(openerArt)}
+            srcSet={artSrcSet(openerArt)}
+            sizes="(max-width: 760px) 70vw, 250px"
             alt=""
             aria-hidden
             height={artHeight}
