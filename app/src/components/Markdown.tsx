@@ -47,7 +47,7 @@ export function GoblinCheckCard({ children }: { children: ReactNode }) {
       }}
     >
       <div style={{ flexShrink: 0, marginTop: "2px" }}>
-        <NavIcon name="check-nav" size={51} />
+        <NavIcon name="check-nav" size={77} />
       </div>
       <div style={{ minWidth: 0 }}>
         <div
@@ -218,6 +218,7 @@ function MarkdownInner({ markdown, style }: { markdown: string; style?: CSSPrope
             const resolved = rel.startsWith("art/") ? artUrl(rel.slice(4)) : rel;
             const isIcon = rel.includes("/icons/");
             const isSmallArt = rel.includes("/small/");
+            const isGoblinCheckIcon = rel.includes("check-nav") || String(alt ?? "").toLowerCase().includes("goblin check");
             return (
               <img
                 src={resolved}
@@ -226,7 +227,7 @@ function MarkdownInner({ markdown, style }: { markdown: string; style?: CSSPrope
                 decoding="async"
                 style={
                   isIcon
-                    ? { width: "48px", height: "48px", objectFit: "contain", display: "inline-block", verticalAlign: "-14px" }
+                    ? { width: isGoblinCheckIcon ? "72px" : "48px", height: isGoblinCheckIcon ? "72px" : "48px", objectFit: "contain", display: "inline-block", verticalAlign: isGoblinCheckIcon ? "-23px" : "-14px" }
                     : isSmallArt
                       ? { width: "264px", maxWidth: "100%", display: "block", margin: "12px auto", objectFit: "contain" }
                       : { maxWidth: "100%", display: "block", margin: "10px auto" }

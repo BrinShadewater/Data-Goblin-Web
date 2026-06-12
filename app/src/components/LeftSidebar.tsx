@@ -196,7 +196,22 @@ export function LeftSidebar({ book, activeChapter }: { book: Book | null; active
         </div>
       </div>
 
-      <div style={{ flex: 1, overflowY: "auto", padding: "8px 0" }}>
+      <style>{`
+        .goblin-toc-scroll {
+          scrollbar-width: thin;
+          scrollbar-color: ${c("rgba(18,35,58,0.32)", "rgba(122,180,232,0.28)")} transparent;
+        }
+        .goblin-toc-scroll::-webkit-scrollbar { width: 6px; }
+        .goblin-toc-scroll::-webkit-scrollbar-track { background: transparent; }
+        .goblin-toc-scroll::-webkit-scrollbar-thumb {
+          background: ${c("rgba(18,35,58,0.24)", "rgba(122,180,232,0.24)")};
+          border-radius: 999px;
+        }
+        .goblin-toc-scroll::-webkit-scrollbar-thumb:hover {
+          background: ${c("rgba(18,35,58,0.42)", "rgba(122,180,232,0.42)")};
+        }
+      `}</style>
+      <div className="goblin-toc-scroll" style={{ flex: 1, overflowY: "auto", padding: "8px 0" }}>
         <TocList book={book} activeChapter={activeChapter} />
       </div>
 

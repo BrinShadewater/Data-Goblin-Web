@@ -58,6 +58,7 @@ export function BottomBar({
 
   const green = c(...P.green);
   const red = c(...P.red);
+  const progressBlue = c("#12233a", "#7ab4e8");
   const muted = c(...P.faint);
   const bg = c(...P.panelBgAlt);
   const border = c(...P.borderSoft);
@@ -135,11 +136,11 @@ export function BottomBar({
       >
         {navBtn("prev")}
         <div style={{ flex: 1, minWidth: 0, display: "flex", flexDirection: "column", alignItems: "center", gap: "6px" }}>
-          <div style={{ fontFamily: MONO, fontSize: "9px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: green, whiteSpace: "nowrap" }}>
+          <div style={{ fontFamily: MONO, fontSize: "9px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: progressBlue, whiteSpace: "nowrap" }}>
             Page {page + 1} of {pageCount}
           </div>
           <div style={{ width: "100%", maxWidth: "240px", height: "3px", borderRadius: "2px", background: c("#ccc2a8", "#222837"), overflow: "hidden" }}>
-            <div style={{ width: `${Math.round(frac * 100)}%`, height: "100%", background: green, transition: "width 0.3s" }} />
+            <div style={{ width: `${Math.round(frac * 100)}%`, height: "100%", background: progressBlue, transition: "width 0.3s" }} />
           </div>
         </div>
         {bookmarkBtn(44)}
@@ -211,14 +212,14 @@ export function BottomBar({
         </div>
       </button>
 
-      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "4px" }}>
-        <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
-          <NavIcon name="book-nav" size={68} />
-          <div style={{ fontFamily: UI, fontSize: "9px", letterSpacing: "0.12em", textTransform: "uppercase", color: muted }}>
-            Your Progress Through the Guide
-          </div>
+      <div style={{ display: "grid", gridTemplateColumns: "auto minmax(0, 1fr)", columnGap: "9px", rowGap: "0px", alignItems: "center", minWidth: "360px" }}>
+        <div style={{ gridColumn: "2", fontFamily: UI, fontSize: "9px", fontWeight: 900, letterSpacing: "0.12em", textTransform: "uppercase", color: progressBlue, textAlign: "center", transform: "translateY(3px)" }}>
+          Your Progress Through the Guide
         </div>
-        <div style={{ display: "flex", gap: "5px", alignItems: "center" }}>
+        <div style={{ gridColumn: "1", gridRow: "1 / span 2", alignSelf: "end", transform: "translateY(9px)" }}>
+          <NavIcon name="book-nav" size={68} />
+        </div>
+        <div style={{ gridColumn: "2", display: "flex", gap: "5px", alignItems: "center", justifyContent: "center", minHeight: "18px", marginTop: "-1px" }}>
           {Array.from({ length: totalChapters }, (_, i) => {
             const ch = i + 1;
             const isActive = ch === activeChapter;
@@ -236,11 +237,11 @@ export function BottomBar({
                   height: isActive ? "15px" : "8px",
                   borderRadius: "50%",
                   background: isActive
-                    ? `radial-gradient(circle at 35% 30%, ${c("#f2ffe7", "#e7ffd8")} 0%, ${c("#9fdc78", "#a6ff75")} 38%, ${green} 72%)`
-                    : isDone ? c("#7a9a58", "#4a7a5a") : c("#bcb29a", "#2a3040"),
-                  border: isActive ? `1px solid ${c("#e0ffd0", "#cbffb6")}` : "none",
+                    ? `radial-gradient(circle at 35% 30%, ${c("#f3fbff", "#e3fbff")} 0%, ${c("#8fd7ff", "#8fd7ff")} 42%, ${progressBlue} 76%)`
+                    : isDone ? c("#6f94b9", "#4e85b9") : c("#bcb29a", "#2a3040"),
+                  border: isActive ? `1px solid ${c("#e5f8ff", "#cfefff")}` : "none",
                   boxShadow: isActive
-                    ? c("0 0 0 3px rgba(159, 220, 120, 0.24), 0 0 16px rgba(45, 90, 39, 0.55)", "0 0 0 3px rgba(166, 255, 117, 0.18), 0 0 18px rgba(116, 184, 94, 0.75)")
+                    ? c("0 0 0 3px rgba(143, 215, 255, 0.24), 0 0 17px rgba(26, 46, 74, 0.58)", "0 0 0 3px rgba(143, 215, 255, 0.18), 0 0 20px rgba(122, 180, 232, 0.78)")
                     : "none",
                   transition: "all 0.2s",
                   flexShrink: 0,
@@ -251,7 +252,7 @@ export function BottomBar({
             );
           })}
         </div>
-        <div style={{ fontFamily: MONO, fontSize: "8px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: green }}>
+        <div style={{ gridColumn: "2", fontFamily: MONO, fontSize: "8px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: progressBlue, textAlign: "center" }}>
           Page {page + 1} of {pageCount}
         </div>
       </div>

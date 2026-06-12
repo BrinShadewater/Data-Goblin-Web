@@ -91,7 +91,7 @@ export function CookieNotice() {
           boxShadow: c("0 12px 32px rgba(60,50,30,0.26)", "0 12px 32px rgba(0,0,0,0.6)"),
           padding: "16px",
           display: "grid",
-          gridTemplateColumns: "minmax(0, 1fr) auto",
+          gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 320px), 1fr))",
           gap: "16px",
           alignItems: "center",
           maxWidth: "1180px",
@@ -111,7 +111,7 @@ export function CookieNotice() {
             .
           </p>
         </div>
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "8px", justifyContent: "flex-end" }}>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "8px", justifyContent: "flex-end", minWidth: 0 }}>
           {button("Only Essential", () => save(false, false))}
           {button("Manage Preferences", () => setManageOpen(true))}
           {button("Accept All", () => save(true, true), true)}

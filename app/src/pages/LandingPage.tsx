@@ -1,5 +1,6 @@
 import { ArrowRight } from "lucide-react";
-import type { MouseEvent } from "react";
+import type { PointerEvent } from "react";
+import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from "../ThemeContext";
 import { BODY, DISPLAY, MONO, P, RADIUS, UI } from "../theme";
@@ -17,26 +18,26 @@ const QUICK_LINKS = [
 ];
 
 const WISPS = [
-  { x: 7, y: 8, s: 0.8, d: -1 },
-  { x: 12, y: 36, s: 1.1, d: -6 },
-  { x: 18, y: 72, s: 0.7, d: -11 },
-  { x: 23, y: 19, s: 0.95, d: -4 },
-  { x: 29, y: 53, s: 0.65, d: -9 },
-  { x: 34, y: 83, s: 1.2, d: -2 },
-  { x: 41, y: 31, s: 0.75, d: -13 },
-  { x: 47, y: 67, s: 1.05, d: -7 },
-  { x: 52, y: 11, s: 0.6, d: -3 },
-  { x: 59, y: 44, s: 1.3, d: -12 },
-  { x: 64, y: 78, s: 0.8, d: -5 },
-  { x: 71, y: 22, s: 1.0, d: -10 },
-  { x: 76, y: 58, s: 0.7, d: -15 },
-  { x: 82, y: 39, s: 1.15, d: -8 },
-  { x: 88, y: 74, s: 0.9, d: -14 },
-  { x: 94, y: 17, s: 0.65, d: -6 },
-  { x: 5, y: 61, s: 0.55, d: -16 },
-  { x: 36, y: 6, s: 0.7, d: -18 },
-  { x: 69, y: 91, s: 0.95, d: -17 },
-  { x: 97, y: 52, s: 0.8, d: -19 },
+  { x: 5, s: 0.75, d: -1, drift: -18 },
+  { x: 10, s: 1.05, d: -8, drift: 22 },
+  { x: 15, s: 0.55, d: -14, drift: -10 },
+  { x: 21, s: 0.9, d: -4, drift: 18 },
+  { x: 27, s: 0.65, d: -19, drift: -24 },
+  { x: 32, s: 1.2, d: -11, drift: 16 },
+  { x: 38, s: 0.7, d: -6, drift: -14 },
+  { x: 44, s: 1.0, d: -22, drift: 26 },
+  { x: 50, s: 0.58, d: -3, drift: -20 },
+  { x: 56, s: 1.3, d: -16, drift: 14 },
+  { x: 61, s: 0.78, d: -9, drift: -28 },
+  { x: 67, s: 0.95, d: -24, drift: 20 },
+  { x: 73, s: 0.6, d: -12, drift: -16 },
+  { x: 79, s: 1.12, d: -5, drift: 24 },
+  { x: 85, s: 0.82, d: -18, drift: -22 },
+  { x: 91, s: 0.7, d: -10, drift: 12 },
+  { x: 96, s: 1.0, d: -26, drift: -18 },
+  { x: 2, s: 0.52, d: -21, drift: 26 },
+  { x: 35, s: 0.86, d: -29, drift: -30 },
+  { x: 70, s: 0.66, d: -31, drift: 30 },
 ];
 
 export function LandingPage() {
@@ -52,49 +53,69 @@ export function LandingPage() {
   const navy = c(...P.navy);
   const green = c(...P.green);
   const red = c(...P.red);
+  const wispFrame = useRef<number | null>(null);
+  const wispPoint = useRef<{ x: number; y: number } | null>(null);
 
   const begin = () => {
     savePanel(1, 0);
     navigate("/chapter/1");
   };
 
-  const moveWisps = (e: MouseEvent<HTMLElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const mx = e.clientX - rect.left;
-    const my = e.clientY - rect.top;
-    e.currentTarget.querySelectorAll<HTMLElement>("[data-wisp]").forEach((el) => {
-      const x = (Number(el.dataset.x) / 100) * rect.width;
-      const y = (Number(el.dataset.y) / 100) * rect.height;
-      const dx = x - mx;
-      const dy = y - my;
-      const dist = Math.max(1, Math.hypot(dx, dy));
-      const force = Math.max(0, 1 - dist / 190);
-      el.style.transform = `translate(${(dx / dist) * force * 68}px, ${(dy / dist) * force * 68}px)`;
+  const moveWisps = (e: PointerEvent<HTMLElement>) => {
+    if (e.pointerType !== "mouse") return;
+    const root = e.currentTarget;
+    wispPoint.current = { x: e.clientX, y: e.clientY };
+    if (wispFrame.current !== null) return;
+    wispFrame.current = window.requestAnimationFrame(() => {
+      wispFrame.current = null;
+      const point = wispPoint.current;
+      if (!point) return;
+      root.querySelectorAll<HTMLElement>("[data-wisp]").forEach((el) => {
+        const r = el.getBoundingClientRect();
+        const x = r.left + r.width / 2;
+        const y = r.top + r.height / 2;
+        const dx = x - point.x;
+        const dy = y - point.y;
+        const dist = Math.max(1, Math.hypot(dx, dy));
+        const force = Math.max(0, 1 - dist / 170);
+        el.style.setProperty("--push-x", `${(dx / dist) * force * 72}px`);
+        el.style.setProperty("--push-y", `${(dy / dist) * force * 72}px`);
+      });
     });
   };
 
-  const resetWisps = (e: MouseEvent<HTMLElement>) => {
+  const resetWisps = (e: PointerEvent<HTMLElement>) => {
+    wispPoint.current = null;
+    if (wispFrame.current !== null) {
+      window.cancelAnimationFrame(wispFrame.current);
+      wispFrame.current = null;
+    }
     e.currentTarget.querySelectorAll<HTMLElement>("[data-wisp]").forEach((el) => {
-      el.style.transform = "translate(0, 0)";
+      el.style.setProperty("--push-x", "0px");
+      el.style.setProperty("--push-y", "0px");
     });
   };
 
   return (
     <main
-      onMouseMove={moveWisps}
-      onMouseLeave={resetWisps}
+      onPointerMove={moveWisps}
+      onPointerLeave={resetWisps}
       style={{ flex: 1, overflowY: "auto", background: bg, transition: "background 0.3s", position: "relative" }}
     >
       <style>{`
         @keyframes dg-wisp-fall {
-          0% { transform: translate3d(-10px, -42px, 0) scale(0.7); opacity: 0; }
-          14% { opacity: 0.78; }
-          48% { transform: translate3d(12px, 78px, 0) scale(1); opacity: 0.62; }
-          100% { transform: translate3d(-8px, 178px, 0) scale(0.82); opacity: 0; }
+          0% { transform: translate3d(0, -12vh, 0) scale(0.82); opacity: 0; }
+          12% { opacity: 0.82; }
+          34% { transform: translate3d(var(--drift), 22vh, 0) scale(1); opacity: 0.7; }
+          68% { transform: translate3d(calc(var(--drift) * -0.85), 62vh, 0) scale(0.92); opacity: 0.62; }
+          100% { transform: translate3d(calc(var(--drift) * 0.55), 112vh, 0) scale(0.78); opacity: 0; }
         }
         @keyframes dg-wisp-breathe {
           0%, 100% { filter: blur(0.15px); }
           50% { filter: blur(0.9px); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          [data-wisp] { display: none; }
         }
       `}</style>
       <div aria-hidden style={{ position: "absolute", inset: 0, overflow: "hidden", pointerEvents: "none", zIndex: 0 }}>
@@ -102,15 +123,15 @@ export function LandingPage() {
           <span
             key={i}
             data-wisp
-            data-x={w.x}
-            data-y={w.y}
             style={{
               position: "absolute",
               left: `${w.x}%`,
-              top: `${w.y}%`,
-              width: `${8 * w.s}px`,
-              height: `${8 * w.s}px`,
-              transition: "transform 0.28s ease-out",
+              top: 0,
+              width: `${9 * w.s}px`,
+              height: `${9 * w.s}px`,
+              transform: "translate(var(--push-x, 0), var(--push-y, 0))",
+              transition: "transform 0.22s ease-out",
+              ["--drift" as string]: `${w.drift}px`,
             }}
           >
             <span
@@ -119,10 +140,10 @@ export function LandingPage() {
                 width: "100%",
                 height: "100%",
                 borderRadius: "999px",
-                background: `radial-gradient(circle at center, ${c("#e9fbff", "#d7ffc7")} 0%, ${c("#8fd7ff", "#8af66b")} 46%, transparent 76%)`,
-                boxShadow: c("0 0 10px rgba(111, 190, 255, 0.62), 0 0 22px rgba(77, 152, 210, 0.26)", "0 0 12px rgba(138, 246, 107, 0.72), 0 0 26px rgba(116, 216, 86, 0.32)"),
+                background: `radial-gradient(circle at center, ${c("#dff4ff", "#d7ffc7")} 0%, ${c("#2f80bd", "#8af66b")} 48%, transparent 76%)`,
+                boxShadow: c("0 0 10px rgba(47, 128, 189, 0.72), 0 0 24px rgba(18, 72, 119, 0.34)", "0 0 12px rgba(138, 246, 107, 0.72), 0 0 26px rgba(116, 216, 86, 0.32)"),
                 opacity: 0.82,
-                animation: `dg-wisp-fall ${15 + i * 0.45}s linear ${w.d}s infinite, dg-wisp-breathe ${3.8 + i * 0.12}s ease-in-out ${w.d}s infinite`,
+                animation: `dg-wisp-fall ${28 + i * 0.8}s ease-in-out ${w.d}s infinite, dg-wisp-breathe ${5.2 + i * 0.16}s ease-in-out ${w.d}s infinite`,
               }}
             />
           </span>

@@ -55,7 +55,7 @@ function Card({
   const header = (
     <>
       {icon}
-      <span style={{ fontFamily: MONO, fontSize: "9.5px", fontWeight: 800, letterSpacing: "0.18em", textTransform: "uppercase", color: c(...P.green), flex: 1, textAlign: "left" }}>
+      <span style={{ fontFamily: MONO, fontSize: "9.5px", fontWeight: 900, letterSpacing: "0.18em", textTransform: "uppercase", color: c(...P.green), flex: 1, textAlign: "left" }}>
         {title}
       </span>
       {storageKey &&
@@ -244,7 +244,7 @@ export function GoblinTools({ chapter, showBookmarks = false }: { chapter: Chapt
           <div style={{ height: "10px", background: c("#ded6c2", "#1d2230"), borderRadius: "5px", overflow: "hidden", border: `1px solid ${border}` }}>
             <div style={{ width: `${pct}%`, height: "100%", background: meterColor, transition: "width 0.4s" }} />
           </div>
-          <div style={{ fontFamily: UI, fontSize: "12.5px", fontWeight: 700, color: meterColor, margin: "7px 0 4px" }}>
+          <div style={{ fontFamily: UI, fontSize: "12.5px", fontWeight: 900, color: meterColor, margin: "7px 0 4px" }}>
             {suspicion.label} ({pct}%)
           </div>
         </div>

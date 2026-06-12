@@ -102,8 +102,8 @@ export function MobileDrawer({ open, onClose }: { open: boolean; onClose: () => 
         {/* Header */}
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "8px 8px 8px 16px", borderBottom: `1px solid ${border}`, flexShrink: 0 }}>
           <div style={{ display: "flex", alignItems: "center", gap: "9px" }}>
-            <GoblinIcon size={24} />
-            <span style={{ fontFamily: DISPLAY, fontStyle: "italic", fontWeight: 800, fontSize: "15px", color: ink }}>
+            <GoblinIcon size={34} />
+            <span style={{ fontFamily: DISPLAY, fontStyle: "italic", fontWeight: 800, fontSize: "18px", color: ink }}>
               DATA GOBLIN
             </span>
           </div>
@@ -171,7 +171,12 @@ export function MobileDrawer({ open, onClose }: { open: boolean; onClose: () => 
         <div style={{ flex: 1, overflowY: "auto", WebkitOverflowScrolling: "touch", paddingBottom: "24px" }}>
           {/* Nav links */}
           {LINKS.map((l) => {
-            const active = l.to === "/" ? location.pathname === "/" || location.pathname.startsWith("/chapter") : location.pathname === l.to;
+            const active =
+              l.to === "/"
+                ? location.pathname === "/"
+                : l.to === "/guide"
+                  ? location.pathname === "/guide" || location.pathname.startsWith("/chapter/")
+                  : location.pathname === l.to;
             return (
               <button
                 key={l.to}
@@ -199,7 +204,7 @@ export function MobileDrawer({ open, onClose }: { open: boolean; onClose: () => 
                   textAlign: "left",
                 }}
               >
-                <NavIcon name={l.icon} size={18} />
+                <NavIcon name={l.icon} size={27} />
                 {l.label}
               </button>
             );

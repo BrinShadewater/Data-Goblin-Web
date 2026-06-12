@@ -41,15 +41,15 @@ export function TopNav({
       style={{ display: "flex", alignItems: "center", gap: "11px", background: "none", border: "none", cursor: "pointer", padding: 0, minWidth: 0 }}
       aria-label="Data Goblin home"
     >
-      <GoblinIcon size={62} />
+      <GoblinIcon size={compact ? 44 : 62} />
       <div style={{ textAlign: "left", minWidth: 0 }}>
-        <div style={{ fontFamily: DISPLAY, fontStyle: "italic", fontWeight: 800, fontSize: "26px", color: ink, lineHeight: 0.95 }}>
+        <div style={{ fontFamily: DISPLAY, fontStyle: "italic", fontWeight: 800, fontSize: compact ? "21px" : "26px", color: ink, lineHeight: 0.95 }}>
           DATA GOBLIN
         </div>
         <div
           style={{
             fontFamily: MONO,
-            fontSize: "10.5px",
+            fontSize: compact ? "8.5px" : "10.5px",
             letterSpacing: "0.18em",
             textTransform: "uppercase",
             color: muted,
@@ -57,6 +57,7 @@ export function TopNav({
             whiteSpace: "nowrap",
             overflow: "hidden",
             textOverflow: "ellipsis",
+            maxWidth: compact ? "235px" : undefined,
           }}
         >
           A field guide to AI, power &amp; data in Canada
