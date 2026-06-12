@@ -2,6 +2,7 @@ import { useState } from "react";
 import { AlertTriangle, BookOpen, FileCode2, GitBranch, Mail, Send, Terminal } from "lucide-react";
 import { useTheme } from "../ThemeContext";
 import { BODY, DISPLAY, HAND, MONO, P, RADIUS, UI } from "../theme";
+import { PageHeading, StaticPageShell } from "../components/StaticPage";
 
 const CONTRIBUTION_TYPES = [
   { id: "factual", icon: <AlertTriangle size={14} />, label: "Factual Error", desc: "Something in the guide is incorrect or outdated." },
@@ -32,7 +33,6 @@ export function ContributePage() {
   const [submitted, setSubmitted] = useState(false);
   const [submitHovered, setSubmitHovered] = useState(false);
 
-  const bg = c(...P.panelBg);
   const cardBg = c(...P.cardBg);
   const border = c(...P.borderSoft);
   const body = c(...P.body);
@@ -51,20 +51,14 @@ export function ContributePage() {
   };
 
   return (
-    <div style={{ flex: 1, overflowY: "auto", background: bg, padding: "32px clamp(16px, 5vw, 40px) 64px", transition: "background 0.3s" }}>
-      <div style={{ maxWidth: "820px", margin: "0 auto" }}>
-        <div style={{ marginBottom: "28px" }}>
-          <div style={{ fontFamily: MONO, fontSize: "9px", fontWeight: 800, letterSpacing: "0.28em", textTransform: "uppercase", color: red, marginBottom: "8px" }}>
-            Data Goblin Field Guide
-          </div>
-          <h1 style={{ fontFamily: DISPLAY, fontSize: "36px", fontWeight: 900, color: navy, margin: "0 0 12px", lineHeight: 1.05, textTransform: "uppercase" }}>
-            Contribute
-          </h1>
-          <p style={{ fontFamily: BODY, fontSize: "15.5px", color: body, lineHeight: 1.7, margin: 0 }}>
-            This guide is a living document. If something is wrong, outdated, or missing, tell us. Every factual
-            correction makes the hoard more useful to everyone.
-          </p>
-        </div>
+    <StaticPageShell maxWidth="820px">
+        <PageHeading
+          eyebrow="Data Goblin Field Guide"
+          title="Contribute"
+          titleMargin="0 0 12px"
+          description="This guide is a living document. If something is wrong, outdated, or missing, tell us. Every factual correction makes the hoard more useful to everyone."
+          descriptionLineHeight={1.7}
+        />
 
         {submitted ? (
           <div style={{ maxWidth: "600px", marginBottom: "32px" }}>
@@ -218,7 +212,6 @@ export function ContributePage() {
             ))}
           </ol>
         </div>
-      </div>
-    </div>
+    </StaticPageShell>
   );
 }

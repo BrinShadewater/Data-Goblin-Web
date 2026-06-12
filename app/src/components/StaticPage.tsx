@@ -30,6 +30,7 @@ export function PageHeading({
   eyebrowMarginBottom = "8px",
   titleSize = "36px",
   titleLineHeight = 1.05,
+  titleMargin = "0 0 10px",
   descriptionSize = "15.5px",
   descriptionLineHeight = 1.65,
   descriptionMaxWidth = "700px",
@@ -47,6 +48,7 @@ export function PageHeading({
   eyebrowMarginBottom?: string;
   titleSize?: string;
   titleLineHeight?: number;
+  titleMargin?: string;
   descriptionSize?: string;
   descriptionLineHeight?: number;
   descriptionMaxWidth?: string;
@@ -61,7 +63,7 @@ export function PageHeading({
       <div style={{ fontFamily: MONO, fontSize: eyebrowSize, fontWeight: 800, letterSpacing: eyebrowLetterSpacing, textTransform: "uppercase", color: c(...P.red), marginBottom: eyebrowMarginBottom }}>
         {eyebrow}
       </div>
-      <h1 style={{ display: icon ? "flex" : undefined, alignItems: icon ? "center" : undefined, gap: icon ? "12px" : undefined, fontFamily: DISPLAY, fontSize: titleSize, fontWeight: 900, color: c(...P.navy), margin: "0 0 10px", lineHeight: titleLineHeight, textTransform: "uppercase", justifyContent: centered && icon ? "center" : undefined }}>
+      <h1 style={{ display: icon ? "flex" : undefined, alignItems: icon ? "center" : undefined, gap: icon ? "12px" : undefined, fontFamily: DISPLAY, fontSize: titleSize, fontWeight: 900, color: c(...P.navy), margin: titleMargin, lineHeight: titleLineHeight, textTransform: "uppercase", justifyContent: centered && icon ? "center" : undefined }}>
         {icon}
         {title}
       </h1>
@@ -75,7 +77,15 @@ export function PageHeading({
   );
 }
 
-export function LoadingMessage({ children }: { children: ReactNode }) {
+export function LoadingMessage({
+  children,
+  fontSize,
+  margin,
+}: {
+  children: ReactNode;
+  fontSize?: string;
+  margin?: string | number;
+}) {
   const { c } = useTheme();
-  return <p style={{ fontFamily: BODY, fontStyle: "italic", color: c(...P.muted) }}>{children}</p>;
+  return <p style={{ fontFamily: BODY, fontSize, fontStyle: "italic", color: c(...P.muted), margin }}>{children}</p>;
 }

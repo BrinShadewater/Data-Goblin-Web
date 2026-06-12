@@ -2,6 +2,7 @@ import { useTheme } from "../ThemeContext";
 import { BODY, DISPLAY, HAND, MONO, P, RADIUS, UI } from "../theme";
 import { Markdown } from "../components/Markdown";
 import { artUrl, useBook } from "../useContent";
+import { LoadingMessage, StaticPageShell } from "../components/StaticPage";
 
 /** Pull the paragraph containing `marker` out of a markdown document. */
 function extractParagraph(md: string, marker: string): string | null {
@@ -24,7 +25,6 @@ export function AboutPage() {
   const { c, dark } = useTheme();
   const { data: book } = useBook();
 
-  const bg = c(...P.panelBg);
   const cardBg = c(...P.cardBg);
   const border = c(...P.borderSoft);
   const body = c(...P.body);
@@ -37,8 +37,7 @@ export function AboutPage() {
   const noteOnTime = book ? extractParagraph(book.frontmatterMarkdown, "A note on time") : null;
 
   return (
-    <div style={{ flex: 1, overflowY: "auto", background: bg, padding: "32px clamp(16px, 5vw, 40px) 64px", transition: "background 0.3s" }}>
-      <div style={{ maxWidth: "1120px", margin: "0 auto" }}>
+    <StaticPageShell maxWidth="1120px">
         {/* Header */}
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 340px), 1fr))", gap: "32px", alignItems: "center", marginBottom: "32px" }}>
           <div style={{ background: c(...P.pageBg), border: `1px solid ${border}`, borderRadius: "6px", padding: "18px", boxShadow: c("0 12px 32px rgba(60,50,30,0.16)", "0 12px 32px rgba(0,0,0,0.4)") }}>
@@ -83,7 +82,7 @@ export function AboutPage() {
           {whyGoblin ? (
             <Markdown markdown={whyGoblin} />
           ) : (
-            <p style={{ fontFamily: BODY, fontSize: "13px", fontStyle: "italic", color: muted, margin: 0 }}>Loading…</p>
+            <LoadingMessage fontSize="13px" margin={0}>Loading…</LoadingMessage>
           )}
           <div style={{ marginTop: "10px", fontFamily: HAND, fontSize: "17px", color: c("#7a6040", "#8a7850"), fontStyle: "italic" }}>
             &ldquo;It collects receipts, not grudges.&rdquo;
@@ -98,7 +97,7 @@ export function AboutPage() {
           {noteOnTime ? (
             <Markdown markdown={noteOnTime} />
           ) : (
-            <p style={{ fontFamily: BODY, fontSize: "13px", fontStyle: "italic", color: muted, margin: 0 }}>Loading…</p>
+            <LoadingMessage fontSize="13px" margin={0}>Loading…</LoadingMessage>
           )}
         </div>
 
@@ -114,7 +113,6 @@ export function AboutPage() {
             </div>
           ))}
         </div>
-      </div>
-    </div>
+    </StaticPageShell>
   );
 }
