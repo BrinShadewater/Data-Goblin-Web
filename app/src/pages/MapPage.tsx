@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useTheme } from "../ThemeContext";
 import { BODY, DISPLAY, MONO, P, RADIUS, UI } from "../theme";
 import { artUrl, useBook } from "../useContent";
@@ -15,7 +15,6 @@ const REGION_NOTES: Record<string, string> = {
 /** The five regions of the field guide, each listing its chapters. */
 export function MapPage() {
   const { c } = useTheme();
-  const navigate = useNavigate();
   const { data: book, error } = useBook();
 
   const bg = c(...P.panelBg);
@@ -70,18 +69,17 @@ export function MapPage() {
               </p>
               <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
                 {part.chapters.map((ch) => (
-                  <button
+                  <Link
                     key={ch.number}
-                    onClick={() => navigate(`/chapter/${ch.number}`)}
-                    style={{ display: "flex", gap: "8px", alignItems: "baseline", background: "none", border: "none", padding: "7px 0", cursor: "pointer", textAlign: "left", width: "100%" }}
-                    onMouseEnter={(e) => ((e.currentTarget.children[1] as HTMLElement).style.textDecoration = "underline")}
-                    onMouseLeave={(e) => ((e.currentTarget.children[1] as HTMLElement).style.textDecoration = "none")}
+                    to={`/chapter/${ch.number}`}
+                    className="gob-link"
+                    style={{ display: "flex", gap: "8px", alignItems: "baseline", padding: "7px 0", textAlign: "left", width: "100%" }}
                   >
                     <span style={{ fontFamily: MONO, fontSize: "9.5px", color: muted, minWidth: "20px", flexShrink: 0 }}>{ch.number}.</span>
                     <span style={{ fontFamily: UI, fontSize: "13.5px", fontWeight: 600, color: green, lineHeight: 1.4 }}>
                       {ch.title.split(" — ")[0]}
                     </span>
-                  </button>
+                  </Link>
                 ))}
               </div>
             </div>
