@@ -75,6 +75,34 @@ export interface Receipt {
   links: [string, string][]; // [label, url]
 }
 
+/** One named reference URL — produced by the pipeline from the appendix's
+ *  "Links and URL References" section, merged with receipts ledger links. */
+export interface LinkEntry {
+  name: string;
+  url: string;
+}
+
+/** A near-full-page art plate, shown on its own page at the end of a document.
+ *  `src` is relative to public/art/ (e.g. "panels/forward-panel.webp");
+ *  `caption` renders underneath — use null when the art carries its own title. */
+export interface ArtPanel {
+  src: string;
+  caption?: string | null;
+}
+
+/** Per-document art assignment from site/content/art-map.json (hand-editable).
+ *  Paths are relative to public/art/, e.g. "medium/ecology-medium.webp". */
+export interface ArtDocEntry {
+  opener: string | null;
+  accents: string[];
+  panels?: ArtPanel[];
+}
+
+export interface ArtMap {
+  _readme?: unknown;
+  docs: Record<string, ArtDocEntry>;
+}
+
 export interface GlossaryEntry {
   term: string;
   def: string;

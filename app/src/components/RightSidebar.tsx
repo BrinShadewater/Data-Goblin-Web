@@ -1,14 +1,67 @@
 import { ReactNode, useState } from "react";
-import { ArrowRight, CheckSquare, Pencil, Square } from "lucide-react";
+import { ArrowRight, CheckSquare, ChevronDown, ChevronUp, Square, X } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import { useTheme } from "../ThemeContext";
 import { BODY, MONO, P, RADIUS, UI } from "../theme";
-import { GoblinIcon } from "./GoblinMascot";
-import { classifySource, computeSuspicion, SourceTag } from "../sources";
+import { NavIcon } from "./GoblinMascot";
+import { classifySource, computeSuspicion, TAG_COLORS } from "../sources";
+import { matchSource } from "../links";
+import { useLinks } from "../useContent";
 import { useLocalStorage } from "../useLocalStorage";
+import { removeBookmark, saveLastLocation, useBookmarks } from "../bookmarks";
+import { savePanel } from "../pagination";
 import type { Chapter } from "../types";
 
-function Card({ icon, title, children }: { icon?: ReactNode; title: string; children: ReactNode }) {
+/**
+ * Sidebar card. When `storageKey` is given the card is collapsible via its
+ * chevron header, and the collapsed state persists per card in localStorage
+ * (goblin-card-{key}).
+ */
+function Card({
+  icon,
+  title,
+  children,
+  storageKey,
+  defaultOpen = true,
+}: {
+  icon?: ReactNode;
+  title: string;
+  children: ReactNode;
+  storageKey?: string;
+  defaultOpen?: boolean;
+}) {
   const { c } = useTheme();
+  const [open, setOpen] = useState<boolean>(() => {
+    if (!storageKey) return true;
+    try {
+      const v = localStorage.getItem(`goblin-card-${storageKey}`);
+      return v == null ? defaultOpen : v === "1";
+    } catch {
+      return defaultOpen;
+    }
+  });
+  const toggle = () => {
+    setOpen((o) => {
+      if (storageKey) {
+        try {
+          localStorage.setItem(`goblin-card-${storageKey}`, o ? "0" : "1");
+        } catch {
+          /* ignore */
+        }
+      }
+      return !o;
+    });
+  };
+  const header = (
+    <>
+      {icon}
+      <span style={{ fontFamily: MONO, fontSize: "8.5px", fontWeight: 800, letterSpacing: "0.2em", textTransform: "uppercase", color: c(...P.green), flex: 1, textAlign: "left" }}>
+        {title}
+      </span>
+      {storageKey &&
+        (open ? <ChevronUp size={13} color={c(...P.muted)} /> : <ChevronDown size={13} color={c(...P.muted)} />)}
+    </>
+  );
   return (
     <div
       style={{
@@ -20,29 +73,92 @@ function Card({ icon, title, children }: { icon?: ReactNode; title: string; chil
         transition: "background 0.3s",
       }}
     >
-      <div style={{ display: "flex", alignItems: "center", gap: "7px", marginBottom: "9px" }}>
-        {icon}
-        <span style={{ fontFamily: MONO, fontSize: "8.5px", fontWeight: 800, letterSpacing: "0.2em", textTransform: "uppercase", color: c(...P.green) }}>
-          {title}
-        </span>
-      </div>
-      {children}
+      {storageKey ? (
+        <button
+          onClick={toggle}
+          aria-expanded={open}
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "7px",
+            width: "100%",
+            background: "none",
+            border: "none",
+            padding: 0,
+            margin: open ? "0 0 9px" : 0,
+            cursor: "pointer",
+            minHeight: "24px",
+          }}
+        >
+          {header}
+        </button>
+      ) : (
+        <div style={{ display: "flex", alignItems: "center", gap: "7px", marginBottom: "9px" }}>{header}</div>
+      )}
+      {open && children}
     </div>
   );
 }
 
-const TAG_KEYS: Record<SourceTag, { light: string; dark: string }> = {
-  "Corporate / self-disclosure": { light: "#9a6510", dark: "#d9a23f" },
-  "Government / official": { light: "#1a2e4a", dark: "#7ab4e8" },
-  "Academic / peer-reviewed": { light: "#2d5a27", dark: "#74b85e" },
-  Journalism: { light: "#7a3e6a", dark: "#c98ab8" },
-  "Civil society / advocacy": { light: "#206058", dark: "#5ab8a8" },
-  Other: { light: "#7c7460", dark: "#5d6878" },
-};
+/** Saved-bookmarks card: tap to jump, × to remove. */
+export function BookmarksCard() {
+  const { c } = useTheme();
+  const navigate = useNavigate();
+  const bookmarks = useBookmarks();
+  const navy = c(...P.navy);
+  const muted = c(...P.muted);
+  const body = c(...P.body);
+  const border = c(...P.borderSoft);
 
-export function RightSidebar({ chapter }: { chapter: Chapter }) {
+  return (
+    <Card icon={<NavIcon name="journal-nav" size={17} />} title="Bookmarks" storageKey="bookmarks">
+      {bookmarks.length === 0 ? (
+        <p style={{ fontFamily: UI, fontSize: "10.5px", color: muted, margin: 0, lineHeight: 1.5 }}>
+          No bookmarks yet. Tap the 🔖 in the page bar to save your place.
+        </p>
+      ) : (
+        bookmarks.map((bm) => (
+          <div
+            key={`${bm.doc}-${bm.panelIndex}-${bm.ts}`}
+            style={{ display: "flex", gap: "6px", alignItems: "flex-start", padding: "5px 0", borderBottom: `1px solid ${border}` }}
+          >
+            <button
+              onClick={() => {
+                savePanel(bm.doc, bm.panelIndex);
+                saveLastLocation(bm.doc, bm.panelIndex);
+                navigate(`/chapter/${bm.doc}`);
+              }}
+              style={{ flex: 1, background: "none", border: "none", padding: 0, cursor: "pointer", textAlign: "left", minWidth: 0 }}
+            >
+              <div style={{ fontFamily: UI, fontSize: "10.5px", fontWeight: 700, color: navy, marginBottom: "2px" }}>
+                {bm.chapterTitle}
+              </div>
+              <div style={{ fontFamily: BODY, fontSize: "10.5px", color: body, lineHeight: 1.4, overflow: "hidden" }}>
+                {bm.snippet}
+              </div>
+            </button>
+            <button
+              onClick={() => removeBookmark(bm.doc, bm.panelIndex)}
+              aria-label="Remove bookmark"
+              style={{ background: "none", border: "none", padding: "2px", cursor: "pointer", color: muted, flexShrink: 0 }}
+            >
+              <X size={12} />
+            </button>
+          </div>
+        ))
+      )}
+    </Card>
+  );
+}
+
+/**
+ * The goblin tool cards (Notes / Suspicion / Quest Items / Receipts). Used by
+ * the desktop right sidebar and by the mobile 🧌 bottom sheet.
+ */
+export function GoblinTools({ chapter, showBookmarks = false }: { chapter: Chapter; showBookmarks?: boolean }) {
   const { c } = useTheme();
   const [receiptsOpen, setReceiptsOpen] = useState(false);
+  const { data: links } = useLinks();
   const [note, setNote] = useLocalStorage<string>(`goblin-notes-ch${chapter.number}`, "");
   const [done, setDone] = useLocalStorage<number[]>(`goblin-quests-ch${chapter.number}`, []);
 
@@ -60,23 +176,9 @@ export function RightSidebar({ chapter }: { chapter: Chapter }) {
     setDone((prev) => (prev.includes(i) ? prev.filter((x) => x !== i) : [...prev, i]));
 
   return (
-    <aside
-      style={{
-        height: "100%",
-        overflowY: "auto",
-        background: c(...P.panelBgAlt),
-        borderLeft: `1px solid ${border}`,
-        padding: "12px 12px 24px",
-        transition: "background 0.3s",
-      }}
-    >
-      <div style={{ fontFamily: MONO, fontSize: "8.5px", fontWeight: 800, letterSpacing: "0.2em", textTransform: "uppercase", color: muted, margin: "2px 2px 10px" }}>
-        Field Guide Tools ·{" "}
-        {chapter.number === 0 ? "Front Matter" : chapter.number === 20 ? "Appendix" : `Ch. ${chapter.number}`}
-      </div>
-
+    <>
       {/* Goblin Notes */}
-      <Card icon={<Pencil size={13} color={green} />} title="Goblin Notes">
+      <Card icon={<NavIcon name="note-nav" size={17} />} title="Goblin Notes" storageKey="notes">
         <textarea
           value={note}
           onChange={(e) => setNote(e.target.value)}
@@ -89,7 +191,7 @@ export function RightSidebar({ chapter }: { chapter: Chapter }) {
             borderRadius: RADIUS,
             padding: "8px 10px",
             fontFamily: BODY,
-            fontSize: "12px",
+            fontSize: "13px",
             lineHeight: 1.55,
             color: body,
             resize: "vertical",
@@ -101,7 +203,7 @@ export function RightSidebar({ chapter }: { chapter: Chapter }) {
       {/* Suspicion Meter — only meaningful when the document cites sources
           (the front matter and appendix have none, so it is hidden there). */}
       {chapter.sources.length > 0 && (
-      <Card icon={<GoblinIcon size={18} />} title="Suspicion Meter">
+      <Card icon={<NavIcon name="insight-nav" size={17} />} title="Suspicion Meter">
         <div
           title={`Computed, not random: ½·min(1, openVerifyFlags/4) + ½·(corporate-source share). This chapter: ${suspicion.openFlags} open verification flag${suspicion.openFlags === 1 ? "" : "s"}; ${Math.round(suspicion.corporateShare * 100)}% of ${suspicion.totalSources} sources are corporate self-disclosure.`}
         >
@@ -121,7 +223,7 @@ export function RightSidebar({ chapter }: { chapter: Chapter }) {
 
       {/* Quest Items — hidden when the document has no recap (front matter, appendix). */}
       {chapter.recap.length > 0 && (
-      <Card icon={<CheckSquare size={13} color={green} />} title="Quest Items">
+      <Card icon={<NavIcon name="key-takeaways-nav" size={17} />} title="Quest Items" storageKey="quests" defaultOpen>
         <p style={{ fontFamily: UI, fontSize: "9.5px", color: muted, margin: "0 0 8px", lineHeight: 1.45 }}>
           What you should carry out of this chapter. Check items off as you collect them.
         </p>
@@ -151,7 +253,7 @@ export function RightSidebar({ chapter }: { chapter: Chapter }) {
               <span
                 style={{
                   fontFamily: UI,
-                  fontSize: "10.5px",
+                  fontSize: "11px",
                   lineHeight: 1.45,
                   color: checked ? muted : body,
                   textDecoration: checked ? "line-through" : "none",
@@ -164,6 +266,8 @@ export function RightSidebar({ chapter }: { chapter: Chapter }) {
         })}
       </Card>
       )}
+
+      {showBookmarks && <BookmarksCard />}
 
       {/* Show Receipts — hidden when the document cites no sources. */}
       {chapter.sources.length > 0 && (
@@ -179,7 +283,7 @@ export function RightSidebar({ chapter }: { chapter: Chapter }) {
           background: receiptsOpen ? green : "transparent",
           border: `1.5px solid ${green}`,
           borderRadius: RADIUS,
-          padding: "8px 13px",
+          padding: "10px 13px",
           cursor: "pointer",
           fontFamily: UI,
           fontSize: "9.5px",
@@ -202,10 +306,19 @@ export function RightSidebar({ chapter }: { chapter: Chapter }) {
           </div>
           {chapter.sources.map((s, i) => {
             const tag = classifySource(s);
-            const tagColor = c(TAG_KEYS[tag].light, TAG_KEYS[tag].dark);
+            const tagColor = c(TAG_COLORS[tag].light, TAG_COLORS[tag].dark);
+            const link = links ? matchSource(s, links) : null;
             return (
               <div key={i} style={{ marginBottom: "8px", paddingBottom: "8px", borderBottom: i < chapter.sources.length - 1 ? `1px solid ${border}` : "none" }}>
-                <p style={{ fontFamily: BODY, fontSize: "11px", color: body, margin: "0 0 3px", lineHeight: 1.45 }}>{s}</p>
+                <p style={{ fontFamily: BODY, fontSize: "11px", color: body, margin: "0 0 3px", lineHeight: 1.45 }}>
+                  {link ? (
+                    <a href={link.url} target="_blank" rel="noopener noreferrer" className="gob-link" style={{ color: c(...P.navy) }}>
+                      {s}
+                    </a>
+                  ) : (
+                    s
+                  )}
+                </p>
                 <span
                   style={{
                     fontFamily: MONO,
@@ -228,6 +341,30 @@ export function RightSidebar({ chapter }: { chapter: Chapter }) {
       )}
       </>
       )}
+    </>
+  );
+}
+
+/** Desktop right sidebar: goblin tools + bookmarks. */
+export function RightSidebar({ chapter }: { chapter: Chapter }) {
+  const { c } = useTheme();
+  const muted = c(...P.muted);
+  return (
+    <aside
+      style={{
+        height: "100%",
+        overflowY: "auto",
+        background: c(...P.panelBgAlt),
+        borderLeft: `1px solid ${c(...P.borderSoft)}`,
+        padding: "12px 12px 24px",
+        transition: "background 0.3s",
+      }}
+    >
+      <div style={{ fontFamily: MONO, fontSize: "8.5px", fontWeight: 800, letterSpacing: "0.2em", textTransform: "uppercase", color: muted, margin: "2px 2px 10px" }}>
+        Field Guide Tools ·{" "}
+        {chapter.number === 0 ? "Front Matter" : chapter.number === 20 ? "Appendix" : `Ch. ${chapter.number}`}
+      </div>
+      <GoblinTools chapter={chapter} showBookmarks />
     </aside>
   );
 }

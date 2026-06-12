@@ -238,6 +238,36 @@ def parse_ledger(text):
             rows.append(row)
     return rows
 
+LINK_LINE_RE = re.compile(r"^- (.+?) — (.+)$", re.M)
+URL_RE = re.compile(r"https?://[^\s)\"'<>]+")
+
+def parse_links(appendix, receipts):
+    """links.json — [{"name", "url"}] for the app's clickable references.
+    Extracted from the appendix's 'Links and URL References' section
+    (lines '- Name — https://url'; the first URL on a line wins, entries
+    without a public URL are skipped), then merged with the receipts
+    ledger's [label](url) pairs. Deduped by case-insensitive name."""
+    links, seen = [], set()
+    def add(name, url):
+        name = name.replace("*", "").strip()
+        key = name.lower()
+        if not name or not url or key in seen:
+            return
+        seen.add(key)
+        links.append({"name": name, "url": url})
+    sec = re.search(r"^### Links and URL References\s*$(.*?)(?=^### |\Z)",
+                    appendix, flags=re.M | re.S)
+    if sec:
+        for lm in LINK_LINE_RE.finditer(sec.group(1)):
+            um = URL_RE.search(lm.group(2))
+            if um:
+                add(lm.group(1), um.group(0).rstrip(".,;"))
+    for r in receipts:
+        for label, url in r["links"]:
+            if url.startswith("http"):
+                add(label, url)
+    return links
+
 def parse_glossary(text):
     terms = []
     for m in re.finditer(r"^\*\*(.+?)\*\*\s+(.+?)(?=\n\n\*\*|\Z)", text, flags=re.M | re.S):
@@ -308,6 +338,15 @@ def main():
     receipts = parse_ledger(open(LEDG, encoding="utf-8").read())
     json.dump(receipts, open(os.path.join(OUT, "receipts.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
 
+    # links.json — clickable reference URLs (appendix link list + ledger links).
+    # Also copied straight into the app's public content so the reader can
+    # fetch it without a separate sync step.
+    links = parse_links(appendix, receipts)
+    json.dump(links, open(os.path.join(OUT, "links.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    app_content = os.path.normpath(os.path.join(HERE, "..", "app", "public", "content"))
+    if os.path.isdir(app_content):
+        json.dump(links, open(os.path.join(app_content, "links.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+
     glossary = parse_glossary(open(GLOS, encoding="utf-8").read())
     json.dump(glossary, open(os.path.join(OUT, "glossary.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
 
@@ -331,6 +370,7 @@ def main():
     print(f"bias labels found: {sum(1 for c in chapters if c['biasLabel'])}")
     print(f"source blocks found: {sum(1 for c in chapters if c['sources'])}")
     print(f"receipts rows: {len(receipts)} | glossary terms: {len(glossary)}")
+    print(f"reference links extracted: {len(links)}")
     missing = [c["number"] for c in chapters if not c["startHere"]]
     if missing: print("WARN: chapters missing Start here:", missing)
 

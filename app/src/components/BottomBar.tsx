@@ -1,26 +1,34 @@
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Bookmark as BookmarkIcon, ChevronLeft, ChevronRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from "../ThemeContext";
+import { useReader } from "../reader";
 import { MONO, P, UI } from "../theme";
-import { saveSpread } from "../pagination";
+import { NavIcon } from "./GoblinMascot";
+import { savePanel } from "../pagination";
 import type { Book } from "../types";
 
 export function BottomBar({
   book,
   activeChapter,
-  spread,
-  spreadCount,
+  page,
+  pageCount,
   onPrev,
   onNext,
+  bookmarked,
+  onToggleBookmark,
 }: {
   book: Book | null;
   activeChapter: number;
-  spread: number;
-  spreadCount: number;
+  /** Current page (spread on desktop, single page on phone/tablet), 0-based. */
+  page: number;
+  pageCount: number;
   onPrev: () => void;
   onNext: () => void;
+  bookmarked: boolean;
+  onToggleBookmark: () => void;
 }) {
   const { c } = useTheme();
+  const { mode } = useReader();
   const navigate = useNavigate();
 
   const allChapters = book ? book.parts.flatMap((p) => p.chapters) : [];
@@ -43,24 +51,111 @@ export function BottomBar({
         ? book.backMatter.title
         : `${n}. ${titleOf(n)}`;
 
-  const firstSpread = spread === 0;
-  const lastSpread = spread >= spreadCount - 1;
-  const canPrev = !(activeChapter <= firstDoc && firstSpread);
-  const canNext = !(activeChapter >= lastDoc && lastSpread);
+  const firstPage = page === 0;
+  const lastPage = page >= pageCount - 1;
+  const canPrev = !(activeChapter <= firstDoc && firstPage);
+  const canNext = !(activeChapter >= lastDoc && lastPage);
 
   const green = c(...P.green);
   const muted = c(...P.faint);
   const bg = c(...P.panelBgAlt);
   const border = c(...P.borderSoft);
 
-  const prevLabel = !firstSpread
+  const bookmarkBtn = (size: number) => (
+    <button
+      onClick={onToggleBookmark}
+      aria-label={bookmarked ? "Remove bookmark" : "Bookmark this page"}
+      aria-pressed={bookmarked}
+      title={bookmarked ? "Remove bookmark" : "Bookmark this page"}
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        width: `${size}px`,
+        height: `${size}px`,
+        background: "none",
+        border: "none",
+        cursor: "pointer",
+        padding: 0,
+        color: bookmarked ? green : muted,
+        flexShrink: 0,
+      }}
+    >
+      <BookmarkIcon size={size >= 44 ? 20 : 16} fill={bookmarked ? green : "none"} strokeWidth={2} />
+    </button>
+  );
+
+  // ---- Compact phone/tablet bar: prev/next + page x/y + thin progress bar.
+  if (mode !== "desktop") {
+    // Progress through the whole 0…20 chain, including position in-document.
+    const docSpan = lastDoc - firstDoc + 1;
+    const frac = Math.min(1, Math.max(0, (activeChapter - firstDoc + (page + 1) / Math.max(1, pageCount)) / docSpan));
+    const navBtn = (dir: "prev" | "next") => {
+      const enabled = dir === "prev" ? canPrev : canNext;
+      const Icon = dir === "prev" ? ChevronLeft : ChevronRight;
+      return (
+        <button
+          onClick={() => enabled && (dir === "prev" ? onPrev() : onNext())}
+          disabled={!enabled}
+          aria-label={dir === "prev" ? "Previous page" : "Next page"}
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            width: "44px",
+            height: "44px",
+            background: "none",
+            border: "none",
+            cursor: enabled ? "pointer" : "not-allowed",
+            opacity: enabled ? 1 : 0.3,
+            padding: 0,
+            flexShrink: 0,
+          }}
+        >
+          <Icon size={24} color={green} strokeWidth={2} />
+        </button>
+      );
+    };
+    return (
+      <div
+        style={{
+          background: bg,
+          borderTop: `1px solid ${border}`,
+          display: "flex",
+          alignItems: "center",
+          gap: "6px",
+          padding: "0 6px",
+          height: "56px",
+          flexShrink: 0,
+          zIndex: 40,
+          boxShadow: c("0 -1px 4px rgba(0,0,0,0.04)", "0 -1px 8px rgba(0,0,0,0.2)"),
+          transition: "background 0.3s",
+        }}
+      >
+        {navBtn("prev")}
+        <div style={{ flex: 1, minWidth: 0, display: "flex", flexDirection: "column", alignItems: "center", gap: "6px" }}>
+          <div style={{ fontFamily: MONO, fontSize: "9px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: green, whiteSpace: "nowrap" }}>
+            Page {page + 1} of {pageCount}
+          </div>
+          <div style={{ width: "100%", maxWidth: "240px", height: "3px", borderRadius: "2px", background: c("#ccc2a8", "#222837"), overflow: "hidden" }}>
+            <div style={{ width: `${Math.round(frac * 100)}%`, height: "100%", background: green, transition: "width 0.3s" }} />
+          </div>
+        </div>
+        {bookmarkBtn(44)}
+        {navBtn("next")}
+      </div>
+    );
+  }
+
+  // ---- Desktop bar: unchanged spread navigation + chapter dots + 🔖.
+  const prevLabel = !firstPage
     ? "← Previous Page"
     : book?.frontMatter && prevDoc === book.frontMatter.number
       ? "← Front Matter"
       : book?.backMatter && activeChapter === book.backMatter.number
         ? `← Chapter ${prevDoc}`
         : "← Previous Chapter";
-  const nextLabel = !lastSpread
+  const nextLabel = !lastPage
     ? "Next Page →"
     : isFrontDoc
       ? "Begin Chapter 1 →"
@@ -70,12 +165,12 @@ export function BottomBar({
           ? "Next Chapter →"
           : "The End";
   // Hide the subtitle when the label itself already names the destination.
-  const prevSub = firstSpread
+  const prevSub = firstPage
     ? canPrev && prevDoc !== book?.frontMatter?.number
       ? docName(prevDoc)
       : null
     : docName(activeChapter);
-  const nextSub = lastSpread
+  const nextSub = lastPage
     ? canNext && nextDoc !== book?.backMatter?.number
       ? docName(nextDoc)
       : null
@@ -116,8 +211,11 @@ export function BottomBar({
       </button>
 
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "4px" }}>
-        <div style={{ fontFamily: UI, fontSize: "7.5px", letterSpacing: "0.12em", textTransform: "uppercase", color: muted }}>
-          Your Progress Through the Guide
+        <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+          <NavIcon name="book-nav" size={16} />
+          <div style={{ fontFamily: UI, fontSize: "7.5px", letterSpacing: "0.12em", textTransform: "uppercase", color: muted }}>
+            Your Progress Through the Guide
+          </div>
         </div>
         <div style={{ display: "flex", gap: "5px", alignItems: "center" }}>
           {Array.from({ length: totalChapters }, (_, i) => {
@@ -128,7 +226,7 @@ export function BottomBar({
               <button
                 key={ch}
                 onClick={() => {
-                  saveSpread(ch, 0);
+                  savePanel(ch, 0);
                   navigate(`/chapter/${ch}`);
                 }}
                 title={`${ch}. ${titleOf(ch)}`}
@@ -148,27 +246,30 @@ export function BottomBar({
           })}
         </div>
         <div style={{ fontFamily: MONO, fontSize: "8px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: green }}>
-          Page {spread + 1} of {spreadCount}
+          Page {page + 1} of {pageCount}
         </div>
       </div>
 
-      <button
-        onClick={() => canNext && onNext()}
-        disabled={!canNext}
-        style={{ display: "flex", alignItems: "center", gap: "6px", background: "none", border: "none", cursor: canNext ? "pointer" : "not-allowed", opacity: canNext ? 1 : 0.3, padding: 0, textAlign: "right" }}
-      >
-        <div>
-          <div style={{ fontFamily: UI, fontSize: "7.5px", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: muted, lineHeight: 1, marginBottom: "2px" }}>
-            {nextLabel}
-          </div>
-          {nextSub && (
-            <div style={{ fontFamily: UI, fontSize: "10.5px", color: green, fontWeight: 500 }}>
-              {nextSub}
+      <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
+        {bookmarkBtn(30)}
+        <button
+          onClick={() => canNext && onNext()}
+          disabled={!canNext}
+          style={{ display: "flex", alignItems: "center", gap: "6px", background: "none", border: "none", cursor: canNext ? "pointer" : "not-allowed", opacity: canNext ? 1 : 0.3, padding: 0, textAlign: "right" }}
+        >
+          <div>
+            <div style={{ fontFamily: UI, fontSize: "7.5px", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: muted, lineHeight: 1, marginBottom: "2px" }}>
+              {nextLabel}
             </div>
-          )}
-        </div>
-        <ChevronRight size={15} color={green} strokeWidth={2} />
-      </button>
+            {nextSub && (
+              <div style={{ fontFamily: UI, fontSize: "10.5px", color: green, fontWeight: 500 }}>
+                {nextSub}
+              </div>
+            )}
+          </div>
+          <ChevronRight size={15} color={green} strokeWidth={2} />
+        </button>
+      </div>
     </div>
   );
 }

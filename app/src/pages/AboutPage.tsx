@@ -38,24 +38,24 @@ export function AboutPage() {
   const noteOnTime = book ? extractParagraph(book.frontmatterMarkdown, "A note on time") : null;
 
   return (
-    <div style={{ flex: 1, overflowY: "auto", background: bg, padding: "32px 40px 64px", transition: "background 0.3s" }}>
+    <div style={{ flex: 1, overflowY: "auto", background: bg, padding: "32px clamp(16px, 5vw, 40px) 64px", transition: "background 0.3s" }}>
       <div style={{ maxWidth: "780px", margin: "0 auto" }}>
         {/* Header */}
-        <div style={{ display: "flex", gap: "28px", alignItems: "flex-start", marginBottom: "32px" }}>
+        <div style={{ display: "flex", gap: "28px", alignItems: "flex-start", marginBottom: "32px", flexWrap: "wrap" }}>
           <div style={{ flexShrink: 0, paddingTop: "4px" }}>
             <GoblinMascot size={150} />
           </div>
-          <div>
+          <div style={{ minWidth: "260px", flex: 1 }}>
             <div style={{ fontFamily: MONO, fontSize: "9px", fontWeight: 800, letterSpacing: "0.28em", textTransform: "uppercase", color: red, marginBottom: "8px" }}>
               About This Guide
             </div>
             <h1 style={{ fontFamily: DISPLAY, fontSize: "34px", fontWeight: 900, color: navy, margin: "0 0 6px", lineHeight: 1.05, textTransform: "uppercase" }}>
               {book?.title ?? "Data Goblin"}
             </h1>
-            <div style={{ fontFamily: DISPLAY, fontStyle: "italic", fontSize: "15px", color: body, marginBottom: "14px" }}>
+            <div style={{ fontFamily: DISPLAY, fontStyle: "italic", fontSize: "16.5px", color: body, marginBottom: "14px" }}>
               {book?.subtitle ?? "A Field Guide to AI, Power, and Data in Canada"}
             </div>
-            <p style={{ fontFamily: BODY, fontSize: "14px", color: body, lineHeight: 1.7, margin: 0 }}>
+            <p style={{ fontFamily: BODY, fontSize: "15.5px", color: body, lineHeight: 1.7, margin: 0 }}>
               A working manual on artificial intelligence, data centres, and digital sovereignty, written for
               Canadians who want to participate in the conversation but were never given the manual. It is not a
               textbook. It is not a press release. It is not neutral. It is a working document — meant to be read,
@@ -95,11 +95,11 @@ export function AboutPage() {
         <div style={{ fontFamily: MONO, fontSize: "8.5px", fontWeight: 800, letterSpacing: "0.2em", textTransform: "uppercase", color: muted, marginBottom: "12px" }}>
           Guiding Principles
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "10px" }}>
           {PRINCIPLES.map((p, i) => (
             <div key={i} style={{ background: cardBg, border: `1px solid ${border}`, borderRadius: RADIUS, padding: "14px 16px", transition: "background 0.3s" }}>
-              <div style={{ fontFamily: UI, fontSize: "11px", fontWeight: 700, color: navy, marginBottom: "6px" }}>{p.title}</div>
-              <p style={{ fontFamily: BODY, fontSize: "12px", color: body, lineHeight: 1.6, margin: 0 }}>{p.body}</p>
+              <div style={{ fontFamily: UI, fontSize: "12px", fontWeight: 700, color: navy, marginBottom: "6px" }}>{p.title}</div>
+              <p style={{ fontFamily: BODY, fontSize: "13.5px", color: body, lineHeight: 1.6, margin: 0 }}>{p.body}</p>
             </div>
           ))}
         </div>

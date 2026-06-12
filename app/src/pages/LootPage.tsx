@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { Search } from "lucide-react";
 import { useTheme } from "../ThemeContext";
 import { BODY, DISPLAY, MONO, P, RADIUS, UI } from "../theme";
+import { NavIcon } from "../components/GoblinMascot";
 import { useGlossary } from "../useContent";
 
 export function LootPage() {
@@ -42,28 +42,29 @@ export function LootPage() {
       : terms.filter((t) => t.letter === activeLetter);
 
   return (
-    <div style={{ flex: 1, overflowY: "auto", background: bg, padding: "32px 40px 64px", transition: "background 0.3s" }}>
+    <div style={{ flex: 1, overflowY: "auto", background: bg, padding: "32px clamp(16px, 5vw, 40px) 64px", transition: "background 0.3s" }}>
       <div style={{ maxWidth: "860px", margin: "0 auto" }}>
         <div style={{ marginBottom: "26px" }}>
           <div style={{ fontFamily: MONO, fontSize: "9px", fontWeight: 800, letterSpacing: "0.28em", textTransform: "uppercase", color: red, marginBottom: "8px" }}>
             Data Goblin Field Guide
           </div>
-          <h1 style={{ fontFamily: DISPLAY, fontSize: "36px", fontWeight: 900, color: navy, margin: "0 0 10px", lineHeight: 1.05, textTransform: "uppercase" }}>
+          <h1 style={{ display: "flex", alignItems: "center", gap: "12px", fontFamily: DISPLAY, fontSize: "36px", fontWeight: 900, color: navy, margin: "0 0 10px", lineHeight: 1.05, textTransform: "uppercase" }}>
+            <NavIcon name="crystal-nav" size={38} />
             Loot (Glossary)
           </h1>
-          <p style={{ fontFamily: BODY, fontSize: "14px", color: body, lineHeight: 1.65, margin: "0 0 18px", maxWidth: "560px" }}>
+          <p style={{ fontFamily: BODY, fontSize: "15.5px", color: body, lineHeight: 1.65, margin: "0 0 18px", maxWidth: "560px" }}>
             Plain-language definitions for the AI, data, and sovereignty terms the guide uses — vocabulary the
             goblin has hoarded so you don&rsquo;t have to. No jargon required, just a healthy dose of suspicion.
           </p>
 
           <div style={{ display: "flex", alignItems: "center", gap: "8px", background: c(...P.inputBg), border: `1px solid ${border}`, borderRadius: RADIUS, padding: "8px 14px", maxWidth: "380px" }}>
-            <Search size={14} color={muted} strokeWidth={2} />
+            <NavIcon name="search-nav" size={17} />
             <input
               type="text"
               placeholder="Search the glossary…"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              style={{ background: "transparent", border: "none", outline: "none", fontFamily: UI, fontSize: "12px", color: body, flex: 1 }}
+              style={{ background: "transparent", border: "none", outline: "none", fontFamily: UI, fontSize: "13px", color: body, flex: 1 }}
             />
           </div>
         </div>
@@ -79,13 +80,14 @@ export function LootPage() {
                 onClick={() => setActiveLetter(l)}
                 style={{
                   fontFamily: MONO,
-                  fontSize: "11px",
+                  fontSize: "12px",
                   fontWeight: l === activeLetter ? 800 : 500,
                   color: l === activeLetter ? "#ffffff" : green,
                   background: l === activeLetter ? green : "transparent",
                   border: `1px solid ${l === activeLetter ? green : border}`,
                   borderRadius: RADIUS,
-                  padding: "4px 10px",
+                  padding: "7px 12px",
+                  minWidth: "36px",
                   cursor: "pointer",
                   transition: "all 0.15s",
                 }}
@@ -105,14 +107,14 @@ export function LootPage() {
           {filtered.map((t) => (
             <div key={t.term} style={{ background: cardBg, border: `1px solid ${border}`, borderRadius: RADIUS, padding: "14px 18px", transition: "background 0.3s" }}>
               <div style={{ display: "flex", alignItems: "baseline", gap: "10px", marginBottom: "6px", flexWrap: "wrap" }}>
-                <span style={{ fontFamily: UI, fontSize: "13px", fontWeight: 800, color: navy }}>{t.term}</span>
+                <span style={{ fontFamily: UI, fontSize: "14.5px", fontWeight: 800, color: navy }}>{t.term}</span>
                 {t.chapters && (
                   <span style={{ fontFamily: MONO, fontSize: "8.5px", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: green, borderLeft: `1px solid ${border}`, paddingLeft: "8px" }}>
                     {t.chapters}
                   </span>
                 )}
               </div>
-              <p style={{ fontFamily: BODY, fontSize: "12.5px", lineHeight: 1.65, color: body, margin: 0 }}>{t.def}</p>
+              <p style={{ fontFamily: BODY, fontSize: "14px", lineHeight: 1.65, color: body, margin: 0 }}>{t.def}</p>
             </div>
           ))}
         </div>

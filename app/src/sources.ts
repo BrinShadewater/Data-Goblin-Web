@@ -20,6 +20,16 @@ const PRESS =
 const CIVIL =
   /\b(cupe|union\b|coalition|advocacy|civil liberties|ccla|openmedia|first nations|fnigc|afn\b|assembly of first nations|amnesty|citizen lab|nonprofit|non-profit|foundation\b)\b/i;
 
+/** Light/dark badge colours per source tag (shared by sidebar + Receipts page). */
+export const TAG_COLORS: Record<SourceTag, { light: string; dark: string }> = {
+  "Corporate / self-disclosure": { light: "#9a6510", dark: "#d9a23f" },
+  "Government / official": { light: "#1a2e4a", dark: "#7ab4e8" },
+  "Academic / peer-reviewed": { light: "#2d5a27", dark: "#74b85e" },
+  Journalism: { light: "#7a3e6a", dark: "#c98ab8" },
+  "Civil society / advocacy": { light: "#206058", dark: "#5ab8a8" },
+  Other: { light: "#7c7460", dark: "#5d6878" },
+};
+
 export function classifySource(line: string): SourceTag {
   // Corporate self-disclosure first: a Google blog post about Google is
   // self-disclosure even though "blog" could appear elsewhere.

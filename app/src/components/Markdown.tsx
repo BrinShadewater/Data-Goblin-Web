@@ -1,16 +1,20 @@
-import { CSSProperties, ReactNode } from "react";
+import { CSSProperties, memo, ReactNode } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { useTheme } from "../ThemeContext";
-import { BODY, DISPLAY, MONO, P, RADIUS, UI } from "../theme";
-import { GoblinIcon } from "./GoblinMascot";
+import { useReader } from "../reader";
+import { DISPLAY, MONO, P, RADIUS, UI } from "../theme";
+import { NavIcon } from "./GoblinMascot";
+import { AUTOLINK_TITLE } from "../links";
+import { artUrl } from "../useContent";
 
 // ---------------------------------------------------------------------------
 // Markdown renderer for chapter prose. Detects the manuscript's structural
 // blockquotes and renders them as field-guide callouts:
 //   > **🧌 GOBLIN CHECK** …      → green goblin callout card
 //   > **📦 CHAPTER RECAP …** …   → recap box
-// Everything else gets printed-book typography.
+// Everything else gets printed-book typography. Sizes come from the reader
+// type scale (viewport mode + dyslexia-friendly reading mode).
 // ---------------------------------------------------------------------------
 
 interface HastNode {
@@ -27,6 +31,7 @@ function nodeText(node: HastNode | undefined): string {
 
 export function GoblinCheckCard({ children }: { children: ReactNode }) {
   const { c } = useTheme();
+  const { t } = useReader();
   return (
     <div
       style={{
@@ -42,7 +47,7 @@ export function GoblinCheckCard({ children }: { children: ReactNode }) {
       }}
     >
       <div style={{ flexShrink: 0, marginTop: "2px" }}>
-        <GoblinIcon size={24} />
+        <NavIcon name="check-nav" size={26} />
       </div>
       <div style={{ minWidth: 0 }}>
         <div
@@ -58,7 +63,16 @@ export function GoblinCheckCard({ children }: { children: ReactNode }) {
         >
           Goblin Check
         </div>
-        <div style={{ fontFamily: BODY, fontSize: "13px", lineHeight: 1.62, fontStyle: "italic" }}>
+        <div
+          style={{
+            fontFamily: t.bodyFont,
+            fontSize: `${t.callout}px`,
+            lineHeight: t.bodyLh,
+            fontStyle: t.italicsOff ? "normal" : "italic",
+            letterSpacing: t.letterSpacing,
+            wordSpacing: t.wordSpacing,
+          }}
+        >
           {children}
         </div>
       </div>
@@ -68,6 +82,7 @@ export function GoblinCheckCard({ children }: { children: ReactNode }) {
 
 export function RecapBox({ children }: { children: ReactNode }) {
   const { c } = useTheme();
+  const { t } = useReader();
   return (
     <div
       style={{
@@ -81,6 +96,9 @@ export function RecapBox({ children }: { children: ReactNode }) {
     >
       <div
         style={{
+          display: "flex",
+          alignItems: "center",
+          gap: "7px",
           fontFamily: MONO,
           fontSize: "9px",
           fontWeight: 800,
@@ -90,74 +108,131 @@ export function RecapBox({ children }: { children: ReactNode }) {
           marginBottom: "8px",
         }}
       >
-        📦 Chapter Recap
+        <NavIcon name="chapter-recap-nav" size={18} />
+        Chapter Recap
       </div>
-      <div style={{ fontFamily: BODY, fontSize: "13px", lineHeight: 1.6 }}>{children}</div>
+      <div style={{ fontFamily: t.bodyFont, fontSize: `${t.callout}px`, lineHeight: t.bodyLh, letterSpacing: t.letterSpacing, wordSpacing: t.wordSpacing }}>
+        {children}
+      </div>
     </div>
   );
 }
 
-export function Markdown({ markdown, style }: { markdown: string; style?: CSSProperties }) {
+/**
+ * Memoized per panel block: re-parsing markdown is the priciest part of a
+ * page render, so unrelated state changes (search typing, tool sheets,
+ * sidebar toggles) skip it entirely. Theme/reader context changes still
+ * propagate through the memo as normal context updates.
+ */
+export const Markdown = memo(MarkdownInner);
+
+function MarkdownInner({ markdown, style }: { markdown: string; style?: CSSProperties }) {
   const { c } = useTheme();
+  const { t } = useReader();
   const bodyText = c(...P.body);
   const ink = c(...P.ink);
   const border = c(...P.border);
-  const green = c(...P.green);
+  const navy = c(...P.navy);
+
+  const bodySize = `${t.body}px`;
 
   return (
-    <div style={{ fontFamily: BODY, color: bodyText, ...style }}>
+    <div
+      style={{
+        fontFamily: t.bodyFont,
+        color: bodyText,
+        letterSpacing: t.letterSpacing,
+        wordSpacing: t.wordSpacing,
+        ...style,
+      }}
+    >
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         components={{
           p: ({ children }) => (
-            <p style={{ fontSize: "13.5px", lineHeight: 1.74, margin: "0 0 13px" }}>{children}</p>
+            <p style={{ fontSize: bodySize, lineHeight: t.bodyLh, margin: "0 0 14px" }}>{children}</p>
           ),
           strong: ({ children }) => (
             <strong style={{ fontWeight: 700, color: ink }}>{children}</strong>
           ),
-          em: ({ children }) => <em>{children}</em>,
-          a: ({ href, children }) => (
-            <a
-              href={href}
-              target="_blank"
-              rel="noreferrer"
-              style={{ color: green, textDecorationColor: `${green}88` }}
-            >
-              {children}
-            </a>
-          ),
+          em: ({ children }) =>
+            t.italicsOff ? (
+              <em style={{ fontStyle: "normal" }}>{children}</em>
+            ) : (
+              <em>{children}</em>
+            ),
+          a: ({ href, children, title }) => {
+            // Pipeline autolinks (first verbatim mention of a references-list
+            // name on the page) get the subtler dotted underline; authored
+            // links are navy with a solid underline on hover.
+            const auto = title === AUTOLINK_TITLE;
+            return (
+              <a
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={auto ? "gob-autolink" : "gob-link"}
+                title={auto ? undefined : title}
+                style={{ color: navy, textDecorationColor: `${navy}66` }}
+              >
+                {children}
+              </a>
+            );
+          },
           h1: ({ children }) => (
-            <h2 style={{ fontFamily: DISPLAY, fontSize: "22px", fontWeight: 800, color: ink, margin: "22px 0 10px", lineHeight: 1.2 }}>
+            <h2 style={{ fontFamily: DISPLAY, fontSize: `${t.h1}px`, fontWeight: 800, color: ink, margin: "24px 0 11px", lineHeight: 1.2 }}>
               {children}
             </h2>
           ),
           h2: ({ children }) => (
-            <h3 style={{ fontFamily: DISPLAY, fontSize: "18px", fontWeight: 700, color: ink, margin: "20px 0 8px", lineHeight: 1.25 }}>
+            <h3 style={{ fontFamily: DISPLAY, fontSize: `${t.h2}px`, fontWeight: 700, color: ink, margin: "22px 0 9px", lineHeight: 1.25 }}>
               {children}
             </h3>
           ),
           h3: ({ children }) => (
-            <h4 style={{ fontFamily: DISPLAY, fontSize: "15.5px", fontWeight: 700, color: ink, margin: "18px 0 7px", lineHeight: 1.3 }}>
+            <h4 style={{ fontFamily: DISPLAY, fontSize: `${t.h3}px`, fontWeight: 700, color: ink, margin: "20px 0 8px", lineHeight: 1.3 }}>
               {children}
             </h4>
           ),
           h4: ({ children }) => (
-            <h5 style={{ fontFamily: UI, fontSize: "12px", fontWeight: 700, color: ink, margin: "16px 0 6px", letterSpacing: "0.04em" }}>
+            <h5 style={{ fontFamily: UI, fontSize: `${t.h4}px`, fontWeight: 700, color: ink, margin: "18px 0 7px", letterSpacing: "0.04em" }}>
               {children}
             </h5>
           ),
           ul: ({ children }) => (
-            <ul style={{ margin: "0 0 13px", paddingLeft: "22px", fontSize: "13.5px", lineHeight: 1.66 }}>{children}</ul>
+            <ul style={{ margin: "0 0 14px", paddingLeft: "22px", fontSize: bodySize, lineHeight: t.bodyLh }}>{children}</ul>
           ),
           ol: ({ children }) => (
-            <ol style={{ margin: "0 0 13px", paddingLeft: "24px", fontSize: "13.5px", lineHeight: 1.66 }}>{children}</ol>
+            <ol style={{ margin: "0 0 14px", paddingLeft: "24px", fontSize: bodySize, lineHeight: t.bodyLh }}>{children}</ol>
           ),
           li: ({ children }) => <li style={{ marginBottom: "5px" }}>{children}</li>,
           hr: () => (
             <div style={{ margin: "18px auto", width: "70px", borderTop: `1px solid ${border}`, textAlign: "center" }} />
           ),
+          img: ({ src, alt }) => {
+            // Manuscript art references are written relative to public/art/
+            // (e.g. "art/icons/check-nav.webp"); resolve them through artUrl
+            // so they work under any deploy base. Icons render inline at
+            // text scale; anything else gets a sane block presentation.
+            const rel = typeof src === "string" ? src : "";
+            const resolved = rel.startsWith("art/") ? artUrl(rel.slice(4)) : rel;
+            const isIcon = rel.includes("/icons/");
+            return (
+              <img
+                src={resolved}
+                alt={alt ?? ""}
+                loading="lazy"
+                decoding="async"
+                style={
+                  isIcon
+                    ? { width: "22px", height: "22px", objectFit: "contain", display: "inline-block", verticalAlign: "-5px" }
+                    : { maxWidth: "100%", display: "block", margin: "10px auto" }
+                }
+              />
+            );
+          },
           code: ({ children }) => (
-            <code style={{ fontFamily: MONO, fontSize: "12px", background: c("#eee8d8", "#1d2230"), padding: "1px 5px", borderRadius: RADIUS }}>
+            <code style={{ fontFamily: MONO, fontSize: `${t.body - 2.5}px`, background: c("#eee8d8", "#1d2230"), padding: "1px 5px", borderRadius: RADIUS }}>
               {children}
             </code>
           ),
@@ -168,7 +243,7 @@ export function Markdown({ markdown, style }: { markdown: string; style?: CSSPro
                   borderCollapse: "collapse",
                   width: "100%",
                   border: `1px solid ${border}`,
-                  fontSize: "12.5px",
+                  fontSize: `${t.table}px`,
                   background: c(...P.cardBg),
                 }}
               >
@@ -181,7 +256,7 @@ export function Markdown({ markdown, style }: { markdown: string; style?: CSSPro
             <th
               style={{
                 fontFamily: UI,
-                fontSize: "10px",
+                fontSize: "11px",
                 fontWeight: 800,
                 letterSpacing: "0.1em",
                 textTransform: "uppercase",
@@ -199,8 +274,8 @@ export function Markdown({ markdown, style }: { markdown: string; style?: CSSPro
           td: ({ children }) => (
             <td
               style={{
-                fontFamily: BODY,
-                lineHeight: 1.5,
+                fontFamily: t.bodyFont,
+                lineHeight: 1.55,
                 verticalAlign: "top",
                 borderBottom: `1px solid ${c(...P.borderSoft)}`,
                 borderRight: `1px solid ${c(...P.borderSoft)}`,
@@ -221,10 +296,10 @@ export function Markdown({ markdown, style }: { markdown: string; style?: CSSPro
             return (
               <blockquote
                 style={{
-                  margin: "0 0 13px",
+                  margin: "0 0 14px",
                   padding: "4px 16px",
                   borderLeft: `3px solid ${border}`,
-                  fontStyle: "italic",
+                  fontStyle: t.italicsOff ? "normal" : "italic",
                   color: c(...P.muted),
                 }}
               >

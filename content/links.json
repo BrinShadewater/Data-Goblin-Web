@@ -1,0 +1,514 @@
+[
+ {
+  "name": "AI for All strategy launch (PMO, June 4, 2026)",
+  "url": "https://www.pm.gc.ca"
+ },
+ {
+  "name": "Treasury Board AI Register",
+  "url": "https://open.canada.ca"
+ },
+ {
+  "name": "Treasury Board Directive on Automated Decision-Making",
+  "url": "https://www.tbs-sct.canada.ca/pol/doc-eng.aspx?id=32592"
+ },
+ {
+  "name": "Algorithmic Impact Assessment tool",
+  "url": "https://www.canada.ca/en/government/system/digital-government/digital-government-innovations/responsible-use-ai/algorithmic-impact-assessment.html"
+ },
+ {
+  "name": "ISED Voluntary Code of Conduct on Advanced Generative AI Systems (September 2023)",
+  "url": "https://ised-isde.canada.ca/site/ised/en/voluntary-code-conduct-responsible-development-and-management-advanced-generative-ai-systems"
+ },
+ {
+  "name": "ISED Federal AI Strategy consultation summary (February 2026)",
+  "url": "https://ised-isde.canada.ca"
+ },
+ {
+  "name": "Bill C-16 (Protecting Victims Act, December 2025)",
+  "url": "https://www.parl.ca"
+ },
+ {
+  "name": "Bill C-27 / AIDA (2022-2025, died on prorogation)",
+  "url": "https://www.parl.ca"
+ },
+ {
+  "name": "Natural Resources Canada, Best Practice Guide for Canadian Data Centres (November 2024)",
+  "url": "https://natural-resources.canada.ca"
+ },
+ {
+  "name": "Statistics Canada AI surveys and analyses (Q2 2024, Q2 2025, May 2026)",
+  "url": "https://www150.statcan.gc.ca"
+ },
+ {
+  "name": "Bank of Canada Monetary Policy Report (December 2025)",
+  "url": "https://www.bankofcanada.ca/publications/mpr/"
+ },
+ {
+  "name": "Office of the Privacy Commissioner",
+  "url": "https://www.priv.gc.ca"
+ },
+ {
+  "name": "Pan-Canadian AI Strategy (2017, 2021 renewal)",
+  "url": "https://cifar.ca/ai/"
+ },
+ {
+  "name": "Federal Budget 2024",
+  "url": "https://www.budget.canada.ca/2024/home-accueil-en.html"
+ },
+ {
+  "name": "Constitution Act, 1867",
+  "url": "https://laws-lois.justice.gc.ca/eng/const/"
+ },
+ {
+  "name": "PIPEDA (federal)",
+  "url": "https://laws-lois.justice.gc.ca/eng/acts/p-8.6/"
+ },
+ {
+  "name": "Copyright Act of Canada",
+  "url": "https://laws-lois.justice.gc.ca/eng/acts/c-42/"
+ },
+ {
+  "name": "Online News Act",
+  "url": "https://laws-lois.justice.gc.ca/eng/acts/O-15.65/"
+ },
+ {
+  "name": "Canada Elections Act",
+  "url": "https://laws-lois.justice.gc.ca/eng/acts/E-2.01/"
+ },
+ {
+  "name": "Quebec Law 25",
+  "url": "https://www.legisquebec.gouv.qc.ca"
+ },
+ {
+  "name": "Quebec Act on intimate-image distribution (civil regime)",
+  "url": "https://www.legisquebec.gouv.qc.ca"
+ },
+ {
+  "name": "Ontario Enhancing Digital Security and Trust Act (EDSTA)",
+  "url": "https://www.ontario.ca/laws"
+ },
+ {
+  "name": "Ontario Responsible Use of AI Directive",
+  "url": "https://www.ontario.ca"
+ },
+ {
+  "name": "Ontario Working for Workers Act",
+  "url": "https://www.ontario.ca/laws"
+ },
+ {
+  "name": "Manitoba Bill 51",
+  "url": "https://www.gov.mb.ca/laws/"
+ },
+ {
+  "name": "Nova Scotia PIIDPA",
+  "url": "https://nslegislature.ca/legc/statutes/"
+ },
+ {
+  "name": "British Columbia FIPPA",
+  "url": "https://www.bclaws.gov.bc.ca"
+ },
+ {
+  "name": "British Columbia PIPA",
+  "url": "https://www.bclaws.gov.bc.ca"
+ },
+ {
+  "name": "Alberta PIPA",
+  "url": "https://kings-printer.alberta.ca"
+ },
+ {
+  "name": "Ontario Independent Electricity System Operator (IESO) data-centre projections",
+  "url": "https://www.ieso.ca"
+ },
+ {
+  "name": "Alberta Electric System Operator (AESO) large-load queue and interim cap",
+  "url": "https://www.aeso.ca"
+ },
+ {
+  "name": "BC Hydro competitive allocation framework",
+  "url": "https://www.bchydro.com"
+ },
+ {
+  "name": "Hydro-Québec large-data-centre tariff proposal",
+  "url": "https://www.hydroquebec.com"
+ },
+ {
+  "name": "Canada Energy Regulator provincial profiles",
+  "url": "https://www.cer-rec.gc.ca/en/data-analysis/"
+ },
+ {
+  "name": "Uptime Institute Global Data Center Survey 2024",
+  "url": "https://uptimeinstitute.com/resources/research-and-reports"
+ },
+ {
+  "name": "CUPE Senate Brief on Artificial Intelligence in Canadian Workplaces (March 2026)",
+  "url": "https://cupe.ca"
+ },
+ {
+  "name": "Writers' Union of Canada AI position",
+  "url": "https://writersunion.ca/advocacy/artificial-intelligence"
+ },
+ {
+  "name": "ACTRA AI Submission Explainer and IPA",
+  "url": "https://www.actra.ca"
+ },
+ {
+  "name": "Directors Guild of Canada testimony",
+  "url": "https://www.dgc.ca"
+ },
+ {
+  "name": "BC + AI \"AI for All Has To Mean All of Us\" (Krüg, June 5, 2026)",
+  "url": "https://www.bcandai.ca"
+ },
+ {
+  "name": "Canadian Civil Liberties Association",
+  "url": "https://ccla.org"
+ },
+ {
+  "name": "Centre for International Governance Innovation (CIGI) analyses",
+  "url": "https://www.cigionline.org"
+ },
+ {
+  "name": "Policy Options \"U.S. Proxy Lobbying Threatens Canada's Digital Sovereignty\"",
+  "url": "https://policyoptions.irpp.org"
+ },
+ {
+  "name": "Canada Pension Plan Investment Board (CPP Investments) disclosures",
+  "url": "https://www.cppinvestments.com"
+ },
+ {
+  "name": "PSP Investments disclosures (Cohere Series D lead)",
+  "url": "https://www.investpsp.com"
+ },
+ {
+  "name": "Quebec Commission d'accès à l'information",
+  "url": "https://www.cai.gouv.qc.ca"
+ },
+ {
+  "name": "First Nations Information Governance Centre",
+  "url": "https://fnigc.ca/ocap-training/"
+ },
+ {
+  "name": "Inuit Tapiriit Kanatami",
+  "url": "https://www.itk.ca/wp-content/uploads/2018/04/ITK_NISR-Report_English_low_res.pdf"
+ },
+ {
+  "name": "Global Indigenous Data Alliance",
+  "url": "https://www.gida-global.org/careprinciples"
+ },
+ {
+  "name": "Indigenous Protocol and AI Position Paper (2020)",
+  "url": "https://www.indigenous-ai.net"
+ },
+ {
+  "name": "Lewis, Whaanga & Yolgörmez, \"Abundant intelligences\" (AI & Society, 2024)",
+  "url": "https://link.springer.com/journal/146"
+ },
+ {
+  "name": "Abundant Intelligences research program",
+  "url": "https://abundant-intelligences.net"
+ },
+ {
+  "name": "New Frontiers of Research Fund Transformation grant",
+  "url": "https://www.sshrc-crsh.gc.ca/funding-financement/nfrf-fnfr/"
+ },
+ {
+  "name": "Acemoglu, \"The Simple Macroeconomics of AI\" (NBER 32487)",
+  "url": "https://www.nber.org/papers/w32487"
+ },
+ {
+  "name": "Acemoglu, Johnson, Autor, CEPR Policy Insight 123",
+  "url": "https://cepr.org"
+ },
+ {
+  "name": "Autor, \"Applying AI to Rebuild Middle Class Jobs\" (NBER 32140)",
+  "url": "https://www.nber.org/papers/w32140"
+ },
+ {
+  "name": "Autor and Thompson, \"Expertise\" (NBER 33941)",
+  "url": "https://www.nber.org/papers/w33941"
+ },
+ {
+  "name": "Buolamwini and Gebru, \"Gender Shades\"",
+  "url": "https://proceedings.mlr.press/v81/buolamwini18a.html"
+ },
+ {
+  "name": "Canadian Election Deepfakes 2025 (arXiv)",
+  "url": "https://arxiv.org/abs/2512.13915"
+ },
+ {
+  "name": "Chouldechova, \"Fair prediction with disparate impact\" (FAccT 2017)",
+  "url": "https://proceedings.mlr.press/v81/"
+ },
+ {
+  "name": "Craig, ISED submission (SSRN)",
+  "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4718941"
+ },
+ {
+  "name": "Geist, ISED submission and analysis",
+  "url": "https://www.michaelgeist.ca"
+ },
+ {
+  "name": "Goodfellow, Bengio, Courville, Deep Learning",
+  "url": "https://www.deeplearningbook.org"
+ },
+ {
+  "name": "IEA World Energy Outlook 2024",
+  "url": "https://www.iea.org/reports/world-energy-outlook-2024"
+ },
+ {
+  "name": "Kleinberg, Mullainathan, Raghavan (ITCS 2017)",
+  "url": "https://arxiv.org/abs/1609.05807"
+ },
+ {
+  "name": "Li et al., \"Making AI Less 'Thirsty'\"",
+  "url": "https://arxiv.org/abs/2304.03271"
+ },
+ {
+  "name": "Luccioni, Strubell, Crawford, \"Jevons' Paradox\" (FAccT 2025)",
+  "url": "https://arxiv.org/abs/2501.16548"
+ },
+ {
+  "name": "NIST Face Recognition Vendor Test (FRVT)",
+  "url": "https://www.nist.gov/programs-projects/face-recognition-vendor-test-frvt"
+ },
+ {
+  "name": "Obermeyer et al., \"Dissecting racial bias\" (Science 2019)",
+  "url": "https://www.science.org/doi/10.1126/science.aax2342"
+ },
+ {
+  "name": "Owen et al., \"Energy transition minerals\" (Nature Sustainability 2023)",
+  "url": "https://www.nature.com/articles/s41893-022-00994-6"
+ },
+ {
+  "name": "Shumailov et al., \"AI models collapse\" (Nature 2024)",
+  "url": "https://www.nature.com/articles/s41586-024-07566-y"
+ },
+ {
+  "name": "Stanford CRFM Foundation Model Transparency Index",
+  "url": "https://crfm.stanford.edu/fmti"
+ },
+ {
+  "name": "Tomlinson et al., \"Carbon emissions of writing and illustrating\" (Scientific Reports 2024)",
+  "url": "https://www.nature.com/articles/s41598-024-54271-x"
+ },
+ {
+  "name": "UN Global E-waste Monitor 2024",
+  "url": "https://globalewaste.org"
+ },
+ {
+  "name": "Vaswani et al., \"Attention Is All You Need\"",
+  "url": "https://arxiv.org/abs/1706.03762"
+ },
+ {
+  "name": "Anthropic",
+  "url": "https://www.anthropic.com"
+ },
+ {
+  "name": "ASML",
+  "url": "https://www.asml.com"
+ },
+ {
+  "name": "Cohere",
+  "url": "https://cohere.com"
+ },
+ {
+  "name": "Cologix",
+  "url": "https://www.cologix.com"
+ },
+ {
+  "name": "eStruxture",
+  "url": "https://www.estruxture.com"
+ },
+ {
+  "name": "Google 2024 Environmental Report",
+  "url": "https://sustainability.google/reports/"
+ },
+ {
+  "name": "Google Cloud Blog (Vahdat & Dean, August 21, 2025)",
+  "url": "https://cloud.google.com/blog/products/infrastructure/measuring-the-environmental-impact-of-ai-inference"
+ },
+ {
+  "name": "Meta Llama documentation",
+  "url": "https://ai.meta.com/llama/"
+ },
+ {
+  "name": "Microsoft 2024 Environmental Sustainability Report",
+  "url": "https://www.microsoft.com/en-us/sustainability/"
+ },
+ {
+  "name": "NVIDIA technical documentation",
+  "url": "https://www.nvidia.com"
+ },
+ {
+  "name": "Public First, AWS Canada Impact Report",
+  "url": "https://www.publicfirst.co"
+ },
+ {
+  "name": "QScale",
+  "url": "https://qscale.com"
+ },
+ {
+  "name": "TSMC",
+  "url": "https://www.tsmc.com"
+ },
+ {
+  "name": "Uptime Institute",
+  "url": "https://uptimeinstitute.com"
+ },
+ {
+  "name": "Vantage Data Centers",
+  "url": "https://www.vantage-dc.com"
+ },
+ {
+  "name": "European Union AI Act (Regulation 2024/1689)",
+  "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:L_202401689"
+ },
+ {
+  "name": "EU recast Energy Efficiency Directive 2023/1791 + Delegated Regulation 2024/1364 (data centres)",
+  "url": "https://eur-lex.europa.eu"
+ },
+ {
+  "name": "EU GDPR",
+  "url": "https://eur-lex.europa.eu/eli/reg/2016/679/oj"
+ },
+ {
+  "name": "EU Digital Services Act",
+  "url": "https://eur-lex.europa.eu"
+ },
+ {
+  "name": "UK Online Safety Act (2023)",
+  "url": "https://www.legislation.gov.uk/ukpga/2023/50/contents"
+ },
+ {
+  "name": "Australia eSafety Commissioner",
+  "url": "https://www.esafety.gov.au"
+ },
+ {
+  "name": "US TAKE IT DOWN Act",
+  "url": "https://www.congress.gov"
+ },
+ {
+  "name": "US CHIPS and Science Act",
+  "url": "https://www.commerce.gov/chipsact"
+ },
+ {
+  "name": "Council of Europe Framework Convention on AI (May 2024)",
+  "url": "https://www.coe.int/en/web/artificial-intelligence/the-framework-convention-on-artificial-intelligence"
+ },
+ {
+  "name": "Beijing Treaty on Audiovisual Performances (WIPO, 2012)",
+  "url": "https://www.wipo.int/treaties/en/ip/beijing/"
+ },
+ {
+  "name": "OECD AI Principles",
+  "url": "https://oecd.ai/en/ai-principles"
+ },
+ {
+  "name": "G7 Hiroshima AI Process / International Code of Conduct",
+  "url": "https://www.mofa.go.jp/ecm/ec/page5e_000076.html"
+ },
+ {
+  "name": "Japan AI Strategy and AI Promotion Act",
+  "url": "https://www.cas.go.jp"
+ },
+ {
+  "name": "Singapore PDPA / AI Governance Framework",
+  "url": "https://www.pdpc.gov.sg"
+ },
+ {
+  "name": "Supreme Court of Canada copyright pentalogy (2012)",
+  "url": "https://scc-csc.lexum.com"
+ },
+ {
+  "name": "Ewert v. Canada (2018 SCC 30)",
+  "url": "https://scc-csc.lexum.com"
+ },
+ {
+  "name": "BetaKit launch coverage",
+  "url": "https://betakit.com"
+ },
+ {
+  "name": "CBC News leak coverage (Lopez Steven & McKenna, June 1, 2026)",
+  "url": "https://www.cbc.ca/news"
+ },
+ {
+  "name": "Canadian Digital Media Research Network",
+  "url": "https://cdmrn.ca"
+ },
+ {
+  "name": "Digital Forensic Research Lab (DFRLab) 2025 Canadian election analysis",
+  "url": "https://dfrlab.org"
+ },
+ {
+  "name": "Digital Journal",
+  "url": "https://www.digitaljournal.com"
+ },
+ {
+  "name": "Engadget AI for All coverage",
+  "url": "https://www.engadget.com"
+ },
+ {
+  "name": "Globe and Mail",
+  "url": "https://www.theglobeandmail.com"
+ },
+ {
+  "name": "Stanford Internet Observatory LAION CSAM finding (December 2023)",
+  "url": "https://cyber.fsi.stanford.edu"
+ },
+ {
+  "name": "TIME magazine OpenAI/Sama Kenya investigation (January 2023)",
+  "url": "https://time.com/6247678/openai-chatgpt-kenya-workers/"
+ },
+ {
+  "name": "BetaKit",
+  "url": "https://betakit.com/cohere-series-d-tops-out-at-500-million-raised-at-5-5-billion-valuation/"
+ },
+ {
+  "name": "Crunchbase News",
+  "url": "https://news.crunchbase.com/venture/ai-cohere-valuation-rises-psp-cisco-fijitsu/"
+ },
+ {
+  "name": "PSP Investments",
+  "url": "https://www.investpsp.com/en/news/fresh-funding-enables-cohere-to-accelerate-its-global-expansion-and-build-the-next-generation-of-secure-enterprise-and-sovereign-ai-solutions/"
+ },
+ {
+  "name": "Canada.ca",
+  "url": "https://www.canada.ca/en/global-affairs/news/2025/02/canada-signs-the-council-of-europe-framework-convention-on-artificial-intelligence-and-human-rights-democracy-and-the-rule-of-law.html"
+ },
+ {
+  "name": "CoE",
+  "url": "https://www.coe.int/en/web/portal/-/canada-and-japan-sign-council-of-europe-s-first-ever-global-treaty-on-ai"
+ },
+ {
+  "name": "Canada.ca Dec 2023",
+  "url": "https://www.canada.ca/en/innovation-science-economic-development/news/2023/12/more-organizations-sign-on-to-canadas-voluntary-ai-code-of-conduct-including-cgi-and-ibm.html"
+ },
+ {
+  "name": "Canada.ca May 2024",
+  "url": "https://www.canada.ca/en/innovation-science-economic-development/news/2024/05/eight-organizations-to-join-canadas-voluntary-ai-code-of-conduct.html"
+ },
+ {
+  "name": "ISED Code page",
+  "url": "https://ised-isde.canada.ca/site/ised/en/voluntary-code-conduct-responsible-development-and-management-advanced-generative-ai-systems"
+ },
+ {
+  "name": "Plesner",
+  "url": "https://plesner.com/en/news/personal-identity-meets-copyright-denmark-moves-regulate-deepfakes-copyright-act"
+ },
+ {
+  "name": "WEF",
+  "url": "https://www.weforum.org/stories/2025/07/deepfake-legislation-denmark-digital-id/"
+ },
+ {
+  "name": "WIPO",
+  "url": "https://www.wipo.int/en/web/beijing-treaty"
+ },
+ {
+  "name": "Paper",
+  "url": "https://www.nature.com/articles/s41893-022-00994-6"
+ },
+ {
+  "name": "announcement",
+  "url": "https://vectorinstitute.ai/vector-institute-announces-the-appointment-of-glenda-crisp-as-president-and-ceo/"
+ }
+]

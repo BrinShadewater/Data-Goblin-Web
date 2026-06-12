@@ -27,7 +27,7 @@ export function MapPage() {
   const red = c(...P.red);
 
   return (
-    <div style={{ flex: 1, overflowY: "auto", background: bg, padding: "32px 40px 64px", transition: "background 0.3s" }}>
+    <div style={{ flex: 1, overflowY: "auto", background: bg, padding: "32px clamp(16px, 5vw, 40px) 64px", transition: "background 0.3s" }}>
       <div style={{ maxWidth: "960px", margin: "0 auto" }}>
         <div style={{ marginBottom: "26px" }}>
           <div style={{ fontFamily: MONO, fontSize: "9px", fontWeight: 800, letterSpacing: "0.28em", textTransform: "uppercase", color: red, marginBottom: "8px" }}>
@@ -36,7 +36,7 @@ export function MapPage() {
           <h1 style={{ fontFamily: DISPLAY, fontSize: "36px", fontWeight: 900, color: navy, margin: "0 0 10px", lineHeight: 1.05, textTransform: "uppercase" }}>
             The Map
           </h1>
-          <p style={{ fontFamily: BODY, fontSize: "14px", color: body, lineHeight: 1.65, margin: 0, maxWidth: "620px" }}>
+          <p style={{ fontFamily: BODY, fontSize: "15.5px", color: body, lineHeight: 1.65, margin: 0, maxWidth: "620px" }}>
             The guide&rsquo;s nineteen chapters are organized into five regions. Pick a region, pick a chapter,
             and the field guide opens to that page. <em style={{ color: muted }}>(Region crests coming.)</em>
           </p>
@@ -52,7 +52,7 @@ export function MapPage() {
                 {part.part}
               </div>
               <h2 style={{ fontFamily: DISPLAY, fontSize: "21px", fontWeight: 800, color: navy, margin: "0 0 8px" }}>{part.region}</h2>
-              <p style={{ fontFamily: BODY, fontSize: "12px", lineHeight: 1.6, color: muted, margin: "0 0 12px" }}>
+              <p style={{ fontFamily: BODY, fontSize: "13.5px", lineHeight: 1.6, color: muted, margin: "0 0 12px" }}>
                 {REGION_NOTES[part.region] ?? ""}
               </p>
               <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
@@ -60,12 +60,12 @@ export function MapPage() {
                   <button
                     key={ch.number}
                     onClick={() => navigate(`/chapter/${ch.number}`)}
-                    style={{ display: "flex", gap: "8px", alignItems: "baseline", background: "none", border: "none", padding: "4px 0", cursor: "pointer", textAlign: "left" }}
+                    style={{ display: "flex", gap: "8px", alignItems: "baseline", background: "none", border: "none", padding: "7px 0", cursor: "pointer", textAlign: "left", width: "100%" }}
                     onMouseEnter={(e) => ((e.currentTarget.children[1] as HTMLElement).style.textDecoration = "underline")}
                     onMouseLeave={(e) => ((e.currentTarget.children[1] as HTMLElement).style.textDecoration = "none")}
                   >
                     <span style={{ fontFamily: MONO, fontSize: "9.5px", color: muted, minWidth: "20px", flexShrink: 0 }}>{ch.number}.</span>
-                    <span style={{ fontFamily: UI, fontSize: "12px", fontWeight: 600, color: green, lineHeight: 1.4 }}>
+                    <span style={{ fontFamily: UI, fontSize: "13.5px", fontWeight: 600, color: green, lineHeight: 1.4 }}>
                       {ch.title.split(" — ")[0]}
                     </span>
                   </button>

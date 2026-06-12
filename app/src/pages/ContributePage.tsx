@@ -50,7 +50,7 @@ export function ContributePage() {
   };
 
   return (
-    <div style={{ flex: 1, overflowY: "auto", background: bg, padding: "32px 40px 64px", transition: "background 0.3s" }}>
+    <div style={{ flex: 1, overflowY: "auto", background: bg, padding: "32px clamp(16px, 5vw, 40px) 64px", transition: "background 0.3s" }}>
       <div style={{ maxWidth: "820px", margin: "0 auto" }}>
         <div style={{ marginBottom: "28px" }}>
           <div style={{ fontFamily: MONO, fontSize: "9px", fontWeight: 800, letterSpacing: "0.28em", textTransform: "uppercase", color: red, marginBottom: "8px" }}>
@@ -59,7 +59,7 @@ export function ContributePage() {
           <h1 style={{ fontFamily: DISPLAY, fontSize: "36px", fontWeight: 900, color: navy, margin: "0 0 12px", lineHeight: 1.05, textTransform: "uppercase" }}>
             Contribute
           </h1>
-          <p style={{ fontFamily: BODY, fontSize: "14px", color: body, lineHeight: 1.7, margin: 0 }}>
+          <p style={{ fontFamily: BODY, fontSize: "15.5px", color: body, lineHeight: 1.7, margin: 0 }}>
             This guide is a living document. If something is wrong, outdated, or missing, tell us. Every factual
             correction makes the hoard more useful to everyone.
           </p>
@@ -89,7 +89,7 @@ export function ContributePage() {
             </button>
           </div>
         ) : (
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "24px", alignItems: "start", marginBottom: "32px" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(290px, 1fr))", gap: "24px", alignItems: "start", marginBottom: "32px" }}>
             {/* Left: form */}
             <form onSubmit={handleSubmit}>
               <div style={{ marginBottom: "18px" }}>
@@ -148,7 +148,7 @@ export function ContributePage() {
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   rows={6}
-                  style={{ width: "100%", background: inputBg, border: `1px solid ${border}`, borderRadius: RADIUS, padding: "8px 12px", fontFamily: BODY, fontSize: "13px", color: body, resize: "vertical", outline: "none", lineHeight: 1.6 }}
+                  style={{ width: "100%", background: inputBg, border: `1px solid ${border}`, borderRadius: RADIUS, padding: "10px 12px", fontFamily: BODY, fontSize: "15px", color: body, resize: "vertical", outline: "none", lineHeight: 1.6 }}
                 />
               </div>
 
@@ -172,7 +172,7 @@ export function ContributePage() {
                 {GUIDELINES.map((g, i) => (
                   <div key={i} style={{ background: cardBg, border: `1px solid ${border}`, borderRadius: RADIUS, padding: "12px 14px", transition: "background 0.3s" }}>
                     <div style={{ fontFamily: UI, fontSize: "11px", fontWeight: 700, color: navy, marginBottom: "4px" }}>{g.title}</div>
-                    <p style={{ fontFamily: BODY, fontSize: "11.5px", color: body, lineHeight: 1.6, margin: 0 }}>{g.body}</p>
+                    <p style={{ fontFamily: BODY, fontSize: "13px", color: body, lineHeight: 1.6, margin: 0 }}>{g.body}</p>
                   </div>
                 ))}
               </div>
@@ -199,13 +199,13 @@ export function ContributePage() {
             <FileCode2 size={15} color={green} />
             <h2 style={{ fontFamily: DISPLAY, fontSize: "18px", fontWeight: 800, color: navy, margin: 0 }}>How revisions work</h2>
           </div>
-          <p style={{ fontFamily: BODY, fontSize: "13px", color: body, lineHeight: 1.65, margin: "0 0 14px" }}>
+          <p style={{ fontFamily: BODY, fontSize: "14.5px", color: body, lineHeight: 1.65, margin: "0 0 14px" }}>
             The website never edits content directly — everything you read here is generated from the manuscript.
             When a correction is accepted, the revision flow is:
           </p>
           <ol style={{ margin: 0, paddingLeft: "20px", display: "flex", flexDirection: "column", gap: "10px" }}>
             {REVISION_STEPS.map((s, i) => (
-              <li key={i} style={{ fontFamily: BODY, fontSize: "12.5px", color: body, lineHeight: 1.6 }}>
+              <li key={i} style={{ fontFamily: BODY, fontSize: "14px", color: body, lineHeight: 1.6 }}>
                 {s.text}
                 {s.cmd && (
                   <div style={{ display: "flex", alignItems: "center", gap: "7px", marginTop: "5px", background: c("#f0ece0", "#0d1118"), border: `1px solid ${border}`, borderRadius: RADIUS, padding: "6px 10px" }}>

@@ -1,1 +1,1 @@
-===== 2026-06-11  0:57:01.70 
+===== 2026-06-11 17:56:54.36 — commit-and-push.bat "Art pass: nav icons, chapter plates, icon legend, favicon, asset renames" 

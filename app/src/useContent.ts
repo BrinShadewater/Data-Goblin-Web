@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import type { Book, Chapter, GlossaryEntry, Receipt, Traps } from "./types";
+import type { ArtMap, Book, Chapter, GlossaryEntry, LinkEntry, Receipt, Traps } from "./types";
 
 // Runtime JSON loader with a module-level cache so each file is fetched once
 // per session. Content lives in public/content/ and is produced by the
@@ -64,3 +64,8 @@ export const useChapter = (num: number | null) =>
 export const useTraps = () => useJson<Traps>("traps.json");
 export const useReceipts = () => useJson<Receipt[]>("receipts.json");
 export const useGlossary = () => useJson<GlossaryEntry[]>("glossary.json");
+export const useLinks = () => useJson<LinkEntry[]>("links.json");
+export const useArtMap = () => useJson<ArtMap>("art-map.json");
+
+/** URL of an art asset; `rel` is an art-map path like "small/water.png". */
+export const artUrl = (rel: string) => `${import.meta.env.BASE_URL}art/${rel}`;
