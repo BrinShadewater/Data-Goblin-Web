@@ -11,6 +11,8 @@ const CONTRIBUTION_TYPES = [
   { id: "other", icon: <Mail size={14} />, label: "General Feedback", desc: "Anything else — tone, clarity, framing, accessibility." },
 ];
 
+const CONTRIBUTION_EMAIL = "Brinshadewater@gmail.com";
+
 const GUIDELINES = [
   { title: "Be specific", body: 'Name the chapter and section. "Chapter 8, the section on Jevons\' paradox" is useful. "Something seemed wrong" is not.' },
   { title: "Link your source", body: "If you're correcting a factual error, provide the source that contradicts the guide. Corrections without evidence don't get receipts." },
@@ -47,6 +49,16 @@ export function ContributePage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    const selectedType = CONTRIBUTION_TYPES.find((ct) => ct.id === type);
+    const subject = `Data Goblin contribution: ${selectedType?.label ?? "General Feedback"}`;
+    const body = [
+      `Type: ${selectedType?.label ?? type}`,
+      `Chapter / Section: ${chapter.trim() || "(not specified)"}`,
+      "",
+      "Report:",
+      message.trim(),
+    ].join("\n");
+    window.location.href = `mailto:${CONTRIBUTION_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     setSubmitted(true);
   };
 
@@ -68,12 +80,12 @@ export function ContributePage() {
               </div>
               <div style={{ fontFamily: DISPLAY, fontSize: "24px", fontWeight: 900, color: navy, marginBottom: "12px" }}>Thank you, goblin.</div>
               <p style={{ fontFamily: BODY, fontSize: "14px", color: body, lineHeight: 1.7, margin: "0 0 12px" }}>
-                Your report has been logged. We review contributions manually — if your correction is valid and
-                sourced, it will be incorporated in the next revision of the relevant chapter.
+                Your email app should now have a draft addressed to {CONTRIBUTION_EMAIL}. Send it from there so
+                the report reaches the guide maintainer.
               </p>
               <p style={{ fontFamily: BODY, fontSize: "13px", color: muted, lineHeight: 1.65, margin: 0 }}>
-                We do not send confirmation emails. If you see the change reflected in a future version of the
-                guide, that&rsquo;s your receipt.
+                Contributions are reviewed manually. If a correction is valid and sourced, it can be incorporated
+                in a future revision of the relevant chapter.
               </p>
             </div>
             <button
