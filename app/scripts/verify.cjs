@@ -44,3 +44,4 @@ if (process.platform === "win32") {
   run("Production build", "npm", ["run", "build"]);
 }
 run("Built site smoke", process.execPath, [path.join(appDir, "scripts", "check-built-site-smoke.cjs")]);
+run("Browser smoke", process.execPath, [path.join(appDir, "scripts", "check-browser-smoke.cjs")]);

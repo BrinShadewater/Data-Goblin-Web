@@ -1,6 +1,7 @@
 node_modules/
 dist/
 app/scripts/.build/
+app/output/
 *.log
 *.tsbuildinfo
 push-log.txt
