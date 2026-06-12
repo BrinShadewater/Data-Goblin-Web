@@ -6,11 +6,11 @@ import { P } from "./theme";
 import { TopNav } from "./components/TopNav";
 import { MobileDrawer } from "./components/MobileDrawer";
 import { CookieNotice } from "./components/CookieNotice";
-import { FieldGuidePage } from "./pages/FieldGuidePage";
 import goblinFavicon from "./assets/goblin-head-icon.webp";
 
-// Route-level code splitting: the reader (FieldGuidePage) stays in the main
-// bundle; the secondary pages and the search overlay load on demand.
+// Route-level code splitting: page chunks load on demand, with search mounted
+// only after the user types a real query.
+const FieldGuidePage = lazy(() => import("./pages/FieldGuidePage").then((m) => ({ default: m.FieldGuidePage })));
 const ReceiptsPage = lazy(() => import("./pages/ReceiptsPage").then((m) => ({ default: m.ReceiptsPage })));
 const LootPage = lazy(() => import("./pages/LootPage").then((m) => ({ default: m.LootPage })));
 const MapPage = lazy(() => import("./pages/MapPage").then((m) => ({ default: m.MapPage })));
