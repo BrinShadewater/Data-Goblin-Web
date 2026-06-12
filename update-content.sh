@@ -16,14 +16,17 @@ if [ -d "$CONTENT_DIR" ]; then
   (cd "$CONTENT_DIR" && find . -name '*.json' -type f -print0 | xargs -0 md5sum | sort) > "$SNAPSHOT" || true
 fi
 
-echo "[1/3] Running pipeline: site/pipeline/build_content.py"
+echo "[1/4] Running pipeline: site/pipeline/build_content.py"
 python3 "$SITE_DIR/pipeline/build_content.py"
 
-echo "[2/3] Copying site/content → site/app/public/content"
+echo "[2/4] Copying site/content → site/app/public/content"
 mkdir -p "$APP_CONTENT_DIR"
 cp -r "$CONTENT_DIR/." "$APP_CONTENT_DIR/"
 
-echo "[3/3] Changed files:"
+echo "[3/4] Verifying generated content sync"
+python3 "$SITE_DIR/pipeline/check_content_sync.py" "$CONTENT_DIR" "$APP_CONTENT_DIR"
+
+echo "[4/4] Changed files:"
 NEW_SNAPSHOT="$(mktemp)"
 (cd "$CONTENT_DIR" && find . -name '*.json' -type f -print0 | xargs -0 md5sum | sort) > "$NEW_SNAPSHOT"
 CHANGES=$(diff "$SNAPSHOT" "$NEW_SNAPSHOT" | grep '^[<>]' | awk '{print $1, $3}' | sed 's/^</  removed\/old:/; s/^>/  updated:/' | sort -u | grep 'updated:' || true)
