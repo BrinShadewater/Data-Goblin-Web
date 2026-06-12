@@ -6,7 +6,7 @@ import { useReader } from "../reader";
 import { BODY, DISPLAY, MONO, P, RADIUS, UI } from "../theme";
 import { GoblinIcon, NavIcon } from "./GoblinMascot";
 import { TocList } from "./LeftSidebar";
-import { LINKS } from "./TopNav";
+import { isNavActive, NAV_ITEMS } from "../navigation";
 import { removeBookmark, saveLastLocation, useBookmarks } from "../bookmarks";
 import { savePanel } from "../pagination";
 import { useBook } from "../useContent";
@@ -170,13 +170,8 @@ export function MobileDrawer({ open, onClose }: { open: boolean; onClose: () => 
         {/* Scrollable body */}
         <div style={{ flex: 1, overflowY: "auto", WebkitOverflowScrolling: "touch", paddingBottom: "24px" }}>
           {/* Nav links */}
-          {LINKS.map((l) => {
-            const active =
-              l.to === "/"
-                ? location.pathname === "/"
-                : l.to === "/guide"
-                  ? location.pathname === "/guide" || location.pathname.startsWith("/chapter/")
-                  : location.pathname === l.to;
+          {NAV_ITEMS.map((l) => {
+            const active = isNavActive(location.pathname, l);
             return (
               <button
                 key={l.to}

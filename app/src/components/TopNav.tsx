@@ -3,17 +3,8 @@ import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useTheme } from "../ThemeContext";
 import { useReader } from "../reader";
 import { DISPLAY, MONO, P, UI } from "../theme";
+import { isNavActive, NAV_ITEMS } from "../navigation";
 import { GoblinIcon, NavIcon } from "./GoblinMascot";
-
-export const LINKS: { to: string; label: string; icon: string }[] = [
-  { to: "/", label: "Home", icon: "head-nav" },
-  { to: "/guide", label: "Field Guide", icon: "guidebook-nav" },
-  { to: "/map", label: "Map", icon: "map-nav" },
-  { to: "/loot", label: "Loot (Glossary)", icon: "chest-nav" },
-  { to: "/receipts", label: "Receipts", icon: "data-nav" },
-  { to: "/about", label: "About", icon: "contact-nav" },
-  { to: "/contribute", label: "Contribute", icon: "community-nav" },
-];
 
 export function TopNav({
   searchQuery,
@@ -128,13 +119,13 @@ export function TopNav({
       {logo}
 
       <nav style={{ display: "flex", alignItems: "center", gap: "4px", flex: 1 }}>
-        {LINKS.map((l) => (
+        {NAV_ITEMS.map((l) => (
           <NavLink
             key={l.to}
             to={l.to}
             end={l.to === "/"}
             style={({ isActive }) => {
-              const active = isActive || (l.to === "/guide" && location.pathname.startsWith("/chapter/"));
+              const active = isActive || isNavActive(location.pathname, l);
               return ({
               fontFamily: UI,
               fontSize: "13.5px",
