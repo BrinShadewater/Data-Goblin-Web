@@ -2,7 +2,7 @@ import { ReactNode, useState } from "react";
 import { ArrowRight, Check, CheckSquare, ChevronDown, ChevronUp, Copy, Square, X } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from "../ThemeContext";
-import { BODY, MONO, P, RADIUS, UI } from "../theme";
+import { BODY, MONO, P, RADIUS, TOKENS, UI } from "../theme";
 import { NavIcon } from "./GoblinMascot";
 import { classifySource, computeSuspicion, TAG_COLORS } from "../sources";
 import { matchSource } from "../links";
@@ -55,7 +55,7 @@ function Card({
   const header = (
     <>
       {icon}
-      <span style={{ fontFamily: MONO, fontSize: "9.5px", fontWeight: 900, letterSpacing: "0.18em", textTransform: "uppercase", color: c(...P.green), flex: 1, textAlign: "left" }}>
+      <span style={{ fontFamily: MONO, fontSize: "9.5px", fontWeight: TOKENS.weight.toolLabel, letterSpacing: "0.18em", textTransform: "uppercase", color: c(...P.green), flex: 1, textAlign: "left" }}>
         {title}
       </span>
       {storageKey &&
@@ -111,7 +111,7 @@ export function BookmarksCard() {
   const border = c(...P.borderSoft);
 
   return (
-    <Card icon={<NavIcon name="journal-nav" size={50} />} title="Bookmarks" storageKey="bookmarks">
+    <Card icon={<NavIcon name="journal-nav" size={TOKENS.icon.sidebarTool} />} title="Bookmarks" storageKey="bookmarks">
       {bookmarks.length === 0 ? (
         <p style={{ fontFamily: UI, fontSize: "12px", color: muted, margin: 0, lineHeight: 1.5 }}>
           No bookmarks yet. Tap the 🔖 in the page bar to save your place.
@@ -179,7 +179,7 @@ export function GoblinTools({ chapter, showBookmarks = false }: { chapter: Chapt
   return (
     <>
       {/* Goblin Notes */}
-      <Card icon={<NavIcon name="note-nav" size={50} />} title="Goblin Notes" storageKey="notes">
+      <Card icon={<NavIcon name="note-nav" size={TOKENS.icon.sidebarTool} />} title="Goblin Notes" storageKey="notes">
         <textarea
           value={note}
           onChange={(e) => setNote(e.target.value)}
@@ -237,14 +237,14 @@ export function GoblinTools({ chapter, showBookmarks = false }: { chapter: Chapt
       {/* Suspicion Meter — only meaningful when the document cites sources
           (the front matter and appendix have none, so it is hidden there). */}
       {chapter.sources.length > 0 && (
-      <Card icon={<NavIcon name="insight-nav" size={50} />} title="Suspicion Meter">
+      <Card icon={<NavIcon name="insight-nav" size={TOKENS.icon.sidebarTool} />} title="Suspicion Meter">
         <div
           title={`Computed, not random: ½·min(1, openVerifyFlags/4) + ½·(corporate-source share). This chapter: ${suspicion.openFlags} open verification flag${suspicion.openFlags === 1 ? "" : "s"}; ${Math.round(suspicion.corporateShare * 100)}% of ${suspicion.totalSources} sources are corporate self-disclosure.`}
         >
           <div style={{ height: "10px", background: c("#ded6c2", "#1d2230"), borderRadius: "5px", overflow: "hidden", border: `1px solid ${border}` }}>
             <div style={{ width: `${pct}%`, height: "100%", background: meterColor, transition: "width 0.4s" }} />
           </div>
-          <div style={{ fontFamily: UI, fontSize: "12.5px", fontWeight: 900, color: meterColor, margin: "7px 0 4px" }}>
+          <div style={{ fontFamily: UI, fontSize: "12.5px", fontWeight: TOKENS.weight.toolLabel, color: meterColor, margin: "7px 0 4px" }}>
             {suspicion.label} ({pct}%)
           </div>
         </div>
@@ -257,7 +257,7 @@ export function GoblinTools({ chapter, showBookmarks = false }: { chapter: Chapt
 
       {/* Quest Items — hidden when the document has no recap (front matter, appendix). */}
       {chapter.recap.length > 0 && (
-      <Card icon={<NavIcon name="key-takeaways-nav" size={50} />} title="Quest Items" storageKey="quests" defaultOpen>
+      <Card icon={<NavIcon name="key-takeaways-nav" size={TOKENS.icon.sidebarTool} />} title="Quest Items" storageKey="quests" defaultOpen>
         <p style={{ fontFamily: UI, fontSize: "11px", color: muted, margin: "0 0 8px", lineHeight: 1.45 }}>
           What you should carry out of this chapter. Check items off as you collect them.
         </p>

@@ -2,7 +2,7 @@ import { Menu, Moon, Sun } from "lucide-react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useTheme } from "../ThemeContext";
 import { useReader } from "../reader";
-import { DISPLAY, MONO, P, UI } from "../theme";
+import { DISPLAY, MONO, P, TOKENS, UI } from "../theme";
 import { isNavActive, NAV_ITEMS } from "../navigation";
 import { GoblinIcon, NavIcon } from "./GoblinMascot";
 
@@ -32,7 +32,7 @@ export function TopNav({
       style={{ display: "flex", alignItems: "center", gap: "11px", background: "none", border: "none", cursor: "pointer", padding: 0, minWidth: 0 }}
       aria-label="Data Goblin home"
     >
-      <GoblinIcon size={compact ? 44 : 62} />
+      <GoblinIcon size={compact ? TOKENS.icon.headerLogoCompact : TOKENS.icon.headerLogoDesktop} />
       <div style={{ textAlign: "left", minWidth: 0 }}>
         <div style={{ fontFamily: DISPLAY, fontStyle: "italic", fontWeight: 800, fontSize: compact ? "21px" : "26px", color: ink, lineHeight: 0.95 }}>
           DATA GOBLIN
@@ -143,7 +143,7 @@ export function TopNav({
             });
             }}
           >
-            <NavIcon name={l.icon} size={48} />
+            <NavIcon name={l.icon} size={TOKENS.icon.headerNav} />
             {l.label}
           </NavLink>
         ))}
@@ -160,7 +160,7 @@ export function TopNav({
           padding: "7px 11px",
         }}
       >
-        <NavIcon name="search-nav" size={45} />
+        <NavIcon name="search-nav" size={TOKENS.icon.headerSearch} />
         <input
           type="text"
           placeholder="Search the guide…"

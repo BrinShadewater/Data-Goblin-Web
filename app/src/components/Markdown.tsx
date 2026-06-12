@@ -3,7 +3,7 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { useTheme } from "../ThemeContext";
 import { useReader } from "../reader";
-import { DISPLAY, MONO, P, RADIUS, UI } from "../theme";
+import { DISPLAY, MONO, P, RADIUS, TOKENS, UI } from "../theme";
 import { NavIcon } from "./GoblinMascot";
 import { AUTOLINK_TITLE } from "../links";
 import { artUrl } from "../useContent";
@@ -47,7 +47,7 @@ export function GoblinCheckCard({ children }: { children: ReactNode }) {
       }}
     >
       <div style={{ flexShrink: 0, marginTop: "2px" }}>
-        <NavIcon name="check-nav" size={77} />
+        <NavIcon name="check-nav" size={TOKENS.icon.calloutCheck} />
       </div>
       <div style={{ minWidth: 0 }}>
         <div
@@ -108,7 +108,7 @@ export function RecapBox({ children }: { children: ReactNode }) {
           marginBottom: "8px",
         }}
       >
-        <NavIcon name="chapter-recap-nav" size={36} />
+        <NavIcon name="chapter-recap-nav" size={TOKENS.icon.calloutRecap} />
         Chapter Recap
       </div>
       <div style={{ fontFamily: t.bodyFont, fontSize: `${t.callout}px`, lineHeight: t.bodyLh, letterSpacing: t.letterSpacing, wordSpacing: t.wordSpacing }}>

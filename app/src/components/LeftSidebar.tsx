@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useTheme } from "../ThemeContext";
-import { MONO, P, UI } from "../theme";
+import { MONO, P, TOKENS, UI } from "../theme";
 import { NavIcon } from "./GoblinMascot";
 import { savePanel } from "../pagination";
 import type { Book } from "../types";
@@ -217,7 +217,7 @@ export function LeftSidebar({ book, activeChapter }: { book: Book | null; active
 
       <div style={{ borderTop: `1px solid ${border}`, padding: "14px 18px", background: footerBg, transition: "background 0.3s" }}>
         <div style={{ display: "flex", alignItems: "center", gap: "6px", marginBottom: "5px" }}>
-          <NavIcon name="trailmarker-nav" size={45} />
+          <NavIcon name="trailmarker-nav" size={TOKENS.icon.tocStart} />
           <div style={{ fontFamily: MONO, fontSize: "9.5px", fontWeight: 800, letterSpacing: "0.18em", textTransform: "uppercase", color: green }}>
             Start Here
           </div>
@@ -238,7 +238,7 @@ export function LeftSidebar({ book, activeChapter }: { book: Book | null; active
           <span style={{ fontFamily: MONO, fontSize: "9px", color: partLabel, letterSpacing: "0.1em" }}>
             {book ? `as of ${book.asOf}` : ""}
           </span>
-          <NavIcon name="canadian-icon" size={131} alt="Data Goblin — a field guide to AI, data and power in Canada" />
+          <NavIcon name="canadian-icon" size={TOKENS.icon.tocCanadian} alt="Data Goblin — a field guide to AI, data and power in Canada" />
         </div>
       </div>
     </aside>

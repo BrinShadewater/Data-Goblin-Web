@@ -2,7 +2,7 @@ import { Bookmark as BookmarkIcon, ChevronLeft, ChevronRight } from "lucide-reac
 import { useNavigate } from "react-router-dom";
 import { useTheme } from "../ThemeContext";
 import { useReader } from "../reader";
-import { MONO, P, UI } from "../theme";
+import { MONO, P, TOKENS, UI } from "../theme";
 import { NavIcon } from "./GoblinMascot";
 import { savePanel } from "../pagination";
 import type { Book } from "../types";
@@ -58,7 +58,7 @@ export function BottomBar({
 
   const green = c(...P.green);
   const red = c(...P.red);
-  const progressBlue = c("#12233a", "#7ab4e8");
+  const progressBlue = c(...TOKENS.color.progressBlue);
   const muted = c(...P.faint);
   const bg = c(...P.panelBgAlt);
   const border = c(...P.borderSoft);
@@ -213,11 +213,11 @@ export function BottomBar({
       </button>
 
       <div style={{ display: "grid", gridTemplateColumns: "auto minmax(0, 1fr)", columnGap: "9px", rowGap: "0px", alignItems: "center", minWidth: "360px" }}>
-        <div style={{ gridColumn: "2", fontFamily: UI, fontSize: "9px", fontWeight: 900, letterSpacing: "0.12em", textTransform: "uppercase", color: progressBlue, textAlign: "center", transform: "translateY(3px)" }}>
+        <div style={{ gridColumn: "2", fontFamily: UI, fontSize: "9px", fontWeight: TOKENS.weight.toolLabel, letterSpacing: "0.12em", textTransform: "uppercase", color: progressBlue, textAlign: "center", transform: "translateY(3px)" }}>
           Your Progress Through the Guide
         </div>
         <div style={{ gridColumn: "1", gridRow: "1 / span 2", alignSelf: "end", transform: "translateY(9px)" }}>
-          <NavIcon name="book-nav" size={68} />
+          <NavIcon name="book-nav" size={TOKENS.icon.progressBook} />
         </div>
         <div style={{ gridColumn: "2", display: "flex", gap: "5px", alignItems: "center", justifyContent: "center", minHeight: "18px", marginTop: "-1px" }}>
           {Array.from({ length: totalChapters }, (_, i) => {
@@ -237,9 +237,9 @@ export function BottomBar({
                   height: isActive ? "15px" : "8px",
                   borderRadius: "50%",
                   background: isActive
-                    ? `radial-gradient(circle at 35% 30%, ${c("#f3fbff", "#e3fbff")} 0%, ${c("#8fd7ff", "#8fd7ff")} 42%, ${progressBlue} 76%)`
-                    : isDone ? c("#6f94b9", "#4e85b9") : c("#bcb29a", "#2a3040"),
-                  border: isActive ? `1px solid ${c("#e5f8ff", "#cfefff")}` : "none",
+                    ? `radial-gradient(circle at 35% 30%, ${c(...TOKENS.color.progressCrystalLight)} 0%, ${c(...TOKENS.color.progressCrystalMid)} 42%, ${progressBlue} 76%)`
+                    : isDone ? c(...TOKENS.color.progressDone) : c("#bcb29a", "#2a3040"),
+                  border: isActive ? `1px solid ${c(...TOKENS.color.progressCrystalBorder)}` : "none",
                   boxShadow: isActive
                     ? c("0 0 0 3px rgba(143, 215, 255, 0.24), 0 0 17px rgba(26, 46, 74, 0.58)", "0 0 0 3px rgba(143, 215, 255, 0.18), 0 0 20px rgba(122, 180, 232, 0.78)")
                     : "none",

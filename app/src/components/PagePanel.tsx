@@ -1,7 +1,7 @@
 import { memo, useMemo } from "react";
 import { useTheme } from "../ThemeContext";
 import { useReader } from "../reader";
-import { DISPLAY, MONO, P, RADIUS, UI } from "../theme";
+import { DISPLAY, MONO, P, RADIUS, TOKENS, UI } from "../theme";
 import { GoblinMascot, NavIcon } from "./GoblinMascot";
 import { Markdown } from "./Markdown";
 import { autolinkBlocks } from "../links";
@@ -93,7 +93,7 @@ export function GoblinTrapCard({ trap }: { trap: Trap }) {
       }}
     >
       <span style={{ flexShrink: 0, marginTop: "1px" }}>
-        <NavIcon name="alert-nav" size={33} />
+        <NavIcon name="alert-nav" size={TOKENS.icon.calloutTrap} />
       </span>
       <div>
         <div style={{ fontFamily: MONO, fontSize: "9px", fontWeight: 800, letterSpacing: "0.22em", textTransform: "uppercase", color: red, marginBottom: "4px" }}>
@@ -286,7 +286,7 @@ function OpenerHeader({ chapter }: { chapter: Chapter }) {
       </div>
       <div style={{ display: "flex", alignItems: "center", gap: "12px", margin: "0 0 16px" }}>
         <div style={{ flex: 1, borderTop: `1px solid ${c(...P.border)}` }} />
-        <NavIcon name="trailmarker-nav" size={41} />
+        <NavIcon name="trailmarker-nav" size={TOKENS.icon.calloutTrailmarker} />
         <div style={{ fontFamily: MONO, fontSize: "9.5px", fontWeight: 800, letterSpacing: "0.34em", textTransform: "uppercase", color: c(...P.faint) }}>
           Start Here
         </div>

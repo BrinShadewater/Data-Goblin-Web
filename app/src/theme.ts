@@ -14,6 +14,37 @@ export const HAND = "'Caveat', cursive";
 
 export const RADIUS = "2px";
 
+export const TOKENS = {
+  icon: {
+    headerLogoDesktop: 62,
+    headerLogoCompact: 44,
+    headerNav: 48,
+    headerSearch: 45,
+    mobileDrawerLogo: 34,
+    mobileDrawerNav: 27,
+    sidebarTool: 50,
+    progressBook: 68,
+    tocStart: 45,
+    tocCanadian: 131,
+    calloutCheck: 77,
+    calloutTrap: 33,
+    calloutRecap: 36,
+    calloutTrailmarker: 41,
+    landingPrimary: 50,
+    landingFeature: 77,
+  },
+  color: {
+    progressBlue: ["#12233a", "#7ab4e8"],
+    progressCrystalLight: ["#f3fbff", "#e3fbff"],
+    progressCrystalMid: ["#8fd7ff", "#8fd7ff"],
+    progressCrystalBorder: ["#e5f8ff", "#cfefff"],
+    progressDone: ["#6f94b9", "#4e85b9"],
+  },
+  weight: {
+    toolLabel: 900,
+  },
+} as const;
+
 /** Palette pairs consumed via ThemeContext's c(light, dark) helper. */
 export const P = {
   // Surfaces

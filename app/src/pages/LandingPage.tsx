@@ -3,7 +3,7 @@ import type { PointerEvent } from "react";
 import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from "../ThemeContext";
-import { BODY, DISPLAY, MONO, P, RADIUS, UI } from "../theme";
+import { BODY, DISPLAY, MONO, P, RADIUS, TOKENS, UI } from "../theme";
 import { artUrl, useBook } from "../useContent";
 import { savePanel } from "../pagination";
 import { NavIcon } from "../components/GoblinMascot";
@@ -215,7 +215,7 @@ export function LandingPage() {
                 padding: "14px 18px",
               }}
             >
-              <NavIcon name="guidebook-nav" size={50} />
+              <NavIcon name="guidebook-nav" size={TOKENS.icon.landingPrimary} />
               Open the guide
             </button>
           </div>
@@ -255,7 +255,7 @@ export function LandingPage() {
               onClick={() => navigate(item.to)}
               style={{
                 display: "grid",
-                gridTemplateColumns: "77px 1fr",
+                gridTemplateColumns: `${TOKENS.icon.landingFeature}px 1fr`,
                 gap: "18px",
                 textAlign: "left",
                 background: c(...P.cardBg),
@@ -266,7 +266,7 @@ export function LandingPage() {
                 minHeight: "112px",
               }}
             >
-              <NavIcon name={item.icon} size={77} />
+              <NavIcon name={item.icon} size={TOKENS.icon.landingFeature} />
               <span>
                 <span style={{ display: "block", fontFamily: UI, fontSize: "15px", fontWeight: 800, color: navy, marginBottom: "5px" }}>
                   {item.label}

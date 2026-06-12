@@ -3,7 +3,7 @@ import { Bookmark as BookmarkIcon, Moon, Sun, X } from "lucide-react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useTheme } from "../ThemeContext";
 import { useReader } from "../reader";
-import { BODY, DISPLAY, MONO, P, RADIUS, UI } from "../theme";
+import { BODY, DISPLAY, MONO, P, RADIUS, TOKENS, UI } from "../theme";
 import { GoblinIcon, NavIcon } from "./GoblinMascot";
 import { TocList } from "./LeftSidebar";
 import { isNavActive, NAV_ITEMS } from "../navigation";
@@ -102,7 +102,7 @@ export function MobileDrawer({ open, onClose }: { open: boolean; onClose: () => 
         {/* Header */}
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "8px 8px 8px 16px", borderBottom: `1px solid ${border}`, flexShrink: 0 }}>
           <div style={{ display: "flex", alignItems: "center", gap: "9px" }}>
-            <GoblinIcon size={34} />
+            <GoblinIcon size={TOKENS.icon.mobileDrawerLogo} />
             <span style={{ fontFamily: DISPLAY, fontStyle: "italic", fontWeight: 800, fontSize: "18px", color: ink }}>
               DATA GOBLIN
             </span>
@@ -199,7 +199,7 @@ export function MobileDrawer({ open, onClose }: { open: boolean; onClose: () => 
                   textAlign: "left",
                 }}
               >
-                <NavIcon name={l.icon} size={27} />
+                <NavIcon name={l.icon} size={TOKENS.icon.mobileDrawerNav} />
                 {l.label}
               </button>
             );
