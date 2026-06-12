@@ -1,8 +1,8 @@
 import { useTheme } from "../ThemeContext";
-import { BODY, DISPLAY, HAND, MONO, P, RADIUS, UI } from "../theme";
+import { BODY, DISPLAY, HAND, MONO, P, UI } from "../theme";
 import { Markdown } from "../components/Markdown";
 import { artUrl, useBook } from "../useContent";
-import { LoadingMessage, StaticPageShell } from "../components/StaticPage";
+import { Kicker, LoadingMessage, StaticCard, StaticPageShell } from "../components/StaticPage";
 
 /** Pull the paragraph containing `marker` out of a markdown document. */
 function extractParagraph(md: string, marker: string): string | null {
@@ -75,10 +75,10 @@ export function AboutPage() {
         </div>
 
         {/* Why "Data Goblin"? — straight from the manuscript frontmatter */}
-        <div style={{ background: cardBg, border: `1px solid ${border}`, borderRadius: RADIUS, padding: "20px 24px", marginBottom: "16px", transition: "background 0.3s" }}>
-          <div style={{ fontFamily: MONO, fontSize: "8.5px", fontWeight: 800, letterSpacing: "0.2em", textTransform: "uppercase", color: muted, marginBottom: "10px" }}>
+        <StaticCard background={cardBg} borderColor={border} padding="20px 24px" marginBottom="16px">
+          <Kicker color={muted} fontSize="8.5px" letterSpacing="0.2em" marginBottom="10px">
             From the manuscript — Why &ldquo;Data Goblin&rdquo;?
-          </div>
+          </Kicker>
           {whyGoblin ? (
             <Markdown markdown={whyGoblin} />
           ) : (
@@ -87,30 +87,28 @@ export function AboutPage() {
           <div style={{ marginTop: "10px", fontFamily: HAND, fontSize: "17px", color: c("#7a6040", "#8a7850"), fontStyle: "italic" }}>
             &ldquo;It collects receipts, not grudges.&rdquo;
           </div>
-        </div>
+        </StaticCard>
 
         {/* A note on time — straight from the manuscript frontmatter */}
-        <div style={{ background: c(...P.greenBg), border: `1px solid ${c(...P.greenBorder)}`, borderLeft: `4px solid ${green}`, borderRadius: RADIUS, padding: "18px 22px", marginBottom: "26px" }}>
-          <div style={{ fontFamily: MONO, fontSize: "8.5px", fontWeight: 800, letterSpacing: "0.2em", textTransform: "uppercase", color: green, marginBottom: "10px" }}>
+        <StaticCard background={c(...P.greenBg)} borderColor={c(...P.greenBorder)} borderLeft={`4px solid ${green}`} padding="18px 22px" marginBottom="26px">
+          <Kicker color={green} fontSize="8.5px" letterSpacing="0.2em" marginBottom="10px">
             From the manuscript — A note on time{book ? ` (as of ${book.asOf})` : ""}
-          </div>
+          </Kicker>
           {noteOnTime ? (
             <Markdown markdown={noteOnTime} />
           ) : (
             <LoadingMessage fontSize="13px" margin={0}>Loading…</LoadingMessage>
           )}
-        </div>
+        </StaticCard>
 
         {/* Principles */}
-        <div style={{ fontFamily: MONO, fontSize: "8.5px", fontWeight: 800, letterSpacing: "0.2em", textTransform: "uppercase", color: muted, marginBottom: "12px" }}>
-          Guiding Principles
-        </div>
+        <Kicker color={muted} fontSize="8.5px" letterSpacing="0.2em" marginBottom="12px">Guiding Principles</Kicker>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "10px" }}>
           {PRINCIPLES.map((p, i) => (
-            <div key={i} style={{ background: cardBg, border: `1px solid ${border}`, borderRadius: RADIUS, padding: "14px 16px", transition: "background 0.3s" }}>
+            <StaticCard key={i} background={cardBg} borderColor={border} padding="14px 16px">
               <div style={{ fontFamily: UI, fontSize: "12px", fontWeight: 700, color: navy, marginBottom: "6px" }}>{p.title}</div>
               <p style={{ fontFamily: BODY, fontSize: "13.5px", color: body, lineHeight: 1.6, margin: 0 }}>{p.body}</p>
-            </div>
+            </StaticCard>
           ))}
         </div>
     </StaticPageShell>

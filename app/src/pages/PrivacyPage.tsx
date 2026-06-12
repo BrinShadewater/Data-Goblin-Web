@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useTheme } from "../ThemeContext";
-import { BODY, MONO, P, RADIUS, UI } from "../theme";
-import { PageHeading, StaticPageShell } from "../components/StaticPage";
+import { BODY, P, UI } from "../theme";
+import { Kicker, PageHeading, StaticCard, StaticPageShell } from "../components/StaticPage";
 
 const SECTIONS = [
   {
@@ -32,8 +32,6 @@ const SECTIONS = [
 
 export function PrivacyPage() {
   const { c } = useTheme();
-  const card = c(...P.cardBg);
-  const border = c(...P.borderSoft);
   const body = c(...P.body);
   const muted = c(...P.muted);
   const navy = c(...P.navy);
@@ -57,21 +55,19 @@ export function PrivacyPage() {
 
         <div style={{ display: "grid", gap: "12px" }}>
           {SECTIONS.map((section) => (
-            <section key={section.title} style={{ background: card, border: `1px solid ${border}`, borderRadius: RADIUS, padding: "20px 22px" }}>
+            <StaticCard key={section.title} padding="20px 22px">
               <h2 style={{ fontFamily: UI, fontSize: "17px", fontWeight: 900, color: green, margin: "0 0 8px" }}>
                 {section.title}
               </h2>
               <p style={{ fontFamily: BODY, fontSize: "15.5px", color: body, lineHeight: 1.7, margin: 0 }}>
                 {section.body}
               </p>
-            </section>
+            </StaticCard>
           ))}
         </div>
 
-        <div style={{ marginTop: "18px", background: c(...P.greenBg), border: `1px solid ${c(...P.greenBorder)}`, borderLeft: `4px solid ${green}`, borderRadius: RADIUS, padding: "18px 20px" }}>
-          <div style={{ fontFamily: MONO, fontSize: "9px", fontWeight: 800, letterSpacing: "0.18em", textTransform: "uppercase", color: green, marginBottom: "8px" }}>
-            Practical Control
-          </div>
+        <StaticCard marginBottom="0" padding="18px 20px" background={c(...P.greenBg)} borderColor={c(...P.greenBorder)} borderLeft={`4px solid ${green}`} style={{ marginTop: "18px" }}>
+          <Kicker color={green} letterSpacing="0.18em">Practical Control</Kicker>
           <p style={{ fontFamily: BODY, fontSize: "15px", color: body, lineHeight: 1.65, margin: "0 0 10px" }}>
             To reset local data, clear this site&rsquo;s browser storage. That removes saved notes, bookmarks,
             reading position, theme, and consent choices from this device.
@@ -83,7 +79,7 @@ export function PrivacyPage() {
           <Link to="/receipts" style={{ fontFamily: UI, fontSize: "14px", fontWeight: 800, color: navy }}>
             Open receipts
           </Link>
-        </div>
+        </StaticCard>
     </StaticPageShell>
   );
 }

@@ -1,6 +1,6 @@
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import { useTheme } from "../ThemeContext";
-import { BODY, DISPLAY, MONO, P } from "../theme";
+import { BODY, DISPLAY, MONO, P, RADIUS } from "../theme";
 
 export function StaticPageShell({
   children,
@@ -88,4 +88,65 @@ export function LoadingMessage({
 }) {
   const { c } = useTheme();
   return <p style={{ fontFamily: BODY, fontSize, fontStyle: "italic", color: c(...P.muted), margin }}>{children}</p>;
+}
+
+export function Kicker({
+  children,
+  color,
+  marginBottom = "8px",
+  fontSize = "9px",
+  letterSpacing = "0.28em",
+}: {
+  children: ReactNode;
+  color?: string;
+  marginBottom?: string;
+  fontSize?: string;
+  letterSpacing?: string;
+}) {
+  const { c } = useTheme();
+  return (
+    <div style={{ fontFamily: MONO, fontSize, fontWeight: 800, letterSpacing, textTransform: "uppercase", color: color ?? c(...P.red), marginBottom }}>
+      {children}
+    </div>
+  );
+}
+
+export function StaticCard({
+  children,
+  background,
+  borderColor,
+  borderLeft,
+  borderTop,
+  padding = "18px 20px",
+  marginBottom,
+  style,
+}: {
+  children: ReactNode;
+  background?: string;
+  borderColor?: string;
+  borderLeft?: string;
+  borderTop?: string;
+  padding?: string;
+  marginBottom?: string;
+  style?: CSSProperties;
+}) {
+  const { c } = useTheme();
+  const resolvedBorder = borderColor ?? c(...P.borderSoft);
+  return (
+    <div
+      style={{
+        background: background ?? c(...P.cardBg),
+        border: `1px solid ${resolvedBorder}`,
+        borderLeft,
+        borderTop,
+        borderRadius: RADIUS,
+        padding,
+        marginBottom,
+        transition: "background 0.3s",
+        ...style,
+      }}
+    >
+      {children}
+    </div>
+  );
 }
