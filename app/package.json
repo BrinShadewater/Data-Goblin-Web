@@ -9,6 +9,7 @@
     "preview": "vite preview",
     "check:pagination": "node scripts/run-pagination-sanity.cjs",
     "check:contribute": "node scripts/check-contribute-mailto.cjs",
+    "check:budgets": "node scripts/check-performance-budgets.cjs",
     "check:built-site": "node scripts/check-built-site-smoke.cjs",
     "check:browser": "node scripts/check-browser-smoke.cjs",
     "verify": "node scripts/verify.cjs"

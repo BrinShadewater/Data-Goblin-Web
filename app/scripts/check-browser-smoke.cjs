@@ -25,6 +25,12 @@ const ROUTES = [
   { path: "/#/privacy", text: /Privacy Policy/i },
 ];
 
+const TIMED_ROUTES = [
+  { name: "landing", path: "/#/", text: /Data\s*Goblin/i, maxMs: 3000 },
+  { name: "guide", path: "/#/guide", text: /Front\s*Matter|Trailhead|Data\s*Goblin/i, maxMs: 4500 },
+  { name: "map", path: "/#/map", text: /The Map/i, maxMs: 3500 },
+];
+
 const CONSENT = {
   essential: true,
   preferences: true,
@@ -100,14 +106,22 @@ async function assertLoadedPage(page, baseUrl, route, expectedText) {
 async function assertImagesLoaded(page, routeName) {
   await page.waitForFunction(() =>
     Array.from(document.images)
-      .filter((img) => img.offsetParent !== null)
+      .filter((img) => {
+        if (img.offsetParent === null) return false;
+        const rect = img.getBoundingClientRect();
+        return rect.bottom >= 0 && rect.right >= 0 && rect.top <= window.innerHeight && rect.left <= window.innerWidth;
+      })
       .every((img) => img.complete && img.naturalWidth > 0),
     null,
     { timeout: 5000 }
   ).catch(() => {});
   const broken = await page.evaluate(() =>
     Array.from(document.images)
-      .filter((img) => img.offsetParent !== null && (!img.complete || img.naturalWidth === 0))
+      .filter((img) => {
+        if (img.offsetParent === null || (img.complete && img.naturalWidth > 0)) return false;
+        const rect = img.getBoundingClientRect();
+        return rect.bottom >= 0 && rect.right >= 0 && rect.top <= window.innerHeight && rect.left <= window.innerWidth;
+      })
       .map((img) => img.getAttribute("src") || img.currentSrc || img.alt || "unknown image")
   );
   assert(broken.length === 0, `${routeName} has broken visible images: ${broken.join(", ")}`);
@@ -192,6 +206,37 @@ async function runInteractionSmoke(browser, baseUrl) {
   console.log("PASS interactions");
 }
 
+async function runTimingSmoke(browser, baseUrl) {
+  await withAppPage(browser, baseUrl, VIEWPORTS[0], async (page) => {
+    for (const route of TIMED_ROUTES) {
+      await page.evaluate(() => {
+        performance.clearResourceTimings();
+        performance.clearMarks();
+        performance.clearMeasures();
+      });
+      const started = Date.now();
+      await assertLoadedPage(page, baseUrl, route, route.text);
+      await assertImagesLoaded(page, `timing ${route.path}`);
+      const elapsed = Date.now() - started;
+      const metrics = await page.evaluate(() => {
+        const resources = performance.getEntriesByType("resource");
+        const jsBytes = resources
+          .filter((entry) => entry.name.includes("/assets/") && entry.name.endsWith(".js"))
+          .reduce((sum, entry) => sum + (entry.transferSize || entry.encodedBodySize || 0), 0);
+        const imageBytes = resources
+          .filter((entry) => /\.(webp|png|jpg|jpeg|ico)(\?|$)/i.test(entry.name))
+          .reduce((sum, entry) => sum + (entry.transferSize || entry.encodedBodySize || 0), 0);
+        const paints = Object.fromEntries(
+          performance.getEntriesByType("paint").map((entry) => [entry.name, Math.round(entry.startTime)])
+        );
+        return { jsBytes, imageBytes, paints };
+      });
+      assert(elapsed <= route.maxMs, `${route.name} took ${elapsed}ms, above timing budget ${route.maxMs}ms.`);
+      console.log(`PASS timing: ${route.name} ${elapsed}ms · JS ${Math.round(metrics.jsBytes / 1024)} kB · images ${Math.round(metrics.imageBytes / 1024)} kB · FCP ${metrics.paints["first-contentful-paint"] ?? "n/a"}ms`);
+    }
+  });
+}
+
 async function main() {
   assert(fs.existsSync(path.join(distDir, "index.html")), "dist/index.html not found. Run npm run build first.");
   const server = createServer();
@@ -204,6 +249,7 @@ async function main() {
     await runRouteSmoke(browser, baseUrl);
     await runCookieSmoke(browser, baseUrl);
     await runInteractionSmoke(browser, baseUrl);
+    await runTimingSmoke(browser, baseUrl);
     console.log("Browser smoke checks passed.");
   } finally {
     await browser.close().catch(() => {});

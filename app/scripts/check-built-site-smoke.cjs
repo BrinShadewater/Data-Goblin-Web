@@ -47,6 +47,7 @@ async function main() {
   const indexHtml = fs.readFileSync(indexPath, "utf8");
   const scriptMatch = indexHtml.match(/<script[^>]+src="([^"]+index-[^"]+\.js)"/);
   assert(scriptMatch, "Could not find built index script in dist/index.html.");
+  assert(fs.readdirSync(path.join(distDir, "assets")).some((name) => /^react-vendor-.*\.js$/.test(name)), "Could not find split react-vendor chunk.");
 
   const server = createServer();
   await new Promise((resolve) => server.listen(0, "127.0.0.1", resolve));
@@ -58,7 +59,7 @@ async function main() {
     assert(shell.includes('id="root"'), "App shell is missing #root.");
 
     const script = await fetchText(baseUrl, scriptMatch[1]);
-    assert(script.length > 100000, "Built app script looks unexpectedly small.");
+    assert(script.length > 20000, "Built app script looks unexpectedly small.");
 
     const book = JSON.parse(await fetchText(baseUrl, "/content/book.json"));
     assert(Array.isArray(book.parts) && book.parts.length > 0, "book.json has no parts.");

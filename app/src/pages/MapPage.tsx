@@ -35,6 +35,8 @@ export function MapPage() {
           <img
             src={artUrl("panels/themap.webp")}
             alt="Fantasy map of Canada for Data Goblin, with the goblin standing in front"
+            loading="eager"
+            fetchPriority="high"
             decoding="async"
             style={{
               display: "block",

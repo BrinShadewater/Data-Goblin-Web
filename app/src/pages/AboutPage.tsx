@@ -44,6 +44,8 @@ export function AboutPage() {
             <img
               src={artUrl("panels/insight2-panel.webp")}
               alt="Data Goblin inspecting receipts and evidence crystals"
+              loading="eager"
+              fetchPriority="high"
               decoding="async"
               style={{
                 display: "block",

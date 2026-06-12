@@ -207,6 +207,8 @@ export function LandingHero({
         <img
           src={artUrl(HERO_ART)}
           alt="Data Goblin inspecting a trail of receipts and glowing evidence crystals"
+          loading="eager"
+          fetchPriority="high"
           decoding="async"
           style={{
             display: "block",
