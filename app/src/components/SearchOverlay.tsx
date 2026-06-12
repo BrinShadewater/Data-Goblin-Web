@@ -1,73 +1,18 @@
+import type { CSSProperties, MouseEvent } from "react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from "../ThemeContext";
 import { BODY, P, RADIUS, UI } from "../theme";
-import { chapterPath, fetchJson } from "../useContent";
-import type { Book, Chapter, GlossaryEntry } from "../types";
-
-type SearchHit =
-  | { type: "chapter"; num: number; title: string; snippet: string }
-  | { type: "section"; num: number; chapterTitle: string; heading: string }
-  | { type: "glossary"; term: string; def: string; letter: string };
-
-let INDEX: SearchHit[] | null = null;
-let indexPromise: Promise<SearchHit[]> | null = null;
-
-/** Build the search index once from the published JSON content. */
-function buildIndex(): Promise<SearchHit[]> {
-  if (INDEX) return Promise.resolve(INDEX);
-  if (indexPromise) return indexPromise;
-  indexPromise = (async () => {
-    const hits: SearchHit[] = [];
-    const book = await fetchJson<Book>("book.json");
-    const chapterRefs = book.parts.flatMap((p) => p.chapters);
-    const chapters = await Promise.all(
-      chapterRefs.map((ref) => fetchJson<Chapter>(chapterPath(ref.number)).catch(() => null))
-    );
-    for (const ch of chapters) {
-      if (!ch) continue;
-      hits.push({
-        type: "chapter",
-        num: ch.number,
-        title: ch.title,
-        snippet: ch.startHere.replace(/[*_>#`]/g, "").slice(0, 160),
-      });
-      for (const s of ch.sections) {
-        hits.push({ type: "section", num: ch.number, chapterTitle: ch.title.split(" — ")[0], heading: s.heading });
-      }
-    }
-    const glossary = await fetchJson<GlossaryEntry[]>("glossary.json");
-    for (const g of glossary) {
-      hits.push({ type: "glossary", term: g.term, def: g.def, letter: g.letter });
-    }
-    INDEX = hits;
-    return hits;
-  })();
-  return indexPromise;
-}
-
-function score(hit: SearchHit, q: string): number {
-  const lq = q.toLowerCase();
-  if (hit.type === "chapter") {
-    if (hit.title.toLowerCase().includes(lq)) return 3;
-    if (hit.snippet.toLowerCase().includes(lq)) return 1;
-    return 0;
-  }
-  if (hit.type === "section") {
-    return hit.heading.toLowerCase().includes(lq) ? 2 : 0;
-  }
-  if (hit.term.toLowerCase().includes(lq)) return 3;
-  if (hit.def.toLowerCase().includes(lq)) return 1;
-  return 0;
-}
+import { buildSearchIndex, getCachedSearchIndex, hasCachedSearchIndex, querySearchIndex } from "../search";
+import type { SearchHit } from "../search";
 
 export function SearchOverlay({ query, onClose }: { query: string; onClose: () => void }) {
   const { c } = useTheme();
   const navigate = useNavigate();
-  const [index, setIndex] = useState<SearchHit[]>(INDEX ?? []);
+  const [index, setIndex] = useState<SearchHit[]>(getCachedSearchIndex());
 
   useEffect(() => {
-    buildIndex().then(setIndex).catch(() => setIndex([]));
+    buildSearchIndex().then(setIndex).catch(() => setIndex([]));
   }, []);
 
   const bg = c(...P.cardBg);
@@ -83,18 +28,13 @@ export function SearchOverlay({ query, onClose }: { query: string; onClose: () =
   const q = query.trim();
   if (q.length < 2) return null;
 
-  const results = index
-    .map((hit) => ({ hit, s: score(hit, q) }))
-    .filter((x) => x.s > 0)
-    .sort((a, b) => b.s - a.s)
-    .slice(0, 14)
-    .map((x) => x.hit);
+  const results = querySearchIndex(index, q);
 
   const chapters = results.filter((r): r is Extract<SearchHit, { type: "chapter" }> => r.type === "chapter");
   const sections = results.filter((r): r is Extract<SearchHit, { type: "section" }> => r.type === "section");
   const glossary = results.filter((r): r is Extract<SearchHit, { type: "glossary" }> => r.type === "glossary");
 
-  const rowStyle: React.CSSProperties = {
+  const rowStyle: CSSProperties = {
     display: "block",
     width: "100%",
     textAlign: "left",
@@ -105,8 +45,8 @@ export function SearchOverlay({ query, onClose }: { query: string; onClose: () =
     transition: "background 0.12s",
   };
   const hover = {
-    onMouseEnter: (e: React.MouseEvent<HTMLButtonElement>) => (e.currentTarget.style.background = hoverBg),
-    onMouseLeave: (e: React.MouseEvent<HTMLButtonElement>) => (e.currentTarget.style.background = "transparent"),
+    onMouseEnter: (e: MouseEvent<HTMLButtonElement>) => (e.currentTarget.style.background = hoverBg),
+    onMouseLeave: (e: MouseEvent<HTMLButtonElement>) => (e.currentTarget.style.background = "transparent"),
   };
   const groupLabel = (color: string, label: string) => (
     <div style={{ padding: "8px 16px 4px", fontFamily: UI, fontSize: "7.5px", fontWeight: 800, letterSpacing: "0.2em", textTransform: "uppercase", color }}>
@@ -136,7 +76,7 @@ export function SearchOverlay({ query, onClose }: { query: string; onClose: () =
         }}
       >
         <div style={{ padding: "10px 16px", borderBottom: `1px solid ${border}`, fontFamily: UI, fontSize: "8px", fontWeight: 800, letterSpacing: "0.2em", textTransform: "uppercase", color: muted }}>
-          {INDEX === null && index.length === 0
+          {!hasCachedSearchIndex() && index.length === 0
             ? "Building index…"
             : results.length === 0
               ? `No results for "${q}"`
