@@ -1,4 +1,5 @@
 import { lazy } from "react";
+import type { LazyExoticComponent, ReactElement } from "react";
 
 const loadFieldGuidePage = () => import("./pages/FieldGuidePage");
 const loadReceiptsPage = () => import("./pages/ReceiptsPage");
@@ -19,6 +20,21 @@ export const ContributePage = lazy(() => loadContributePage().then((m) => ({ def
 export const LandingPage = lazy(() => loadLandingPage().then((m) => ({ default: m.LandingPage })));
 export const PrivacyPage = lazy(() => loadPrivacyPage().then((m) => ({ default: m.PrivacyPage })));
 export const SearchOverlay = lazy(() => loadSearchOverlay().then((m) => ({ default: m.SearchOverlay })));
+
+type LazyPage = LazyExoticComponent<() => ReactElement>;
+
+export const APP_ROUTES: { path: string; Page: LazyPage }[] = [
+  { path: "/", Page: LandingPage },
+  { path: "/guide", Page: FieldGuidePage },
+  { path: "/chapter/:num", Page: FieldGuidePage },
+  { path: "/receipts", Page: ReceiptsPage },
+  { path: "/loot", Page: LootPage },
+  { path: "/map", Page: MapPage },
+  { path: "/about", Page: AboutPage },
+  { path: "/contribute", Page: ContributePage },
+  { path: "/privacy", Page: PrivacyPage },
+  { path: "*", Page: FieldGuidePage },
+];
 
 export const preloadReaderRoute = () => {
   void loadFieldGuidePage();

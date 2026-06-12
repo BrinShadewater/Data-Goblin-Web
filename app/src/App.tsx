@@ -1,4 +1,4 @@
-import { Suspense, useEffect, useState } from "react";
+import { createElement, Suspense, useEffect, useState } from "react";
 import { HashRouter, Route, Routes, useLocation } from "react-router-dom";
 import { ThemeProvider, useTheme } from "./ThemeContext";
 import { ReaderProvider, useReader } from "./reader";
@@ -7,17 +7,7 @@ import { TopNav } from "./components/TopNav";
 import { MobileDrawer } from "./components/MobileDrawer";
 import { CookieNotice } from "./components/CookieNotice";
 import goblinFavicon from "./assets/goblin-head-icon.webp";
-import {
-  AboutPage,
-  ContributePage,
-  FieldGuidePage,
-  LandingPage,
-  LootPage,
-  MapPage,
-  PrivacyPage,
-  ReceiptsPage,
-  SearchOverlay,
-} from "./lazyRoutes";
+import { APP_ROUTES, SearchOverlay } from "./lazyRoutes";
 
 function Shell() {
   const { c } = useTheme();
@@ -77,16 +67,9 @@ function Shell() {
         }
       >
         <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/guide" element={<FieldGuidePage />} />
-          <Route path="/chapter/:num" element={<FieldGuidePage />} />
-          <Route path="/receipts" element={<ReceiptsPage />} />
-          <Route path="/loot" element={<LootPage />} />
-          <Route path="/map" element={<MapPage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/contribute" element={<ContributePage />} />
-          <Route path="/privacy" element={<PrivacyPage />} />
-          <Route path="*" element={<FieldGuidePage />} />
+          {APP_ROUTES.map(({ path, Page }) => (
+            <Route key={path} path={path} element={createElement(Page)} />
+          ))}
         </Routes>
       </Suspense>
       <CookieNotice />
