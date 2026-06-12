@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "check:pagination": "node scripts/run-pagination-sanity.cjs",
+    "verify": "node scripts/verify.cjs"
   },
   "dependencies": {
     "lucide-react": "^0.468.0",

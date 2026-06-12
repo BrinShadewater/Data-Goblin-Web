@@ -1,9 +1,6 @@
 /**
  * Pagination sanity check. Run from site/app with:
- *   npx tsc src/pagination.ts --outDir scripts/.build --module commonjs \
- *     --target es2020 --skipLibCheck \
- *     && mv scripts/.build/pagination.js scripts/.build/pagination.cjs
- *   node scripts/sanity-pagination.cjs
+ *   npm run check:pagination
  *
  * For the front matter (0), chapters 2, 8, 15, and the appendix (20) it
  * verifies, for every reader mode (desktop / tablet / phone / phone+dyslexic):

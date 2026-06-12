@@ -8,6 +8,20 @@ python3 pipeline/build_content.py
 
 Re-run it any time the manuscript changes. The manuscript stays the single source of truth — nobody hand-edits chapter JSON, ever. (The goblin checked. Nobody.)
 
+## Validation
+
+On Windows, regenerate content and verify the app with:
+
+```powershell
+.\update-content.bat
+cd app
+$env:NODE_ENV='development'
+npm run verify
+```
+
+`npm run verify` checks that generated content matches the deployed public
+copy, runs pagination sanity checks, and then runs the production build.
+
 ## What it produces
 
 | File | Contents | Feeds mockup component |

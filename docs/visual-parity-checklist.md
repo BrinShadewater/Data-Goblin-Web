@@ -53,9 +53,13 @@ cd C:\Users\Alex\Desktop\Project Goblin\site
 .\update-content.bat
 cd app
 $env:NODE_ENV='development'
-npm run build
+npm run verify
 ```
 
-Run the pagination sanity check after editing `app/src/pagination.ts`.
-See `site/AGENTS.md` for the compile step needed before
-`scripts/sanity-pagination.cjs`.
+For a faster pagination-only check after editing `app/src/pagination.ts`:
+
+```powershell
+cd C:\Users\Alex\Desktop\Project Goblin\site\app
+$env:NODE_ENV='development'
+npm run check:pagination
+```
