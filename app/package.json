@@ -9,6 +9,7 @@
     "preview": "vite preview",
     "check:pagination": "node scripts/run-pagination-sanity.cjs",
     "check:contribute": "node scripts/check-contribute-mailto.cjs",
+    "check:built-site": "node scripts/check-built-site-smoke.cjs",
     "verify": "node scripts/verify.cjs"
   },
   "dependencies": {
