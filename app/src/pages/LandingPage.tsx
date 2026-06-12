@@ -1,6 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import type { PointerEvent } from "react";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from "../ThemeContext";
 import { BODY, DISPLAY, MONO, P, RADIUS, TOKENS, UI } from "../theme";
@@ -56,6 +56,14 @@ export function LandingPage() {
   const red = c(...P.red);
   const wispFrame = useRef<number | null>(null);
   const wispPoint = useRef<{ x: number; y: number } | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (wispFrame.current !== null) {
+        window.cancelAnimationFrame(wispFrame.current);
+      }
+    };
+  }, []);
 
   const begin = () => {
     preloadReaderRoute();
