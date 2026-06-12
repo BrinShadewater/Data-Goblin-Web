@@ -1,9 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { useTheme } from "../ThemeContext";
-import { BODY, DISPLAY, MONO, P, RADIUS, UI } from "../theme";
+import { BODY, MONO, P, RADIUS, UI } from "../theme";
 import { NavIcon } from "../components/GoblinMascot";
 import { useGlossary } from "../useContent";
+import { LoadingMessage, PageHeading, StaticPageShell } from "../components/StaticPage";
 
 export function LootPage() {
   const { c } = useTheme();
@@ -21,14 +22,12 @@ export function LootPage() {
     }
   }, [location.state]);
 
-  const bg = c(...P.panelBg);
   const cardBg = c(...P.cardBg);
   const border = c(...P.borderSoft);
   const body = c(...P.body);
   const muted = c(...P.muted);
   const navy = c(...P.navy);
   const green = c(...P.green);
-  const red = c(...P.red);
 
   const alphabet = terms ? [...new Set(terms.map((t) => t.letter))].sort() : [];
   const filtered = !terms
@@ -42,20 +41,16 @@ export function LootPage() {
       : terms.filter((t) => t.letter === activeLetter);
 
   return (
-    <div style={{ flex: 1, overflowY: "auto", background: bg, padding: "32px clamp(16px, 5vw, 40px) 64px", transition: "background 0.3s" }}>
-      <div style={{ maxWidth: "860px", margin: "0 auto" }}>
-        <div style={{ marginBottom: "26px" }}>
-          <div style={{ fontFamily: MONO, fontSize: "9px", fontWeight: 800, letterSpacing: "0.28em", textTransform: "uppercase", color: red, marginBottom: "8px" }}>
-            Data Goblin Field Guide
-          </div>
-          <h1 style={{ display: "flex", alignItems: "center", gap: "12px", fontFamily: DISPLAY, fontSize: "36px", fontWeight: 900, color: navy, margin: "0 0 10px", lineHeight: 1.05, textTransform: "uppercase" }}>
-            <NavIcon name="crystal-nav" size={38} />
-            Loot (Glossary)
-          </h1>
-          <p style={{ fontFamily: BODY, fontSize: "15.5px", color: body, lineHeight: 1.65, margin: "0 0 18px", maxWidth: "560px" }}>
-            Plain-language definitions for the AI, data, and sovereignty terms the guide uses — vocabulary the
-            goblin has hoarded so you don&rsquo;t have to. No jargon required, just a healthy dose of suspicion.
-          </p>
+    <StaticPageShell maxWidth="860px">
+        <PageHeading
+          eyebrow="Data Goblin Field Guide"
+          title="Loot (Glossary)"
+          description="Plain-language definitions for the AI, data, and sovereignty terms the guide uses — vocabulary the goblin has hoarded so you don’t have to. No jargon required, just a healthy dose of suspicion."
+          descriptionMaxWidth="560px"
+          descriptionMargin="0 0 18px"
+          marginBottom="26px"
+          icon={<NavIcon name="crystal-nav" size={38} />}
+        >
 
           <div style={{ display: "flex", alignItems: "center", gap: "8px", background: c(...P.inputBg), border: `1px solid ${border}`, borderRadius: RADIUS, padding: "8px 14px", maxWidth: "380px" }}>
             <NavIcon name="search-nav" size={17} />
@@ -67,10 +62,10 @@ export function LootPage() {
               style={{ background: "transparent", border: "none", outline: "none", fontFamily: UI, fontSize: "13px", color: body, flex: 1 }}
             />
           </div>
-        </div>
+        </PageHeading>
 
-        {error && <p style={{ fontFamily: BODY, fontStyle: "italic", color: muted }}>Could not load the glossary. ({error})</p>}
-        {!terms && !error && <p style={{ fontFamily: BODY, fontStyle: "italic", color: muted }}>Unpacking the hoard…</p>}
+        {error && <LoadingMessage>Could not load the glossary. ({error})</LoadingMessage>}
+        {!terms && !error && <LoadingMessage>Unpacking the hoard…</LoadingMessage>}
 
         {!query && terms && (
           <div style={{ display: "flex", gap: "4px", flexWrap: "wrap", marginBottom: "20px" }}>
@@ -124,7 +119,6 @@ export function LootPage() {
             {filtered.length} term{filtered.length !== 1 ? "s" : ""} under &ldquo;{activeLetter}&rdquo; · {terms.length} total in the hoard
           </div>
         )}
-      </div>
-    </div>
+    </StaticPageShell>
   );
 }

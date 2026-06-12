@@ -3,6 +3,7 @@ import { useTheme } from "../ThemeContext";
 import { BODY, DISPLAY, MONO, P, RADIUS, UI } from "../theme";
 import { artUrl, useBook } from "../useContent";
 import { displayRegion } from "../regionLabels";
+import { LoadingMessage, PageHeading, StaticPageShell } from "../components/StaticPage";
 
 const REGION_NOTES: Record<string, string> = {
   "The Land": "Foundations — what AI actually is, how it learns, and what it is physically made of.",
@@ -17,28 +18,20 @@ export function MapPage() {
   const { c } = useTheme();
   const { data: book, error } = useBook();
 
-  const bg = c(...P.panelBg);
   const border = c(...P.borderSoft);
-  const body = c(...P.body);
   const muted = c(...P.muted);
   const navy = c(...P.navy);
   const green = c(...P.green);
-  const red = c(...P.red);
 
   return (
-    <div style={{ flex: 1, overflowY: "auto", background: bg, padding: "32px clamp(16px, 5vw, 40px) 64px", transition: "background 0.3s" }}>
-      <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
-        <div style={{ marginBottom: "32px", textAlign: "center" }}>
-          <div style={{ fontFamily: MONO, fontSize: "9px", fontWeight: 800, letterSpacing: "0.28em", textTransform: "uppercase", color: red, marginBottom: "8px" }}>
-            Data Goblin Field Guide
-          </div>
-          <h1 style={{ fontFamily: DISPLAY, fontSize: "36px", fontWeight: 900, color: navy, margin: "0 0 10px", lineHeight: 1.05, textTransform: "uppercase" }}>
-            The Map
-          </h1>
-          <p style={{ fontFamily: BODY, fontSize: "15.5px", color: body, lineHeight: 1.65, margin: "0 auto 22px", maxWidth: "700px" }}>
-            The guide&rsquo;s nineteen chapters are organized into five regions. Pick a region, pick a chapter,
-            and the field guide opens to that page.
-          </p>
+    <StaticPageShell maxWidth="1280px">
+        <PageHeading
+          eyebrow="Data Goblin Field Guide"
+          title="The Map"
+          description="The guide’s nineteen chapters are organized into five regions. Pick a region, pick a chapter, and the field guide opens to that page."
+          centered
+          marginBottom="32px"
+        >
           <img
             src={artUrl("panels/themap.webp")}
             alt="Fantasy map of Canada for Data Goblin, with the goblin standing in front"
@@ -52,10 +45,10 @@ export function MapPage() {
               filter: c("drop-shadow(0 18px 28px rgba(60,50,30,0.22))", "drop-shadow(0 18px 34px rgba(0,0,0,0.58))"),
             }}
           />
-        </div>
+        </PageHeading>
 
-        {error && <p style={{ fontFamily: BODY, fontStyle: "italic", color: muted }}>Could not load the map. ({error})</p>}
-        {!book && !error && <p style={{ fontFamily: BODY, fontStyle: "italic", color: muted }}>Unrolling the map…</p>}
+        {error && <LoadingMessage>Could not load the map. ({error})</LoadingMessage>}
+        {!book && !error && <LoadingMessage>Unrolling the map…</LoadingMessage>}
 
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "14px" }}>
           {book?.parts.map((part) => (
@@ -85,7 +78,6 @@ export function MapPage() {
             </div>
           ))}
         </div>
-      </div>
-    </div>
+    </StaticPageShell>
   );
 }

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useTheme } from "../ThemeContext";
-import { BODY, DISPLAY, MONO, P, RADIUS, UI } from "../theme";
+import { BODY, MONO, P, RADIUS, UI } from "../theme";
+import { PageHeading, StaticPageShell } from "../components/StaticPage";
 
 const SECTIONS = [
   {
@@ -31,30 +32,28 @@ const SECTIONS = [
 
 export function PrivacyPage() {
   const { c } = useTheme();
-  const bg = c(...P.panelBg);
   const card = c(...P.cardBg);
   const border = c(...P.borderSoft);
   const body = c(...P.body);
   const muted = c(...P.muted);
   const navy = c(...P.navy);
   const green = c(...P.green);
-  const red = c(...P.red);
 
   return (
-    <main style={{ flex: 1, overflowY: "auto", background: bg, padding: "36px clamp(16px, 5vw, 54px) 72px", transition: "background 0.3s" }}>
-      <div style={{ maxWidth: "980px", margin: "0 auto" }}>
-        <div style={{ marginBottom: "28px" }}>
-          <div style={{ fontFamily: MONO, fontSize: "10px", fontWeight: 800, letterSpacing: "0.26em", textTransform: "uppercase", color: red, marginBottom: "9px" }}>
-            Data Goblin Site Policy
-          </div>
-          <h1 style={{ fontFamily: DISPLAY, fontSize: "clamp(38px, 5vw, 58px)", fontWeight: 900, color: navy, margin: "0 0 10px", lineHeight: 1, textTransform: "uppercase" }}>
-            Privacy Policy
-          </h1>
-          <p style={{ fontFamily: BODY, fontSize: "17px", color: body, lineHeight: 1.7, margin: 0, maxWidth: "760px" }}>
-            A privacy policy should be readable by the same humans it governs. This one says what the site
-            stores, what it does not do, and what should trigger a future update.
-          </p>
-        </div>
+    <StaticPageShell padding="36px clamp(16px, 5vw, 54px) 72px">
+        <PageHeading
+          eyebrow="Data Goblin Site Policy"
+          title="Privacy Policy"
+          eyebrowSize="10px"
+          eyebrowLetterSpacing="0.26em"
+          eyebrowMarginBottom="9px"
+          titleSize="clamp(38px, 5vw, 58px)"
+          titleLineHeight={1}
+          description="A privacy policy should be readable by the same humans it governs. This one says what the site stores, what it does not do, and what should trigger a future update."
+          descriptionSize="17px"
+          descriptionLineHeight={1.7}
+          descriptionMaxWidth="760px"
+        />
 
         <div style={{ display: "grid", gap: "12px" }}>
           {SECTIONS.map((section) => (
@@ -85,7 +84,6 @@ export function PrivacyPage() {
             Open receipts
           </Link>
         </div>
-      </div>
-    </main>
+    </StaticPageShell>
   );
 }
