@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from "../ThemeContext";
 import { MONO, P, TOKENS, UI } from "../theme";
@@ -28,8 +29,10 @@ function TocItem({
 }) {
   const { c } = useTheme();
   const navigate = useNavigate();
+  const [hovered, setHovered] = useState(false);
   const navy = c(...P.navy);
   const navyDeep = c(...P.navyDeep);
+  const hoverBg = c("rgba(26,46,74,0.08)", "rgba(122,180,232,0.12)");
   const activeText = c("#ffffff", "#0d1018");
   const text = c(...P.body);
   const partLabel = c(...P.faint);
@@ -47,7 +50,7 @@ function TocItem({
         width: "100%",
         minHeight: touch ? "44px" : undefined,
         padding: touch ? "12px 16px 12px 13px" : "7px 18px 7px 15px",
-        background: active ? navy : "transparent",
+        background: active ? navy : hovered ? hoverBg : "transparent",
         borderLeft: active ? `3px solid ${navyDeep}` : "3px solid transparent",
         borderTop: "none",
         borderRight: "none",
@@ -56,12 +59,8 @@ function TocItem({
         textAlign: "left",
         transition: "background 0.1s",
       }}
-      onMouseEnter={(e) => {
-        if (!active) (e.currentTarget as HTMLElement).style.background = c("rgba(26,46,74,0.08)", "rgba(122,180,232,0.12)");
-      }}
-      onMouseLeave={(e) => {
-        if (!active) (e.currentTarget as HTMLElement).style.background = "transparent";
-      }}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
     >
       <span
         style={{
