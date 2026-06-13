@@ -18,12 +18,12 @@ export function GoblinTrapCard({ trap }: { trap: Trap }) {
         borderRadius: RADIUS,
         padding: "12px 15px",
         display: "flex",
-        gap: "10px",
+        gap: "14px",
         alignItems: "flex-start",
         margin: "14px 0",
       }}
     >
-      <span style={{ flexShrink: 0, marginTop: "1px" }}>
+      <span style={{ flexShrink: 0, marginTop: "-4px" }}>
         <NavIcon name="alert-nav" size={TOKENS.icon.calloutTrap} />
       </span>
       <div>

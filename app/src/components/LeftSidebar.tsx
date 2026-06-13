@@ -55,14 +55,14 @@ export function LeftSidebar({ book, activeChapter }: { book: Book | null; active
         <TocList book={book} activeChapter={activeChapter} />
       </div>
 
-      <div style={{ borderTop: `1px solid ${border}`, padding: "14px 18px", background: footerBg, transition: "background 0.3s" }}>
-        <div style={{ display: "flex", alignItems: "center", gap: "6px", marginBottom: "5px" }}>
+      <div style={{ borderTop: `1px solid ${border}`, padding: "14px 18px", background: footerBg, textAlign: "center", transition: "background 0.3s" }}>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "6px", marginBottom: "5px" }}>
           <NavIcon name="trailmarker-nav" size={TOKENS.icon.tocStart} />
           <div style={{ fontFamily: MONO, fontSize: "9.5px", fontWeight: 800, letterSpacing: "0.18em", textTransform: "uppercase", color: green }}>
             Start Here
           </div>
         </div>
-        <p style={{ fontFamily: UI, fontSize: "13px", color: text, lineHeight: 1.45, margin: "0 0 8px" }}>
+        <p style={{ fontFamily: UI, fontSize: "13px", color: text, lineHeight: 1.45, margin: "0 auto 8px", maxWidth: "170px" }}>
           New to the guide?{" "}
           <button
             onClick={() => {

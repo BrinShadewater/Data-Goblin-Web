@@ -53,14 +53,14 @@ export function LandingHero({
         <div style={{ fontFamily: MONO, fontSize: "11px", fontWeight: 800, letterSpacing: "0.28em", textTransform: "uppercase", color: red, marginBottom: "12px" }}>
           Free interactive web book · {asOf}
         </div>
-        <div style={{ display: "flex", alignItems: "center", gap: "clamp(12px, 2vw, 22px)", margin: "0 0 12px", flexWrap: "wrap" }}>
-          <h1 style={{ fontFamily: DISPLAY, fontSize: "clamp(48px, 7vw, 92px)", fontWeight: 900, color: navy, margin: 0, lineHeight: 0.95, textTransform: "uppercase" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "clamp(14px, 2vw, 24px)", margin: "0 0 12px", flexWrap: "nowrap" }}>
+          <h1 style={{ fontFamily: DISPLAY, fontSize: "clamp(48px, 7vw, 92px)", fontWeight: 900, color: navy, margin: 0, lineHeight: 0.95, textTransform: "uppercase", minWidth: 0 }}>
             {title}
           </h1>
           <img
             src={artUrl(FLAG_ART)}
             srcSet={artSrcSet(FLAG_ART)}
-            sizes="(max-width: 720px) 110px, 150px"
+            sizes="(max-width: 720px) 150px, 210px"
             width={flagDimensions?.width}
             height={flagDimensions?.height}
             alt=""
@@ -69,7 +69,7 @@ export function LandingHero({
             fetchPriority="high"
             decoding="async"
       style={{
-        width: "clamp(92px, 10vw, 150px)",
+        width: "clamp(132px, 14vw, 210px)",
         height: "auto",
         aspectRatio: artAspectRatio(FLAG_ART),
         objectFit: "contain",

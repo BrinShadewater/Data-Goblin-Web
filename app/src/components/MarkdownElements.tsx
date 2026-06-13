@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import type { Components } from "react-markdown";
 import { useTheme } from "../ThemeContext";
 import { useReader } from "../reader";
-import { DISPLAY, MONO, P, RADIUS, UI } from "../theme";
+import { DISPLAY, MONO, P, RADIUS, TOKENS, UI } from "../theme";
 import { AUTOLINK_TITLE } from "../links";
 import { artAspectRatio, artDimensions, artSrcSet, artUrl } from "../useContent";
 import {
@@ -88,19 +88,29 @@ export function useMarkdownComponents(): Components {
         const isIcon = rel.includes("/icons/");
         const isSmallArt = rel.includes("/small/");
         const isGoblinCheckIcon = rel.includes("check-nav") || String(alt ?? "").toLowerCase().includes("goblin check");
+        const isGoblinTrapIcon = rel.includes("alert-nav") || String(alt ?? "").toLowerCase().includes("goblin trap");
+        const isChapterRecapIcon = rel.includes("chapter-recap-nav") || String(alt ?? "").toLowerCase().includes("chapter recap");
+        const iconSize = isGoblinCheckIcon
+          ? TOKENS.icon.calloutCheck
+          : isGoblinTrapIcon
+            ? TOKENS.icon.calloutTrap
+            : isChapterRecapIcon
+              ? TOKENS.icon.calloutRecap
+              : 48;
+        const iconOffset = isGoblinCheckIcon ? -23 : iconSize >= 50 ? -17 : -14;
         return (
           <img
             src={resolved}
             srcSet={artRel ? artSrcSet(artRel) : undefined}
             sizes={artRel && !isIcon ? "(max-width: 760px) 92vw, 520px" : undefined}
-            width={isIcon ? (isGoblinCheckIcon ? 72 : 48) : dimensions?.width}
-            height={isIcon ? (isGoblinCheckIcon ? 72 : 48) : dimensions?.height}
+            width={isIcon ? iconSize : dimensions?.width}
+            height={isIcon ? iconSize : dimensions?.height}
             alt={alt ?? ""}
             loading="lazy"
             decoding="async"
             style={
               isIcon
-                ? { width: isGoblinCheckIcon ? "72px" : "48px", height: isGoblinCheckIcon ? "72px" : "48px", objectFit: "contain", display: "inline-block", verticalAlign: isGoblinCheckIcon ? "-23px" : "-14px" }
+                ? { width: `${iconSize}px`, height: `${iconSize}px`, objectFit: "contain", display: "inline-block", verticalAlign: `${iconOffset}px` }
                 : isSmallArt
                   ? { width: "264px", maxWidth: "100%", aspectRatio: artRel ? artAspectRatio(artRel) : undefined, display: "block", margin: "12px auto", objectFit: "contain" }
                   : { maxWidth: "100%", aspectRatio: artRel ? artAspectRatio(artRel) : undefined, display: "block", margin: "10px auto" }

@@ -169,14 +169,14 @@ export function ProgressGuide({
   const navigate = useNavigate();
   const progressBlue = c(...TOKENS.color.progressBlue);
   return (
-    <div style={{ display: "grid", gridTemplateColumns: "auto minmax(0, 1fr)", columnGap: "9px", rowGap: "1px", alignItems: "center", minWidth: "360px" }}>
-      <div style={{ gridColumn: "2", fontFamily: UI, fontSize: "9px", fontWeight: TOKENS.weight.toolLabel, letterSpacing: "0.12em", textTransform: "uppercase", color: progressBlue, textAlign: "center" }}>
+    <div style={{ position: "relative", display: "grid", gridTemplateColumns: "minmax(0, 1fr)", rowGap: "0px", alignItems: "center", minWidth: "360px", paddingLeft: `${TOKENS.icon.progressBook + 9}px` }}>
+      <div style={{ fontFamily: UI, fontSize: "9px", fontWeight: TOKENS.weight.toolLabel, letterSpacing: "0.12em", textTransform: "uppercase", color: progressBlue, textAlign: "center", zIndex: 1 }}>
         Your Progress Through the Guide
       </div>
-      <div style={{ gridColumn: "1", gridRow: "2", alignSelf: "center" }}>
+      <div style={{ position: "absolute", left: 0, top: "50%", transform: "translateY(-42%)" }}>
         <NavIcon name="book-nav" size={TOKENS.icon.progressBook} />
       </div>
-      <div style={{ gridColumn: "2", display: "flex", gap: "5px", alignItems: "center", justifyContent: "center", minHeight: "18px" }}>
+      <div style={{ display: "flex", gap: "5px", alignItems: "center", justifyContent: "center", minHeight: "18px" }}>
         {Array.from({ length: totalChapters }, (_, i) => {
           const ch = i + 1;
           const isActive = ch === activeChapter;
@@ -209,7 +209,7 @@ export function ProgressGuide({
           );
         })}
       </div>
-      <div style={{ gridColumn: "2", fontFamily: MONO, fontSize: "8px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: progressBlue, textAlign: "center" }}>
+      <div style={{ fontFamily: MONO, fontSize: "8px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: progressBlue, textAlign: "center" }}>
         Page {page + 1} of {pageCount}
       </div>
     </div>
