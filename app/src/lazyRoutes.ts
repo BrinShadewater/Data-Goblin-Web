@@ -11,6 +11,7 @@ const loadLandingPage = () => import("./pages/LandingPage");
 const loadPrivacyPage = () => import("./pages/PrivacyPage");
 const loadUpdatesPage = () => import("./pages/UpdatesPage");
 const loadNotFoundPage = () => import("./pages/NotFoundPage");
+const loadTopicPage = () => import("./pages/TopicPage");
 const loadSearchOverlay = () => import("./components/SearchOverlay");
 
 export const FieldGuidePage = lazy(() => loadFieldGuidePage().then((m) => ({ default: m.FieldGuidePage })));
@@ -23,6 +24,7 @@ export const LandingPage = lazy(() => loadLandingPage().then((m) => ({ default: 
 export const PrivacyPage = lazy(() => loadPrivacyPage().then((m) => ({ default: m.PrivacyPage })));
 export const UpdatesPage = lazy(() => loadUpdatesPage().then((m) => ({ default: m.UpdatesPage })));
 export const NotFoundPage = lazy(() => loadNotFoundPage().then((m) => ({ default: m.NotFoundPage })));
+export const TopicPage = lazy(() => loadTopicPage().then((m) => ({ default: m.TopicPage })));
 export const SearchOverlay = lazy(() => loadSearchOverlay().then((m) => ({ default: m.SearchOverlay })));
 
 type LazyPage = LazyExoticComponent<() => ReactElement>;
@@ -38,6 +40,7 @@ export const APP_ROUTES: { path: string; Page: LazyPage }[] = [
   { path: "/contribute", Page: ContributePage },
   { path: "/privacy", Page: PrivacyPage },
   { path: "/updates", Page: UpdatesPage },
+  { path: "/topic/:slug", Page: TopicPage },
   { path: "*", Page: NotFoundPage },
 ];
 

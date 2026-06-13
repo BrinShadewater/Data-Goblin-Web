@@ -37,6 +37,21 @@ try {
   }
 } catch (e) { console.warn("prerender-meta: chapter read warning —", e.message); }
 
+
+const TOPICS = {
+  "sovereignty": "AI Sovereignty in Canada",
+  "data-centres": "Canada's AI Data Centres",
+  "environment": "AI's Environmental Footprint",
+  "copyright": "AI, Copyright & Creators in Canada",
+  "deepfakes": "Deepfakes & Misinformation",
+  "privacy": "AI, Privacy & Surveillance",
+  "labour": "AI, Jobs & the Canadian Economy",
+  "governance": "How AI Is Governed in Canada",
+};
+for (const [slug, title] of Object.entries(TOPICS)) {
+  routes.push([`/topic/${slug}`, title, DESC]);
+}
+
 const esc = (s) => s.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
 function render(route, title, desc) {

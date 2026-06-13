@@ -61,8 +61,8 @@ export const P = {
   /** Full-contrast title ink for chapter openers (item: header readability). */
   titleInk: ["#16140e", "#ece6d4"],
   body: ["#2e2b20", "#bfb9a8"],
-  muted: ["#7c7460", "#5d6878"],
-  faint: ["#9a9080", "#46505e"],
+  muted: ["#655e4a", "#8893a6"],
+  faint: ["#685f4c", "#828c9e"],
 
   // Accents
   green: ["#2d5a27", "#74b85e"],

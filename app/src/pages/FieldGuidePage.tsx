@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { X } from "lucide-react";
 import { useTheme } from "../ThemeContext";
 import { useReader } from "../reader";
@@ -39,6 +40,13 @@ export function FieldGuidePage() {
   const { bookmarked, onToggleBookmark } = useReaderBookmark({ num, chapter, panels, aligned, step });
   const { onTouchStart, onTouchEnd } = useSwipePaging({ goNext, goPrev });
   const { toolsOpen, setToolsOpen } = useToolsSheet(num);
+
+  useEffect(() => {
+    if (!chapter) return;
+    const main = chapter.title.split(" — ")[0];
+    const label = num === 0 ? "Front Matter" : num === 20 ? "Source Library Appendix" : `Chapter ${num}: ${main}`;
+    document.title = `${label} — Data Goblin`;
+  }, [chapter, num]);
 
   const spineShadow = c("rgba(60,50,30,0.22)", "rgba(0,0,0,0.55)");
   const pageShadow = c(

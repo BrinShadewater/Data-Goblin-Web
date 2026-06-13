@@ -9,6 +9,27 @@ import { CookieNotice } from "./components/CookieNotice";
 import goblinFavicon from "./assets/goblin-head-icon.webp";
 import { APP_ROUTES, SearchOverlay } from "./lazyRoutes";
 
+const ROUTE_TITLES: Record<string, string> = {
+  "/": "Data Goblin — A Field Guide to AI, Power, and Data in Canada",
+  "/guide": "Field Guide — Data Goblin",
+  "/map": "Map — Data Goblin",
+  "/loot": "Glossary — Data Goblin",
+  "/receipts": "Receipts — Data Goblin",
+  "/about": "About — Data Goblin",
+  "/contribute": "Contribute — Data Goblin",
+  "/updates": "Updates & Corrections — Data Goblin",
+  "/privacy": "Privacy — Data Goblin",
+};
+function docTitleFor(pathname: string): string {
+  if (ROUTE_TITLES[pathname]) return ROUTE_TITLES[pathname];
+  const ch = pathname.match(/^\/chapter\/(\d+)/);
+  if (ch) {
+    const n = Number(ch[1]);
+    return (n === 0 ? "Front Matter" : n === 20 ? "Source Library Appendix" : `Chapter ${n}`) + " — Data Goblin";
+  }
+  return "Data Goblin — A Field Guide to AI, Power, and Data in Canada";
+}
+
 function Shell() {
   const { c } = useTheme();
   const { mode } = useReader();
@@ -37,6 +58,12 @@ function Shell() {
   useEffect(() => {
     if (mode === "desktop") setDrawerOpen(false);
   }, [mode]);
+
+  // Keep the browser tab title in sync on client-side navigation (full-page
+  // loads and shared links already get the right title from prerender-meta).
+  useEffect(() => {
+    document.title = docTitleFor(location.pathname);
+  }, [location.pathname]);
 
   return (
     <div
