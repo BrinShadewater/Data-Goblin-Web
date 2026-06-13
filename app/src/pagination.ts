@@ -52,9 +52,9 @@ export const ACCENT_COST = 180;
  * ≈60% of a desktop panel; tablet single pages ≈85%; the dyslexia-friendly
  * face (larger metrics, 1.8 line-height) costs a further ~15%.
  */
-export function budgetsFor(mode: ReaderMode, dyslexic: boolean): Budgets {
+export function budgetsFor(mode: ReaderMode, dyslexic: boolean, heightScale = 1): Budgets {
   const scale =
-    (mode === "phone" ? 0.6 : mode === "tablet" ? 0.85 : 1) * (dyslexic ? 0.85 : 1);
+    (mode === "phone" ? 0.6 : mode === "tablet" ? 0.85 : 1) * (dyslexic ? 0.85 : 1) * heightScale;
   return {
     panel: Math.round(PANEL_BUDGET * scale),
     opener: Math.round(OPENER_BUDGET * scale),
@@ -101,8 +101,16 @@ export function blockCost(block: Block): number {
       return block.text.length + 80;
     case "md": {
       const t = block.text.trimStart();
-      const isCalloutOrTable = t.startsWith(">") || t.startsWith("|");
-      return Math.round(block.text.length * (isCalloutOrTable ? 1.15 : 1)) + 40;
+      if (t.startsWith(">")) {
+        // Callout cards (Goblin Check / Chapter Recap) render far taller than
+        // their character count: a header, padded chrome, and one full line per
+        // bullet. Charge for the chrome and each quoted line so the packer never
+        // over-fills a page with a tall recap.
+        const lines = (block.text.match(/\n/g)?.length ?? 0) + 1;
+        return Math.round(block.text.length * 1.2) + lines * 22 + 130;
+      }
+      if (t.startsWith("|")) return Math.round(block.text.length * 1.15) + 40;
+      return block.text.length + 40;
     }
     case "panel":
       // Never packed with prose — paginatePanels appends plates as their

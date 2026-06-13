@@ -19,7 +19,7 @@ export const TOKENS = {
     headerLogoDesktop: 62,
     headerLogoCompact: 44,
     headerNav: 48,
-    headerSearch: 45,
+    headerSearch: 34,
     mobileDrawerLogo: 34,
     mobileDrawerNav: 27,
     sidebarTool: 50,

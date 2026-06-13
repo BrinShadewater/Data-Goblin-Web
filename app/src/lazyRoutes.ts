@@ -9,6 +9,8 @@ const loadAboutPage = () => import("./pages/AboutPage");
 const loadContributePage = () => import("./pages/ContributePage");
 const loadLandingPage = () => import("./pages/LandingPage");
 const loadPrivacyPage = () => import("./pages/PrivacyPage");
+const loadUpdatesPage = () => import("./pages/UpdatesPage");
+const loadNotFoundPage = () => import("./pages/NotFoundPage");
 const loadSearchOverlay = () => import("./components/SearchOverlay");
 
 export const FieldGuidePage = lazy(() => loadFieldGuidePage().then((m) => ({ default: m.FieldGuidePage })));
@@ -19,6 +21,8 @@ export const AboutPage = lazy(() => loadAboutPage().then((m) => ({ default: m.Ab
 export const ContributePage = lazy(() => loadContributePage().then((m) => ({ default: m.ContributePage })));
 export const LandingPage = lazy(() => loadLandingPage().then((m) => ({ default: m.LandingPage })));
 export const PrivacyPage = lazy(() => loadPrivacyPage().then((m) => ({ default: m.PrivacyPage })));
+export const UpdatesPage = lazy(() => loadUpdatesPage().then((m) => ({ default: m.UpdatesPage })));
+export const NotFoundPage = lazy(() => loadNotFoundPage().then((m) => ({ default: m.NotFoundPage })));
 export const SearchOverlay = lazy(() => loadSearchOverlay().then((m) => ({ default: m.SearchOverlay })));
 
 type LazyPage = LazyExoticComponent<() => ReactElement>;
@@ -33,7 +37,8 @@ export const APP_ROUTES: { path: string; Page: LazyPage }[] = [
   { path: "/about", Page: AboutPage },
   { path: "/contribute", Page: ContributePage },
   { path: "/privacy", Page: PrivacyPage },
-  { path: "*", Page: FieldGuidePage },
+  { path: "/updates", Page: UpdatesPage },
+  { path: "*", Page: NotFoundPage },
 ];
 
 export const preloadReaderRoute = () => {

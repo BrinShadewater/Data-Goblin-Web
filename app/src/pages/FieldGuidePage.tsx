@@ -6,6 +6,7 @@ import { LeftSidebar } from "../components/LeftSidebar";
 import { GoblinTools, RightSidebar } from "../components/RightSidebar";
 import { BottomBar } from "../components/BottomBar";
 import { PagePanel } from "../components/PagePanel";
+import { NavIcon } from "../components/GoblinMascot";
 import { useBook } from "../useContent";
 import { folio } from "../readerUtils";
 import {
@@ -117,19 +118,19 @@ export function FieldGuidePage() {
           <>
             <button
               onClick={() => setToolsOpen(true)}
-              aria-label="Open goblin tools"
+              aria-label="Open field tools"
+              title="Field tools"
               style={{
                 position: "fixed",
                 right: "14px",
                 bottom: "72px",
-                width: "52px",
-                height: "52px",
+                width: "56px",
+                height: "56px",
                 borderRadius: "50%",
-                background: c(...P.green),
-                border: `1px solid ${c(...P.greenDeep)}`,
+                background: c(...P.panelBg),
+                border: `1px solid ${c(...P.borderSoft)}`,
                 boxShadow: c("0 4px 14px rgba(40,30,10,0.35)", "0 4px 14px rgba(0,0,0,0.6)"),
                 cursor: "pointer",
-                fontSize: "25px",
                 lineHeight: 1,
                 zIndex: 60,
                 display: toolsOpen ? "none" : "flex",
@@ -138,7 +139,7 @@ export function FieldGuidePage() {
                 padding: 0,
               }}
             >
-              <span role="img" aria-hidden>🧌</span>
+              <NavIcon name="pack-nav" size={40} />
             </button>
 
             {toolsOpen && (

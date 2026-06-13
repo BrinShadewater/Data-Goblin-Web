@@ -62,7 +62,7 @@ export function LootPage() {
           />
 
           <div style={{ display: "flex", alignItems: "center", gap: "8px", background: c(...P.inputBg), border: `1px solid ${border}`, borderRadius: RADIUS, padding: "8px 14px", maxWidth: "380px", marginTop: "18px" }}>
-            <NavIcon name="search-nav" size={17} />
+            <NavIcon name="search-nav" size={30} />
             <input
               type="text"
               placeholder="Search the glossary…"

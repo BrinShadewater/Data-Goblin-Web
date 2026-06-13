@@ -28,6 +28,7 @@ export function LandingQuickLinks({ preloadGuide }: { preloadGuide: () => void }
             style={{
               display: "grid",
               gridTemplateColumns: `${TOKENS.icon.landingFeature}px 1fr`,
+              alignItems: "center",
               gap: "18px",
               textAlign: "left",
               background: c(...P.cardBg),

@@ -1,0 +1,3 @@
+
+# Vite temp config artifacts (safe to delete)
+vite.config.ts.timestamp-*.mjs

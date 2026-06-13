@@ -46,7 +46,7 @@ export function useChapterRoute(): number {
 }
 
 export function usePaginatedChapter(num: number) {
-  const { mode, dyslexic } = useReader();
+  const { mode, dyslexic, heightScale } = useReader();
   const { data: chapter, error } = useChapter(num);
   const { data: traps } = useTraps();
   const { data: artMap } = useArtMap();
@@ -54,7 +54,7 @@ export function usePaginatedChapter(num: number) {
   const trap = traps?.[String(num)] ?? null;
   const accents = useMemo(() => artMap?.docs?.[String(num)]?.accents ?? [], [artMap, num]);
   const artPanels = useMemo(() => artMap?.docs?.[String(num)]?.panels ?? [], [artMap, num]);
-  const budgets = useMemo(() => budgetsFor(mode, dyslexic), [mode, dyslexic]);
+  const budgets = useMemo(() => budgetsFor(mode, dyslexic, heightScale), [mode, dyslexic, heightScale]);
   const panels = useMemo(
     () => (chapter ? paginatePanelsCached(chapter, trap, budgets, accents, artPanels) : null),
     [chapter, trap, budgets, accents, artPanels]

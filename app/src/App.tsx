@@ -1,5 +1,5 @@
 import { createElement, Suspense, useEffect, useState } from "react";
-import { HashRouter, Route, Routes, useLocation } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import { ThemeProvider, useTheme } from "./ThemeContext";
 import { ReaderProvider, useReader } from "./reader";
 import { P } from "./theme";
@@ -89,9 +89,9 @@ export default function App() {
   return (
     <ThemeProvider>
       <ReaderProvider>
-        <HashRouter>
+        <BrowserRouter>
           <Shell />
-        </HashRouter>
+        </BrowserRouter>
       </ReaderProvider>
     </ThemeProvider>
   );

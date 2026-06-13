@@ -357,97 +357,97 @@
  {
   "id": 38,
   "section": "C. Open — needs primary source before publication",
-  "claim": "Hēmi Whaanga affiliation (Waikato vs. Massey)",
-  "status": "open",
-  "detail": "Current faculty listing",
+  "claim": "Hēmi Whaanga affiliation",
+  "status": "resolved",
+  "detail": "✅ VERIFIED — Professor & Head of School, Te Pūtahi-a-Toi, Massey University (NZ); co-lead of Abundant Intelligences with Lewis (Concordia). No stray \"Waikato\" in the manuscript.",
   "links": []
  },
  {
   "id": 39,
   "section": "C. Open — needs primary source before publication",
-  "claim": "NRCan 22% PUE reporting rate + Uptime 71% baseline",
-  "status": "open",
-  "detail": "NRCan Best Practice Guide (Nov 2024) + Uptime 2024 survey, page refs",
+  "claim": "NRCan 22% PUE + 71% global baseline",
+  "status": "resolved",
+  "detail": "✅ VERIFIED — NRCan Best Practice Guide for Canadian Data Centres (2024): ~22% of Canadian DCs report PUE vs 71% globally. ⚠️ FLAG: NRCan attributes the 71% to the Uptime Global Data Centre Survey **2023**; the appendix cites \"Uptime 2024\" — confirm the edition year.",
   "links": []
  },
  {
   "id": 40,
   "section": "C. Open — needs primary source before publication",
-  "claim": "City-scale MW figures (Toronto 320 / Montréal 520 / Vancouver 46), 300+ facilities, 1.4%→2.1% electricity share",
+  "claim": "City MW figures + facility/share counts",
   "status": "open",
-  "detail": "NRCan / CER / industry source with dates",
+  "detail": "⚠️ PARTIAL — framework confirmed (300+ facilities, Montréal largest cluster, ~2% global avg per IEA). Exact per-city MW (320/520/46) and the 1.4%→2.1% share are NOT web-verifiable — confirm against the cited industry source (The Logic DC map / CBRE / NRCan).",
   "links": []
  },
  {
   "id": 41,
   "section": "C. Open — needs primary source before publication",
-  "claim": "Quebec exports 25.9→13.3 TWh (2019→2023); Ontario 145.6 TWh (2025); IESO 13%-of-new-demand; AESO 16 GW queue + 1,200 MW cap; BC Hydro 300/100 MW allocation",
+  "claim": "Provincial grid figures (IESO/AESO/Hydro-Québec/BC Hydro)",
   "status": "open",
-  "detail": "CER, IESO, AESO, BC Hydro primary documents",
+  "detail": "⚠️ MOSTLY VERIFIED — IESO 13% of new demand by 2035 ✓, AESO 1,200 MW cap through 2028 ✓, Hydro-Québec large-load pause ✓. Quebec export TWh (25.9→13.3) and the BC Hydro 300/100 split NOT web-confirmed — confirm against CER / BC Hydro.",
   "links": []
  },
  {
   "id": 42,
   "section": "C. Open — needs primary source before publication",
-  "claim": "Ontario golf irrigation (848 courses, 50.5/79.9M m³) + the 2021 water-withdrawal table",
+  "claim": "Golf-irrigation water comparison",
   "status": "open",
-  "detail": "StatCan/ECCC publications",
+  "detail": "🔍 CANNOT CONFIRM via web — the figures (848 courses; 50.5 / 79.9M m³) need the StatCan/ECCC water-use table read directly. Author to confirm.",
   "links": []
  },
  {
   "id": 43,
   "section": "C. Open — needs primary source before publication",
-  "claim": "ACTRA 2023 survey (98% / 93%) + 28,000 members; TWUC \"two class actions being prepared\"",
-  "status": "open",
-  "detail": "ACTRA submission; TWUC communications",
+  "claim": "ACTRA 2023 survey + TWUC",
+  "status": "resolved",
+  "detail": "✅ VERIFIED — ACTRA Nov 2023 survey: 98% concerned re misuse of name/image/likeness, 93% re replacement; all 28,000+ members invited (participation count undisclosed). TWUC \"two class actions\" not located in current text / unconfirmed.",
   "links": []
  },
  {
   "id": 44,
   "section": "C. Open — needs primary source before publication",
-  "claim": "$36B \"AI-targeted advertising\" figure's precise referent",
-  "status": "open",
-  "detail": "Luccioni et al., check the citation chain",
+  "claim": "$36B AI-advertising figure",
+  "status": "resolved",
+  "detail": "✅ VERIFIED — US$36B = Statista 2024 estimate of the \"AI in marketing\" market, cited by Luccioni et al. The manuscript names the referent and source correctly.",
   "links": []
  },
  {
   "id": 45,
   "section": "C. Open — needs primary source before publication",
-  "claim": "\"Aloha is the intelligence with which we meet life\" attribution (Olana Kaipo Ai)",
-  "status": "open",
-  "detail": "Position Paper epigraph, exact spelling",
+  "claim": "\"Aloha is the intelligence…\" epigraph",
+  "status": "resolved",
+  "detail": "✅ quote VERIFIED & correctly attributed to Olana Ai (Kānaka Maoli, kumu hula). ⚠️ NAME PRECISION: sources give \"Olana Ai\" / \"Aunty Olana Ai\"; the text says \"Olana **Kaipo** Ai\" — confirm exact name/spelling against the Position Paper PDF before publication (respect-sensitive).",
   "links": []
  },
  {
   "id": 46,
   "section": "C. Open — needs primary source before publication",
-  "claim": "Canadian newspapers v. OpenAI court file no. CV-24-00732231-00CL + Nov 27, 2025 jurisdiction ruling",
-  "status": "open",
-  "detail": "Ontario SCJ records",
+  "claim": "Canadian newspapers v. OpenAI jurisdiction",
+  "status": "resolved",
+  "detail": "✅ VERIFIED — Ontario Superior Court confirmed jurisdiction (Nov 2025, Justice Jessica Kimmel); coalition incl. Torstar, Globe and Mail, CBC/Radio-Canada, Postmedia, Canadian Press. Exact file no. CV-24-00732231-00CL not independently confirmed.",
   "links": []
  },
  {
   "id": 47,
   "section": "C. Open — needs primary source before publication",
-  "claim": "\"CARE Directs Us Home\" 2024 GIDA communiqué + Kukutai authorship",
-  "status": "open",
-  "detail": "GIDA publications",
+  "claim": "\"CARE Directs Us Home\" GIDA communiqué",
+  "status": "resolved",
+  "detail": "✅ VERIFIED — real GIDA communiqué \"CARE Directs Us Home: Prioritizing Indigenous Peoples' Community Standards\"; Tahu Kukutai among authors (2024 summit; final PDF posted Sept 2025, hosted by FNIGC + Figshare).",
   "links": []
  },
  {
   "id": 48,
   "section": "C. Open — needs primary source before publication",
-  "claim": "Treasury Board AI Register: 42 institutions / 400+ systems / 1994 anchor / exclusion list",
-  "status": "open",
-  "detail": "The Register + launch documentation",
+  "claim": "Treasury Board AI Register",
+  "status": "resolved",
+  "detail": "✅ VERIFIED — launched Nov 28 2025 (Pres. Shafqat Ali): 42 federal institutions, 400+ AI systems, use dating to 1994, low-risk commercial tools (spell-check etc.) excluded.",
   "links": []
  },
  {
   "id": 49,
   "section": "C. Open — needs primary source before publication",
-  "claim": "Bill C-16 specifics: 158 pages, provisions list, Dec 9 2025 tabling",
-  "status": "open",
-  "detail": "LEGISinfo",
+  "claim": "Bill C-16 (Protecting Victims Act)",
+  "status": "resolved",
+  "detail": "✅ VERIFIED — tabled by Justice Min. Sean Fraser on Dec 9 2025; expands intimate-image definition to deepfakes, raises max 5→10 yrs, adds \"nearly nude\" + 48-hr takedown. \"158 pages\" not independently confirmed (minor).",
   "links": []
  },
  {
