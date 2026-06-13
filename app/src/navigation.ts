@@ -10,7 +10,7 @@ export const NAV_ITEMS: NavItem[] = [
   { to: "/map", label: "Map", icon: "map-nav" },
   { to: "/loot", label: "Loot (Glossary)", icon: "chest-nav" },
   { to: "/receipts", label: "Receipts", icon: "data-nav" },
-  { to: "/updates", label: "Updates", icon: "journal-nav" },
+  { to: "/updates", label: "Updates", icon: "forge-nav" },
   { to: "/about", label: "About", icon: "contact-nav" },
   { to: "/contribute", label: "Contribute", icon: "contribute-nav" },
 ];

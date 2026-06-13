@@ -24,7 +24,7 @@ export function GoblinTrapCard({ trap }: { trap: Trap }) {
       }}
     >
       <span style={{ flexShrink: 0, marginTop: "-4px" }}>
-        <NavIcon name="alert-nav" size={TOKENS.icon.calloutTrap} />
+        <NavIcon name="trap-nav" size={TOKENS.icon.calloutTrap} />
       </span>
       <div>
         <div style={{ fontFamily: MONO, fontSize: "9px", fontWeight: 800, letterSpacing: "0.22em", textTransform: "uppercase", color: red, marginBottom: "4px" }}>

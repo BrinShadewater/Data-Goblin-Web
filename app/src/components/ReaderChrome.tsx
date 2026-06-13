@@ -194,11 +194,11 @@ export function ProgressGuide({
                 height: isActive ? "15px" : "8px",
                 borderRadius: "50%",
                 background: isActive
-                  ? `radial-gradient(circle at 35% 30%, ${c(...TOKENS.color.progressCrystalLight)} 0%, ${c(...TOKENS.color.progressCrystalMid)} 42%, ${progressBlue} 76%)`
+                  ? `radial-gradient(circle at 35% 30%, ${c("#9fd0ff", "#bfe6ff")} 0%, ${c("#2f7fd0", "#5aa8ec")} 45%, ${c("#143b6e", "#1f4f7a")} 90%)`
                   : isDone ? c(...TOKENS.color.progressDone) : c("#bcb29a", "#2a3040"),
                 border: isActive ? `1px solid ${c(...TOKENS.color.progressCrystalBorder)}` : "none",
                 boxShadow: isActive
-                  ? c("0 0 0 3px rgba(143, 215, 255, 0.24), 0 0 17px rgba(26, 46, 74, 0.58)", "0 0 0 3px rgba(143, 215, 255, 0.18), 0 0 20px rgba(122, 180, 232, 0.78)")
+                  ? c("0 0 0 3px rgba(47, 127, 208, 0.32), 0 0 16px rgba(20, 59, 110, 0.85)", "0 0 0 3px rgba(90, 168, 236, 0.26), 0 0 22px rgba(122, 180, 232, 0.9)")
                   : "none",
                 transition: "all 0.2s",
                 flexShrink: 0,

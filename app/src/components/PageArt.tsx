@@ -21,7 +21,7 @@ export function ArtPlate({ src, caption }: { src: string; caption?: string | nul
         alignItems: "center",
         justifyContent: "center",
         gap: "12px",
-        padding: "4px 0",
+        padding: "10px 0",
       }}
     >
       <img
@@ -35,7 +35,8 @@ export function ArtPlate({ src, caption }: { src: string; caption?: string | nul
         style={{
           flex: 1,
           minHeight: 0,
-          width: "100%",
+          width: "92%",
+          maxWidth: "640px",
           aspectRatio: artAspectRatio(src),
           objectFit: "contain",
           ...artBlendStyle(dark),

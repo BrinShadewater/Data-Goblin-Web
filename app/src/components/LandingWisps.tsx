@@ -27,11 +27,13 @@ export function LandingWispStyles() {
   return (
     <style>{`
       @keyframes dg-wisp-fall {
-        0% { transform: translate3d(0, -12vh, 0) scale(0.82); opacity: 0; }
-        12% { opacity: 0.82; }
-        34% { transform: translate3d(var(--drift), 22vh, 0) scale(1); opacity: 0.7; }
-        68% { transform: translate3d(calc(var(--drift) * -0.85), 62vh, 0) scale(0.92); opacity: 0.62; }
-        100% { transform: translate3d(calc(var(--drift) * 0.55), 112vh, 0) scale(0.78); opacity: 0; }
+        0%   { transform: translate3d(0, -12vh, 0) scale(0.76); opacity: 0; }
+        10%  { opacity: 0.8; }
+        22%  { transform: translate3d(calc(var(--drift) * 1.2), 16vh, 0) scale(1); opacity: 0.74; }
+        40%  { transform: translate3d(calc(var(--drift) * -1.05), 38vh, 0) scale(0.95); opacity: 0.7; }
+        58%  { transform: translate3d(calc(var(--drift) * 1.15), 58vh, 0) scale(1.04); opacity: 0.64; }
+        76%  { transform: translate3d(calc(var(--drift) * -0.7), 80vh, 0) scale(0.9); opacity: 0.5; }
+        100% { transform: translate3d(calc(var(--drift) * 0.5), 112vh, 0) scale(0.74); opacity: 0; }
       }
       @keyframes dg-wisp-breathe {
         0%, 100% { filter: blur(0.15px); }
@@ -69,10 +71,10 @@ export function LandingWisps() {
               width: "100%",
               height: "100%",
               borderRadius: "999px",
-              background: `radial-gradient(circle at center, ${c("#dff4ff", "#d7ffc7")} 0%, ${c("#2f80bd", "#8af66b")} 48%, transparent 76%)`,
-              boxShadow: c("0 0 10px rgba(47, 128, 189, 0.72), 0 0 24px rgba(18, 72, 119, 0.34)", "0 0 12px rgba(138, 246, 107, 0.72), 0 0 26px rgba(116, 216, 86, 0.32)"),
+              background: `radial-gradient(circle at center, ${c("#cfe9ff", "#d7ffc7")} 0%, ${c("#155e92", "#8af66b")} 48%, transparent 76%)`,
+              boxShadow: c("0 0 9px rgba(21, 94, 146, 0.8), 0 0 22px rgba(12, 56, 92, 0.46)", "0 0 12px rgba(138, 246, 107, 0.72), 0 0 26px rgba(116, 216, 86, 0.32)"),
               opacity: 0.82,
-              animation: `dg-wisp-fall ${28 + i * 0.8}s ease-in-out ${w.d}s infinite, dg-wisp-breathe ${5.2 + i * 0.16}s ease-in-out ${w.d}s infinite`,
+              animation: `dg-wisp-fall ${40 + i * 1.0}s ease-in-out ${w.d}s infinite, dg-wisp-breathe ${6.4 + i * 0.18}s ease-in-out ${w.d}s infinite`,
             }}
           />
         </span>

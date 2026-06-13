@@ -107,9 +107,9 @@ export function TopNav({
       style={{
         display: "flex",
         alignItems: "center",
-        gap: "20px",
+        gap: "13px",
         height: "72px",
-        padding: "0 22px",
+        padding: "0 18px",
         background: bg,
         borderBottom: `1px solid ${border}`,
         flexShrink: 0,
@@ -120,12 +120,15 @@ export function TopNav({
     >
       {logo}
 
-      <nav style={{ display: "flex", alignItems: "center", gap: "4px", flex: 1 }}>
+      <style>{`@media (max-width: 1880px){ .dg-navlabel{ display:none; } }`}</style>
+
+      <nav style={{ display: "flex", alignItems: "center", gap: "3px", flex: 1, minWidth: 0 }}>
         {NAV_ITEMS.map((l) => (
           <NavLink
             key={l.to}
             to={l.to}
             end={l.to === "/"}
+            title={l.label}
             onMouseEnter={l.to === "/guide" ? preloadReaderRoute : undefined}
             onFocus={l.to === "/guide" ? preloadReaderRoute : undefined}
             style={({ isActive }) => {
@@ -148,7 +151,7 @@ export function TopNav({
             }}
           >
             <NavIcon name={l.icon} size={TOKENS.icon.headerNav} />
-            {l.label}
+            <span className="dg-navlabel">{l.label}</span>
           </NavLink>
         ))}
       </nav>
@@ -178,7 +181,7 @@ export function TopNav({
             fontFamily: UI,
             fontSize: "13px",
             color: ink,
-            width: "180px",
+            width: "clamp(84px, 9vw, 180px)",
           }}
         />
       </div>

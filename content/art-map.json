@@ -1,62 +1,319 @@
 {
- "_readme": [
-  "HAND-EDITABLE ART MAP — this file is the single control surface for placing art in the reader.",
-  "Each key under 'docs' is a document number: 0 = Front Matter, 1–19 = chapters, 20 = Source Library Appendix.",
-  "'opener' is the image shown on that document's opening page, replacing the goblin mascot (the mascot itself always stays on the Front Matter, doc 0). Set it to null to show nothing.",
-  "'accents' are small ornaments drawn beside section headings, cycling in order through the chapter's sections. Use 2–4 per chapter; an empty list means no ornaments.",
-  "'panels' are near-full-page art plates that close the document, one page each, like the plates of a printed field guide. Each entry is {src, caption}; caption renders under the plate — use null when the art carries its own painted title.",
-  "Paths are relative to the app's public/art/ folder: 'medium/<file>' for chapter-opener scale art, 'small/<file>' for accent scale art, 'panels/<file>' for plates, 'icons/<file>' for nav/callout icons. Any file from any folder can be used in any slot.",
-  "ASSET FORMAT: the app ships WebP (converted from the raw PNGs in the project-root /assets folders — medium resized to max 880px wide, small to max 176px, panels to max 1200px, icons to 128px, quality 82–90, alpha preserved). Reference '.webp' filenames here. To add new art, convert the PNG to WebP at those sizes and drop it in public/art/ (assets/convert-new-art.py does this).",
-  "To swap art: change the filename, save, and redeploy (copy this file to site/app/public/content/art-map.json — the update-content script does this). No code changes needed.",
-  "Currently unused medium pieces, free to swap in: ecology-medium.webp, job-robot-medium.webp, technology-infrastructure-medium.webp.",
-  "Currently unused panels, free to swap in: data-security-panel.webp, stolen-work-panel2.webp, deepfakes2-panel.webp.",
-  "RESERVED — do not use: indigenous-data-panel.webp. AI-generated depiction of an Indigenous elder in the Indigenous data sovereignty context conflicts with the chapter's own OCAP/CARE argument (2026-06-11 legal/sensitivity audit). Replace with commissioned or licensed work by an Indigenous artist, or non-figurative imagery, before any use.",
-  "Placement notes for the author: ch9 (Sovereignty) had no Canada/beaver medium, so it borrows ip-protection-medium — swap when a sovereignty piece exists. ch15 reuses canadian-government-medium (also ch7), ch17 reuses idea-automation (also ch13), ch18 reuses ai-for-all (also ch5). ch19 and the appendix use small art as openers."
- ],
- "docs": {
-  "0": { "opener": "panels/hero-panel.webp", "accents": ["small/waving-mascot.webp"],
-         "panels": [{ "src": "panels/insight-panel.webp", "caption": "The Data Goblin at work — every claim gets the who-counted-it treatment." }] },
-  "1": { "opener": "medium/artificial-intelligence-medium.webp", "accents": ["small/artificial-intelligence.webp", "small/ai.webp", "small/ai2.webp"],
-         "panels": [{ "src": "panels/ai-innovation-panel.webp", "caption": null }] },
-  "2": { "opener": "medium/ai-data-medium.webp", "accents": ["small/ai-training.webp", "small/training-data.webp", "small/data-set-training.webp"],
-         "panels": [{ "src": "panels/data-analysis-panel.webp", "caption": null }] },
-  "3": { "opener": "medium/data-sorting-medium.webp", "accents": ["small/data-sorting.webp", "small/messy-data.webp", "small/clean-data.webp", "small/training-datas.webp"],
-         "panels": [{ "src": "panels/data-colonialism-panel.webp", "caption": null }] },
-  "4": { "opener": "medium/data-server-medium.webp", "accents": ["small/power.webp", "small/chips.webp", "small/charging.webp"],
-         "panels": [{ "src": "panels/power2-panel.webp", "caption": null }] },
-  "5": { "opener": "medium/ai-for-all-medium.webp", "accents": ["small/canada.webp", "small/canada-goblin.webp", "small/canadians.webp"],
-         "panels": [{ "src": "panels/canadian-champions-panel.webp", "caption": null }] },
-  "6": { "opener": "medium/cloud-infrastructure-medium.webp", "accents": ["small/server.webp", "small/servers2.webp", "small/data-infrastructure.webp"],
-         "panels": [{ "src": "panels/data-infrastructure-panel.webp", "caption": null }] },
-  "7": { "opener": "medium/canadian-government-medium.webp", "accents": ["small/canadian-politics.webp", "small/politics2.webp", "small/data-capitalists.webp"],
-         "panels": [{ "src": "panels/power-panel.webp", "caption": null }] },
-  "8": { "opener": "medium/water-use-medium.webp", "accents": ["small/water.webp", "small/water-power.webp", "small/water-used.webp", "small/ecology.webp"],
-         "panels": [{ "src": "panels/ai-data-power-panel.webp", "caption": null }] },
-  "9": { "opener": "medium/ip-protection-medium.webp", "accents": ["small/canada-beaver.webp", "small/canadian-beavers.webp", "small/protected-data.webp"],
-         "panels": [{ "src": "panels/sovereign-cloud-panel.webp", "caption": null },
-                    { "src": "panels/sovereign-cloud-panel2.webp", "caption": null }] },
-  "10": { "opener": "medium/security-medium.webp", "accents": ["small/anonymous.webp", "small/masking.webp", "small/personal-security.webp"],
-          "panels": [{ "src": "panels/data-security-panel2.webp", "caption": null }] },
-  "11": { "opener": "medium/copyright-medium.webp", "accents": ["small/stolen-art.webp", "small/stolen-ips.webp", "small/copyright-book.webp"],
-          "panels": [{ "src": "panels/stolen-work-panel.webp", "caption": null }] },
-  "12": { "opener": "medium/deep-fakes-medium.webp", "accents": ["small/deep-fake.webp", "small/mirror-fake.webp", "small/speech.webp"],
-          "panels": [{ "src": "panels/deep-fakes-panel.webp", "caption": null }] },
-  "13": { "opener": "medium/idea-automation-medium.webp", "accents": ["small/sorting.webp", "small/robot-sorting.webp", "small/sorting-machine.webp"],
-          "panels": [{ "src": "panels/algorithmic-impact-panel.webp", "caption": null }] },
-  "14": { "opener": "medium/job-loss-medium.webp", "accents": ["small/robot.webp", "small/robot-job-loss.webp", "small/job-replaced.webp"],
-          "panels": [{ "src": "panels/automate-panel.webp", "caption": null }] },
-  "15": { "opener": "medium/canadian-government-medium.webp", "accents": ["small/security-act.webp", "small/canadian-voting.webp"],
-          "panels": [{ "src": "panels/ai-safety-caisi-panel.webp", "caption": null },
-                     { "src": "panels/quebec-panel.webp", "caption": null }] },
-  "16": { "opener": "medium/protection-medium.webp", "accents": ["small/security-badge.webp", "small/data-security.webp", "small/cloud-security.webp"],
-          "panels": [{ "src": "panels/source-verification-panel.webp", "caption": null }] },
-  "17": { "opener": "medium/idea-automation-medium.webp", "accents": ["small/ai-knowledge.webp", "small/field-notes.webp", "small/charts.webp"],
-          "panels": [{ "src": "panels/visualize-panel.webp", "caption": null }] },
-  "18": { "opener": "medium/ai-for-all-medium.webp", "accents": ["small/canada-and-beaver.webp", "small/ai-for-all3.webp", "small/new-technology.webp"],
-          "panels": [{ "src": "panels/findings-panel.webp", "caption": null }] },
-  "19": { "opener": "small/ai-for-everyone.webp", "accents": ["small/waving-mascot.webp", "small/canadian-speech.webp", "small/friends.webp"],
-          "panels": [{ "src": "panels/forward-panel.webp", "caption": "The trail continues — carry the toolkit forward." }] },
-  "20": { "opener": "small/ai-knowledge.webp", "accents": ["small/field-notes.webp", "small/ip-books.webp", "small/copyright-doc.webp"],
-          "panels": [{ "src": "panels/evidence-trail-panel.webp", "caption": null }] }
- }
+  "_readme": [
+    "HAND-EDITABLE ART MAP — this file is the single control surface for placing art in the reader.",
+    "Each key under 'docs' is a document number: 0 = Front Matter, 1–19 = chapters, 20 = Source Library Appendix.",
+    "'opener' is the image shown on that document's opening page, replacing the goblin mascot (the mascot itself always stays on the Front Matter, doc 0). Set it to null to show nothing.",
+    "'accents' are small ornaments drawn beside section headings, cycling in order through the chapter's sections. Use 2–4 per chapter; an empty list means no ornaments.",
+    "'panels' are near-full-page art plates that close the document, one page each, like the plates of a printed field guide. Each entry is {src, caption}; caption renders under the plate — use null when the art carries its own painted title.",
+    "Paths are relative to the app's public/art/ folder: 'medium/<file>' for chapter-opener scale art, 'small/<file>' for accent scale art, 'panels/<file>' for plates, 'icons/<file>' for nav/callout icons. Any file from any folder can be used in any slot.",
+    "ASSET FORMAT: the app ships WebP (converted from the raw PNGs in the project-root /assets folders — medium resized to max 880px wide, small to max 176px, panels to max 1200px, icons to 128px, quality 82–90, alpha preserved). Reference '.webp' filenames here. To add new art, convert the PNG to WebP at those sizes and drop it in public/art/ (assets/convert-new-art.py does this).",
+    "To swap art: change the filename, save, and redeploy (copy this file to site/app/public/content/art-map.json — the update-content script does this). No code changes needed.",
+    "Currently unused medium pieces, free to swap in: ecology-medium.webp, job-robot-medium.webp, technology-infrastructure-medium.webp.",
+    "Currently unused panels, free to swap in: data-security-panel.webp, stolen-work-panel2.webp, deepfakes2-panel.webp.",
+    "RESERVED — do not use: indigenous-data-panel.webp. AI-generated depiction of an Indigenous elder in the Indigenous data sovereignty context conflicts with the chapter's own OCAP/CARE argument (2026-06-11 legal/sensitivity audit). Replace with commissioned or licensed work by an Indigenous artist, or non-figurative imagery, before any use.",
+    "Placement notes for the author: ch9 (Sovereignty) had no Canada/beaver medium, so it borrows ip-protection-medium — swap when a sovereignty piece exists. ch15 reuses canadian-government-medium (also ch7), ch17 reuses idea-automation (also ch13), ch18 reuses ai-for-all (also ch5). ch19 and the appendix use small art as openers."
+  ],
+  "docs": {
+    "0": {
+      "opener": "panels/hero-panel.webp",
+      "accents": [
+        "small/waving-mascot.webp"
+      ],
+      "panels": [
+        {
+          "src": "panels/insight-panel.webp",
+          "caption": "The Data Goblin at work — every claim gets the who-counted-it treatment."
+        }
+      ]
+    },
+    "1": {
+      "opener": "medium/artificial-intelligence-medium.webp",
+      "accents": [
+        "small/artificial-intelligence.webp",
+        "small/ai.webp",
+        "small/ai2.webp"
+      ],
+      "panels": [
+        {
+          "src": "panels/ai-innovation-panel.webp",
+          "caption": null
+        }
+      ]
+    },
+    "2": {
+      "opener": "medium/ai-data-medium.webp",
+      "accents": [
+        "small/ai-training.webp",
+        "small/training-data.webp",
+        "small/data-set-training.webp"
+      ],
+      "panels": [
+        {
+          "src": "panels/data-analysis-panel.webp",
+          "caption": null
+        }
+      ]
+    },
+    "3": {
+      "opener": "medium/data-sorting-medium.webp",
+      "accents": [
+        "small/data-sorting.webp",
+        "small/messy-data.webp",
+        "small/clean-data.webp",
+        "small/training-datas.webp"
+      ],
+      "panels": [
+        {
+          "src": "panels/data-colonialism-panel.webp",
+          "caption": null
+        }
+      ]
+    },
+    "4": {
+      "opener": "medium/data-server-medium.webp",
+      "accents": [
+        "small/power.webp",
+        "small/chips.webp",
+        "small/charging.webp"
+      ],
+      "panels": [
+        {
+          "src": "panels/power2-panel.webp",
+          "caption": null
+        }
+      ]
+    },
+    "5": {
+      "opener": "medium/ai-for-all-medium.webp",
+      "accents": [
+        "small/canada.webp",
+        "small/canada-goblin.webp",
+        "small/canadians.webp"
+      ],
+      "panels": [
+        {
+          "src": "panels/canadian-champions-panel.webp",
+          "caption": null
+        }
+      ]
+    },
+    "6": {
+      "opener": "medium/cloud-infrastructure-medium.webp",
+      "accents": [
+        "small/server.webp",
+        "small/servers2.webp",
+        "small/data-infrastructure.webp"
+      ],
+      "panels": [
+        {
+          "src": "panels/data-infrastructure-panel.webp",
+          "caption": null
+        }
+      ]
+    },
+    "7": {
+      "opener": "medium/canadian-government-medium.webp",
+      "accents": [
+        "small/canadian-politics.webp",
+        "small/politics2.webp",
+        "small/data-capitalists.webp"
+      ],
+      "panels": [
+        {
+          "src": "panels/power-panel.webp",
+          "caption": null
+        }
+      ]
+    },
+    "8": {
+      "opener": "medium/water-use-medium.webp",
+      "accents": [
+        "small/water.webp",
+        "small/water-power.webp",
+        "small/water-used.webp",
+        "small/ecology.webp"
+      ],
+      "panels": [
+        {
+          "src": "panels/ai-data-power-panel.webp",
+          "caption": null
+        }
+      ]
+    },
+    "9": {
+      "opener": "medium/ip-protection-medium.webp",
+      "accents": [
+        "small/canada-beaver.webp",
+        "small/canadian-beavers.webp",
+        "small/protected-data.webp"
+      ],
+      "panels": [
+        {
+          "src": "panels/sovereign-cloud-panel.webp",
+          "caption": null
+        },
+        {
+          "src": "panels/sovereign-cloud-panel2.webp",
+          "caption": null
+        }
+      ]
+    },
+    "10": {
+      "opener": "medium/security-medium.webp",
+      "accents": [
+        "small/anonymous.webp",
+        "small/masking.webp",
+        "small/personal-security.webp"
+      ],
+      "panels": [
+        {
+          "src": "panels/data-security-panel2.webp",
+          "caption": null
+        }
+      ]
+    },
+    "11": {
+      "opener": "medium/copyright-medium.webp",
+      "accents": [
+        "small/stolen-art.webp",
+        "small/stolen-ips.webp",
+        "small/copyright-book.webp"
+      ],
+      "panels": [
+        {
+          "src": "panels/stolen-work-panel.webp",
+          "caption": null
+        }
+      ]
+    },
+    "12": {
+      "opener": "medium/deep-fakes-medium.webp",
+      "accents": [
+        "small/deep-fake.webp",
+        "small/mirror-fake.webp",
+        "small/speech.webp"
+      ],
+      "panels": [
+        {
+          "src": "panels/deep-fakes-panel.webp",
+          "caption": null
+        }
+      ]
+    },
+    "13": {
+      "opener": "medium/idea-automation-medium.webp",
+      "accents": [
+        "small/sorting.webp",
+        "small/robot-sorting.webp",
+        "small/sorting-machine.webp"
+      ],
+      "panels": [
+        {
+          "src": "panels/algorithmic-impact-panel.webp",
+          "caption": null
+        }
+      ]
+    },
+    "14": {
+      "opener": "medium/job-loss-medium.webp",
+      "accents": [
+        "small/robot.webp",
+        "small/robot-job-loss.webp",
+        "small/job-replaced.webp"
+      ],
+      "panels": [
+        {
+          "src": "panels/automate-panel.webp",
+          "caption": null
+        }
+      ]
+    },
+    "15": {
+      "opener": "medium/canadian-government-medium.webp",
+      "accents": [
+        "small/security-act.webp",
+        "small/canadian-voting.webp"
+      ],
+      "panels": [
+        {
+          "src": "panels/ai-safety-caisi-panel.webp",
+          "caption": null
+        },
+        {
+          "src": "panels/quebec-panel.webp",
+          "caption": null
+        }
+      ]
+    },
+    "16": {
+      "opener": "medium/protection-medium.webp",
+      "accents": [
+        "small/security-badge.webp",
+        "small/data-security.webp",
+        "small/cloud-security.webp"
+      ],
+      "panels": [
+        {
+          "src": "panels/source-verification-panel.webp",
+          "caption": null
+        }
+      ]
+    },
+    "17": {
+      "opener": "medium/idea-automation-medium.webp",
+      "accents": [
+        "small/ai-knowledge.webp",
+        "small/field-notes.webp",
+        "small/charts.webp"
+      ],
+      "panels": [
+        {
+          "src": "panels/visualize-panel.webp",
+          "caption": null
+        }
+      ]
+    },
+    "18": {
+      "opener": "medium/ai-for-all-medium.webp",
+      "accents": [
+        "small/canada-and-beaver.webp",
+        "small/ai-for-all3.webp",
+        "small/new-technology.webp"
+      ],
+      "panels": [
+        {
+          "src": "panels/findings-panel.webp",
+          "caption": null
+        }
+      ]
+    },
+    "19": {
+      "opener": "small/ai-for-everyone.webp",
+      "accents": [
+        "small/waving-mascot.webp",
+        "small/canadian-speech.webp",
+        "small/friends.webp"
+      ],
+      "panels": [
+        {
+          "src": "panels/forward-panel.webp",
+          "caption": "The trail continues — carry the toolkit forward."
+        }
+      ]
+    },
+    "20": {
+      "opener": "small/ai-knowledge.webp",
+      "accents": [
+        "small/field-notes.webp",
+        "small/ip-books.webp",
+        "small/copyright-doc.webp"
+      ],
+      "panels": [
+        {
+          "src": "panels/insight-panel.webp",
+          "caption": "The Source Library — every claim, checked against its receipt."
+        }
+      ]
+    }
+  }
 }

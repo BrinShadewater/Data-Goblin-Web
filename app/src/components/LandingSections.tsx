@@ -82,7 +82,7 @@ export function LandingHero({
           {subtitle}
         </p>
         <p style={{ fontFamily: BODY, fontSize: "18px", lineHeight: 1.7, color: body, maxWidth: "760px", margin: "0 0 28px" }}>
-          A plain-language manual for reading AI claims in Canada: who counted what, who benefits,
+          A plain-language guide for reading AI claims in Canada: who counted what, who benefits,
           what is still contested, and where the receipts live.
         </p>
         <div style={{ display: "flex", flexWrap: "wrap", gap: "12px", alignItems: "center" }}>

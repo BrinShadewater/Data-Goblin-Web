@@ -92,7 +92,7 @@ export function useMarkdownComponents(): Components {
         const isIcon = rel.includes("/icons/");
         const isSmallArt = rel.includes("/small/");
         const isGoblinCheckIcon = rel.includes("check-nav") || String(alt ?? "").toLowerCase().includes("goblin check");
-        const isGoblinTrapIcon = rel.includes("alert-nav") || String(alt ?? "").toLowerCase().includes("goblin trap");
+        const isGoblinTrapIcon = rel.includes("trap-nav") || String(alt ?? "").toLowerCase().includes("goblin trap");
         const isChapterRecapIcon = rel.includes("chapter-recap-nav") || String(alt ?? "").toLowerCase().includes("chapter recap");
         const iconSize = isGoblinCheckIcon
           ? TOKENS.icon.calloutCheck
