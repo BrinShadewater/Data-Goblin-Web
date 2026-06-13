@@ -4,7 +4,7 @@ import { useTheme } from "../ThemeContext";
 import { useReader } from "../reader";
 import { DISPLAY, MONO, P, RADIUS, UI } from "../theme";
 import { AUTOLINK_TITLE } from "../links";
-import { artUrl } from "../useContent";
+import { artAspectRatio, artDimensions, artSrcSet, artUrl } from "../useContent";
 import {
   GoblinCheckCard,
   isChapterRecapQuote,
@@ -82,13 +82,19 @@ export function useMarkdownComponents(): Components {
       ),
       img: ({ src, alt }) => {
         const rel = typeof src === "string" ? src : "";
-        const resolved = rel.startsWith("art/") ? artUrl(rel.slice(4)) : rel;
+        const artRel = rel.startsWith("art/") ? rel.slice(4) : null;
+        const dimensions = artRel ? artDimensions(artRel) : undefined;
+        const resolved = artRel ? artUrl(artRel) : rel;
         const isIcon = rel.includes("/icons/");
         const isSmallArt = rel.includes("/small/");
         const isGoblinCheckIcon = rel.includes("check-nav") || String(alt ?? "").toLowerCase().includes("goblin check");
         return (
           <img
             src={resolved}
+            srcSet={artRel ? artSrcSet(artRel) : undefined}
+            sizes={artRel && !isIcon ? "(max-width: 760px) 92vw, 520px" : undefined}
+            width={isIcon ? (isGoblinCheckIcon ? 72 : 48) : dimensions?.width}
+            height={isIcon ? (isGoblinCheckIcon ? 72 : 48) : dimensions?.height}
             alt={alt ?? ""}
             loading="lazy"
             decoding="async"
@@ -96,8 +102,8 @@ export function useMarkdownComponents(): Components {
               isIcon
                 ? { width: isGoblinCheckIcon ? "72px" : "48px", height: isGoblinCheckIcon ? "72px" : "48px", objectFit: "contain", display: "inline-block", verticalAlign: isGoblinCheckIcon ? "-23px" : "-14px" }
                 : isSmallArt
-                  ? { width: "264px", maxWidth: "100%", display: "block", margin: "12px auto", objectFit: "contain" }
-                  : { maxWidth: "100%", display: "block", margin: "10px auto" }
+                  ? { width: "264px", maxWidth: "100%", aspectRatio: artRel ? artAspectRatio(artRel) : undefined, display: "block", margin: "12px auto", objectFit: "contain" }
+                  : { maxWidth: "100%", aspectRatio: artRel ? artAspectRatio(artRel) : undefined, display: "block", margin: "10px auto" }
             }
           />
         );

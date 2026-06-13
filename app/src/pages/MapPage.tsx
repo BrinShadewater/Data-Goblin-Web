@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 import { useTheme } from "../ThemeContext";
 import { BODY, DISPLAY, MONO, P, RADIUS, UI } from "../theme";
-import { artSrcSet, artUrl, useBook } from "../useContent";
+import { artAspectRatio, artDimensions, artSrcSet, artUrl, useBook } from "../useContent";
 import { displayRegion } from "../regionLabels";
 import { LoadingMessage, PageHeading, StaticPageShell } from "../components/StaticPage";
+
+const MAP_ART = "panels/themap.webp";
 
 const REGION_NOTES: Record<string, string> = {
   "The Land": "Foundations — what AI actually is, how it learns, and what it is physically made of.",
@@ -22,6 +24,7 @@ export function MapPage() {
   const muted = c(...P.muted);
   const navy = c(...P.navy);
   const green = c(...P.green);
+  const mapDimensions = artDimensions(MAP_ART);
 
   return (
     <StaticPageShell maxWidth="1280px">
@@ -33,9 +36,11 @@ export function MapPage() {
           marginBottom="32px"
         >
           <img
-            src={artUrl("panels/themap.webp")}
-            srcSet={artSrcSet("panels/themap.webp")}
+            src={artUrl(MAP_ART)}
+            srcSet={artSrcSet(MAP_ART)}
             sizes="(max-width: 760px) 92vw, min(100vw, 810px)"
+            width={mapDimensions?.width}
+            height={mapDimensions?.height}
             alt="Fantasy map of Canada for Data Goblin, with the goblin standing in front"
             loading="eager"
             fetchPriority="high"
@@ -43,6 +48,7 @@ export function MapPage() {
             style={{
               display: "block",
               width: "min(100%, 810px)",
+              aspectRatio: artAspectRatio(MAP_ART),
               maxHeight: "min(54vh, 675px)",
               objectFit: "contain",
               margin: "0 auto",

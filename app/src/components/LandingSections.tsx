@@ -2,7 +2,7 @@ import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTheme } from "../ThemeContext";
 import { BODY, DISPLAY, MONO, P, RADIUS, TOKENS, UI } from "../theme";
-import { artSrcSet, artUrl } from "../useContent";
+import { artAspectRatio, artDimensions, artSrcSet, artUrl } from "../useContent";
 import { NavIcon } from "./GoblinMascot";
 
 const HERO_ART = "panels/insight2-panel.webp";
@@ -115,6 +115,7 @@ export function LandingHero({
   const navy = c(...P.navy);
   const green = c(...P.green);
   const red = c(...P.red);
+  const heroDimensions = artDimensions(HERO_ART);
 
   return (
     <section
@@ -208,6 +209,8 @@ export function LandingHero({
           src={artUrl(HERO_ART)}
           srcSet={artSrcSet(HERO_ART)}
           sizes="(max-width: 720px) 92vw, (max-width: 1100px) 46vw, 650px"
+          width={heroDimensions?.width}
+          height={heroDimensions?.height}
           alt="Data Goblin inspecting a trail of receipts and glowing evidence crystals"
           loading="eager"
           fetchPriority="high"
@@ -215,6 +218,7 @@ export function LandingHero({
           style={{
             display: "block",
             width: "100%",
+            aspectRatio: artAspectRatio(HERO_ART),
             maxHeight: "58dvh",
             objectFit: "contain",
             mixBlendMode: dark ? "normal" : "multiply",

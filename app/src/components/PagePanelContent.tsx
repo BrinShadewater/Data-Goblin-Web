@@ -3,7 +3,7 @@ import { useReader } from "../reader";
 import { DISPLAY, MONO, P, RADIUS, TOKENS, UI } from "../theme";
 import { GoblinMascot, NavIcon } from "./GoblinMascot";
 import { Markdown } from "./Markdown";
-import { artSrcSet, artUrl, useArtMap } from "../useContent";
+import { artAspectRatio, artDimensions, artSrcSet, artUrl, useArtMap } from "../useContent";
 import { displayRegion } from "../regionLabels";
 import type { Block } from "../pagination";
 import type { Chapter, Trap } from "../types";
@@ -112,6 +112,7 @@ function GoblinTrapCard({ trap }: { trap: Trap }) {
 
 function ArtPlate({ src, caption }: { src: string; caption?: string | null }) {
   const { c, dark } = useTheme();
+  const dimensions = artDimensions(src);
   return (
     <div
       style={{
@@ -128,12 +129,15 @@ function ArtPlate({ src, caption }: { src: string; caption?: string | null }) {
         src={artUrl(src)}
         srcSet={artSrcSet(src)}
         sizes="(max-width: 760px) 92vw, 42vw"
+        width={dimensions?.width}
+        height={dimensions?.height}
         alt={caption ?? "Field guide illustration"}
         decoding="async"
         style={{
           flex: 1,
           minHeight: 0,
           width: "100%",
+          aspectRatio: artAspectRatio(src),
           objectFit: "contain",
           ...artBlendStyle(dark),
         }}
@@ -196,6 +200,7 @@ export function OpenerHeader({ chapter }: { chapter: Chapter }) {
   const [mainTitle, ...subParts] = chapter.title.split(" — ");
   const subtitle = subParts.join(" — ");
   const openerArt = artMap?.docs?.[String(chapter.number)]?.opener ?? null;
+  const openerDimensions = openerArt ? artDimensions(openerArt) : undefined;
   const artHeight = mode === "phone" ? 170 : mode === "tablet" ? 220 : 250;
   return (
     <>
@@ -248,9 +253,10 @@ export function OpenerHeader({ chapter }: { chapter: Chapter }) {
             src={artUrl(openerArt)}
             srcSet={artSrcSet(openerArt)}
             sizes="(max-width: 760px) 70vw, 250px"
+            width={openerDimensions?.width}
+            height={openerDimensions?.height ?? artHeight}
             alt=""
             aria-hidden
-            height={artHeight}
             decoding="async"
             style={{
               height: `${artHeight}px`,

@@ -1,8 +1,10 @@
 import { useTheme } from "../ThemeContext";
 import { BODY, DISPLAY, HAND, MONO, P, UI } from "../theme";
 import { Markdown } from "../components/Markdown";
-import { artSrcSet, artUrl, useBook } from "../useContent";
+import { artAspectRatio, artDimensions, artSrcSet, artUrl, useBook } from "../useContent";
 import { Kicker, LoadingMessage, StaticCard, StaticPageShell } from "../components/StaticPage";
+
+const ABOUT_ART = "panels/insight2-panel.webp";
 
 /** Pull the paragraph containing `marker` out of a markdown document. */
 function extractParagraph(md: string, marker: string): string | null {
@@ -32,6 +34,7 @@ export function AboutPage() {
   const navy = c(...P.navy);
   const green = c(...P.green);
   const red = c(...P.red);
+  const aboutDimensions = artDimensions(ABOUT_ART);
 
   const whyGoblin = book ? extractParagraph(book.frontmatterMarkdown, 'Why "Data Goblin"?') : null;
   const noteOnTime = book ? extractParagraph(book.frontmatterMarkdown, "A note on time") : null;
@@ -42,9 +45,11 @@ export function AboutPage() {
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 340px), 1fr))", gap: "32px", alignItems: "center", marginBottom: "32px" }}>
           <div style={{ background: c(...P.pageBg), border: `1px solid ${border}`, borderRadius: "6px", padding: "18px", boxShadow: c("0 12px 32px rgba(60,50,30,0.16)", "0 12px 32px rgba(0,0,0,0.4)") }}>
             <img
-              src={artUrl("panels/insight2-panel.webp")}
-              srcSet={artSrcSet("panels/insight2-panel.webp")}
+              src={artUrl(ABOUT_ART)}
+              srcSet={artSrcSet(ABOUT_ART)}
               sizes="(max-width: 760px) 92vw, 520px"
+              width={aboutDimensions?.width}
+              height={aboutDimensions?.height}
               alt="Data Goblin inspecting receipts and evidence crystals"
               loading="eager"
               fetchPriority="high"
@@ -52,6 +57,7 @@ export function AboutPage() {
               style={{
                 display: "block",
                 width: "100%",
+                aspectRatio: artAspectRatio(ABOUT_ART),
                 maxHeight: "440px",
                 objectFit: "contain",
                 mixBlendMode: dark ? "normal" : "multiply",
