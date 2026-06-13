@@ -1,4 +1,4 @@
-import { Menu, Moon, Sun } from "lucide-react";
+import { Moon, Sun } from "lucide-react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useTheme } from "../ThemeContext";
 import { useReader } from "../reader";
@@ -80,7 +80,8 @@ export function TopNav({
         {logo}
         <button
           onClick={onMenu}
-          aria-label="Open menu"
+          aria-label="Open tools and menu"
+          title="Open tools and menu"
           style={{
             display: "flex",
             alignItems: "center",
@@ -94,7 +95,7 @@ export function TopNav({
             flexShrink: 0,
           }}
         >
-          <Menu size={24} />
+          <NavIcon name="pack-nav" size={38} />
         </button>
       </header>
     );

@@ -37,12 +37,12 @@ export function LandingHero({
   return (
     <section
       style={{
-        minHeight: "calc(100dvh - 72px)",
+        minHeight: "auto",
         display: "grid",
         gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 420px), 1fr))",
         alignItems: "center",
-        gap: "clamp(28px, 5vw, 72px)",
-        padding: "clamp(28px, 5vw, 68px)",
+        gap: "clamp(22px, 4vw, 54px)",
+        padding: "clamp(22px, 4vw, 48px) clamp(24px, 5vw, 64px) clamp(16px, 3vw, 34px)",
         maxWidth: "1480px",
         margin: "0 auto",
         position: "relative",
@@ -53,7 +53,7 @@ export function LandingHero({
         <div style={{ fontFamily: MONO, fontSize: "11px", fontWeight: 800, letterSpacing: "0.28em", textTransform: "uppercase", color: red, marginBottom: "12px" }}>
           Free interactive web book · {asOf}
         </div>
-        <div style={{ display: "flex", alignItems: "center", gap: "clamp(14px, 2vw, 24px)", margin: "0 0 12px", flexWrap: "nowrap" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "clamp(8px, 1.2vw, 14px)", margin: "0 0 12px", flexWrap: "nowrap" }}>
           <h1 style={{ fontFamily: DISPLAY, fontSize: "clamp(48px, 7vw, 92px)", fontWeight: 900, color: navy, margin: 0, lineHeight: 0.95, textTransform: "uppercase", minWidth: 0 }}>
             {title}
           </h1>
@@ -140,7 +140,7 @@ export function LandingHero({
           border: `1px solid ${border}`,
           borderRadius: "6px",
           boxShadow: c("0 18px 48px rgba(60,50,30,0.24)", "0 18px 48px rgba(0,0,0,0.55)"),
-          padding: "clamp(18px, 3vw, 34px)",
+          padding: "clamp(14px, 2.4vw, 28px)",
           minWidth: 0,
         }}
       >
@@ -158,7 +158,7 @@ export function LandingHero({
             display: "block",
             width: "100%",
             aspectRatio: artAspectRatio(HERO_ART),
-            maxHeight: "58dvh",
+            maxHeight: "50dvh",
             objectFit: "contain",
             mixBlendMode: dark ? "normal" : "multiply",
             opacity: dark ? 0.92 : 1,

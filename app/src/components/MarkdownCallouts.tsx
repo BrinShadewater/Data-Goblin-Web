@@ -26,6 +26,21 @@ export function isChapterRecapQuote(node: HastNode | undefined): boolean {
   return text.includes("📦 CHAPTER RECAP") || text.includes("CHAPTER RECAP");
 }
 
+export function isGoblinFactsQuote(node: HastNode | undefined): boolean {
+  const text = nodeText(node).trim();
+  return /^GOBLIN FACTS?\b/i.test(text);
+}
+
+export function isExampleQuote(node: HastNode | undefined): boolean {
+  const text = nodeText(node).trim();
+  return /^EXAMPLE\b/i.test(text);
+}
+
+export function isAlignmentQuote(node: HastNode | undefined): boolean {
+  const text = nodeText(node).trim();
+  return /^ALIGNMENT\b/i.test(text);
+}
+
 export function GoblinCheckCard({ children }: { children: ReactNode }) {
   const { c } = useTheme();
   const { t } = useReader();
@@ -66,6 +81,73 @@ export function GoblinCheckCard({ children }: { children: ReactNode }) {
             fontSize: `${t.callout}px`,
             lineHeight: t.bodyLh,
             fontStyle: t.italicsOff ? "normal" : "italic",
+            letterSpacing: t.letterSpacing,
+            wordSpacing: t.wordSpacing,
+          }}
+        >
+          {children}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export function GoblinDeviceCard({
+  children,
+  icon,
+  label,
+  tone,
+}: {
+  children: ReactNode;
+  icon: string;
+  label: string;
+  tone: "fact" | "example" | "alignment";
+}) {
+  const { c } = useTheme();
+  const { t } = useReader();
+  const color =
+    tone === "fact" ? c(...P.greenDeep) : tone === "example" ? c(...P.navyDeep) : c(...P.amber);
+  const bg =
+    tone === "fact" ? c(...P.greenBg) : tone === "example" ? c(...P.navyBg) : c(...P.amberBg);
+  const border =
+    tone === "fact" ? c(...P.greenBorder) : tone === "example" ? c(...P.border) : c(...P.amberBorder);
+
+  return (
+    <div
+      style={{
+        background: bg,
+        border: `1px solid ${border}`,
+        borderLeft: `4px solid ${color}`,
+        borderRadius: RADIUS,
+        padding: "12px 16px",
+        margin: "14px 0",
+        display: "flex",
+        gap: "10px",
+        alignItems: "flex-start",
+      }}
+    >
+      <div style={{ flexShrink: 0, marginTop: "1px" }}>
+        <NavIcon name={icon} size={TOKENS.icon.calloutTrap} />
+      </div>
+      <div style={{ minWidth: 0 }}>
+        <div
+          style={{
+            fontFamily: MONO,
+            fontSize: "9px",
+            fontWeight: 800,
+            letterSpacing: "0.22em",
+            textTransform: "uppercase",
+            color,
+            marginBottom: "5px",
+          }}
+        >
+          {label}
+        </div>
+        <div
+          style={{
+            fontFamily: t.bodyFont,
+            fontSize: `${t.callout}px`,
+            lineHeight: t.bodyLh,
             letterSpacing: t.letterSpacing,
             wordSpacing: t.wordSpacing,
           }}

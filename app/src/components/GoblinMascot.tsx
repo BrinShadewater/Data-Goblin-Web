@@ -42,7 +42,7 @@ export function GoblinIcon({ size = 20 }: { size?: number }) {
   );
 }
 
-/** One of the hand-drawn nav/callout icons in public/art/icons/
+/** One of the image-generated nav/callout icons in public/art/icons/
  *  (e.g. name="check-nav" → art/icons/check-nav.webp). Decorative by
  *  default; pass `alt` when the icon carries meaning on its own. */
 export function NavIcon({ name, size = 16, alt = "" }: { name: string; size?: number; alt?: string }) {

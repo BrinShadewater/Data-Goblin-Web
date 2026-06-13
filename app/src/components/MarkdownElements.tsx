@@ -7,7 +7,11 @@ import { AUTOLINK_TITLE } from "../links";
 import { artAspectRatio, artDimensions, artSrcSet, artUrl } from "../useContent";
 import {
   GoblinCheckCard,
+  GoblinDeviceCard,
+  isAlignmentQuote,
   isChapterRecapQuote,
+  isExampleQuote,
+  isGoblinFactsQuote,
   isGoblinCheckQuote,
   RecapBox,
   type HastNode,
@@ -179,6 +183,15 @@ export function useMarkdownComponents(): Components {
         }
         if (isChapterRecapQuote(hastNode)) {
           return <RecapBox>{children}</RecapBox>;
+        }
+        if (isGoblinFactsQuote(hastNode)) {
+          return <GoblinDeviceCard icon="potion-nav" label="Goblin Facts" tone="fact">{children}</GoblinDeviceCard>;
+        }
+        if (isExampleQuote(hastNode)) {
+          return <GoblinDeviceCard icon="examples-nav" label="Example" tone="example">{children}</GoblinDeviceCard>;
+        }
+        if (isAlignmentQuote(hastNode)) {
+          return <GoblinDeviceCard icon="guide-nav" label="Alignment" tone="alignment">{children}</GoblinDeviceCard>;
         }
         return (
           <blockquote

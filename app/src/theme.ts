@@ -24,7 +24,7 @@ export const TOKENS = {
     mobileDrawerNav: 27,
     sidebarTool: 50,
     progressBook: 68,
-    tocStart: 45,
+    tocStart: 58,
     tocCanadian: 131,
     calloutCheck: 77,
     calloutTrap: 50,
