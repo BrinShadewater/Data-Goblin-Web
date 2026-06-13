@@ -5,7 +5,7 @@ import { artAspectRatio, artDimensions, artSrcSet, artUrl, useBook } from "../us
 import { displayRegion } from "../regionLabels";
 import { LoadingMessage, PageHeading, StaticPageShell } from "../components/StaticPage";
 
-const MAP_ART = "panels/themap.webp";
+const MAP_ART = "panels/canada-map-panel.webp";
 
 const REGION_NOTES: Record<string, string> = {
   "The Land": "Foundations — what AI actually is, how it learns, and what it is physically made of.",

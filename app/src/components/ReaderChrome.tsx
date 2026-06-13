@@ -36,7 +36,7 @@ export function ReaderBookmarkButton({
         flexShrink: 0,
       }}
     >
-      <BookmarkIcon size={size >= 36 ? 24 : 18} fill={bookmarked ? red : "none"} strokeWidth={2.2} />
+      <BookmarkIcon size={size >= 36 ? 28 : 22} fill={bookmarked ? red : "none"} strokeWidth={2.2} />
     </button>
   );
 }
@@ -169,14 +169,14 @@ export function ProgressGuide({
   const navigate = useNavigate();
   const progressBlue = c(...TOKENS.color.progressBlue);
   return (
-    <div style={{ display: "grid", gridTemplateColumns: "auto minmax(0, 1fr)", columnGap: "9px", rowGap: "0px", alignItems: "center", minWidth: "360px" }}>
-      <div style={{ gridColumn: "2", fontFamily: UI, fontSize: "9px", fontWeight: TOKENS.weight.toolLabel, letterSpacing: "0.12em", textTransform: "uppercase", color: progressBlue, textAlign: "center", transform: "translateY(3px)" }}>
+    <div style={{ display: "grid", gridTemplateColumns: "auto minmax(0, 1fr)", columnGap: "9px", rowGap: "1px", alignItems: "center", minWidth: "360px" }}>
+      <div style={{ gridColumn: "2", fontFamily: UI, fontSize: "9px", fontWeight: TOKENS.weight.toolLabel, letterSpacing: "0.12em", textTransform: "uppercase", color: progressBlue, textAlign: "center" }}>
         Your Progress Through the Guide
       </div>
-      <div style={{ gridColumn: "1", gridRow: "1 / span 2", alignSelf: "end", transform: "translateY(9px)" }}>
+      <div style={{ gridColumn: "1", gridRow: "2", alignSelf: "center" }}>
         <NavIcon name="book-nav" size={TOKENS.icon.progressBook} />
       </div>
-      <div style={{ gridColumn: "2", display: "flex", gap: "5px", alignItems: "center", justifyContent: "center", minHeight: "18px", marginTop: "-1px" }}>
+      <div style={{ gridColumn: "2", display: "flex", gap: "5px", alignItems: "center", justifyContent: "center", minHeight: "18px" }}>
         {Array.from({ length: totalChapters }, (_, i) => {
           const ch = i + 1;
           const isActive = ch === activeChapter;

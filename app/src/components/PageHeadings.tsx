@@ -2,10 +2,12 @@ import { useTheme } from "../ThemeContext";
 import { useReader } from "../reader";
 import { DISPLAY, MONO, P, TOKENS } from "../theme";
 import { displayRegion } from "../regionLabels";
-import { artDimensions, artSrcSet, artUrl, useArtMap } from "../useContent";
+import { artAspectRatio, artDimensions, artSrcSet, artUrl, useArtMap } from "../useContent";
 import type { Chapter } from "../types";
 import { GoblinMascot, NavIcon } from "./GoblinMascot";
 import { artBlendStyle } from "./PageArt";
+
+const FRONT_FLAG_ART = "panels/canada-flag-panel.webp";
 
 export function SectionHeading({ heading, first, accent }: { heading: string; first: boolean; accent?: string }) {
   const { c, dark } = useTheme();
@@ -63,7 +65,9 @@ export function OpenerHeader({ chapter }: { chapter: Chapter }) {
   const subtitle = subParts.join(" — ");
   const openerArt = artMap?.docs?.[String(chapter.number)]?.opener ?? null;
   const openerDimensions = openerArt ? artDimensions(openerArt) : undefined;
+  const flagDimensions = artDimensions(FRONT_FLAG_ART);
   const artHeight = mode === "phone" ? 170 : mode === "tablet" ? 220 : 250;
+  const flagWidth = mode === "phone" ? 90 : mode === "tablet" ? 120 : 140;
   return (
     <>
       <div
@@ -109,7 +113,26 @@ export function OpenerHeader({ chapter }: { chapter: Chapter }) {
           {subtitle}
         </div>
       )}
-      <div style={{ display: "flex", justifyContent: "center", margin: "14px 0 22px", minHeight: chapter.number === 0 || openerArt ? undefined : 0 }}>
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: chapter.number === 0 ? "8px" : 0, margin: "14px 0 22px", minHeight: chapter.number === 0 || openerArt ? undefined : 0 }}>
+        {chapter.number === 0 && (
+          <img
+            src={artUrl(FRONT_FLAG_ART)}
+            srcSet={artSrcSet(FRONT_FLAG_ART)}
+            sizes="(max-width: 760px) 90px, 140px"
+            width={flagDimensions?.width}
+            height={flagDimensions?.height}
+            alt=""
+            aria-hidden
+            decoding="async"
+            style={{
+              width: `${flagWidth}px`,
+              height: "auto",
+              aspectRatio: artAspectRatio(FRONT_FLAG_ART),
+              objectFit: "contain",
+              ...artBlendStyle(dark),
+            }}
+          />
+        )}
         {openerArt ? (
           <img
             src={artUrl(openerArt)}

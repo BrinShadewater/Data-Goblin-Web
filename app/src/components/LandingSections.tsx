@@ -5,7 +5,8 @@ import { BODY, DISPLAY, MONO, P, RADIUS, TOKENS, UI } from "../theme";
 import { artAspectRatio, artDimensions, artSrcSet, artUrl } from "../useContent";
 import { NavIcon } from "./GoblinMascot";
 
-const HERO_ART = "panels/insight2-panel.webp";
+const HERO_ART = "panels/hero-panel.webp";
+const FLAG_ART = "panels/canada-flag-panel.webp";
 
 export { LandingQuickLinks } from "./LandingQuickLinks";
 export { LandingWisps, LandingWispStyles } from "./LandingWisps";
@@ -31,6 +32,7 @@ export function LandingHero({
   const green = c(...P.green);
   const red = c(...P.red);
   const heroDimensions = artDimensions(HERO_ART);
+  const flagDimensions = artDimensions(FLAG_ART);
 
   return (
     <section
@@ -51,9 +53,31 @@ export function LandingHero({
         <div style={{ fontFamily: MONO, fontSize: "11px", fontWeight: 800, letterSpacing: "0.28em", textTransform: "uppercase", color: red, marginBottom: "12px" }}>
           Free interactive web book · {asOf}
         </div>
-        <h1 style={{ fontFamily: DISPLAY, fontSize: "clamp(48px, 7vw, 92px)", fontWeight: 900, color: navy, margin: "0 0 12px", lineHeight: 0.95, textTransform: "uppercase" }}>
-          {title}
-        </h1>
+        <div style={{ display: "flex", alignItems: "center", gap: "clamp(12px, 2vw, 22px)", margin: "0 0 12px", flexWrap: "wrap" }}>
+          <h1 style={{ fontFamily: DISPLAY, fontSize: "clamp(48px, 7vw, 92px)", fontWeight: 900, color: navy, margin: 0, lineHeight: 0.95, textTransform: "uppercase" }}>
+            {title}
+          </h1>
+          <img
+            src={artUrl(FLAG_ART)}
+            srcSet={artSrcSet(FLAG_ART)}
+            sizes="(max-width: 720px) 110px, 150px"
+            width={flagDimensions?.width}
+            height={flagDimensions?.height}
+            alt=""
+            aria-hidden
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
+      style={{
+        width: "clamp(92px, 10vw, 150px)",
+        height: "auto",
+        aspectRatio: artAspectRatio(FLAG_ART),
+        objectFit: "contain",
+        mixBlendMode: dark ? "normal" : "multiply",
+              opacity: dark ? 0.92 : 1,
+            }}
+          />
+        </div>
         <p style={{ fontFamily: DISPLAY, fontSize: "clamp(21px, 2.3vw, 34px)", fontStyle: "italic", color: c(...P.ink), margin: "0 0 24px", lineHeight: 1.22 }}>
           {subtitle}
         </p>

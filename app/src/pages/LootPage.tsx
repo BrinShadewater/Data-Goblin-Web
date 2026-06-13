@@ -5,6 +5,7 @@ import { BODY, MONO, P, RADIUS, UI } from "../theme";
 import { NavIcon } from "../components/GoblinMascot";
 import { useGlossary } from "../useContent";
 import { LoadingMessage, PageHeading, StaticPageShell } from "../components/StaticPage";
+import { StaticHeroArt } from "../components/StaticHeroArt";
 
 export function LootPage() {
   const { c } = useTheme();
@@ -51,8 +52,16 @@ export function LootPage() {
           marginBottom="26px"
           icon={<NavIcon name="crystal-nav" size={38} />}
         >
+          <StaticHeroArt
+            art="panels/glossary-chest-panel.webp"
+            alt="A glossary treasure chest for the Data Goblin loot page"
+            maxWidth="420px"
+            maxHeight="300px"
+            sizes="(max-width: 760px) 86vw, 420px"
+            eager
+          />
 
-          <div style={{ display: "flex", alignItems: "center", gap: "8px", background: c(...P.inputBg), border: `1px solid ${border}`, borderRadius: RADIUS, padding: "8px 14px", maxWidth: "380px" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "8px", background: c(...P.inputBg), border: `1px solid ${border}`, borderRadius: RADIUS, padding: "8px 14px", maxWidth: "380px", marginTop: "18px" }}>
             <NavIcon name="search-nav" size={17} />
             <input
               type="text"

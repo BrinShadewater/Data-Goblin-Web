@@ -5,6 +5,7 @@ import { BODY, DISPLAY, MONO, P, RADIUS, UI } from "../theme";
 import { useBook, useLinks, useReceipts } from "../useContent";
 import { ChapterSourcesRow, ReceiptRow } from "../components/ReceiptRows";
 import { StaticPageShell } from "../components/StaticPage";
+import { StaticHeroArt } from "../components/StaticHeroArt";
 
 // ---------------------------------------------------------------------------
 // Receipts page — two tabs:
@@ -76,6 +77,16 @@ export function ReceiptsPage() {
           <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
             {tabButton("sources", <BookOpen size={12} strokeWidth={2.2} />, "Sources")}
             {tabButton("log", <ScrollText size={12} strokeWidth={2.2} />, "Verification Log")}
+          </div>
+          <div style={{ marginTop: "18px" }}>
+            <StaticHeroArt
+              art="panels/receipts-panel.webp"
+              alt="Data Goblin receipts artwork with papers and evidence"
+              maxWidth="420px"
+              maxHeight="300px"
+              sizes="(max-width: 760px) 86vw, 420px"
+              eager
+            />
           </div>
         </div>
 

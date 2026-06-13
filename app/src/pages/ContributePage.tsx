@@ -7,6 +7,7 @@ import {
   GuidelinesPanel,
   RevisionFlowCard,
 } from "../components/ContributeSections";
+import { StaticHeroArt } from "../components/StaticHeroArt";
 import { buildContributionMailto } from "../contribute";
 
 export function ContributePage() {
@@ -37,7 +38,16 @@ export function ContributePage() {
         titleMargin="0 0 12px"
         description="This guide is a living document. If something is wrong, outdated, or missing, tell us. Every factual correction makes the hoard more useful to everyone."
         descriptionLineHeight={1.7}
-      />
+      >
+        <StaticHeroArt
+          art="panels/contribute-hearth-panel.webp"
+          alt="A warm hearth scene for contributing to the Data Goblin guide"
+          maxWidth="440px"
+          maxHeight="320px"
+          sizes="(max-width: 760px) 86vw, 440px"
+          eager
+        />
+      </PageHeading>
 
       {submitted ? (
         <ContributionSuccess onReset={resetForm} />

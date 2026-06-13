@@ -4,7 +4,7 @@ import { Markdown } from "../components/Markdown";
 import { artAspectRatio, artDimensions, artSrcSet, artUrl, useBook } from "../useContent";
 import { Kicker, LoadingMessage, StaticCard, StaticPageShell } from "../components/StaticPage";
 
-const ABOUT_ART = "panels/insight2-panel.webp";
+const ABOUT_ART = "panels/hero-panel.webp";
 
 /** Pull the paragraph containing `marker` out of a markdown document. */
 function extractParagraph(md: string, marker: string): string | null {
@@ -50,7 +50,7 @@ export function AboutPage() {
               sizes="(max-width: 760px) 92vw, 520px"
               width={aboutDimensions?.width}
               height={aboutDimensions?.height}
-              alt="Data Goblin inspecting receipts and evidence crystals"
+              alt="Data Goblin hero art for the field guide"
               loading="eager"
               fetchPriority="high"
               decoding="async"

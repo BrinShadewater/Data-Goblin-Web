@@ -74,11 +74,11 @@ export function LeftSidebar({ book, activeChapter }: { book: Book | null; active
             Begin with Chapter 1.
           </button>
         </p>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-          <span style={{ fontFamily: MONO, fontSize: "9px", color: partLabel, letterSpacing: "0.1em" }}>
-            {book ? `as of ${book.asOf}` : ""}
-          </span>
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "4px", marginTop: "10px" }}>
           <NavIcon name="canadian-icon" size={TOKENS.icon.tocCanadian} alt="Data Goblin — a field guide to AI, data and power in Canada" />
+          <span style={{ fontFamily: MONO, fontSize: "9px", color: partLabel, letterSpacing: "0.1em" }}>
+            Updated June 13, 2026
+          </span>
         </div>
       </div>
     </aside>

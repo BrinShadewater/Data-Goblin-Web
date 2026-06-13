@@ -14,7 +14,7 @@
   "Placement notes for the author: ch9 (Sovereignty) had no Canada/beaver medium, so it borrows ip-protection-medium — swap when a sovereignty piece exists. ch15 reuses canadian-government-medium (also ch7), ch17 reuses idea-automation (also ch13), ch18 reuses ai-for-all (also ch5). ch19 and the appendix use small art as openers."
  ],
  "docs": {
-  "0": { "opener": "panels/insight2-panel.webp", "accents": ["small/waving-mascot.webp"],
+  "0": { "opener": "panels/hero-panel.webp", "accents": ["small/waving-mascot.webp"],
          "panels": [{ "src": "panels/insight-panel.webp", "caption": "The Data Goblin at work — every claim gets the who-counted-it treatment." }] },
   "1": { "opener": "medium/artificial-intelligence-medium.webp", "accents": ["small/artificial-intelligence.webp", "small/ai.webp", "small/ai2.webp"],
          "panels": [{ "src": "panels/ai-innovation-panel.webp", "caption": null }] },
