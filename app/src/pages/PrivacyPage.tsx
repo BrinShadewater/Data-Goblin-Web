@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useTheme } from "../ThemeContext";
 import { BODY, P, UI } from "../theme";
 import { Kicker, PageHeading, StaticCard, StaticPageShell } from "../components/StaticPage";
+import { tr } from "../i18n";
 
 const SECTIONS = [
   {
@@ -40,14 +41,14 @@ export function PrivacyPage() {
   return (
     <StaticPageShell padding="36px clamp(16px, 5vw, 54px) 72px">
         <PageHeading
-          eyebrow="Data Goblin Site Policy"
-          title="Privacy Policy"
+          eyebrow={tr("Data Goblin Site Policy")}
+          title={tr("Privacy Policy")}
           eyebrowSize="10px"
           eyebrowLetterSpacing="0.26em"
           eyebrowMarginBottom="9px"
           titleSize="clamp(38px, 5vw, 58px)"
           titleLineHeight={1}
-          description="A privacy policy should be readable by the same humans it governs. This one says what the site stores, what it does not do, and what should trigger a future update."
+          description={tr("A privacy policy should be readable by the same humans it governs. This one says what the site stores, what it does not do, and what should trigger a future update.")}
           descriptionSize="17px"
           descriptionLineHeight={1.7}
           descriptionMaxWidth="760px"
@@ -67,17 +68,16 @@ export function PrivacyPage() {
         </div>
 
         <StaticCard marginBottom="0" padding="18px 20px" background={c(...P.greenBg)} borderColor={c(...P.greenBorder)} borderLeft={`4px solid ${green}`} style={{ marginTop: "18px" }}>
-          <Kicker color={green} letterSpacing="0.18em">Practical Control</Kicker>
+          <Kicker color={green} letterSpacing="0.18em">{tr("Practical Control")}</Kicker>
           <p style={{ fontFamily: BODY, fontSize: "15px", color: body, lineHeight: 1.65, margin: "0 0 10px" }}>
-            To reset local data, clear this site&rsquo;s browser storage. That removes saved notes, bookmarks,
-            reading position, theme, and consent choices from this device.
+            {tr("To reset local data, clear this site’s browser storage. That removes saved notes, bookmarks, reading position, theme, and consent choices from this device.")}
           </p>
           <Link to="/" style={{ fontFamily: UI, fontSize: "14px", fontWeight: 800, color: navy }}>
-            Return home
+            {tr("Return home")}
           </Link>
           <span style={{ fontFamily: UI, color: muted }}> · </span>
           <Link to="/receipts" style={{ fontFamily: UI, fontSize: "14px", fontWeight: 800, color: navy }}>
-            Open receipts
+            {tr("Open receipts")}
           </Link>
         </StaticCard>
     </StaticPageShell>

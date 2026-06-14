@@ -2,6 +2,7 @@ import { useTheme } from "../ThemeContext";
 import { MONO, P } from "../theme";
 import type { Chapter } from "../types";
 import { GoblinTools } from "./GoblinTools";
+import { tr } from "../i18n";
 
 /** Desktop right sidebar: goblin tools + bookmarks. */
 export function RightSidebar({ chapter }: { chapter: Chapter }) {
@@ -19,7 +20,7 @@ export function RightSidebar({ chapter }: { chapter: Chapter }) {
       }}
     >
       <div style={{ fontFamily: MONO, fontSize: "9.5px", fontWeight: 800, letterSpacing: "0.18em", textTransform: "uppercase", color: muted, margin: "2px 2px 12px" }}>
-        Field Guide Tools ·{" "}
+        {tr("Field Guide Tools ·")}{" "}
         {chapter.number === 0 ? "Front Matter" : chapter.number === 20 ? "Appendix" : `Ch. ${chapter.number}`}
       </div>
       <GoblinTools chapter={chapter} showBookmarks />

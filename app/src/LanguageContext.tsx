@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState, ReactNode } from "react";
+import { setUiLang } from "./i18n";
 
 export type Lang = "en" | "fr";
 
@@ -36,6 +37,8 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
       /* no dom - ignore */
     }
   }, [lang]);
+  // Keep the tr() helper in sync synchronously, before children render.
+  setUiLang(lang);
   const setLang = (l: Lang) => setLangState(l);
   const toggle = () => setLangState((v) => (v === "en" ? "fr" : "en"));
   return <Ctx.Provider value={{ lang, setLang, toggle }}>{children}</Ctx.Provider>;

@@ -6,6 +6,7 @@ import { NavIcon } from "../components/GoblinMascot";
 import { useGlossary } from "../useContent";
 import { LoadingMessage, PageHeading, StaticPageShell } from "../components/StaticPage";
 import { StaticHeroArt } from "../components/StaticHeroArt";
+import { tr } from "../i18n";
 
 export function LootPage() {
   const { c } = useTheme();
@@ -44,9 +45,9 @@ export function LootPage() {
   return (
     <StaticPageShell maxWidth="860px">
         <PageHeading
-          eyebrow="Data Goblin Field Guide"
-          title="Loot (Glossary)"
-          description="Plain-language definitions for the AI, data, and sovereignty terms the guide uses — vocabulary the goblin has hoarded so you don’t have to. No jargon required, just a healthy dose of suspicion."
+          eyebrow={tr("Data Goblin Field Guide")}
+          title={tr("Loot (Glossary)")}
+          description={tr("Plain-language definitions for the AI, data, and sovereignty terms the guide uses — vocabulary the goblin has hoarded so you don’t have to. No jargon required, just a healthy dose of suspicion.")}
           descriptionMaxWidth="560px"
           descriptionMargin="0 0 18px"
           marginBottom="26px"
@@ -54,7 +55,7 @@ export function LootPage() {
         >
           <StaticHeroArt
             art="panels/glossary-chest-panel.webp"
-            alt="A glossary treasure chest for the Data Goblin loot page"
+            alt={tr("A glossary treasure chest for the Data Goblin loot page")}
             maxWidth="420px"
             maxHeight="300px"
             sizes="(max-width: 760px) 86vw, 420px"
@@ -65,7 +66,7 @@ export function LootPage() {
             <NavIcon name="search-nav" size={30} />
             <input
               type="text"
-              placeholder="Search the glossary…"
+              placeholder={tr("Search the glossary…")}
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               style={{ background: "transparent", border: "none", outline: "none", fontFamily: UI, fontSize: "13px", color: body, flex: 1 }}
@@ -73,8 +74,8 @@ export function LootPage() {
           </div>
         </PageHeading>
 
-        {error && <LoadingMessage>Could not load the glossary. ({error})</LoadingMessage>}
-        {!terms && !error && <LoadingMessage>Unpacking the hoard…</LoadingMessage>}
+        {error && <LoadingMessage>{tr("Could not load the glossary. (")}{error})</LoadingMessage>}
+        {!terms && !error && <LoadingMessage>{tr("Unpacking the hoard…")}</LoadingMessage>}
 
         {!query && terms && (
           <div style={{ display: "flex", gap: "4px", flexWrap: "wrap", marginBottom: "20px" }}>
@@ -105,7 +106,7 @@ export function LootPage() {
         <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
           {terms && filtered.length === 0 && (
             <div style={{ fontFamily: BODY, fontSize: "14px", fontStyle: "italic", color: muted, padding: "24px 0" }}>
-              No terms found{query ? ` for "${query}"` : ""}.
+              {tr("No terms found")}{query ? ` for "${query}"` : ""}.
             </div>
           )}
           {filtered.map((t) => (
@@ -125,7 +126,7 @@ export function LootPage() {
 
         {!query && terms && (
           <div style={{ marginTop: "20px", fontFamily: MONO, fontSize: "9px", color: muted }}>
-            {filtered.length} term{filtered.length !== 1 ? "s" : ""} under &ldquo;{activeLetter}&rdquo; · {terms.length} total in the hoard
+            {filtered.length} {tr("term")}{filtered.length !== 1 ? "s" : ""} {tr("under “")}{activeLetter}&rdquo; · {terms.length} {tr("total in the hoard")}
           </div>
         )}
     </StaticPageShell>

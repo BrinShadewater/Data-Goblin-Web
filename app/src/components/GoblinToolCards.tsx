@@ -7,6 +7,7 @@ import { useLocalStorage } from "../useLocalStorage";
 import type { Chapter } from "../types";
 import { NavIcon } from "./GoblinMascot";
 import { ToolCard } from "./ToolCard";
+import { tr } from "../i18n";
 
 export function NotesCard({ chapterNumber }: { chapterNumber: number }) {
   const { c } = useTheme();
@@ -18,11 +19,11 @@ export function NotesCard({ chapterNumber }: { chapterNumber: number }) {
   const border = c(...P.borderSoft);
 
   return (
-    <ToolCard icon={<NavIcon name="note-nav" size={TOKENS.icon.sidebarTool} />} title="Goblin Notes" storageKey="notes">
+    <ToolCard icon={<NavIcon name="note-nav" size={TOKENS.icon.sidebarTool} />} title={tr("Goblin Notes")} storageKey="notes">
       <textarea
         value={note}
         onChange={(e) => setNote(e.target.value)}
-        placeholder="Short observations from a curious goblin… (saved on this device)"
+        placeholder={tr("Short observations from a curious goblin… (saved on this device)")}
         rows={4}
         style={{
           width: "100%",
@@ -87,7 +88,7 @@ export function SuspicionMeterCard({ chapter }: { chapter: Chapter }) {
   if (chapter.sources.length === 0) return null;
 
   return (
-    <ToolCard icon={<NavIcon name="insight-nav" size={TOKENS.icon.sidebarTool} />} title="Suspicion Meter">
+    <ToolCard icon={<NavIcon name="insight-nav" size={TOKENS.icon.sidebarTool} />} title={tr("Suspicion Meter")}>
       <div
         title={`Computed, not random: ½·min(1, openVerifyFlags/4) + ½·(corporate-source share). This chapter: ${suspicion.openFlags} open verification flag${suspicion.openFlags === 1 ? "" : "s"}; ${Math.round(suspicion.corporateShare * 100)}% of ${suspicion.totalSources} sources are corporate self-disclosure.`}
       >
@@ -99,8 +100,7 @@ export function SuspicionMeterCard({ chapter }: { chapter: Chapter }) {
         </div>
       </div>
       <p style={{ fontFamily: UI, fontSize: "11px", lineHeight: 1.5, color: muted, margin: 0 }}>
-        Computed from this chapter&rsquo;s open verification flags ({suspicion.openFlags}) and the share of corporate
-        self-disclosure in its {suspicion.totalSources} sources ({Math.round(suspicion.corporateShare * 100)}%). Hover for the formula.
+        {tr("Computed from this chapter’s open verification flags (")}{suspicion.openFlags}{tr(") and the share of corporate self-disclosure in its")} {suspicion.totalSources} {tr("sources (")}{Math.round(suspicion.corporateShare * 100)}{tr("%). Hover for the formula.")}
       </p>
     </ToolCard>
   );
@@ -119,9 +119,9 @@ export function QuestItemsCard({ chapter }: { chapter: Chapter }) {
     setDone((prev) => (prev.includes(i) ? prev.filter((x) => x !== i) : [...prev, i]));
 
   return (
-    <ToolCard icon={<NavIcon name="key-takeaways-nav" size={TOKENS.icon.sidebarTool} />} title="Quest Items" storageKey="quests" defaultOpen>
+    <ToolCard icon={<NavIcon name="key-takeaways-nav" size={TOKENS.icon.sidebarTool} />} title={tr("Quest Items")} storageKey="quests" defaultOpen>
       <p style={{ fontFamily: UI, fontSize: "11px", color: muted, margin: "0 0 8px", lineHeight: 1.45 }}>
-        What you should carry out of this chapter. Check items off as you collect them.
+        {tr("What you should carry out of this chapter. Check items off as you collect them.")}
       </p>
       {chapter.recap.map((item, i) => {
         const checked = done.includes(i);

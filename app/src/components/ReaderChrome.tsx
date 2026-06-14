@@ -4,6 +4,7 @@ import { useTheme } from "../ThemeContext";
 import { MONO, P, TOKENS, UI } from "../theme";
 import { savePanel } from "../pagination";
 import { NavIcon } from "./GoblinMascot";
+import { tr } from "../i18n";
 
 export function ReaderBookmarkButton({
   bookmarked,
@@ -90,7 +91,7 @@ export function CompactPageProgress({
   return (
     <div style={{ flex: 1, minWidth: 0, display: "flex", flexDirection: "column", alignItems: "center", gap: "6px" }}>
       <div style={{ fontFamily: MONO, fontSize: "9px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: progressBlue, whiteSpace: "nowrap" }}>
-        Page {page + 1} of {pageCount}
+        {tr("Page")} {page + 1} {tr("of")} {pageCount}
       </div>
       <div style={{ width: "100%", maxWidth: "240px", height: "3px", borderRadius: "2px", background: c("#ccc2a8", "#222837"), overflow: "hidden" }}>
         <div style={{ width: `${Math.round(progress * 100)}%`, height: "100%", background: progressBlue, transition: "width 0.3s" }} />
@@ -171,7 +172,7 @@ export function ProgressGuide({
   return (
     <div style={{ position: "relative", display: "grid", gridTemplateColumns: "minmax(0, 1fr)", rowGap: "0px", alignItems: "center", minWidth: "360px", paddingLeft: `${TOKENS.icon.progressBook + 9}px` }}>
       <div style={{ fontFamily: UI, fontSize: "9px", fontWeight: TOKENS.weight.toolLabel, letterSpacing: "0.12em", textTransform: "uppercase", color: progressBlue, textAlign: "center", zIndex: 1 }}>
-        Your Progress Through the Guide
+        {tr("Your Progress Through the Guide")}
       </div>
       <div style={{ position: "absolute", left: 0, top: "50%", transform: "translateY(-42%)" }}>
         <NavIcon name="book-nav" size={TOKENS.icon.progressBook} />
@@ -210,7 +211,7 @@ export function ProgressGuide({
         })}
       </div>
       <div style={{ fontFamily: MONO, fontSize: "8px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: progressBlue, textAlign: "center" }}>
-        Page {page + 1} of {pageCount}
+        {tr("Page")} {page + 1} {tr("of")} {pageCount}
       </div>
     </div>
   );

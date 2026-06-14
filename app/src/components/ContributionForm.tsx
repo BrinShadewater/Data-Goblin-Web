@@ -3,6 +3,7 @@ import { AlertTriangle, BookOpen, GitBranch, Mail, Send } from "lucide-react";
 import { useTheme } from "../ThemeContext";
 import { BODY, DISPLAY, MONO, P, RADIUS, UI } from "../theme";
 import { CONTRIBUTION_EMAIL, CONTRIBUTION_TYPES } from "../contribute";
+import { tr } from "../i18n";
 
 const CONTRIBUTION_TYPE_ICONS = {
   factual: <AlertTriangle size={14} />,
@@ -25,23 +26,21 @@ export function ContributionSuccess({ onReset }: { onReset: () => void }) {
     <div style={{ maxWidth: "600px", marginBottom: "32px" }}>
       <div style={{ background: noteBg, border: `1px solid ${noteBorder}`, borderLeft: `4px solid ${green}`, borderRadius: RADIUS, padding: "28px 32px", marginBottom: "16px" }}>
         <div style={{ fontFamily: MONO, fontSize: "8.5px", fontWeight: 800, letterSpacing: "0.2em", textTransform: "uppercase", color: green, marginBottom: "10px" }}>
-          Received
+          {tr("Received")}
         </div>
-        <div style={{ fontFamily: DISPLAY, fontSize: "24px", fontWeight: 900, color: navy, marginBottom: "12px" }}>Thank you, goblin.</div>
+        <div style={{ fontFamily: DISPLAY, fontSize: "24px", fontWeight: 900, color: navy, marginBottom: "12px" }}>{tr("Thank you, goblin.")}</div>
         <p style={{ fontFamily: BODY, fontSize: "14px", color: body, lineHeight: 1.7, margin: "0 0 12px" }}>
-          Your email app should now have a draft addressed to {CONTRIBUTION_EMAIL}. Send it from there so
-          the report reaches the guide maintainer.
+          {tr("Your email app should now have a draft addressed to")} {CONTRIBUTION_EMAIL}{tr(". Send it from there so the report reaches the guide maintainer.")}
         </p>
         <p style={{ fontFamily: BODY, fontSize: "13px", color: muted, lineHeight: 1.65, margin: 0 }}>
-          Contributions are reviewed manually. If a correction is valid and sourced, it can be incorporated
-          in a future revision of the relevant chapter.
+          {tr("Contributions are reviewed manually. If a correction is valid and sourced, it can be incorporated in a future revision of the relevant chapter.")}
         </p>
       </div>
       <button
         onClick={onReset}
         style={{ background: "none", border: `1px solid ${border}`, borderRadius: RADIUS, padding: "8px 16px", fontFamily: UI, fontSize: "11px", fontWeight: 700, color: navy, cursor: "pointer" }}
       >
-        Submit another →
+        {tr("Submit another →")}
       </button>
     </div>
   );
@@ -65,7 +64,7 @@ export function ContributionTypeSelector({
   return (
     <div style={{ marginBottom: "18px" }}>
       <div style={{ fontFamily: MONO, fontSize: "8.5px", fontWeight: 800, letterSpacing: "0.2em", textTransform: "uppercase", color: muted, marginBottom: "8px" }}>
-        Type of Contribution
+        {tr("Type of Contribution")}
       </div>
       <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
         {CONTRIBUTION_TYPES.map((ct) => (
@@ -133,11 +132,11 @@ export function ContributionForm({
 
       <div style={{ marginBottom: "14px" }}>
         <label style={{ display: "block", fontFamily: MONO, fontSize: "8.5px", fontWeight: 800, letterSpacing: "0.2em", textTransform: "uppercase", color: muted, marginBottom: "6px" }}>
-          Chapter / Section <span style={{ fontWeight: 400, textTransform: "none", letterSpacing: 0 }}>(optional)</span>
+          {tr("Chapter / Section")} <span style={{ fontWeight: 400, textTransform: "none", letterSpacing: 0 }}>{tr("(optional)")}</span>
         </label>
         <input
           type="text"
-          placeholder='e.g. Chapter 8, "Jevons&rsquo; paradox"'
+          placeholder={tr("e.g. Chapter 8, \"Jevons’ paradox\"")}
           value={chapter}
           onChange={(e) => onChapterChange(e.target.value)}
           style={{ width: "100%", background: inputBg, border: `1px solid ${border}`, borderRadius: RADIUS, padding: "8px 12px", fontFamily: UI, fontSize: "12px", color: body, outline: "none" }}
@@ -146,11 +145,11 @@ export function ContributionForm({
 
       <div style={{ marginBottom: "18px" }}>
         <label style={{ display: "block", fontFamily: MONO, fontSize: "8.5px", fontWeight: 800, letterSpacing: "0.2em", textTransform: "uppercase", color: muted, marginBottom: "6px" }}>
-          Your Report <span style={{ color: red }}>*</span>
+          {tr("Your Report")} <span style={{ color: red }}>*</span>
         </label>
         <textarea
           required
-          placeholder="Describe the issue or suggestion. Include sources where applicable."
+          placeholder={tr("Describe the issue or suggestion. Include sources where applicable.")}
           value={message}
           onChange={(e) => onMessageChange(e.target.value)}
           rows={6}
@@ -165,7 +164,7 @@ export function ContributionForm({
         onMouseLeave={() => onSubmitHoveredChange(false)}
       >
         <Send size={12} />
-        Submit Report
+        {tr("Submit Report")}
       </button>
     </form>
   );

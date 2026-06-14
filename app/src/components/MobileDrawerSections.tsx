@@ -8,6 +8,7 @@ import { isNavActive, NAV_ITEMS } from "../navigation";
 import { removeBookmark, saveLastLocation, useBookmarks } from "../bookmarks";
 import { savePanel } from "../pagination";
 import { NavIcon } from "./GoblinMascot";
+import { tr } from "../i18n";
 
 export function DrawerSectionLabel({ label, color }: { label: string; color: string }) {
   const { c } = useTheme();
@@ -70,7 +71,7 @@ export function MobileDrawerToggles() {
     <div style={{ display: "flex", gap: "8px", padding: "12px 16px 4px", flexShrink: 0 }}>
       <button
         onClick={toggle}
-        aria-label="Toggle dark mode"
+        aria-label={tr("Toggle dark mode")}
         style={{
           flex: 1,
           display: "flex",
@@ -89,12 +90,12 @@ export function MobileDrawerToggles() {
         }}
       >
         {dark ? <Sun size={15} /> : <Moon size={15} />}
-        {dark ? "Light mode" : "Dark mode"}
+        {dark ? tr("Light mode") : tr("Dark mode")}
       </button>
       <button
         onClick={toggleDyslexic}
         aria-pressed={dyslexic}
-        title="Dyslexia-friendly type"
+        title={tr("Dyslexia-friendly type")}
         style={{
           flex: 1,
           display: "flex",
@@ -112,8 +113,8 @@ export function MobileDrawerToggles() {
           fontWeight: 700,
         }}
       >
-        <span style={{ fontSize: "14px", fontWeight: 800 }}>Aa</span>
-        Easy-read type
+        <span style={{ fontSize: "14px", fontWeight: 800 }}>{tr("Aa")}</span>
+        {tr("Easy-read type")}
       </button>
     </div>
     <div style={{ display: "flex", gap: "8px", padding: "4px 16px 12px", flexShrink: 0 }}>
@@ -163,7 +164,7 @@ export function MobileNavLinks({ onNavigate }: { onNavigate: () => void }) {
             }}
           >
             <NavIcon name={item.icon} size={TOKENS.icon.mobileDrawerNav} />
-            {item.label}
+            {tr(item.label)}
           </button>
         );
       })}
@@ -183,7 +184,7 @@ export function MobileBookmarks({ onNavigate }: { onNavigate: () => void }) {
   if (bookmarks.length === 0) {
     return (
       <p style={{ fontFamily: UI, fontSize: "11.5px", color: muted, margin: 0, padding: "6px 16px", lineHeight: 1.5 }}>
-        No bookmarks yet. Tap the 🔖 in the page bar to save your place.
+        {tr("No bookmarks yet. Tap the 🔖 in the page bar to save your place.")}
       </p>
     );
   }
@@ -212,7 +213,7 @@ export function MobileBookmarks({ onNavigate }: { onNavigate: () => void }) {
           </button>
           <button
             onClick={() => removeBookmark(bm.doc, bm.panelIndex)}
-            aria-label="Remove bookmark"
+            aria-label={tr("Remove bookmark")}
             style={{ display: "flex", alignItems: "center", justifyContent: "center", width: "44px", height: "44px", background: "none", border: "none", cursor: "pointer", color: muted, flexShrink: 0 }}
           >
             <X size={14} />

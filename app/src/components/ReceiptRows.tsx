@@ -7,6 +7,7 @@ import { classifySource, TAG_COLORS } from "../sources";
 import { matchSource } from "../links";
 import { useChapter } from "../useContent";
 import type { LinkEntry, Receipt, ReceiptStatus } from "../types";
+import { tr } from "../i18n";
 
 const STATUS_META: Record<ReceiptStatus, { label: string; icon: typeof CheckCircle2; pair: [string, string] }> = {
   resolved: { label: "Resolved", icon: CheckCircle2, pair: ["#2d5a27", "#74b85e"] },
@@ -129,7 +130,7 @@ export function ChapterSourcesRow({
       >
         {open ? <ChevronDown size={13} color={muted} style={{ flexShrink: 0 }} /> : <ChevronRight size={13} color={muted} style={{ flexShrink: 0 }} />}
         <span style={{ fontFamily: MONO, fontSize: "9.5px", fontWeight: 800, color: muted, flexShrink: 0, minWidth: "30px" }}>
-          Ch.{num}
+          {tr("Ch.")}{num}
         </span>
         <span style={{ flex: 1, fontFamily: DISPLAY, fontSize: "15px", fontWeight: 700, color: navy, lineHeight: 1.35 }}>
           {title.split(" — ")[0]}
@@ -139,17 +140,17 @@ export function ChapterSourcesRow({
         <div style={{ padding: "4px 14px 13px 39px", borderTop: `1px solid ${border}` }}>
           {error && (
             <p style={{ fontFamily: BODY, fontStyle: "italic", fontSize: "12.5px", color: muted }}>
-              Could not load this chapter&rsquo;s sources. ({error})
+              {tr("Could not load this chapter’s sources. (")}{error})
             </p>
           )}
           {!chapter && !error && (
             <p style={{ fontFamily: BODY, fontStyle: "italic", fontSize: "12.5px", color: muted, margin: "10px 0 0" }}>
-              Rummaging through the hoard…
+              {tr("Rummaging through the hoard…")}
             </p>
           )}
           {chapter && sources.length === 0 && (
             <p style={{ fontFamily: BODY, fontStyle: "italic", fontSize: "12.5px", color: muted, margin: "10px 0 0" }}>
-              No sources block recorded for this chapter.
+              {tr("No sources block recorded for this chapter.")}
             </p>
           )}
           {sources.map((s, i) => {

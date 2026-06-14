@@ -6,6 +6,7 @@ import { DISPLAY, P, TOKENS } from "../theme";
 import { GoblinIcon } from "./GoblinMascot";
 import { TocList } from "./TableOfContents";
 import { useBook } from "../useContent";
+import { tr } from "../i18n";
 import { DrawerSectionLabel, MobileBookmarks, MobileDrawerToggles, MobileNavLinks } from "./MobileDrawerSections";
 
 /**
@@ -97,10 +98,10 @@ export function MobileDrawer({ open, onClose }: { open: boolean; onClose: () => 
         <div style={{ flex: 1, overflowY: "auto", WebkitOverflowScrolling: "touch", paddingBottom: "24px" }}>
           <MobileNavLinks onNavigate={onClose} />
 
-          <DrawerSectionLabel label="Table of Contents" color={navy} />
+          <DrawerSectionLabel label={tr("Table of Contents")} color={navy} />
           <TocList book={book} activeChapter={activeChapter} touch onNavigate={onClose} />
 
-          <DrawerSectionLabel label="Bookmarks" color={green} />
+          <DrawerSectionLabel label={tr("Bookmarks")} color={green} />
           <MobileBookmarks onNavigate={onClose} />
         </div>
       </div>

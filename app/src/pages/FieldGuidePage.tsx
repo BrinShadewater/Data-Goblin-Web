@@ -10,6 +10,7 @@ import { PagePanel } from "../components/PagePanel";
 import { NavIcon } from "../components/GoblinMascot";
 import { useBook } from "../useContent";
 import { folio } from "../readerUtils";
+import { tr } from "../i18n";
 import {
   useChapterRoute,
   usePageNavigation,
@@ -93,8 +94,8 @@ export function FieldGuidePage() {
             overflow: "hidden",
           }}
         >
-          {error && <div style={statusStyle}>Could not load chapter {num}. ({error})</div>}
-          {!chapter && !error && <div style={statusStyle}>Opening the field guide…</div>}
+          {error && <div style={statusStyle}>{tr("Could not load chapter")} {num}. ({error})</div>}
+          {!chapter && !error && <div style={statusStyle}>{tr("Opening the field guide…")}</div>}
           {chapter && panels && (
             <div
               style={{
@@ -126,8 +127,8 @@ export function FieldGuidePage() {
           <>
             <button
               onClick={() => setToolsOpen(true)}
-              aria-label="Open field tools"
-              title="Field tools"
+              aria-label={tr("Open field tools")}
+              title={tr("Field tools")}
               style={{
                 position: "fixed",
                 right: "14px",
@@ -159,7 +160,7 @@ export function FieldGuidePage() {
                 <div
                   role="dialog"
                   aria-modal="true"
-                  aria-label="Goblin tools"
+                  aria-label={tr("Goblin tools")}
                   style={{
                     position: "fixed",
                     left: 0,
@@ -185,12 +186,12 @@ export function FieldGuidePage() {
                     }}
                   >
                     <span style={{ fontFamily: MONO, fontSize: "9px", fontWeight: 800, letterSpacing: "0.2em", textTransform: "uppercase", color: c(...P.muted) }}>
-                      Field Guide Tools ·{" "}
+                      {tr("Field Guide Tools ·")}{" "}
                       {num === 0 ? "Front Matter" : num === 20 ? "Appendix" : `Ch. ${num}`}
                     </span>
                     <button
                       onClick={() => setToolsOpen(false)}
-                      aria-label="Close tools"
+                      aria-label={tr("Close tools")}
                       style={{ display: "flex", alignItems: "center", justifyContent: "center", width: "44px", height: "44px", background: "none", border: "none", cursor: "pointer", color: c(...P.muted) }}
                     >
                       <X size={20} />
@@ -236,8 +237,8 @@ export function FieldGuidePage() {
           transition: "background 0.3s",
         }}
       >
-        {error && <div style={{ ...statusStyle, textAlign: "left" }}>Could not load chapter {num}. ({error})</div>}
-        {!chapter && !error && <div style={statusStyle}>Opening the field guide…</div>}
+        {error && <div style={{ ...statusStyle, textAlign: "left" }}>{tr("Could not load chapter")} {num}. ({error})</div>}
+        {!chapter && !error && <div style={statusStyle}>{tr("Opening the field guide…")}</div>}
         {chapter && panels && (
           <div
             style={{

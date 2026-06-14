@@ -6,6 +6,7 @@ import { matchSource } from "../links";
 import { classifySource, TAG_COLORS } from "../sources";
 import { useLinks } from "../useContent";
 import type { Chapter } from "../types";
+import { tr } from "../i18n";
 
 export function ChapterReceiptsCard({ chapter }: { chapter: Chapter }) {
   const { c } = useTheme();
@@ -50,7 +51,7 @@ export function ChapterReceiptsCard({ chapter }: { chapter: Chapter }) {
       {receiptsOpen && (
         <div style={{ background: c(...P.cardBg), border: `1px solid ${border}`, borderRadius: RADIUS, padding: "10px 12px" }}>
           <div style={{ fontFamily: MONO, fontSize: "9px", fontWeight: 800, letterSpacing: "0.16em", textTransform: "uppercase", color: muted, marginBottom: "8px" }}>
-            Sources cited in this chapter ({chapter.sources.length})
+            {tr("Sources cited in this chapter (")}{chapter.sources.length})
           </div>
           {chapter.sources.map((source, i) => {
             const tag = classifySource(source);

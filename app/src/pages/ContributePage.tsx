@@ -9,6 +9,7 @@ import {
 } from "../components/ContributeSections";
 import { StaticHeroArt } from "../components/StaticHeroArt";
 import { buildContributionMailto } from "../contribute";
+import { tr } from "../i18n";
 
 export function ContributePage() {
   const [type, setType] = useState("factual");
@@ -33,15 +34,15 @@ export function ContributePage() {
   return (
     <StaticPageShell maxWidth="820px">
       <PageHeading
-        eyebrow="Data Goblin Field Guide"
-        title="Contribute"
+        eyebrow={tr("Data Goblin Field Guide")}
+        title={tr("Contribute")}
         titleMargin="0 0 12px"
-        description="This guide is a living document. If something is wrong, outdated, or missing, tell us. Every factual correction makes the hoard more useful to everyone."
+        description={tr("This guide is a living document. If something is wrong, outdated, or missing, tell us. Every factual correction makes the hoard more useful to everyone.")}
         descriptionLineHeight={1.7}
       >
         <StaticHeroArt
           art="panels/contribute-hearth-panel.webp"
-          alt="A warm hearth scene for contributing to the Data Goblin guide"
+          alt={tr("A warm hearth scene for contributing to the Data Goblin guide")}
           maxWidth="440px"
           maxHeight="320px"
           sizes="(max-width: 760px) 86vw, 440px"

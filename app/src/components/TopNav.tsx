@@ -2,6 +2,7 @@ import { Menu, Moon, Sun } from "lucide-react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useTheme } from "../ThemeContext";
 import { useLanguage } from "../LanguageContext";
+import { tr } from "../i18n";
 import { useReader } from "../reader";
 import { DISPLAY, MONO, P, TOKENS, UI } from "../theme";
 import { isNavActive, NAV_ITEMS } from "../navigation";
@@ -130,7 +131,7 @@ export function TopNav({
             key={l.to}
             to={l.to}
             end={l.to === "/"}
-            title={l.label}
+            title={tr(l.label)}
             onMouseEnter={l.to === "/guide" ? preloadReaderRoute : undefined}
             onFocus={l.to === "/guide" ? preloadReaderRoute : undefined}
             style={({ isActive }) => {
@@ -153,7 +154,7 @@ export function TopNav({
             }}
           >
             <NavIcon name={l.icon} size={TOKENS.icon.headerNav} />
-            <span className="dg-navlabel">{l.label}</span>
+            <span className="dg-navlabel">{tr(l.label)}</span>
           </NavLink>
         ))}
       </nav>
@@ -173,7 +174,7 @@ export function TopNav({
         <NavIcon name="search-nav" size={TOKENS.icon.headerSearch} />
         <input
           type="text"
-          placeholder="Search the guide…"
+          placeholder={tr("Search the guide…")}
           value={searchQuery}
           onChange={(e) => onSearch(e.target.value)}
           style={{

@@ -5,6 +5,7 @@ import { MONO, P, UI } from "../theme";
 import { savePanel } from "../pagination";
 import type { Book } from "../types";
 import { displayRegion } from "../regionLabels";
+import { tr } from "../i18n";
 
 function TocItem({
   num,
@@ -107,7 +108,7 @@ export function TocList({
   return (
     <>
       {!book && (
-        <div style={{ padding: "16px", fontFamily: UI, fontSize: "11px", color: c(...P.faint) }}>Loading contents…</div>
+        <div style={{ padding: "16px", fontFamily: UI, fontSize: "11px", color: c(...P.faint) }}>{tr("Loading contents…")}</div>
       )}
       {book?.frontMatter && (
         <div style={{ marginBottom: "6px" }}>

@@ -7,6 +7,7 @@ import type { Chapter } from "../types";
 import { chapterWordCount, readingMinutes } from "../readingText";
 import { GoblinMascot, NavIcon } from "./GoblinMascot";
 import { artBlendStyle } from "./PageArt";
+import { tr } from "../i18n";
 
 
 export function SectionHeading({ heading, first, accent }: { heading: string; first: boolean; accent?: string }) {
@@ -140,7 +141,7 @@ export function OpenerHeader({ chapter }: { chapter: Chapter }) {
         <div style={{ flex: 1, borderTop: `1px solid ${c(...P.border)}` }} />
         <NavIcon name="trailmarker-nav" size={TOKENS.icon.calloutTrailmarker} />
         <div style={{ fontFamily: MONO, fontSize: "9.5px", fontWeight: 800, letterSpacing: "0.34em", textTransform: "uppercase", color: c(...P.faint) }}>
-          Start Here
+          {tr("Start Here")}
         </div>
         <div style={{ flex: 1, borderTop: `1px solid ${c(...P.border)}` }} />
       </div>

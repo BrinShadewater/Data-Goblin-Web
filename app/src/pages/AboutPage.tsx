@@ -3,6 +3,7 @@ import { BODY, DISPLAY, HAND, MONO, P, UI } from "../theme";
 import { Markdown } from "../components/Markdown";
 import { artAspectRatio, artDimensions, artSrcSet, artUrl, useBook } from "../useContent";
 import { Kicker, LoadingMessage, StaticCard, StaticPageShell } from "../components/StaticPage";
+import { tr } from "../i18n";
 
 const ABOUT_ART = "panels/hero-panel.webp";
 
@@ -50,7 +51,7 @@ export function AboutPage() {
               sizes="(max-width: 760px) 92vw, 520px"
               width={aboutDimensions?.width}
               height={aboutDimensions?.height}
-              alt="Data Goblin hero art for the field guide"
+              alt={tr("Data Goblin hero art for the field guide")}
               loading="eager"
               fetchPriority="high"
               decoding="async"
@@ -67,7 +68,7 @@ export function AboutPage() {
           </div>
           <div style={{ minWidth: "260px", flex: 1 }}>
             <div style={{ fontFamily: MONO, fontSize: "9px", fontWeight: 800, letterSpacing: "0.28em", textTransform: "uppercase", color: red, marginBottom: "8px" }}>
-              About This Guide
+              {tr("About This Guide")}
             </div>
             <h1 style={{ fontFamily: DISPLAY, fontSize: "34px", fontWeight: 900, color: navy, margin: "0 0 6px", lineHeight: 1.05, textTransform: "uppercase" }}>
               {book?.title ?? "Data Goblin"}
@@ -76,10 +77,7 @@ export function AboutPage() {
               {book?.subtitle ?? "A Field Guide to AI, Power, and Data in Canada"}
             </div>
             <p style={{ fontFamily: BODY, fontSize: "15.5px", color: body, lineHeight: 1.7, margin: 0 }}>
-              A working manual on artificial intelligence, data centres, and digital sovereignty, written for
-              Canadians who want to participate in the conversation but were never given the manual. It is not a
-              textbook. It is not a press release. It is not neutral. It is a working document — meant to be read,
-              returned to, argued with, and used.
+              {tr("A working manual on artificial intelligence, data centres, and digital sovereignty, written for Canadians who want to participate in the conversation but were never given the manual. It is not a textbook. It is not a press release. It is not neutral. It is a working document — meant to be read, returned to, argued with, and used.")}
             </p>
           </div>
         </div>
@@ -87,32 +85,32 @@ export function AboutPage() {
         {/* Why "Data Goblin"? — straight from the manuscript frontmatter */}
         <StaticCard background={cardBg} borderColor={border} padding="20px 24px" marginBottom="16px">
           <Kicker color={muted} fontSize="8.5px" letterSpacing="0.2em" marginBottom="10px">
-            From the manuscript — Why &ldquo;Data Goblin&rdquo;?
+            {tr("From the manuscript — Why “Data Goblin”?")}
           </Kicker>
           {whyGoblin ? (
             <Markdown markdown={whyGoblin} />
           ) : (
-            <LoadingMessage fontSize="13px" margin={0}>Loading…</LoadingMessage>
+            <LoadingMessage fontSize="13px" margin={0}>{tr("Loading…")}</LoadingMessage>
           )}
           <div style={{ marginTop: "10px", fontFamily: HAND, fontSize: "17px", color: c("#7a6040", "#8a7850"), fontStyle: "italic" }}>
-            &ldquo;It collects receipts, not grudges.&rdquo;
+            {tr("“It collects receipts, not grudges.”")}
           </div>
         </StaticCard>
 
         {/* A note on time — straight from the manuscript frontmatter */}
         <StaticCard background={c(...P.greenBg)} borderColor={c(...P.greenBorder)} borderLeft={`4px solid ${green}`} padding="18px 22px" marginBottom="26px">
           <Kicker color={green} fontSize="8.5px" letterSpacing="0.2em" marginBottom="10px">
-            From the manuscript — A note on time{book ? ` (as of ${book.asOf})` : ""}
+            {tr("From the manuscript — A note on time")}{book ? ` (as of ${book.asOf})` : ""}
           </Kicker>
           {noteOnTime ? (
             <Markdown markdown={noteOnTime} />
           ) : (
-            <LoadingMessage fontSize="13px" margin={0}>Loading…</LoadingMessage>
+            <LoadingMessage fontSize="13px" margin={0}>{tr("Loading…")}</LoadingMessage>
           )}
         </StaticCard>
 
         {/* Principles */}
-        <Kicker color={muted} fontSize="8.5px" letterSpacing="0.2em" marginBottom="12px">Guiding Principles</Kicker>
+        <Kicker color={muted} fontSize="8.5px" letterSpacing="0.2em" marginBottom="12px">{tr("Guiding Principles")}</Kicker>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "10px" }}>
           {PRINCIPLES.map((p, i) => (
             <StaticCard key={i} background={cardBg} borderColor={border} padding="14px 16px">

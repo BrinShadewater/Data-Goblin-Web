@@ -4,6 +4,7 @@ import { useTheme } from "../ThemeContext";
 import { BODY, MONO, P, RADIUS, UI } from "../theme";
 import { Kicker, PageHeading, StaticCard, StaticPageShell } from "../components/StaticPage";
 import { NavIcon } from "../components/GoblinMascot";
+import { tr } from "../i18n";
 
 // Source categories + leans — verbatim from the guide's bias-mapping method
 // (Chapter 1, "How to read this manual").
@@ -62,14 +63,14 @@ export function ToolkitPage() {
   return (
     <StaticPageShell padding="36px clamp(16px, 5vw, 54px) 72px">
       <PageHeading
-        eyebrow="Data Goblin · The Portable Toolkit"
-        title="Test Any AI Claim"
+        eyebrow={tr("Data Goblin · The Portable Toolkit")}
+        title={tr("Test Any AI Claim")}
         icon={<NavIcon name="check-nav" size={52} />}
         eyebrowSize="10px"
         eyebrowLetterSpacing="0.26em"
         titleSize="clamp(34px, 5vw, 54px)"
         titleLineHeight={1}
-        description="This is the method the whole guide runs on, in one place. Drop in any claim you've read about AI — a headline, a government line, a corporate stat — and work it through the goblin's four questions. Nothing is sent anywhere; this all stays in your browser."
+        description={tr("This is the method the whole guide runs on, in one place. Drop in any claim you've read about AI — a headline, a government line, a corporate stat — and work it through the goblin's four questions. Nothing is sent anywhere; this all stays in your browser.")}
         descriptionSize="17px"
         descriptionLineHeight={1.7}
         descriptionMaxWidth="780px"
@@ -77,14 +78,14 @@ export function ToolkitPage() {
 
       {/* Step 1 — the claim */}
       <StaticCard padding="20px 22px" marginBottom="12px">
-        <Kicker color={green} letterSpacing="0.18em">1 · The claim</Kicker>
+        <Kicker color={green} letterSpacing="0.18em">{tr("1 · The claim")}</Kicker>
         <p style={{ fontFamily: BODY, fontSize: "14px", color: muted, lineHeight: 1.6, margin: "0 0 10px" }}>
-          Paste or type the claim you want to test. (Optional — you can also just think one through.)
+          {tr("Paste or type the claim you want to test. (Optional — you can also just think one through.)")}
         </p>
         <textarea
           value={claim}
           onChange={(e) => setClaim(e.target.value)}
-          placeholder="&ldquo;Canada's new AI strategy will protect creators&rsquo; rights&hellip;&rdquo;"
+          placeholder={tr("“Canada's new AI strategy will protect creators’ rights…”")}
           rows={2}
           style={{
             width: "100%", boxSizing: "border-box", resize: "vertical",
@@ -96,10 +97,9 @@ export function ToolkitPage() {
 
       {/* Step 2 — who's making it */}
       <StaticCard padding="20px 22px" marginBottom="12px">
-        <Kicker color={green} letterSpacing="0.18em">2 · Who's making it?</Kicker>
+        <Kicker color={green} letterSpacing="0.18em">{tr("2 · Who's making it?")}</Kicker>
         <p style={{ fontFamily: BODY, fontSize: "14px", color: muted, lineHeight: 1.6, margin: "0 0 12px" }}>
-          Every source has a lean. The lean is not corruption — it's how institutions work. The trap is absorbing a
-          leaning source as if it were neutral. Pick the closest category:
+          {tr("Every source has a lean. The lean is not corruption — it's how institutions work. The trap is absorbing a leaning source as if it were neutral. Pick the closest category:")}
         </p>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "8px" }}>
           {SOURCES.map((s, i) => {
@@ -132,9 +132,9 @@ export function ToolkitPage() {
 
       {/* Step 3 — scope */}
       <StaticCard padding="20px 22px" marginBottom="12px">
-        <Kicker color={green} letterSpacing="0.18em">3 · What's the scope?</Kicker>
+        <Kicker color={green} letterSpacing="0.18em">{tr("3 · What's the scope?")}</Kicker>
         <p style={{ fontFamily: BODY, fontSize: "14px", color: muted, lineHeight: 1.6, margin: "0 0 12px" }}>
-          Most AI arguments hide inside a slippery scope. Tap any that this claim might be sliding past:
+          {tr("Most AI arguments hide inside a slippery scope. Tap any that this claim might be sliding past:")}
         </p>
         <div style={{ display: "grid", gap: "8px" }}>
           {SCOPE.map((s) => {
@@ -165,9 +165,9 @@ export function ToolkitPage() {
 
       {/* Step 4 — receipt */}
       <StaticCard padding="20px 22px" marginBottom="12px">
-        <Kicker color={green} letterSpacing="0.18em">4 · Where's the receipt?</Kicker>
+        <Kicker color={green} letterSpacing="0.18em">{tr("4 · Where's the receipt?")}</Kicker>
         <p style={{ fontFamily: BODY, fontSize: "14px", color: muted, lineHeight: 1.6, margin: "0 0 12px" }}>
-          A claim is only as strong as how far it actually travels. How far does the evidence behind this one go?
+          {tr("A claim is only as strong as how far it actually travels. How far does the evidence behind this one go?")}
         </p>
         <div style={{ display: "grid", gap: "6px" }}>
           {RECEIPTS.map((rc, i) => {
@@ -201,7 +201,7 @@ export function ToolkitPage() {
       {/* The honest reading */}
       {ready && (
         <StaticCard padding="20px 22px" background={c(...P.greenBg)} borderColor={c(...P.greenBorder)} borderLeft={`4px solid ${green}`} style={{ marginTop: "18px" }}>
-          <Kicker color={green} letterSpacing="0.18em">Your honest reading</Kicker>
+          <Kicker color={green} letterSpacing="0.18em">{tr("Your honest reading")}</Kicker>
           {claim.trim() && (
             <p style={{ fontFamily: BODY, fontStyle: "italic", fontSize: "15px", color: body, lineHeight: 1.6, margin: "2px 0 12px" }}>
               &ldquo;{claim.trim()}&rdquo;
@@ -209,34 +209,33 @@ export function ToolkitPage() {
           )}
           <p style={{ fontFamily: BODY, fontSize: "15.5px", color: body, lineHeight: 1.7, margin: 0 }}>
             {source !== null && (
-              <>This reads as <strong style={{ color: navy }}>{SOURCES[source].name.toLowerCase()}</strong>, so the lean to watch is built in — weigh it, don't dismiss it. </>
+              <>{tr("This reads as")} <strong style={{ color: navy }}>{SOURCES[source].name.toLowerCase()}</strong>{tr(", so the lean to watch is built in — weigh it, don't dismiss it.")} </>
             )}
             {r && (
               r.ok
-                ? <>On the evidence, you&rsquo;ve marked it <strong style={{ color: green }}>independently verified</strong> — the receipt holds, and that&rsquo;s the rare strong case. </>
-                : <>On the evidence, it&rsquo;s only <strong style={{ color: c(...P.red) }}>{r.label.toLowerCase()}</strong> — so treat the strength of the wording with matching caution. </>
+                ? <>{tr("On the evidence, you’ve marked it")} <strong style={{ color: green }}>{tr("independently verified")}</strong> {tr("— the receipt holds, and that’s the rare strong case.")} </>
+                : <>{tr("On the evidence, it’s only")} <strong style={{ color: c(...P.red) }}>{r.label.toLowerCase()}</strong> {tr("— so treat the strength of the wording with matching caution.")} </>
             )}
             {scope.size > 0 && (
-              <>Watch the scope, too: {[...scope].map((k) => SCOPE.find((s) => s.key === k)!.label.toLowerCase()).join(", ")}. </>
+              <>{tr("Watch the scope, too:")} {[...scope].map((k) => SCOPE.find((s) => s.key === k)!.label.toLowerCase()).join(", ")}. </>
             )}
           </p>
           <p style={{ fontFamily: BODY, fontSize: "14.5px", color: body, lineHeight: 1.7, margin: "12px 0 0" }}>
-            Before you repeat it, ask the goblin&rsquo;s three: <strong style={{ color: navy }}>who counted it</strong>, <strong style={{ color: navy }}>what got left out of the scope</strong>, and <strong style={{ color: navy }}>can you see the receipt</strong>? Discounting a source for its lean is as wrong as accepting it as neutral. Hold a contested claim as contested.
+            {tr("Before you repeat it, ask the goblin’s three:")} <strong style={{ color: navy }}>{tr("who counted it")}</strong>, <strong style={{ color: navy }}>{tr("what got left out of the scope")}</strong>{tr(", and")} <strong style={{ color: navy }}>{tr("can you see the receipt")}</strong>{tr("? Discounting a source for its lean is as wrong as accepting it as neutral. Hold a contested claim as contested.")}
           </p>
           <div style={{ marginTop: "14px", display: "flex", gap: "16px", flexWrap: "wrap" }}>
-            <Link to="/receipts" style={{ fontFamily: UI, fontSize: "14px", fontWeight: 800, color: navy }}>See the guide&rsquo;s receipts →</Link>
-            <Link to="/loot" style={{ fontFamily: UI, fontSize: "14px", fontWeight: 800, color: navy }}>Look up a term →</Link>
+            <Link to="/receipts" style={{ fontFamily: UI, fontSize: "14px", fontWeight: 800, color: navy }}>{tr("See the guide’s receipts →")}</Link>
+            <Link to="/loot" style={{ fontFamily: UI, fontSize: "14px", fontWeight: 800, color: navy }}>{tr("Look up a term →")}</Link>
           </div>
         </StaticCard>
       )}
 
       <StaticCard marginBottom="0" padding="16px 20px" style={{ marginTop: "12px" }}>
         <p style={{ fontFamily: BODY, fontSize: "14px", color: muted, lineHeight: 1.7, margin: 0 }}>
-          This toolkit is the short version of the method the guide builds across nineteen chapters. For the long
-          version — and the worked examples — start with{" "}
-          <Link to="/chapter/1" style={{ fontWeight: 800, color: navy }}>Chapter 1</Link>{" "}
-          or jump to{" "}
-          <Link to="/chapter/19" style={{ fontWeight: 800, color: navy }}>Chapter 19</Link>, where it all comes together.
+          {tr("This toolkit is the short version of the method the guide builds across nineteen chapters. For the long version — and the worked examples — start with")}{" "}
+          <Link to="/chapter/1" style={{ fontWeight: 800, color: navy }}>{tr("Chapter 1")}</Link>{" "}
+          {tr("or jump to")}{" "}
+          <Link to="/chapter/19" style={{ fontWeight: 800, color: navy }}>{tr("Chapter 19")}</Link>{tr(", where it all comes together.")}
         </p>
       </StaticCard>
     </StaticPageShell>

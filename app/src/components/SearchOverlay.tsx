@@ -5,6 +5,7 @@ import { useTheme } from "../ThemeContext";
 import { BODY, P, RADIUS, UI } from "../theme";
 import { buildSearchIndex, getCachedSearchIndex, hasCachedSearchIndex, querySearchIndex } from "../search";
 import type { SearchHit } from "../search";
+import { tr } from "../i18n";
 
 export function SearchOverlay({ query, onClose }: { query: string; onClose: () => void }) {
   const { c } = useTheme();
@@ -85,11 +86,11 @@ export function SearchOverlay({ query, onClose }: { query: string; onClose: () =
         <div style={{ overflowY: "auto", flex: 1 }}>
           {results.length === 0 && (
             <div style={{ padding: "24px 16px", fontFamily: BODY, fontSize: "13px", fontStyle: "italic", color: muted }}>
-              Try a chapter topic, section heading, or glossary term.
+              {tr("Try a chapter topic, section heading, or glossary term.")}
             </div>
           )}
 
-          {chapters.length > 0 && groupLabel(red, "Chapters")}
+          {chapters.length > 0 && groupLabel(red, tr("Chapters"))}
           {chapters.map((r, i) => (
             <button key={`c${i}`} onClick={() => { navigate(`/chapter/${r.num}`); onClose(); }} style={rowStyle} {...hover}>
               <div style={{ display: "flex", gap: "10px", alignItems: "flex-start" }}>
@@ -104,17 +105,17 @@ export function SearchOverlay({ query, onClose }: { query: string; onClose: () =
             </button>
           ))}
 
-          {sections.length > 0 && groupLabel(navy, "Sections")}
+          {sections.length > 0 && groupLabel(navy, tr("Sections"))}
           {sections.map((r, i) => (
             <button key={`s${i}`} onClick={() => { navigate(`/chapter/${r.num}`); onClose(); }} style={rowStyle} {...hover}>
               <div style={{ fontFamily: UI, fontSize: "11px", fontWeight: 600, color: bodyText, marginBottom: "2px" }}>{r.heading}</div>
               <div style={{ fontFamily: UI, fontSize: "9.5px", color: muted }}>
-                Ch. {r.num} · {r.chapterTitle}
+                {tr("Ch.")} {r.num} · {r.chapterTitle}
               </div>
             </button>
           ))}
 
-          {glossary.length > 0 && groupLabel(green, "Glossary")}
+          {glossary.length > 0 && groupLabel(green, tr("Glossary"))}
           {glossary.map((r, i) => (
             <button key={`g${i}`} onClick={() => { navigate("/loot", { state: { term: r.term } }); onClose(); }} style={rowStyle} {...hover}>
               <div style={{ display: "flex", gap: "8px", alignItems: "flex-start" }}>

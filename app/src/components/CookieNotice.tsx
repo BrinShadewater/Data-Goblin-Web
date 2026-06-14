@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useTheme } from "../ThemeContext";
 import { BODY, MONO, P, RADIUS, UI } from "../theme";
+import { tr } from "../i18n";
 
 type Consent = {
   essential: true;
@@ -100,13 +101,12 @@ export function CookieNotice() {
       >
         <div>
           <div style={{ fontFamily: MONO, fontSize: "10px", fontWeight: 800, letterSpacing: "0.18em", textTransform: "uppercase", color: green, marginBottom: "5px" }}>
-            Cookie Notice
+            {tr("Cookie Notice")}
           </div>
           <p style={{ fontFamily: BODY, fontSize: "14px", lineHeight: 1.55, color: body, margin: 0 }}>
-            Data Goblin uses essential local storage for reading tools like notes, bookmarks, theme,
-            and consent. No ad tracking is active. Read the{" "}
+            {tr("Data Goblin uses essential local storage for reading tools like notes, bookmarks, theme, and consent. No ad tracking is active. Read the")}{" "}
             <Link to="/privacy" style={{ color: navy, fontWeight: 700 }}>
-              privacy policy
+              {tr("privacy policy")}
             </Link>
             .
           </p>
@@ -122,16 +122,15 @@ export function CookieNotice() {
         <div
           role="dialog"
           aria-modal="true"
-          aria-label="Cookie preferences"
+          aria-label={tr("Cookie preferences")}
           style={{ position: "fixed", inset: 0, zIndex: 210, display: "grid", placeItems: "center", background: c("rgba(35,33,26,0.38)", "rgba(0,0,0,0.62)"), padding: "18px" }}
         >
           <div style={{ width: "min(520px, 100%)", background: card, border: `1px solid ${border}`, borderRadius: "6px", padding: "20px", boxShadow: c("0 18px 48px rgba(60,50,30,0.28)", "0 18px 48px rgba(0,0,0,0.7)") }}>
             <h2 style={{ fontFamily: MONO, fontSize: "12px", letterSpacing: "0.18em", textTransform: "uppercase", color: green, margin: "0 0 12px" }}>
-              Manage Preferences
+              {tr("Manage Preferences")}
             </h2>
             <p style={{ fontFamily: BODY, fontSize: "14px", lineHeight: 1.6, color: body, margin: "0 0 14px" }}>
-              Essential storage keeps the guide functional. Optional preferences remember comfort settings.
-              Analytics is reserved for future privacy-preserving site metrics and is currently inactive.
+              {tr("Essential storage keeps the guide functional. Optional preferences remember comfort settings. Analytics is reserved for future privacy-preserving site metrics and is currently inactive.")}
             </p>
             {[
               ["Essential", "Required for consent and basic reading features.", true, true] as const,

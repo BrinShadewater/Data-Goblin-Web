@@ -11,6 +11,7 @@ import { ChapterReceiptsCard } from "./ChapterReceiptsCard";
 import { NotesCard, QuestItemsCard, SuspicionMeterCard } from "./GoblinToolCards";
 import { NavIcon } from "./GoblinMascot";
 import { ToolCard } from "./ToolCard";
+import { tr } from "../i18n";
 
 export function BookmarksCard() {
   const { c } = useTheme();
@@ -22,10 +23,10 @@ export function BookmarksCard() {
   const border = c(...P.borderSoft);
 
   return (
-    <ToolCard icon={<NavIcon name="journal-nav" size={TOKENS.icon.sidebarTool} />} title="Bookmarks" storageKey="bookmarks">
+    <ToolCard icon={<NavIcon name="journal-nav" size={TOKENS.icon.sidebarTool} />} title={tr("Bookmarks")} storageKey="bookmarks">
       {bookmarks.length === 0 ? (
         <p style={{ fontFamily: UI, fontSize: "12px", color: muted, margin: 0, lineHeight: 1.5 }}>
-          No bookmarks yet. Tap the 🔖 in the page bar to save your place.
+          {tr("No bookmarks yet. Tap the 🔖 in the page bar to save your place.")}
         </p>
       ) : (
         bookmarks.map((bm) => (
@@ -50,7 +51,7 @@ export function BookmarksCard() {
             </button>
             <button
               onClick={() => removeBookmark(bm.doc, bm.panelIndex)}
-              aria-label="Remove bookmark"
+              aria-label={tr("Remove bookmark")}
               style={{ background: "none", border: "none", padding: "2px", cursor: "pointer", color: muted, flexShrink: 0 }}
             >
               <X size={15} />
@@ -116,22 +117,22 @@ export function ListenCard({ chapter }: { chapter: Chapter }) {
   });
 
   return (
-    <ToolCard icon={<Volume2 size={TOKENS.icon.sidebarTool} color={green} />} title="Listen" storageKey="listen">
+    <ToolCard icon={<Volume2 size={TOKENS.icon.sidebarTool} color={green} />} title={tr("Listen")} storageKey="listen">
       <p style={{ fontFamily: BODY, fontSize: "12px", color: muted, margin: "0 0 9px", lineHeight: 1.5 }}>
-        Read this chapter aloud with your browser&rsquo;s voice. Pause or stop any time.
+        {tr("Read this chapter aloud with your browser’s voice. Pause or stop any time.")}
       </p>
       <div style={{ display: "flex", flexWrap: "wrap", gap: "7px" }}>
         {state === "idle" ? (
           <button onClick={play} style={btn({ background: green, color: c("#f4f0e0", "#0d1018"), border: `1px solid ${green}` })}>
-            <Play size={14} /> Listen
+            <Play size={14} /> {tr("Listen")}
           </button>
         ) : (
           <>
             <button onClick={pauseResume} style={btn()}>
-              {state === "playing" ? <><Pause size={14} /> Pause</> : <><Play size={14} /> Resume</>}
+              {state === "playing" ? <><Pause size={14} /> {tr("Pause")}</> : <><Play size={14} /> {tr("Resume")}</>}
             </button>
             <button onClick={stop} style={btn()}>
-              <Square size={13} /> Stop
+              <Square size={13} /> {tr("Stop")}
             </button>
           </>
         )}

@@ -4,6 +4,7 @@ import { BODY, DISPLAY, MONO, P, RADIUS, UI } from "../theme";
 import { artAspectRatio, artDimensions, artSrcSet, artUrl, useBook } from "../useContent";
 import { displayRegion } from "../regionLabels";
 import { LoadingMessage, PageHeading, StaticPageShell } from "../components/StaticPage";
+import { tr } from "../i18n";
 
 const MAP_ART = "panels/canada-map-panel.webp";
 
@@ -29,9 +30,9 @@ export function MapPage() {
   return (
     <StaticPageShell maxWidth="1280px">
         <PageHeading
-          eyebrow="Data Goblin Field Guide"
-          title="The Map"
-          description="The guide’s nineteen chapters are organized into five regions. Pick a region, pick a chapter, and the field guide opens to that page."
+          eyebrow={tr("Data Goblin Field Guide")}
+          title={tr("The Map")}
+          description={tr("The guide’s nineteen chapters are organized into five regions. Pick a region, pick a chapter, and the field guide opens to that page.")}
           centered
           marginBottom="32px"
         >
@@ -41,7 +42,7 @@ export function MapPage() {
             sizes="(max-width: 760px) 92vw, min(100vw, 810px)"
             width={mapDimensions?.width}
             height={mapDimensions?.height}
-            alt="Fantasy map of Canada for Data Goblin, with the goblin standing in front"
+            alt={tr("Fantasy map of Canada for Data Goblin, with the goblin standing in front")}
             loading="eager"
             fetchPriority="high"
             decoding="async"
@@ -57,8 +58,8 @@ export function MapPage() {
           />
         </PageHeading>
 
-        {error && <LoadingMessage>Could not load the map. ({error})</LoadingMessage>}
-        {!book && !error && <LoadingMessage>Unrolling the map…</LoadingMessage>}
+        {error && <LoadingMessage>{tr("Could not load the map. (")}{error})</LoadingMessage>}
+        {!book && !error && <LoadingMessage>{tr("Unrolling the map…")}</LoadingMessage>}
 
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "14px" }}>
           {book?.parts.map((part) => (

@@ -4,6 +4,7 @@ import { useTheme } from "../ThemeContext";
 import { BODY, DISPLAY, MONO, P, RADIUS, TOKENS, UI } from "../theme";
 import { artAspectRatio, artDimensions, artSrcSet, artUrl } from "../useContent";
 import { NavIcon } from "./GoblinMascot";
+import { tr } from "../i18n";
 
 const HERO_ART = "panels/hero-panel.webp";
 const FLAG_ART = "panels/canada-flag-panel.webp";
@@ -51,7 +52,7 @@ export function LandingHero({
     >
       <div style={{ minWidth: 0 }}>
         <div style={{ fontFamily: MONO, fontSize: "11px", fontWeight: 800, letterSpacing: "0.28em", textTransform: "uppercase", color: red, marginBottom: "12px" }}>
-          Free interactive web book · {asOf}
+          {tr("Free interactive web book ·")} {asOf}
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: "clamp(8px, 1.2vw, 14px)", margin: "0 0 12px", flexWrap: "nowrap" }}>
           <h1 style={{ fontFamily: DISPLAY, fontSize: "clamp(48px, 7vw, 92px)", fontWeight: 900, color: navy, margin: 0, lineHeight: 0.95, textTransform: "uppercase", minWidth: 0 }}>
@@ -82,8 +83,7 @@ export function LandingHero({
           {subtitle}
         </p>
         <p style={{ fontFamily: BODY, fontSize: "18px", lineHeight: 1.7, color: body, maxWidth: "760px", margin: "0 0 28px" }}>
-          A plain-language guide for reading AI claims in Canada: who counted what, who benefits,
-          what is still contested, and where the receipts live.
+          {tr("A plain-language guide for reading AI claims in Canada: who counted what, who benefits, what is still contested, and where the receipts live.")}
         </p>
         <div style={{ display: "flex", flexWrap: "wrap", gap: "12px", alignItems: "center" }}>
           <button
@@ -105,7 +105,7 @@ export function LandingHero({
               padding: "14px 18px",
             }}
           >
-            Begin with Chapter 1
+            {tr("Begin with Chapter 1")}
             <ArrowRight size={41} />
           </button>
           <Link
@@ -129,7 +129,7 @@ export function LandingHero({
             }}
           >
             <NavIcon name="guidebook-nav" size={TOKENS.icon.landingPrimary} />
-            Open the guide
+            {tr("Open the guide")}
           </Link>
         </div>
       </div>
@@ -150,7 +150,7 @@ export function LandingHero({
           sizes="(max-width: 720px) 92vw, (max-width: 1100px) 46vw, 650px"
           width={heroDimensions?.width}
           height={heroDimensions?.height}
-          alt="Data Goblin inspecting a trail of receipts and glowing evidence crystals"
+          alt={tr("Data Goblin inspecting a trail of receipts and glowing evidence crystals")}
           loading="eager"
           fetchPriority="high"
           decoding="async"

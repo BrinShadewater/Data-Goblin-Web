@@ -8,3 +8,5 @@ push-log.txt
 .DS_Store
 
 pipeline/__pycache__/
+pipeline/_uikeys.json
+pipeline/_uifr.json

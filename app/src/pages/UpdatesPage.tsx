@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useTheme } from "../ThemeContext";
 import { BODY, MONO, P, UI } from "../theme";
 import { Kicker, PageHeading, StaticCard, StaticPageShell } from "../components/StaticPage";
+import { tr } from "../i18n";
 
 interface UpdateEntry {
   date: string;
@@ -70,14 +71,14 @@ export function UpdatesPage() {
   return (
     <StaticPageShell padding="36px clamp(16px, 5vw, 54px) 72px">
       <PageHeading
-        eyebrow="Data Goblin · Living Edition"
-        title="Updates & Corrections"
+        eyebrow={tr("Data Goblin · Living Edition")}
+        title={tr("Updates & Corrections")}
         eyebrowSize="10px"
         eyebrowLetterSpacing="0.26em"
         eyebrowMarginBottom="9px"
         titleSize="clamp(38px, 5vw, 58px)"
         titleLineHeight={1}
-        description="Every fact in this guide carries an invisible &ldquo;as of June 2026&rdquo; tag. When the world moves past the page — a bill passes, a case settles, a number is corrected — the change is logged here, in the open. Receipts, not quiet edits."
+        description={tr("Every fact in this guide carries an invisible “as of June 2026” tag. When the world moves past the page — a bill passes, a case settles, a number is corrected — the change is logged here, in the open. Receipts, not quiet edits.")}
         descriptionSize="17px"
         descriptionLineHeight={1.7}
         descriptionMaxWidth="760px"
@@ -109,7 +110,7 @@ export function UpdatesPage() {
       </div>
 
       <StaticCard padding="18px 20px" background={c(...P.greenBg)} borderColor={c(...P.greenBorder)} borderLeft={`4px solid ${green}`} style={{ marginTop: "18px" }}>
-        <Kicker color={green} letterSpacing="0.18em">Still being checked</Kicker>
+        <Kicker color={green} letterSpacing="0.18em">{tr("Still being checked")}</Kicker>
         <ul style={{ margin: "4px 0 0", paddingLeft: "20px", display: "grid", gap: "7px" }}>
           {PENDING.map((it, i) => (
             <li key={i} style={{ fontFamily: BODY, fontSize: "14.5px", color: body, lineHeight: 1.6 }}>
@@ -121,16 +122,14 @@ export function UpdatesPage() {
 
       <StaticCard marginBottom="0" padding="18px 20px" style={{ marginTop: "12px" }}>
         <p style={{ fontFamily: BODY, fontSize: "15px", color: body, lineHeight: 1.7, margin: "0 0 10px" }}>
-          The full claim-by-claim record — what was checked, what was corrected, and what is still open — lives in
-          the Receipts ledger. When something in the guide collides with something newer, trust the newer thing.
-          Then ask the goblin&rsquo;s questions about it too: who counted that, what got left out, and can I see the receipt?
+          {tr("The full claim-by-claim record — what was checked, what was corrected, and what is still open — lives in the Receipts ledger. When something in the guide collides with something newer, trust the newer thing. Then ask the goblin’s questions about it too: who counted that, what got left out, and can I see the receipt?")}
         </p>
         <Link to="/receipts" style={{ fontFamily: UI, fontSize: "14px", fontWeight: 800, color: navy }}>
-          Open receipts
+          {tr("Open receipts")}
         </Link>
         <span style={{ fontFamily: UI, color: muted }}> · </span>
         <Link to="/guide" style={{ fontFamily: UI, fontSize: "14px", fontWeight: 800, color: navy }}>
-          Back to the guide
+          {tr("Back to the guide")}
         </Link>
       </StaticCard>
     </StaticPageShell>

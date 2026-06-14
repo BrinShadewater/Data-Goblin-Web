@@ -1,6 +1,7 @@
 import { FileCode2, Terminal } from "lucide-react";
 import { useTheme } from "../ThemeContext";
 import { BODY, DISPLAY, HAND, MONO, P, RADIUS, UI } from "../theme";
+import { tr } from "../i18n";
 
 export { ContributionForm, ContributionSuccess, ContributionTypeSelector } from "./ContributionForm";
 
@@ -32,7 +33,7 @@ export function GuidelinesPanel() {
   return (
     <div>
       <div style={{ fontFamily: MONO, fontSize: "8.5px", fontWeight: 800, letterSpacing: "0.2em", textTransform: "uppercase", color: muted, marginBottom: "10px" }}>
-        Guidelines
+        {tr("Guidelines")}
       </div>
       <div style={{ display: "flex", flexDirection: "column", gap: "8px", marginBottom: "20px" }}>
         {GUIDELINES.map((g, i) => (
@@ -45,14 +46,13 @@ export function GuidelinesPanel() {
 
       <div style={{ background: noteBg, border: `1px solid ${noteBorder}`, borderLeft: `4px solid ${green}`, borderRadius: RADIUS, padding: "12px 16px" }}>
         <div style={{ fontFamily: MONO, fontSize: "8px", fontWeight: 800, letterSpacing: "0.2em", textTransform: "uppercase", color: green, marginBottom: "5px" }}>
-          A Note from the Goblin
+          {tr("A Note from the Goblin")}
         </div>
         <p style={{ fontFamily: BODY, fontSize: "12px", lineHeight: 1.65, color: body, margin: "0 0 8px" }}>
-          This guide is not affiliated with any institution. It is maintained by one goblin with a laptop
-          and a deep suspicion of AI press releases.
+          {tr("This guide is not affiliated with any institution. It is maintained by one goblin with a laptop and a deep suspicion of AI press releases.")}
         </p>
         <div style={{ fontFamily: HAND, fontSize: "15px", color: c("#7a6040", "#8a7850"), fontStyle: "italic" }}>
-          &ldquo;Every error caught is a receipt issued.&rdquo;
+          {tr("“Every error caught is a receipt issued.”")}
         </div>
       </div>
     </div>
@@ -72,11 +72,10 @@ export function RevisionFlowCard() {
     <div style={{ background: cardBg, border: `1px solid ${border}`, borderTop: `3px solid ${green}`, borderRadius: RADIUS, padding: "20px 24px" }}>
       <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "12px" }}>
         <FileCode2 size={15} color={green} />
-        <h2 style={{ fontFamily: DISPLAY, fontSize: "18px", fontWeight: 800, color: navy, margin: 0 }}>How revisions work</h2>
+        <h2 style={{ fontFamily: DISPLAY, fontSize: "18px", fontWeight: 800, color: navy, margin: 0 }}>{tr("How revisions work")}</h2>
       </div>
       <p style={{ fontFamily: BODY, fontSize: "14.5px", color: body, lineHeight: 1.65, margin: "0 0 14px" }}>
-        The website never edits content directly — everything you read here is generated from the manuscript.
-        When a correction is accepted, the revision flow is:
+        {tr("The website never edits content directly — everything you read here is generated from the manuscript. When a correction is accepted, the revision flow is:")}
       </p>
       <ol style={{ margin: 0, paddingLeft: "20px", display: "flex", flexDirection: "column", gap: "10px" }}>
         {REVISION_STEPS.map((s, i) => (

@@ -1,6 +1,7 @@
 import { useTheme } from "../ThemeContext";
 import { useReader } from "../reader";
 import { P } from "../theme";
+import { tr } from "../i18n";
 import {
   ChapterTurnButton,
   CompactPageProgress,
@@ -92,21 +93,21 @@ export function BottomBar({
 
   // ---- Desktop bar: unchanged spread navigation + chapter dots + 🔖.
   const prevLabel = !firstPage
-    ? "← Previous Page"
+    ? tr("← Previous Page")
     : book?.frontMatter && prevDoc === book.frontMatter.number
-      ? "← Front Matter"
+      ? tr("← Front Matter")
       : book?.backMatter && activeChapter === book.backMatter.number
-        ? `← Chapter ${prevDoc}`
-        : "← Previous Chapter";
+        ? `← ${tr("Chapter")} ${prevDoc}`
+        : tr("← Previous Chapter");
   const nextLabel = !lastPage
-    ? "Next Page →"
+    ? tr("Next Page →")
     : isFrontDoc
-      ? "Begin Chapter 1 →"
+      ? tr("Begin Chapter 1 →")
       : book?.backMatter && nextDoc === book.backMatter.number
-        ? "Source Library →"
+        ? tr("Source Library →")
         : canNext
-          ? "Next Chapter →"
-          : "The End";
+          ? tr("Next Chapter →")
+          : tr("The End");
   // Hide the subtitle when the label itself already names the destination.
   const prevSub = firstPage
     ? canPrev && prevDoc !== book?.frontMatter?.number

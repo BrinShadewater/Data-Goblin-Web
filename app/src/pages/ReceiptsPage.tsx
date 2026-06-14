@@ -6,6 +6,7 @@ import { useBook, useLinks, useReceipts } from "../useContent";
 import { ChapterSourcesRow, ReceiptRow } from "../components/ReceiptRows";
 import { StaticPageShell } from "../components/StaticPage";
 import { StaticHeroArt } from "../components/StaticHeroArt";
+import { tr } from "../i18n";
 
 // ---------------------------------------------------------------------------
 // Receipts page — two tabs:
@@ -69,10 +70,10 @@ export function ReceiptsPage() {
     <StaticPageShell maxWidth="860px">
         <div style={{ marginBottom: "20px" }}>
           <div style={{ fontFamily: MONO, fontSize: "9px", fontWeight: 800, letterSpacing: "0.28em", textTransform: "uppercase", color: red, marginBottom: "8px" }}>
-            Data Goblin Field Guide · Receipts
+            {tr("Data Goblin Field Guide · Receipts")}
           </div>
           <h1 style={{ fontFamily: DISPLAY, fontSize: "36px", fontWeight: 900, color: navy, margin: "0 0 14px", lineHeight: 1.05, textTransform: "uppercase" }}>
-            Receipts
+            {tr("Receipts")}
           </h1>
           <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
             {tabButton("sources", <BookOpen size={12} strokeWidth={2.2} />, "Sources")}
@@ -81,7 +82,7 @@ export function ReceiptsPage() {
           <div style={{ marginTop: "18px" }}>
             <StaticHeroArt
               art="panels/receipts-panel.webp"
-              alt="Data Goblin receipts artwork with papers and evidence"
+              alt={tr("Data Goblin receipts artwork with papers and evidence")}
               maxWidth="420px"
               maxHeight="300px"
               sizes="(max-width: 760px) 86vw, 420px"
@@ -93,18 +94,17 @@ export function ReceiptsPage() {
         {tab === "sources" && (
           <>
             <p style={{ fontFamily: BODY, fontSize: "15.5px", color: body, lineHeight: 1.65, margin: "0 0 20px" }}>
-              Every chapter&rsquo;s primary sources. The goblin keeps the receipts &mdash; open a chapter to see
-              what it leans on, and follow the links to read the originals yourself.
+              {tr("Every chapter’s primary sources. The goblin keeps the receipts — open a chapter to see what it leans on, and follow the links to read the originals yourself.")}
             </p>
             {!book && (
-              <p style={{ fontFamily: BODY, fontStyle: "italic", color: muted }}>Pulling the source hoard…</p>
+              <p style={{ fontFamily: BODY, fontStyle: "italic", color: muted }}>{tr("Pulling the source hoard…")}</p>
             )}
             {chapterRefs.map((ch) => (
               <ChapterSourcesRow key={ch.number} num={ch.number} title={ch.title} links={links} />
             ))}
             {book && (
               <div style={{ fontFamily: MONO, fontSize: "9px", color: muted, marginTop: "12px" }}>
-                {totalChapters} chapters · full citations live in the Source Library Appendix
+                {totalChapters} {tr("chapters · full citations live in the Source Library Appendix")}
                 {book ? ` · as of ${book.asOf}` : ""}
               </div>
             )}
@@ -124,19 +124,14 @@ export function ReceiptsPage() {
               }}
             >
               <p style={{ fontFamily: BODY, fontSize: "14.5px", color: body, lineHeight: 1.65, margin: 0 }}>
-                This log is the book fact-checking <em>itself</em>. Before publication (and after), every
-                load-bearing claim gets pulled back out of the text and checked against primary documents.
-                What you see here is the audit trail: claims verified, errors found and corrected in public,
-                and the flags still open. It isn&rsquo;t errata chaos &mdash; it&rsquo;s the goblin showing
-                its work, on the theory that a field guide about verifying things should let you verify the
-                field guide.
+                {tr("This log is the book fact-checking")} <em>{tr("itself")}</em>{tr(". Before publication (and after), every load-bearing claim gets pulled back out of the text and checked against primary documents. What you see here is the audit trail: claims verified, errors found and corrected in public, and the flags still open. It isn’t errata chaos — it’s the goblin showing its work, on the theory that a field guide about verifying things should let you verify the field guide.")}
               </p>
             </div>
 
             {error && (
-              <p style={{ fontFamily: BODY, fontStyle: "italic", color: muted }}>Could not load the verification log. ({error})</p>
+              <p style={{ fontFamily: BODY, fontStyle: "italic", color: muted }}>{tr("Could not load the verification log. (")}{error})</p>
             )}
-            {!receipts && !error && <p style={{ fontFamily: BODY, fontStyle: "italic", color: muted }}>Pulling receipts from the hoard…</p>}
+            {!receipts && !error && <p style={{ fontFamily: BODY, fontStyle: "italic", color: muted }}>{tr("Pulling receipts from the hoard…")}</p>}
 
             {sections.map((section) => {
               const items = receipts!.filter((r) => r.section === section);
@@ -145,7 +140,7 @@ export function ReceiptsPage() {
                   <div style={{ display: "flex", alignItems: "baseline", gap: "10px", marginBottom: "10px" }}>
                     <h2 style={{ fontFamily: DISPLAY, fontSize: "17px", fontWeight: 700, color: navy, margin: 0 }}>{section}</h2>
                     <span style={{ fontFamily: MONO, fontSize: "9px", color: muted }}>
-                      {items.length} item{items.length !== 1 ? "s" : ""}
+                      {items.length} {tr("item")}{items.length !== 1 ? "s" : ""}
                     </span>
                   </div>
                   {items.map((r) => (
@@ -157,8 +152,7 @@ export function ReceiptsPage() {
 
             {receipts && (
               <div style={{ fontFamily: MONO, fontSize: "9px", color: muted, marginTop: "8px" }}>
-                {receipts.length} ledger entries · {receipts.filter((r) => r.status === "open").length} still open ·
-                covering {totalChapters} chapters{book ? ` · as of ${book.asOf}` : ""}
+                {receipts.length} {tr("ledger entries ·")} {receipts.filter((r) => r.status === "open").length} {tr("still open · covering")} {totalChapters} {tr("chapters")}{book ? ` · as of ${book.asOf}` : ""}
               </div>
             )}
           </>
