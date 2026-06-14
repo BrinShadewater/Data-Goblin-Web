@@ -105,7 +105,7 @@ export function ListenCard({ chapter }: { chapter: Chapter }) {
         >
           {voiceOptions.map((v) => (
             <option key={v.voiceURI} value={v.voiceURI}>
-              {v.name}{QUALITY_VOICE.test(v.name) ? " ★" : ""}
+              {v.name}{QUALITY_VOICE.test(v.name) || v.default ? " ★" : ""}
             </option>
           ))}
         </select>

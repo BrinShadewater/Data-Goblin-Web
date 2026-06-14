@@ -10,8 +10,13 @@ import type { Chapter } from "./types";
 type ListenState = "idle" | "playing" | "paused";
 
 const QUALITY_VOICE = /natural|neural|premium|enhanced|siri|google|wavenet|studio|journey|multilingual/i;
+// iOS / macOS novelty & "character" voices that clutter the picker and sound
+// wrong for a serious read-aloud (Albert, Zarvox, Bubbles, Grandpa, Eddy…).
+// They carry no quality marker in their name, so they must be excluded by name.
+const NOVELTY_VOICE = /\b(albert|bad news|good news|bahh|bells|boing|bubbles|cellos|deranged|hysterical|jester|pipe organ|organ|superstar|trinoids|whisper|wobble|zarvox|junior|kathy|princess|ralph|fred|grandma|grandpa|reed|rocko|sandy|shelley|flo|eddy)\b/i;
 function rankVoice(v: SpeechSynthesisVoice): number {
   let s = 0;
+  if (v.default) s += 50; // respect the device's own chosen voice (esp. iOS)
   if (QUALITY_VOICE.test(v.name)) s += 10;
   if (!v.localService) s += 3;
   if (/(en-CA|fr-CA)/i.test(v.lang)) s += 2;
@@ -76,11 +81,12 @@ export function ListenProvider({ children }: { children: ReactNode }) {
   }, [lang, supported]);
 
   const langPrefix = lang === "fr" ? "fr" : "en";
-  const ranked = voices
-    .filter((v) => v.lang.toLowerCase().startsWith(langPrefix))
+  const inLang = voices.filter((v) => v.lang.toLowerCase().startsWith(langPrefix));
+  const ranked = inLang
+    .filter((v) => !NOVELTY_VOICE.test(v.name))
     .sort((a, b) => rankVoice(b) - rankVoice(a));
-  const good = ranked.filter((v) => QUALITY_VOICE.test(v.name));
-  const voiceOptions = (good.length ? good : ranked).slice(0, 5);
+  // Never end up empty: if the blocklist removed everything, fall back to all.
+  const voiceOptions = (ranked.length ? ranked : inLang).slice(0, 5);
   const chosen = voiceOptions.find((v) => v.voiceURI === voiceURI) ?? voiceOptions[0] ?? null;
 
   const speakFrom = (startIdx: number, r: number) => {
