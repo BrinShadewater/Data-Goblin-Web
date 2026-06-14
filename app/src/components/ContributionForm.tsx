@@ -121,7 +121,7 @@ export function ContributionForm({ onSuccess }: { onSuccess: () => void }) {
 
   const labelStyle = { display: "block", fontFamily: MONO, fontSize: "8.5px", fontWeight: 800, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: muted, marginBottom: "6px" };
   const optional = <span style={{ fontWeight: 400, textTransform: "none", letterSpacing: 0 }}>{tr("(optional)")}</span>;
-  const inputStyle = { width: "100%", boxSizing: "border-box" as const, background: inputBg, border: `1px solid ${border}`, borderRadius: RADIUS, padding: "8px 12px", fontFamily: UI, fontSize: "12px", color: body, outline: "none" };
+  const inputStyle = { width: "100%", boxSizing: "border-box" as const, background: inputBg, border: `1px solid ${border}`, borderRadius: RADIUS, padding: "8px 12px", fontFamily: UI, fontSize: "12px", color: body };
 
   const submit = async (e: FormEvent) => {
     e.preventDefault();

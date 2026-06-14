@@ -73,6 +73,16 @@ export function ReaderProvider({ children }: { children: ReactNode }) {
       /* private mode — ignore */
     }
   }, [dyslexic]);
+  useEffect(() => {
+    if (!dyslexic || typeof document === "undefined") return;
+    const id = "dg-dyslexia-font";
+    if (document.getElementById(id)) return;
+    const link = document.createElement("link");
+    link.id = id;
+    link.rel = "stylesheet";
+    link.href = "https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap";
+    document.head.appendChild(link);
+  }, [dyslexic]);
   const value = useMemo<ReaderCtx>(
     () => ({
       mode,

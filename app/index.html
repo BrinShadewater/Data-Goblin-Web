@@ -211,7 +211,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..700;1,8..60,300..700&family=JetBrains+Mono:wght@400..800&family=Inter:ital,opsz,wght@0,14..32,300..800;1,14..32,300..800&family=Caveat:wght@400&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..700;1,8..60,300..700&family=JetBrains+Mono:wght@400..800&family=Inter:ital,opsz,wght@0,14..32,300..800;1,14..32,300..800&family=Caveat:wght@400&display=swap"
       rel="stylesheet"
     />
     <style>
@@ -222,6 +222,9 @@
       html[data-theme="light"] body { background: #d8d2c4; }
       body { font-family: 'Source Serif 4', Georgia, serif; -webkit-font-smoothing: antialiased; }
       ::selection { background: rgba(45, 90, 39, 0.25); }
+      :focus:not(:focus-visible) { outline: none; }
+      :focus-visible { outline: 2px solid #2d5a27; outline-offset: 2px; }
+      html[data-theme="dark"] :focus-visible { outline-color: #7ab36a; }
     </style>
   </head>
   <body>

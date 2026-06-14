@@ -69,7 +69,7 @@ export function LootPage() {
               placeholder={tr("Search the glossary…")}
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              style={{ background: "transparent", border: "none", outline: "none", fontFamily: UI, fontSize: "13px", color: body, flex: 1 }}
+              style={{ background: "transparent", border: "none", fontFamily: UI, fontSize: "13px", color: body, flex: 1 }}
             />
           </div>
         </PageHeading>

@@ -36,7 +36,6 @@ export function NotesCard({ chapterNumber }: { chapterNumber: number }) {
           lineHeight: 1.55,
           color: body,
           resize: "vertical",
-          outline: "none",
         }}
       />
       <button

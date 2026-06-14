@@ -143,7 +143,7 @@ function Shell() {
           ))}
           {/* French edition: same pages mounted under /fr (language read from the URL). */}
           {APP_ROUTES.map(({ path, Page }) => (
-            <Route key={"fr:" + path} path={path === "/" ? "/fr" : "/fr" + path} element={createElement(Page)} />
+            <Route key={"fr:" + path} path={path === "/" ? "/fr" : path === "*" ? "/fr/*" : "/fr" + path} element={createElement(Page)} />
           ))}
         </Routes>
       </Suspense>

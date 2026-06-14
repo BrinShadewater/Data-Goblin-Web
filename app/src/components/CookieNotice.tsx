@@ -113,9 +113,9 @@ export function CookieNotice() {
           </p>
         </div>
         <div style={{ display: "flex", flexWrap: "wrap", gap: "8px", justifyContent: "flex-end", minWidth: 0 }}>
-          {button("Only Essential", () => save(false, false))}
-          {button("Manage Preferences", () => setManageOpen(true))}
-          {button("Accept All", () => save(true, true), true)}
+          {button(tr("Only Essential"), () => save(false, false))}
+          {button(tr("Manage Preferences"), () => setManageOpen(true))}
+          {button(tr("Accept All"), () => save(true, true), true)}
         </div>
       </div>
 
@@ -156,8 +156,8 @@ export function CookieNotice() {
               </label>
             ))}
             <div style={{ display: "flex", justifyContent: "flex-end", gap: "8px", marginTop: "14px" }}>
-              {button("Cancel", () => setManageOpen(false))}
-              {button("Save Choices", () => save(preferences, analytics), true)}
+              {button(tr("Cancel"), () => setManageOpen(false))}
+              {button(tr("Save Choices"), () => save(preferences, analytics), true)}
             </div>
           </div>
         </div>

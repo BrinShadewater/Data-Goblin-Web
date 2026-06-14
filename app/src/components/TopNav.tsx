@@ -181,7 +181,6 @@ export function TopNav({
           style={{
             background: "transparent",
             border: "none",
-            outline: "none",
             fontFamily: UI,
             fontSize: "13px",
             color: ink,
