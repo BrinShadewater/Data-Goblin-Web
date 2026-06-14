@@ -1,19 +1,16 @@
-import { useEffect, useRef, useState } from "react";
 import { Pause, Play, Square, Volume2, X } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from "../ThemeContext";
 import { BODY, P, TOKENS, UI } from "../theme";
 import { removeBookmark, saveLastLocation, useBookmarks } from "../bookmarks";
 import { savePanel } from "../pagination";
-import { chapterPlainText } from "../readingText";
 import type { Chapter } from "../types";
 import { ChapterReceiptsCard } from "./ChapterReceiptsCard";
 import { NotesCard, QuestItemsCard, SuspicionMeterCard } from "./GoblinToolCards";
 import { NavIcon } from "./GoblinMascot";
 import { ToolCard } from "./ToolCard";
 import { tr } from "../i18n";
-import { useLanguage } from "../LanguageContext";
-import { useLocalStorage } from "../useLocalStorage";
+import { useListen, QUALITY_VOICE } from "../ListenContext";
 
 export function BookmarksCard() {
   const { c } = useTheme();
@@ -65,51 +62,13 @@ export function BookmarksCard() {
   );
 }
 
-type ListenState = "idle" | "playing" | "paused";
-
-// Rank a device voice by likely quality. Modern OS "natural / neural" voices are
-// dramatically better than the default robotic one, so prefer them; online
-// (non-local) voices also tend to be richer.
-const QUALITY_VOICE = /natural|neural|premium|enhanced|siri|google|wavenet|studio|journey|multilingual/i;
-function rankVoice(v: SpeechSynthesisVoice): number {
-  let s = 0;
-  if (QUALITY_VOICE.test(v.name)) s += 10;
-  if (!v.localService) s += 3;
-  if (/(en-CA|fr-CA)/i.test(v.lang)) s += 2; // a Canadian guide → Canadian accent when offered
-  return s;
-}
-function pickBestVoice(voices: SpeechSynthesisVoice[], langPrefix: string): SpeechSynthesisVoice | null {
-  const matches = voices.filter((v) => v.lang.toLowerCase().startsWith(langPrefix));
-  if (matches.length === 0) return null;
-  return [...matches].sort((a, b) => rankVoice(b) - rankVoice(a))[0];
-}
-
 export function ListenCard({ chapter }: { chapter: Chapter }) {
   const { c } = useTheme();
-  const { lang } = useLanguage();
-  const [state, setState] = useState<ListenState>("idle");
-  const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([]);
-  const [voiceURI, setVoiceURI] = useLocalStorage<string>(`goblin-tts-voice-${lang}`, "");
-  const supported = typeof window !== "undefined" && "speechSynthesis" in window;
-  const endGuard = useRef(0);
-
-  // The device's voice list populates asynchronously in most browsers.
-  useEffect(() => {
-    if (!supported) return;
-    const load = () => setVoices(window.speechSynthesis.getVoices());
-    load();
-    window.speechSynthesis.addEventListener("voiceschanged", load);
-    return () => window.speechSynthesis.removeEventListener("voiceschanged", load);
-  }, [supported]);
-
-  // Cancel speech on unmount and whenever the chapter or language changes.
-  useEffect(() => {
-    if (!supported) return;
-    window.speechSynthesis.cancel();
-    setState("idle");
-    return () => window.speechSynthesis.cancel();
-  }, [chapter.number, supported, lang]);
-
+  const {
+    supported, state: ctxState, chapterNumber,
+    play: startListen, pauseResume, stop,
+    voiceOptions, chosen, setVoiceURI,
+  } = useListen();
   if (!supported) return null;
 
   const navy = c(...P.navy);
@@ -117,41 +76,9 @@ export function ListenCard({ chapter }: { chapter: Chapter }) {
   const green = c(...P.green);
   const border = c(...P.borderSoft);
 
-  const langPrefix = lang === "fr" ? "fr" : "en";
-  const ranked = voices
-    .filter((v) => v.lang.toLowerCase().startsWith(langPrefix))
-    .sort((a, b) => rankVoice(b) - rankVoice(a));
-  const good = ranked.filter((v) => QUALITY_VOICE.test(v.name));
-  // Trim the picker to the genuinely good voices — on Chrome that's the Google
-  // set; on Safari/iOS it's Apple premium, on Edge the MS Natural voices. Fall
-  // back to the best available so non-Chrome readers still get audio.
-  const voiceOptions = (good.length ? good : ranked).slice(0, 5);
-  const chosen = voiceOptions.find((v) => v.voiceURI === voiceURI) ?? voiceOptions[0] ?? pickBestVoice(voices, langPrefix);
-
-  const play = () => {
-    const synth = window.speechSynthesis;
-    synth.cancel();
-    const text = chapterPlainText(chapter);
-    // Chunk into sentences: dodges the Chrome long-utterance cutoff bug.
-    const chunks = text.match(/[^.!?]+[.!?]*/g)?.map((x) => x.trim()).filter(Boolean) ?? [text];
-    const total = chunks.length;
-    const stamp = ++endGuard.current;
-    chunks.forEach((ch, i) => {
-      const u = new SpeechSynthesisUtterance(ch);
-      u.rate = 1;
-      if (chosen) u.voice = chosen;
-      u.lang = chosen?.lang ?? (lang === "fr" ? "fr-CA" : "en-CA");
-      if (i === total - 1) u.onend = () => { if (endGuard.current === stamp) setState("idle"); };
-      synth.speak(u);
-    });
-    setState("playing");
-  };
-  const pauseResume = () => {
-    const synth = window.speechSynthesis;
-    if (state === "playing") { synth.pause(); setState("paused"); }
-    else { synth.resume(); setState("playing"); }
-  };
-  const stop = () => { endGuard.current++; window.speechSynthesis.cancel(); setState("idle"); };
+  // Reflect playback state only when it's THIS chapter being read aloud.
+  const state = chapterNumber === chapter.number ? ctxState : "idle";
+  const play = () => startListen(chapter);
 
   const btn = (extra: object = {}) => ({
     display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "6px",

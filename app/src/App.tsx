@@ -2,6 +2,8 @@ import { createElement, Suspense, useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import { ThemeProvider, useTheme } from "./ThemeContext";
 import { LanguageProvider, useLanguage } from "./LanguageContext";
+import { ListenProvider } from "./ListenContext";
+import { ListenBar } from "./components/ListenBar";
 import { ReaderProvider, useReader } from "./reader";
 import { P } from "./theme";
 import { TopNav } from "./components/TopNav";
@@ -108,6 +110,7 @@ function Shell() {
           Traduction automatique — en cours de révision.
         </div>
       )}
+      <ListenBar />
       <Suspense
         fallback={
           <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", color: c("#7c7460", "#5d6878"), fontStyle: "italic", fontSize: "14px" }}>
@@ -139,9 +142,11 @@ export default function App() {
     <LanguageProvider>
       <ThemeProvider>
         <ReaderProvider>
-          <BrowserRouter>
-            <Shell />
-          </BrowserRouter>
+          <ListenProvider>
+            <BrowserRouter>
+              <Shell />
+            </BrowserRouter>
+          </ListenProvider>
         </ReaderProvider>
       </ThemeProvider>
     </LanguageProvider>
