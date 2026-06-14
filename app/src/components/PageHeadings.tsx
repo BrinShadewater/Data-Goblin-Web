@@ -4,6 +4,7 @@ import { DISPLAY, MONO, P, TOKENS } from "../theme";
 import { displayRegion } from "../regionLabels";
 import { artDimensions, artSrcSet, artUrl, useArtMap } from "../useContent";
 import type { Chapter } from "../types";
+import { chapterWordCount, readingMinutes } from "../readingText";
 import { GoblinMascot, NavIcon } from "./GoblinMascot";
 import { artBlendStyle } from "./PageArt";
 
@@ -63,6 +64,7 @@ export function OpenerHeader({ chapter }: { chapter: Chapter }) {
   const [mainTitle, ...subParts] = chapter.title.split(" — ");
   const subtitle = subParts.join(" — ");
   const openerArt = artMap?.docs?.[String(chapter.number)]?.opener ?? null;
+  const readMins = readingMinutes(chapterWordCount(chapter));
   const openerDimensions = openerArt ? artDimensions(openerArt) : undefined;
   const artHeight = mode === "phone" ? 170 : mode === "tablet" ? 220 : 250;
   return (
@@ -80,6 +82,7 @@ export function OpenerHeader({ chapter }: { chapter: Chapter }) {
       >
         {displayRegion(chapter.region)}
         {chapter.number === 0 ? "" : chapter.number === 20 ? " · Appendix" : ` · Chapter ${chapter.number}`}
+        {readMins ? ` · ${readMins} min read` : ""}
       </div>
       <h1
         style={{
