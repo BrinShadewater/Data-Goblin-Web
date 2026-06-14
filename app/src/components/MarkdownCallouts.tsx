@@ -2,7 +2,7 @@ import { useRef, useState, type ReactNode } from "react";
 import { Check, Share2 } from "lucide-react";
 import { useTheme } from "../ThemeContext";
 import { useReader } from "../reader";
-import { MONO, P, RADIUS, TOKENS } from "../theme";
+import { BODY, MONO, P, RADIUS, TOKENS } from "../theme";
 import { NavIcon } from "./GoblinMascot";
 import { downloadCheckCard } from "../shareCard";
 
@@ -126,6 +126,69 @@ export function GoblinCheckCard({ children }: { children: ReactNode }) {
         </div>
       </div>
     </div>
+  );
+}
+
+
+export function GlossaryTerm({ term, def }: { term: string; def: string }) {
+  const { c } = useTheme();
+  const cleanDef = def
+    .replace(/[*_]{1,3}([^*_]+)[*_]{1,3}/g, "$1")
+    .replace(/`([^`]+)`/g, "$1");
+  const [open, setOpen] = useState(false);
+  const navy = c(...P.navy);
+  return (
+    <span style={{ position: "relative", display: "inline" }}>
+      <span
+        role="button"
+        tabIndex={0}
+        aria-label={`Definition of ${term}`}
+        aria-expanded={open}
+        onMouseEnter={() => setOpen(true)}
+        onMouseLeave={() => setOpen(false)}
+        onFocus={() => setOpen(true)}
+        onBlur={() => setOpen(false)}
+        onClick={(e) => { e.preventDefault(); setOpen((o) => !o); }}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setOpen((o) => !o); }
+          if (e.key === "Escape") setOpen(false);
+        }}
+        style={{ borderBottom: `1px dotted ${navy}`, color: "inherit", cursor: "help" }}
+      >
+        {term}
+      </span>
+      {open && (
+        <span
+          role="tooltip"
+          style={{
+            position: "absolute",
+            zIndex: 60,
+            left: 0,
+            top: "calc(100% + 6px)",
+            width: "min(280px, 72vw)",
+            background: c(...P.cardBg),
+            border: `1px solid ${c(...P.border)}`,
+            borderRadius: RADIUS,
+            boxShadow: c("0 6px 22px rgba(40,30,10,0.18)", "0 8px 24px rgba(0,0,0,0.55)"),
+            padding: "10px 12px",
+            fontFamily: BODY,
+            fontSize: "13px",
+            fontStyle: "normal",
+            fontWeight: 400,
+            lineHeight: 1.5,
+            color: c(...P.body),
+            whiteSpace: "normal",
+            textAlign: "left",
+            letterSpacing: "normal",
+          }}
+        >
+          <span style={{ display: "block", fontFamily: MONO, fontSize: "8.5px", fontWeight: 800, letterSpacing: "0.18em", textTransform: "uppercase", color: c(...P.greenDeep), marginBottom: "4px" }}>
+            Loot · Glossary
+          </span>
+          {cleanDef}
+        </span>
+      )}
+    </span>
   );
 }
 

@@ -3,7 +3,8 @@ import { useTheme } from "../ThemeContext";
 import { useReader } from "../reader";
 import { MONO, P } from "../theme";
 import { autolinkBlocks } from "../links";
-import { useLinks } from "../useContent";
+import { glossaryLinkBlocks } from "../glossaryLinks";
+import { useLinks, useGlossary } from "../useContent";
 import type { Block } from "../pagination";
 import type { Chapter } from "../types";
 import { BlockView, OpenerHeader } from "./PagePanelContent";
@@ -26,10 +27,12 @@ function PagePanelInner({
   const { c } = useTheme();
   const { mode } = useReader();
   const { data: links } = useLinks();
-  const linkedBlocks = useMemo(
-    () => (links && links.length > 0 ? autolinkBlocks(blocks, links) : blocks),
-    [blocks, links]
-  );
+  const { data: glossary } = useGlossary();
+  const linkedBlocks = useMemo(() => {
+    let b = links && links.length > 0 ? autolinkBlocks(blocks, links) : blocks;
+    if (glossary && glossary.length > 0) b = glossaryLinkBlocks(b, glossary);
+    return b;
+  }, [blocks, links, glossary]);
   const padding =
     mode === "phone"
       ? "20px 18px 10px"
