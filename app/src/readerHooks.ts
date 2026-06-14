@@ -13,6 +13,7 @@ import {
 import { useReader } from "./reader";
 import { FIRST_DOC, LAST_DOC, panelSnippet } from "./readerUtils";
 import { chapterPath, fetchJson, useArtMap, useChapter, useTraps } from "./useContent";
+import { useLanguage } from "./LanguageContext";
 import type { Chapter } from "./types";
 
 function isEditableTarget(target: EventTarget | null): boolean {
@@ -73,6 +74,7 @@ export function usePageNavigation({
   single: boolean;
 }) {
   const navigate = useNavigate();
+  const { lang } = useLanguage();
   const step = single ? 1 : 2;
 
   const [panelIdx, setPanelIdx] = useState(() => getSavedPanel(num));
@@ -97,12 +99,12 @@ export function usePageNavigation({
     if (!panels) return;
     const turnsToEnd = Math.ceil((panelCount - (aligned + step)) / step);
     if (num < LAST_DOC && turnsToEnd <= 3) {
-      fetchJson(chapterPath(num + 1)).catch(() => {});
+      fetchJson(chapterPath(num + 1), lang).catch(() => {});
     }
     if (num > FIRST_DOC && aligned / step <= 3) {
-      fetchJson(chapterPath(num - 1)).catch(() => {});
+      fetchJson(chapterPath(num - 1), lang).catch(() => {});
     }
-  }, [panels, panelCount, aligned, step, num]);
+  }, [panels, panelCount, aligned, step, num, lang]);
 
   const goNext = useCallback(() => {
     if (!panels) return;

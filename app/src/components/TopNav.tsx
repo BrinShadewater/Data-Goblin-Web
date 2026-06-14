@@ -1,6 +1,7 @@
 import { Menu, Moon, Sun } from "lucide-react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useTheme } from "../ThemeContext";
+import { useLanguage } from "../LanguageContext";
 import { useReader } from "../reader";
 import { DISPLAY, MONO, P, TOKENS, UI } from "../theme";
 import { isNavActive, NAV_ITEMS } from "../navigation";
@@ -18,6 +19,7 @@ export function TopNav({
 }) {
   const { c, dark, toggle } = useTheme();
   const { mode, dyslexic, toggleDyslexic } = useReader();
+  const { lang, setLang } = useLanguage();
   const navigate = useNavigate();
   const location = useLocation();
   const bg = c(...P.panelBg);
@@ -184,6 +186,47 @@ export function TopNav({
             width: "clamp(84px, 9vw, 180px)",
           }}
         />
+      </div>
+
+      <div
+        role="group"
+        aria-label="Language"
+        title="Language — French is machine-translated"
+        style={{
+          display: "flex",
+          alignItems: "center",
+          height: "38px",
+          border: `1px solid ${border}`,
+          borderRadius: "3px",
+          overflow: "hidden",
+          flexShrink: 0,
+        }}
+      >
+        {(["en", "fr"] as const).map((value) => {
+          const active = lang === value;
+          return (
+            <button
+              key={value}
+              onClick={() => setLang(value)}
+              aria-pressed={active}
+              aria-label={value === "fr" ? "Lire en français (traduction automatique)" : "Read in English"}
+              style={{
+                height: "100%",
+                padding: "0 9px",
+                background: active ? green : "none",
+                border: "none",
+                cursor: "pointer",
+                color: active ? c("#f4f0e0", "#0d1018") : muted,
+                fontFamily: UI,
+                fontSize: "12px",
+                fontWeight: 700,
+                letterSpacing: "0.05em",
+              }}
+            >
+              {value.toUpperCase()}
+            </button>
+          );
+        })}
       </div>
 
       <button

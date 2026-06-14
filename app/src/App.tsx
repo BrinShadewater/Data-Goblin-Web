@@ -1,6 +1,7 @@
 import { createElement, Suspense, useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import { ThemeProvider, useTheme } from "./ThemeContext";
+import { LanguageProvider, useLanguage } from "./LanguageContext";
 import { ReaderProvider, useReader } from "./reader";
 import { P } from "./theme";
 import { TopNav } from "./components/TopNav";
@@ -34,6 +35,7 @@ function docTitleFor(pathname: string): string {
 function Shell() {
   const { c } = useTheme();
   const { mode } = useReader();
+  const { lang } = useLanguage();
   const [searchQuery, setSearchQuery] = useState("");
   const [drawerOpen, setDrawerOpen] = useState(false);
   const location = useLocation();
@@ -87,6 +89,25 @@ function Shell() {
         a.gob-autolink:hover { text-decoration: underline solid; }
       `}</style>
       <TopNav searchQuery={searchQuery} onSearch={setSearchQuery} onMenu={() => setDrawerOpen(true)} />
+      {lang === "fr" && (
+        <div
+          role="status"
+          style={{
+            flexShrink: 0,
+            textAlign: "center",
+            padding: "6px 14px",
+            background: c("#fbf3e2", "#2a2417"),
+            borderBottom: `1px solid ${c("#e7d9b8", "#4a3f25")}`,
+            color: c("#7a5d12", "#d8c388"),
+            fontFamily: "ui-monospace, SFMono-Regular, Menlo, monospace",
+            fontSize: "11px",
+            letterSpacing: "0.04em",
+            lineHeight: 1.4,
+          }}
+        >
+          Traduction automatique — en cours de révision.
+        </div>
+      )}
       <Suspense
         fallback={
           <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", color: c("#7c7460", "#5d6878"), fontStyle: "italic", fontSize: "14px" }}>
@@ -115,12 +136,14 @@ function Shell() {
 
 export default function App() {
   return (
-    <ThemeProvider>
-      <ReaderProvider>
-        <BrowserRouter>
-          <Shell />
-        </BrowserRouter>
-      </ReaderProvider>
-    </ThemeProvider>
+    <LanguageProvider>
+      <ThemeProvider>
+        <ReaderProvider>
+          <BrowserRouter>
+            <Shell />
+          </BrowserRouter>
+        </ReaderProvider>
+      </ThemeProvider>
+    </LanguageProvider>
   );
 }

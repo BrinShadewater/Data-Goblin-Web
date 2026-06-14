@@ -1,0 +1,116 @@
+{
+ "1": {
+  "chapter": 1,
+  "chapterTitle": "What AI Actually Is",
+  "trapTitle": "\"Intelligence\" est un mot neutre, technique.",
+  "text": "Le plus grand piège de toute la conversation, mis à la page 1. \"AI\" est un parapluie sur des techniques sauvagement différentes — un filtre de spam et un chatbot partagent une étiquette, pas une nature — et la définition de \"intelligence\" à l'intérieur du parapluie a une histoire contestée le champ mentionne rarement. Celui qui parvient à définir le mot gagne habituellement l'argument selon lequel le système « fonctionne ». Demandez quelle définition est en jeu avant d'accepter toute revendication construite sur elle."
+ },
+ "2": {
+  "chapter": 2,
+  "chapterTitle": "How Machines Actually Learn",
+  "trapTitle": "Il parle comme s'il comprenait, donc il comprend.",
+  "text": "Le mécanisme est la prédiction suivante sur les modèles dans les données de formation. Extraire que la compréhension de *corrélés avec* n'est pas comprise — c'est pourquoi le même système qui rédige votre bref sans faille inventera également une affaire judiciaire avec une confiance totale. La fluence est le costume; l'appariement est la créature qui la porte."
+ },
+ "3": {
+  "chapter": 3,
+  "chapterTitle": "Data as Raw Material",
+  "trapTitle": "\"Publicly available\" signifie jeu équitable.",
+  "text": "Lisible n'est pas admissible. L'article que vous pouvez accéder gratuitement a été publié pour la lecture, et non pour l'ingestion dans un corpus de formation commerciale — et la phrase préférée de l'industrie est conçue pour brouiller exactement cette ligne. Votre voiture est visible publiquement. Cela n'a pas toujours été réglé qui peut le chasser."
+ },
+ "4": {
+  "chapter": 4,
+  "chapterTitle": "The Physical Layer",
+  "trapTitle": "L'IA vit dans le nuage.",
+  "text": "Le nuage est un bâtiment. Le bâtiment est un chauffage de 100 mégawatts. Les copeaux à l'intérieur ont été fabriqués à Taïwan sur des machines néerlandaises à partir de minéraux creusés à partir de terrains contestés. Tout ce qui vous est décrit comme « virtuel » a une adresse municipale, une facture d'eau et une chaîne d'approvisionnement — et quelqu'un vit en aval de chacun."
+ },
+ "5": {
+  "chapter": 5,
+  "chapterTitle": "Canada's AI Story",
+  "trapTitle": "L'annonce est la politique.",
+  "text": "Un lancement stratégique est un document dans un événement de cinq documents: l'annonce, le projet divulgué, la réponse de la société civile, la critique de la presse et la réaction internationale. Lisez seulement le communiqué de presse et vous saurez exactement ce que le gouvernement voulait que vous sachiez. La différence entre le brouillon et le lancement est généralement la page la plus informative."
+ },
+ "6": {
+  "chapter": 6,
+  "chapterTitle": "Infrastructure Reality",
+  "trapTitle": "Les centres de données canadiens sont efficaces — les chiffres le disent.",
+  "text": "Numéros *Lequel* ? Seulement 22 % environ des installations canadiennes publient leurs mesures d'efficacité, contre 71 % à l'échelle mondiale. Chaque allégation au sujet du rendement des centres de données canadiens provient de la minorité qui a choisi de divulguer — le biais de survie dans un parc. La majorité silencieuse n'est pas silencieuse parce que la nouvelle est bonne."
+ },
+ "7": {
+  "chapter": 7,
+  "chapterTitle": "Who Holds the Power",
+  "trapTitle": "\"Une étude trouvée...\" signifie quelqu'un d'indépendant compté.",
+  "text": "De plus en plus, les chiffres d'impact économique des politiques canadiennes d'IA ont été produits par des entreprises de recherche payées par l'entité à mesurer. La méthodologie peut être défendable et le cadrage peut encore appartenir au client. Avant de répéter un chiffre d'emploi et de PIB, vérifiez qui a payé le gâteau."
+ },
+ "8": {
+  "chapter": 8,
+  "chapterTitle": "Environment",
+  "trapTitle": "L'efficacité par pression s'améliore, de sorte que l'empreinte de l'IA diminue.",
+  "text": "La machine à vapeur de Watt était la plus efficace — et la Grande - Bretagne brûlait plus de charbon, pas moins. Faire une chose moins chère par utilisation n'a jamais réduit une fois l'utilisation totale de celle-ci. La chute de l'énergie à la demande et l'augmentation de la consommation totale ne sont pas des contradictions; ils sont le même phénomène à deux échelles, et les divulgations d'entreprises choisissent le plus amical."
+ },
+ "9": {
+  "chapter": 9,
+  "chapterTitle": "Sovereignty",
+  "trapTitle": "Un \"nuage souverain\" rend les données souveraines.",
+  "text": "Une feuille d'érable sur la facture répond à une question de trois. À qui la loi peut-elle contraindre les données? À qui les puces et les logiciels font tourner la pile ? À qui appartient la société ? Et en dessous de ces trois : la terre, le consentement ou la gouvernance collective des données ont-ils jamais fait partie de la conversation ? La plupart des « AI souverains » prétendent réussir un test et échouer le reste tranquillement."
+ },
+ "10": {
+  "chapter": 10,
+  "chapterTitle": "Privacy & Surveillance",
+  "trapTitle": "« Je n'ai rien à cacher, c'est juste mon histoire de magasinage. »",
+  "text": "Aucun point de données ne vous trahit. La recherche, la vidéo, l'achat de la tablette de chauffage sont tous innocents; le travail du moteur d'inférence est de les présenter les uns aux autres à une fête à laquelle vous n'étiez pas invité. Vous avez consenti aux points de données. Rien n'a couvert les introductions — et les introductions sont le produit."
+ },
+ "11": {
+  "chapter": 11,
+  "chapterTitle": "IP & Copyright",
+  "trapTitle": "Un côté de la lutte contre le droit d'auteur doit être mensonger.",
+  "text": "Geist et Craig sont rigoureux. Tout comme TWUC et ACTRA. Ils parviennent à des conclusions opposées parce qu'ils pèsent des valeurs différentes à l'intérieur d'une même loi — compensation créatrice par rapport au marché social des utilisations autorisées. Le piège résout prématurément un véritable désaccord parce qu'en le tenant ouvert, il est indécis. Tiens-la ouverte de toute façon."
+ },
+ "12": {
+  "chapter": 12,
+  "chapterTitle": "Misinformation & Deepfakes",
+  "trapTitle": "\"Je peux toujours le dire.\"",
+  "text": "Vous ne pouvez pas, et les commentateurs qui ont continué à \"détecter\" l'IA dans des films entièrement pratiques après que les photos d'IA ont été retirées. La confiance dans la détection ne suit pas ce qui est synthétique — ce qui coupe les deux manières: le faux contenu est cru, et le travail réel est mécroyé. Une étiquette, une fois appliquée, ne sort pas. C'est le mal que les statistiques de prévalence ne saisissent pas."
+ },
+ "13": {
+  "chapter": 13,
+  "chapterTitle": "Ethics, Bias & Fairness",
+  "trapTitle": "Le bias est un problème de nettoyage des données.",
+  "text": "Le nettoyage des données atteint un biais statistique. Il n'atteint pas le métrique choisi, le mandataire choisi, ou la question de savoir qui le système a été construit pour servir — et un système qui est 99% précis en moyenne et 90% précis sur votre visage n'est pas, pour vous, 99% exact. Les moyennes sont les endroits où les disparités se produisent pour les relations publiques."
+ },
+ "14": {
+  "chapter": 14,
+  "chapterTitle": "Jobs & Economy",
+  "trapTitle": "Soit l'IA prend le travail, soit ce n'est pas le cas.",
+  "text": "Le cadrage déplacement-versus-augmentation cache la troisième chose qui se passe réellement : le travail se déplace vers des salaires plus bas, moins de stabilité et plus de surveillance pendant que le nombre total d'emplois reste calme. « Pas de chômage généralisé » et « le service de sous-titrage n'existe plus » sont deux phrases vraies pour le même pays. Les agrégats sont là où les mauvaises années individuelles disparaissent."
+ },
+ "15": {
+  "chapter": 15,
+  "chapterTitle": "How AI Is Governed in Canada",
+  "trapTitle": "Le Canada devrait simplement adopter la Loi sur l'IA de l'UE.",
+  "text": "Chaque fixe à statut unique s'échoue sur la même roche : 1867. Les soins de santé, l'emploi, l'éducation — les endroits où l'IA touche réellement une vie — sont principalement de compétence provinciale, c'est pourquoi le Québec peut diriger et Ottawa ne peut pas simplement suivre. Quiconque vous vend une seule loi n'a pas lu la Loi constitutionnelle, et ne devrait probablement rien vous vendre."
+ },
+ "16": {
+  "chapter": 16,
+  "chapterTitle": "Transparency & Accountability",
+  "trapTitle": "Ils ont publié un rapport, donc ils sont transparents.",
+  "text": "La divulgation n'est pas une vérification. Un rapport sur la durabilité mesure ce que l'entreprise a choisi de mesurer, dans le cadre qui le flatte, vérifié par personne — les devoirs automarqués avec une belle couverture. La question n'est jamais « ont-ils publié ? » C'est « quelqu'un peut-il en dehors de la vérification de l'immeuble ? » Où la réponse est non, le rapport est un communiqué de presse avec des graphiques."
+ },
+ "17": {
+  "chapter": 17,
+  "chapterTitle": "Frameworks for Deciding",
+  "trapTitle": "Une source biaisée est une source discutable.",
+  "text": "Le maigre n'est pas le mensonge. Le mémoire syndical se penche sur les travailleurs et contient des preuves vérifiables; le papier corporatif se penche sur l'entreprise et contient une mesure minutieuse. Rejeter une source parce qu'elle s'appuie jette les preuves avec le cadrage — et vous laisse seulement avec les sources dont vous ne pouvez pas voir maigre, ce qui est pire. Nomme le maigre. Ensuite, utilisez la source."
+ },
+ "18": {
+  "chapter": 18,
+  "chapterTitle": "What Canada Could Do",
+  "trapTitle": "C'est inévitable — rien ne peut être fait.",
+  "text": "L'inévitabilité est un terrain de vente, pas une conclusion. Les mécanismes existent et sont cartographiés : droits de ressemblance avec un précédent danois, régime de divulgation les opérateurs provinciaux du réseau déjà à moitié construits, cadres de gouvernance des données autochtones en attente d'une directive du Conseil du Trésor. Ce qui manque, c'est la coordination, pas la faisabilité — et «rien ne peut être fait» est ce que les bénéficiaires de rien-être-fait préféreraient que vous concluiez."
+ },
+ "19": {
+  "chapter": 19,
+  "chapterTitle": "Navigating the Conversation",
+  "trapTitle": "Tu as fini le livre, donc tu as fini.",
+  "text": "Les faits dans ce livre ont commencé à expirer le jour où il a été imprimé; la méthode est la partie qui conserve. Le dernier piège est de traiter le manuel comme une autorité au lieu d'une démonstration — les trois questions de poche s'appliquent à la prochaine demande d'AI que vous rencontrez, et aux revendications de ce livre aussi. Surtout ceux-là. Demande qui a compté. Demande ce qui a été laissé de côté. Demandez à voir le reçu."
+ }
+}

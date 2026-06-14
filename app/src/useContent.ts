@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { RESPONSIVE_ART } from "./imageRegistry";
 import type { ArtMap, Book, Chapter, GlossaryEntry, LinkEntry, Receipt, Traps } from "./types";
+import { useLanguage, type Lang } from "./LanguageContext";
 
 // Runtime JSON loader with a module-level cache so each file is fetched once
 // per session. Content lives in public/content/ and is produced by the
@@ -11,53 +12,71 @@ const inflight = new Map<string, Promise<unknown>>();
 
 const BASE = `${import.meta.env.BASE_URL}content/`;
 
-export function fetchJson<T>(relPath: string): Promise<T> {
-  if (cache.has(relPath)) return Promise.resolve(cache.get(relPath) as T);
-  const existing = inflight.get(relPath);
+const contentUrl = (relPath: string, lang: Lang) =>
+  lang === "fr" ? `${BASE}fr/${relPath}` : `${BASE}${relPath}`;
+
+/**
+ * Load a content JSON. In French, fetch the machine-translated copy under
+ * /content/fr/ and transparently fall back to the English file if the FR file
+ * is missing (so a partial translation degrades gracefully). Cache is keyed by
+ * language so EN and FR never collide.
+ */
+export function fetchJson<T>(relPath: string, lang: Lang = "en"): Promise<T> {
+  const key = `${lang}:${relPath}`;
+  if (cache.has(key)) return Promise.resolve(cache.get(key) as T);
+  const existing = inflight.get(key);
   if (existing) return existing as Promise<T>;
-  const p = fetch(BASE + relPath)
-    .then((res) => {
+  const fetchEn = () =>
+    fetch(BASE + relPath).then((res) => {
       if (!res.ok) throw new Error(`Failed to load ${relPath}: ${res.status}`);
       return res.json();
-    })
+    });
+  const primary =
+    lang === "fr"
+      ? fetch(contentUrl(relPath, "fr")).then((res) => (res.ok ? res.json() : fetchEn()))
+      : fetchEn();
+  const p = primary
     .then((data) => {
-      cache.set(relPath, data);
-      inflight.delete(relPath);
+      cache.set(key, data);
+      inflight.delete(key);
       return data;
     })
     .catch((err) => {
-      inflight.delete(relPath);
+      inflight.delete(key);
       throw err;
     });
-  inflight.set(relPath, p);
+  inflight.set(key, p);
   return p as Promise<T>;
 }
 
 export function useJson<T>(relPath: string | null): { data: T | null; error: string | null } {
+  const { lang } = useLanguage();
+  const key = relPath ? `${lang}:${relPath}` : null;
   const [data, setData] = useState<T | null>(
-    relPath && cache.has(relPath) ? (cache.get(relPath) as T) : null
+    key && cache.has(key) ? (cache.get(key) as T) : null
   );
   const [error, setError] = useState<string | null>(null);
   useEffect(() => {
-    if (!relPath) {
+    if (!relPath || !key) {
       setData(null);
       setError(null);
       return;
     }
     let live = true;
-    if (cache.has(relPath)) {
-      setData(cache.get(relPath) as T);
+    if (cache.has(key)) {
+      setData(cache.get(key) as T);
+      setError(null);
       return;
     }
     setData(null);
     setError(null);
-    fetchJson<T>(relPath)
+    fetchJson<T>(relPath, lang)
       .then((d) => live && setData(d))
       .catch((e) => live && setError(String(e)));
     return () => {
       live = false;
     };
-  }, [relPath]);
+  }, [relPath, lang, key]);
   return { data, error };
 }
 

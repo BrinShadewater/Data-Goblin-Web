@@ -2,6 +2,7 @@ import { Bookmark as BookmarkIcon, Moon, Sun, X } from "lucide-react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useTheme } from "../ThemeContext";
 import { useReader } from "../reader";
+import { useLanguage } from "../LanguageContext";
 import { BODY, MONO, P, RADIUS, TOKENS, UI } from "../theme";
 import { isNavActive, NAV_ITEMS } from "../navigation";
 import { removeBookmark, saveLastLocation, useBookmarks } from "../bookmarks";
@@ -33,12 +34,40 @@ export function DrawerSectionLabel({ label, color }: { label: string; color: str
 export function MobileDrawerToggles() {
   const { c, dark, toggle } = useTheme();
   const { dyslexic, toggleDyslexic } = useReader();
+  const { lang, setLang } = useLanguage();
   const border = c(...P.borderSoft);
   const green = c(...P.green);
   const body = c(...P.body);
 
+  const langBtn = (value: "en" | "fr", label: string) => {
+    const active = lang === value;
+    return (
+      <button
+        onClick={() => setLang(value)}
+        aria-pressed={active}
+        aria-label={value === "fr" ? "Lire en français (traduction automatique)" : "Read in English"}
+        style={{
+          flex: 1,
+          minHeight: "40px",
+          background: active ? green : "none",
+          border: `1px solid ${active ? green : border}`,
+          borderRadius: RADIUS,
+          cursor: "pointer",
+          color: active ? c("#f4f0e0", "#0d1018") : body,
+          fontFamily: UI,
+          fontSize: "12px",
+          fontWeight: 700,
+          letterSpacing: "0.04em",
+        }}
+      >
+        {label}
+      </button>
+    );
+  };
+
   return (
-    <div style={{ display: "flex", gap: "8px", padding: "12px 16px", flexShrink: 0 }}>
+    <>
+    <div style={{ display: "flex", gap: "8px", padding: "12px 16px 4px", flexShrink: 0 }}>
       <button
         onClick={toggle}
         aria-label="Toggle dark mode"
@@ -87,6 +116,11 @@ export function MobileDrawerToggles() {
         Easy-read type
       </button>
     </div>
+    <div style={{ display: "flex", gap: "8px", padding: "4px 16px 12px", flexShrink: 0 }}>
+      {langBtn("en", "English")}
+      {langBtn("fr", "Français")}
+    </div>
+    </>
   );
 }
 

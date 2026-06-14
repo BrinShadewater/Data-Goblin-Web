@@ -6,3 +6,5 @@ app/output/
 *.tsbuildinfo
 push-log.txt
 .DS_Store
+
+pipeline/__pycache__/
