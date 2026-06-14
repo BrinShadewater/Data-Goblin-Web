@@ -1,10 +1,10 @@
-# Data Goblin — Interactive Edition Pipeline
+# Data Goblin — Interactive Edition Pipeline 🧾
 
 The bridge between the manuscript and the Figma Make mockup. One command turns the book, the Receipts Ledger, and the Glossary into the JSON your components consume.
 
-Data Goblin is an interactive field guide about AI, power, and data in Canada. The repo is organized around one central promise: the manuscript and receipts remain the source of truth, and the web app renders that evidence trail rather than inventing its own content.
+Data Goblin is an interactive field guide about AI, power, and data in Canada. The repo is organized around one central promise: the manuscript and receipts remain the source of truth, and the web app renders that evidence trail rather than inventing its own content. It is playful at the edges, serious in the receipts drawer.
 
-## What This Project Does
+## 🧭 What This Project Does
 
 - Converts manuscript, receipt, glossary, trap, and link material into structured JSON.
 - Publishes a React reader with chapters, routes, receipts, search, notes, bookmarks, and theme controls.
@@ -18,7 +18,7 @@ python3 pipeline/build_content.py
 
 Re-run it any time the manuscript changes. The manuscript stays the single source of truth — nobody hand-edits chapter JSON, ever. (The goblin checked. Nobody.)
 
-## Validation
+## ✅ Validation
 
 On Windows, regenerate content and verify the app with:
 
@@ -32,11 +32,11 @@ npm run verify
 `npm run verify` checks that generated content matches the deployed public
 copy, runs pagination sanity checks, and then runs the production build.
 
-## Repository Status
+## 🚦 Repository Status
 
 Launch-prep project. The app is functional, but the roadmap still calls out deployment, metadata, accessibility, and public-update surfaces before/around launch.
 
-## What it produces
+## 📦 What It Produces
 
 | File | Contents | Feeds mockup component |
 |---|---|---|
@@ -45,11 +45,11 @@ Launch-prep project. The app is functional, but the roadmap still calls out depl
 | `content/receipts.json` | All 50 ledger rows: `{id, section, claim, status: resolved/fixed/open, detail, links[]}` | `ReceiptsPage` accordions + the **Show Receipts** sidebar panel |
 | `content/glossary.json` | 45 terms: `{term, def, chapters, letter}` | `LootPage` |
 
-## Current validated counts (2026-06-10)
+## 🔢 Current Validated Counts (2026-06-10)
 
 19 chapters · 20 goblin checks · 17 recap boxes (110 bullets) · 19 bias labels · 17 chapter source-blocks · 50 receipt rows (14 resolved / 23 fixed / 13 open) · 45 glossary terms · 18 inline verify flags still open in chapter text.
 
-## Mapping notes for the wiring step
+## 🧷 Mapping Notes For The Wiring Step
 
 - **Goblin Note callout (LeftPage)** ← `goblinChecks[0]` of the chapter; remaining checks render inline in `RightPage` at their section anchors.
 - **Goblin Trap callout (RightPage)** ← no manuscript device yet. Trap inventory to be authored from the overstatement audit (danger phrases, "publicly available," per-query vs aggregate). Until then, hide the Trap card rather than faking one.
@@ -60,7 +60,7 @@ Launch-prep project. The app is functional, but the roadmap still calls out depl
 - **Part colours (ReceiptsPage `PART_COLORS`)**: rebuild from `book.json` parts, not hardcoded ranges.
 - **Mascot provenance:** current mascot is an AI-generated PNG. For a book about AI disclosure, either commission the goblin or disclose the generation — decide before public launch. (The goblin box about it writes itself.)
 
-## Folder layout
+## 🗂️ Folder Layout
 
 ```
 Project Goblin/
@@ -74,14 +74,14 @@ Project Goblin/
     content/                    ← generated JSON (gitignore later? no — commit it, receipts are the point)
 ```
 
-## Next build steps
+## 🛠️ Next Build Steps
 
 1. Wire the extracted mockup components to `content/` (replace placeholder data imports).
 2. Author the Goblin Trap inventory (one per chapter, from the overstatement audit).
 3. Receipts deep-links: every `<!-- VERIFY -->` flag surfaces in the UI as an honest "open flag" badge — unverified claims wear it in public, which *is* the brand.
 4. Repo init + licence decision (CC BY-SA for text? MIT for code?) before the open-source release.
 
-## Documentation
+## 📚 Documentation
 
 - `AGENTS.md`
 - `ROADMAP.md`
