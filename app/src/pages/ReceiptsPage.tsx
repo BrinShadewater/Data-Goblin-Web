@@ -76,8 +76,8 @@ export function ReceiptsPage() {
             {tr("Receipts")}
           </h1>
           <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
-            {tabButton("sources", <BookOpen size={12} strokeWidth={2.2} />, "Sources")}
-            {tabButton("log", <ScrollText size={12} strokeWidth={2.2} />, "Verification Log")}
+            {tabButton("sources", <BookOpen size={12} strokeWidth={2.2} />, tr("Sources"))}
+            {tabButton("log", <ScrollText size={12} strokeWidth={2.2} />, tr("Verification Log"))}
           </div>
           <div style={{ marginTop: "18px" }}>
             <StaticHeroArt
@@ -138,7 +138,7 @@ export function ReceiptsPage() {
               return (
                 <div key={section} style={{ marginBottom: "26px" }}>
                   <div style={{ display: "flex", alignItems: "baseline", gap: "10px", marginBottom: "10px" }}>
-                    <h2 style={{ fontFamily: DISPLAY, fontSize: "17px", fontWeight: 700, color: navy, margin: 0 }}>{section}</h2>
+                    <h2 style={{ fontFamily: DISPLAY, fontSize: "17px", fontWeight: 700, color: navy, margin: 0 }}>{tr(section)}</h2>
                     <span style={{ fontFamily: MONO, fontSize: "9px", color: muted }}>
                       {items.length} {tr("item")}{items.length !== 1 ? "s" : ""}
                     </span>

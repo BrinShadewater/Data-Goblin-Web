@@ -58,10 +58,10 @@ export function PrivacyPage() {
           {SECTIONS.map((section) => (
             <StaticCard key={section.title} padding="20px 22px">
               <h2 style={{ fontFamily: UI, fontSize: "17px", fontWeight: 900, color: green, margin: "0 0 8px" }}>
-                {section.title}
+                {tr(section.title)}
               </h2>
               <p style={{ fontFamily: BODY, fontSize: "15.5px", color: body, lineHeight: 1.7, margin: 0 }}>
-                {section.body}
+                {tr(section.body)}
               </p>
             </StaticCard>
           ))}

@@ -89,19 +89,19 @@ export function UpdatesPage() {
           <StaticCard key={entry.date + entry.title} padding="20px 22px">
             <div style={{ display: "flex", alignItems: "baseline", gap: "12px", flexWrap: "wrap", marginBottom: "10px" }}>
               <span style={{ fontFamily: MONO, fontSize: "12px", fontWeight: 700, letterSpacing: "0.08em", color: muted }}>
-                {entry.date}
+                {tr(entry.date)}
               </span>
               <span style={{ fontFamily: MONO, fontSize: "9.5px", fontWeight: 800, letterSpacing: "0.18em", textTransform: "uppercase", color: green }}>
-                {entry.tag}
+                {tr(entry.tag)}
               </span>
             </div>
             <h2 style={{ fontFamily: UI, fontSize: "18px", fontWeight: 900, color: navy, margin: "0 0 10px" }}>
-              {entry.title}
+              {tr(entry.title)}
             </h2>
             <ul style={{ margin: 0, paddingLeft: "20px", display: "grid", gap: "7px" }}>
               {entry.items.map((it, i) => (
                 <li key={i} style={{ fontFamily: BODY, fontSize: "15px", color: body, lineHeight: 1.6 }}>
-                  {it}
+                  {tr(it)}
                 </li>
               ))}
             </ul>
@@ -114,7 +114,7 @@ export function UpdatesPage() {
         <ul style={{ margin: "4px 0 0", paddingLeft: "20px", display: "grid", gap: "7px" }}>
           {PENDING.map((it, i) => (
             <li key={i} style={{ fontFamily: BODY, fontSize: "14.5px", color: body, lineHeight: 1.6 }}>
-              {it}
+              {tr(it)}
             </li>
           ))}
         </ul>

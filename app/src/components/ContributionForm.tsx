@@ -87,8 +87,8 @@ export function ContributionTypeSelector({
           >
             <span style={{ color: value === ct.id ? green : muted, paddingTop: "1px", flexShrink: 0 }}>{CONTRIBUTION_TYPE_ICONS[ct.id]}</span>
             <div>
-              <div style={{ fontFamily: UI, fontSize: "11px", fontWeight: 700, color: value === ct.id ? green : body, marginBottom: "2px" }}>{ct.label}</div>
-              <div style={{ fontFamily: BODY, fontSize: "11px", color: muted, lineHeight: 1.45 }}>{ct.desc}</div>
+              <div style={{ fontFamily: UI, fontSize: "11px", fontWeight: 700, color: value === ct.id ? green : body, marginBottom: "2px" }}>{tr(ct.label)}</div>
+              <div style={{ fontFamily: BODY, fontSize: "11px", color: muted, lineHeight: 1.45 }}>{tr(ct.desc)}</div>
             </div>
           </button>
         ))}

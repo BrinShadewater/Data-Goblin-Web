@@ -70,7 +70,7 @@ export function NotesCard({ chapterNumber }: { chapterNumber: number }) {
         }}
       >
         {copied ? <Check size={15} /> : <Copy size={15} />}
-        {copied ? "Copied" : "Copy Text"}
+        {copied ? tr("Copied") : tr("Copy Text")}
       </button>
     </ToolCard>
   );
@@ -96,7 +96,7 @@ export function SuspicionMeterCard({ chapter }: { chapter: Chapter }) {
           <div style={{ width: `${pct}%`, height: "100%", background: meterColor, transition: "width 0.4s" }} />
         </div>
         <div style={{ fontFamily: UI, fontSize: "12.5px", fontWeight: TOKENS.weight.toolLabel, color: meterColor, margin: "7px 0 4px" }}>
-          {suspicion.label} ({pct}%)
+          {tr(suspicion.label)} ({pct}%)
         </div>
       </div>
       <p style={{ fontFamily: UI, fontSize: "11px", lineHeight: 1.5, color: muted, margin: 0 }}>

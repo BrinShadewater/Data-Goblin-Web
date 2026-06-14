@@ -8,13 +8,15 @@ import { tr } from "../i18n";
 
 const MAP_ART = "panels/canada-map-panel.webp";
 
-const REGION_NOTES: Record<string, string> = {
-  "The Land": "Foundations — what AI actually is, how it learns, and what it is physically made of.",
-  "The Creatures": "The Canadian landscape — the strategy, the infrastructure, and the actors who hold the power.",
-  "The Weather": "Hard questions — environment, sovereignty, privacy, IP, deepfakes, ethics, and jobs.",
-  "The Map": "Governance — how Canadian AI is actually regulated, and what you can and cannot know.",
-  "The Tools": "Path forward — the portable analytical toolkit and what Canada could actually do.",
-};
+// Region notes, in part order (Part I…V). Keyed by index so they survive the
+// French edition, where part.region itself is translated.
+const REGION_NOTES: string[] = [
+  "Foundations — what AI actually is, how it learns, and what it is physically made of.",
+  "The Canadian landscape — the strategy, the infrastructure, and the actors who hold the power.",
+  "Hard questions — environment, sovereignty, privacy, IP, deepfakes, ethics, and jobs.",
+  "Governance — how Canadian AI is actually regulated, and what you can and cannot know.",
+  "Path forward — the portable analytical toolkit and what Canada could actually do.",
+];
 
 /** The five regions of the field guide, each listing its chapters. */
 export function MapPage() {
@@ -62,14 +64,14 @@ export function MapPage() {
         {!book && !error && <LoadingMessage>{tr("Unrolling the map…")}</LoadingMessage>}
 
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "14px" }}>
-          {book?.parts.map((part) => (
+          {book?.parts.map((part, idx) => (
             <div key={part.part} style={{ background: c(...P.cardBg), border: `1px solid ${border}`, borderTop: `3px solid ${green}`, borderRadius: RADIUS, padding: "18px 20px", transition: "background 0.3s" }}>
               <div style={{ fontFamily: MONO, fontSize: "8.5px", fontWeight: 800, letterSpacing: "0.22em", textTransform: "uppercase", color: muted, marginBottom: "4px" }}>
                 {part.part}
               </div>
               <h2 style={{ fontFamily: DISPLAY, fontSize: "21px", fontWeight: 800, color: navy, margin: "0 0 8px" }}>{displayRegion(part.region)}</h2>
               <p style={{ fontFamily: BODY, fontSize: "13.5px", lineHeight: 1.6, color: muted, margin: "0 0 12px" }}>
-                {REGION_NOTES[part.region] ?? ""}
+                {tr(REGION_NOTES[idx] ?? "")}
               </p>
               <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
                 {part.chapters.map((ch) => (

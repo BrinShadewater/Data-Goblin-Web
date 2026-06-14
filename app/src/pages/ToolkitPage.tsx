@@ -117,11 +117,11 @@ export function ToolkitPage() {
                 }}
               >
                 <span style={{ display: "block", fontFamily: UI, fontSize: "13.5px", fontWeight: 800, color: on ? green : navy, marginBottom: on ? "5px" : 0 }}>
-                  {s.name}
+                  {tr(s.name)}
                 </span>
                 {on && (
                   <span style={{ display: "block", fontFamily: BODY, fontSize: "13px", color: body, lineHeight: 1.5 }}>
-                    {s.lean}
+                    {tr(s.lean)}
                   </span>
                 )}
               </button>
@@ -152,10 +152,10 @@ export function ToolkitPage() {
                 }}
               >
                 <span style={{ display: "block", fontFamily: UI, fontSize: "13.5px", fontWeight: 800, color: navy, marginBottom: "3px" }}>
-                  {on ? "☑ " : "☐ "}{s.label}
+                  {on ? "☑ " : "☐ "}{tr(s.label)}
                 </span>
                 <span style={{ display: "block", fontFamily: BODY, fontSize: "13px", color: body, lineHeight: 1.5 }}>
-                  {s.hint}
+                  {tr(s.hint)}
                 </span>
               </button>
             );
@@ -189,8 +189,8 @@ export function ToolkitPage() {
                   {rc.ok ? "✓" : "○"}
                 </span>
                 <span>
-                  <span style={{ fontFamily: UI, fontSize: "13.5px", fontWeight: 800, color: navy }}>{rc.label}</span>
-                  <span style={{ fontFamily: BODY, fontSize: "13px", color: body, lineHeight: 1.5, display: "block" }}>{rc.gloss}</span>
+                  <span style={{ fontFamily: UI, fontSize: "13.5px", fontWeight: 800, color: navy }}>{tr(rc.label)}</span>
+                  <span style={{ fontFamily: BODY, fontSize: "13px", color: body, lineHeight: 1.5, display: "block" }}>{tr(rc.gloss)}</span>
                 </span>
               </button>
             );
@@ -209,15 +209,15 @@ export function ToolkitPage() {
           )}
           <p style={{ fontFamily: BODY, fontSize: "15.5px", color: body, lineHeight: 1.7, margin: 0 }}>
             {source !== null && (
-              <>{tr("This reads as")} <strong style={{ color: navy }}>{SOURCES[source].name.toLowerCase()}</strong>{tr(", so the lean to watch is built in — weigh it, don't dismiss it.")} </>
+              <>{tr("This reads as")} <strong style={{ color: navy }}>{tr(SOURCES[source].name).toLowerCase()}</strong>{tr(", so the lean to watch is built in — weigh it, don't dismiss it.")} </>
             )}
             {r && (
               r.ok
                 ? <>{tr("On the evidence, you’ve marked it")} <strong style={{ color: green }}>{tr("independently verified")}</strong> {tr("— the receipt holds, and that’s the rare strong case.")} </>
-                : <>{tr("On the evidence, it’s only")} <strong style={{ color: c(...P.red) }}>{r.label.toLowerCase()}</strong> {tr("— so treat the strength of the wording with matching caution.")} </>
+                : <>{tr("On the evidence, it’s only")} <strong style={{ color: c(...P.red) }}>{tr(r.label).toLowerCase()}</strong> {tr("— so treat the strength of the wording with matching caution.")} </>
             )}
             {scope.size > 0 && (
-              <>{tr("Watch the scope, too:")} {[...scope].map((k) => SCOPE.find((s) => s.key === k)!.label.toLowerCase()).join(", ")}. </>
+              <>{tr("Watch the scope, too:")} {[...scope].map((k) => tr(SCOPE.find((s) => s.key === k)!.label).toLowerCase()).join(", ")}. </>
             )}
           </p>
           <p style={{ fontFamily: BODY, fontSize: "14.5px", color: body, lineHeight: 1.7, margin: "12px 0 0" }}>

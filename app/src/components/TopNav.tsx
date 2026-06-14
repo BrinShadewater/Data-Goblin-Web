@@ -55,7 +55,7 @@ export function TopNav({
             maxWidth: compact ? "235px" : undefined,
           }}
         >
-          A field guide to AI, power &amp; data in Canada
+          {tr("A field guide to AI, power & data in Canada")}
         </div>
       </div>
     </button>

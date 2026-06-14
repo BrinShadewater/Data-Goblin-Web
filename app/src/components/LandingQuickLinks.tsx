@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useTheme } from "../ThemeContext";
 import { BODY, P, RADIUS, TOKENS, UI } from "../theme";
 import { NavIcon } from "./GoblinMascot";
+import { tr } from "../i18n";
 
 const QUICK_LINKS = [
   { to: "/guide", icon: "guidebook-nav", label: "Open the field guide", body: "Resume the book or start at the front matter." },
@@ -43,10 +44,10 @@ export function LandingQuickLinks({ preloadGuide }: { preloadGuide: () => void }
             <NavIcon name={item.icon} size={TOKENS.icon.landingFeature} />
             <span>
               <span style={{ display: "block", fontFamily: UI, fontSize: "15px", fontWeight: 800, color: navy, marginBottom: "5px" }}>
-                {item.label}
+                {tr(item.label)}
               </span>
               <span style={{ display: "block", fontFamily: BODY, fontSize: "14px", lineHeight: 1.55, color: muted }}>
-                {item.body}
+                {tr(item.body)}
               </span>
             </span>
           </Link>

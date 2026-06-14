@@ -38,8 +38,8 @@ export function GuidelinesPanel() {
       <div style={{ display: "flex", flexDirection: "column", gap: "8px", marginBottom: "20px" }}>
         {GUIDELINES.map((g, i) => (
           <div key={i} style={{ background: cardBg, border: `1px solid ${border}`, borderRadius: RADIUS, padding: "12px 14px", transition: "background 0.3s" }}>
-            <div style={{ fontFamily: UI, fontSize: "11px", fontWeight: 700, color: navy, marginBottom: "4px" }}>{g.title}</div>
-            <p style={{ fontFamily: BODY, fontSize: "13px", color: body, lineHeight: 1.6, margin: 0 }}>{g.body}</p>
+            <div style={{ fontFamily: UI, fontSize: "11px", fontWeight: 700, color: navy, marginBottom: "4px" }}>{tr(g.title)}</div>
+            <p style={{ fontFamily: BODY, fontSize: "13px", color: body, lineHeight: 1.6, margin: 0 }}>{tr(g.body)}</p>
           </div>
         ))}
       </div>
@@ -80,7 +80,7 @@ export function RevisionFlowCard() {
       <ol style={{ margin: 0, paddingLeft: "20px", display: "flex", flexDirection: "column", gap: "10px" }}>
         {REVISION_STEPS.map((s, i) => (
           <li key={i} style={{ fontFamily: BODY, fontSize: "14px", color: body, lineHeight: 1.6 }}>
-            {s.text}
+            {tr(s.text)}
             {s.cmd && (
               <div style={{ display: "flex", alignItems: "center", gap: "7px", marginTop: "5px", background: c("#f0ece0", "#0d1118"), border: `1px solid ${border}`, borderRadius: RADIUS, padding: "6px 10px" }}>
                 <Terminal size={11} color={muted} style={{ flexShrink: 0 }} />
