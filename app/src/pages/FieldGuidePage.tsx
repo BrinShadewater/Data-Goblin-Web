@@ -9,6 +9,7 @@ import { BottomBar } from "../components/BottomBar";
 import { PagePanel } from "../components/PagePanel";
 import { NavIcon } from "../components/GoblinMascot";
 import { useBook } from "../useContent";
+import { useLanguage } from "../LanguageContext";
 import { folio } from "../readerUtils";
 import { tr } from "../i18n";
 import {
@@ -35,6 +36,7 @@ export function FieldGuidePage() {
   const single = mode !== "desktop";
 
   const num = useChapterRoute();
+  const { lang } = useLanguage();
   const { data: book } = useBook();
   const { chapter, error, panels } = usePaginatedChapter(num);
   const { aligned, page, pageCount, step, goNext, goPrev } = usePageNavigation({ num, panels, single });
@@ -45,9 +47,11 @@ export function FieldGuidePage() {
   useEffect(() => {
     if (!chapter) return;
     const main = chapter.title.split(" — ")[0];
-    const label = num === 0 ? "Front Matter" : num === 20 ? "Source Library Appendix" : `Chapter ${num}: ${main}`;
+    const label = lang === "fr"
+      ? (num === 0 ? "Pages liminaires" : num === 20 ? "Annexe — Bibliothèque des sources" : `Chapitre ${num} : ${main}`)
+      : (num === 0 ? "Front Matter" : num === 20 ? "Source Library Appendix" : `Chapter ${num}: ${main}`);
     document.title = `${label} — Data Goblin`;
-  }, [chapter, num]);
+  }, [chapter, num, lang]);
 
   const spineShadow = c("rgba(60,50,30,0.22)", "rgba(0,0,0,0.55)");
   const pageShadow = c(
