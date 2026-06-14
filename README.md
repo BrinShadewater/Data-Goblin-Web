@@ -1,6 +1,16 @@
-# 🧌 Data Goblin — Interactive Edition Pipeline
+# Data Goblin — Interactive Edition Pipeline
 
 The bridge between the manuscript and the Figma Make mockup. One command turns the book, the Receipts Ledger, and the Glossary into the JSON your components consume.
+
+Data Goblin is an interactive field guide about AI, power, and data in Canada. The repo is organized around one central promise: the manuscript and receipts remain the source of truth, and the web app renders that evidence trail rather than inventing its own content.
+
+## What This Project Does
+
+- Converts manuscript, receipt, glossary, trap, and link material into structured JSON.
+- Publishes a React reader with chapters, routes, receipts, search, notes, bookmarks, and theme controls.
+- Preserves verification flags instead of hiding unfinished evidence work.
+- Ships generated public content into the app so the reader can be built and deployed as a static site.
+- Keeps launch planning and guardrails close to the code.
 
 ```
 python3 pipeline/build_content.py
@@ -21,6 +31,10 @@ npm run verify
 
 `npm run verify` checks that generated content matches the deployed public
 copy, runs pagination sanity checks, and then runs the production build.
+
+## Repository Status
+
+Launch-prep project. The app is functional, but the roadmap still calls out deployment, metadata, accessibility, and public-update surfaces before/around launch.
 
 ## What it produces
 
@@ -66,3 +80,13 @@ Project Goblin/
 2. Author the Goblin Trap inventory (one per chapter, from the overstatement audit).
 3. Receipts deep-links: every `<!-- VERIFY -->` flag surfaces in the UI as an honest "open flag" badge — unverified claims wear it in public, which *is* the brand.
 4. Repo init + licence decision (CC BY-SA for text? MIT for code?) before the open-source release.
+
+## Documentation
+
+- `AGENTS.md`
+- `ROADMAP.md`
+- `docs/PROJECT-BRIEF.md`
+- `docs/MAINTENANCE.md`
+- `docs/local-storage-contract.md`
+- `docs/refactor-baseline.md`
+- `docs/visual-parity-checklist.md`
