@@ -118,8 +118,15 @@ export function ListenCard({ chapter }: { chapter: Chapter }) {
   const border = c(...P.borderSoft);
 
   const langPrefix = lang === "fr" ? "fr" : "en";
-  const langVoices = voices.filter((v) => v.lang.toLowerCase().startsWith(langPrefix));
-  const chosen = langVoices.find((v) => v.voiceURI === voiceURI) ?? pickBestVoice(voices, langPrefix);
+  const ranked = voices
+    .filter((v) => v.lang.toLowerCase().startsWith(langPrefix))
+    .sort((a, b) => rankVoice(b) - rankVoice(a));
+  const good = ranked.filter((v) => QUALITY_VOICE.test(v.name));
+  // Trim the picker to the genuinely good voices — on Chrome that's the Google
+  // set; on Safari/iOS it's Apple premium, on Edge the MS Natural voices. Fall
+  // back to the best available so non-Chrome readers still get audio.
+  const voiceOptions = (good.length ? good : ranked).slice(0, 5);
+  const chosen = voiceOptions.find((v) => v.voiceURI === voiceURI) ?? voiceOptions[0] ?? pickBestVoice(voices, langPrefix);
 
   const play = () => {
     const synth = window.speechSynthesis;
@@ -158,7 +165,7 @@ export function ListenCard({ chapter }: { chapter: Chapter }) {
       <p style={{ fontFamily: BODY, fontSize: "12px", color: muted, margin: "0 0 9px", lineHeight: 1.5 }}>
         {tr("Read this chapter aloud with your browser’s voice. Pause or stop any time.")}
       </p>
-      {langVoices.length > 1 && (
+      {voiceOptions.length > 1 && (
         <select
           value={chosen?.voiceURI ?? ""}
           onChange={(e) => setVoiceURI(e.target.value)}
@@ -169,7 +176,7 @@ export function ListenCard({ chapter }: { chapter: Chapter }) {
             background: c(...P.inputBg), border: `1px solid ${border}`, borderRadius: "3px",
           }}
         >
-          {langVoices.map((v) => (
+          {voiceOptions.map((v) => (
             <option key={v.voiceURI} value={v.voiceURI}>
               {v.name}{QUALITY_VOICE.test(v.name) ? " ★" : ""}
             </option>
