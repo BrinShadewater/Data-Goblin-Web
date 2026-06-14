@@ -14,21 +14,21 @@ const VIEWPORTS = [
 ];
 
 const ROUTES = [
-  { path: "/#/", text: /Data Goblin/i },
-  { path: "/#/guide", text: /Front\s*Matter|Trailhead|Data\s*Goblin/i },
-  { path: "/#/chapter/1", text: /What\s*AI\s*Actually\s*Is|Training\s*Set|First\s*Clearing/i },
-  { path: "/#/map", text: /The Map/i },
-  { path: "/#/loot", text: /Loot \(Glossary\)/i },
-  { path: "/#/receipts", text: /Receipts/i },
-  { path: "/#/about", text: /About This Guide|Why/i },
-  { path: "/#/contribute", text: /Contribute/i },
-  { path: "/#/privacy", text: /Privacy Policy/i },
+  { path: "/", text: /Data Goblin/i },
+  { path: "/guide", text: /Front\s*Matter|Trailhead|Data\s*Goblin/i },
+  { path: "/chapter/1", text: /What\s*AI\s*Actually\s*Is|Training\s*Set|First\s*Clearing/i },
+  { path: "/map", text: /The Map/i },
+  { path: "/loot", text: /Loot \(Glossary\)/i },
+  { path: "/receipts", text: /Receipts/i },
+  { path: "/about", text: /About This Guide|Why/i },
+  { path: "/contribute", text: /Contribute/i },
+  { path: "/privacy", text: /Privacy Policy/i },
 ];
 
 const TIMED_ROUTES = [
-  { name: "landing", path: "/#/", text: /Data\s*Goblin/i, maxMs: 3000 },
-  { name: "guide", path: "/#/guide", text: /Front\s*Matter|Trailhead|Data\s*Goblin/i, maxMs: 4500 },
-  { name: "map", path: "/#/map", text: /The Map/i, maxMs: 3500 },
+  { name: "landing", path: "/", text: /Data\s*Goblin/i, maxMs: 3000 },
+  { name: "guide", path: "/guide", text: /Front\s*Matter|Trailhead|Data\s*Goblin/i, maxMs: 4500 },
+  { name: "map", path: "/map", text: /The Map/i, maxMs: 3500 },
 ];
 
 const CONSENT = {
@@ -143,7 +143,7 @@ async function runCookieSmoke(browser, baseUrl) {
   const context = await browser.newContext({ viewport: { width: 1200, height: 820 } });
   const page = await context.newPage();
   try {
-    await page.goto(`${baseUrl}/#/`, { waitUntil: "networkidle" });
+    await page.goto(`${baseUrl}/`, { waitUntil: "networkidle" });
     await page.getByText("Cookie Notice").waitFor({ state: "visible" });
 
     await page.getByRole("button", { name: "Manage Preferences" }).click();
@@ -164,7 +164,7 @@ async function runCookieSmoke(browser, baseUrl) {
     const buttonContext = await browser.newContext({ viewport: { width: 1200, height: 820 } });
     const buttonPage = await buttonContext.newPage();
     try {
-      await buttonPage.goto(`${baseUrl}/#/`, { waitUntil: "networkidle" });
+      await buttonPage.goto(`${baseUrl}/`, { waitUntil: "networkidle" });
       await buttonPage.getByText("Cookie Notice").waitFor({ state: "visible" });
       await buttonPage.getByRole("button", { name: buttonName }).click();
       await buttonPage.getByText("Cookie Notice").waitFor({ state: "hidden" });
@@ -179,9 +179,9 @@ async function runCookieSmoke(browser, baseUrl) {
 
 async function runInteractionSmoke(browser, baseUrl) {
   await withAppPage(browser, baseUrl, VIEWPORTS[0], async (page) => {
-    await page.goto(`${baseUrl}/#/`, { waitUntil: "networkidle" });
+    await page.goto(`${baseUrl}/`, { waitUntil: "networkidle" });
     await page.getByRole("link", { name: /Open the guide/i }).click();
-    await page.waitForURL(/#\/guide/);
+    await page.waitForURL(/\/guide/);
 
     await page.getByPlaceholder("Search the guide…").fill("privacy");
     await page.getByText(/result.*privacy|results.*privacy/i).waitFor({ state: "visible" });
@@ -189,7 +189,7 @@ async function runInteractionSmoke(browser, baseUrl) {
   });
 
   await withAppPage(browser, baseUrl, VIEWPORTS[0], async (page) => {
-    await page.goto(`${baseUrl}/#/map`, { waitUntil: "networkidle" });
+    await page.goto(`${baseUrl}/map`, { waitUntil: "networkidle" });
     const mapImage = page.getByAltText("Fantasy map of Canada for Data Goblin, with the goblin standing in front");
     await mapImage.waitFor({ state: "visible" });
     const naturalWidth = await mapImage.evaluate((img) => img.naturalWidth);
@@ -197,7 +197,7 @@ async function runInteractionSmoke(browser, baseUrl) {
   });
 
   await withAppPage(browser, baseUrl, VIEWPORTS[0], async (page) => {
-    await page.goto(`${baseUrl}/#/contribute`, { waitUntil: "networkidle" });
+    await page.goto(`${baseUrl}/contribute`, { waitUntil: "networkidle" });
     await page.getByPlaceholder(/Chapter 8/i).fill("Chapter 8");
     await page.locator("textarea[required]").fill("Browser smoke test contribution with a source link.");
     await page.getByRole("button", { name: /Submit Report/i }).click();

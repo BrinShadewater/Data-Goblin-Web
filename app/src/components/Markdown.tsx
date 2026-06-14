@@ -28,6 +28,9 @@ function MarkdownInner({ markdown, style }: { markdown: string; style?: CSSPrope
   const { t } = useReader();
   const bodyText = c(...P.body);
   const components = useMarkdownComponents();
+  // Strip authoring HTML comments (e.g. <!-- DIAGRAM TODO … -->) so they never
+  // leak into rendered prose. react-markdown otherwise passes them through.
+  const clean = markdown.replace(/<!--[\s\S]*?-->/g, "");
 
   return (
     <div
@@ -43,7 +46,7 @@ function MarkdownInner({ markdown, style }: { markdown: string; style?: CSSPrope
         remarkPlugins={[remarkGfm]}
         components={components}
       >
-        {markdown}
+        {clean}
       </ReactMarkdown>
     </div>
   );

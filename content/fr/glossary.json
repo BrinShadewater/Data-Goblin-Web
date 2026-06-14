@@ -1,0 +1,272 @@
+[
+ {
+  "term": "AGI (Renseignements généraux artificiels)",
+  "def": "Un futur appariement d'IA hypothétique ou surpasse la performance humaine pour la plupart des tâches cognitives. S'il est réalisable, quand, et ce que \"intelligence\" signifie même dans cette phrase sont tous contestés — le dernier plus que le champ admet habituellement.",
+  "chapters": "Chs. 1, 2",
+  "letter": "A"
+ },
+ {
+  "term": "AIDA (Loi sur l'intelligence artificielle et les données)",
+  "def": "La tentative du Canada d'adopter une loi complète sur l'IA, partie 3 du projet de loi C-27. Décédé avec la prorogation de janvier 2025. Tout ce qui est dans ce livre sur le \"vide réglementaire\" est le trou en forme d'AIDA.",
+  "chapters": "Chs. 10, 15",
+  "letter": "A"
+ },
+ {
+  "term": "Gestion algorithmique",
+  "def": "Coureurs par logiciel : répartition par AI, notation, programmation, discipline. Le patron est un tableau de bord; le processus d'appel est surtout des vibrations.",
+  "chapters": "Chs. 10, 14",
+  "letter": "A"
+ },
+ {
+  "term": "Alignement",
+  "def": "Le réglage fin visant à faire correspondre le comportement d'un modèle aux valeurs humaines — ce qui soulève immédiatement la question *dont* . Non résolu ; les jailbreaks en sont la preuve.",
+  "chapters": "Ch. 2",
+  "letter": "A"
+ },
+ {
+  "term": "Garde à vue",
+  "def": "Le mécanisme du transformateur qui pèse chaque jeton précédent lors de la prédiction du prochain. La raison pour laquelle votre chatbot se souvient du pronom d'il y a trois paragraphes — et la raison pour laquelle les jetons fonctionnent chaud.",
+  "chapters": "Ch. 2",
+  "letter": "A"
+ },
+ {
+  "term": "La génération derrière le mètre",
+  "def": "Une centrale électrique construite pour un client, contournant le réseau public, l'architecture proposée pour Wonder Valley, entre autres. En tant que catégorie, plus rapide à permettre et plus difficile pour les observateurs extérieurs à suivre que la génération connectée au réseau.",
+  "chapters": "Ch. 6",
+  "letter": "B"
+ },
+ {
+  "term": "Bizarre (trois sens)",
+  "def": "*Statistiques* : erreur mathématique systématique. *Services sociaux* : favoritisme systématique pour ou contre les groupes de personnes. *Structurel* : un système reproduisant les distributions de puissance et de ressources existantes, même lorsque les maths sont « justes ». Les conversations qui se glissent entre eux sans braquer le commutateur sont la façon dont tout le monde finit par crier.",
+  "chapters": "Ch. 13",
+  "letter": "B"
+ },
+ {
+  "term": "Cartographie des préjugés",
+  "def": "La méthode de base de ce livre : chaque source se penche ; le maigre est nommable ; le nom n'est pas le même que le rejet de la source. Toute la personnalité du goblin, systématisée.",
+  "chapters": "Chs. 1, 17",
+  "letter": "B"
+ },
+ {
+  "term": "Principes relatifs à la protection de l ' enfance",
+  "def": "Bénéfice collectif, Autorité de contrôle, Responsabilité, Éthique – le cadre de l'Alliance mondiale des données autochtones pour la gouvernance des données autochtones, construit comme un contrepoids aux « données ouvertes » par défaut.",
+  "chapters": "Ch. 9",
+  "letter": "C"
+ },
+ {
+  "term": "Loi sur les droits de la personne",
+  "def": "La loi américaine (2018) oblige les entreprises dont le siège est aux États-Unis à produire des données qu'elles détiennent *partout dans le monde* dans le cadre du processus juridique américain. La raison pour laquelle « le serveur est à Montréal » ne met pas fin à la conversation sur la souveraineté.",
+  "chapters": "Ch. 9",
+  "letter": "C"
+ },
+ {
+  "term": "Colocation",
+  "def": "Louer de l'espace, de l'électricité et du refroidissement dans le centre de données de quelqu'un d'autre. Une bonne partie de la capacité nuageuse « canadienne » vit physiquement ici.",
+  "chapters": "Ch. 6",
+  "letter": "C"
+ },
+ {
+  "term": "Recherches commandées",
+  "def": "Études réalisées par des firmes de recherche professionnelle pour l'entité étudiée. Pas de corruption, pas de mesure indépendante non plus. Vérifiez qui a payé le gâteau.",
+  "chapters": "Ch. 7",
+  "letter": "C"
+ },
+ {
+  "term": "Crawl commun",
+  "def": "Une archive à but non lucratif du web gratté depuis 2008 ; la farine de départ dans la plupart des recettes de modèle de fondation. Contient la meilleure documentation technique sur Terre et aussi tous les arguments de forum que vous avez jamais regrettés.",
+  "chapters": "Ch. 3",
+  "letter": "C"
+ },
+ {
+  "term": "Faux-faux",
+  "def": "Des médias synthétiques représentant une personne réelle et identifiable faisant ou disant quelque chose qu'elle n'a pas fait. Le projet de loi C-16, déposé en décembre 2025, étendrait le droit criminel canadien au genre sexualisé; la plupart des autres sont légalement seuls.",
+  "chapters": "Ch. 12",
+  "letter": "D"
+ },
+ {
+  "term": "Carbone incorporé",
+  "def": "Les émissions se sont transformées en matériel — exploitation minière, pêche, expédition — avant la première livraison rapide. En général exclu des maths à la demande, c'est exactement pour cela que le goblin s'interroge sur le champ d'application.",
+  "chapters": "Chs. 4, 8",
+  "letter": "E"
+ },
+ {
+  "term": "Émergence",
+  "def": "Les capacités qui apparaissent à grande échelle que les modèles plus petits manquent — ou peut - être un artéfact de la façon dont nous mesurons. Contesté, comme des mots passionnants.",
+  "chapters": "Ch. 2",
+  "letter": "E"
+ },
+ {
+  "term": "Fin de réglage",
+  "def": "La deuxième étape moins coûteuse de la formation qui façonne le comportement d'un modèle de base pour les produits réels. Pré-formation décide de ce que le modèle *sait* ; le réglage fin décide comment il *actes* devant les clients.",
+  "chapters": "Ch. 2",
+  "letter": "F"
+ },
+ {
+  "term": "Modèle de fondation",
+  "def": "Un grand modèle a été formé sur des données générales sur lesquelles les autres applications s'appuient — la couche de substrat de l'économie actuelle de l'IA, et la couche avec la moins formation-divulgation des données, pour chaque édition de l'IMF.",
+  "chapters": "Chs. 2, 16",
+  "letter": "F"
+ },
+ {
+  "term": "Accès libre vs. facilement utilisables",
+  "def": "La distinction entre les mots « publiquement disponibles » est conçue pour s'estomper. Lisible n'est pas admissible. Votre voiture est visible publiquement.",
+  "chapters": "Ch. 3",
+  "letter": "F"
+ },
+ {
+  "term": "FMTI (Indice de transparence du modèle de fondation)",
+  "def": "La notation annuelle de Stanford de la divulgation des principaux développeurs sur 100 indicateurs. Mesure ce que les entreprises *dire* , pas si c'est vrai — une caractéristique à garder à l'esprit dans les deux directions.",
+  "chapters": "Ch. 16",
+  "letter": "F"
+ },
+ {
+  "term": "hallucination",
+  "def": "Le mot du champ pour un modèle produisant avec confiance des mensonges. Un choix de mots révélateur : il implique un système qui perçoit normalement la réalité et qui se glisse parfois, lorsque le système ne perçoit jamais la réalité du tout et qu'il arrive souvent de la suivre.",
+  "chapters": "Ch. 2",
+  "letter": "H"
+ },
+ {
+  "term": "Hyperscaleur",
+  "def": "La poignée de géants (AWS, Microsoft, Google et ses pairs) qui exploitent l'infrastructure cloud à l'échelle mondiale, y compris la majeure partie de la capacité « canadienne » de l'IA, fonctionne en fait.",
+  "chapters": "Ch. 6",
+  "letter": "H"
+ },
+ {
+  "term": "Souveraineté des données autochtones",
+  "def": "Le principe selon lequel les peuples autochtones conservent la propriété et la gouvernance des données sur eux-mêmes, leurs communautés, leurs terres et leurs connaissances - droits collectifs, organisés au niveau des nations, précédant le débat sur l'IA par des décennies. Voir OCAP, NISR, CARE.",
+  "chapters": "Ch. 9",
+  "letter": "I"
+ },
+ {
+  "term": "Inférence",
+  "def": "Qu'arrive-t-il chaque fois que vous utilisez un modèle formé. Petit par requête; multiplié par des milliards de requêtes par jour. Le nombre par pression et la tête totale dans les directions opposées — voir Jevons.",
+  "chapters": "Chs. 2, 8",
+  "letter": "I"
+ },
+ {
+  "term": "Extraction inferentielle",
+  "def": "Ce que les systèmes en déduit de vous à partir de données qui semblaient inoffensives par eux-mêmes. Les points de données ont été approuvés; les introductions n'ont pas été acceptées.",
+  "chapters": "Ch. 10",
+  "letter": "I"
+ },
+ {
+  "term": "Le paradoxe de Jevons",
+  "def": "Les gains d'efficacité qui augmentent la consommation totale, parce que les moyens utilisés sont moins chers par utilisation partout. Le moteur de Watt était le plus efficace; la Grande-Bretagne brûlait plus de charbon. L'outil analytique le plus chargé dans les chapitres environnementaux de ce livre.",
+  "chapters": "Ch. 8",
+  "letter": "J"
+ },
+ {
+  "term": "Loi 25",
+  "def": "La loi québécoise modernisée sur la protection de la vie privée — les droits de décision automatisés, les sanctions à l'échelle du RGPD, le cadre le plus solide au Canada et le reproche permanent à tous les autres pays du Canada.",
+  "chapters": "Ch. 10",
+  "letter": "L"
+ },
+ {
+  "term": "Droits de ressemblance / NIL",
+  "def": "Une revendication légale sur votre propre nom, image, ressemblance et voix, opposable contre une utilisation non autorisée - le mécanisme unique où les syndicats d'interprètes et les chercheurs de faux-sangs convergent de directions opposées.",
+  "chapters": "Chs. 11, 12",
+  "letter": "L"
+ },
+ {
+  "term": "LLM (Modèle de langage plus large)",
+  "def": "Un transformateur formé sur d'énormes corpus textuels pour prédire le prochain jeton — qui, à l'échelle, produit quelque chose qui ressemble à une compréhension impressionnante et qui ne l'est pas mécaniquement.",
+  "chapters": "Ch. 2",
+  "letter": "L"
+ },
+ {
+  "term": "Modèle d'effondrement",
+  "def": "Dégradation qui peut se produire lorsque les modèles s'entraînent sur les sorties des modèles précédents — la photocopieuse photocopieuse des photocopies.",
+  "chapters": "Ch. 3",
+  "letter": "M"
+ },
+ {
+  "term": "CSRN (Stratégie nationale inuite sur la recherche)",
+  "def": "Cadre de gouvernance de la recherche pour les Inuit Tapiriit Kanatami 2018, y compris le contrôle des données. Prédate le moment générateur-AI; s'applique à lui de toute façon.",
+  "chapters": "Ch. 9",
+  "letter": "N"
+ },
+ {
+  "term": "Principes du PACO",
+  "def": "La propriété, le contrôle, l'accès et la possession des données des Premières nations — cadre de la CGRFNI, est. 1998. Le plus ancien et le plus spécifique des cadres de souveraineté des données autochtones. Le PACO® est une marque déposée du Centre de gouvernance de l'information des Premières nations.",
+  "chapters": "Ch. 9",
+  "letter": "O"
+ },
+ {
+  "term": "Paramètre",
+  "def": "Un des millions à millions de numéros réglables dans un modèle. \"Le modèle appris\" signifie \"les paramètres déplacés.\"",
+  "chapters": "Ch. 2",
+  "letter": "P"
+ },
+ {
+  "term": "LPRPDÉ",
+  "def": "La loi fédérale sur la protection de la vie privée du secteur privé, vintage 2000 — assez vieille pour n'avoir jamais rencontré de smartphone, maintenant arbitrer des modèles de fondation.",
+  "chapters": "Ch. 10",
+  "letter": "P"
+ },
+ {
+  "term": "Préformation",
+  "def": "La première étape coûteuse : construire un modèle de base à partir de données massives. Établit ce que le modèle sait, sans avoir encore d'opinions sur le comportement en public.",
+  "chapters": "Ch. 2",
+  "letter": "P"
+ },
+ {
+  "term": "PUE (Efficacité d'utilisation de la puissance)",
+  "def": "Énergie totale des installations ÷ énergie de calcul. 1.0 est parfait; la moyenne mondiale est de ~1,5; seulement 22 % des installations canadiennes vous indiqueront la leur.",
+  "chapters": "Ch. 6",
+  "letter": "P"
+ },
+ {
+  "term": "RLHF (Renforcement Apprentissage de la rétroaction humaine)",
+  "def": "La formation d'un modèle pour produire des résultats humains est très élevée. Comment les chatbots sont devenus polis — et où les valeurs d'une entreprise entrent discrètement dans le produit.",
+  "chapters": "Ch. 2",
+  "letter": "R"
+ },
+ {
+  "term": "Nuage souverain",
+  "def": "Terme de commercialisation pour l'accueil des tribunaux canadiens. Réponses *dont le droit* à la couche contractuelle ; ne dit rien sur les puces, le capital ou la gouvernance des données. Voir: feuille d'érable, facture.",
+  "chapters": "Chs. 6, 9",
+  "letter": "S"
+ },
+ {
+  "term": "Données synthétiques",
+  "def": "Données de formation générées par d'autres systèmes d'IA. Échelles agréablement; voir modèle effondrement pour la prise.",
+  "chapters": "Ch. 3",
+  "letter": "S"
+ },
+ {
+  "term": "Exception au TDM (extraction de texte et de données)",
+  "def": "Un droit d'auteur a été créé pour permettre l'analyse computationnelle d'oeuvres protégées — la pièce maîtresse de la position de Geist/Craig, le modèle de l'UE et les objections des organisations créatrices, toutes à la fois.",
+  "chapters": "Ch. 11",
+  "letter": "T"
+ },
+ {
+  "term": "Jeton",
+  "def": "L'unité d'un modèle de langue lit et écrit en fait — des fragments de mots, à peu près. Vous pensez en idées, les factures modèles en jetons.",
+  "chapters": "Ch. 2",
+  "letter": "T"
+ },
+ {
+  "term": "Formation",
+  "def": "Le processus à forte intensité énergétique de la construction d'un modèle à partir de données, comme distinct de *inférence* (l'utilisant). Confler les deux est le péché originel de la plupart des arguments environnementaux de l'IA, dans les deux sens.",
+  "chapters": "Chs. 2, 8",
+  "letter": "T"
+ },
+ {
+  "term": "Transformateur",
+  "def": "L'architecture 2017 (Vaswani et al., « L'attention est tout ce dont vous avez besoin ») sous chaque modèle majeur actuel. L'un de ses huit co-auteurs est rentré à Toronto et a cofondé Cohere — contenu canadien, certifié.",
+  "chapters": "Ch. 2",
+  "letter": "T"
+ },
+ {
+  "term": "Code de conduite volontaire",
+  "def": "Cadre d'ISDE 2023 pour l'IA génératrice responsable. Volontaire, comme annoncé : aucune exécution, aucune sanction, et Microsoft n'avait pas signé à partir de juin 2026. Vrai comme un signal; pas de loi.",
+  "chapters": "Chs. 5, 15",
+  "letter": "V"
+ },
+ {
+  "term": "UCE (efficacité de l'utilisation de l'eau)",
+  "def": "Litres d'eau par kWh de calcul. Signalé encore moins souvent que PUE, ce qui exige de faire.",
+  "chapters": "Ch. 6",
+  "letter": "W"
+ }
+]

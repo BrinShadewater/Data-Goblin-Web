@@ -18,8 +18,8 @@ const BUDGETS = {
   maxPublicArtRaw: 500 * 1024,
   maxResponsiveVariantRaw: 400 * 1024,
   totalOriginalPublicArtRaw: 6 * 1024 * 1024,
-  totalResponsiveVariantRaw: 4.5 * 1024 * 1024,
-  totalPublicArtRaw: 10 * 1024 * 1024,
+  totalResponsiveVariantRaw: 5.0 * 1024 * 1024, // raised from 4.5: bilingual edition adds a French map + flag variant set
+  totalPublicArtRaw: 10.5 * 1024 * 1024, // raised from 10: bilingual edition adds French map + flag art
 };
 
 function fail(message) {

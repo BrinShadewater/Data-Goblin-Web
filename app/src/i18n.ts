@@ -1,21 +1,34 @@
 // Lightweight UI string translation for the French edition.
 //
-// t(s) returns the French string when the app language is French, else the
-// English source string unchanged. The dictionary (ui-fr.ts) is machine-
-// translated and under review, like the book content. currentLang is set by
-// LanguageProvider on every render, so by the time components call t() during
-// a render pass the value is already correct. Components re-render on language
-// change because they consume ThemeContext, whose colour resolver depends on
-// the language (see ThemeContext / the FR "blue mode").
-import FR from "./ui-fr";
+// tr(s) returns the French string when the app language is French, else the
+// English source unchanged. The dictionary (ui-fr.ts, ~22 KB) is **lazy-loaded**
+// on first switch to French, so English readers never download it and it stays
+// out of the main bundle. While it loads, tr() falls back to English for a
+// frame; LanguageProvider subscribes to onI18nReady and re-renders when it lands.
+type Lang = "en" | "fr";
 
-let currentLang: "en" | "fr" = "en";
+let currentLang: Lang = "en";
+let FR: Record<string, string> | null = null;
+let loading = false;
+const listeners = new Set<() => void>();
 
-export function setUiLang(lang: "en" | "fr") {
+export function onI18nReady(cb: () => void): () => void {
+  listeners.add(cb);
+  return () => listeners.delete(cb);
+}
+
+export function setUiLang(lang: Lang) {
   currentLang = lang;
+  if (lang === "fr" && !FR && !loading) {
+    loading = true;
+    import("./ui-fr")
+      .then((m) => { FR = m.default; })
+      .catch(() => { FR = {}; })
+      .finally(() => { loading = false; listeners.forEach((f) => f()); });
+  }
 }
 
 export function tr(s: string): string {
-  if (currentLang !== "fr") return s;
+  if (currentLang !== "fr" || !FR) return s;
   return FR[s] ?? s;
 }

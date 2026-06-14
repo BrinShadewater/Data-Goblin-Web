@@ -28,8 +28,7 @@
     "panels/ai-safety-caisi-panel.webp": { "role": "content-panel", "width": 1024, "height": 1024, "widths": [640, 960, 1024] },
     "panels/quebec-panel.webp": { "role": "content-panel", "width": 1024, "height": 1024, "widths": [640, 960, 1024] },
     "panels/visualize-panel.webp": { "role": "content-panel", "width": 1024, "height": 1024, "widths": [640, 960, 1024] },
-    "panels/forward-panel.webp": { "role": "content-panel", "width": 1024, "height": 1024, "widths": [640, 960, 1024] },
-    "panels/evidence-trail-panel.webp": { "role": "content-panel", "width": 1024, "height": 1024, "widths": [640, 960, 1024] }
+    "panels/forward-panel.webp": { "role": "content-panel", "width": 1024, "height": 1024, "widths": [640, 960, 1024] }
   },
   "ignoreUnused": ["apple-touch-icon.png", "favicon.png", "favicon.ico", "icons/*"]
 }

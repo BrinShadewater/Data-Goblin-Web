@@ -1,5 +1,5 @@
-import { createContext, useContext, useEffect, useState, ReactNode } from "react";
-import { setUiLang } from "./i18n";
+import { createContext, useContext, useEffect, useReducer, useState, ReactNode } from "react";
+import { setUiLang, onI18nReady } from "./i18n";
 
 export type Lang = "en" | "fr";
 
@@ -37,7 +37,11 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
       /* no dom - ignore */
     }
   }, [lang]);
-  // Keep the tr() helper in sync synchronously, before children render.
+  // Re-render the tree once the lazy-loaded French dictionary arrives.
+  const [, forceUpdate] = useReducer((n) => n + 1, 0);
+  useEffect(() => onI18nReady(forceUpdate), []);
+  // Keep tr() in sync synchronously, before children render (kicks off the
+  // dictionary fetch the first time French is selected).
   setUiLang(lang);
   const setLang = (l: Lang) => setLangState(l);
   const toggle = () => setLangState((v) => (v === "en" ? "fr" : "en"));

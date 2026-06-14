@@ -5,6 +5,7 @@ import type { Chapter } from "./types";
 /** Strip Markdown down to readable prose (links -> text, drop syntax noise). */
 export function stripMarkdown(md: string): string {
   return md
+    .replace(/<!--[\s\S]*?-->/g, " ")       // authoring HTML comments
     .replace(/```[\s\S]*?```/g, " ")        // fenced code
     .replace(/`([^`]+)`/g, "$1")            // inline code
     .replace(/!\[[^\]]*\]\([^)]*\)/g, " ")  // images
