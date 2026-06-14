@@ -29,7 +29,7 @@ verified record in places.
    obvious path. `vite.config.ts` BASE_URL must match the hosting path.)
 2. **SEO/meta for a client-rendered SPA.** Currently `index.html` has title + description
    only. Add: Open Graph + Twitter card tags (use head-nav/canadian-icon art for the OG
-   image), `robots.txt`, `sitemap.xml` (one URL per document 0–20 plus the five pages),
+   image), `robots.txt`, `sitemap.xml` (one URL per document 0–21 plus the five pages),
    canonical link tags, and JSON-LD (`Book` with chapters as `hasPart`, `Organization` for
    Shadewater Labs, `BreadcrumbList` on interior views). Skip `SearchAction`/sitelinks
    markup — Google retired that rich result in 2024. Since the app is a SPA, consider

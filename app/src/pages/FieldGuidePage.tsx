@@ -26,7 +26,7 @@ import {
  * spread / tools sidebar / bottom bar. Phone (<700px) and tablet portrait
  * (700–1024px): a single page with swipe navigation, a compact bottom bar,
  * and the goblin tools behind a floating 🧌 bottom sheet. Routes "/" and
- * "/chapter/:num", where :num runs 0 (front matter) through 20 (appendix).
+ * "/chapter/:num", where :num runs 0 (front matter) through 21 (appendix).
  * ArrowLeft/ArrowRight and the bottom-bar buttons turn pages, crossing
  * document boundaries at either end. Positions are stored as panel indices.
  */
@@ -48,8 +48,8 @@ export function FieldGuidePage() {
     if (!chapter) return;
     const main = chapter.title.split(" — ")[0];
     const label = lang === "fr"
-      ? (num === 0 ? "Pages liminaires" : num === 20 ? "Annexe — Bibliothèque des sources" : `Chapitre ${num} : ${main}`)
-      : (num === 0 ? "Front Matter" : num === 20 ? "Source Library Appendix" : `Chapter ${num}: ${main}`);
+      ? (num === 0 ? "Pages liminaires" : num === 21 ? "Annexe — Bibliothèque des sources" : `Chapitre ${num} : ${main}`)
+      : (num === 0 ? "Front Matter" : num === 21 ? "Source Library Appendix" : `Chapter ${num}: ${main}`);
     document.title = `${label} — Data Goblin`;
   }, [chapter, num, lang]);
 
@@ -191,7 +191,7 @@ export function FieldGuidePage() {
                   >
                     <span style={{ fontFamily: MONO, fontSize: "9px", fontWeight: 800, letterSpacing: "0.2em", textTransform: "uppercase", color: c(...P.muted) }}>
                       {tr("Field Guide Tools ·")}{" "}
-                      {num === 0 ? "Front Matter" : num === 20 ? "Appendix" : `Ch. ${num}`}
+                      {num === 0 ? "Front Matter" : num === 21 ? "Appendix" : `Ch. ${num}`}
                     </span>
                     <button
                       onClick={() => setToolsOpen(false)}

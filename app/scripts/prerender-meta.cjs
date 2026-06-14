@@ -35,7 +35,7 @@ function chapterTitle(dir, n, lang) {
     const ch = JSON.parse(fs.readFileSync(path.join(dir, `ch${String(n).padStart(2, "0")}.json`), "utf8"));
     const t = (ch.title || "").split(" — ")[0];
     if (n === 0) return lang === "fr" ? "Pages liminaires" : "Front Matter";
-    if (n === 20) return lang === "fr" ? "Annexe — Bibliothèque des sources" : "Source Library Appendix";
+    if (n === 21) return lang === "fr" ? "Annexe — Bibliothèque des sources" : "Source Library Appendix";
     return lang === "fr" ? `Chapitre ${n} : ${t}` : `Chapter ${n}: ${t}`;
   } catch { return lang === "fr" ? `Chapitre ${n}` : `Chapter ${n}`; }
 }
@@ -53,6 +53,7 @@ const TOPICS = [
   ["data-centres", "Canada's AI Data Centres", "Les centres de données d'IA du Canada"],
   ["environment", "AI's Environmental Footprint", "L'empreinte environnementale de l'IA"],
   ["copyright", "AI, Copyright & Creators in Canada", "IA, droit d'auteur et créateurs au Canada"],
+  ["film-media", "AI, Film & Media in Canada", "IA, cinéma et médias au Canada"],
   ["deepfakes", "Deepfakes & Misinformation", "Hypertrucages et désinformation"],
   ["privacy", "AI, Privacy & Surveillance", "IA, vie privée et surveillance"],
   ["labour", "AI, Jobs & the Canadian Economy", "IA, emploi et économie canadienne"],

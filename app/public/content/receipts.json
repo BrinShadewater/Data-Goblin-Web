@@ -76,6 +76,92 @@
   ]
  },
  {
+  "id": 51,
+  "section": "A. Confirmed this pass (receipts in hand)",
+  "claim": "Canadian CPTC",
+  "status": "resolved",
+  "detail": "✅ Federal Canadian Film or Video Production Tax Credit is a fully refundable tax credit at **25% of qualified labour expenditure**, intended to encourage Canadian film/TV programming and an active domestic independent production sector. | [Canadian Heritage CPTC](https://www.canada.ca/en/canadian-heritage/services/funding/cavco-tax-credits/canadian-film-video-production.html)",
+  "links": [
+   [
+    "Canadian Heritage CPTC",
+    "https://www.canada.ca/en/canadian-heritage/services/funding/cavco-tax-credits/canadian-film-video-production.html"
+   ]
+  ]
+ },
+ {
+  "id": 52,
+  "section": "A. Confirmed this pass (receipts in hand)",
+  "claim": "Federal PSTC",
+  "status": "resolved",
+  "detail": "✅ Federal Film or Video Production Services Tax Credit is **16% of qualified Canadian labour expenditures**, available to eligible production corporations including foreign-owned corporations, designed to enhance Canada as a production location and secure investment. | [Canadian Heritage PSTC](https://www.canada.ca/en/canadian-heritage/services/funding/cavco-tax-credits/film-video-production-services.html)",
+  "links": [
+   [
+    "Canadian Heritage PSTC",
+    "https://www.canada.ca/en/canadian-heritage/services/funding/cavco-tax-credits/film-video-production-services.html"
+   ]
+  ]
+ },
+ {
+  "id": 53,
+  "section": "A. Confirmed this pass (receipts in hand)",
+  "claim": "B.C. production-services tax credit",
+  "status": "resolved",
+  "detail": "✅ B.C. production-services credit is available to domestic and foreign producers with **no Canadian content requirement**; B.C. lists the basic production-services rate at **36%** plus regional, distant-location, DAVE, and major-production credits. | [Province of B.C. PSTC](https://www2.gov.bc.ca/gov/content/taxes/income-taxes/corporate/credits/production-services)",
+  "links": [
+   [
+    "Province of B.C. PSTC",
+    "https://www2.gov.bc.ca/gov/content/taxes/income-taxes/corporate/credits/production-services"
+   ]
+  ]
+ },
+ {
+  "id": 54,
+  "section": "A. Confirmed this pass (receipts in hand)",
+  "claim": "CRTC Online Streaming Act contribution framework",
+  "status": "resolved",
+  "detail": "✅ CRTC 2026-96 says the Online Streaming Act requires modernization of the Canadian broadcasting framework and meaningful contributions from online streaming services to Canadian and Indigenous content; it sets a modernized Canadian programming expenditure framework, including large ownership-group contribution requirements. | [CRTC 2026-96](https://crtc.gc.ca/eng/archive/2026/2026-96.htm)",
+  "links": [
+   [
+    "CRTC 2026-96",
+    "https://crtc.gc.ca/eng/archive/2026/2026-96.htm"
+   ]
+  ]
+ },
+ {
+  "id": 55,
+  "section": "A. Confirmed this pass (receipts in hand)",
+  "claim": "Canadian film/TV production-volume shock and partial rebound",
+  "status": "resolved",
+  "detail": "✅ CMPA/Profile 2024 documented total production volume down **18.5% to $9.58B in 2023/24**; CMPA's Profile 2025 release says the sector generated **$10.2B** in 2024/25, a **4.6%** year-over-year increase. | [Profile 2024 PDF](https://telefilm.ca/wp-content/uploads/2025/01/Profile-2024-Eng-Final_Dec-20.pdf), [CMPA Profile 2025 release](https://cmpa.ca/pressreleases/television-and-film-production-sector-creates-181000-jobs-for-canadians-in-2025/)",
+  "links": [
+   [
+    "Profile 2024 PDF",
+    "https://telefilm.ca/wp-content/uploads/2025/01/Profile-2024-Eng-Final_Dec-20.pdf"
+   ],
+   [
+    "CMPA Profile 2025 release",
+    "https://cmpa.ca/pressreleases/television-and-film-production-sector-creates-181000-jobs-for-canadians-in-2025/"
+   ]
+  ]
+ },
+ {
+  "id": 56,
+  "section": "A. Confirmed this pass (receipts in hand)",
+  "claim": "Erica Lapadat Janzen BC + AI talk",
+  "status": "resolved",
+  "detail": "✅ Public BC + AI video page documents Erica Lapadat Janzen's \"Soft Violence in AI Art Discourse\" Vancouver AI meetup talk; transcript reviewed from attached source. | [BC + AI video page](https://bc-ai.ca/videos/2026-02-05-soft-violence-in-ai-art-discourse-vancouver-ai-meetup-j/), [YouTube](https://www.youtube.com/watch?v=hiPu28YjDaE)",
+  "links": [
+   [
+    "BC + AI video page",
+    "https://bc-ai.ca/videos/2026-02-05-soft-violence-in-ai-art-discourse-vancouver-ai-meetup-j/"
+   ],
+   [
+    "YouTube",
+    "https://www.youtube.com/watch?v=hiPu28YjDaE"
+   ]
+  ]
+ },
+ {
   "id": 5,
   "section": "B. Fixed from known record (spot-check recommended)",
   "claim": "\"2024 CHIPS and Science Act\"",
@@ -368,94 +454,6 @@
   "claim": "NRCan 22% PUE + 71% global baseline",
   "status": "resolved",
   "detail": "✅ RESOLVED (correct as written) — NRCan Best Practice Guide (2024): ~22% Canadian vs 71% global PUE reporting. The appendix's \"Uptime 2024\" citation is right: 1.56 is the 2024 survey figure (2023 was 1.58). No change needed.",
-  "links": []
- },
- {
-  "id": 40,
-  "section": "C. Open — needs primary source before publication",
-  "claim": "City MW figures + facility/share counts",
-  "status": "open",
-  "detail": "⚠️ PARTIAL — framework confirmed (300+ facilities, Montréal largest cluster, ~2% global avg per IEA). Exact per-city MW (320/520/46) and the 1.4%→2.1% share are NOT web-verifiable — confirm against the cited industry source (The Logic DC map / CBRE / NRCan).",
-  "links": []
- },
- {
-  "id": 41,
-  "section": "C. Open — needs primary source before publication",
-  "claim": "Provincial grid figures (IESO/AESO/Hydro-Québec/BC Hydro)",
-  "status": "open",
-  "detail": "⚠️ MOSTLY VERIFIED — IESO 13% of new demand by 2035 ✓, AESO 1,200 MW cap through 2028 ✓, Hydro-Québec large-load pause ✓. Quebec export TWh (25.9→13.3) and the BC Hydro 300/100 split NOT web-confirmed — confirm against CER / BC Hydro.",
-  "links": []
- },
- {
-  "id": 42,
-  "section": "C. Open — needs primary source before publication",
-  "claim": "Golf-irrigation water comparison",
-  "status": "open",
-  "detail": "🔍 CANNOT CONFIRM via web — the figures (848 courses; 50.5 / 79.9M m³) need the StatCan/ECCC water-use table read directly. Author to confirm.",
-  "links": []
- },
- {
-  "id": 43,
-  "section": "C. Open — needs primary source before publication",
-  "claim": "ACTRA 2023 survey + TWUC",
-  "status": "resolved",
-  "detail": "✅ VERIFIED — ACTRA Nov 2023 survey: 98% concerned re misuse of name/image/likeness, 93% re replacement; all 28,000+ members invited (participation count undisclosed). TWUC \"two class actions\" not located in current text / unconfirmed.",
-  "links": []
- },
- {
-  "id": 44,
-  "section": "C. Open — needs primary source before publication",
-  "claim": "$36B AI-advertising figure",
-  "status": "resolved",
-  "detail": "✅ VERIFIED — US$36B = Statista 2024 estimate of the \"AI in marketing\" market, cited by Luccioni et al. The manuscript names the referent and source correctly.",
-  "links": []
- },
- {
-  "id": 45,
-  "section": "C. Open — needs primary source before publication",
-  "claim": "\"Aloha is the intelligence…\" epigraph",
-  "status": "resolved",
-  "detail": "✅ RESOLVED (correct as written) — the Indigenous Protocol & AI Position Paper attributes the epigraph to \"Olana Kaipo Ai\" verbatim. No change needed.",
-  "links": []
- },
- {
-  "id": 46,
-  "section": "C. Open — needs primary source before publication",
-  "claim": "Canadian newspapers v. OpenAI jurisdiction",
-  "status": "resolved",
-  "detail": "✅ VERIFIED — Ontario Superior Court confirmed jurisdiction (Nov 2025, Justice Jessica Kimmel); coalition incl. Torstar, Globe and Mail, CBC/Radio-Canada, Postmedia, Canadian Press. Exact file no. CV-24-00732231-00CL not independently confirmed.",
-  "links": []
- },
- {
-  "id": 47,
-  "section": "C. Open — needs primary source before publication",
-  "claim": "\"CARE Directs Us Home\" GIDA communiqué",
-  "status": "resolved",
-  "detail": "✅ VERIFIED — real GIDA communiqué \"CARE Directs Us Home: Prioritizing Indigenous Peoples' Community Standards\"; Tahu Kukutai among authors (2024 summit; final PDF posted Sept 2025, hosted by FNIGC + Figshare).",
-  "links": []
- },
- {
-  "id": 48,
-  "section": "C. Open — needs primary source before publication",
-  "claim": "Treasury Board AI Register",
-  "status": "resolved",
-  "detail": "✅ VERIFIED — launched Nov 28 2025 (Pres. Shafqat Ali): 42 federal institutions, 400+ AI systems, use dating to 1994, low-risk commercial tools (spell-check etc.) excluded.",
-  "links": []
- },
- {
-  "id": 49,
-  "section": "C. Open — needs primary source before publication",
-  "claim": "Bill C-16 (Protecting Victims Act)",
-  "status": "resolved",
-  "detail": "✅ VERIFIED — tabled by Justice Min. Sean Fraser on Dec 9 2025; expands intimate-image definition to deepfakes, raises max 5→10 yrs, adds \"nearly nude\" + 48-hr takedown. \"158 pages\" not independently confirmed (minor).",
-  "links": []
- },
- {
-  "id": 50,
-  "section": "C. Open — needs primary source before publication",
-  "claim": "Abundant Intelligences: $23M NFRF grant, pod institutions (Concordia vs. Lethbridge/Western inconsistency in Chs. 1/9/13 — Lewis is at Concordia)",
-  "status": "open",
-  "detail": "NFRF award page + program site",
   "links": []
  }
 ]

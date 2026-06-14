@@ -1,7 +1,7 @@
 {
   "_readme": [
     "HAND-EDITABLE ART MAP — this file is the single control surface for placing art in the reader.",
-    "Each key under 'docs' is a document number: 0 = Front Matter, 1–19 = chapters, 20 = Source Library Appendix.",
+    "Each key under 'docs' is a document number: 0 = Front Matter, 1–20 = chapters, 21 = Source Library Appendix.",
     "'opener' is the image shown on that document's opening page, replacing the goblin mascot (the mascot itself always stays on the Front Matter, doc 0). Set it to null to show nothing.",
     "'accents' are small ornaments drawn beside section headings, cycling in order through the chapter's sections. Use 2–4 per chapter; an empty list means no ornaments.",
     "'panels' are near-full-page art plates that close the document, one page each, like the plates of a printed field guide. Each entry is {src, caption}; caption renders under the plate — use null when the art carries its own painted title.",
@@ -11,7 +11,7 @@
     "Currently unused medium pieces, free to swap in: ecology-medium.webp, job-robot-medium.webp, technology-infrastructure-medium.webp.",
     "Currently unused panels, free to swap in: data-security-panel.webp, stolen-work-panel2.webp, deepfakes2-panel.webp.",
     "RESERVED — do not use: indigenous-data-panel.webp. AI-generated depiction of an Indigenous elder in the Indigenous data sovereignty context conflicts with the chapter's own OCAP/CARE argument (2026-06-11 legal/sensitivity audit). Replace with commissioned or licensed work by an Indigenous artist, or non-figurative imagery, before any use.",
-    "Placement notes for the author: ch9 (Sovereignty) had no Canada/beaver medium, so it borrows ip-protection-medium — swap when a sovereignty piece exists. ch15 reuses canadian-government-medium (also ch7), ch17 reuses idea-automation (also ch13), ch18 reuses ai-for-all (also ch5). ch19 and the appendix use small art as openers."
+    "Placement notes for the author: ch9 (Sovereignty) had no Canada/beaver medium, so it borrows ip-protection-medium — swap when a sovereignty piece exists. ch16 reuses canadian-government-medium (also ch7), ch18 reuses idea-automation (also ch14), ch19 reuses ai-for-all (also ch5). ch20 and the appendix use small art as openers."
   ],
   "docs": {
     "0": {
@@ -187,6 +187,21 @@
       ]
     },
     "12": {
+      "opener": "medium/idea-automation-medium.webp",
+      "accents": [
+        "small/stolen-art.webp",
+        "small/speech.webp",
+        "small/ai-knowledge.webp",
+        "small/copyright-doc.webp"
+      ],
+      "panels": [
+        {
+          "src": "panels/stolen-work-panel.webp",
+          "caption": "Film and media under the prompt — the work, the worker, and the receipt."
+        }
+      ]
+    },
+    "13": {
       "opener": "medium/deep-fakes-medium.webp",
       "accents": [
         "small/deep-fake.webp",
@@ -200,7 +215,7 @@
         }
       ]
     },
-    "13": {
+    "14": {
       "opener": "medium/idea-automation-medium.webp",
       "accents": [
         "small/sorting.webp",
@@ -214,7 +229,7 @@
         }
       ]
     },
-    "14": {
+    "15": {
       "opener": "medium/job-loss-medium.webp",
       "accents": [
         "small/robot.webp",
@@ -228,7 +243,7 @@
         }
       ]
     },
-    "15": {
+    "16": {
       "opener": "medium/canadian-government-medium.webp",
       "accents": [
         "small/security-act.webp",
@@ -245,7 +260,7 @@
         }
       ]
     },
-    "16": {
+    "17": {
       "opener": "medium/protection-medium.webp",
       "accents": [
         "small/security-badge.webp",
@@ -259,7 +274,7 @@
         }
       ]
     },
-    "17": {
+    "18": {
       "opener": "medium/idea-automation-medium.webp",
       "accents": [
         "small/ai-knowledge.webp",
@@ -273,7 +288,7 @@
         }
       ]
     },
-    "18": {
+    "19": {
       "opener": "medium/ai-for-all-medium.webp",
       "accents": [
         "small/canada-and-beaver.webp",
@@ -287,7 +302,7 @@
         }
       ]
     },
-    "19": {
+    "20": {
       "opener": "medium/ai-for-all-medium.webp",
       "accents": [
         "small/waving-mascot.webp",
@@ -301,7 +316,7 @@
         }
       ]
     },
-    "20": {
+    "21": {
       "opener": "panels/receipts-panel.webp",
       "accents": [
         "small/field-notes.webp",

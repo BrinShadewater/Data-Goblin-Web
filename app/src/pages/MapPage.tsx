@@ -12,7 +12,7 @@ import { useLanguage } from "../LanguageContext";
 const REGION_NOTES: string[] = [
   "Foundations — what AI actually is, how it learns, and what it is physically made of.",
   "The Canadian landscape — the strategy, the infrastructure, and the actors who hold the power.",
-  "Hard questions — environment, sovereignty, privacy, IP, deepfakes, ethics, and jobs.",
+  "Hard questions — environment, sovereignty, privacy, IP, film and media, deepfakes, ethics, and jobs.",
   "Governance — how Canadian AI is actually regulated, and what you can and cannot know.",
   "Path forward — the portable analytical toolkit and what Canada could actually do.",
 ];
@@ -35,7 +35,7 @@ export function MapPage() {
         <PageHeading
           eyebrow={tr("Data Goblin Field Guide")}
           title={tr("The Map")}
-          description={tr("The guide’s nineteen chapters are organized into five regions. Pick a region, pick a chapter, and the field guide opens to that page.")}
+          description={tr("The guide’s twenty chapters are organized into five regions. Pick a region, pick a chapter, and the field guide opens to that page.")}
           centered
           marginBottom="32px"
         >

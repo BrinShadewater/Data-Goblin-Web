@@ -29,7 +29,7 @@ const UPDATES: UpdateEntry[] = [
     items: [
       "AI agents (Chapter 2) — what changes when a model can act on your behalf, and the Canadian accountability gap it opens.",
       "Open-weight models (Chapter 9) — a real but partial lever for Canadian AI sovereignty.",
-      "Disability & the fairness debate (Chapter 13) — AI as assistive benefit and as structural harm.",
+      "Disability & the fairness debate (Chapter 14) — AI as assistive benefit and as structural harm.",
       "AI companions (Chapter 10) — the intimate data you confide in, and a near-blank Canadian regulatory picture.",
     ],
   },

@@ -47,7 +47,7 @@ Launch-prep project. The app is functional, but the roadmap still calls out depl
 
 ## 🔢 Current Validated Counts (2026-06-10)
 
-19 chapters · 20 goblin checks · 17 recap boxes (110 bullets) · 19 bias labels · 17 chapter source-blocks · 50 receipt rows (14 resolved / 23 fixed / 13 open) · 45 glossary terms · 18 inline verify flags still open in chapter text.
+20 chapters · 25 goblin checks · 19 recap boxes (127 bullets) · 20 bias labels · 18 chapter source-blocks · 56 receipt rows · 45 glossary terms · 0 inline verify flags open in chapter text.
 
 ## 🧷 Mapping Notes For The Wiring Step
 
@@ -56,7 +56,7 @@ Launch-prep project. The app is functional, but the roadmap still calls out depl
 - **Quest Items (RightSidebar)** ← `recap[]` bullets, checkbox state in localStorage.
 - **Suspicion Meter (RightSidebar)** ← proposal: drive it from real data — the chapter's source-mix (share of corporate self-disclosure vs independent sources in `sources[]`) or `verifyFlags` count. Not vibes. The meter should be the bias-mapping method as UI.
 - **Show Receipts (RightSidebar)** ← chapter `sources[]` + `receipts.json` rows filtered to that chapter.
-- **Chapter count fix:** the mockup's `CHAPTER_TITLES` had 18 chapters — **Chapter 11 (IP & Copyright) was missing** and everything after shifted up one. `book.json` is canonical: 19 chapters, real titles, real part boundaries (I: 1–4, II: 5–7, III: 8–14, IV: 15–16, V: 17–19).
+- **Chapter count fix:** the mockup's `CHAPTER_TITLES` had 18 chapters — **Chapter 11 (IP & Copyright) was missing** and everything after shifted up one. `book.json` is canonical: 20 chapters, real titles, real part boundaries (I: 1–4, II: 5–7, III: 8–15, IV: 16–17, V: 18–20).
 - **Part colours (ReceiptsPage `PART_COLORS`)**: rebuild from `book.json` parts, not hardcoded ranges.
 - **Mascot provenance:** current mascot is an AI-generated PNG. For a book about AI disclosure, either commission the goblin or disclose the generation — decide before public launch. (The goblin box about it writes itself.)
 

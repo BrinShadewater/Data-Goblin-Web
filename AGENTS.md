@@ -31,7 +31,7 @@ site/
 
 ## How the reader works (the parts you'll touch)
 
-- **Documents 0–20:** 0 = front matter, 1–19 = chapters, 20 = source appendix. All share one
+- **Documents 0–21:** 0 = front matter, 1–20 = chapters, 21 = source appendix. All share one
   chapter JSON schema so the pagination engine treats them identically.
 - **Pagination** (`src/pagination.ts`): flattens a chapter into blocks (heading / md / trap /
   bias / panel), packs them into page panels using a character-cost heuristic with balanced

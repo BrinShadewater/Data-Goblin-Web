@@ -45,8 +45,8 @@ function docTitleFor(pathname: string): string {
   const ch = base.match(/^\/chapter\/(\d+)/);
   if (ch) {
     const n = Number(ch[1]);
-    if (fr) return (n === 0 ? "Pages liminaires" : n === 20 ? "Annexe — Bibliothèque des sources" : `Chapitre ${n}`) + " — Data Goblin";
-    return (n === 0 ? "Front Matter" : n === 20 ? "Source Library Appendix" : `Chapter ${n}`) + " — Data Goblin";
+    if (fr) return (n === 0 ? "Pages liminaires" : n === 21 ? "Annexe — Bibliothèque des sources" : `Chapitre ${n}`) + " — Data Goblin";
+    return (n === 0 ? "Front Matter" : n === 21 ? "Source Library Appendix" : `Chapter ${n}`) + " — Data Goblin";
   }
   return fr
     ? "Data Goblin — Guide de terrain sur l'IA, la puissance et les données au Canada"

@@ -232,10 +232,10 @@ export function ToolkitPage() {
 
       <StaticCard marginBottom="0" padding="16px 20px" style={{ marginTop: "12px" }}>
         <p style={{ fontFamily: BODY, fontSize: "14px", color: muted, lineHeight: 1.7, margin: 0 }}>
-          {tr("This toolkit is the short version of the method the guide builds across nineteen chapters. For the long version — and the worked examples — start with")}{" "}
+          {tr("This toolkit is the short version of the method the guide builds across twenty chapters. For the long version — and the worked examples — start with")}{" "}
           <Link to="/chapter/1" style={{ fontWeight: 800, color: navy }}>{tr("Chapter 1")}</Link>{" "}
           {tr("or jump to")}{" "}
-          <Link to="/chapter/19" style={{ fontWeight: 800, color: navy }}>{tr("Chapter 19")}</Link>{tr(", where it all comes together.")}
+          <Link to="/chapter/20" style={{ fontWeight: 800, color: navy }}>{tr("Chapter 20")}</Link>{tr(", where it all comes together.")}
         </p>
       </StaticCard>
     </StaticPageShell>

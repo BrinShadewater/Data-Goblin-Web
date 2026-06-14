@@ -1,9 +1,9 @@
 import type { Block } from "./pagination";
 import type { Chapter } from "./types";
 
-/** Document chain: 0 = Front Matter, 1-19 = chapters, 20 = Source Library Appendix. */
+/** Document chain: 0 = Front Matter, 1-20 = chapters, 21 = Source Library Appendix. */
 export const FIRST_DOC = 0;
-export const LAST_DOC = 20;
+export const LAST_DOC = 21;
 
 /** Lowercase roman numeral for front-matter folios. */
 export function roman(n: number): string {

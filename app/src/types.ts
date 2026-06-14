@@ -13,7 +13,7 @@ export interface BookPart {
   chapters: BookChapterRef[];
 }
 
-/** TOC entry for the front matter (doc 0) / appendix (doc 20) — outside the 19-chapter parts array. */
+/** TOC entry for the front matter (doc 0) / appendix (doc 21) — outside the 20-chapter parts array. */
 export interface BookEndMatterRef {
   number: number;
   title: string;
