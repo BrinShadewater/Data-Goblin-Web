@@ -1,4 +1,6 @@
-export const CONTRIBUTION_EMAIL = "Brinshadewater@gmail.com";
+export const CONTACT_EMAIL = "hello@datagoblin.ca";
+/** Mailto fallback for the Contribute form when the /api/contribute send fails. */
+export const CONTRIBUTION_EMAIL = CONTACT_EMAIL;
 
 export type ContributionTypeId = "factual" | "source" | "chapter" | "other";
 

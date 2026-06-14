@@ -2,11 +2,13 @@ import type { PointerEvent } from "react";
 import { useEffect, useRef } from "react";
 import { useNavigate } from "../i18nNav";
 import { useTheme } from "../ThemeContext";
-import { P } from "../theme";
+import { P, UI } from "../theme";
 import { LandingHero, LandingQuickLinks, LandingWisps, LandingWispStyles } from "../components/LandingSections";
 import { savePanel } from "../pagination";
 import { preloadReaderRoute } from "../lazyRoutes";
 import { useBook } from "../useContent";
+import { CONTACT_EMAIL } from "../contribute";
+import { tr } from "../i18n";
 
 export function LandingPage() {
   const { c } = useTheme();
@@ -80,6 +82,14 @@ export function LandingPage() {
         preloadGuide={preloadReaderRoute}
       />
       <LandingQuickLinks preloadGuide={preloadReaderRoute} />
+      <section style={{ maxWidth: "1480px", margin: "0 auto", padding: "0 clamp(20px, 5vw, 68px) 56px", textAlign: "center", position: "relative", zIndex: 1 }}>
+        <p style={{ fontFamily: UI, fontSize: "14px", lineHeight: 1.6, color: c(...P.muted), margin: 0 }}>
+          {tr("Questions, a correction, or a tip?")}{" "}
+          <a href={`mailto:${CONTACT_EMAIL}`} style={{ color: c(...P.navy), fontWeight: 700, textDecoration: "none" }}>
+            {CONTACT_EMAIL}
+          </a>
+        </p>
+      </section>
     </main>
   );
 }

@@ -4,6 +4,7 @@ import { Markdown } from "../components/Markdown";
 import { artAspectRatio, artDimensions, artSrcSet, artUrl, useBook } from "../useContent";
 import { Kicker, LoadingMessage, StaticCard, StaticPageShell } from "../components/StaticPage";
 import { tr } from "../i18n";
+import { CONTACT_EMAIL } from "../contribute";
 
 const ABOUT_ART = "panels/hero-panel.webp";
 
@@ -119,6 +120,16 @@ export function AboutPage() {
             </StaticCard>
           ))}
         </div>
+
+        {/* Contact */}
+        <StaticCard padding="18px 22px" marginBottom="0" style={{ marginTop: "16px" }}>
+          <Kicker color={muted} fontSize="8.5px" letterSpacing="0.2em" marginBottom="8px">{tr("Get in touch")}</Kicker>
+          <p style={{ fontFamily: BODY, fontSize: "15px", color: body, lineHeight: 1.6, margin: 0 }}>
+            {tr("Questions, corrections, or sources to share? Write to")}{" "}
+            <a href={`mailto:${CONTACT_EMAIL}`} style={{ color: navy, fontWeight: 700, textDecoration: "none" }}>{CONTACT_EMAIL}</a>
+            {tr(", or use the Contribute page.")}
+          </p>
+        </StaticCard>
     </StaticPageShell>
   );
 }
