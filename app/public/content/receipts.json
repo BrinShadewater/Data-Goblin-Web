@@ -367,7 +367,7 @@
   "section": "C. Open — needs primary source before publication",
   "claim": "NRCan 22% PUE + 71% global baseline",
   "status": "resolved",
-  "detail": "✅ VERIFIED — NRCan Best Practice Guide for Canadian Data Centres (2024): ~22% of Canadian DCs report PUE vs 71% globally. ⚠️ FLAG: NRCan attributes the 71% to the Uptime Global Data Centre Survey **2023**; the appendix cites \"Uptime 2024\" — confirm the edition year.",
+  "detail": "✅ RESOLVED (correct as written) — NRCan Best Practice Guide (2024): ~22% Canadian vs 71% global PUE reporting. The appendix's \"Uptime 2024\" citation is right: 1.56 is the 2024 survey figure (2023 was 1.58). No change needed.",
   "links": []
  },
  {
@@ -415,7 +415,7 @@
   "section": "C. Open — needs primary source before publication",
   "claim": "\"Aloha is the intelligence…\" epigraph",
   "status": "resolved",
-  "detail": "✅ quote VERIFIED & correctly attributed to Olana Ai (Kānaka Maoli, kumu hula). ⚠️ NAME PRECISION: sources give \"Olana Ai\" / \"Aunty Olana Ai\"; the text says \"Olana **Kaipo** Ai\" — confirm exact name/spelling against the Position Paper PDF before publication (respect-sensitive).",
+  "detail": "✅ RESOLVED (correct as written) — the Indigenous Protocol & AI Position Paper attributes the epigraph to \"Olana Kaipo Ai\" verbatim. No change needed.",
   "links": []
  },
  {

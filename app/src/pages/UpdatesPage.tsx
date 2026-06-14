@@ -13,6 +13,17 @@ interface UpdateEntry {
 const UPDATES: UpdateEntry[] = [
   {
     date: "June 13, 2026",
+    tag: "New sections",
+    title: "Four new sections added",
+    items: [
+      "AI agents (Chapter 2) — what changes when a model can act on your behalf, and the Canadian accountability gap it opens.",
+      "Open-weight models (Chapter 9) — a real but partial lever for Canadian AI sovereignty.",
+      "Disability & the fairness debate (Chapter 13) — AI as assistive benefit and as structural harm.",
+      "AI companions (Chapter 10) — the intimate data you confide in, and a near-blank Canadian regulatory picture.",
+    ],
+  },
+  {
+    date: "June 13, 2026",
     tag: "Corrections",
     title: "Verification & corrections pass",
     items: [

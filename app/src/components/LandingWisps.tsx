@@ -1,47 +1,42 @@
 import { useTheme } from "../ThemeContext";
 
+// Each wisp: x start (%), size scale, start delay (s), sway amplitude (px),
+// fall duration (s), sway duration (s). Varied so they never move in lockstep.
 const WISPS = [
-  { x: 5, s: 0.75, d: -1, drift: -18 },
-  { x: 10, s: 1.05, d: -8, drift: 22 },
-  { x: 15, s: 0.55, d: -14, drift: -10 },
-  { x: 21, s: 0.9, d: -4, drift: 18 },
-  { x: 27, s: 0.65, d: -19, drift: -24 },
-  { x: 32, s: 1.2, d: -11, drift: 16 },
-  { x: 38, s: 0.7, d: -6, drift: -14 },
-  { x: 44, s: 1.0, d: -22, drift: 26 },
-  { x: 50, s: 0.58, d: -3, drift: -20 },
-  { x: 56, s: 1.3, d: -16, drift: 14 },
-  { x: 61, s: 0.78, d: -9, drift: -28 },
-  { x: 67, s: 0.95, d: -24, drift: 20 },
-  { x: 73, s: 0.6, d: -12, drift: -16 },
-  { x: 79, s: 1.12, d: -5, drift: 24 },
-  { x: 85, s: 0.82, d: -18, drift: -22 },
-  { x: 91, s: 0.7, d: -10, drift: 12 },
-  { x: 96, s: 1.0, d: -26, drift: -18 },
-  { x: 2, s: 0.52, d: -21, drift: 26 },
-  { x: 35, s: 0.86, d: -29, drift: -30 },
-  { x: 70, s: 0.66, d: -31, drift: 30 },
+  { x: 6, s: 0.8, d: -3, sway: 30, fall: 52, sw: 11 },
+  { x: 13, s: 1.05, d: -14, sway: 20, fall: 60, sw: 14 },
+  { x: 19, s: 0.6, d: -26, sway: 38, fall: 47, sw: 9 },
+  { x: 26, s: 0.92, d: -7, sway: 16, fall: 66, sw: 16 },
+  { x: 33, s: 0.7, d: -34, sway: 30, fall: 55, sw: 12 },
+  { x: 40, s: 1.18, d: -20, sway: 24, fall: 71, sw: 18 },
+  { x: 47, s: 0.66, d: -10, sway: 40, fall: 50, sw: 10 },
+  { x: 54, s: 1.0, d: -40, sway: 18, fall: 63, sw: 15 },
+  { x: 61, s: 0.58, d: -5, sway: 34, fall: 46, sw: 8.5 },
+  { x: 68, s: 1.25, d: -28, sway: 22, fall: 74, sw: 17 },
+  { x: 74, s: 0.78, d: -16, sway: 36, fall: 57, sw: 13 },
+  { x: 81, s: 0.95, d: -44, sway: 26, fall: 68, sw: 15.5 },
+  { x: 88, s: 0.64, d: -9, sway: 32, fall: 49, sw: 9.5 },
+  { x: 94, s: 1.08, d: -22, sway: 20, fall: 64, sw: 14.5 },
+  { x: 3, s: 0.55, d: -33, sway: 28, fall: 53, sw: 11.5 },
+  { x: 44, s: 0.85, d: -48, sway: 38, fall: 70, sw: 16.5 },
+  { x: 78, s: 0.7, d: -52, sway: 24, fall: 58, sw: 12.5 },
 ];
 
 export function LandingWispStyles() {
   return (
     <style>{`
       @keyframes dg-wisp-fall {
-        0%   { transform: translate3d(0, -12vh, 0) scale(0.76); opacity: 0; }
-        10%  { opacity: 0.8; }
-        22%  { transform: translate3d(calc(var(--drift) * 1.2), 16vh, 0) scale(1); opacity: 0.74; }
-        40%  { transform: translate3d(calc(var(--drift) * -1.05), 38vh, 0) scale(0.95); opacity: 0.7; }
-        58%  { transform: translate3d(calc(var(--drift) * 1.15), 58vh, 0) scale(1.04); opacity: 0.64; }
-        76%  { transform: translate3d(calc(var(--drift) * -0.7), 80vh, 0) scale(0.9); opacity: 0.5; }
-        100% { transform: translate3d(calc(var(--drift) * 0.5), 112vh, 0) scale(0.74); opacity: 0; }
+        0%   { transform: translateY(-8vh); opacity: 0; }
+        9%   { opacity: 0.7; }
+        88%  { opacity: 0.5; }
+        100% { transform: translateY(112vh); opacity: 0; }
       }
-      @keyframes dg-wisp-breathe {
-        0%, 100% { filter: blur(0.15px); }
-        50% { filter: blur(0.9px); }
+      @keyframes dg-wisp-sway {
+        0%   { transform: translateX(calc(var(--sway) * -1)) scale(0.9); }
+        50%  { transform: translateX(var(--sway)) scale(1.05); }
+        100% { transform: translateX(calc(var(--sway) * -1)) scale(0.9); }
       }
-      @media (prefers-reduced-motion: reduce) {
-        [data-wisp] { display: none; }
-      }
+      @media (prefers-reduced-motion: reduce) { [data-wisp] { display: none; } }
     `}</style>
   );
 }
@@ -58,25 +53,28 @@ export function LandingWisps() {
             position: "absolute",
             left: `${w.x}%`,
             top: 0,
-            width: `${9 * w.s}px`,
-            height: `${9 * w.s}px`,
-            transform: "translate(var(--push-x, 0), var(--push-y, 0))",
-            transition: "transform 0.22s ease-out",
-            ["--drift" as string]: `${w.drift}px`,
+            willChange: "transform, opacity",
+            animation: `dg-wisp-fall ${w.fall}s linear ${w.d}s infinite`,
           }}
         >
           <span
             style={{
               display: "block",
-              width: "100%",
-              height: "100%",
-              borderRadius: "999px",
-              background: `radial-gradient(circle at center, ${c("#cfe9ff", "#d7ffc7")} 0%, ${c("#155e92", "#8af66b")} 48%, transparent 76%)`,
-              boxShadow: c("0 0 9px rgba(21, 94, 146, 0.8), 0 0 22px rgba(12, 56, 92, 0.46)", "0 0 12px rgba(138, 246, 107, 0.72), 0 0 26px rgba(116, 216, 86, 0.32)"),
-              opacity: 0.82,
-              animation: `dg-wisp-fall ${40 + i * 1.0}s ease-in-out ${w.d}s infinite, dg-wisp-breathe ${6.4 + i * 0.18}s ease-in-out ${w.d}s infinite`,
+              ["--sway" as string]: `${w.sway}px`,
+              animation: `dg-wisp-sway ${w.sw}s ease-in-out ${w.d}s infinite`,
             }}
-          />
+          >
+            <span
+              style={{
+                display: "block",
+                width: `${9 * w.s}px`,
+                height: `${9 * w.s}px`,
+                borderRadius: "999px",
+                background: `radial-gradient(circle at 38% 35%, ${c("#dcefff", "#e2ffd2")} 0%, ${c("#1c6aa0", "#82ee62")} 52%, transparent 78%)`,
+                boxShadow: c("0 0 8px rgba(20, 88, 138, 0.7), 0 0 20px rgba(12, 56, 92, 0.4)", "0 0 12px rgba(138, 246, 107, 0.7), 0 0 24px rgba(116, 216, 86, 0.3)"),
+              }}
+            />
+          </span>
         </span>
       ))}
     </div>
