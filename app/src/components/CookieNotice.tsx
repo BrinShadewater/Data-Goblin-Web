@@ -16,6 +16,7 @@ const KEY = "data-goblin-cookie-consent";
 function writeConsent(consent: Consent) {
   localStorage.setItem(KEY, JSON.stringify(consent));
   document.cookie = `dg_cookie_consent=${consent.analytics ? "all" : consent.preferences ? "preferences" : "essential"}; Max-Age=31536000; Path=/; SameSite=Lax`;
+  try { window.dispatchEvent(new Event("dg-consent-changed")); } catch { /* no window */ }
 }
 
 function makeConsent(preferences: boolean, analytics: boolean): Consent {
@@ -130,12 +131,12 @@ export function CookieNotice() {
               {tr("Manage Preferences")}
             </h2>
             <p style={{ fontFamily: BODY, fontSize: "14px", lineHeight: 1.6, color: body, margin: "0 0 14px" }}>
-              {tr("Essential storage keeps the guide functional. Optional preferences remember comfort settings. Analytics is reserved for future privacy-preserving site metrics and is currently inactive.")}
+              {tr("Essential storage keeps the guide functional. Optional preferences remember comfort settings. Analytics, when enabled, loads Vercel Speed Insights to measure page performance (Core Web Vitals) — no cookies, no personal data, no ad tracking.")}
             </p>
             {[
               ["Essential", "Required for consent and basic reading features.", true, true] as const,
               ["Preferences", "Theme, reading mode, and other convenience settings.", preferences, false] as const,
-              ["Analytics", "Future aggregate, non-advertising usage measurement.", analytics, false] as const,
+              ["Analytics", "Privacy-preserving page-performance metrics (Core Web Vitals) via Vercel Speed Insights. No cookies, no ad tracking.", analytics, false] as const,
             ].map(([label, desc, checked, locked]) => (
               <label key={label} style={{ display: "flex", gap: "10px", alignItems: "flex-start", padding: "10px 0", borderTop: `1px solid ${border}`, fontFamily: UI, color: body }}>
                 <input

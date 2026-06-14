@@ -15,7 +15,7 @@ const SECTIONS = [
   },
   {
     title: "Cookies And Preferences",
-    body: "The cookie notice records your consent choice. Essential storage is required for the consent record and basic reading features. Optional preferences cover comfort settings. Analytics is reserved for future privacy-preserving aggregate metrics and is not active in the current build.",
+    body: "The cookie notice records your consent choice. Essential storage is required for the consent record and basic reading features. Optional preferences cover comfort settings. Analytics is off by default; if you enable it, the site loads Vercel Speed Insights to measure page performance (Core Web Vitals) using no cookies, no personal data, and no advertising trackers. You can decline it and everything still works.",
   },
   {
     title: "Receipts And External Links",
@@ -27,7 +27,7 @@ const SECTIONS = [
   },
   {
     title: "Future Changes",
-    body: "If Data Goblin later adds accounts, comments, analytics, newsletters, payments, or hosted note sync, the privacy policy should change before those features go live. The rule is simple: no quiet expansion of collection.",
+    body: "If Data Goblin later adds accounts, comments, newsletters, payments, or hosted note sync, the privacy policy should change before those features go live. The rule is simple: no quiet expansion of collection.",
   },
 ];
 

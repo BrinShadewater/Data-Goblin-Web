@@ -9,6 +9,7 @@ import { P } from "./theme";
 import { TopNav } from "./components/TopNav";
 import { MobileDrawer } from "./components/MobileDrawer";
 import { CookieNotice } from "./components/CookieNotice";
+import { AnalyticsConsentGate } from "./components/AnalyticsConsentGate";
 import goblinFavicon from "./assets/goblin-head-icon.webp";
 import { APP_ROUTES, SearchOverlay } from "./lazyRoutes";
 
@@ -147,6 +148,7 @@ function Shell() {
         </Routes>
       </Suspense>
       <CookieNotice />
+      <AnalyticsConsentGate />
       {/* Mounted only while a query is active: the search chunk (and its
           whole-book index fetch) loads on first real search, not on app load. */}
       {searchQuery.trim().length >= 2 && (
