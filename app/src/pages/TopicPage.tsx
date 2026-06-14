@@ -22,7 +22,7 @@ export function TopicPage() {
         <PageHeading eyebrow={tr("Topic")} title={tr("Topic not found")} description={tr("That topic isn’t on the map. Try one of the topics below.")} />
         <StaticCard marginBottom="0">
           {TOPIC_LIST.map((t) => (
-            <div key={t.slug}><Link to={`/topic/${t.slug}`} style={{ fontFamily: UI, fontWeight: 800, color: navy }}>{t.title}</Link></div>
+            <div key={t.slug}><Link to={`/topic/${t.slug}`} style={{ fontFamily: UI, fontWeight: 800, color: navy }}>{tr(t.title)}</Link></div>
           ))}
         </StaticCard>
       </StaticPageShell>
@@ -33,12 +33,12 @@ export function TopicPage() {
     <StaticPageShell padding="36px clamp(16px, 5vw, 54px) 72px">
       <PageHeading
         eyebrow={tr("Topic")}
-        title={topic.title}
+        title={tr(topic.title)}
         eyebrowSize="10px"
         eyebrowLetterSpacing="0.26em"
         titleSize="clamp(34px, 5vw, 54px)"
         titleLineHeight={1.02}
-        description={topic.blurb}
+        description={tr(topic.blurb)}
         descriptionSize="17px"
         descriptionLineHeight={1.7}
         descriptionMaxWidth="760px"
@@ -64,7 +64,7 @@ export function TopicPage() {
         <div style={{ display: "flex", flexWrap: "wrap", gap: "8px 16px" }}>
           {TOPIC_LIST.filter((t) => t.slug !== slug).map((t) => (
             <Link key={t.slug} to={`/topic/${t.slug}`} style={{ fontFamily: UI, fontSize: "14px", fontWeight: 700, color: navy, textDecoration: "none" }}>
-              {t.title}
+              {tr(t.title)}
             </Link>
           ))}
         </div>
