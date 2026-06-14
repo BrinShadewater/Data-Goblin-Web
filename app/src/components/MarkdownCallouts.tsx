@@ -1,5 +1,5 @@
 import { useRef, useState, type ReactNode } from "react";
-import { Link } from "react-router-dom";
+import { Link } from "../i18nNav";
 import { Check, Share2 } from "lucide-react";
 import { useTheme } from "../ThemeContext";
 import { useReader } from "../reader";

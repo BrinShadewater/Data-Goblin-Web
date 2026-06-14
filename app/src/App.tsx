@@ -24,14 +24,32 @@ const ROUTE_TITLES: Record<string, string> = {
   "/toolkit": "The Toolkit · Test Any AI Claim — Data Goblin",
   "/privacy": "Privacy — Data Goblin",
 };
+const FR_ROUTE_TITLES: Record<string, string> = {
+  "/": "Data Goblin — Guide de terrain sur l'IA, la puissance et les données au Canada",
+  "/guide": "Guide de terrain — Data Goblin",
+  "/map": "Carte — Data Goblin",
+  "/loot": "Glossaire — Data Goblin",
+  "/receipts": "Reçus — Data Goblin",
+  "/about": "À propos — Data Goblin",
+  "/contribute": "Contribuer — Data Goblin",
+  "/updates": "Mises à jour et corrections — Data Goblin",
+  "/toolkit": "La boîte à outils · Tester toute allégation d'IA — Data Goblin",
+  "/privacy": "Confidentialité — Data Goblin",
+};
 function docTitleFor(pathname: string): string {
-  if (ROUTE_TITLES[pathname]) return ROUTE_TITLES[pathname];
-  const ch = pathname.match(/^\/chapter\/(\d+)/);
+  const fr = pathname === "/fr" || pathname.startsWith("/fr/");
+  const base = fr ? (pathname === "/fr" ? "/" : pathname.slice(3)) : pathname;
+  const titles = fr ? FR_ROUTE_TITLES : ROUTE_TITLES;
+  if (titles[base]) return titles[base];
+  const ch = base.match(/^\/chapter\/(\d+)/);
   if (ch) {
     const n = Number(ch[1]);
+    if (fr) return (n === 0 ? "Pages liminaires" : n === 20 ? "Annexe — Bibliothèque des sources" : `Chapitre ${n}`) + " — Data Goblin";
     return (n === 0 ? "Front Matter" : n === 20 ? "Source Library Appendix" : `Chapter ${n}`) + " — Data Goblin";
   }
-  return "Data Goblin — A Field Guide to AI, Power, and Data in Canada";
+  return fr
+    ? "Data Goblin — Guide de terrain sur l'IA, la puissance et les données au Canada"
+    : "Data Goblin — A Field Guide to AI, Power, and Data in Canada";
 }
 
 function Shell() {
@@ -122,6 +140,10 @@ function Shell() {
           {APP_ROUTES.map(({ path, Page }) => (
             <Route key={path} path={path} element={createElement(Page)} />
           ))}
+          {/* French edition: same pages mounted under /fr (language read from the URL). */}
+          {APP_ROUTES.map(({ path, Page }) => (
+            <Route key={"fr:" + path} path={path === "/" ? "/fr" : "/fr" + path} element={createElement(Page)} />
+          ))}
         </Routes>
       </Suspense>
       <CookieNotice />
@@ -139,16 +161,16 @@ function Shell() {
 
 export default function App() {
   return (
-    <LanguageProvider>
-      <ThemeProvider>
-        <ReaderProvider>
-          <ListenProvider>
-            <BrowserRouter>
+    <BrowserRouter>
+      <LanguageProvider>
+        <ThemeProvider>
+          <ReaderProvider>
+            <ListenProvider>
               <Shell />
-            </BrowserRouter>
-          </ListenProvider>
-        </ReaderProvider>
-      </ThemeProvider>
-    </LanguageProvider>
+            </ListenProvider>
+          </ReaderProvider>
+        </ThemeProvider>
+      </LanguageProvider>
+    </BrowserRouter>
   );
 }

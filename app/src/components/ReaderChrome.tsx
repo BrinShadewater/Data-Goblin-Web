@@ -1,5 +1,5 @@
 import { Bookmark as BookmarkIcon, ChevronLeft, ChevronRight } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "../i18nNav";
 import { useTheme } from "../ThemeContext";
 import { MONO, P, TOKENS, UI } from "../theme";
 import { savePanel } from "../pagination";

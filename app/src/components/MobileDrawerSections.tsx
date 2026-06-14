@@ -1,5 +1,6 @@
 import { Bookmark as BookmarkIcon, Moon, Sun, X } from "lucide-react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import { useNavigate } from "../i18nNav";
 import { useTheme } from "../ThemeContext";
 import { useReader } from "../reader";
 import { useLanguage } from "../LanguageContext";

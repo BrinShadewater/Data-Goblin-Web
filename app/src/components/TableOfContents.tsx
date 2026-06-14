@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "../i18nNav";
 import { useTheme } from "../ThemeContext";
 import { MONO, P, UI } from "../theme";
 import { savePanel } from "../pagination";

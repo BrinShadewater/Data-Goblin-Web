@@ -1,5 +1,5 @@
 import { ArrowRight } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link } from "../i18nNav";
 import { useTheme } from "../ThemeContext";
 import { BODY, DISPLAY, MONO, P, RADIUS, TOKENS, UI } from "../theme";
 import { artAspectRatio, artDimensions, artSrcSet, artUrl } from "../useContent";

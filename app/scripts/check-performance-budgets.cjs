@@ -8,7 +8,7 @@ const artDir = path.join(appDir, "public", "art");
 
 const BUDGETS = {
   chunks: {
-    "index-": { raw: 60 * 1024, gzip: 15 * 1024 },
+    "index-": { raw: 60 * 1024, gzip: 18 * 1024 }, // gzip 15->18: i18n + URL-based FR routing + audio context (dictionary itself is lazy-loaded, see ui-fr chunk)
     "react-vendor-": { raw: 390 * 1024, gzip: 120 * 1024 },
     "icons-vendor-": { raw: 13 * 1024, gzip: 4 * 1024 },
     "Markdown-": { raw: 205 * 1024, gzip: 60 * 1024 },

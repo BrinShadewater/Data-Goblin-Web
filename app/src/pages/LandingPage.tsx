@@ -1,6 +1,6 @@
 import type { PointerEvent } from "react";
 import { useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "../i18nNav";
 import { useTheme } from "../ThemeContext";
 import { P } from "../theme";
 import { LandingHero, LandingQuickLinks, LandingWisps, LandingWispStyles } from "../components/LandingSections";

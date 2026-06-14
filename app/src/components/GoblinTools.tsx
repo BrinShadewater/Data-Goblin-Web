@@ -1,5 +1,5 @@
 import { Pause, Play, Square, Volume2, X } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "../i18nNav";
 import { useTheme } from "../ThemeContext";
 import { BODY, P, TOKENS, UI } from "../theme";
 import { removeBookmark, saveLastLocation, useBookmarks } from "../bookmarks";

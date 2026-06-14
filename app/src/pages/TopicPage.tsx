@@ -1,4 +1,5 @@
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { Link } from "../i18nNav";
 import { useTheme } from "../ThemeContext";
 import { BODY, MONO, P, UI } from "../theme";
 import { Kicker, PageHeading, StaticCard, StaticPageShell } from "../components/StaticPage";

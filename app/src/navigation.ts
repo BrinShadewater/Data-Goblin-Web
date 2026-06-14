@@ -17,7 +17,9 @@ export const NAV_ITEMS: NavItem[] = [
 ];
 
 export function isNavActive(pathname: string, item: NavItem): boolean {
-  if (item.to === "/") return pathname === "/";
-  if (item.to === "/guide") return pathname === "/guide" || pathname.startsWith("/chapter/");
-  return pathname === item.to;
+  // Compare against the language-neutral path so highlighting works under /fr.
+  const p = pathname === "/fr" ? "/" : pathname.startsWith("/fr/") ? pathname.slice(3) : pathname;
+  if (item.to === "/") return p === "/";
+  if (item.to === "/guide") return p === "/guide" || p.startsWith("/chapter/");
+  return p === item.to;
 }

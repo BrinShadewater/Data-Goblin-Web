@@ -1,5 +1,6 @@
 import { Menu, Moon, Sun } from "lucide-react";
-import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import { NavLink, useNavigate } from "../i18nNav";
 import { useTheme } from "../ThemeContext";
 import { useLanguage } from "../LanguageContext";
 import { tr } from "../i18n";

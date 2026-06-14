@@ -1,6 +1,6 @@
 import type { CSSProperties, MouseEvent } from "react";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "../i18nNav";
 import { useTheme } from "../ThemeContext";
 import { BODY, P, RADIUS, UI } from "../theme";
 import { buildSearchIndex, getCachedSearchIndex, hasCachedSearchIndex, querySearchIndex } from "../search";

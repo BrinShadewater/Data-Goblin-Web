@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link } from "../i18nNav";
 import { useTheme } from "../ThemeContext";
 import { BODY, MONO, P, RADIUS, UI } from "../theme";
 import { tr } from "../i18n";

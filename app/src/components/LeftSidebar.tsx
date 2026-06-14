@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "../i18nNav";
 import { useTheme } from "../ThemeContext";
 import { MONO, P, TOKENS, UI } from "../theme";
 import { NavIcon } from "./GoblinMascot";
