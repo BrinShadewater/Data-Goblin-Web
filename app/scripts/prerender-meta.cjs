@@ -62,7 +62,23 @@ for (const [slug, en, fr] of TOPICS) ROUTE_META.push([`/topic/${slug}`, en, DESC
 
 const esc = (s) => s.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
-function render(route, fullTitle, desc, lang) {
+// Primary navigation rendered into the crawlable shell. This is the internal-link
+// surface non-JS crawlers (and AI engines) see; React replaces #root on mount.
+const NAV_EN = [["/", "Home"], ["/guide", "The Field Guide"], ["/chapter/1", "Start reading"], ["/map", "Map"], ["/loot", "Glossary"], ["/receipts", "Receipts"], ["/toolkit", "Toolkit"], ["/about", "About"], ["/contribute", "Contribute"]];
+const NAV_FR = [["/fr", "Accueil"], ["/fr/guide", "Le guide de terrain"], ["/fr/chapter/1", "Commencer la lecture"], ["/fr/map", "Carte"], ["/fr/loot", "Glossaire"], ["/fr/receipts", "Reçus"], ["/fr/toolkit", "Boîte à outils"], ["/fr/about", "À propos"], ["/fr/contribute", "Contribuer"]];
+
+// Crawlable fallback content placed inside #root. React's createRoot().render()
+// replaces it on mount, so real users never see it, but raw-HTML crawlers and
+// non-rendering AI bots get a real H1, an intro paragraph, and internal links.
+function seoShell(route, h1, desc, lang) {
+  const nav = (lang === "fr" ? NAV_FR : NAV_EN).map(([href, label]) => `<a href="${href}">${esc(label)}</a>`).join("");
+  const altHref = lang === "fr" ? (route || "/") : "/fr" + route;
+  const altLabel = lang === "fr" ? "English edition" : "Édition française";
+  const navLabel = lang === "fr" ? "Navigation principale" : "Primary navigation";
+  return `<div data-prerender-shell><h1>${esc(h1)}</h1><p>${esc(desc)}</p><nav aria-label="${navLabel}">${nav}<a href="${altHref}">${esc(altLabel)}</a></nav></div>`;
+}
+
+function render(route, h1, fullTitle, desc, lang) {
   const urlEn = SITE + (route || "/");
   const urlFr = SITE + "/fr" + route; // "" -> /fr, "/map" -> /fr/map
   const self = lang === "fr" ? urlFr : urlEn;
@@ -82,6 +98,7 @@ function render(route, fullTitle, desc, lang) {
     `\n    <link rel="alternate" hreflang="fr-CA" href="${esc(urlFr)}" />` +
     `\n    <link rel="alternate" hreflang="x-default" href="${esc(urlEn)}" />`;
   h = h.replace(/<link rel="canonical" href="[^"]*" \/>/, alternates);
+  h = h.replace('<div id="root"></div>', `<div id="root">${seoShell(route, h1, desc, lang)}</div>`);
   return h;
 }
 
@@ -93,13 +110,39 @@ function write(relPath, html) {
 
 let count = 0;
 // Home (both languages)
-write("", render("", HOME_FULL_EN, DESC_EN, "en")); // overwrites dist/index.html with hreflang
-write("fr", render("", HOME_FULL_FR, DESC_FR, "fr"));
+write("", render("", HOME_FULL_EN, HOME_FULL_EN, DESC_EN, "en")); // overwrites dist/index.html with hreflang
+write("fr", render("", HOME_FULL_FR, HOME_FULL_FR, DESC_FR, "fr"));
 count += 2;
 for (const [route, enTitle, enDesc, frTitle, frDesc] of ROUTE_META) {
   const rel = route.replace(/^\//, "");
-  write(rel, render(route, `${enTitle} — Data Goblin`, enDesc, "en"));
-  write("fr/" + rel, render(route, `${frTitle} — Data Goblin`, frDesc, "fr"));
+  write(rel, render(route, enTitle, `${enTitle} — Data Goblin`, enDesc, "en"));
+  write("fr/" + rel, render(route, frTitle, `${frTitle} — Data Goblin`, frDesc, "fr"));
   count += 2;
 }
 console.log(`prerender-meta: wrote ${count} per-route HTML shells (EN + FR)`);
+
+// ---- Generate sitemap.xml (EN + FR, with hreflang alternates) ----
+function smMeta(route) {
+  if (route === "") return ["1.0", "monthly"];
+  if (route.startsWith("/topic/")) return ["0.7", "monthly"];
+  if (route === "/guide" || route === "/loot" || route === "/receipts") return ["0.8", "yearly"];
+  return ["0.6", "yearly"];
+}
+const today = new Date().toISOString().slice(0, 10);
+const allRoutes = [""].concat(ROUTE_META.map((r) => r[0]));
+let urlsXml = "";
+for (const route of allRoutes) {
+  const [prio, freq] = smMeta(route);
+  const urlEn = SITE + (route || "/");
+  const urlFr = SITE + "/fr" + route;
+  const alts =
+    `\n    <xhtml:link rel="alternate" hreflang="en-CA" href="${esc(urlEn)}"/>` +
+    `\n    <xhtml:link rel="alternate" hreflang="fr-CA" href="${esc(urlFr)}"/>` +
+    `\n    <xhtml:link rel="alternate" hreflang="x-default" href="${esc(urlEn)}"/>`;
+  for (const loc of [urlEn, urlFr]) {
+    urlsXml += `\n  <url>\n    <loc>${esc(loc)}</loc>${alts}\n    <lastmod>${today}</lastmod>\n    <changefreq>${freq}</changefreq>\n    <priority>${prio}</priority>\n  </url>`;
+  }
+}
+const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">${urlsXml}\n</urlset>\n`;
+fs.writeFileSync(path.join(DIST, "sitemap.xml"), sitemapXml);
+console.log(`prerender-meta: wrote sitemap.xml with ${allRoutes.length * 2} URLs (EN + FR, hreflang)`);

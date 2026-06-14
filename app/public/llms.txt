@@ -1,0 +1,21 @@
+# Data Goblin
+
+> A free, public-interest field guide that teaches Canadians how to evaluate AI claims about power, data, infrastructure, and sovereignty — with a receipt behind every claim. Available in English and French.
+
+## Guide
+- [The Field Guide](https://datagoblin.ca/guide): the full guide, all chapters
+- [Chapter 1 — What AI Actually Is](https://datagoblin.ca/chapter/1): start here
+- [The Toolkit](https://datagoblin.ca/toolkit): test any AI claim with the bias-mapping method
+
+## Reference
+- [Receipts](https://datagoblin.ca/receipts): the claim-by-claim source ledger behind the guide
+- [The Map](https://datagoblin.ca/map): browse the guide by region and question
+- [Glossary](https://datagoblin.ca/loot): plain-language definitions of key terms
+- [Updates & Corrections](https://datagoblin.ca/updates): dated log of changes
+
+## About
+- [About Data Goblin](https://datagoblin.ca/about): about the guide and Shadewater Labs
+- [Contribute](https://datagoblin.ca/contribute): suggest a source or flag an error
+
+## Editions
+- [French edition](https://datagoblin.ca/fr): édition française (machine-translated, under review)
