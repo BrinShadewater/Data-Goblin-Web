@@ -1,4 +1,3 @@
-import type { FormEvent } from "react";
 import { useState } from "react";
 import { PageHeading, StaticPageShell } from "../components/StaticPage";
 import {
@@ -8,28 +7,10 @@ import {
   RevisionFlowCard,
 } from "../components/ContributeSections";
 import { StaticHeroArt } from "../components/StaticHeroArt";
-import { buildContributionMailto } from "../contribute";
 import { tr } from "../i18n";
 
 export function ContributePage() {
-  const [type, setType] = useState("factual");
-  const [chapter, setChapter] = useState("");
-  const [message, setMessage] = useState("");
   const [submitted, setSubmitted] = useState(false);
-  const [submitHovered, setSubmitHovered] = useState(false);
-
-  const resetForm = () => {
-    setSubmitted(false);
-    setChapter("");
-    setMessage("");
-    setType("factual");
-  };
-
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    window.location.href = buildContributionMailto({ type, chapter, message });
-    setSubmitted(true);
-  };
 
   return (
     <StaticPageShell maxWidth="820px">
@@ -51,20 +32,10 @@ export function ContributePage() {
       </PageHeading>
 
       {submitted ? (
-        <ContributionSuccess onReset={resetForm} />
+        <ContributionSuccess onReset={() => setSubmitted(false)} />
       ) : (
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(290px, 1fr))", gap: "24px", alignItems: "start", marginBottom: "32px" }}>
-          <ContributionForm
-            type={type}
-            chapter={chapter}
-            message={message}
-            submitHovered={submitHovered}
-            onTypeChange={setType}
-            onChapterChange={setChapter}
-            onMessageChange={setMessage}
-            onSubmitHoveredChange={setSubmitHovered}
-            onSubmit={handleSubmit}
-          />
+          <ContributionForm onSuccess={() => setSubmitted(true)} />
           <GuidelinesPanel />
         </div>
       )}

@@ -197,11 +197,16 @@ async function runInteractionSmoke(browser, baseUrl) {
   });
 
   await withAppPage(browser, baseUrl, VIEWPORTS[0], async (page) => {
+    // The /api/contribute serverless function isn't available to this static
+    // smoke server, so mock a success response and assert the form handles it.
+    await page.route("**/api/contribute", (route) =>
+      route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ ok: true }) })
+    );
     await page.goto(`${baseUrl}/contribute`, { waitUntil: "networkidle" });
     await page.getByPlaceholder(/Chapter 8/i).fill("Chapter 8");
     await page.locator("textarea[required]").fill("Browser smoke test contribution with a source link.");
     await page.getByRole("button", { name: /Submit Report/i }).click();
-    await page.getByText(/Your email app should now have a draft addressed/i).waitFor({ state: "visible" });
+    await page.getByText(/Thank you, goblin/i).waitFor({ state: "visible" });
   });
   console.log("PASS interactions");
 }
