@@ -255,6 +255,7 @@ def translate_traps(obj):
     obj = json.loads(json.dumps(obj))
     for k, v in obj.items():
         if isinstance(v, dict):
+            if "chapterTitle" in v: v["chapterTitle"] = tr_text(v["chapterTitle"])
             if "trapTitle" in v: v["trapTitle"] = tr_text(v["trapTitle"])
             if "text" in v:      v["text"] = tr_text(v["text"])
     return obj
@@ -283,10 +284,3 @@ def main(targets):
     if want("receipts"):
         print("receipts.json ...", flush=True)
         _write(f"{OUT}/receipts.json", _batched(translate_receipts, json.load(open(f"{SRC}/receipts.json", encoding="utf-8"))))
-    if want("traps"):
-        print("traps.json ...", flush=True)
-        _write(f"{OUT}/traps.json", _batched(translate_traps, json.load(open(f"{SRC}/traps.json", encoding="utf-8"))))
-    print(f"done in {time.time()-t0:.1f}s")
-
-if __name__ == "__main__":
-    main(set(sys.argv[1:]))
