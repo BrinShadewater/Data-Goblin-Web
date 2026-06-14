@@ -4,7 +4,8 @@ import { useReader } from "../reader";
 import { MONO, P } from "../theme";
 import { autolinkBlocks } from "../links";
 import { glossaryLinkBlocks } from "../glossaryLinks";
-import { useLinks, useGlossary } from "../useContent";
+import { receiptLinkBlocks } from "../receiptLinks";
+import { useLinks, useGlossary, useClaimAnchors } from "../useContent";
 import type { Block } from "../pagination";
 import type { Chapter } from "../types";
 import { BlockView, OpenerHeader } from "./PagePanelContent";
@@ -28,11 +29,15 @@ function PagePanelInner({
   const { mode } = useReader();
   const { data: links } = useLinks();
   const { data: glossary } = useGlossary();
+  const { data: claimAnchors } = useClaimAnchors();
   const linkedBlocks = useMemo(() => {
-    let b = links && links.length > 0 ? autolinkBlocks(blocks, links) : blocks;
+    let b = blocks;
+    const anchors = claimAnchors?.[String(chapter.number)];
+    if (anchors && anchors.length > 0) b = receiptLinkBlocks(b, anchors);
+    if (links && links.length > 0) b = autolinkBlocks(b, links);
     if (glossary && glossary.length > 0) b = glossaryLinkBlocks(b, glossary);
     return b;
-  }, [blocks, links, glossary]);
+  }, [blocks, links, glossary, claimAnchors, chapter.number]);
   const padding =
     mode === "phone"
       ? "20px 18px 10px"

@@ -1,8 +1,10 @@
 import { useRef, useState, type ReactNode } from "react";
+import { Link } from "react-router-dom";
 import { Check, Share2 } from "lucide-react";
 import { useTheme } from "../ThemeContext";
 import { useReader } from "../reader";
-import { BODY, MONO, P, RADIUS, TOKENS } from "../theme";
+import { BODY, MONO, P, RADIUS, TOKENS, UI } from "../theme";
+import type { Receipt } from "../types";
 import { NavIcon } from "./GoblinMascot";
 import { downloadCheckCard } from "../shareCard";
 
@@ -129,6 +131,80 @@ export function GoblinCheckCard({ children }: { children: ReactNode }) {
   );
 }
 
+
+
+export function ReceiptMarker({ receipt, children }: { receipt: Receipt; children: ReactNode }) {
+  const { c } = useTheme();
+  const [open, setOpen] = useState(false);
+  const tone = receipt.status === "open" ? c(...P.amber) : c(...P.greenDeep);
+  const label = receipt.status === "open" ? "Still checking" : receipt.status === "fixed" ? "Corrected" : "Verified";
+  const detail = (receipt.detail || "")
+    .replace(/\[([^\]]+)\]\([^)]*\)/g, "$1")
+    .replace(/[*_]{1,3}([^*_]+)[*_]{1,3}/g, "$1")
+    .replace(/`([^`]+)`/g, "$1")
+    .replace(/^[\s\u2705\u{1F50D}\u26A0\uFE0F\u{1F7E2}\u{1F7E1}\u{1F534}\u{1F9CC}]+/u, "")
+    .replace(/\s*\|.*$/, "")
+    .replace(/^(LARGELY RESOLVED|RESOLVED WITH CORRECTIONS|MOSTLY VERIFIED|CLAIM REVERSED|VERIFIED|RESOLVED|CORRECTED|FIXED|PARTIAL)\b[\s\u2014\u2013:-]*/i, "")
+    .trim();
+  return (
+    <span style={{ position: "relative", display: "inline" }}>
+      <span
+        role="button"
+        tabIndex={0}
+        aria-label={`Receipt — ${label}`}
+        aria-expanded={open}
+        onMouseEnter={() => setOpen(true)}
+        onMouseLeave={() => setOpen(false)}
+        onFocus={() => setOpen(true)}
+        onBlur={() => setOpen(false)}
+        onClick={(e) => { e.preventDefault(); setOpen((o) => !o); }}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setOpen((o) => !o); }
+          if (e.key === "Escape") setOpen(false);
+        }}
+        style={{ borderBottom: `1px dotted ${tone}`, cursor: "pointer", color: "inherit" }}
+      >
+        {children}
+        <sup style={{ fontSize: "0.66em", color: tone, fontWeight: 800, marginLeft: "1.5px" }}>&#10003;</sup>
+      </span>
+      {open && (
+        <span
+          role="tooltip"
+          style={{
+            position: "absolute", zIndex: 60, left: 0, top: "calc(100% + 6px)",
+            width: "min(320px, 78vw)", background: c(...P.cardBg), border: `1px solid ${c(...P.border)}`,
+            borderLeft: `4px solid ${tone}`, borderRadius: RADIUS,
+            boxShadow: c("0 6px 22px rgba(40,30,10,0.18)", "0 8px 24px rgba(0,0,0,0.55)"),
+            padding: "11px 13px", fontStyle: "normal", fontWeight: 400, textAlign: "left",
+            letterSpacing: "normal", whiteSpace: "normal",
+          }}
+        >
+          <span style={{ display: "block", fontFamily: MONO, fontSize: "8.5px", fontWeight: 800, letterSpacing: "0.16em", textTransform: "uppercase", color: tone, marginBottom: "5px" }}>
+            Receipt &middot; {label}
+          </span>
+          <span style={{ display: "block", fontFamily: BODY, fontSize: "13px", lineHeight: 1.5, color: c(...P.body) }}>
+            {detail}
+          </span>
+          {receipt.links && receipt.links.length > 0 && (
+            <span style={{ display: "block", marginTop: "8px" }}>
+              {receipt.links.map(([lab, url], i) => (
+                <a key={i} href={url} target="_blank" rel="noopener noreferrer"
+                  style={{ fontFamily: UI, fontSize: "12px", fontWeight: 700, color: c(...P.navy), marginRight: "10px" }}>
+                  {lab} &#8599;
+                </a>
+              ))}
+            </span>
+          )}
+          <span style={{ display: "block", marginTop: "8px" }}>
+            <Link to="/receipts" style={{ fontFamily: UI, fontSize: "12px", fontWeight: 700, color: c(...P.muted) }}>
+              See the full ledger &#8594;
+            </Link>
+          </span>
+        </span>
+      )}
+    </span>
+  );
+}
 
 export function GlossaryTerm({ term, def }: { term: string; def: string }) {
   const { c } = useTheme();

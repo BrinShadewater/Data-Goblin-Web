@@ -71,6 +71,7 @@ export const useReceipts = () => useJson<Receipt[]>("receipts.json");
 export const useGlossary = () => useJson<GlossaryEntry[]>("glossary.json");
 export const useLinks = () => useJson<LinkEntry[]>("links.json");
 export const useArtMap = () => useJson<ArtMap>("art-map.json");
+export const useClaimAnchors = () => useJson<Record<string, { anchor: string; id: number; status: string }[]>>("claim-anchors.json");
 
 /** URL of an art asset; `rel` is an art-map path like "small/water.png". */
 export const artUrl = (rel: string) => `${import.meta.env.BASE_URL}art/${rel}`;

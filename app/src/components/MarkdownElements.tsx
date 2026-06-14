@@ -5,11 +5,13 @@ import { useReader } from "../reader";
 import { DISPLAY, MONO, P, RADIUS, TOKENS, UI } from "../theme";
 import { AUTOLINK_TITLE } from "../links";
 import { GLOSSARY_TITLE, glossaryPhraseMap } from "../glossaryLinks";
-import { useGlossary } from "../useContent";
+import { RECEIPT_TITLE } from "../receiptLinks";
+import { useGlossary, useReceipts } from "../useContent";
 import { artAspectRatio, artDimensions, artSrcSet, artUrl } from "../useContent";
 import {
   GoblinCheckCard,
   GlossaryTerm,
+  ReceiptMarker,
   GoblinDeviceCard,
   isAlignmentQuote,
   isChapterRecapQuote,
@@ -29,6 +31,12 @@ export function useMarkdownComponents(): Components {
   const bodySize = `${t.body}px`;
   const { data: glossary } = useGlossary();
   const glossMap = useMemo(() => (glossary ? glossaryPhraseMap(glossary) : null), [glossary]);
+  const { data: receipts } = useReceipts();
+  const receiptMap = useMemo(() => {
+    const m = new Map<number, NonNullable<typeof receipts>[number]>();
+    (receipts ?? []).forEach((r) => m.set(r.id, r));
+    return m;
+  }, [receipts]);
 
   return useMemo(
     () => ({
@@ -45,6 +53,12 @@ export function useMarkdownComponents(): Components {
           <em>{children}</em>
         ),
       a: ({ href, children, title }) => {
+        if (title === RECEIPT_TITLE) {
+          const id = Number(String(href ?? "").replace(/^#receipt-/, ""));
+          const rec = receiptMap.get(id);
+          if (rec) return <ReceiptMarker receipt={rec}>{children}</ReceiptMarker>;
+          return <>{children}</>;
+        }
         if (title === GLOSSARY_TITLE) {
           const term =
             typeof children === "string"
@@ -224,6 +238,6 @@ export function useMarkdownComponents(): Components {
         );
       },
     }),
-    [bodySize, border, c, glossMap, ink, navy, t]
+    [bodySize, border, c, glossMap, ink, navy, receiptMap, t]
   );
 }
