@@ -9,10 +9,12 @@
   "responsive": {
     "panels/hero-panel.webp": { "role": "priority", "width": 1024, "height": 1024, "widths": [640, 960, 1024], "alt": "Data Goblin hero art for the field guide" },
     "panels/canada-map-panel.webp": { "role": "priority", "width": 1024, "height": 1024, "widths": [640, 960, 1024], "alt": "Fantasy map of Canada with the Data Goblin standing in front" },
+    "panels/canada-map-panel-fr.webp": { "role": "priority", "width": 1024, "height": 1024, "widths": [640, 960, 1024], "alt": "Carte fantaisiste du Canada avec le Data Goblin devant" },
     "panels/contribute-hearth-panel.webp": { "role": "priority", "width": 1024, "height": 1024, "widths": [640, 960, 1024], "alt": "A warm hearth scene for contributing to the Data Goblin guide" },
     "panels/receipts-panel.webp": { "role": "priority", "width": 1024, "height": 1024, "widths": [640, 960, 1024], "alt": "Data Goblin receipts artwork with papers and evidence" },
     "panels/glossary-chest-panel.webp": { "role": "priority", "width": 1024, "height": 1024, "widths": [640, 960, 1024], "alt": "A glossary treasure chest for the Data Goblin loot page" },
     "panels/canada-flag-panel.webp": { "role": "priority", "width": 1024, "height": 1024, "widths": [640, 960, 1024], "alt": "Data Goblin Canada flag artwork" },
+    "panels/canada-flag-panel-fr.webp": { "role": "priority", "width": 1024, "height": 1024, "widths": [640, 960, 1024], "alt": "Drapeau du Canada illustré par le Data Goblin" },
     "panels/source-verification-panel.webp": { "role": "content-panel", "width": 1024, "height": 1024, "widths": [640, 960, 1024], "alt": "Data Goblin verifying sources and receipts" },
     "panels/ai-innovation-panel.webp": { "role": "content-panel", "width": 1024, "height": 1024, "widths": [640, 960, 1024] },
     "panels/data-analysis-panel.webp": { "role": "content-panel", "width": 1024, "height": 1024, "widths": [640, 960, 1024] },

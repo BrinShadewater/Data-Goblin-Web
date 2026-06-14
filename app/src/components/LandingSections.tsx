@@ -5,9 +5,9 @@ import { BODY, DISPLAY, MONO, P, RADIUS, TOKENS, UI } from "../theme";
 import { artAspectRatio, artDimensions, artSrcSet, artUrl } from "../useContent";
 import { NavIcon } from "./GoblinMascot";
 import { tr } from "../i18n";
+import { useLanguage } from "../LanguageContext";
 
 const HERO_ART = "panels/hero-panel.webp";
-const FLAG_ART = "panels/canada-flag-panel.webp";
 
 export { LandingQuickLinks } from "./LandingQuickLinks";
 export { LandingWisps, LandingWispStyles } from "./LandingWisps";
@@ -26,6 +26,8 @@ export function LandingHero({
   preloadGuide: () => void;
 }) {
   const { c, dark } = useTheme();
+  const { lang } = useLanguage();
+  const FLAG_ART = lang === "fr" ? "panels/canada-flag-panel-fr.webp" : "panels/canada-flag-panel.webp";
   const page = c(...P.pageBg);
   const border = c(...P.borderSoft);
   const body = c(...P.body);

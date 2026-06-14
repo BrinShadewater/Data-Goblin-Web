@@ -5,8 +5,7 @@ import { artAspectRatio, artDimensions, artSrcSet, artUrl, useBook } from "../us
 import { displayRegion } from "../regionLabels";
 import { LoadingMessage, PageHeading, StaticPageShell } from "../components/StaticPage";
 import { tr } from "../i18n";
-
-const MAP_ART = "panels/canada-map-panel.webp";
+import { useLanguage } from "../LanguageContext";
 
 // Region notes, in part order (Part I…V). Keyed by index so they survive the
 // French edition, where part.region itself is translated.
@@ -21,6 +20,8 @@ const REGION_NOTES: string[] = [
 /** The five regions of the field guide, each listing its chapters. */
 export function MapPage() {
   const { c } = useTheme();
+  const { lang } = useLanguage();
+  const MAP_ART = lang === "fr" ? "panels/canada-map-panel-fr.webp" : "panels/canada-map-panel.webp";
   const { data: book, error } = useBook();
 
   const border = c(...P.borderSoft);
