@@ -13,6 +13,16 @@ interface UpdateEntry {
 const UPDATES: UpdateEntry[] = [
   {
     date: "June 13, 2026",
+    tag: "Edition",
+    title: "French edition added (machine-translated, under review)",
+    items: [
+      "A full French edition is now live — switch with the FR/EN toggle in the top bar, or in the menu on mobile. A banner marks it as machine-translated and under review.",
+      "It is an honest machine translation, not a hand translation: structure, links, numbers, and the Goblin Check and Chapter Recap callouts are preserved, but the French wording has not been human-edited yet.",
+      "Extras keyed to the English text — receipt popovers, glossary tooltips, and reference auto-links — are switched off in French for now. The English edition keeps them; re-curating them in French is a later pass.",
+    ],
+  },
+  {
+    date: "June 13, 2026",
     tag: "New sections",
     title: "Four new sections added",
     items: [
