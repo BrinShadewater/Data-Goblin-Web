@@ -18,6 +18,7 @@ const ROUTE_TITLES: Record<string, string> = {
   "/about": "About — Data Goblin",
   "/contribute": "Contribute — Data Goblin",
   "/updates": "Updates & Corrections — Data Goblin",
+  "/toolkit": "The Toolkit · Test Any AI Claim — Data Goblin",
   "/privacy": "Privacy — Data Goblin",
 };
 function docTitleFor(pathname: string): string {

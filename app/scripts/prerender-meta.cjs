@@ -23,6 +23,7 @@ const routes = [
   ["/about", "About", "About Data Goblin and Shadewater Labs."],
   ["/contribute", "Contribute", "Suggest a source, flag an error, or help improve the guide."],
   ["/updates", "Updates & Corrections", "A dated log of what changed and what was corrected in the guide."],
+  ["/toolkit", "The Toolkit · Test Any AI Claim", "Run any AI claim through the guide\u2019s bias-mapping method: who\u2019s making it, what\u2019s the scope, and where\u2019s the receipt."],
   ["/privacy", "Privacy", "What this site stores, and what it does not."],
 ];
 

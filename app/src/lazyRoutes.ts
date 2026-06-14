@@ -12,6 +12,7 @@ const loadPrivacyPage = () => import("./pages/PrivacyPage");
 const loadUpdatesPage = () => import("./pages/UpdatesPage");
 const loadNotFoundPage = () => import("./pages/NotFoundPage");
 const loadTopicPage = () => import("./pages/TopicPage");
+const loadToolkitPage = () => import("./pages/ToolkitPage");
 const loadSearchOverlay = () => import("./components/SearchOverlay");
 
 export const FieldGuidePage = lazy(() => loadFieldGuidePage().then((m) => ({ default: m.FieldGuidePage })));
@@ -25,6 +26,7 @@ export const PrivacyPage = lazy(() => loadPrivacyPage().then((m) => ({ default: 
 export const UpdatesPage = lazy(() => loadUpdatesPage().then((m) => ({ default: m.UpdatesPage })));
 export const NotFoundPage = lazy(() => loadNotFoundPage().then((m) => ({ default: m.NotFoundPage })));
 export const TopicPage = lazy(() => loadTopicPage().then((m) => ({ default: m.TopicPage })));
+export const ToolkitPage = lazy(() => loadToolkitPage().then((m) => ({ default: m.ToolkitPage })));
 export const SearchOverlay = lazy(() => loadSearchOverlay().then((m) => ({ default: m.SearchOverlay })));
 
 type LazyPage = LazyExoticComponent<() => ReactElement>;
@@ -41,6 +43,7 @@ export const APP_ROUTES: { path: string; Page: LazyPage }[] = [
   { path: "/privacy", Page: PrivacyPage },
   { path: "/updates", Page: UpdatesPage },
   { path: "/topic/:slug", Page: TopicPage },
+  { path: "/toolkit", Page: ToolkitPage },
   { path: "*", Page: NotFoundPage },
 ];
 
