@@ -1,8 +1,10 @@
-import type { ReactNode } from "react";
+import { useRef, useState, type ReactNode } from "react";
+import { Check, Share2 } from "lucide-react";
 import { useTheme } from "../ThemeContext";
 import { useReader } from "../reader";
 import { MONO, P, RADIUS, TOKENS } from "../theme";
 import { NavIcon } from "./GoblinMascot";
+import { downloadCheckCard } from "../shareCard";
 
 export interface HastNode {
   type?: string;
@@ -44,6 +46,15 @@ export function isAlignmentQuote(node: HastNode | undefined): boolean {
 export function GoblinCheckCard({ children }: { children: ReactNode }) {
   const { c } = useTheme();
   const { t } = useReader();
+  const contentRef = useRef<HTMLDivElement>(null);
+  const [shared, setShared] = useState(false);
+  const onShare = async () => {
+    const text = contentRef.current?.textContent?.trim();
+    if (!text) return;
+    await downloadCheckCard(text);
+    setShared(true);
+    window.setTimeout(() => setShared(false), 2200);
+  };
   return (
     <div
       style={{
@@ -62,20 +73,46 @@ export function GoblinCheckCard({ children }: { children: ReactNode }) {
         <NavIcon name="check-nav" size={TOKENS.icon.calloutCheck} />
       </div>
       <div style={{ minWidth: 0 }}>
-        <div
-          style={{
-            fontFamily: MONO,
-            fontSize: "9px",
-            fontWeight: 800,
-            letterSpacing: "0.22em",
-            textTransform: "uppercase",
-            color: c(...P.greenDeep),
-            marginBottom: "5px",
-          }}
-        >
-          Goblin Check
+        <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "5px" }}>
+          <div
+            style={{
+              fontFamily: MONO,
+              fontSize: "9px",
+              fontWeight: 800,
+              letterSpacing: "0.22em",
+              textTransform: "uppercase",
+              color: c(...P.greenDeep),
+            }}
+          >
+            Goblin Check
+          </div>
+          <button
+            onClick={onShare}
+            title="Save as a shareable image"
+            aria-label="Save this Goblin Check as a shareable image"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "4px",
+              background: "none",
+              border: "none",
+              padding: "2px 4px",
+              cursor: "pointer",
+              fontFamily: MONO,
+              fontSize: "8.5px",
+              fontWeight: 800,
+              letterSpacing: "0.16em",
+              textTransform: "uppercase",
+              color: c(...P.greenDeep),
+              opacity: 0.72,
+            }}
+          >
+            {shared ? <Check size={11} /> : <Share2 size={11} />}
+            {shared ? "Saved" : "Share"}
+          </button>
         </div>
         <div
+          ref={contentRef}
           style={{
             fontFamily: t.bodyFont,
             fontSize: `${t.callout}px`,
