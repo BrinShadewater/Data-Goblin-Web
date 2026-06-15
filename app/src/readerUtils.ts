@@ -32,7 +32,9 @@ export function panelSnippet(blocks: Block[], chapter: Chapter): string {
             ? b.trap.trapTitle
             : b.kind === "panel"
               ? (b.caption ?? "Field guide plate")
-              : b.text;
+              : b.kind === "figure"
+                ? (b.caption ?? "Figure")
+                : b.text;
     const plain = text.replace(/[*_>#`|[\]]/g, "").replace(/\s+/g, " ").trim();
     if (plain) return plain.length > 60 ? `${plain.slice(0, 57)}…` : plain;
   }

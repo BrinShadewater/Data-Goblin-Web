@@ -3,7 +3,7 @@ import { useReader } from "../reader";
 import { P, UI } from "../theme";
 import type { Block } from "../pagination";
 import { Markdown } from "./Markdown";
-import { ArtPlate } from "./PageArt";
+import { ArtPlate, FigureBlock } from "./PageArt";
 import { GoblinTrapCard } from "./PageCallouts";
 import { SectionHeading, OpenerHeader } from "./PageHeadings";
 
@@ -17,6 +17,8 @@ export function BlockView({ block, first }: { block: Block; first: boolean }) {
       return <SectionHeading heading={block.heading} first={first} accent={block.accent} />;
     case "panel":
       return <ArtPlate src={block.src} caption={block.caption} />;
+    case "figure":
+      return <FigureBlock src={block.src} caption={block.caption} />;
     case "md":
       return <Markdown markdown={block.text} />;
     case "trap":

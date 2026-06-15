@@ -62,3 +62,58 @@ export function ArtPlate({ src, caption }: { src: string; caption?: string | nul
     </div>
   );
 }
+
+/**
+ * Inline data figure — flows between paragraphs (not a full-page plate), with
+ * the image contained to a readable size and the caption directly underneath.
+ */
+export function FigureBlock({ src, caption }: { src: string; caption?: string | null }) {
+  const { c } = useTheme();
+  const dimensions = artDimensions(src);
+  return (
+    <figure
+      style={{
+        margin: "24px 0",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        gap: "8px",
+      }}
+    >
+      <img
+        src={artUrl(src)}
+        srcSet={artSrcSet(src)}
+        sizes="(max-width: 760px) 90vw, 40vw"
+        width={dimensions?.width}
+        height={dimensions?.height}
+        alt={caption ?? "Field guide figure"}
+        loading="lazy"
+        decoding="async"
+        style={{
+          width: "100%",
+          maxWidth: "480px",
+          maxHeight: "300px",
+          height: "auto",
+          aspectRatio: artAspectRatio(src),
+          objectFit: "contain",
+        }}
+      />
+      {caption && (
+        <figcaption
+          style={{
+            fontFamily: DISPLAY,
+            fontStyle: "italic",
+            fontSize: "13.5px",
+            fontWeight: 500,
+            lineHeight: 1.5,
+            color: c(...P.faint),
+            textAlign: "center",
+            maxWidth: "520px",
+          }}
+        >
+          {caption}
+        </figcaption>
+      )}
+    </figure>
+  );
+}

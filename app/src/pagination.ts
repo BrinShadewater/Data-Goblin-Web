@@ -17,7 +17,10 @@ export type Block =
   | { kind: "trap"; trap: Trap }
   | { kind: "bias"; text: string }
   /** Near-full-page art plate (art-map.json `panels`); always gets its own page. */
-  | { kind: "panel"; src: string; caption?: string | null };
+  | { kind: "panel"; src: string; caption?: string | null }
+  /** Inline data figure (art-map.json `panels` with a `figures/` src); flows
+   *  between paragraphs with its caption directly underneath, not a full page. */
+  | { kind: "figure"; src: string; caption?: string | null };
 
 export type ReaderMode = "phone" | "tablet" | "desktop";
 
@@ -33,6 +36,10 @@ export interface Budgets {
 // while still leaving overflow scroll as a rare fallback for atomic callouts.
 export const PANEL_BUDGET = 1650;
 export const OPENER_BUDGET = 900;
+/** Height cost of an inline figure (contained image + caption), in budget
+ *  characters: about half a page, so it packs alongside prose rather than
+ *  taking a page to itself. */
+export const FIGURE_COST = 720;
 
 /**
  * Extra budget cost charged to a section heading that carries an accent
@@ -111,6 +118,9 @@ export function blockCost(block: Block): number {
       // Never packed with prose — paginatePanels appends plates as their
       // own pages — but cost a full panel for safety if one ever flows.
       return PANEL_BUDGET;
+    case "figure":
+      // Inline figure: contained image + caption, ~half a page; packs with prose.
+      return FIGURE_COST;
   }
 }
 
@@ -121,9 +131,27 @@ export function blockCost(block: Block): number {
  * final block. When `accents` (art-map paths like "small/water.png") is
  * non-empty, section headings carry them as ornaments, cycling in order.
  */
-export function flattenChapter(chapter: Chapter, trap: Trap | null, accents: string[] = []): Block[] {
+export function flattenChapter(
+  chapter: Chapter,
+  trap: Trap | null,
+  accents: string[] = [],
+  figures: ArtPanel[] = []
+): Block[] {
   const blocks: Block[] = [];
   for (const text of splitBlocks(chapter.startHere)) blocks.push({ kind: "md", text });
+  // Spread inline figures across the chapter's sections in order, so each
+  // figure lands among the paragraphs it relates to instead of clustering at
+  // the chapter's end. Figure k anchors after section floor((k+1)*S/(K+1)),
+  // which distributes K figures evenly over S sections.
+  const S = chapter.sections.length;
+  const K = figures.length;
+  const figsAfter = new Map<number, ArtPanel[]>();
+  figures.forEach((fig, k) => {
+    const i = S > 0 ? Math.min(S - 1, Math.floor(((k + 1) * S) / (K + 1))) : -1;
+    const arr = figsAfter.get(i) ?? [];
+    arr.push(fig);
+    figsAfter.set(i, arr);
+  });
   chapter.sections.forEach((section, i) => {
     blocks.push({
       kind: "heading",
@@ -132,7 +160,12 @@ export function flattenChapter(chapter: Chapter, trap: Trap | null, accents: str
     });
     for (const text of splitBlocks(section.markdown)) blocks.push({ kind: "md", text });
     if (i === 0 && trap) blocks.push({ kind: "trap", trap });
+    for (const f of figsAfter.get(i) ?? [])
+      blocks.push({ kind: "figure", src: f.src, caption: f.caption ?? null });
   });
+  // Fallback for a sectionless chapter: append any unplaced figures at the end.
+  for (const f of figsAfter.get(-1) ?? [])
+    blocks.push({ kind: "figure", src: f.src, caption: f.caption ?? null });
   if (chapter.biasLabel) blocks.push({ kind: "bias", text: chapter.biasLabel });
   return blocks;
 }
@@ -153,7 +186,11 @@ export function paginatePanels(
   accents: string[] = [],
   artPanels: ArtPanel[] = []
 ): Block[][] {
-  const blocks = flattenChapter(chapter, trap, accents);
+  // Inline data figures (figures/ src) flow between paragraphs; decorative
+  // plates still close the document as full-page plates.
+  const figures = artPanels.filter((p) => p.src.startsWith("figures/"));
+  const plates = artPanels.filter((p) => !p.src.startsWith("figures/"));
+  const blocks = flattenChapter(chapter, trap, accents, figures);
   const openerOverhead = Math.max(0, budgets.panel - budgets.opener);
   const total = blocks.reduce((t, b) => t + blockCost(b), 0) + openerOverhead;
   // Fill tolerance: allow a page to run up to ~10% over budget before a new
@@ -193,9 +230,10 @@ export function paginatePanels(
   }
   if (cur.length > 0) panels.push(cur);
   if (panels.length === 0) panels.push([]);
-  // Art plates (art-map.json `panels`) close the document, one full page
-  // each — like the plates section of a printed field guide.
-  for (const p of artPanels) {
+  // Decorative art plates (non-figure `panels`) close the document, one full
+  // page each — like the plates section of a printed field guide. Data figures
+  // were already placed inline by flattenChapter.
+  for (const p of plates) {
     panels.push([{ kind: "panel", src: p.src, caption: p.caption ?? null }]);
   }
   return panels;
