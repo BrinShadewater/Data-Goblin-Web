@@ -161,7 +161,12 @@ export function paginatePanels(
   const blocks = flattenChapter(chapter, trap, accents);
   const openerOverhead = Math.max(0, budgets.panel - budgets.opener);
   const total = blocks.reduce((t, b) => t + blockCost(b), 0) + openerOverhead;
-  const pageCount = Math.max(1, Math.ceil(total / budgets.panel));
+  // Fill tolerance: allow a page to run up to ~10% over budget before a new
+  // page is opened, so content that's just past a boundary stays on fewer,
+  // fuller pages (target ~80%+) instead of splitting into two half-full ones.
+  // The reader's overflow-scroll fallback absorbs the small over-budget cases.
+  const FILL_TOLERANCE = 0.1;
+  const pageCount = Math.max(1, Math.ceil(total / budgets.panel - FILL_TOLERANCE));
   const target = total / pageCount;
 
   const panels: Block[][] = [];

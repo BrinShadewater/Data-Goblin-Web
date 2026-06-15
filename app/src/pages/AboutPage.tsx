@@ -25,6 +25,17 @@ const PRINCIPLES = [
   { title: "Calibrated suspicion is healthy", body: "The Suspicion Meter isn't cynicism — it's calibrated scepticism. The goblin collects receipts, not grudges." },
 ];
 
+const STATS = [
+  { n: "20", label: "chapters" },
+  { n: "119k", label: "words" },
+  { n: "42", label: "charts & figures" },
+  { n: "46", label: "tracked receipts" },
+  { n: "136", label: "linked sources" },
+  { n: "45", label: "glossary terms" },
+  { n: "25", label: "Goblin Checks" },
+  { n: "20", label: "Goblin Traps" },
+];
+
 export function AboutPage() {
   const { c, dark } = useTheme();
   const { data: book } = useBook();
@@ -81,6 +92,17 @@ export function AboutPage() {
               {tr("A working manual on artificial intelligence, data centres, and digital sovereignty, written for Canadians who want to participate in the conversation but were never given the manual. It is not a textbook. It is not a press release. It is not neutral. It is a working document — meant to be read, returned to, argued with, and used.")}
             </p>
           </div>
+        </div>
+
+        {/* By the numbers */}
+        <Kicker color={muted} fontSize="8.5px" letterSpacing="0.2em" marginBottom="12px">{tr("By The Numbers")}</Kicker>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))", gap: "10px", marginBottom: "26px" }}>
+          {STATS.map((s, i) => (
+            <div key={i} style={{ background: cardBg, border: `1px solid ${border}`, borderRadius: "8px", padding: "16px 14px", textAlign: "center" }}>
+              <div style={{ fontFamily: DISPLAY, fontSize: "30px", fontWeight: 900, color: green, lineHeight: 1 }}>{s.n}</div>
+              <div style={{ fontFamily: MONO, fontSize: "10px", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: muted, marginTop: "8px" }}>{tr(s.label)}</div>
+            </div>
+          ))}
         </div>
 
         {/* Why "Data Goblin"? — straight from the manuscript frontmatter */}
