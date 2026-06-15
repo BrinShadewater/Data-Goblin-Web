@@ -6,6 +6,7 @@ import { BODY, MONO, P, RADIUS } from "../theme";
 import { LeftSidebar } from "../components/LeftSidebar";
 import { GoblinTools, RightSidebar } from "../components/RightSidebar";
 import { BottomBar } from "../components/BottomBar";
+import { EdgeNav } from "../components/EdgeNav";
 import { PagePanel } from "../components/PagePanel";
 import { NavIcon } from "../components/GoblinMascot";
 import { useBook } from "../useContent";
@@ -40,6 +41,10 @@ export function FieldGuidePage() {
   const { data: book } = useBook();
   const { chapter, error, panels } = usePaginatedChapter(num);
   const { aligned, page, pageCount, step, goNext, goPrev } = usePageNavigation({ num, panels, single });
+  const firstDoc = book?.frontMatter?.number ?? 0;
+  const lastDoc = book?.backMatter?.number ?? 21;
+  const canPrev = !(num <= firstDoc && page === 0);
+  const canNext = !(num >= lastDoc && page >= pageCount - 1);
   const { bookmarked, onToggleBookmark } = useReaderBookmark({ num, chapter, panels, aligned, step });
   const { onTouchStart, onTouchEnd } = useSwipePaging({ goNext, goPrev });
   const { toolsOpen, setToolsOpen } = useToolsSheet(num);
@@ -109,6 +114,7 @@ export function FieldGuidePage() {
                 boxShadow: pageShadow,
                 borderRadius: "3px",
                 overflow: "hidden",
+                position: "relative",
                 border: `1px solid ${c("#b8ad92", "#262c3a")}`,
               }}
             >
@@ -120,6 +126,7 @@ export function FieldGuidePage() {
                 folio={folio(num, aligned + 1)}
                 opener={aligned === 0}
               />
+              <EdgeNav onPrev={goPrev} onNext={goNext} canPrev={canPrev} canNext={canNext} />
             </div>
           )}
         </div>
@@ -258,6 +265,7 @@ export function FieldGuidePage() {
               border: `1px solid ${c("#b8ad92", "#262c3a")}`,
             }}
           >
+            <EdgeNav onPrev={goPrev} onNext={goNext} canPrev={canPrev} canNext={canNext} />
             <PagePanel
               key={`${num}-${aligned}-left`}
               chapter={chapter}

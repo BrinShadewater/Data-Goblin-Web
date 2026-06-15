@@ -12,6 +12,7 @@ export function artBlendStyle(dark: boolean) {
 export function ArtPlate({ src, caption }: { src: string; caption?: string | null }) {
   const { c, dark } = useTheme();
   const dimensions = artDimensions(src);
+  const isFigure = src.startsWith("figures/");
   return (
     <div
       style={{
@@ -39,7 +40,7 @@ export function ArtPlate({ src, caption }: { src: string; caption?: string | nul
           maxWidth: "640px",
           aspectRatio: artAspectRatio(src),
           objectFit: "contain",
-          ...artBlendStyle(dark),
+          ...(isFigure ? {} : artBlendStyle(dark)),
         }}
       />
       {caption && (

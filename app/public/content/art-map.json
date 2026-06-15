@@ -37,6 +37,14 @@
         {
           "src": "panels/ai-innovation-panel.webp",
           "caption": null
+        },
+        {
+          "src": "figures/fig-1.1-source-bias-map.webp",
+          "caption": "Every source in the AI debate leans somewhere, and that's fine — as long as you can name the lean. These eight categories are the lens the whole guide uses: government framing flatters the announcement, corporate self-disclosure is real but selectively scoped, a union brief tilts toward workers and still contains verifiable evidence. Name the lean, then use the source."
+        },
+        {
+          "src": "figures/fig-1.2-prompt-footprint.webp",
+          "caption": "A single text query is genuinely tiny — about a quarter watt-hour, a fraction of a gram of CO₂, a few drops of water. The catch is multiplication: small numbers times billions of daily prompts are how the planet-scale totals sneak up."
         }
       ]
     },
@@ -51,6 +59,10 @@
         {
           "src": "panels/data-analysis-panel.webp",
           "caption": null
+        },
+        {
+          "src": "figures/fig-2.1-next-token-loop.webp",
+          "caption": "A language model doesn't plan a sentence and then write it. It reads everything so far, scores every possible next word, picks one with a little randomness, and repeats — thousands of times over. Fluency is the costume; pattern-matching is the creature wearing it."
         }
       ]
     },
@@ -66,6 +78,10 @@
         {
           "src": "panels/data-colonialism-panel.webp",
           "caption": null
+        },
+        {
+          "src": "figures/fig-3.1-training-set.webp",
+          "caption": "Modern models are trained on scraped web text, a shadow-library book corpus, and billions of captioned images — most of it gathered without permission. \"Publicly readable\" was quietly treated as \"free to ingest,\" and the consent column is where the copyright fights and the CSAM problem both live."
         }
       ]
     },
@@ -80,6 +96,18 @@
         {
           "src": "panels/power2-panel.webp",
           "caption": null
+        },
+        {
+          "src": "figures/fig-4.1-supply-chain.webp",
+          "caption": "The \"cloud\" is a physical supply chain: chips designed in the US, fabricated in Taiwan on Dutch machines, from minerals dug out of contested ground, assembled in Asia, humming in a Canadian building. Anything sold to you as \"virtual\" has a street address, a water bill, and a supply chain — and over half the mineral projects feeding it sit on or near Indigenous and peasant lands."
+        },
+        {
+          "src": "figures/fig-4.2-mineral-lands.webp",
+          "caption": "The metals AI hardware depends on — cobalt, lithium, copper, rare earths — come disproportionately from land that isn't empty. Owen et al. found 54% of these projects on or near Indigenous lands, 69% once peasant lands are counted, and 62% in high-water-risk areas. The environmental cost of AI starts at the mine, not the data centre."
+        },
+        {
+          "src": "figures/fig-4.3-ewaste-waffle.webp",
+          "caption": "Only about 22% of the world's e-waste is formally collected and recycled; the rest is landfilled, burned, or shipped to lower-income countries. The pile is already 62 million tonnes a year and climbing, and AI hardware is adding an estimated 1.2–5 million tonnes annually by 2030."
         }
       ]
     },
@@ -94,6 +122,18 @@
         {
           "src": "panels/canadian-champions-panel.webp",
           "caption": null
+        },
+        {
+          "src": "figures/fig-5.1-policy-timeline.webp",
+          "caption": "Canada has been using and debating AI for three decades, but the one binding law — AIDA — died on prorogation in January 2025. What shipped instead was a voluntary code and the AI for All strategy: announced intent has consistently outrun enforceable rules."
+        },
+        {
+          "src": "figures/fig-5.2-money-map.webp",
+          "caption": "AI for All commits real money, dominated by a $1-billion compute fund and two $500-million growth vehicles. Sizing the buckets by dollar shows where the strategy's priorities actually sit — and because several figures overlap, the totals deserve the goblin's usual caution."
+        },
+        {
+          "src": "figures/fig-5.3-six-pillars.webp",
+          "caption": "AI for All's three launch banners — Trust, Opportunity, Sovereignty — were formalized into six working commitments the guide tracks throughout. Seeing them together shows the strategy's centre of gravity: most pillars are about building, powering, and scaling AI, with protection and democracy as one pillar among six."
         }
       ]
     },
@@ -108,6 +148,14 @@
         {
           "src": "panels/data-infrastructure-panel.webp",
           "caption": null
+        },
+        {
+          "src": "figures/fig-6.1-datacentre-footprint.webp",
+          "caption": "Canada already has 300-plus data centres, and Montréal's cluster is bigger than Toronto's. Their share of national electricity climbed from 1.4% to 2.1% in just two years — before the latest wave of generative-AI demand had fully landed."
+        },
+        {
+          "src": "figures/fig-6.2-carbon-vs-compute.webp",
+          "caption": "Plot each province by grid carbon and compute-growth pressure and the worry sits top-right: high-carbon grids attracting fast-growing demand. Alberta is heading there; Québec and BC sit clean, with room to spare. ---"
         }
       ]
     },
@@ -122,6 +170,14 @@
         {
           "src": "panels/power-panel.webp",
           "caption": null
+        },
+        {
+          "src": "figures/fig-7.1-cohere-ownership.webp",
+          "caption": "Canada's \"sovereign champion\" is genuinely Canadian-headquartered — and runs on its investors' chips and clouds. NVIDIA is both an investor and the chip supplier; Oracle is investor, cloud host, and customer at once. Sovereignty at the headquarters level is not the same as sovereignty in the capital stack."
+        },
+        {
+          "src": "figures/fig-7.2-ecosystem.webp",
+          "caption": "Canadian AI capacity sits in four buckets, and only one is a Canadian-controlled model-maker (Cohere). The hyperscalers that run most of the compute are foreign; the research institutes are federally funded beneficiaries, not neutral referees. Knowing which bucket a voice comes from is half of reading its claims."
         }
       ]
     },
@@ -137,6 +193,30 @@
         {
           "src": "panels/ai-data-power-panel.webp",
           "caption": null
+        },
+        {
+          "src": "figures/fig-8.1-province-carbon.webp",
+          "caption": "Where you build a data centre shapes its carbon footprint more than how you build it. The same 100 MW facility emits roughly 26,000 tonnes of CO₂ a year in Québec and 394,000 in Alberta — fifteen times more — yet AI for All sets no siting requirements."
+        },
+        {
+          "src": "figures/fig-8.2-electricity-mix.webp",
+          "caption": "Canada's grid is roughly 82% non-emitting, dominated by hydropower — the structural reason a data centre sited here can be genuinely low-carbon. But \"clean\" isn't unlimited: hydro output varies with the weather, and Québec's exports already fell by half in recent dry years."
+        },
+        {
+          "src": "figures/fig-8.3-water-comparison.webp",
+          "caption": "At the national scale, a data centre's water use is a rounding error next to thermal power or manufacturing — the AI slice is too small to even render. The catch is scale: at the level of one watershed or one summer, a single campus drawing potable water for evaporative cooling can be the dominant new user."
+        },
+        {
+          "src": "figures/fig-8.4-siting-map.webp",
+          "caption": "Canada's cleanest grids — Québec, BC, Manitoba — have the room, but the fastest-growing data-centre build is heading to Alberta, whose grid runs about fifteen times their carbon. Siting is the single biggest lever on AI's Canadian footprint, and right now it points the wrong way."
+        },
+        {
+          "src": "figures/fig-8.5-twh-area.webp",
+          "caption": "On the IEA's base case, global data-centre electricity roughly doubles from 415 TWh (2024) to 945 (2030), passing Canada's entire national power use around 2026. Efficiency gains keep getting reinvested into more compute rather than less demand."
+        },
+        {
+          "src": "figures/fig-8.6-quebec-hydro.webp",
+          "caption": "Québec is low-carbon, not bottomless. Its electricity exports nearly halved between 2019 and 2023 as precipitation fell — a reminder that hydropower headroom swings with the weather in a way gas and nuclear don't. \"Clean\" and \"surplus\" are not the same word."
         }
       ]
     },
@@ -155,6 +235,14 @@
         {
           "src": "panels/sovereign-cloud-panel2.webp",
           "caption": null
+        },
+        {
+          "src": "figures/fig-9.1-three-sovereignties.webp",
+          "caption": "\"Sovereign AI\" is really three questions wearing one word: whose law can compel the data, whose consent was sought, and whose collective governance applies. A maple leaf on the invoice answers the first — on a good day — and most \"sovereign\" claims quietly fail the other two."
+        },
+        {
+          "src": "figures/fig-9.2-indigenous-frameworks.webp",
+          "caption": "Three Indigenous-led bodies steward three distinct frameworks: FNIGC's OCAP®, the Global Indigenous Data Alliance's CARE, and ITK's NISR. The guide engages these as primary sources and is explicit that it is not Indigenous-led and cannot speak for them."
         }
       ]
     },
@@ -169,6 +257,14 @@
         {
           "src": "panels/data-security-panel2.webp",
           "caption": null
+        },
+        {
+          "src": "figures/fig-10.1-inferential-extraction.webp",
+          "caption": "You consent to individual data points: a search, a purchase, a location. The harm is the inference engine introducing them to each other to deduce things you never disclosed. The consent forms cover the data points; nothing covers the introductions, and the introductions are the product."
+        },
+        {
+          "src": "figures/fig-10.2-privacy-concern.webp",
+          "caption": "Concern about AI and privacy is close to universal in Canada — 88% per the Privacy Commissioner. What's missing is the matching law: there is still no comprehensive federal private-sector privacy statute built for the AI era, which leaves Québec's Law 25 as the de facto national baseline."
         }
       ]
     },
@@ -183,6 +279,10 @@
         {
           "src": "panels/stolen-work-panel.webp",
           "caption": null
+        },
+        {
+          "src": "figures/fig-11.1-copyright-contest.webp",
+          "caption": "The Canadian copyright fight is not a case of one side lying. Geist and Craig weigh the social bargain of permitted uses; TWUC and ACTRA weigh creator compensation — both rigorous, reaching opposite conclusions inside the same statute while the lawsuits play out. The trap is resolving a genuine disagreement prematurely."
         }
       ]
     },
@@ -198,6 +298,14 @@
         {
           "src": "panels/stolen-work-panel.webp",
           "caption": "Film and media under the prompt — the work, the worker, and the receipt."
+        },
+        {
+          "src": "figures/fig-12.1-film-workflow.webp",
+          "caption": "\"Will AI replace artists?\" is too blunt to be useful. AI enters film at many points, and the stakes differ at each: a transcription aid augments, a synthetic performer substitutes. The real question is never \"AI or not,\" but where it enters, who consented, and who absorbs the risk."
+        },
+        {
+          "src": "figures/fig-12.2-tax-credits.webp",
+          "caption": "Canada's screen incentives pull two ways: the CPTC (25%) rewards Canadian-owned stories, while the PSTC (16%) and BC's 36% reward being a good place to shoot, with no Canadian-content test. Production volume and creative ownership are cousins, not twins."
         }
       ]
     },
@@ -212,6 +320,18 @@
         {
           "src": "panels/deep-fakes-panel.webp",
           "caption": null
+        },
+        {
+          "src": "figures/fig-13.1-election-deepfakes.webp",
+          "caption": "The 2025 federal election produced real deepfakes — about 5.9% of election images — but the harmful subset reached only 0.1% of views. Measurable and worth watching, yet far narrower than the panic, and Canada still has no law aimed at political deepfakes specifically."
+        },
+        {
+          "src": "figures/fig-13.2-deepfake-share.webp",
+          "caption": "Of 187,778 election posts analyzed, fewer than one image in sixteen was a deepfake, and most of those were benign. The chart is the antidote to both overstatement and dismissal: real, measurable, and not the whole election."
+        },
+        {
+          "src": "figures/fig-13.3-deepfake-laws.webp",
+          "caption": "Several jurisdictions now criminalize sexualized deepfakes, and Canada's Bill C-16 joins them. The gap is political deepfakes: Canada has no law aimed at them specifically, even after the 2025 election showed they are real, if limited."
         }
       ]
     },
@@ -226,6 +346,10 @@
         {
           "src": "panels/algorithmic-impact-panel.webp",
           "caption": null
+        },
+        {
+          "src": "figures/fig-14.1-three-biases.webp",
+          "caption": "Bias in AI is not only a data-cleaning problem. Cleaning the data reaches statistical bias, but social bias (stereotypes baked into the corpus) and structural bias (the metric chosen, the people the system was built to serve) sit in the outer rings, untouched. A system 99% accurate on average can still be 90% accurate on your face."
         }
       ]
     },
@@ -240,6 +364,18 @@
         {
           "src": "panels/automate-panel.webp",
           "caption": null
+        },
+        {
+          "src": "figures/fig-15.1-jobs-adoption.webp",
+          "caption": "Canadian business AI adoption is accelerating — 6.1% to 19.2% in two years, against a 60% target for 2034. The displacement-versus-augmentation debate misses the real move: work shifting toward lower wages, less stability, and more surveillance, even as the aggregate employment numbers stay calm."
+        },
+        {
+          "src": "figures/fig-15.2-sector-adoption.webp",
+          "caption": "AI adoption isn't evenly spread: information, professional-services, and finance run roughly triple the 12.2% national average. That's the white-collar, desk-work economy — and exactly where the displacement pressure concentrates."
+        },
+        {
+          "src": "figures/fig-15.3-adoption-gauge.webp",
+          "caption": "Canadian business AI adoption tripled in two years to 19.2%. The federal target is 60% by 2034 — another near-tripling — ambitious, but on these curves not impossible."
         }
       ]
     },
@@ -257,6 +393,18 @@
         {
           "src": "panels/quebec-panel.webp",
           "caption": null
+        },
+        {
+          "src": "figures/fig-16.1-governance-jurisdiction.webp",
+          "caption": "There is no single switch for AI in Canada. The 1867 Constitution puts most of the places AI actually touches a life — health, employment, education — under provincial jurisdiction, which is why the same hiring tool can get six different regulatory answers depending on who's asking and where."
+        },
+        {
+          "src": "figures/fig-16.2-governance-architecture.webp",
+          "caption": "Canada has real AI-governance institutions and no central coordinator — no designated AI regulator and no binding AI law since AIDA died in January 2025. Authority is scattered across federal departments, research and oversight bodies, sectoral regulators, and the provinces, which is why the same AI use can fall under several rules at once, or none. ---"
+        },
+        {
+          "src": "figures/fig-16.3-signed-not-signed.webp",
+          "caption": "Canada readily joins the soft, voluntary AI instruments — the OECD principles, the G7 code, UNESCO ethics, and (on paper) the Council of Europe convention. The binding commitments are the gaps: the Beijing performer-rights treaty unsigned, and no binding domestic AI law since AIDA died."
         }
       ]
     },
@@ -271,6 +419,18 @@
         {
           "src": "panels/source-verification-panel.webp",
           "caption": null
+        },
+        {
+          "src": "figures/fig-17.1-transparency-drop.webp",
+          "caption": "In the year AI deployment grew fastest, the companies building it became measurably less transparent: the mean Stanford transparency score fell 17 points, and engagement with the assessment collapsed from 74% to 30%. Transparency is the precondition for every other kind of accountability — and it went the wrong way."
+        },
+        {
+          "src": "figures/fig-17.2-fmti-engagement.webp",
+          "caption": "It is not only that companies disclosed less; most stopped participating in the transparency assessment at all, with engagement falling from 74% to 30% in a single year. Declining to be measured is itself a finding."
+        },
+        {
+          "src": "figures/fig-17.3-transparency-dumbbell.webp",
+          "caption": "From 2024 to 2025 transparency fell almost everywhere — Meta, Mistral, and OpenAI all dropped, and the mean fell 17 points. The handful that rose did so mostly by holding steady while everyone around them slid; IBM's 95 was the lone high."
         }
       ]
     },
@@ -285,6 +445,10 @@
         {
           "src": "panels/visualize-panel.webp",
           "caption": null
+        },
+        {
+          "src": "figures/fig-18.1-toolkit-flow.webp",
+          "caption": "This is the guide's actual product: three portable questions for any AI claim, from any source — who counted it, what got left out of the count, and can anyone outside the building check. Apply them to government, corporate, advocacy, and academic claims alike — and to this book's. The goblin isn't in the margins anymore; it's you."
         }
       ]
     },
@@ -299,6 +463,10 @@
         {
           "src": "panels/findings-panel.webp",
           "caption": null
+        },
+        {
+          "src": "figures/fig-19.1-coalition.webp",
+          "caption": "A likeness-rights law is a coalition waiting to be picked up: performers' unions want it to protect their faces and voices, privacy researchers want it to stop non-consensual deepfakes — the same mechanism for opposite reasons. The pieces already exist (Denmark's precedent, disclosure thresholds half-built); what's missing is coordination, not feasibility. ---"
         }
       ]
     },
