@@ -97,7 +97,10 @@ def parse_chapter(num, body):
 
         s["markdown"] = md
 
-    start_here = next((s["markdown"] for s in sections if s["heading"].lower().startswith("start here")), "")
+    # Opener is the first section, whatever its heading says. Chapter opener
+    # headings now vary per chapter (de-template pass); the reader still renders
+    # this section as the branded "Start Here" trail marker.
+    start_here = sections[0]["markdown"] if sections else ""
 
     # sources -> list of strings for the Show Receipts panel
     src_list = []
@@ -112,7 +115,7 @@ def parse_chapter(num, body):
         "part": part,
         "region": region,
         "startHere": start_here,
-        "sections": [s for s in sections if not s["heading"].lower().startswith("start here")],
+        "sections": sections[1:] if sections else [],
         "goblinChecks": goblin_checks,
         "recap": recap,
         "biasLabel": bias_label,
