@@ -201,8 +201,35 @@ def translate_markdown(md):
     return "\n".join(out)
 
 # ----- field-level helpers ---------------------------------------------------
+_FR_PROTECT = ["\U0001f9cc GOBLIN CHECK", "GOBLIN CHECK", "CHAPTER RECAP",
+               "GOBLIN FACTS", "GOBLIN FACT", "GOBLIN TRAP", "Data Goblin", "AI for All"]
+_FR_PROT_RE = re.compile("|".join(re.escape(p) for p in sorted(_FR_PROTECT, key=len, reverse=True)))
+
+def _post_fr(text):
+    """Deterministic terminology correction applied after MT: lean->biais,
+    goblin->gobelin, AI->IA — while protecting brand, callout keywords, URLs,
+    inline code, images, and the datagoblin domain. Idempotent."""
+    if not isinstance(text, str) or not text.strip():
+        return text
+    store = []
+    def mask(m):
+        store.append(m.group(0)); return "\x01%dZ" % (len(store) - 1)
+    text = re.sub(r"`[^`]*`", mask, text)
+    text = re.sub(r"!\[[^\]]*\]\([^)]*\)", mask, text)
+    text = re.sub(r"https?://\S+", mask, text)
+    text = _FR_PROT_RE.sub(mask, text)
+    text = re.sub(r"datagoblin", mask, text, flags=re.I)
+    text = re.sub(r"\bAI\b", "IA", text)
+    text = text.replace("Goblin", "Gobelin").replace("goblin", "gobelin").replace("GOBLIN", "GOBELIN")
+    text = re.sub(r"\bsources maigres\b", "sources orientées", text)
+    text = re.sub(r"\bsource maigre\b", "source orientée", text)
+    text = re.sub(r"\bmaigres?\b", "biais", text)
+    for i in range(len(store) - 1, -1, -1):
+        text = text.replace("\x01%dZ" % i, store[i])
+    return text
+
 def tr_text(s):
-    return translate_markdown(s) if isinstance(s, str) else s
+    return _post_fr(translate_markdown(s)) if isinstance(s, str) else s
 
 def translate_book(b):
     b = json.loads(json.dumps(b))  # deep copy

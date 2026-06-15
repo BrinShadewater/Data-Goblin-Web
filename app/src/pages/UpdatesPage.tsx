@@ -14,6 +14,16 @@ interface UpdateEntry {
 const UPDATES: UpdateEntry[] = [
   {
     date: "June 15, 2026",
+    tag: "Edition",
+    title: "French edition — readability fixes on the front door",
+    items: [
+      "Corrected the French edition's three most systematic machine-translation errors, edition-wide: 'lean' — the book's core idea — had been rendered as 'maigre' (skinny) and is now 'biais'; the mascot is now spelled 'gobelin'; and 'AI' is now 'IA' throughout. The 'Data Goblin' name and the Goblin Check / Chapter Recap markers are preserved.",
+      "Hand-polished the highest-traffic French UI — the home page, the Toolkit's source-bias categories, and the 'name the lean' explainer — replacing machine phrasing with proper French.",
+      "The French edition is still machine-translated and labelled under review. A full resync to the latest English — the de-templated chapter headings and the new Film & Media material — is the next French pass.",
+    ],
+  },
+  {
+    date: "June 15, 2026",
     tag: "New sections",
     title: "Film & Media chapter — new Canadian beats",
     items: [

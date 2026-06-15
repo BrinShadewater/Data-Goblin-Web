@@ -3,7 +3,7 @@
   "chapter": 1,
   "chapterTitle": "Ce que l'IA est en fait",
   "trapTitle": "\"Intelligence\" est un mot neutre, technique.",
-  "text": "Le plus grand piège de toute la conversation, mis à la page 1. \"AI\" est un parapluie sur des techniques sauvagement différentes — un filtre de spam et un chatbot partagent une étiquette, pas une nature — et la définition de \"intelligence\" à l'intérieur du parapluie a une histoire contestée le champ mentionne rarement. Celui qui parvient à définir le mot gagne habituellement l'argument selon lequel le système « fonctionne ». Demandez quelle définition est en jeu avant d'accepter toute revendication construite sur elle."
+  "text": "Le plus grand piège de toute la conversation, mis à la page 1. \"IA\" est un parapluie sur des techniques sauvagement différentes — un filtre de spam et un chatbot partagent une étiquette, pas une nature — et la définition de \"intelligence\" à l'intérieur du parapluie a une histoire contestée le champ mentionne rarement. Celui qui parvient à définir le mot gagne habituellement l'argument selon lequel le système « fonctionne ». Demandez quelle définition est en jeu avant d'accepter toute revendication construite sur elle."
  },
  "2": {
   "chapter": 2,
@@ -51,7 +51,7 @@
   "chapter": 9,
   "chapterTitle": "Souveraineté",
   "trapTitle": "Un \"nuage souverain\" rend les données souveraines.",
-  "text": "Une feuille d'érable sur la facture répond à une question de trois. À qui la loi peut-elle contraindre les données? À qui les puces et les logiciels font tourner la pile ? À qui appartient la société ? Et en dessous de ces trois : la terre, le consentement ou la gouvernance collective des données ont-ils jamais fait partie de la conversation ? La plupart des « AI souverains » prétendent réussir un test et échouer le reste tranquillement."
+  "text": "Une feuille d'érable sur la facture répond à une question de trois. À qui la loi peut-elle contraindre les données? À qui les puces et les logiciels font tourner la pile ? À qui appartient la société ? Et en dessous de ces trois : la terre, le consentement ou la gouvernance collective des données ont-ils jamais fait partie de la conversation ? La plupart des « IA souverains » prétendent réussir un test et échouer le reste tranquillement."
  },
  "10": {
   "chapter": 10,
@@ -99,7 +99,7 @@
   "chapter": 17,
   "chapterTitle": "Cadres de décision",
   "trapTitle": "Une source biaisée est une source discutable.",
-  "text": "Le maigre n'est pas le mensonge. Le mémoire syndical se penche sur les travailleurs et contient des preuves vérifiables; le papier corporatif se penche sur l'entreprise et contient une mesure minutieuse. Rejeter une source parce qu'elle s'appuie jette les preuves avec le cadrage — et vous laisse seulement avec les sources dont vous ne pouvez pas voir maigre, ce qui est pire. Nomme le maigre. Ensuite, utilisez la source."
+  "text": "Le biais n'est pas le mensonge. Le mémoire syndical se penche sur les travailleurs et contient des preuves vérifiables; le papier corporatif se penche sur l'entreprise et contient une mesure minutieuse. Rejeter une source parce qu'elle s'appuie jette les preuves avec le cadrage — et vous laisse seulement avec les sources dont vous ne pouvez pas voir biais, ce qui est pire. Nomme le biais. Ensuite, utilisez la source."
  },
  "18": {
   "chapter": 18,
@@ -111,6 +111,6 @@
   "chapter": 19,
   "chapterTitle": "Naviguer dans la conversation",
   "trapTitle": "Tu as fini le livre, donc tu as fini.",
-  "text": "Les faits dans ce livre ont commencé à expirer le jour où il a été imprimé; la méthode est la partie qui conserve. Le dernier piège est de traiter le manuel comme une autorité au lieu d'une démonstration — les trois questions de poche s'appliquent à la prochaine demande d'AI que vous rencontrez, et aux revendications de ce livre aussi. Surtout ceux-là. Demande qui a compté. Demande ce qui a été laissé de côté. Demandez à voir le reçu."
+  "text": "Les faits dans ce livre ont commencé à expirer le jour où il a été imprimé; la méthode est la partie qui conserve. Le dernier piège est de traiter le manuel comme une autorité au lieu d'une démonstration — les trois questions de poche s'appliquent à la prochaine demande d'IA que vous rencontrez, et aux revendications de ce livre aussi. Surtout ceux-là. Demande qui a compté. Demande ce qui a été laissé de côté. Demandez à voir le reçu."
  }
 }
