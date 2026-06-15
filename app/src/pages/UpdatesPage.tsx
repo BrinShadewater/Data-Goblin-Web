@@ -14,6 +14,16 @@ interface UpdateEntry {
 const UPDATES: UpdateEntry[] = [
   {
     date: "June 15, 2026",
+    tag: "New sections",
+    title: "Film & Media chapter — new Canadian beats",
+    items: [
+      "A new section on the certification question: Canada's CanCon points system and the CPTC/PSTC labour credits all reward Canadian people, and have no answer yet for AI doing the creative work — so 'made in Canada' and 'made by Canadians' can quietly drift apart inside the same certified production.",
+      "The Quebec/Montréal dubbing (doublage) industry as one of the most AI-exposed corners of the screen economy — UDA and ANDP, AI voice synthesis, and the consent fight, with YouTube and Amazon already shipping AI dubs.",
+      "Sector scale added (≈$10.2B production volume, ≈181,000 jobs in 2024/25), plus below-the-line crew unions, the Canadian Federation of Musicians, and the deceased-performer consent question. Six new sources added to the receipts ledger.",
+    ],
+  },
+  {
+    date: "June 15, 2026",
     tag: "New",
     title: "Forty-two data figures, wired into the guide",
     items: [
