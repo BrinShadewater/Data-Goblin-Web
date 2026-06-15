@@ -13,6 +13,18 @@ interface UpdateEntry {
 
 const UPDATES: UpdateEntry[] = [
   {
+    date: "June 14, 2026",
+    tag: "Edition",
+    title: "Editorial polish, legal pass, and a living-document commitment",
+    items: [
+      "This web edition is explicitly a living document: it gets corrected and extended as bills pass, cases settle, and the evidence moves — and every change is logged here, in the open. A print edition, if one ever ships, will be a dated snapshot; the web version is where the guide stays current.",
+      "A full readability and voice pass across all twenty chapters — tighter prose, with no facts, figures, or sources changed.",
+      "A fresh legal review and fixes: active litigation kept as allegation, and claims about named people and companies tightened to what the reporting actually supports.",
+      "The Film & Media chapter's sources pinned to specific trade-press reporting (Variety, The Hollywood Reporter, Deadline), including the AI feature Hell Grind at Cannes' Marché du Film.",
+      "Twenty-five new research sources verified and logged in the receipts ledger, with corporate self-disclosures (Anthropic, OpenAI) flagged as exactly that.",
+    ],
+  },
+  {
     date: "June 13, 2026",
     tag: "Edition",
     title: "French edition added (machine-translated, under review)",
@@ -57,8 +69,7 @@ const UPDATES: UpdateEntry[] = [
 ];
 
 const PENDING: string[] = [
-  "The exact spelling of a cited Hawaiian elder's name in an epigraph attribution — being confirmed against the source before it is treated as settled.",
-  "One citation year (the global PUE-reporting benchmark) and a handful of provincial energy and water figures, pending their primary documents.",
+  "A handful of provincial energy and water figures and per-city data-centre megawatt estimates that are cited from secondary sources and not yet independently confirmed against primary documents.",
 ];
 
 export function UpdatesPage() {
