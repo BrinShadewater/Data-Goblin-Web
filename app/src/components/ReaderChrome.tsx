@@ -178,7 +178,7 @@ export function ProgressGuide({
         <NavIcon name="book-nav" size={TOKENS.icon.progressBook} />
       </div>
       <div style={{ display: "flex", gap: "5px", alignItems: "center", justifyContent: "center", minHeight: "18px" }}>
-        {Array.from({ length: totalChapters }, (_, i) => {
+        {Array.from({ length: totalChapters + 1 }, (_, i) => {
           const ch = i + 1;
           const isActive = ch === activeChapter;
           const isDone = ch < activeChapter;
@@ -189,7 +189,7 @@ export function ProgressGuide({
                 savePanel(ch, 0);
                 navigate(`/chapter/${ch}`);
               }}
-              title={`${ch}. ${titleOf(ch)}`}
+              title={ch > totalChapters ? tr("Appendix") : `${ch}. ${titleOf(ch)}`}
               style={{
                 width: isActive ? "15px" : "8px",
                 height: isActive ? "15px" : "8px",

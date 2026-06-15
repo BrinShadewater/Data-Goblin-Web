@@ -35,7 +35,7 @@ export function BottomBar({
   const { mode } = useReader();
 
   const allChapters = book ? book.parts.flatMap((p) => p.chapters) : [];
-  const totalChapters = allChapters.length || 19;
+  const totalChapters = allChapters.length || 20;
   const titleOf = (n: number) => allChapters.find((ch) => ch.number === n)?.title.split(" — ")[0] ?? "";
 
   // Document chain: Front Matter (0) ↔ Ch1 … Ch19 ↔ Appendix (20). The end

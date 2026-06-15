@@ -174,7 +174,8 @@ export function TopNav({
       >
         <NavIcon name="search-nav" size={TOKENS.icon.headerSearch} />
         <input
-          type="text"
+          type="search"
+          aria-label={tr("Search the guide")}
           placeholder={tr("Search the guide…")}
           value={searchQuery}
           onChange={(e) => onSearch(e.target.value)}

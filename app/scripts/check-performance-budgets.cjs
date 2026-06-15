@@ -17,9 +17,9 @@ const BUDGETS = {
   anyJsChunkRaw: 390 * 1024,
   maxPublicArtRaw: 500 * 1024,
   maxResponsiveVariantRaw: 400 * 1024,
-  totalOriginalPublicArtRaw: 6 * 1024 * 1024,
+  totalOriginalPublicArtRaw: 8 * 1024 * 1024, // raised from 6: 42 chapter figures added (lazy-loaded, no initial-load cost)
   totalResponsiveVariantRaw: 5.0 * 1024 * 1024, // raised from 4.5: bilingual edition adds a French map + flag variant set
-  totalPublicArtRaw: 10.5 * 1024 * 1024, // raised from 10: bilingual edition adds French map + flag art
+  totalPublicArtRaw: 13 * 1024 * 1024, // raised from 10.5: 42 chapter figures added (lazy-loaded)
 };
 
 function fail(message) {

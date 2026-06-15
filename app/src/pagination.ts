@@ -19,11 +19,6 @@ export type Block =
   /** Near-full-page art plate (art-map.json `panels`); always gets its own page. */
   | { kind: "panel"; src: string; caption?: string | null };
 
-export interface Spread {
-  left: Block[];
-  right: Block[];
-}
-
 export type ReaderMode = "phone" | "tablet" | "desktop";
 
 export interface Budgets {
@@ -235,26 +230,6 @@ export function paginatePanelsCached(
   const panels = paginatePanels(chapter, trap, budgets, accents, artPanels);
   inner.set(key, panels);
   return panels;
-}
-
-/**
- * Desktop pairing: pack panels (with the given budgets), then pair them into
- * two-page spreads, padding with an empty right page when the count is odd.
- */
-export function paginateChapter(
-  chapter: Chapter,
-  trap: Trap | null,
-  budgets: Budgets = DEFAULT_BUDGETS,
-  accents: string[] = [],
-  artPanels: ArtPanel[] = []
-): Spread[] {
-  const panels = paginatePanels(chapter, trap, budgets, accents, artPanels).slice();
-  if (panels.length % 2 === 1) panels.push([]);
-  const spreads: Spread[] = [];
-  for (let i = 0; i < panels.length; i += 2) {
-    spreads.push({ left: panels[i], right: panels[i + 1] });
-  }
-  return spreads;
 }
 
 // ---------------------------------------------------------------------------

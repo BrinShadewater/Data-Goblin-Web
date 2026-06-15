@@ -32,6 +32,7 @@ export function ArtPlate({ src, caption }: { src: string; caption?: string | nul
         width={dimensions?.width}
         height={dimensions?.height}
         alt={caption ?? "Field guide illustration"}
+        loading="lazy"
         decoding="async"
         style={{
           flex: 1,

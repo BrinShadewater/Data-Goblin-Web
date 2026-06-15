@@ -18,7 +18,10 @@ function modeFor(width: number): ReaderMode {
 const REFERENCE_VH = 820;
 function heightScaleFor(vh: number): number {
   if (!vh) return 1;
-  return Math.max(0.62, Math.min(1.18, vh / REFERENCE_VH));
+  const raw = Math.max(0.62, Math.min(1.18, vh / REFERENCE_VH));
+  // Quantize to coarse steps so mobile URL-bar show/hide jitter doesn't
+  // re-trigger pagination on every resize tick.
+  return Math.round(raw / 0.04) * 0.04;
 }
 
 /** Live viewport mode: phone <700px, tablet 700–1024px, desktop >1024px. */
@@ -29,7 +32,11 @@ export function useViewport(): { mode: ReaderMode; heightScale: number } {
       : { mode: modeFor(window.innerWidth), heightScale: heightScaleFor(window.innerHeight) };
   const [vp, setVp] = useState(read);
   useEffect(() => {
-    const onResize = () => setVp(read());
+    const onResize = () =>
+      setVp((prev) => {
+        const next = read();
+        return next.mode === prev.mode && next.heightScale === prev.heightScale ? prev : next;
+      });
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
   }, []);

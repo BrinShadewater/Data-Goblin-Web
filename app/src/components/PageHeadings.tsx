@@ -82,7 +82,7 @@ export function OpenerHeader({ chapter }: { chapter: Chapter }) {
         }}
       >
         {displayRegion(chapter.region)}
-        {chapter.number === 0 ? "" : chapter.number === 20 ? " · Appendix" : ` · Chapter ${chapter.number}`}
+        {chapter.number === 0 ? "" : chapter.number === 21 ? " · Appendix" : ` · Chapter ${chapter.number}`}
         {readMins ? ` · ${readMins} min read` : ""}
       </div>
       <h1
