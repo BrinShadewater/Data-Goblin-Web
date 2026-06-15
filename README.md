@@ -90,3 +90,11 @@ Project Goblin/
 - `docs/local-storage-contract.md`
 - `docs/refactor-baseline.md`
 - `docs/visual-parity-checklist.md`
+
+
+## Licence
+
+- **Text** — [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/): free to share and adapt for non-commercial purposes, with attribution to Data Goblin / Brin Shadewater and a link back.
+- **Illustrations** — AI-generated; no copyright is asserted over the generated images (see the in-book "note on the illustrations and marks").
+- **Third-party material** — quotations, data, and figures remain the property of their original owners and are used under fair dealing with attribution.
+- **Commercial use** — ask first.

@@ -472,14 +472,6 @@
   "url": "https://www.hollywoodreporter.com/business/digital/paul-schrader-ai-filmmaking-synthetic-stars-1236607955/"
  },
  {
-  "name": "Indigenous Screen Office",
-  "url": "https://iso-bea.ca"
- },
- {
-  "name": "CBC",
-  "url": "https://www.cbc.ca/news/entertainment/french-films-tiff-1.6965897"
- },
- {
   "name": "BetaKit",
   "url": "https://betakit.com/cohere-series-d-tops-out-at-500-million-raised-at-5-5-billion-valuation/"
  },
@@ -562,5 +554,65 @@
  {
   "name": "announcement",
   "url": "https://vectorinstitute.ai/vector-institute-announces-the-appointment-of-glenda-crisp-as-president-and-ceo/"
+ },
+ {
+  "name": "CFJC/CP",
+  "url": "https://cfjctoday.com/2026/05/11/mps-amend-bill-criminalizing-sexual-deepfakes-to-include-nearly-nude-images/"
+ },
+ {
+  "name": "Nat'l Observer",
+  "url": "https://www.nationalobserver.com/2026/05/11/news/mps-amend-bill-criminalizing-sexual-deepfakes-include-nearly-nude-images"
+ },
+ {
+  "name": "Globe",
+  "url": "https://www.theglobeandmail.com/canada/article-federal-move-to-criminalize-non-consensual-sexual-deepfakes-is-long/"
+ },
+ {
+  "name": "CBC",
+  "url": "https://www.cbc.ca/news/canada/toronto/openai-new-publishers-lawsuit-ontario-9.6995520"
+ },
+ {
+  "name": "Carters",
+  "url": "https://www.carters.ca/jurisdictional-ruling-opens-door-for-canadian-copyright-claims-against-ai-companies/"
+ },
+ {
+  "name": "Sookman",
+  "url": "https://barrysookman.com/2025/12/10/openai-toronto-star-jurisdiction-decision/"
+ },
+ {
+  "name": "arXiv 2512.13915",
+  "url": "https://arxiv.org/html/2512.13915"
+ },
+ {
+  "name": "The Logic",
+  "url": "https://thelogic.co/news/mila-inovia-capital-venture-scientist-fund/"
+ },
+ {
+  "name": "Mila+Inovia",
+  "url": "https://www.newswire.ca/news-releases/mila-and-inovia-capital-are-partnering-to-launch-the-venture-scientist-fund-propelling-canada-s-ai-research-excellence-into-global-tech-champions-848112787.html"
+ },
+ {
+  "name": "IEA Energy and AI",
+  "url": "https://www.iea.org/reports/energy-and-ai"
+ },
+ {
+  "name": "PMO June 4",
+  "url": "https://www.pm.gc.ca/en/news/news-releases/2026/06/04/prime-minister-carney-launches-ai-all-canadas-new-national-artificial"
+ },
+ {
+  "name": "IAPP",
+  "url": "https://iapp.org/news/a/canada-launches-ai-strategy-to-advance-digital-sovereignty-adoption"
+ },
+ {
+  "name": "Authors Alliance",
+  "url": "https://www.authorsalliance.org/2026/05/14/bartz-v-anthropic-fairness-hearing-observations-and-takeaways/"
+ },
+ {
+  "name": "Eric Goldman",
+  "url": "https://blog.ericgoldman.org/archives/2024/10/court-enjoins-californias-anti-political-deepfakes-law-ab-2839-because-its-unconstitutional-censorship-kohls-v-bonta.htm"
+ },
+ {
+  "name": "ISED Code",
+  "url": "https://ised-isde.canada.ca/site/ised/en/voluntary-code-conduct-responsible-development-and-management-advanced-generative-ai-systems"
  }
 ]

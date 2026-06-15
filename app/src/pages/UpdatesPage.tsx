@@ -14,6 +14,19 @@ interface UpdateEntry {
 const UPDATES: UpdateEntry[] = [
   {
     date: "June 15, 2026",
+    tag: "Corrections",
+    title: "Corrections — Wonder Valley reversal, and a fresh fact-check pass",
+    items: [
+      "Wonder Valley / Sturgeon Lake Cree Nation, corrected in public: an earlier draft described the Nation as an equity participant in the Wonder Valley data-centre project. The documented record is the opposite — the Nation says it was not consulted, demanded a halt (Chief Sunshine's open letter, January 13, 2025), and is in court over the Crown's duty to consult as of June 2026. Chapters 6 and 9 were rewritten to the record; the correction note stays in the book.",
+      "Bill C-16: a May 2026 committee amendment added a 48-hour platform takedown duty (and 'nearly nude' coverage), and the bill has since passed the House and gone to the Senate. The Chapter 13 line that said it created no takedown mechanism was corrected.",
+      "The Toronto Star v. OpenAI jurisdiction ruling is dated November 7, 2025 (not the 27th), and OpenAI has appealed — the book now says so.",
+      "The 2025 election-deepfake figures in the Source Library were aligned to the published paper (8.66% right / 4.42% left / 0.12% harmful reach), matching the chapter body.",
+      "The $100M Venture Scientist Fund is a private Mila–Inovia venture fund, not a federal program — corrected in Chapter 7.",
+      "The point at which global data-centre electricity overtakes Canada's total power use was moved from 2026 to the late 2020s, matching the IEA trajectory.",
+    ],
+  },
+  {
+    date: "June 15, 2026",
     tag: "Edition",
     title: "French edition — readability fixes on the front door",
     items: [
@@ -60,7 +73,7 @@ const UPDATES: UpdateEntry[] = [
       "This web edition is explicitly a living document: it gets corrected and extended as bills pass, cases settle, and the evidence moves — and every change is logged here, in the open. A print edition, if one ever ships, will be a dated snapshot; the web version is where the guide stays current.",
       "A full readability and voice pass across all twenty chapters — tighter prose, with no facts, figures, or sources changed.",
       "A fresh legal review and fixes: active litigation kept as allegation, and claims about named people and companies tightened to what the reporting actually supports.",
-      "The Film & Media chapter's sources pinned to specific trade-press reporting (Variety, The Hollywood Reporter, Deadline), including the AI feature Hell Grind at Cannes' Marché du Film.",
+      "The Film & Media chapter's sources pinned to specific trade-press reporting (Variety, The Hollywood Reporter, Deadline) — including Variety's reporting on the AI feature Hell Grind shown at Cannes' Marché du Film.",
       "Twenty-five new research sources verified and logged in the receipts ledger, with corporate self-disclosures (Anthropic, OpenAI) flagged as exactly that.",
     ],
   },

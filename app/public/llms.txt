@@ -19,3 +19,9 @@
 
 ## Editions
 - [French edition](https://datagoblin.ca/fr): édition française (machine-translated, under review)
+
+## Licence
+- Text: CC BY-NC 4.0 — share/adapt non-commercially with attribution to Data Goblin / Brin Shadewater and a link back.
+- Illustrations: AI-generated; no copyright asserted over the generated images.
+- Third-party quotations, data, and figures remain their owners'; used under fair dealing with attribution.
+- Commercial use: ask first.

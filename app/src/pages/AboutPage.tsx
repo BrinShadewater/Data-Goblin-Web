@@ -152,6 +152,14 @@ export function AboutPage() {
             {tr(", or use the Contribute page.")}
           </p>
         </StaticCard>
+
+        {/* Licence & reuse */}
+        <StaticCard padding="18px 22px" marginBottom="0" style={{ marginTop: "16px" }}>
+          <Kicker color={muted} fontSize="8.5px" letterSpacing="0.2em" marginBottom="8px">{tr("Licence & reuse")}</Kicker>
+          <p style={{ fontFamily: BODY, fontSize: "15px", color: body, lineHeight: 1.6, margin: 0 }}>
+            {tr("The text of this guide is licensed CC BY-NC 4.0 — you're free to share and adapt it for non-commercial purposes, with attribution to Data Goblin / Brin Shadewater and a link back. The AI-generated illustrations carry no asserted copyright (see the in-book note on the illustrations and marks). Third-party quotations, data, and figures remain the property of their original owners and are used here under fair dealing with attribution. For commercial use, ask first.")}
+          </p>
+        </StaticCard>
     </StaticPageShell>
   );
 }
