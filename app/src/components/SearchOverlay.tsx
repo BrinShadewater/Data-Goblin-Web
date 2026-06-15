@@ -18,7 +18,10 @@ export function SearchOverlay({ query, onClose }: { query: string; onClose: () =
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
+      if (e.key === "Escape") {
+        onClose();
+        (document.querySelector('input[type="search"]') as HTMLElement | null)?.focus?.();
+      }
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);

@@ -7,6 +7,7 @@ import { BODY, MONO, P, RADIUS, TOKENS, UI } from "../theme";
 import type { Receipt } from "../types";
 import { NavIcon } from "./GoblinMascot";
 import { downloadCheckCard } from "../shareCard";
+import { AnchoredPopover } from "./AnchoredPopover";
 
 export interface HastNode {
   type?: string;
@@ -136,6 +137,7 @@ export function GoblinCheckCard({ children }: { children: ReactNode }) {
 export function ReceiptMarker({ receipt, children }: { receipt: Receipt; children: ReactNode }) {
   const { c } = useTheme();
   const [open, setOpen] = useState(false);
+  const anchorRef = useRef<HTMLSpanElement>(null);
   const tone = receipt.status === "open" ? c(...P.amber) : c(...P.greenDeep);
   const label = receipt.status === "open" ? "Still checking" : receipt.status === "fixed" ? "Corrected" : "Verified";
   const detail = (receipt.detail || "")
@@ -151,6 +153,7 @@ export function ReceiptMarker({ receipt, children }: { receipt: Receipt; childre
       <span
         role="button"
         tabIndex={0}
+        ref={anchorRef}
         aria-label={`Receipt — ${label}`}
         aria-expanded={open}
         onMouseEnter={() => setOpen(true)}
@@ -167,12 +170,11 @@ export function ReceiptMarker({ receipt, children }: { receipt: Receipt; childre
         {children}
         <sup style={{ fontSize: "0.66em", color: tone, fontWeight: 800, marginLeft: "1.5px" }}>&#10003;</sup>
       </span>
-      {open && (
+      <AnchoredPopover anchorRef={anchorRef} open={open} width={320}>
         <span
-          role="tooltip"
           style={{
-            position: "absolute", zIndex: 60, left: 0, top: "calc(100% + 6px)",
-            width: "min(320px, 78vw)", background: c(...P.cardBg), border: `1px solid ${c(...P.border)}`,
+            display: "block", width: "100%",
+            background: c(...P.cardBg), border: `1px solid ${c(...P.border)}`,
             borderLeft: `4px solid ${tone}`, borderRadius: RADIUS,
             boxShadow: c("0 6px 22px rgba(40,30,10,0.18)", "0 8px 24px rgba(0,0,0,0.55)"),
             padding: "11px 13px", fontStyle: "normal", fontWeight: 400, textAlign: "left",
@@ -201,7 +203,7 @@ export function ReceiptMarker({ receipt, children }: { receipt: Receipt; childre
             </Link>
           </span>
         </span>
-      )}
+      </AnchoredPopover>
     </span>
   );
 }
@@ -212,12 +214,14 @@ export function GlossaryTerm({ term, def }: { term: string; def: string }) {
     .replace(/[*_]{1,3}([^*_]+)[*_]{1,3}/g, "$1")
     .replace(/`([^`]+)`/g, "$1");
   const [open, setOpen] = useState(false);
+  const anchorRef = useRef<HTMLSpanElement>(null);
   const navy = c(...P.navy);
   return (
     <span style={{ position: "relative", display: "inline" }}>
       <span
         role="button"
         tabIndex={0}
+        ref={anchorRef}
         aria-label={`Definition of ${term}`}
         aria-expanded={open}
         onMouseEnter={() => setOpen(true)}
@@ -233,15 +237,11 @@ export function GlossaryTerm({ term, def }: { term: string; def: string }) {
       >
         {term}
       </span>
-      {open && (
+      <AnchoredPopover anchorRef={anchorRef} open={open} width={280}>
         <span
-          role="tooltip"
           style={{
-            position: "absolute",
-            zIndex: 60,
-            left: 0,
-            top: "calc(100% + 6px)",
-            width: "min(280px, 72vw)",
+            display: "block",
+            width: "100%",
             background: c(...P.cardBg),
             border: `1px solid ${c(...P.border)}`,
             borderRadius: RADIUS,
@@ -263,7 +263,7 @@ export function GlossaryTerm({ term, def }: { term: string; def: string }) {
           </span>
           {cleanDef}
         </span>
-      )}
+      </AnchoredPopover>
     </span>
   );
 }

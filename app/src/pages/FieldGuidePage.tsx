@@ -7,6 +7,7 @@ import { LeftSidebar } from "../components/LeftSidebar";
 import { GoblinTools, RightSidebar } from "../components/RightSidebar";
 import { BottomBar } from "../components/BottomBar";
 import { EdgeNav } from "../components/EdgeNav";
+import { useFocusTrap } from "../focusTrap";
 import { PagePanel } from "../components/PagePanel";
 import { NavIcon } from "../components/GoblinMascot";
 import { useBook } from "../useContent";
@@ -48,6 +49,7 @@ export function FieldGuidePage() {
   const { bookmarked, onToggleBookmark } = useReaderBookmark({ num, chapter, panels, aligned, step });
   const { onTouchStart, onTouchEnd } = useSwipePaging({ goNext, goPrev });
   const { toolsOpen, setToolsOpen } = useToolsSheet(num);
+  const toolsTrapRef = useFocusTrap<HTMLDivElement>(toolsOpen, () => setToolsOpen(false));
 
   useEffect(() => {
     if (!chapter) return;
@@ -169,6 +171,8 @@ export function FieldGuidePage() {
                   style={{ position: "fixed", inset: 0, background: c("rgba(35,33,26,0.4)", "rgba(0,0,0,0.6)"), zIndex: 119 }}
                 />
                 <div
+                  ref={toolsTrapRef}
+                  tabIndex={-1}
                   role="dialog"
                   aria-modal="true"
                   aria-label={tr("Goblin tools")}
