@@ -13,6 +13,26 @@ interface UpdateEntry {
 
 const UPDATES: UpdateEntry[] = [
   {
+    date: "June 15, 2026",
+    tag: "New",
+    title: "Forty-two data figures, wired into the guide",
+    items: [
+      "The guide now has its own data. Forty-two charts and diagrams run through the chapters — the source-bias map, the chip-to-mine supply chain, province-by-province grid carbon, the transparency drop, the deepfake-prevalence breakdown — each with a plain-language explainer underneath.",
+      "Every figure draws a number that is already in the text and already in the receipts ledger. Nothing on a chart is a new claim; the figures just make the existing ones visible. They are drawn as vector art, so they stay sharp and change when a figure changes.",
+      "New page-turn buttons on the left and right edges of each page, plus tooltip and keyboard fixes, for easier reading on any screen.",
+    ],
+  },
+  {
+    date: "June 15, 2026",
+    tag: "Edition",
+    title: "A voice-and-structure pass, and the guide audits itself",
+    items: [
+      "A structural editing pass across all twenty chapters: varied chapter openers and closers, and section headings that no longer march One, Two, Three through every chapter. The aim was to make the book read like a person rather than a template. No facts, figures, or sources changed.",
+      "A transparent self-audit of what this guide cost to make — an order-of-magnitude estimate of its own energy and water, with the parts that can't honestly be counted named rather than buried. A book with a chapter on AI's footprint should account for its own.",
+      "An expanded note on who wrote this and why — the background behind the suspicion.",
+    ],
+  },
+  {
     date: "June 14, 2026",
     tag: "Edition",
     title: "Editorial polish, legal pass, and a living-document commitment",
