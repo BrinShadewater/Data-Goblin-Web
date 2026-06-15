@@ -16,6 +16,14 @@ export function SearchOverlay({ query, onClose }: { query: string; onClose: () =
     buildSearchIndex().then(setIndex).catch(() => setIndex([]));
   }, []);
 
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [onClose]);
+
   const bg = c(...P.cardBg);
   const border = c(...P.borderSoft);
   const overlay = c("rgba(35,33,26,0.35)", "rgba(0,0,0,0.65)");
