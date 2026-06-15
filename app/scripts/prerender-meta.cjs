@@ -79,6 +79,26 @@ function seoShell(route, h1, desc, lang) {
   return `<div data-prerender-shell><h1>${esc(h1)}</h1><p>${esc(desc)}</p><nav aria-label="${navLabel}">${nav}<a href="${altHref}">${esc(altLabel)}</a></nav></div>`;
 }
 
+// Per-chapter Article JSON-LD. Each chapter route becomes independently
+// rich-result / AI-citation eligible, linked back to the Book via isPartOf.
+function articleJsonLd(route, headline, self, lang) {
+  const m = route.match(/^\/chapter\/(\d+)$/);
+  if (!m) return "";
+  const obj = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline,
+    inLanguage: lang === "fr" ? "fr-CA" : "en-CA",
+    url: self,
+    isPartOf: { "@id": SITE + "/#book" },
+    isAccessibleForFree: true,
+    author: { "@type": "Person", name: "Alex Yesilcimen" },
+    publisher: { "@id": SITE + "/#org" },
+    image: SITE + "/og-image.png",
+  };
+  return `\n    <script type="application/ld+json">\n${JSON.stringify(obj, null, 2)}\n    </script>`;
+}
+
 function render(route, h1, fullTitle, desc, lang) {
   const urlEn = SITE + (route || "/");
   const urlFr = SITE + "/fr" + route; // "" -> /fr, "/map" -> /fr/map
@@ -100,6 +120,8 @@ function render(route, h1, fullTitle, desc, lang) {
     `\n    <link rel="alternate" hreflang="x-default" href="${esc(urlEn)}" />`;
   h = h.replace(/<link rel="canonical" href="[^"]*" \/>/, alternates);
   h = h.replace('<div id="root"></div>', `<div id="root">${seoShell(route, h1, desc, lang)}</div>`);
+  const extra = articleJsonLd(route, h1, self, lang);
+  if (extra) h = h.replace("</head>", `${extra}\n  </head>`);
   return h;
 }
 
