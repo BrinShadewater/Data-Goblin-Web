@@ -14,6 +14,15 @@ interface UpdateEntry {
 const UPDATES: UpdateEntry[] = [
   {
     date: "June 15, 2026",
+    tag: "Edition",
+    title: "French edition re-synced to the current guide",
+    items: [
+      "The French edition was re-translated from the current English content, fixing a chapter-numbering offset and adding the Film & Media chapter, which had been missing. It now mirrors the English structure one-to-one.",
+      "Still machine-translated and labelled under review: structure, links, numbers, and the Goblin Check and Chapter Recap markers are preserved, but the French wording has not been fully human-edited.",
+    ],
+  },
+  {
+    date: "June 15, 2026",
     tag: "Corrections",
     title: "Corrections — Wonder Valley reversal, and a fresh fact-check pass",
     items: [

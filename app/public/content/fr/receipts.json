@@ -4,7 +4,7 @@
   "section": "A. Confirmed this pass (receipts in hand)",
   "claim": "Cohere Série D investisseur principal",
   "status": "resolved",
-  "detail": "Le **Investissements PSP** a mené la ronde **Juillet 2024** 500M$ à 5,5B$ (et non l'IRPC, pas le mois de décembre). Collecte ultérieure ~6.8B$. Toutes les références de l'IRCP ont été corrigées. [BetaKit](https://betakit.com/cohere-series-d-tops-out-at-500-million-raised-at-5-5-billion-valuation/), [Nouvelles de Crunchbase](https://news.crunchbase.com/venture/ai-cohere-valuation-rises-psp-cisco-fijitsu/), [Investissements PSP](https://www.investpsp.com/en/news/fresh-funding-enables-cohere-to-accelerate-its-global-expansion-and-build-the-next-generation-of-secure-enterprise-and-sovereign-ai-solutions/)",
+  "detail": "✅  **Investissements PSP** a mené la **Juillet 2024** 500 millions de dollars à 5,5 milliards de dollars (et non pas à l'IBPC, ni en décembre). Collecte ultérieure ~6.8B$. Toutes les références de l'IRPC ont été corrigées. |  [BetaKit](https://betakit.com/cohere-series-d-tops-out-at-500-million-raised-at-5-5-billion-valuation/) ,  [Nouvelles de Crunchbase](https://news.crunchbase.com/venture/ai-cohere-valuation-rises-psp-cisco-fijitsu/) ,  [Investissements PSP](https://www.investpsp.com/en/news/fresh-funding-enables-cohere-to-accelerate-its-global-expansion-and-build-the-next-generation-of-secure-enterprise-and-sovereign-ai-solutions/)",
   "links": [
    [
     "BetaKit",
@@ -25,7 +25,7 @@
   "section": "A. Confirmed this pass (receipts in hand)",
   "claim": "Convention-cadre du Conseil de l'Europe sur l'IA",
   "status": "resolved",
-  "detail": "**Canada SIGNÉ LE 11 février 2025** (Sommet d'action de Paris). La conclusion du Manuscrit « Le Canada n'a pas signé » a été fausse, remplacée partout par « signée mais non ratifiée ». Confirmer le statut de ratification à la publication. [Canada.ca](https://www.canada.ca/en/global-affairs/news/2025/02/canada-signs-the-council-of-europe-framework-convention-on-artificial-intelligence-and-human-rights-democracy-and-the-rule-of-law.html) , [Conseil de l'Europe](https://www.coe.int/en/web/portal/-/canada-and-japan-sign-council-of-europe-s-first-ever-global-treaty-on-ai)",
+  "detail": "**Le Canada a signé le 11 février 2025** (Sommet d'action de Paris IA). La conclusion du Manuscrit « Le Canada n'a pas signé » a été fausse, remplacée partout par « signée mais non ratifiée ». Confirmer le statut de ratification à la publication. |  [Canada.ca](https://www.canada.ca/en/global-affairs/news/2025/02/canada-signs-the-council-of-europe-framework-convention-on-artificial-intelligence-and-human-rights-democracy-and-the-rule-of-law.html) ,  [Conseil de l'Europe](https://www.coe.int/en/web/portal/-/canada-and-japan-sign-council-of-europe-s-first-ever-global-treaty-on-ai)",
   "links": [
    [
     "Canada.ca",
@@ -42,7 +42,7 @@
   "section": "A. Confirmed this pass (receipts in hand)",
   "claim": "Signataires du Code de conduite volontaire",
   "status": "resolved",
-  "detail": "CGI + IBM a rejoint **Déc 2023** ; Mastercard + Salesforce **Mai 2024** — vagues ultérieures, pas des originaux. **Microsoft n'avait pas signé depuis juin 2026.** Liste corrigée en 4 emplacements. Liste complète actuelle (46 orgs, incl. Amii/Mila/Vector; Microsoft + Waabi absent) capturés 2026-06-09 → Sources/mises en service volontaires-code-signataires-2026-06.md. [Canada.ca Déc 2023](https://www.canada.ca/en/innovation-science-economic-development/news/2023/12/more-organizations-sign-on-to-canadas-voluntary-ai-code-of-conduct-including-cgi-and-ibm.html), [Canada.ca Mai 2024](https://www.canada.ca/en/innovation-science-economic-development/news/2024/05/eight-organizations-to-join-canadas-voluntary-ai-code-of-conduct.html), [Page du code ISDE](https://ised-isde.canada.ca/site/ised/en/voluntary-code-conduct-responsible-development-and-management-advanced-generative-ai-systems)",
+  "detail": "CGI + IBM rejoint **Déc 2023** ; Mastercard + Salesforce **Mai 2024** — les vagues ultérieures, et non les originaux. Liste **Microsoft n'avait pas signé depuis juin 2026.** corrigée en 4 emplacements. Liste complète actuelle (46 orgs, incl. Amii/Mila/Vector; Microsoft + Waabi absent) capturés 2026-06-09 → Sources/mises en service volontaires-code-signataires-2026-06.md. |  [Canada.ca Déc 2023](https://www.canada.ca/en/innovation-science-economic-development/news/2023/12/more-organizations-sign-on-to-canadas-voluntary-ai-code-of-conduct-including-cgi-and-ibm.html) ,  [Canada.ca Mai 2024](https://www.canada.ca/en/innovation-science-economic-development/news/2024/05/eight-organizations-to-join-canadas-voluntary-ai-code-of-conduct.html) ,  [Page du code ISDE](https://ised-isde.canada.ca/site/ised/en/voluntary-code-conduct-responsible-development-and-management-advanced-generative-ai-systems)",
   "links": [
    [
     "Canada.ca Dec 2023",
@@ -61,9 +61,9 @@
  {
   "id": 4,
   "section": "A. Confirmed this pass (receipts in hand)",
-  "claim": "Loi danoise sur les droits de la personne",
+  "claim": "Droit danois des droits de la personne",
   "status": "resolved",
-  "detail": "- **Proposition 2025** , pas 2024 loi: consultation Juillet 2025, notification TRIS Oct 2025, vote prévu Q1/Q2 2026. Inclut les exceptions de satire/parodie/critique de puissance + protection post mortem de 50 ans. Toutes les références « 2024 lois » corrigées; confirmer l'entrée en vigueur lors de la publication. [Plesner](https://plesner.com/en/news/personal-identity-meets-copyright-denmark-moves-regulate-deepfakes-copyright-act) , [WEF](https://www.weforum.org/stories/2025/07/deepfake-legislation-denmark-digital-id/)",
+  "detail": "- **Proposition 2025** , pas 2024 loi: consultation Juillet 2025, notification TRIS Oct 2025 , vote prévu Q1/Q2 2026. Comprend les exceptions de satire/parodie/critique de puissance + protection post mortem de 50 ans. Toutes les références « 2024 lois » ont été corrigées; confirmer la promulgation lors de la publication. |  [Plesner](https://plesner.com/en/news/personal-identity-meets-copyright-denmark-moves-regulate-deepfakes-copyright-act) ,  [WEF](https://www.weforum.org/stories/2025/07/deepfake-legislation-denmark-digital-id/)",
   "links": [
    [
     "Plesner",
@@ -72,6 +72,92 @@
    [
     "WEF",
     "https://www.weforum.org/stories/2025/07/deepfake-legislation-denmark-digital-id/"
+   ]
+  ]
+ },
+ {
+  "id": 51,
+  "section": "A. Confirmed this pass (receipts in hand)",
+  "claim": "CIPC canadien",
+  "status": "resolved",
+  "detail": "Le crédit d'impôt fédéral pour production cinématographique ou magnétoscopique canadienne est un crédit entièrement remboursable à **25 % des dépenses de main-d'œuvre qualifiée** , qui vise à encourager la programmation cinématographique et télévisuelle canadienne et un secteur de production indépendant canadien actif. [Patrimoine canadien CPTC](https://www.canada.ca/en/canadian-heritage/services/funding/cavco-tax-credits/canadian-film-video-production.html)",
+  "links": [
+   [
+    "Canadian Heritage CPTC",
+    "https://www.canada.ca/en/canadian-heritage/services/funding/cavco-tax-credits/canadian-film-video-production.html"
+   ]
+  ]
+ },
+ {
+  "id": 52,
+  "section": "A. Confirmed this pass (receipts in hand)",
+  "claim": "CISP fédéral",
+  "status": "resolved",
+  "detail": "Le crédit d'impôt fédéral pour services de production cinématographique ou magnétoscopique est **16 % des dépenses de main-d'oeuvre canadiennes admissibles** , offert aux sociétés de production admissibles, y compris aux sociétés étrangères, afin d'améliorer le Canada en tant que lieu de production et de sécuriser les investissements. [Patrimoine canadien CISP](https://www.canada.ca/en/canadian-heritage/services/funding/cavco-tax-credits/film-video-production-services.html)",
+  "links": [
+   [
+    "Canadian Heritage PSTC",
+    "https://www.canada.ca/en/canadian-heritage/services/funding/cavco-tax-credits/film-video-production-services.html"
+   ]
+  ]
+ },
+ {
+  "id": 53,
+  "section": "A. Confirmed this pass (receipts in hand)",
+  "claim": "B.C. crédit d'impôt pour la production et les services",
+  "status": "resolved",
+  "detail": "\"B.C. le crédit de production-services est disponible pour les producteurs nationaux et étrangers avec **aucune exigence relative au contenu canadien** ; B.C. liste le taux de production-services de base à **36%** plus les crédits régionaux, locaux éloignés, DAVE et de production majeure. [Province de la Colombie-Britannique CISP](https://www2.gov.bc.ca/gov/content/taxes/income-taxes/corporate/credits/production-services)",
+  "links": [
+   [
+    "Province of B.C. PSTC",
+    "https://www2.gov.bc.ca/gov/content/taxes/income-taxes/corporate/credits/production-services"
+   ]
+  ]
+ },
+ {
+  "id": 54,
+  "section": "A. Confirmed this pass (receipts in hand)",
+  "claim": "Cadre de contribution de la Loi sur la diffusion en ligne du CRTC",
+  "status": "resolved",
+  "detail": "Le CRTC 2026-96 affirme que la Loi sur la diffusion en ligne exige une modernisation du cadre canadien de radiodiffusion et des contributions significatives des services de diffusion en direct au contenu canadien et autochtone; elle établit un cadre modernisé pour les dépenses de programmation canadienne, y compris les exigences relatives aux contributions des grands groupes de propriété. [CRTC 2026-96](https://crtc.gc.ca/eng/archive/2026/2026-96.htm)",
+  "links": [
+   [
+    "CRTC 2026-96",
+    "https://crtc.gc.ca/eng/archive/2026/2026-96.htm"
+   ]
+  ]
+ },
+ {
+  "id": 55,
+  "section": "A. Confirmed this pass (receipts in hand)",
+  "claim": "Choc de la production cinématographique et télévisuelle canadienne et rebond partiel",
+  "status": "resolved",
+  "detail": "Nombre total documenté de production en baisse **18,5 % à 9,58 milliards de dollars en 2023/24** ; Profile 2025 de l'ACPM annonce que le secteur généré **10,2 B$** en 2024/25, **4.6%** augmentation d'année en année. |  [Profil 2024 PDF](https://telefilm.ca/wp-content/uploads/2025/01/Profile-2024-Eng-Final_Dec-20.pdf) ,  [Profil CMPA 2025 version](https://cmpa.ca/pressreleases/television-and-film-production-sector-creates-181000-jobs-for-canadians-in-2025/)",
+  "links": [
+   [
+    "Profile 2024 PDF",
+    "https://telefilm.ca/wp-content/uploads/2025/01/Profile-2024-Eng-Final_Dec-20.pdf"
+   ],
+   [
+    "CMPA Profile 2025 release",
+    "https://cmpa.ca/pressreleases/television-and-film-production-sector-creates-181000-jobs-for-canadians-in-2025/"
+   ]
+  ]
+ },
+ {
+  "id": 56,
+  "section": "A. Confirmed this pass (receipts in hand)",
+  "claim": "Erica Lapadat Janzen BC + IA talk",
+  "status": "resolved",
+  "detail": "La page vidéo de Public BC + IA documente la conférence d'Erica Lapadat Janzen sur la \"Soft Violence in IA Art Discourse\" Vancouver IA; transcription revue à partir de la source ci-jointe. |  [BC + page vidéo de l'IA](https://bc-ai.ca/videos/2026-02-05-soft-violence-in-ai-art-discourse-vancouver-ai-meetup-j/) ,  [YouTube](https://www.youtube.com/watch?v=hiPu28YjDaE)",
+  "links": [
+   [
+    "BC + AI video page",
+    "https://bc-ai.ca/videos/2026-02-05-soft-violence-in-ai-art-discourse-vancouver-ai-meetup-j/"
+   ],
+   [
+    "YouTube",
+    "https://www.youtube.com/watch?v=hiPu28YjDaE"
    ]
   ]
  },
@@ -88,7 +174,7 @@
   "section": "B. Fixed from known record (spot-check recommended)",
   "claim": "\"Le président Warren Forget\"",
   "status": "fixed",
-  "detail": "DGC Directeur exécutif national **Dave Oublie** (nom fusionné avec le président Warren Sonoda) - confirmation contre la preuve du comité INDU, février 2024. 11, appendice",
+  "detail": "DGC Directeur exécutif national **Dave Oublie** (nom a été fusionné avec le président Warren Sonoda) - confirmation contre la preuve du comité INDU, février 2024. 11, appendice",
   "links": []
  },
  {
@@ -96,7 +182,7 @@
   "section": "B. Fixed from known record (spot-check recommended)",
   "claim": "\"Mason c. Canada (2019)\" (probablement confondu)",
   "status": "fixed",
-  "detail": "*** Ewert c. Canada* (2018 CSC 30)** — Les outils de risque actuariel ne sont jamais validés pour les délinquants autochtones; le cas le plus important. 13, annexe ×2",
+  "detail": "***Ewert c. Canada* (2018 CSC 30)** — Les outils de risque actuariel ne sont jamais validés pour les délinquants autochtones; le cas principal réel. 13, annexe ×2",
   "links": []
  },
  {
@@ -110,7 +196,7 @@
  {
   "id": 9,
   "section": "B. Fixed from known record (spot-check recommended)",
-  "claim": "\"CWA-CEP\" (défaut depuis 2013)",
+  "claim": "\"CWA-CEP\" (défendue depuis 2013)",
   "status": "fixed",
   "detail": "Unifor + CWA Canada 14",
   "links": []
@@ -120,13 +206,13 @@
   "section": "B. Fixed from known record (spot-check recommended)",
   "claim": "La loi de l'UE sur l'IA sanctionne \"6% / 30 millions €\" (projets de chiffres)",
   "status": "fixed",
-  "detail": "**7% / 35 millions d'euros** pour les pratiques prohibées",
+  "detail": "**7% / 35 millions d'euros** pour les pratiques interdites",
   "links": []
  },
  {
   "id": 11,
   "section": "B. Fixed from known record (spot-check recommended)",
-  "claim": "ATTENDRE LA LOI \"passée en 2024\"",
+  "claim": "PRENDRE LA LOI \"passée en 2024\"",
   "status": "fixed",
   "detail": "Signé en loi **Mai 2025**. 12, appendice",
   "links": []
@@ -136,7 +222,7 @@
   "section": "B. Fixed from known record (spot-check recommended)",
   "claim": "Australie « deux ans d'emprisonnement »",
   "status": "fixed",
-  "detail": "Jusqu'à **6 ans (7 ans de plus)** , 2024 modifications fédérales , Ch. 12, Ch. 15",
+  "detail": "Jusqu'à **6 ans (7 ans de plus)** , 2024 modifications fédérales 12, Ch. 15",
   "links": []
  },
  {
@@ -144,15 +230,15 @@
   "section": "B. Fixed from known record (spot-check recommended)",
   "claim": "\"Directive EED 2024/1364\"",
   "status": "fixed",
-  "detail": "Refondeur EED est **2023/1791** ; 2024/1364 est le **la réglementation déléguée** — réétiqueté partout.",
+  "detail": "La refonte de l'EDE **2023/1791** ; 2024/1364 est le **la réglementation déléguée** — réétiquetée partout",
   "links": []
  },
  {
   "id": 14,
   "section": "B. Fixed from known record (spot-check recommended)",
-  "claim": "NVIDIA \"3,7 M GPU en 2024\"",
+  "claim": "NVIDIA \"3,7 millions de GPU en 2024\"",
   "status": "fixed",
-  "detail": "Est. **GPUs de centres de données de 3,76M en 2023** (TechInsights) — confirmer les chiffres les plus récents",
+  "detail": "Est. **GPUs de centres de données 3,76M en 2023** (TechInsights) — confirmez les derniers chiffres",
   "links": []
  },
  {
@@ -174,9 +260,9 @@
  {
   "id": 17,
   "section": "B. Fixed from known record (spot-check recommended)",
-  "claim": "\"Plan d'action de l'IA de janvier 2025\"",
+  "claim": "\"Plan d'action pour l'IA de janvier 2025\"",
   "status": "fixed",
-  "detail": "Jan 2025 décret; Plan d'action Juillet 2025 15",
+  "detail": "Janvier 2025 décret; Plan d'action Juillet 2025 15",
   "links": []
  },
  {
@@ -192,15 +278,15 @@
   "section": "B. Fixed from known record (spot-check recommended)",
   "claim": "OCAP 25ème anniversaire \"2024\"",
   "status": "fixed",
-  "detail": "2023 (OPACE est. 1998) - Ch. 9",
+  "detail": "2023 (OPACE est. 1998) (Ch. 9",
   "links": []
  },
  {
   "id": 20,
   "section": "B. Fixed from known record (spot-check recommended)",
-  "claim": "NYT v. OpenAI \"établi en 2026 via NYT–Amazon\"",
+  "claim": "NYT v. OpenAI \"installé en 2026 via NYT–Amazon\"",
   "status": "fixed",
-  "detail": "Amazon deal = licence (2025), **pas** a réglé le cas; l'appendice correspond maintenant à Ch. 11 (\"active\") — confirmer le statut du litige",
+  "detail": "Amazon deal = licence (2025), **pas** a réglé le cas; l'appendice correspond maintenant à Ch. 11 («active») — confirmer le statut du litige",
   "links": []
  },
  {
@@ -208,13 +294,13 @@
   "section": "B. Fixed from known record (spot-check recommended)",
   "claim": "Le comté de Loudoun \"utilise 25% de l'électricité de Virginie \"",
   "status": "fixed",
-  "detail": "La flotte de datacenters à l'échelle nationale - 25%; Loudoun est l'ancre — confirmer scission - Ch. 8",
+  "detail": "La flotte de datacenters à l'échelle nationale - 25%; Loudoun est l'ancre — confirmer la scission 8",
   "links": []
  },
  {
   "id": 22,
   "section": "B. Fixed from known record (spot-check recommended)",
-  "claim": "300 M$ vs 2B incohérence de calcul du fonds",
+  "claim": "300 M$ vs 2B incohérence du calcul des fonds",
   "status": "fixed",
   "detail": "Paquet de calcul souverain de 2 milliards $ Fonds d'accès au calcul de 300 millions $, déclaré de façon constante. 5, appendice",
   "links": []
@@ -222,9 +308,9 @@
  {
   "id": 23,
   "section": "B. Fixed from known record (spot-check recommended)",
-  "claim": "12% vs 19,2% de la valeur de base de l'adoption",
+  "claim": "12 % vs 19,2 % de la valeur de référence pour l'adoption",
   "status": "fixed",
-  "detail": "L'ouverture donne maintenant des noms à la fois des chiffres et des points à la réconciliation. 5",
+  "detail": "L'ouverture donne maintenant des noms à la fois des chiffres et des points pour la réconciliation. 5",
   "links": []
  },
  {
@@ -232,7 +318,7 @@
   "section": "B. Fixed from known record (spot-check recommended)",
   "claim": "\"un vingtième\" vs \"10-15×\" intensité de carbone",
   "status": "fixed",
-  "detail": "Harmonisé à ~15×/un-quinzième , Ch. 6, ch. 8",
+  "detail": "Harmonisé à ~15× / un-quinzième , Ch. 6, ch. 8",
   "links": []
  },
  {
@@ -240,7 +326,7 @@
   "section": "B. Fixed from known record (spot-check recommended)",
   "claim": "Nombre de membres du CUPE",
   "status": "resolved",
-  "detail": "Le mémoire du Sénat lui-même utilise **800,000** — manuscrit restauré à la propre figure du CUPE avec attribution.",
+  "detail": "Le mémoire du Sénat lui-même utilise **800,000** — manuscrit restauré à la propre figure de la CUPE avec attribution.",
   "links": []
  },
  {
@@ -248,7 +334,7 @@
   "section": "B. Fixed from known record (spot-check recommended)",
   "claim": "240 M$ \"pour Bell Tissu IA\" (conflation)",
   "status": "fixed",
-  "detail": "240 M$ (déc 2024) prédate Bell Tissu IA (mai 2025); la relation est maintenant énoncée avec prudence — confirmer le lien contractuel. 5, 6, 7",
+  "detail": "240 millions de dollars (déc 2024) prédate Bell Tissu IA (mai 2025); la relation est maintenant énoncée avec prudence — confirmer le lien contractuel. 5, 6, 7",
   "links": []
  },
  {
@@ -256,7 +342,7 @@
   "section": "B. Fixed from known record (spot-check recommended)",
   "claim": "**Owen et al. par ligne** (la grande)",
   "status": "fixed",
-  "detail": "Toutes ~13 instances reformulées: **54% des projets énergétiques-transition-minéraux* sur/près des terres indigènes & paysannes** — projets pas matériaux, transition énergétique pas informatique; l'extension IA est désormais explicitement marquée comme le mouvement du manuel. 1, 4, 5, 6, 8, 9, appendice",
+  "detail": "Toutes ~13 instances reformulées: **54% des projets énergétiques, de transition et miniers* sur/près des terres indigènes et paysannes** — projets pas matériaux, transition énergétique pas informatique; l'extension IA est désormais explicitement marquée comme le mouvement du manuel. 1, 4, 5, 6, 8, 9, appendice",
   "links": []
  },
  {
@@ -264,7 +350,7 @@
   "section": "B. Fixed from known record (spot-check recommended)",
   "claim": "Legg–Hutter \"leur source pour ce qu'est l'intelligence\"",
   "status": "fixed",
-  "detail": "Maintenant: une enquête de ~70 définitions; la généalogie est Lewis/Whaanga/Yolgörmez argumenté lecture. 1, 13",
+  "detail": "Maintenant: une enquête de ~70 définitions; la généalogie est Lewis/Whanga/Yolgörmez argumenté lecture. 1, 13",
   "links": []
  },
  {
@@ -272,7 +358,7 @@
   "section": "B. Fixed from known record (spot-check recommended)",
   "claim": "Traité de Beijing \"signé mais non ratifié\"",
   "status": "resolved",
-  "detail": "* RÉSOLU: Canada **jamais signé et n'a pas adhéré** — non parmi les 48 parties contractantes ( [OMPI](https://www.wipo.int/en/web/beijing-treaty) ). Texte corrigé à \"ni signé ni adhéré\" 11, 15, 18, appendice",
+  "detail": "RÉSOLU : Canada **jamais signé et n'a pas adhéré** — non parmi les 48 parties contractantes ( [OMPI](https://www.wipo.int/en/web/beijing-treaty) ). Texte corrigé à \"ni signé ni adhéré\" , Chs. 11, 15, 18, appendice",
   "links": [
    [
     "WIPO",
@@ -285,7 +371,7 @@
   "section": "C. Open — needs primary source before publication",
   "claim": "Owen et al. chiffres exacts",
   "status": "resolved",
-  "detail": "D'après le document, 5 097 projets ETM, **54%** sur/près des terres des peuples autochtones, **33%** sur les terres paysannes, **69%** combinés et **62%** sur les terres à haut risque d'eau (contre 53% dans le monde). Manuscrit mis à jour pour obtenir des chiffres exacts. [Papier](https://www.nature.com/articles/s41893-022-00994-6)",
+  "detail": "D'après le document, 5 097 projets ETM ont été réalisés. **54%** sur/près des terres des peuples autochtones, **33%** les terres paysannes, **69%** combinés, et **62%** de ceux qui se trouvent dans des endroits à haut risque hydrique (vs 53 % dans le monde). Manuscrit mis à jour pour obtenir des chiffres exacts. [Papier](https://www.nature.com/articles/s41893-022-00994-6)",
   "links": [
    [
     "Paper",
@@ -298,7 +384,7 @@
   "section": "C. Open — needs primary source before publication",
   "claim": "Stanford FMTI Dec 2025 édition",
   "status": "resolved",
-  "detail": "RÉSOLVÉ: édition existe (9 déc. 2025; 13 développeurs). Vérifié: IBM 95, OpenAI 35, Meta 31, engagement 74%→30%. La moyenne de **Correction :** est de 40,7 (et non 41); Mistral 55→18, une chute de 37 points (la version 57→20 du projet était erronée aux deux extrémités; le reçu PDF est maintenant dans le dossier de preuve). → Sources/stanford-fmti-december-2025-2026-06.md",
+  "detail": "RÉSOLVÉ: édition existe (9 déc. 2025; 13 développeurs). Vérifié: IBM 95, OpenAI 35, Meta 31, engagement 74%→30%. La moyenne de **Correction :** est de 40,7 (et non 41); Mistral 55→18, une chute de 37 points (la version 57→20 du projet était erronée aux deux extrémités; le reçu PDF est maintenant en dossier). → Sources/stanford-fmti-december-2025-2026-06.md",
   "links": []
  },
  {
@@ -306,7 +392,7 @@
   "section": "C. Open — needs primary source before publication",
   "claim": "2025 élection étude de faucon profond",
   "status": "resolved",
-  "detail": "RÉSOLU: le papier existe (Livernoche et al., arXiv 2512.13915; OpenFake = arXiv 2509.09495). Taux de 5,86 %. **Correction :** fraction partisane est 8.66% vs 4.42% (-2×, pas 9.24/3.9/2.4×); nocive atteindre 0.12% des vues X. → Sources/arxiv-2512-13915-élection canadienne-deepfakes-2026-06.md",
+  "detail": "* RÉSOLU : le papier existe (Livernoche et al., arXiv 2512.13915; OpenFake = arxiv 2509.09495). Taux de 5,86 %. **Correction :** fraction partisane est 8.66% vs 4.42% (-2×, pas 9.24/3.9/2.4×); nocive atteindre 0.12% des vues X. → Sources/arxiv-2512-13915-élection canadienne-deepfakes-2026-06.md",
   "links": []
  },
  {
@@ -314,7 +400,7 @@
   "section": "C. Open — needs primary source before publication",
   "claim": "Juin 2026 détails de la semaine de lancement",
   "status": "resolved",
-  "detail": "► LARGEMENT RÉSOLU : le dossier de preuves contient des captures de sources pour PMO (4 juin), Solomon/CPAC + ISED (5 juin), 66 M$ de sortie (12 mai), BC + IA post, USTR NTE Canada extrait, fuite de la couverture de l'ébauche ( capture directe de CBC bloquée — URL + sauvegarde BetaKit incluse). BC + IA post vérifié à partir de la page en direct 2026-06-10: citation de feuille d'érable VERBATIM ✓, 19,2% citation ✓; noms de croisement + de pilier corrigés dans Ch. 5; 66 M$/44 sociétés/16,8 M$ BC vérifiés à partir de la capture d'ISDE ✓; drapeau de nuage souverain de l'USTR ✓. Projet en fuite vérifié par l'AUTEUR en regard de l'article 2026-06-10 de la SRC: 50%+/2030 ✓, \"pas d'option intérieure abordable\" ✓ mot pour mot, étranger-cloud/data/IP phrase ✓, KPMG–U Melbourne 47-country ✓. **Fil de superintelligence PAS dans le texte de CBC — retiré du manuscrit avec une note publique.** CLOSED 2026-06-11: Carney cite des citations vérifiées dans l'article de lancement de CBC (Lopez Steven, 4 juin) — la ligne pays sentient était une défense du pilier de souveraineté contre les questions commerciales américaines; ligne de littératie et de confiance confirmée. Calculer le fonds corrigé (+700M$ au lancement →1B$). Les autres membres de l'Alliance de technologie souveraine et le Fonds de recherche scientifique de 100 millions de dollars ont encore besoin de reçus. Voir Sources/cbc-launch-article-vérification-2026-06.md + cbc-leaked-project-auteur-vérification-2026-06.md. → Sources/preuve_pack_ledgers/Ledger_33_AI_for_All_launch_week/ + Sources/bc-ai-all-of-us-live-capture-2026-06.md",
+  "detail": "- LARGEMENT RÉSOLVÉ : le dossier d'information contient des captures de source pour PMO (4 juin), Solomon/CPAC + ISED (5 juin), 66 M$ de sortie (12 mai), BC + IA post, USTR NTE Canada extrait, fuite de couverture d'ébauche ( capture directe CBC bloquée — URL + sauvegarde BetaKit incluse). BC + IA post vérifié à partir de la page en direct 2026-06-10: citation de feuille d'érable VERBATIM ✓, 19,2% citation ✓; noms de croisement + de pilier corrigés dans Ch. 5; 66 M$/44 sociétés/16,8 M$ avant J.-C. vérifiés à partir de la capture d'ISDE ✓; drapeau de nuage souverain USTR ✓. Projet en fuite vérifié par l'AUTEUR en regard de l'article 2026-06-10 de la SRC : 50%+/2030 ✓, \"pas d'option domestique abordable\" ✓ mot pour mot, étranger-cloud/data/IP phrase ✓ et KPMG–U Melbourne 47-country rang ✓. **Fil de superintelligence NON dans le texte de la SRC — retiré du manuscrit avec une note publique.** CLOSED 2026-06-11: Carney cite des citations vérifiées dans l'article de lancement de CBC (Lopez Steven, 4 juin) — la ligne pays sentient était une défense du pilier de souveraineté contre les questions commerciales américaines; ligne d'alphabétisation et de confiance confirmée. Calculer le fonds corrigé (+700M$ au lancement →1B$). Les autres membres de l'Alliance de technologie souveraine et le Fonds de recherche scientifique de 100 millions de dollars ont encore besoin de reçus. Voir Sources/cbc-launch-article-vérification-2026-06.md + cbc‐leaked-draft-auteur-vérIFICATION-202606.mj. → Sources/preuve_pack_ledgers/Ledger_33_AI_for_All_launch_week/ + Sources/bc-ai-all-of-us-live-capture-2026-06.md",
   "links": []
  },
  {
@@ -322,7 +408,7 @@
   "section": "C. Open — needs primary source before publication",
   "claim": "Sondage du CPVP 2024-25",
   "status": "resolved",
-  "detail": "RÉSOLVÉ : les quatre chiffres ont été vérifiés in extenso (sondage téléphonique de RDD, n=1 500, février à mars 2025). → Sources/opc-2024-25-enquête sur la vie privée-2026-06.md",
+  "detail": "RÉSOLVÉ : les quatre chiffres ont été vérifiés in extenso (enquête téléphonique sur le DRD, n=1 500, février à mars 2025). → Sources/opc-2024-25-enquête sur la vie privée-2026-06.md",
   "links": []
  },
  {
@@ -338,7 +424,7 @@
   "section": "C. Open — needs primary source before publication",
   "claim": "Vallée des merveilles / SLCN",
   "status": "resolved",
-  "detail": "— **RÉCLAMATIONS** : aucune preuve d'un rôle d'équité/de gouvernance du SLCN. Dossier documenté : projet annoncé en décembre 2024 par O'Leary Ventures + MD de Greenview; lettre ouverte du chef Sunshine (13 janvier 2025) – La nation déclare qu'elle n'a pas été consultée, qu'elle a été suspendue; une action en justice du devoir de consulter en juin 2026 (la question de l'adéquation de la consultation est en live devant la cour); une demande d'arrêt d'O'Leary Digital Utah JV (février 2026). **C'est vrai. 6 et 9 études de cas ont été réécrites au dossier, avec une note de correction publique.** → Sources/preuves_pack_legers/Ledger_36_Wonder_Valley_SLCN/",
+  "detail": "— **RÉCLAMATIONS** : aucune preuve d'un rôle d'équité/de gouvernance du SLCN. Dossier documenté : projet annoncé en décembre 2024 par O'Leary Ventures + MD de Greenview; lettre ouverte du chef Sunshine (13 janvier 2025) – La nation déclare qu'elle n'a pas été consultée, qu'on l'a suspendue; action en justice du devoir de consulter en juin 2026 (la question de la consultation est en direct devant la cour); Utah JV numérique O'LEARY (février 2026). **C'est vrai. 6 et 9 études de cas réécrites au dossier, avec une note de correction publique.** → Sources/preuves_pack_legers/Ledger_36_Wonder_Valley_SLCN/",
   "links": []
  },
  {
@@ -346,7 +432,7 @@
   "section": "C. Open — needs primary source before publication",
   "claim": "Directeurs généraux des instituts",
   "status": "resolved",
-  "detail": "Vecteur -- RÉSOLVÉ : **Glenda Crisp** , Président & CEO depuis le 21 avril 2025 — fixé dans le texte ( [annonce](https://vectorinstitute.ai/vector-institute-announces-the-appointment-of-glenda-crisp-as-president-and-ceo/) ). Mila -- RESOLVÉ: Pisano confirmé à jour avec des citations de lancement sur disque dans l'article de lancement de CBC (4 juin 2026)",
+  "detail": "Vecteur : **Glenda Crisp** , Président-directeur général depuis le 21 avril 2025 — fixé en texte ( [annonce](https://vectorinstitute.ai/vector-institute-announces-the-appointment-of-glenda-crisp-as-president-and-ceo/) ). Mila : Pisano confirmé en cours avec des citations de lancement enregistrées dans l'article de lancement de CBC (4 juin 2026)",
   "links": [
    [
     "announcement",
@@ -357,9 +443,9 @@
  {
   "id": 38,
   "section": "C. Open — needs primary source before publication",
-  "claim": "Affiliation à H.M.I.M. Whaanga",
+  "claim": "Affiliation à H.mi Whaanga",
   "status": "resolved",
-  "detail": "• Professeur et chef de l'école, Te Pūtahi-a-Toi, Université Massey (NZ); codirigeant des renseignements abondants avec Lewis (Concordia). Pas de \"Waikato\" dans le manuscrit.",
+  "detail": "- VÉRIFIÉ — Professeur et chef de l'école, Te Pūtahi-a-Toi, Université Massey (NZ); codirigeant d'Abondant Intelligences avec Lewis (Concordia). Pas de \"Waikato\" dans le manuscrit.",
   "links": []
  },
  {
@@ -367,95 +453,169 @@
   "section": "C. Open — needs primary source before publication",
   "claim": "RNCan 22 % PUE + 71 % de référence mondiale",
   "status": "resolved",
-  "detail": "D'après les résultats de l'enquête, le nombre d'établissements de rapports de l'UEP au Canada a augmenté de 2 % par rapport à celui de l'année précédente. La citation de l'annexe « Uptime 2024 » est exacte : 1,56 est le chiffre de l'enquête de 2024 (2023 était 1,58). Pas besoin de changement.",
-  "links": []
- },
- {
-  "id": 40,
-  "section": "C. Open — needs primary source before publication",
-  "claim": "Chiffres des MW urbains + nombre d'installations/de parts",
-  "status": "open",
-  "detail": "Partieal — cadre confirmé (300 installations, plus grande grappe de Montréal, environ 2 % d'avg par AIE). Exact par ville MW (320/520/46) et la part de 1,4 %→2,1 % ne sont PAS vérifiables sur le Web — confirmer par rapport à la source de l'industrie citée (La carte logique DC / CBRE / RNCan).",
+  "detail": "DÉSOLÉ (corrigé tel qu'écrit) — Guide des pratiques exemplaires de RNCan (2024) : environ 22 % Rapports sur les PUE au Canada contre 71 % à l'échelle mondiale. La citation de l'annexe « Uptime 2024 » est exacte : 1,56 est le chiffre d'enquête de 2024 (2023 était 1,58). Pas besoin de changement.",
   "links": []
  },
  {
   "id": 41,
-  "section": "C. Open — needs primary source before publication",
-  "claim": "Chiffres des grilles provinciales (IESO/AESO/Hydro-Québec/BC Hydro)",
-  "status": "open",
-  "detail": "* VÉRIFIER MISCREMENT — IESO 13 % de la nouvelle demande d'ici 2035 ✓, AESO 1 200 MW par 2028 ✓, pause à grande charge d'Hydro-Québec ✓. Exportation du Québec TWh (25.9→13.3) et la BC Hydro 300/100 fractionnée NON confirmée en ligne — confirmer contre CER / BC Hydro.",
-  "links": []
+  "section": "Fresh live re-verification — June 15, 2026 (full fact-check pass)",
+  "claim": "Le projet de loi C-16 « n'établit pas... un mécanisme de retrait » (Ch 13)",
+  "status": "fixed",
+  "detail": "⚠️  **Maintenant FAUX.** 11 mai 2026 L'amendement de la commission a ajouté une **Déploiement de la plate-forme 48 heures** (+ couverture « quasi nue »). «Frappe un mécanisme de retrait»; ajouter une phrase sur l'amendement de mai 2026; revérifier la section de comparaison internationale. |  [CJFC/CP](https://cfjctoday.com/2026/05/11/mps-amend-bill-criminalizing-sexual-deepfakes-to-include-nearly-nude-images/)  ·  [Observateur de Nat'l](https://www.nationalobserver.com/2026/05/11/news/mps-amend-bill-criminalizing-sexual-deepfakes-include-nearly-nude-images)",
+  "links": [
+   [
+    "CFJC/CP",
+    "https://cfjctoday.com/2026/05/11/mps-amend-bill-criminalizing-sexual-deepfakes-to-include-nearly-nude-images/"
+   ],
+   [
+    "Nat'l Observer",
+    "https://www.nationalobserver.com/2026/05/11/news/mps-amend-bill-criminalizing-sexual-deepfakes-include-nearly-nude-images"
+   ]
+  ]
  },
  {
   "id": 42,
-  "section": "C. Open — needs primary source before publication",
-  "claim": "Comparaison de l'eau de golf-irrigation",
-  "status": "open",
-  "detail": "Les chiffres (848 cours; 50,5 / 79,9 M m3) ont besoin de la table d'utilisation de l'eau StatCan/ECCC. Auteur à confirmer.",
-  "links": []
+  "section": "Fresh live re-verification — June 15, 2026 (full fact-check pass)",
+  "claim": "Statut du projet de loi C-16 «déposé... déc. 9 2025» (Ch 5/9/10/13, annexe)",
+  "status": "fixed",
+  "detail": "⏰  **Étal.** En juin 2026 C-16 **adopté la troisième lecture à la Chambre et est devant le Sénat.** Actualiser le verbe de statut tout au long de la publication (en changer pour « entériner » si la sanction royale survient). Legisinfo C-16 · [Globe](https://www.theglobeandmail.com/canada/article-federal-move-to-criminalize-non-consensual-sexual-deepfakes-is-long/)",
+  "links": [
+   [
+    "Globe",
+    "https://www.theglobeandmail.com/canada/article-federal-move-to-criminalize-non-consensual-sexual-deepfakes-is-long/"
+   ]
+  ]
  },
  {
   "id": 43,
-  "section": "C. Open — needs primary source before publication",
-  "claim": "ACTRA 2023 enquête + TWUC",
-  "status": "resolved",
-  "detail": "• Enquête ACTRA nov. 2023: 98 % concernaient l'utilisation abusive du nom/image/semblance, 93 % le remplacement; tous les 28 000 membres et plus invités (compte non divulgué). TWUC \"deux actions de classe\" ne se trouve pas dans le texte actuel / non confirmé.",
-  "links": []
+  "section": "Fresh live re-verification — June 15, 2026 (full fact-check pass)",
+  "claim": "Décision de la juridiction OpenAI du 27 novembre 2025 (Ch 11 ×2 + annexe)",
+  "status": "fixed",
+  "detail": "⚠️  **Mauvaise date + appel manquant.** Décision datée **7 novembre 2025** (27 nov = date de presse); **OpenAI a fait appel** — pas finalement \"confirmé\" , puis le 7 nov 2025 dans les trois points; ajouter \"sous appel à partir de juin 2026\". [Société Radio-Canada](https://www.cbc.ca/news/canada/toronto/openai-new-publishers-lawsuit-ontario-9.6995520)  ·  [Les Carters](https://www.carters.ca/jurisdictional-ruling-opens-door-for-canadian-copyright-claims-against-ai-companies/)  ·  [Sookman](https://barrysookman.com/2025/12/10/openai-toronto-star-jurisdiction-decision/)",
+  "links": [
+   [
+    "CBC",
+    "https://www.cbc.ca/news/canada/toronto/openai-new-publishers-lawsuit-ontario-9.6995520"
+   ],
+   [
+    "Carters",
+    "https://www.carters.ca/jurisdictional-ruling-opens-door-for-canadian-copyright-claims-against-ai-companies/"
+   ],
+   [
+    "Sookman",
+    "https://barrysookman.com/2025/12/10/openai-toronto-star-jurisdiction-decision/"
+   ]
+  ]
  },
  {
   "id": 44,
-  "section": "C. Open — needs primary source before publication",
-  "claim": "36 milliards de dollars pour la publicité sur l'IA",
-  "status": "resolved",
-  "detail": "VÉRIFIÉ — US$36B = estimation de Statista 2024 du marché de l'IA dans le marketing, cité par Luccioni et al. Le manuscrit nomme correctement le référent et la source.",
-  "links": []
+  "section": "Fresh live re-verification — June 15, 2026 (full fact-check pass)",
+  "claim": "Annexe §F chiffres de l'élection-deepfake \"9.24% / 3.9% / 0,1%\"",
+  "status": "fixed",
+  "detail": "**Annexe jamais mise à jour** — contredit le corps du Ch 13 corrigé. Papier en direct = **8.66% / 4.42% / 0.12%** (la même correction que le registre #32, uniquement pour le corps). Correction des figures de l'appendice pour correspondre au corps. [arXiv 2512.13915](https://arxiv.org/html/2512.13915)",
+  "links": [
+   [
+    "arXiv 2512.13915",
+    "https://arxiv.org/html/2512.13915"
+   ]
+  ]
  },
  {
   "id": 45,
-  "section": "C. Open — needs primary source before publication",
-  "claim": "\"Aloha est l'intelligence...\"",
-  "status": "resolved",
-  "detail": "* RÉSOLVÉ (corrigé tel qu'écrit) — le document de position sur le protocole autochtone et l'IA attribue l'épigraphe à \"Olana Kaipo Ai\" mot pour mot. Pas besoin de changement.",
-  "links": []
+  "section": "Fresh live re-verification — June 15, 2026 (full fact-check pass)",
+  "claim": "\"100 M$ Venture Scientist Fund\" — Ch 7 (L1326) appelle Inovia \"la même entreprise partenaire avec **le gouvernement fédéral** \"; Ch 5 (L976) l'énumère parmi les engagements de lancement fédéraux",
+  "status": "fixed",
+  "detail": "⚠️  **Erreur d'attribution.** C'est une **Fonds privé de capital-risque cofinancé par Mila + Inovia Capital** (Cible de 100 millions de dollars américains, ~55 + spinouts), **pas** de l'argent fédéral. L1326 : « gouvernement fédéral » → « **Mila** ».L976 : sortir de la liste des engagements fédéraux ou marquer un fonds privé Mila/Inovia annoncé parallèlement à la stratégie. |  [La logique](https://thelogic.co/news/mila-inovia-capital-venture-scientist-fund/)  ·  [Mila+Inovia](https://www.newswire.ca/news-releases/mila-and-inovia-capital-are-partnering-to-launch-the-venture-scientist-fund-propelling-canada-s-ai-research-excellence-into-global-tech-champions-848112787.html)  ·  [Globe](https://www.theglobeandmail.com/business/technology/article-quebec-mila-institute-vc-fund-artificial-intelligence-pre-seed-inovia/)",
+  "links": [
+   [
+    "The Logic",
+    "https://thelogic.co/news/mila-inovia-capital-venture-scientist-fund/"
+   ],
+   [
+    "Mila+Inovia",
+    "https://www.newswire.ca/news-releases/mila-and-inovia-capital-are-partnering-to-launch-the-venture-scientist-fund-propelling-canada-s-ai-research-excellence-into-global-tech-champions-848112787.html"
+   ],
+   [
+    "Globe",
+    "https://www.theglobeandmail.com/business/technology/article-quebec-mila-institute-vc-fund-artificial-intelligence-pre-seed-inovia/"
+   ]
+  ]
  },
  {
   "id": 46,
-  "section": "C. Open — needs primary source before publication",
-  "claim": "Journaux canadiens c. Compétence OpenAI",
-  "status": "resolved",
-  "detail": "La Cour supérieure de l'Ontario a confirmé sa compétence (novembre 2025, la juge Jessica Kimmel); coalition, y compris : Torstar, Globe and Mail, CBC/Radio-Canada, Postmedia, Canadian Press. Fichier exact no. CV-24-00732231-00CL non confirmé de manière indépendante.",
-  "links": []
+  "section": "Fresh live re-verification — June 15, 2026 (full fact-check pass)",
+  "claim": "Ch 6 « Surpasser l'utilisation de la puissance nationale du Canada d'ici 2026 »",
+  "status": "fixed",
+  "detail": "**Mauvaise année.** Canada ~555–618 TWh (2023); DC global ~415 TWh (2024) → ~945 TWh d'ici 2030 (AIE). Transbordement **2027–2028** , pas 2026. \"d'ici 2026\" → \"à la fin des années 2020\" / \"vers 2027-2028.\" [IEA Énergie et IA](https://www.iea.org/reports/energy-and-ai) ; StatCan électricité 2023",
+  "links": [
+   [
+    "IEA Energy and AI",
+    "https://www.iea.org/reports/energy-and-ai"
+   ]
+  ]
  },
  {
   "id": 47,
-  "section": "C. Open — needs primary source before publication",
-  "claim": "Communiqué de l'Agence canadienne d'évaluation environnementale (ACDI)",
+  "section": "Fresh live re-verification — June 15, 2026 (full fact-check pass)",
+  "claim": "L'Alliance pour la technologie souveraine « a déjà signé des partenariats internationaux sur l'IA (incl. UE, Royaume-Uni, Inde, plusieurs États du Golfe)» (Ch 5/16/19)",
   "status": "resolved",
-  "detail": "« CARE Directs Us Home: Priorityizing Indigenous Peoples' Community Standards », communiqué de l'Agence mondiale de la santé publique du Canada, Tahu Kukutai, au sommet de 2024, publié en version PDF en septembre 2025, sous l'égide de FNIGC + Figshare.",
-  "links": []
+  "detail": "✅  **Reconnité-CONFIRMÉE.** Une note d'entrée a remis en question la date de février 2026. *bilatérale* libération, mais la **4 juin * Lancement de l'IA pour tous* nommé les douze** Allemagne, Australie, Espagne, Finlande, Inde, Norvège, Qatar, Arabie saoudite, Suède, Émirats arabes unis, Royaume-Uni. **Gardez la réclamation.**.Épinglez le reçu au lancement du 4 juin (PMO/ISED/IAPP), et non à la version bilatérale de février. |  [PMO 4 juin](https://www.pm.gc.ca/en/news/news-releases/2026/06/04/prime-minister-carney-launches-ai-all-canadas-new-national-artificial)  ·  [IAPP](https://iapp.org/news/a/canada-launches-ai-strategy-to-advance-digital-sovereignty-adoption)",
+  "links": [
+   [
+    "PMO June 4",
+    "https://www.pm.gc.ca/en/news/news-releases/2026/06/04/prime-minister-carney-launches-ai-all-canadas-new-national-artificial"
+   ],
+   [
+    "IAPP",
+    "https://iapp.org/news/a/canada-launches-ai-strategy-to-advance-digital-sovereignty-adoption"
+   ]
+  ]
  },
  {
   "id": 48,
-  "section": "C. Open — needs primary source before publication",
-  "claim": "Registre de l'IA du Conseil du Trésor",
-  "status": "resolved",
-  "detail": "— lancé le 28 novembre 2025 (prés. Shafqat Ali) : 42 institutions fédérales, 400 systèmes d'IA, utilisent des outils commerciaux à faible risque (vérification d'orthographe, etc.) exclus.",
-  "links": []
+  "section": "Fresh live re-verification — June 15, 2026 (full fact-check pass)",
+  "claim": "*Bartz c. Anthropique* \"réglementation pour 1,5 milliard de dollars US en 2025\" (Ch 11)",
+  "status": "fixed",
+  "detail": "⚠️  **Surestime la finalité.** Accordée en 2025; **audience d'équité 14 mai 2026, approbation finale en instance.** L'annexe est déjà correcte. Voir l'annexe : « a accepté un règlement de classe de ~1,5 milliards de dollars américains en 2025 (approbation finale du tribunal en instance). » [Alliance des auteurs](https://www.authorsalliance.org/2026/05/14/bartz-v-anthropic-fairness-hearing-observations-and-takeaways/)",
+  "links": [
+   [
+    "Authors Alliance",
+    "https://www.authorsalliance.org/2026/05/14/bartz-v-anthropic-fairness-hearing-observations-and-takeaways/"
+   ]
+  ]
  },
  {
   "id": 49,
-  "section": "C. Open — needs primary source before publication",
-  "claim": "Projet de loi C-16 (Loi sur la protection des victimes)",
-  "status": "resolved",
-  "detail": "— présenté par le juge Min. Sean Fraser, le 9 décembre 2025; élargit la définition de l'image intime aux fakes profonds, élève max 5→10 ans, ajoute « presque nu » + 48 heures de retrait. \"158 pages\" non confirmées de manière indépendante (mineur).",
-  "links": []
+  "section": "Fresh live re-verification — June 15, 2026 (full fact-check pass)",
+  "claim": "California AB 2839 cité comme étant actuel (Ch 13, annexe)",
+  "status": "fixed",
+  "detail": "⚠️  **Ajoutez une mise en garde.** Préliminairement **enjoint comme inconstitutionnel**  ( *Kohls c. Bonta* , octobre 2024); force exécutoire contestée. Ajouter une demi-mention sur l'injonction du premier amendement. [Eric Goldman](https://blog.ericgoldman.org/archives/2024/10/court-enjoins-californias-anti-political-deepfakes-law-ab-2839-because-its-unconstitutional-censorship-kohls-v-bonta.htm)",
+  "links": [
+   [
+    "Eric Goldman",
+    "https://blog.ericgoldman.org/archives/2024/10/court-enjoins-californias-anti-political-deepfakes-law-ab-2839-because-its-unconstitutional-censorship-kohls-v-bonta.htm"
+   ]
+  ]
  },
  {
   "id": 50,
-  "section": "C. Open — needs primary source before publication",
-  "claim": "Information abondante : subvention de 23 millions de dollars du FNRF, établissements de police (Concordia vs. Incohérence entre Lethbridge et l'Ouest dans Chs. 1/9/13 — Lewis est à Concordia)",
-  "status": "open",
-  "detail": "NFRF page de prix + site du programme",
+  "section": "Fresh live re-verification — June 15, 2026 (full fact-check pass)",
+  "claim": "La liste des « originaux » du Code volontaire comprend TELUS (Ch 5)",
+  "status": "fixed",
+  "detail": "⚠️  **C'est probablement mal daté.** TELUS Digital figure parmi les **Nov 2024 ajouts** , pas la cohorte de lancement de septembre 2023 (BlackBerry/OpenText/Ada/Cohere/Coveo). Vérifier la date de signature de TELUS sur la page ISDE; si novembre 2024, quitter les « originaux ». [Code ISDE](https://ised-isde.canada.ca/site/ised/en/voluntary-code-conduct-responsible-development-and-management-advanced-generative-ai-systems)",
+  "links": [
+   [
+    "ISED Code",
+    "https://ised-isde.canada.ca/site/ised/en/voluntary-code-conduct-responsible-development-and-management-advanced-generative-ai-systems"
+   ]
+  ]
+ },
+ {
+  "id": 51,
+  "section": "Fresh live re-verification — June 15, 2026 (full fact-check pass)",
+  "claim": "Mises à jour du site Web page vs. promesse de document vivant",
+  "status": "fixed",
+  "detail": "⚠️  **Écart de mise en garde.** Le journal des mises à jour publiques omet **Correction concernant la vallée des merveilles/CNSL** (changement phare du livre \"logged in the open\") et états *Grince de l'enfer* plus plat que le corps du livre couvert. Ajouter une entrée de correction Wonder Valley datée; correspondre à la haie *Grince de l'enfer*. Site `UpdatesPage` · livre L26 / L1210",
   "links": []
  }
 ]
