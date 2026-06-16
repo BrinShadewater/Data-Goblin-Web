@@ -15,12 +15,12 @@ export function SectionHeading({ heading, first, accent }: { heading: string; fi
   const { t, mode } = useReader();
   const navy = c(...P.navy);
   const m = heading.match(/^([^:]+):\s*(.*)$/);
-  const margin = first ? "0 0 12px" : "24px 0 12px";
+  const margin = first ? "0 0 8px" : "16px 0 8px";
   const h2 = (
     <h2
       style={{
         fontFamily: DISPLAY,
-        fontSize: `${t.section}px`,
+        fontSize: `${t.section * 1.08}px`,
         fontWeight: 700,
         color: navy,
         margin: accent ? 0 : margin,
