@@ -13,7 +13,7 @@ import type { ArtPanel, Chapter, Trap } from "./types";
 
 export type Block =
   | { kind: "heading"; heading: string; accent?: string }
-  | { kind: "md"; text: string }
+  | { kind: "md"; text: string; breakBefore?: boolean }
   | { kind: "trap"; trap: Trap }
   | { kind: "bias"; text: string }
   /** Near-full-page art plate (art-map.json `panels`); always gets its own page. */
@@ -125,6 +125,44 @@ export function blockCost(block: Block): number {
 }
 
 /**
+ * If a Chapter Recap blockquote is taller than one page, split its bullets into
+ * "continued" parts that each fit a page, so a long recap paginates across pages
+ * instead of being clipped. A recap that already fits is returned unchanged.
+ */
+function splitRecap(text: string, budget: number): string[] {
+  if (blockCost({ kind: "md", text }) <= budget) return [text];
+  const headerLines: string[] = [];
+  const bullets: string[] = [];
+  let inBullets = false;
+  for (const ln of text.split("\n")) {
+    if (/^>\s*[-*]\s/.test(ln)) {
+      inBullets = true;
+      bullets.push(ln);
+    } else if (inBullets && bullets.length > 0) {
+      bullets[bullets.length - 1] += "\n" + ln;
+    } else {
+      headerLines.push(ln);
+    }
+  }
+  if (bullets.length <= 1) return [text];
+  const header = headerLines.join("\n");
+  const contHeader = header.replace("CHAPTER RECAP", "CHAPTER RECAP (continued)");
+  const limit = budget * 0.9;
+  const parts: string[][] = [];
+  let cur: string[] = [];
+  for (const b of bullets) {
+    const h = parts.length === 0 ? header : contHeader;
+    if (cur.length > 0 && blockCost({ kind: "md", text: [h, ...cur, b].join("\n") }) > limit) {
+      parts.push(cur);
+      cur = [];
+    }
+    cur.push(b);
+  }
+  if (cur.length > 0) parts.push(cur);
+  return parts.map((bs, i) => [i === 0 ? header : contHeader, ...bs].join("\n"));
+}
+
+/**
  * Flatten a chapter into its ordered block list: Start-Here intro blocks,
  * then per section a heading block + its content blocks. The Goblin Trap is
  * inserted as an atomic block after the first section; the bias label is the
@@ -190,7 +228,15 @@ export function paginatePanels(
   // paragraphs at ~half a page, placed near relevant text. Nothing gets its
   // own full page anymore, so no image can ever span two pages.
   const figures = artPanels;
-  const blocks = flattenChapter(chapter, trap, accents, figures);
+  // Split any over-tall Chapter Recap into "continued" parts that each fit a
+  // page (forced onto their own page below) so a long recap is never clipped.
+  const blocks = flattenChapter(chapter, trap, accents, figures).flatMap((b): Block[] => {
+    if (b.kind === "md" && b.text.trimStart().startsWith(">") && /CHAPTER RECAP/.test(b.text)) {
+      const parts = splitRecap(b.text, budgets.panel);
+      if (parts.length > 1) return parts.map((t) => ({ kind: "md", text: t, breakBefore: true }));
+    }
+    return [b];
+  });
   const openerOverhead = Math.max(0, budgets.panel - budgets.opener);
   const total = blocks.reduce((t, b) => t + blockCost(b), 0) + openerOverhead;
   // Fill tolerance: allow a page to run up to ~10% over budget before a new
@@ -206,6 +252,12 @@ export function paginatePanels(
   let used = openerOverhead; // panel 0 is pre-charged with the opener header
 
   for (const block of blocks) {
+    if (block.kind === "md" && block.breakBefore && cur.length > 0) {
+      // Forced page break (a split recap part always starts its own page).
+      panels.push(cur);
+      cur = [];
+      used = 0;
+    }
     const cost = blockCost(block);
     const overshoot = used + cost - target;
     const undershoot = target - used;
