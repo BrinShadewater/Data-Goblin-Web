@@ -321,7 +321,7 @@
         },
         {
           "src": "figures/fig-12.3-sag-turnout.webp",
-          "caption": "A union AI deal can pass overwhelmingly and still be decided by a sliver of the membership: SAG-AFTRA's contract passed 91.4% in favour, on roughly 19.3% turnout."
+          "caption": "SAG-AFTRA's AI deal passed with 91.4% in favour — a crushing majority, decided by the roughly one-in-five members who actually cast a ballot. A lopsided result and a thin turnout are not the same fact, and the goblin counts the denominator before it cheers the percentage."
         }
       ]
     },
@@ -369,7 +369,7 @@
         },
         {
           "src": "figures/fig-14.2-gender-shades.webp",
-          "caption": "\"99% accurate\" hides who the errors fall on. The Gender Shades study found commercial systems misread darker-skinned women up to 34.7% of the time, versus 0.8% for lighter-skinned men."
+          "caption": "An accuracy score is an average, and averages hide the people the system fails. The Gender Shades study found commercial face-classifiers misread lighter-skinned men 0.8% of the time and darker-skinned women up to 34.7% — the same product, off by more than fortyfold depending on whose face it met. \"Ninety-nine percent accurate\" overall is not ninety-nine percent accurate on you."
         }
       ]
     },
@@ -399,11 +399,11 @@
         },
         {
           "src": "figures/fig-15.4-jobs-waffle.webp",
-          "caption": "AI for All splits Canada's affected workforce into jobs likely to dramatically change or disappear (~31%) and jobs likely to work alongside AI (~29%) - a binary that misses a third outcome: the same job, intensified and surveilled."
+          "caption": "Canada's own framing splits the affected workforce in two: roughly 31 of every 100 jobs likely to dramatically change or disappear, and 29 likely to work alongside AI. The neat binary leaves out a third outcome this chapter keeps finding: the same job, kept, but intensified and surveilled."
         },
         {
           "src": "figures/fig-15.5-theoretical-vs-observed.webp",
-          "caption": "Theoretical AI capability (blue) versus observed AI use (red) across US occupational categories: what AI is actually doing is a small fraction of what it could theoretically do, and both concentrate in white-collar work. US data, after Anthropic's Economic Index (Massenkoff & McCrory, 2026)."
+          "caption": "Two shapes, one story. The blue is what large language models could theoretically do across each job's tasks; the red is what they are observed actually doing in real work. The red is a fraction of the blue, and both crowd into the same white-collar corners: computer and math, office and admin, business and finance. The gap is the part worth watching, because it is what narrows as capability, adoption, and deployment catch up. (US data, after Anthropic's Economic Index; read it as the pattern, not a Canadian measurement.)"
         }
       ]
     },
@@ -436,7 +436,7 @@
         },
         {
           "src": "figures/fig-16.4-voluntary-code.webp",
-          "caption": "Forty-six organizations signed Canada's Voluntary Code of Conduct on generative AI; none of those signatures is enforceable - no penalty, no audit, no mandatory disclosure (and Microsoft never signed)."
+          "caption": "Forty-six organizations signed Canada's Voluntary Code of Conduct on generative AI. The number of binding enforcement mechanisms attached to those signatures is zero: no penalty, no audit, no mandatory disclosure (and Microsoft never signed). A signatory list tells you who was willing to be seen signing, not what happens when someone breaks the code — because nothing does."
         }
       ]
     },
@@ -466,7 +466,7 @@
         },
         {
           "src": "figures/fig-17.4-pue-reporting.webp",
-          "caption": "Canada discloses less about its own data centres than the global baseline: about 22% of Canadian facilities report energy efficiency (PUE), versus roughly 71% worldwide."
+          "caption": "You cannot hold a number you were never given. Only about 22 of every 100 Canadian data centres report their energy efficiency, against roughly 71 of 100 worldwide: Canada discloses less about its own footprint than the global baseline. The transparency gap sits upstream of every accountability gap that follows it."
         }
       ]
     },

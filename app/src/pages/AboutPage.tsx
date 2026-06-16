@@ -28,10 +28,10 @@ const PRINCIPLES = [
 
 const BOOK_STATS = [
   { n: "20", label: "chapters" },
-  { n: "122k", label: "words" },
-  { n: "42", label: "charts & figures" },
-  { n: "56", label: "tracked receipts" },
-  { n: "154", label: "linked sources" },
+  { n: "123k", label: "words" },
+  { n: "47", label: "charts & figures" },
+  { n: "58", label: "tracked receipts" },
+  { n: "157", label: "linked sources" },
   { n: "45", label: "glossary terms" },
 ];
 
