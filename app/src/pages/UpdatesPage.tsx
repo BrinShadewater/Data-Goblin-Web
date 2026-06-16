@@ -13,6 +13,15 @@ interface UpdateEntry {
 
 const UPDATES: UpdateEntry[] = [
   {
+    date: "June 16, 2026",
+    tag: "Figures",
+    title: "Dark-mode and French versions of every data figure",
+    items: [
+      "All 42 data figures were redrawn for dark mode and translated into French. The reader now loads the right version automatically for your theme and your language, so the charts read cleanly in dark mode and in the French edition.",
+      "While re-checking the French, the edition was regenerated with cleaner machine translation, corrected chapter titles (including the Film & Media chapter), and consistent terminology — biais, hypertrucage, souveraineté. It stays labelled machine-translated and under review.",
+    ],
+  },
+  {
     date: "June 15, 2026",
     tag: "Edition",
     title: "French edition re-synced to the current guide",
