@@ -126,7 +126,7 @@ export function TopNav({
 
       <style>{`@media (max-width: 1880px){ .dg-navlabel{ display:none; } }`}</style>
 
-      <nav style={{ display: "flex", alignItems: "center", gap: "3px", flex: 1, minWidth: 0 }}>
+      <nav style={{ display: "flex", alignItems: "center", gap: "3px", flex: 1, minWidth: 0, overflow: "hidden" }}>
         {NAV_ITEMS.map((l) => (
           <NavLink
             key={l.to}
@@ -170,6 +170,7 @@ export function TopNav({
           borderRadius: "3px",
           padding: "5px 11px",
           height: "38px",
+          flexShrink: 0,
         }}
       >
         <NavIcon name="search-nav" size={TOKENS.icon.headerSearch} />
@@ -185,7 +186,7 @@ export function TopNav({
             fontFamily: UI,
             fontSize: "13px",
             color: ink,
-            width: "clamp(84px, 9vw, 180px)",
+            width: "clamp(72px, 7vw, 150px)",
           }}
         />
       </div>
@@ -240,6 +241,7 @@ export function TopNav({
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
+          flexShrink: 0,
           width: "38px",
           height: "38px",
           background: dyslexic ? green : "none",
@@ -263,6 +265,7 @@ export function TopNav({
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
+          flexShrink: 0,
           width: "38px",
           height: "38px",
           background: "none",
