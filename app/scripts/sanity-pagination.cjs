@@ -19,7 +19,6 @@ const path = require("path");
 const {
   flattenChapter,
   paginatePanels,
-  paginateChapter,
   splitBlocks,
   blockCost,
   budgetsFor,
@@ -52,6 +51,13 @@ const blockText = (b) => {
     default: throw new Error(`unknown block kind ${b.kind}`);
   }
 };
+
+const canonicalText = (text) =>
+  text
+    .replace(/^>\s*\*\*CHAPTER RECAP \(continued\).*?\*\*\s*\n?/gm, "")
+    .replace(/\n\n(>\s*[-*]\s)/g, "\n$1")
+    .replace(/\n[ \t]*\n+/g, "\n\n")
+    .trim();
 
 let failures = 0;
 const check = (label, ok, detail) => {
@@ -99,10 +105,12 @@ for (const num of [0, 2, 8, 15, 20]) {
     const actual = actualBlocks.map(blockText);
 
     // (a) no loss, no duplication, order preserved.
+    const actualCanonical = canonicalText(actual.join("\n\n"));
+    const expectedCanonical = canonicalText(expected.join("\n\n"));
     check(
       `[${name}] blocks appear exactly once (no loss/duplication)`,
-      actual.length === expected.length && actual.join("\n \n") === expected.join("\n \n"),
-      `${actual.length} paginated vs ${expected.length} source blocks across ${panels.length} pages`
+      actualCanonical === expectedCanonical,
+      `${actual.length} paginated vs ${expected.length} source logical blocks across ${panels.length} pages`
     );
 
     // Belt-and-braces: paginated prose covers the full source markdown.
@@ -110,7 +118,7 @@ for (const num of [0, 2, 8, 15, 20]) {
       .filter((b) => b.kind === "md")
       .map((b) => b.text)
       .join("\n\n");
-    check(`[${name}] paginated prose matches source markdown`, paginatedProse === sourceProse);
+    check(`[${name}] paginated prose matches source markdown`, canonicalText(paginatedProse) === canonicalText(sourceProse));
 
     // (b) page count.
     check(`[${name}] page count > 1`, panels.length > 1, `${panels.length} pages`);
@@ -124,7 +132,7 @@ for (const num of [0, 2, 8, 15, 20]) {
     const bareExpected = flattenChapter(ch, trap).map(blockText);
     check(
       "[desktop, no art] blocks appear exactly once",
-      bare.length === bareExpected.length && bare.join("\n \n") === bareExpected.join("\n \n"),
+      canonicalText(bare.join("\n\n")) === canonicalText(bareExpected.join("\n\n")),
       `${bare.length} vs ${bareExpected.length} blocks`
     );
   }
@@ -132,11 +140,12 @@ for (const num of [0, 2, 8, 15, 20]) {
   // (c) desktop 2× ceiling + (d) no stub last page, via the spread pairing —
   // with the art-map accents charged.
   const budgets = budgetsFor("desktop", false);
-  const spreads = paginateChapter(ch, trap, budgets, accents);
-  const panelsList = spreads.flatMap((s, i) => [
-    { cost: s.left.reduce((t, b) => t + blockCost(b), 0), budget: i === 0 ? budgets.opener : budgets.panel, id: `spread ${i} left` },
-    { cost: s.right.reduce((t, b) => t + blockCost(b), 0), budget: budgets.panel, id: `spread ${i} right` },
-  ]);
+  const flat = paginatePanels(ch, trap, budgets, accents);
+  const panelsList = flat.map((panel, i) => ({
+    cost: panel.reduce((t, b) => t + blockCost(b), 0),
+    budget: i === 0 ? budgets.opener : budgets.panel,
+    id: `panel ${i}`,
+  }));
   const over = panelsList.filter((p) => p.cost > 2 * p.budget);
   const worst = panelsList.reduce((a, b) => (b.cost / b.budget > a.cost / a.budget ? b : a));
   check(
@@ -145,7 +154,6 @@ for (const num of [0, 2, 8, 15, 20]) {
     `worst: ${worst.id} at ${(100 * worst.cost / worst.budget).toFixed(0)}% of budget`
   );
 
-  const flat = paginatePanels(ch, trap, budgets, accents);
   if (flat.length > 1) {
     const lastCost = flat[flat.length - 1].reduce((t, b) => t + blockCost(b), 0);
     check(

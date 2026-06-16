@@ -1,5 +1,14 @@
-import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { Resend } from 'resend';
+
+type ApiRequest = {
+  method?: string;
+  body?: Record<string, unknown>;
+};
+
+type ApiResponse = {
+  status: (statusCode: number) => ApiResponse;
+  json: (body: unknown) => void;
+};
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -19,7 +28,7 @@ function isValidEmail(value: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 }
 
-export default async function handler(req: VercelRequest, res: VercelResponse) {
+export default async function handler(req: ApiRequest, res: ApiResponse) {
   try {
     if (req.method !== 'POST') {
       return res.status(405).json({ error: 'Method not allowed' });
