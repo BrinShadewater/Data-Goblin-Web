@@ -51,16 +51,19 @@ export interface Suspicion {
 }
 
 /**
- * Suspicion = ½ · min(1, openVerifyFlags / 4)  +  ½ · corporateShare
- * where corporateShare is the fraction of this chapter's sources tagged as
- * corporate self-disclosure. Deterministic — not random.
+ * Suspicion = min(1, corporateShare + 0.4 · min(1, openVerifyFlags / 4))
+ * where corporateShare (the fraction of this chapter's sources tagged corporate
+ * self-disclosure) is the dominant signal, and any unresolved verify flags add
+ * on top. Deterministic — not random. Reweighted 2026-06-15: the old ½/½ split
+ * halved corporate reliance and leaned on a flag term that is now always 0
+ * (inline VERIFY flags were all resolved into the Receipts Ledger).
  */
 export function computeSuspicion(verifyFlags: string[], sources: string[]): Suspicion {
   const openFlags = verifyFlags.length;
   const flagScore = Math.min(1, openFlags / 4);
   const corp = sources.filter((s) => classifySource(s) === "Corporate / self-disclosure").length;
   const corporateShare = sources.length > 0 ? corp / sources.length : 0;
-  const value = 0.5 * flagScore + 0.5 * corporateShare;
+  const value = Math.min(1, corporateShare + 0.4 * flagScore);
   const label =
     value < 0.15 ? "Low Suspicion" : value < 0.35 ? "Moderate Suspicion" : value < 0.6 ? "Elevated Suspicion" : "High Suspicion";
   return { value, label, openFlags, corporateShare, totalSources: sources.length };

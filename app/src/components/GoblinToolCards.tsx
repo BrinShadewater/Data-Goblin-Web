@@ -89,7 +89,7 @@ export function SuspicionMeterCard({ chapter }: { chapter: Chapter }) {
   return (
     <ToolCard icon={<NavIcon name="insight-nav" size={TOKENS.icon.sidebarTool} />} title={tr("Suspicion Meter")}>
       <div
-        title={`Computed, not random: ½·min(1, openVerifyFlags/4) + ½·(corporate-source share). This chapter: ${suspicion.openFlags} open verification flag${suspicion.openFlags === 1 ? "" : "s"}; ${Math.round(suspicion.corporateShare * 100)}% of ${suspicion.totalSources} sources are corporate self-disclosure.`}
+        title={`Computed, not random: min(1, corporate-source share + 0.4·min(1, openVerifyFlags/4)). This chapter: ${suspicion.openFlags} open verification flag${suspicion.openFlags === 1 ? "" : "s"}; ${Math.round(suspicion.corporateShare * 100)}% of ${suspicion.totalSources} sources are corporate self-disclosure.`}
       >
         <div style={{ height: "10px", background: c("#ded6c2", "#1d2230"), borderRadius: "5px", overflow: "hidden", border: `1px solid ${border}` }}>
           <div style={{ width: `${pct}%`, height: "100%", background: meterColor, transition: "width 0.4s" }} />
