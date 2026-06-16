@@ -400,6 +400,10 @@
         {
           "src": "figures/fig-15.4-jobs-waffle.webp",
           "caption": "AI for All splits Canada's affected workforce into jobs likely to dramatically change or disappear (~31%) and jobs likely to work alongside AI (~29%) - a binary that misses a third outcome: the same job, intensified and surveilled."
+        },
+        {
+          "src": "figures/fig-15.5-theoretical-vs-observed.webp",
+          "caption": "Theoretical AI capability (blue) versus observed AI use (red) across US occupational categories: what AI is actually doing is a small fraction of what it could theoretically do, and both concentrate in white-collar work. US data, after Anthropic's Economic Index (Massenkoff & McCrory, 2026)."
         }
       ]
     },
