@@ -15,6 +15,16 @@ const UPDATES: UpdateEntry[] = [
   {
     date: "June 16, 2026",
     tag: "Reader",
+    title: "More Goblin Facts, Alignments, and Examples across the guide",
+    items: [
+      "Twenty-three new margin callouts now fill the chapters that were still missing them: nine Goblin Facts (a hard number with a source — GPT-3's 175-billion-parameter scale, the Gender Shades 34.7%-versus-0.8% accuracy gap, the 60%-by-2034 adoption target against a 19.2% floor), seven Alignment cues (which layer is the sovereignty flag actually on? disclosed, or verified?), and seven plain-language Examples (three reviews of the same restaurant; the cook who read ten thousand cookbooks; the self-checkout).",
+      "Two sources were verified and added to the receipts ledger to back the new figures: the GPT-3 scale paper and the Gender Shades study.",
+      "The French edition was re-synced so the new callouts carry over. The new ones appear as machine translation for now, consistent with the under-review banner.",
+    ],
+  },
+  {
+    date: "June 16, 2026",
+    tag: "Reader",
     title: "Two dozen new worked examples, audio volume, and layout fixes",
     items: [
       "A worked Example or an Alignment cue now lands in nearly every chapter — plain-language analogies (the cloud is a building with a hydro bill; the efficient furnace and the bigger house) and quick orientation checks (which rung on the enforceability ladder? whose law runs the server?). Twenty-four in all, in both editions.",
