@@ -25,7 +25,7 @@
   "section": "A. Confirmed this pass (receipts in hand)",
   "claim": "Convention-cadre du Conseil de l'Europe sur l'IA",
   "status": "resolved",
-  "detail": "**Le Canada a signé le 11 février 2025** (Sommet d'action de Paris IA). La conclusion du Manuscrit « Le Canada n'a pas signé » a été fausse, remplacée partout par « signée mais non ratifiée ». Confirmer le statut de ratification à la publication. |  [Canada.ca](https://www.canada.ca/en/global-affairs/news/2025/02/canada-signs-the-council-of-europe-framework-convention-on-artificial-intelligence-and-human-rights-democracy-and-the-rule-of-law.html) ,  [Conseil de l'Europe](https://www.coe.int/en/web/portal/-/canada-and-japan-sign-council-of-europe-s-first-ever-global-treaty-on-ai)",
+  "detail": "**Canada SIGNÉ LE 11 février 2025** (Sommet d'action de Paris IA). La conclusion du Manuscrit « Le Canada n'a pas signé » a été fausse, remplacée partout par « signée mais non ratifiée ». Confirmer le statut de ratification à la publication. |  [Canada.ca](https://www.canada.ca/en/global-affairs/news/2025/02/canada-signs-the-council-of-europe-framework-convention-on-artificial-intelligence-and-human-rights-democracy-and-the-rule-of-law.html) ,  [Conseil de l'Europe](https://www.coe.int/en/web/portal/-/canada-and-japan-sign-council-of-europe-s-first-ever-global-treaty-on-ai)",
   "links": [
    [
     "Canada.ca",
@@ -158,6 +158,36 @@
    [
     "YouTube",
     "https://www.youtube.com/watch?v=hiPu28YjDaE"
+   ]
+  ]
+ },
+ {
+  "id": 57,
+  "section": "A. Confirmed this pass (receipts in hand)",
+  "claim": "Échelle GPT-3 (Ch. 2 fait Gobelin)",
+  "status": "resolved",
+  "detail": "✅  **CONFIRMÉ.** GPT-3 (Brown et al., 2020) est **175 milliards de paramètres sur 96 couches de transformateurs** , entraîné sur ~500 B jetons. Ajouté en tant que Ch. 2 Gobelin Fact (2026-06-16) pour rendre la formulation existante du manuscrit « cent milliards de paramètres » exacte. La source principale est le papier NeurIPS. [NEURIPS 2020 PDF](https://proceedings.neurips.cc/paper/2020/file/1457c0d6bfcb4967418bfb8ac142f64a-Paper.pdf)",
+  "links": [
+   [
+    "NeurIPS 2020 PDF",
+    "https://proceedings.neurips.cc/paper/2020/file/1457c0d6bfcb4967418bfb8ac142f64a-Paper.pdf"
+   ]
+  ]
+ },
+ {
+  "id": 58,
+  "section": "A. Confirmed this pass (receipts in hand)",
+  "claim": "Écart d'erreur entre les ombres de genre (Ch. 14 Fait de Gobelin)",
+  "status": "resolved",
+  "detail": "✅  **CONFIRMÉ.** Buolamwini & Gebru, \"Gender Shades\" (PMLR 2018) : les systèmes commerciaux de classification des sexes mal classés **femmes plus foncées jusqu'à 34,7%** du temps vs **0,8 % pour les hommes à peau plus légère** (IBM, Microsoft, Face++). Ajouté en tant que Ch. 14 Gobelin Fact (2026-06-16) pour rendre exact le libellé existant du manuscrit « plus de dix fois plus élevé »; paires avec la vérification Gobeline adjacente en moyenne. |  [PMLR v81](https://proceedings.mlr.press/v81/buolamwini18a.html) ,  [Nouvelles du MIT](https://news.mit.edu/2018/study-finds-gender-skin-type-bias-artificial-intelligence-systems-0212)",
+  "links": [
+   [
+    "PMLR v81",
+    "https://proceedings.mlr.press/v81/buolamwini18a.html"
+   ],
+   [
+    "MIT News",
+    "https://news.mit.edu/2018/study-finds-gender-skin-type-bias-artificial-intelligence-systems-0212"
    ]
   ]
  },
@@ -461,7 +491,7 @@
   "section": "Fresh live re-verification — June 15, 2026 (full fact-check pass)",
   "claim": "Le projet de loi C-16 « n'établit pas... un mécanisme de retrait » (Ch 13)",
   "status": "fixed",
-  "detail": "⚠️  **Maintenant FAUX.** 11 mai 2026 L'amendement de la commission a ajouté une **Déploiement de la plate-forme 48 heures** (+ couverture « quasi nue »). «Frappe un mécanisme de retrait»; ajouter une phrase sur l'amendement de mai 2026; revérifier la section de comparaison internationale. |  [CJFC/CP](https://cfjctoday.com/2026/05/11/mps-amend-bill-criminalizing-sexual-deepfakes-to-include-nearly-nude-images/)  ·  [Observateur Nat'l](https://www.nationalobserver.com/2026/05/11/news/mps-amend-bill-criminalizing-sexual-deepfakes-include-nearly-nude-images)",
+  "detail": "⚠️  **Maintenant FAUX.** 11 mai 2026 L'amendement de la commission a ajouté une **Déploiement de la plate-forme 48 heures** (+ couverture « quasi nue »). «Frappe un mécanisme de retrait»; ajouter une phrase sur l'amendement de mai 2026; revérifier la section de comparaison internationale. |  [CJFC/CP](https://cfjctoday.com/2026/05/11/mps-amend-bill-criminalizing-sexual-deepfakes-to-include-nearly-nude-images/)  ·  [Observateur de Nat'l](https://www.nationalobserver.com/2026/05/11/news/mps-amend-bill-criminalizing-sexual-deepfakes-include-nearly-nude-images)",
   "links": [
    [
     "CFJC/CP",

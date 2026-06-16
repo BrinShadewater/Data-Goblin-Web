@@ -162,6 +162,36 @@
   ]
  },
  {
+  "id": 57,
+  "section": "A. Confirmed this pass (receipts in hand)",
+  "claim": "GPT-3 scale (Ch. 2 Goblin Fact)",
+  "status": "resolved",
+  "detail": "✅ **CONFIRMED.** GPT-3 (Brown et al., 2020) is **175 billion parameters across 96 transformer layers**, trained on ~500B tokens. Added as a Ch. 2 Goblin Fact (2026-06-16) to make the manuscript's existing \"hundred billion parameters\" wording exact. Primary source is the NeurIPS paper. | [NeurIPS 2020 PDF](https://proceedings.neurips.cc/paper/2020/file/1457c0d6bfcb4967418bfb8ac142f64a-Paper.pdf)",
+  "links": [
+   [
+    "NeurIPS 2020 PDF",
+    "https://proceedings.neurips.cc/paper/2020/file/1457c0d6bfcb4967418bfb8ac142f64a-Paper.pdf"
+   ]
+  ]
+ },
+ {
+  "id": 58,
+  "section": "A. Confirmed this pass (receipts in hand)",
+  "claim": "Gender Shades error gap (Ch. 14 Goblin Fact)",
+  "status": "resolved",
+  "detail": "✅ **CONFIRMED.** Buolamwini & Gebru, \"Gender Shades\" (PMLR 2018): commercial gender-classification systems misclassified **darker-skinned women up to 34.7%** of the time vs **0.8% for lighter-skinned men** (IBM, Microsoft, Face++). Added as a Ch. 14 Goblin Fact (2026-06-16) to make the manuscript's existing \"more than ten times higher\" wording exact; pairs with the adjacent Goblin Check on averages. | [PMLR v81](https://proceedings.mlr.press/v81/buolamwini18a.html), [MIT News](https://news.mit.edu/2018/study-finds-gender-skin-type-bias-artificial-intelligence-systems-0212)",
+  "links": [
+   [
+    "PMLR v81",
+    "https://proceedings.mlr.press/v81/buolamwini18a.html"
+   ],
+   [
+    "MIT News",
+    "https://news.mit.edu/2018/study-finds-gender-skin-type-bias-artificial-intelligence-systems-0212"
+   ]
+  ]
+ },
+ {
   "id": 5,
   "section": "B. Fixed from known record (spot-check recommended)",
   "claim": "\"2024 CHIPS and Science Act\"",
