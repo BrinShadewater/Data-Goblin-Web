@@ -70,15 +70,73 @@ const esc = (s) => s.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g
 const NAV_EN = [["/", "Home"], ["/guide", "The Field Guide"], ["/chapter/1", "Start reading"], ["/map", "Map"], ["/loot", "Glossary"], ["/receipts", "Receipts"], ["/toolkit", "Toolkit"], ["/about", "About"], ["/contribute", "Contribute"]];
 const NAV_FR = [["/fr", "Accueil"], ["/fr/guide", "Le guide de terrain"], ["/fr/chapter/1", "Commencer la lecture"], ["/fr/map", "Carte"], ["/fr/loot", "Glossaire"], ["/fr/receipts", "Reçus"], ["/fr/toolkit", "Boîte à outils"], ["/fr/about", "À propos"], ["/fr/contribute", "Contribuer"]];
 
+// ---- Chapter body inliner ----
+// Render the full chapter text into the crawlable shell so non-JS crawlers and AI
+// engines see the whole chapter, not just the H1 + intro. Browser-free, minimal
+// markdown -> HTML. Operates on escaped text so author angle brackets stay safe;
+// markdown punctuation (* [ ] ( ) ` #) survives escaping. Real http links become
+// anchors; internal art-asset links (icon markers) are flattened to plain text so
+// the shell carries real prose + citations, not icon refs.
+function inlineMd(s) {
+  return esc(String(s))
+    .replace(/\[([^\]]+)\]\(([^)\s]+)[^)]*\)/g, (_m, t, u) =>
+      /^https?:\/\//.test(u) ? `<a href="${u.replace(/"/g, "%22")}">${t}</a>` : t)
+    .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
+    .replace(/(^|[^*])\*([^*\n]+)\*/g, "$1<em>$2</em>")
+    .replace(/`([^`]+)`/g, "<code>$1</code>");
+}
+function mdToHtml(md) {
+  const out = [];
+  for (const block of String(md).split(/\n{2,}/)) {
+    const t = block.trim();
+    if (!t) continue;
+    const h = t.match(/^(#{1,6})\s+([\s\S]*)$/);
+    if (h) { const lvl = Math.min(6, h[1].length + 2); out.push(`<h${lvl}>${inlineMd(h[2])}</h${lvl}>`); continue; }
+    if (/^\s*[-*]\s+/.test(t)) {
+      const items = t.split(/\n/).filter((l) => /^\s*[-*]\s+/.test(l)).map((l) => `<li>${inlineMd(l.replace(/^\s*[-*]\s+/, ""))}</li>`).join("");
+      out.push(`<ul>${items}</ul>`); continue;
+    }
+    if (/^>\s?/.test(t)) { out.push(`<blockquote>${inlineMd(t.replace(/^>\s?/gm, ""))}</blockquote>`); continue; }
+    out.push(`<p>${inlineMd(t.replace(/\n/g, " "))}</p>`);
+  }
+  return out.join("");
+}
+// Build the inlined body for a /chapter/N route in the given language. Returns ""
+// for non-chapter routes or if the source JSON is missing/unparseable.
+function chapterBodyHtml(route, lang) {
+  const m = route.match(/^\/chapter\/(\d+)$/);
+  if (!m) return "";
+  const n = Number(m[1]);
+  const dir = lang === "fr" ? path.join(DIST, "content", "fr", "chapters") : path.join(DIST, "content", "chapters");
+  let ch;
+  try { ch = JSON.parse(fs.readFileSync(path.join(dir, `ch${String(n).padStart(2, "0")}.json`), "utf8")); }
+  catch { return ""; }
+  const fr = lang === "fr";
+  let b = "";
+  if (ch.startHere) b += `<p>${inlineMd(ch.startHere)}</p>`;
+  for (const s of ch.sections || []) {
+    if (s && s.heading) b += `<h2>${esc(s.heading)}</h2>`;
+    if (s && s.markdown) b += mdToHtml(s.markdown);
+  }
+  for (const g of ch.goblinChecks || []) { if (g && g.markdown) b += mdToHtml(g.markdown); }
+  if (Array.isArray(ch.recap) && ch.recap.length)
+    b += `<h2>${fr ? "Récapitulatif" : "Recap"}</h2><ul>${ch.recap.map((r) => `<li>${inlineMd(r)}</li>`).join("")}</ul>`;
+  if (Array.isArray(ch.sources) && ch.sources.length)
+    b += `<h2>Sources</h2><ul>${ch.sources.map((s) => `<li>${inlineMd(s)}</li>`).join("")}</ul>`;
+  return b ? `<article data-prerender-body>${b}</article>` : "";
+}
+
 // Crawlable fallback content placed inside #root. React's createRoot().render()
 // replaces it on mount, so real users never see it, but raw-HTML crawlers and
-// non-rendering AI bots get a real H1, an intro paragraph, and internal links.
+// non-rendering AI bots get a real H1, an intro paragraph, internal links, and —
+// for chapter routes — the full chapter body.
 function seoShell(route, h1, desc, lang) {
   const nav = (lang === "fr" ? NAV_FR : NAV_EN).map(([href, label]) => `<a href="${href}">${esc(label)}</a>`).join("");
   const altHref = lang === "fr" ? (route || "/") : "/fr" + route;
   const altLabel = lang === "fr" ? "English edition" : "Édition française";
   const navLabel = lang === "fr" ? "Navigation principale" : "Primary navigation";
-  return `<div data-prerender-shell><h1>${esc(h1)}</h1><p>${esc(desc)}</p><nav aria-label="${navLabel}">${nav}<a href="${altHref}">${esc(altLabel)}</a></nav></div>`;
+  const body = chapterBodyHtml(route, lang);
+  return `<div data-prerender-shell><h1>${esc(h1)}</h1><p>${esc(desc)}</p><nav aria-label="${navLabel}">${nav}<a href="${altHref}">${esc(altLabel)}</a></nav>${body}</div>`;
 }
 
 // Per-chapter Article JSON-LD. Each chapter route becomes independently
