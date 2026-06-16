@@ -403,7 +403,8 @@
         },
         {
           "src": "figures/fig-15.5-theoretical-vs-observed.webp",
-          "caption": "Two shapes, one story. The blue is what large language models could theoretically do across each job's tasks; the red is what they are observed actually doing in real work. The red is a fraction of the blue, and both crowd into the same white-collar corners: computer and math, office and admin, business and finance. The gap is the part worth watching, because it is what narrows as capability, adoption, and deployment catch up. (US data, after Anthropic's Economic Index; read it as the pattern, not a Canadian measurement.)"
+          "caption": "Two shapes, one story. The blue is what large language models could theoretically do across each job's tasks; the red is what they are observed actually doing in real work. The red is a fraction of the blue, and both crowd into the same white-collar corners: computer and math, office and admin, business and finance. The gap is the part worth watching, because it is what narrows as capability, adoption, and deployment catch up. (US data, after Anthropic's Economic Index; read it as the pattern, not a Canadian measurement.)",
+          "withPrev": true
         }
       ]
     },

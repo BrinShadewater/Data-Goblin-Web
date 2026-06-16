@@ -184,8 +184,13 @@ export function flattenChapter(
   const S = chapter.sections.length;
   const K = figures.length;
   const figsAfter = new Map<number, ArtPanel[]>();
+  let prevAnchor = -1;
   figures.forEach((fig, k) => {
-    const i = S > 0 ? Math.min(S - 1, Math.floor(((k + 1) * S) / (K + 1))) : -1;
+    const spread = S > 0 ? Math.min(S - 1, Math.floor(((k + 1) * S) / (K + 1))) : -1;
+    // A `withPrev` figure shares the previous figure's anchor section, so it
+    // renders directly under it rather than being spread to its own section.
+    const i = fig.withPrev && k > 0 ? prevAnchor : spread;
+    prevAnchor = i;
     const arr = figsAfter.get(i) ?? [];
     arr.push(fig);
     figsAfter.set(i, arr);

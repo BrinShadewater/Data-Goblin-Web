@@ -4,6 +4,7 @@ import { BODY, DISPLAY, HAND, MONO, P, UI } from "../theme";
 import { Markdown } from "../components/Markdown";
 import { artAspectRatio, artDimensions, artSrcSet, artUrl, useBook } from "../useContent";
 import { Kicker, LoadingMessage, StaticCard, StaticPageShell } from "../components/StaticPage";
+import { NavIcon } from "../components/GoblinMascot";
 import { tr } from "../i18n";
 import { CONTACT_EMAIL } from "../contribute";
 
@@ -27,20 +28,20 @@ const PRINCIPLES = [
 ];
 
 const BOOK_STATS = [
-  { n: "20", label: "chapters" },
-  { n: "123k", label: "words" },
-  { n: "47", label: "charts & figures" },
-  { n: "58", label: "tracked receipts" },
-  { n: "157", label: "linked sources" },
-  { n: "45", label: "glossary terms" },
+  { n: "20", label: "chapters", icon: "book-nav" },
+  { n: "123k", label: "words", icon: "note-nav" },
+  { n: "47", label: "charts & figures", icon: "growth-nav" },
+  { n: "58", label: "tracked receipts", icon: "check-nav" },
+  { n: "157", label: "linked sources", icon: "portal-nav" },
+  { n: "45", label: "glossary terms", icon: "chest-nav" },
 ];
 
 const DEVICE_STATS = [
-  { n: "26", label: "Goblin Checks" },
-  { n: "20", label: "Goblin Traps" },
-  { n: "11", label: "Goblin Facts" },
-  { n: "13", label: "Alignments" },
-  { n: "13", label: "Examples" },
+  { n: "26", label: "Goblin Checks", icon: "check-nav" },
+  { n: "20", label: "Goblin Traps", icon: "trap-nav" },
+  { n: "11", label: "Goblin Facts", icon: "data-nav" },
+  { n: "13", label: "Alignments", icon: "trailmarker-nav" },
+  { n: "13", label: "Examples", icon: "examples-nav" },
 ];
 
 /** A number that ticks up from 0 to its target the first time it scrolls into view. */
@@ -138,6 +139,7 @@ export function AboutPage() {
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))", gap: "10px", marginBottom: "16px" }}>
           {BOOK_STATS.map((s, i) => (
             <div key={i} style={{ background: cardBg, border: `1px solid ${border}`, borderRadius: "8px", padding: "16px 14px", textAlign: "center" }}>
+              <div style={{ marginBottom: "8px" }}><NavIcon name={s.icon} size={30} /></div>
               <div style={{ fontFamily: DISPLAY, fontSize: "30px", fontWeight: 900, color: green, lineHeight: 1 }}><CountUp value={s.n} /></div>
               <div style={{ fontFamily: MONO, fontSize: "10px", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: muted, marginTop: "8px" }}>{tr(s.label)}</div>
             </div>
@@ -147,6 +149,7 @@ export function AboutPage() {
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))", gap: "10px", marginBottom: "26px" }}>
           {DEVICE_STATS.map((s, i) => (
             <div key={i} style={{ background: cardBg, border: `1px solid ${border}`, borderRadius: "8px", padding: "16px 14px", textAlign: "center" }}>
+              <div style={{ marginBottom: "8px" }}><NavIcon name={s.icon} size={30} /></div>
               <div style={{ fontFamily: DISPLAY, fontSize: "30px", fontWeight: 900, color: green, lineHeight: 1 }}><CountUp value={s.n} /></div>
               <div style={{ fontFamily: MONO, fontSize: "10px", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: muted, marginTop: "8px" }}>{tr(s.label)}</div>
             </div>

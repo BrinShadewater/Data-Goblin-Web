@@ -26,7 +26,7 @@ export const TOKENS = {
     progressBook: 68,
     tocStart: 58,
     tocCanadian: 131,
-    calloutCheck: 77,
+    calloutCheck: 60,
     calloutTrap: 50,
     calloutRecap: 54,
     calloutTrailmarker: 41,
