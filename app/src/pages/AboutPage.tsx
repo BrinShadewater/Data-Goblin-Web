@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import { useTheme } from "../ThemeContext";
 import { BODY, DISPLAY, HAND, MONO, P, UI } from "../theme";
 import { Markdown } from "../components/Markdown";
@@ -25,16 +26,54 @@ const PRINCIPLES = [
   { title: "Calibrated suspicion is healthy", body: "The Suspicion Meter isn't cynicism — it's calibrated scepticism. The goblin collects receipts, not grudges." },
 ];
 
-const STATS = [
+const BOOK_STATS = [
   { n: "20", label: "chapters" },
   { n: "119k", label: "words" },
   { n: "42", label: "charts & figures" },
   { n: "46", label: "tracked receipts" },
   { n: "136", label: "linked sources" },
   { n: "45", label: "glossary terms" },
-  { n: "25", label: "Goblin Checks" },
-  { n: "20", label: "Goblin Traps" },
 ];
+
+const DEVICE_STATS = [
+  { n: "26", label: "Goblin Checks" },
+  { n: "20", label: "Goblin Traps" },
+  { n: "11", label: "Goblin Facts" },
+  { n: "1", label: "Alignment" },
+  { n: "1", label: "Examples" },
+];
+
+/** A number that ticks up from 0 to its target the first time it scrolls into view. */
+function CountUp({ value }: { value: string }) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const m = value.match(/^([\d.]+)(.*)$/);
+  const target = m ? parseFloat(m[1]) : 0;
+  const suffix = m ? m[2] : value;
+  const [n, setN] = useState(0);
+  const done = useRef(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) { setN(target); return; }
+    const io = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting && !done.current) {
+        done.current = true;
+        const dur = 1100;
+        const t0 = performance.now();
+        const step = (now: number) => {
+          const p = Math.min(1, (now - t0) / dur);
+          setN(target * (1 - Math.pow(1 - p, 3)));
+          if (p < 1) requestAnimationFrame(step);
+          else setN(target);
+        };
+        requestAnimationFrame(step);
+      }
+    }, { threshold: 0.4 });
+    io.observe(el);
+    return () => io.disconnect();
+  }, [target]);
+  return <span ref={ref}>{Math.round(n)}{suffix}</span>;
+}
 
 export function AboutPage() {
   const { c, dark } = useTheme();
@@ -96,10 +135,19 @@ export function AboutPage() {
 
         {/* By the numbers */}
         <Kicker color={muted} fontSize="8.5px" letterSpacing="0.2em" marginBottom="12px">{tr("By The Numbers")}</Kicker>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))", gap: "10px", marginBottom: "26px" }}>
-          {STATS.map((s, i) => (
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))", gap: "10px", marginBottom: "16px" }}>
+          {BOOK_STATS.map((s, i) => (
             <div key={i} style={{ background: cardBg, border: `1px solid ${border}`, borderRadius: "8px", padding: "16px 14px", textAlign: "center" }}>
-              <div style={{ fontFamily: DISPLAY, fontSize: "30px", fontWeight: 900, color: green, lineHeight: 1 }}>{s.n}</div>
+              <div style={{ fontFamily: DISPLAY, fontSize: "30px", fontWeight: 900, color: green, lineHeight: 1 }}><CountUp value={s.n} /></div>
+              <div style={{ fontFamily: MONO, fontSize: "10px", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: muted, marginTop: "8px" }}>{tr(s.label)}</div>
+            </div>
+          ))}
+        </div>
+        <Kicker color={green} fontSize="8.5px" letterSpacing="0.2em" marginBottom="12px">{tr("Goblin Devices")}</Kicker>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))", gap: "10px", marginBottom: "26px" }}>
+          {DEVICE_STATS.map((s, i) => (
+            <div key={i} style={{ background: cardBg, border: `1px solid ${border}`, borderRadius: "8px", padding: "16px 14px", textAlign: "center" }}>
+              <div style={{ fontFamily: DISPLAY, fontSize: "30px", fontWeight: 900, color: green, lineHeight: 1 }}><CountUp value={s.n} /></div>
               <div style={{ fontFamily: MONO, fontSize: "10px", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: muted, marginTop: "8px" }}>{tr(s.label)}</div>
             </div>
           ))}
