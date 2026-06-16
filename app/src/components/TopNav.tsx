@@ -35,7 +35,6 @@ export function TopNav({
     <button
       onClick={() => navigate("/")}
       style={{ display: "flex", alignItems: "center", gap: "11px", background: "none", border: "none", cursor: "pointer", padding: 0, minWidth: 0 }}
-      aria-label="Data Goblin home"
     >
       <GoblinIcon size={compact ? TOKENS.icon.headerLogoCompact : TOKENS.icon.headerLogoDesktop} />
       <div style={{ textAlign: "left", minWidth: 0 }}>
