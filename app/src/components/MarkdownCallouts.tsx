@@ -349,18 +349,8 @@ export function RecapBox({ children }: { children: ReactNode }) {
         margin: "16px 0",
       }}
     >
-      <div
-        style={{
-          fontFamily: MONO,
-          fontSize: "9px",
-          fontWeight: 800,
-          letterSpacing: "0.22em",
-          textTransform: "uppercase",
-          color: c(...P.green),
-          marginBottom: "8px",
-        }}
-      >
-        Chapter Recap
+      <div style={{ marginBottom: "6px" }}>
+        <NavIcon name="chapter-recap-nav" size={TOKENS.icon.calloutRecap} />
       </div>
       <div style={{ fontFamily: t.bodyFont, fontSize: `${t.callout}px`, lineHeight: t.bodyLh, letterSpacing: t.letterSpacing, wordSpacing: t.wordSpacing }}>
         {children}
