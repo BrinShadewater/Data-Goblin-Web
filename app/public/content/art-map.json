@@ -318,6 +318,10 @@
         {
           "src": "figures/fig-12.2-tax-credits.webp",
           "caption": "Canada's screen incentives pull two ways: the CPTC (25%) rewards Canadian-owned stories, while the PSTC (16%) and BC's 36% reward being a good place to shoot, with no Canadian-content test. Production volume and creative ownership are cousins, not twins."
+        },
+        {
+          "src": "figures/fig-12.3-sag-turnout.webp",
+          "caption": "A union AI deal can pass overwhelmingly and still be decided by a sliver of the membership: SAG-AFTRA's contract passed 91.4% in favour, on roughly 19.3% turnout."
         }
       ]
     },
@@ -362,6 +366,10 @@
         {
           "src": "figures/fig-14.1-three-biases.webp",
           "caption": "Bias in AI is not only a data-cleaning problem. Cleaning the data reaches statistical bias, but social bias (stereotypes baked into the corpus) and structural bias (the metric chosen, the people the system was built to serve) sit in the outer rings, untouched. A system 99% accurate on average can still be 90% accurate on your face."
+        },
+        {
+          "src": "figures/fig-14.2-gender-shades.webp",
+          "caption": "\"99% accurate\" hides who the errors fall on. The Gender Shades study found commercial systems misread darker-skinned women up to 34.7% of the time, versus 0.8% for lighter-skinned men."
         }
       ]
     },
@@ -388,6 +396,10 @@
         {
           "src": "figures/fig-15.3-adoption-gauge.webp",
           "caption": "Canadian business AI adoption tripled in two years to 19.2%. The federal target is 60% by 2034 — another near-tripling — ambitious, but on these curves not impossible."
+        },
+        {
+          "src": "figures/fig-15.4-jobs-waffle.webp",
+          "caption": "AI for All splits Canada's affected workforce into jobs likely to dramatically change or disappear (~31%) and jobs likely to work alongside AI (~29%) - a binary that misses a third outcome: the same job, intensified and surveilled."
         }
       ]
     },
@@ -417,6 +429,10 @@
         {
           "src": "figures/fig-16.3-signed-not-signed.webp",
           "caption": "Canada readily joins the soft, voluntary AI instruments — the OECD principles, the G7 code, UNESCO ethics, and (on paper) the Council of Europe convention. The binding commitments are the gaps: the Beijing performer-rights treaty unsigned, and no binding domestic AI law since AIDA died."
+        },
+        {
+          "src": "figures/fig-16.4-voluntary-code.webp",
+          "caption": "Forty-six organizations signed Canada's Voluntary Code of Conduct on generative AI; none of those signatures is enforceable - no penalty, no audit, no mandatory disclosure (and Microsoft never signed)."
         }
       ]
     },
@@ -443,6 +459,10 @@
         {
           "src": "figures/fig-17.3-transparency-dumbbell.webp",
           "caption": "From 2024 to 2025 transparency fell almost everywhere — Meta, Mistral, and OpenAI all dropped, and the mean fell 17 points. The handful that rose did so mostly by holding steady while everyone around them slid; IBM's 95 was the lone high."
+        },
+        {
+          "src": "figures/fig-17.4-pue-reporting.webp",
+          "caption": "Canada discloses less about its own data centres than the global baseline: about 22% of Canadian facilities report energy efficiency (PUE), versus roughly 71% worldwide."
         }
       ]
     },
