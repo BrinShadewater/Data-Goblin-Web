@@ -1,4 +1,6 @@
+import { useEffect, useMemo, useState } from "react";
 import { useTheme } from "../ThemeContext";
+import { useLanguage, type Lang } from "../LanguageContext";
 import { DISPLAY, P } from "../theme";
 import { artAspectRatio, artDimensions, artSrcSet, artUrl } from "../useContent";
 
@@ -9,10 +11,39 @@ export function artBlendStyle(dark: boolean) {
   };
 }
 
+/**
+ * Data figures ship in up to four baked variants: light-EN (base), dark-EN
+ * (`-dark`), light-FR (`-fr`), and dark-FR (`-dark-fr`). The reader picks the
+ * right file by theme + language. Variants that don't exist yet fall back
+ * gracefully (e.g. an FR reader in dark mode gets the dark-EN figure rather
+ * than a glaring light one) via a progressive onError chain. Non-figure art
+ * (full-page plates) is unaffected and keeps its responsive srcSet + blend.
+ */
+function useVariantSrc(src: string, dark: boolean, lang: Lang) {
+  const isFigure = src.startsWith("figures/") && src.endsWith(".webp");
+  const candidates = useMemo(() => {
+    if (!isFigure) return [src];
+    const stem = src.slice(0, -".webp".length);
+    const c: string[] = [];
+    if (dark && lang === "fr") c.push(`${stem}-dark-fr.webp`);
+    if (dark) c.push(`${stem}-dark.webp`);
+    if (!dark && lang === "fr") c.push(`${stem}-fr.webp`);
+    c.push(src);
+    return Array.from(new Set(c));
+  }, [src, dark, lang, isFigure]);
+  const [idx, setIdx] = useState(0);
+  useEffect(() => {
+    setIdx(0);
+  }, [candidates]);
+  const onError = () => setIdx((i) => (i < candidates.length - 1 ? i + 1 : i));
+  return { url: artUrl(candidates[idx]), onError, isFigure };
+}
+
 export function ArtPlate({ src, caption }: { src: string; caption?: string | null }) {
   const { c, dark } = useTheme();
+  const { lang } = useLanguage();
   const dimensions = artDimensions(src);
-  const isFigure = src.startsWith("figures/");
+  const { url, onError, isFigure } = useVariantSrc(src, dark, lang);
   return (
     <div
       style={{
@@ -26,8 +57,9 @@ export function ArtPlate({ src, caption }: { src: string; caption?: string | nul
       }}
     >
       <img
-        src={artUrl(src)}
-        srcSet={artSrcSet(src)}
+        src={url}
+        onError={onError}
+        srcSet={isFigure ? undefined : artSrcSet(src)}
         sizes="(max-width: 760px) 92vw, 42vw"
         width={dimensions?.width}
         height={dimensions?.height}
@@ -69,8 +101,9 @@ export function ArtPlate({ src, caption }: { src: string; caption?: string | nul
  */
 export function FigureBlock({ src, caption }: { src: string; caption?: string | null }) {
   const { c, dark } = useTheme();
+  const { lang } = useLanguage();
   const dimensions = artDimensions(src);
-  const isFigure = src.startsWith("figures/");
+  const { url, onError, isFigure } = useVariantSrc(src, dark, lang);
   return (
     <figure
       style={{
@@ -82,8 +115,9 @@ export function FigureBlock({ src, caption }: { src: string; caption?: string | 
       }}
     >
       <img
-        src={artUrl(src)}
-        srcSet={artSrcSet(src)}
+        src={url}
+        onError={onError}
+        srcSet={isFigure ? undefined : artSrcSet(src)}
         sizes="(max-width: 760px) 90vw, 40vw"
         width={dimensions?.width}
         height={dimensions?.height}
