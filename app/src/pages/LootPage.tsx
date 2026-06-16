@@ -55,7 +55,7 @@ export function LootPage() {
         >
           <StaticHeroArt
             art="panels/glossary-chest-panel.webp"
-            alt={tr("A glossary treasure chest for the Data Goblin loot page")}
+            alt={tr("The Data Goblin reading the field guide by lantern light on the glossary loot page")}
             maxWidth="420px"
             maxHeight="300px"
             sizes="(max-width: 760px) 86vw, 420px"

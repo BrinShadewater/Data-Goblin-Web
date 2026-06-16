@@ -27,7 +27,7 @@
       ]
     },
     "1": {
-      "opener": "medium/artificial-intelligence-medium.webp",
+      "opener": "medium/ch1-cover-medium.webp",
       "accents": [
         "small/artificial-intelligence.webp",
         "small/ai.webp",
@@ -49,7 +49,7 @@
       ]
     },
     "2": {
-      "opener": "medium/ai-data-medium.webp",
+      "opener": "medium/ch2-cover-medium.webp",
       "accents": [
         "small/ai-training.webp",
         "small/training-data.webp",
@@ -63,11 +63,15 @@
         {
           "src": "figures/fig-2.1-next-token-loop.webp",
           "caption": "A language model doesn't plan a sentence and then write it. It reads everything so far, scores every possible next word, picks one with a little randomness, and repeats — thousands of times over. Fluency is the costume; pattern-matching is the creature wearing it."
+        },
+        {
+          "src": "medium/ai-data-medium.webp",
+          "caption": null
         }
       ]
     },
     "3": {
-      "opener": "medium/data-sorting-medium.webp",
+      "opener": "medium/ch3-cover-medium.webp",
       "accents": [
         "small/data-sorting.webp",
         "small/messy-data.webp",
@@ -82,11 +86,15 @@
         {
           "src": "figures/fig-3.1-training-set.webp",
           "caption": "Modern models are trained on scraped web text, a shadow-library book corpus, and billions of captioned images — most of it gathered without permission. \"Publicly readable\" was quietly treated as \"free to ingest,\" and the consent column is where the copyright fights and the CSAM problem both live."
+        },
+        {
+          "src": "medium/data-sorting-medium.webp",
+          "caption": null
         }
       ]
     },
     "4": {
-      "opener": "medium/data-server-medium.webp",
+      "opener": "medium/ch4-cover-medium.webp",
       "accents": [
         "small/power.webp",
         "small/chips.webp",
@@ -112,7 +120,7 @@
       ]
     },
     "5": {
-      "opener": "medium/ai-for-all-medium.webp",
+      "opener": "medium/ch5-cover-medium.webp",
       "accents": [
         "small/canada.webp",
         "small/canada-goblin.webp",
@@ -138,7 +146,7 @@
       ]
     },
     "6": {
-      "opener": "medium/cloud-infrastructure-medium.webp",
+      "opener": "medium/ch6-cover-medium.webp",
       "accents": [
         "small/server.webp",
         "small/servers2.webp",
@@ -160,7 +168,7 @@
       ]
     },
     "7": {
-      "opener": "medium/canadian-government-medium.webp",
+      "opener": "medium/ch7-cover-medium.webp",
       "accents": [
         "small/canadian-politics.webp",
         "small/politics2.webp",
@@ -182,7 +190,7 @@
       ]
     },
     "8": {
-      "opener": "medium/water-use-medium.webp",
+      "opener": "medium/ch8-cover-medium.webp",
       "accents": [
         "small/water.webp",
         "small/water-power.webp",
@@ -221,7 +229,7 @@
       ]
     },
     "9": {
-      "opener": "medium/ip-protection-medium.webp",
+      "opener": "medium/ch9-cover-medium.webp",
       "accents": [
         "small/canada-beaver.webp",
         "small/canadian-beavers.webp",
@@ -247,7 +255,7 @@
       ]
     },
     "10": {
-      "opener": "medium/security-medium.webp",
+      "opener": "medium/ch10-cover-medium.webp",
       "accents": [
         "small/anonymous.webp",
         "small/masking.webp",
@@ -269,7 +277,7 @@
       ]
     },
     "11": {
-      "opener": "medium/copyright-medium.webp",
+      "opener": "medium/ch11-cover-medium.webp",
       "accents": [
         "small/stolen-art.webp",
         "small/stolen-ips.webp",
@@ -283,11 +291,15 @@
         {
           "src": "figures/fig-11.1-copyright-contest.webp",
           "caption": "The Canadian copyright fight is not a case of one side lying. Geist and Craig weigh the social bargain of permitted uses; TWUC and ACTRA weigh creator compensation — both rigorous, reaching opposite conclusions inside the same statute while the lawsuits play out. The trap is resolving a genuine disagreement prematurely."
+        },
+        {
+          "src": "medium/copyright-medium.webp",
+          "caption": null
         }
       ]
     },
     "12": {
-      "opener": "medium/idea-automation-medium.webp",
+      "opener": "medium/ch12-cover-medium.webp",
       "accents": [
         "small/stolen-art.webp",
         "small/speech.webp",
@@ -310,7 +322,7 @@
       ]
     },
     "13": {
-      "opener": "medium/deep-fakes-medium.webp",
+      "opener": "medium/ch13-cover-medium.webp",
       "accents": [
         "small/deep-fake.webp",
         "small/mirror-fake.webp",
@@ -336,7 +348,7 @@
       ]
     },
     "14": {
-      "opener": "medium/idea-automation-medium.webp",
+      "opener": "medium/ch14-cover-medium.webp",
       "accents": [
         "small/sorting.webp",
         "small/robot-sorting.webp",
@@ -354,7 +366,7 @@
       ]
     },
     "15": {
-      "opener": "medium/job-loss-medium.webp",
+      "opener": "medium/ch15-cover-medium.webp",
       "accents": [
         "small/robot.webp",
         "small/robot-job-loss.webp",
@@ -380,7 +392,7 @@
       ]
     },
     "16": {
-      "opener": "medium/canadian-government-medium.webp",
+      "opener": "medium/ch16-cover-medium.webp",
       "accents": [
         "small/security-act.webp",
         "small/canadian-voting.webp"
@@ -409,7 +421,7 @@
       ]
     },
     "17": {
-      "opener": "medium/protection-medium.webp",
+      "opener": "medium/ch17-cover-medium.webp",
       "accents": [
         "small/security-badge.webp",
         "small/data-security.webp",
@@ -435,7 +447,7 @@
       ]
     },
     "18": {
-      "opener": "medium/idea-automation-medium.webp",
+      "opener": "medium/ch18-cover-medium.webp",
       "accents": [
         "small/ai-knowledge.webp",
         "small/field-notes.webp",
@@ -453,7 +465,7 @@
       ]
     },
     "19": {
-      "opener": "medium/ai-for-all-medium.webp",
+      "opener": "medium/ch19-cover-medium.webp",
       "accents": [
         "small/canada-and-beaver.webp",
         "small/ai-for-all3.webp",
@@ -471,7 +483,7 @@
       ]
     },
     "20": {
-      "opener": "medium/ai-for-all-medium.webp",
+      "opener": "medium/ch20-cover-medium.webp",
       "accents": [
         "small/waving-mascot.webp",
         "small/canadian-speech.webp",
@@ -481,6 +493,10 @@
         {
           "src": "panels/forward-panel.webp",
           "caption": "The trail continues — carry the toolkit forward."
+        },
+        {
+          "src": "medium/ai-for-all-medium.webp",
+          "caption": null
         }
       ]
     },
@@ -495,6 +511,10 @@
         {
           "src": "panels/insight-panel.webp",
           "caption": "The Source Library — every claim, checked against its receipt."
+        },
+        {
+          "src": "panels/source-archive-panel.webp",
+          "caption": null
         }
       ]
     }
