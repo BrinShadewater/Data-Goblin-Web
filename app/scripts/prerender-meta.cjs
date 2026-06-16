@@ -126,6 +126,67 @@ function chapterBodyHtml(route, lang) {
   return b ? `<article data-prerender-body>${b}</article>` : "";
 }
 
+// /guide — the table of contents, built from book.json parts so crawlers see every
+// part, region, and chapter link, not just an empty index shell.
+function guideBodyHtml(lang) {
+  const dir = lang === "fr" ? path.join(DIST, "content", "fr") : path.join(DIST, "content");
+  let b;
+  try { b = JSON.parse(fs.readFileSync(path.join(dir, "book.json"), "utf8")); } catch { return ""; }
+  const fr = lang === "fr";
+  const pfx = fr ? "/fr" : "";
+  let h = b.subtitle ? `<p>${esc(b.subtitle)}</p>` : "";
+  for (const part of b.parts || []) {
+    const label = [part.part, part.region].filter(Boolean).map(esc).join(" · ");
+    if (label) h += `<h2>${label}</h2>`;
+    h += "<ul>";
+    for (const ch of part.chapters || []) {
+      const t = String(ch.title || "").split(" — ")[0];
+      const num = fr ? `Chapitre ${ch.number}` : `Chapter ${ch.number}`;
+      h += `<li><a href="${pfx}/chapter/${ch.number}">${esc(num)}: ${esc(t)}</a></li>`;
+    }
+    h += "</ul>";
+  }
+  return h ? `<nav data-prerender-body aria-label="${fr ? "Chapitres" : "Chapters"}">${h}</nav>` : "";
+}
+
+// /loot — the glossary. 45 term/definition pairs as a real definition list.
+function glossaryBodyHtml(lang) {
+  const dir = lang === "fr" ? path.join(DIST, "content", "fr") : path.join(DIST, "content");
+  let g;
+  try { g = JSON.parse(fs.readFileSync(path.join(dir, "glossary.json"), "utf8")); } catch { return ""; }
+  if (!Array.isArray(g) || !g.length) return "";
+  const items = g.map((e) => `<dt>${esc(e.term)}</dt><dd>${inlineMd(e.def || "")}</dd>`).join("");
+  return `<dl data-prerender-body>${items}</dl>`;
+}
+
+// /receipts — the source ledger. Each row's claim + detail (detail markdown carries
+// the real source links), grouped under its section heading.
+function receiptsBodyHtml(lang) {
+  const dir = lang === "fr" ? path.join(DIST, "content", "fr") : path.join(DIST, "content");
+  let r;
+  try { r = JSON.parse(fs.readFileSync(path.join(dir, "receipts.json"), "utf8")); } catch { return ""; }
+  if (!Array.isArray(r) || !r.length) return "";
+  let h = "", lastSec = null;
+  for (const row of r) {
+    if (row.section && row.section !== lastSec) { h += `<h2>${esc(row.section)}</h2>`; lastSec = row.section; }
+    const status = row.status ? ` <em>(${esc(row.status)})</em>` : "";
+    h += `<div><p><strong>${inlineMd(row.claim || "")}</strong>${status}</p>`;
+    if (row.detail) h += mdToHtml(row.detail);
+    h += "</div>";
+  }
+  return `<section data-prerender-body>${h}</section>`;
+}
+
+// Dispatch a route to its body builder. Chapters, the guide TOC, the glossary, and
+// the receipts ledger all get full inlined content; everything else stays shell-only.
+function routeBodyHtml(route, lang) {
+  if (/^\/chapter\/\d+$/.test(route)) return chapterBodyHtml(route, lang);
+  if (route === "/guide") return guideBodyHtml(lang);
+  if (route === "/loot") return glossaryBodyHtml(lang);
+  if (route === "/receipts") return receiptsBodyHtml(lang);
+  return "";
+}
+
 // Crawlable fallback content placed inside #root. React's createRoot().render()
 // replaces it on mount, so real users never see it, but raw-HTML crawlers and
 // non-rendering AI bots get a real H1, an intro paragraph, internal links, and —
@@ -135,7 +196,7 @@ function seoShell(route, h1, desc, lang) {
   const altHref = lang === "fr" ? (route || "/") : "/fr" + route;
   const altLabel = lang === "fr" ? "English edition" : "Édition française";
   const navLabel = lang === "fr" ? "Navigation principale" : "Primary navigation";
-  const body = chapterBodyHtml(route, lang);
+  const body = routeBodyHtml(route, lang);
   return `<div data-prerender-shell><h1>${esc(h1)}</h1><p>${esc(desc)}</p><nav aria-label="${navLabel}">${nav}<a href="${altHref}">${esc(altLabel)}</a></nav>${body}</div>`;
 }
 
