@@ -1,0 +1,21 @@
+# Normalize line endings: LF in the repo and in working copies, consistent across
+# every tool and the Linux Vercel build. This is what stops the CRLF/LF restage
+# churn that makes `git status` show every content JSON as "modified" with no real
+# change (equal insertions/deletions).
+* text=auto eol=lf
+
+# Binary assets — never apply EOL conversion to these.
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.webp  binary
+*.gif   binary
+*.ico   binary
+*.pdf   binary
+*.woff  binary
+*.woff2 binary
+*.ttf   binary
+*.otf   binary
+*.mp3   binary
+*.mp4   binary
+*.make  binary
