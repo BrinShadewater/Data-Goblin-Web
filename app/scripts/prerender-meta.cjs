@@ -8,12 +8,14 @@ const path = require("path");
 
 const DIST = process.env.PRERENDER_DIST ? path.resolve(process.env.PRERENDER_DIST) : path.resolve(__dirname, "../dist");
 const SITE = "https://datagoblin.ca";
+const BUILD_DATE = new Date().toISOString().slice(0, 10); // dateModified for Article freshness
+const PUBLISHED = "2026-06-04"; // first edition / AI for All launch
 const indexPath = path.join(DIST, "index.html");
 if (!fs.existsSync(indexPath)) { console.error("prerender-meta: dist/index.html missing — skipping"); process.exit(0); }
 const base = fs.readFileSync(indexPath, "utf8");
 
 const DESC_EN = "A free, open field guide to AI, data centres, and digital sovereignty, written for Canadians. Every claim comes with a receipt.";
-const DESC_FR = "Un guide de terrain gratuit et ouvert sur l'IA, les centres de données et la souveraineté numérique, écrit pour les Canadiens. Chaque affirmation s'accompagne d'un reçu.";
+const DESC_FR = "Un guide de terrain gratuit sur l'IA, les centres de données et la souveraineté numérique au Canada. Chaque affirmation a son reçu.";
 const HOME_FULL_EN = "Data Goblin — A Field Guide to AI, Power, and Data in Canada";
 const HOME_FULL_FR = "Data Goblin — Guide de terrain sur l'IA, la puissance et les données au Canada";
 
@@ -92,6 +94,8 @@ function articleJsonLd(route, headline, self, lang) {
     url: self,
     isPartOf: { "@id": SITE + "/#book" },
     isAccessibleForFree: true,
+    datePublished: PUBLISHED,
+    dateModified: BUILD_DATE,
     author: { "@type": "Person", name: "Alex Yesilcimen" },
     publisher: { "@id": SITE + "/#org" },
     image: SITE + "/og-image.png",
@@ -151,7 +155,7 @@ function smMeta(route) {
   if (route === "/guide" || route === "/loot" || route === "/receipts") return ["0.8", "yearly"];
   return ["0.6", "yearly"];
 }
-const today = new Date().toISOString().slice(0, 10);
+const today = BUILD_DATE;
 const allRoutes = [""].concat(ROUTE_META.map((r) => r[0]));
 let urlsXml = "";
 for (const route of allRoutes) {

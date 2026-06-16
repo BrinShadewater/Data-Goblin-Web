@@ -61,6 +61,12 @@ function Shell() {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const location = useLocation();
 
+  // Deep link: a ?q= param (the sitelinks SearchAction target) opens search.
+  useEffect(() => {
+    const q = new URLSearchParams(location.search).get("q");
+    if (q && q.trim().length >= 2) setSearchQuery(q);
+  }, [location.search]);
+
   // Goblin-head favicon.
   useEffect(() => {
     let link = document.querySelector<HTMLLinkElement>("link[rel~='icon']");
