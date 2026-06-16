@@ -15,6 +15,11 @@ const BASE = `${import.meta.env.BASE_URL}content/`;
 const contentUrl = (relPath: string, lang: Lang) =>
   lang === "fr" ? `${BASE}fr/${relPath}` : `${BASE}${relPath}`;
 
+// Language-neutral content (art placement, link registry, claim anchors) has no
+// fr/ copy, so French pages would 404 on fr/ then fall back to EN. Pin these to
+// EN up front to skip the wasted request.
+const LANG_NEUTRAL = new Set(["art-map.json", "links.json", "claim-anchors.json"]);
+
 /**
  * Load a content JSON. In French, fetch the machine-translated copy under
  * /content/fr/ and transparently fall back to the English file if the FR file
@@ -22,6 +27,7 @@ const contentUrl = (relPath: string, lang: Lang) =>
  * language so EN and FR never collide.
  */
 export function fetchJson<T>(relPath: string, lang: Lang = "en"): Promise<T> {
+  if (LANG_NEUTRAL.has(relPath)) lang = "en";
   const key = `${lang}:${relPath}`;
   if (cache.has(key)) return Promise.resolve(cache.get(key) as T);
   const existing = inflight.get(key);
@@ -50,7 +56,8 @@ export function fetchJson<T>(relPath: string, lang: Lang = "en"): Promise<T> {
 }
 
 export function useJson<T>(relPath: string | null): { data: T | null; error: string | null } {
-  const { lang } = useLanguage();
+  const { lang: ctxLang } = useLanguage();
+  const lang = relPath && LANG_NEUTRAL.has(relPath) ? "en" : ctxLang;
   const key = relPath ? `${lang}:${relPath}` : null;
   const [data, setData] = useState<T | null>(
     key && cache.has(key) ? (cache.get(key) as T) : null
