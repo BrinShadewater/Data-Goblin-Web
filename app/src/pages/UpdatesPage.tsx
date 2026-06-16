@@ -14,6 +14,16 @@ interface UpdateEntry {
 const UPDATES: UpdateEntry[] = [
   {
     date: "June 16, 2026",
+    tag: "Reader",
+    title: "Two dozen new worked examples, audio volume, and layout fixes",
+    items: [
+      "A worked Example or an Alignment cue now lands in nearly every chapter — plain-language analogies (the cloud is a building with a hydro bill; the efficient furnace and the bigger house) and quick orientation checks (which rung on the enforceability ladder? whose law runs the server?). Twenty-four in all, in both editions.",
+      "Read-aloud now has a volume slider next to the speed control.",
+      "Chapter recaps no longer strand their heading and icon at the bottom of the previous page — the recap starts fresh with its body underneath. And the About-page counters tick up a little more slowly.",
+    ],
+  },
+  {
+    date: "June 16, 2026",
     tag: "Figures",
     title: "Dark-mode and French versions of every data figure",
     items: [

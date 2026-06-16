@@ -39,8 +39,8 @@ const DEVICE_STATS = [
   { n: "26", label: "Goblin Checks" },
   { n: "20", label: "Goblin Traps" },
   { n: "11", label: "Goblin Facts" },
-  { n: "1", label: "Alignment" },
-  { n: "1", label: "Examples" },
+  { n: "13", label: "Alignments" },
+  { n: "13", label: "Examples" },
 ];
 
 /** A number that ticks up from 0 to its target the first time it scrolls into view. */
@@ -58,7 +58,7 @@ function CountUp({ value }: { value: string }) {
     const io = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting && !done.current) {
         done.current = true;
-        const dur = 1100;
+        const dur = 2600;
         const t0 = performance.now();
         const step = (now: number) => {
           const p = Math.min(1, (now - t0) / dur);

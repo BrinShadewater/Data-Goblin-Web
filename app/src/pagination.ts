@@ -12,7 +12,7 @@
 import type { ArtPanel, Chapter, Trap } from "./types";
 
 export type Block =
-  | { kind: "heading"; heading: string; accent?: string }
+  | { kind: "heading"; heading: string; accent?: string; breakBefore?: boolean }
   | { kind: "md"; text: string; breakBefore?: boolean }
   | { kind: "trap"; trap: Trap }
   | { kind: "bias"; text: string }
@@ -191,10 +191,16 @@ export function flattenChapter(
     figsAfter.set(i, arr);
   });
   chapter.sections.forEach((section, i) => {
+    // A section that *is* the Chapter Recap (its markdown carries the recap
+    // callout) starts on a fresh page, so the recap's title, icon, and most of
+    // its body always land together instead of the header stranding at the
+    // bottom of the previous page.
+    const isRecapSection = /CHAPTER RECAP/.test(section.markdown);
     blocks.push({
       kind: "heading",
       heading: section.heading,
       ...(accents.length > 0 ? { accent: accents[i % accents.length] } : {}),
+      ...(isRecapSection ? { breakBefore: true } : {}),
     });
     for (const text of splitBlocks(section.markdown)) blocks.push({ kind: "md", text });
     if (i === 0 && trap) blocks.push({ kind: "trap", trap });
@@ -233,7 +239,9 @@ export function paginatePanels(
   const blocks = flattenChapter(chapter, trap, accents, figures).flatMap((b): Block[] => {
     if (b.kind === "md" && b.text.trimStart().startsWith(">") && /CHAPTER RECAP/.test(b.text)) {
       const parts = splitRecap(b.text, budgets.panel);
-      if (parts.length > 1) return parts.map((t) => ({ kind: "md", text: t, breakBefore: true }));
+      // First part follows the recap heading on its fresh page; only the
+      // "continued" parts force their own additional page break.
+      if (parts.length > 1) return parts.map((t, i) => ({ kind: "md", text: t, breakBefore: i > 0 }));
     }
     return [b];
   });
@@ -252,7 +260,7 @@ export function paginatePanels(
   let used = openerOverhead; // panel 0 is pre-charged with the opener header
 
   for (const block of blocks) {
-    if (block.kind === "md" && block.breakBefore && cur.length > 0) {
+    if ((block.kind === "md" || block.kind === "heading") && block.breakBefore && cur.length > 0) {
       // Forced page break (a split recap part always starts its own page).
       panels.push(cur);
       cur = [];

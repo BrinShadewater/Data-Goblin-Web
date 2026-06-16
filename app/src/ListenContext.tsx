@@ -33,6 +33,8 @@ interface ListenCtx {
   progress: number; // 0..1, approximate
   rate: number;
   setRate: (r: number) => void;
+  volume: number; // 0..1
+  setVolume: (v: number) => void;
   voiceOptions: SpeechSynthesisVoice[];
   chosen: SpeechSynthesisVoice | null;
   setVoiceURI: (uri: string) => void;
@@ -43,7 +45,7 @@ interface ListenCtx {
 
 const Ctx = createContext<ListenCtx>({
   supported: false, state: "idle", chapterNumber: null, progress: 0, rate: 1,
-  setRate: () => {}, voiceOptions: [], chosen: null, setVoiceURI: () => {},
+  setRate: () => {}, volume: 1, setVolume: () => {}, voiceOptions: [], chosen: null, setVoiceURI: () => {},
   play: () => {}, pauseResume: () => {}, stop: () => {},
 });
 
@@ -54,6 +56,7 @@ export function ListenProvider({ children }: { children: ReactNode }) {
   const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([]);
   const [voiceURI, setVoiceURI] = useLocalStorage<string>(`goblin-tts-voice-${lang}`, "");
   const [rate, setRateStored] = useLocalStorage<number>("goblin-tts-rate", 1);
+  const [volume, setVolumeStored] = useLocalStorage<number>("goblin-tts-volume", 1);
   const [chapterNumber, setChapterNumber] = useState<number | null>(null);
   const [idx, setIdx] = useState(0);
   const chunksRef = useRef<string[]>([]);
@@ -89,7 +92,9 @@ export function ListenProvider({ children }: { children: ReactNode }) {
   const voiceOptions = (ranked.length ? ranked : inLang).slice(0, 5);
   const chosen = voiceOptions.find((v) => v.voiceURI === voiceURI) ?? voiceOptions[0] ?? null;
 
-  const speakFrom = (startIdx: number, r: number) => {
+  // The Web Speech API can't change rate or volume mid-utterance, so both are
+  // passed in explicitly and a change re-speaks from the current chunk.
+  const speakFrom = (startIdx: number, r: number, vol: number) => {
     const synth = window.speechSynthesis;
     synth.cancel();
     const chunks = chunksRef.current;
@@ -98,6 +103,7 @@ export function ListenProvider({ children }: { children: ReactNode }) {
     for (let i = startIdx; i < total; i++) {
       const u = new SpeechSynthesisUtterance(chunks[i]);
       u.rate = r;
+      u.volume = vol;
       if (chosen) u.voice = chosen;
       u.lang = chosen?.lang ?? (lang === "fr" ? "fr-CA" : "en-CA");
       u.onstart = () => { if (guard.current === stamp) setIdx(i); };
@@ -115,7 +121,7 @@ export function ListenProvider({ children }: { children: ReactNode }) {
     chunksRef.current = text.match(/[^.!?]+[.!?]*/g)?.map((x) => x.trim()).filter(Boolean) ?? [text];
     setChapterNumber(chapter.number);
     setIdx(0);
-    speakFrom(0, rate);
+    speakFrom(0, rate, volume);
   };
   const pauseResume = () => {
     const synth = window.speechSynthesis;
@@ -132,13 +138,19 @@ export function ListenProvider({ children }: { children: ReactNode }) {
   // The API can't change rate mid-utterance, so re-speak from the current chunk.
   const setRate = (r: number) => {
     setRateStored(r);
-    if (state === "playing") speakFrom(idx, r);
+    if (state === "playing") speakFrom(idx, r, volume);
+  };
+  // Same constraint for volume: store it, and if playing, re-speak so the new
+  // level takes effect immediately rather than only on the next chunk.
+  const setVolume = (v: number) => {
+    setVolumeStored(v);
+    if (state === "playing") speakFrom(idx, rate, v);
   };
 
   const progress = chunksRef.current.length ? Math.min(1, (idx + 1) / chunksRef.current.length) : 0;
 
   return (
-    <Ctx.Provider value={{ supported, state, chapterNumber, progress, rate, setRate, voiceOptions, chosen, setVoiceURI, play, pauseResume, stop }}>
+    <Ctx.Provider value={{ supported, state, chapterNumber, progress, rate, setRate, volume, setVolume, voiceOptions, chosen, setVoiceURI, play, pauseResume, stop }}>
       {children}
     </Ctx.Provider>
   );

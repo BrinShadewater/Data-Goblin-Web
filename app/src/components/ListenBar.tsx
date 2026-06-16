@@ -6,13 +6,13 @@ import { useListen, SPEEDS } from "../ListenContext";
 
 /**
  * Persistent read-aloud strip. Appears under the header whenever audio is
- * playing, so play/pause/stop/speed follow the reader across page turns (and is
- * reachable on mobile without opening the tools sheet). Progress is approximate
- * — the Web Speech API exposes no real timeline, so it can't seek.
+ * playing, so play/pause/stop/speed/volume follow the reader across page turns
+ * (and is reachable on mobile without opening the tools sheet). Progress is
+ * approximate — the Web Speech API exposes no real timeline, so it can't seek.
  */
 export function ListenBar() {
   const { c } = useTheme();
-  const { state, progress, rate, setRate, pauseResume, stop, chapterNumber } = useListen();
+  const { state, progress, rate, setRate, volume, setVolume, pauseResume, stop, chapterNumber } = useListen();
   if (state === "idle") return null;
 
   const bg = c(...P.panelBg);
@@ -54,8 +54,21 @@ export function ListenBar() {
       <button onClick={stop} aria-label={tr("Stop")} style={iconBtn}>
         <Square size={13} />
       </button>
-      <div style={{ flex: 1, minWidth: "48px", height: "5px", background: c(...P.inputBg), borderRadius: "3px", overflow: "hidden" }}>
+      <div style={{ flex: 1, minWidth: "40px", height: "5px", background: c(...P.inputBg), borderRadius: "3px", overflow: "hidden" }}>
         <div style={{ width: `${Math.round(progress * 100)}%`, height: "100%", background: green, transition: "width 0.3s" }} />
+      </div>
+      <div style={{ display: "flex", alignItems: "center", gap: "6px", flexShrink: 0 }} title={tr("Volume")}>
+        <Volume2 size={14} color={muted} aria-hidden="true" />
+        <input
+          type="range"
+          min={0}
+          max={1}
+          step={0.05}
+          value={volume}
+          onChange={(e) => setVolume(Number(e.target.value))}
+          aria-label={tr("Volume")}
+          style={{ width: "68px", accentColor: green, cursor: "pointer" }}
+        />
       </div>
       <div style={{ display: "flex", alignItems: "center", gap: "5px", flexShrink: 0 }}>
         <span style={{ fontFamily: MONO, fontSize: "9px", letterSpacing: "0.1em", textTransform: "uppercase", color: muted }}>{tr("Speed")}</span>
