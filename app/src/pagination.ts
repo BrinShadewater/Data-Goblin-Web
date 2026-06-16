@@ -186,10 +186,10 @@ export function paginatePanels(
   accents: string[] = [],
   artPanels: ArtPanel[] = []
 ): Block[][] {
-  // Inline data figures (figures/ src) flow between paragraphs; decorative
-  // plates still close the document as full-page plates.
-  const figures = artPanels.filter((p) => p.src.startsWith("figures/"));
-  const plates = artPanels.filter((p) => !p.src.startsWith("figures/"));
+  // All art — data figures AND decorative plates — flows inline between
+  // paragraphs at ~half a page, placed near relevant text. Nothing gets its
+  // own full page anymore, so no image can ever span two pages.
+  const figures = artPanels;
   const blocks = flattenChapter(chapter, trap, accents, figures);
   const openerOverhead = Math.max(0, budgets.panel - budgets.opener);
   const total = blocks.reduce((t, b) => t + blockCost(b), 0) + openerOverhead;
@@ -230,12 +230,6 @@ export function paginatePanels(
   }
   if (cur.length > 0) panels.push(cur);
   if (panels.length === 0) panels.push([]);
-  // Decorative art plates (non-figure `panels`) close the document, one full
-  // page each — like the plates section of a printed field guide. Data figures
-  // were already placed inline by flattenChapter.
-  for (const p of plates) {
-    panels.push([{ kind: "panel", src: p.src, caption: p.caption ?? null }]);
-  }
   return panels;
 }
 

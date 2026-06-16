@@ -68,8 +68,9 @@ export function ArtPlate({ src, caption }: { src: string; caption?: string | nul
  * the image contained to a readable size and the caption directly underneath.
  */
 export function FigureBlock({ src, caption }: { src: string; caption?: string | null }) {
-  const { c } = useTheme();
+  const { c, dark } = useTheme();
   const dimensions = artDimensions(src);
+  const isFigure = src.startsWith("figures/");
   return (
     <figure
       style={{
@@ -91,11 +92,12 @@ export function FigureBlock({ src, caption }: { src: string; caption?: string | 
         decoding="async"
         style={{
           width: "100%",
-          maxWidth: "480px",
-          maxHeight: "300px",
+          maxWidth: isFigure ? "480px" : "520px",
+          maxHeight: isFigure ? "300px" : "360px",
           height: "auto",
           aspectRatio: artAspectRatio(src),
           objectFit: "contain",
+          ...(isFigure ? {} : artBlendStyle(dark)),
         }}
       />
       {caption && (
