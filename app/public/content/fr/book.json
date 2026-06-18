@@ -22,7 +22,9 @@
      "number": 2,
      "title": "Comment les machines apprennent réellement — une compréhension pratique, sans les maths",
      "goblinChecks": 2,
-     "openVerifyFlags": 0
+     "openVerifyFlags": 0,
+     "status": "updated",
+     "statusDate": "2026-06-13"
     },
     {
      "number": 3,
@@ -52,7 +54,9 @@
      "number": 6,
      "title": "Réalité de l'infrastructure — Ce qu'il y a vraiment dans le sol",
      "goblinChecks": 2,
-     "openVerifyFlags": 0
+     "openVerifyFlags": 0,
+     "status": "updated",
+     "statusDate": "2026-06-15"
     },
     {
      "number": 7,
@@ -76,13 +80,17 @@
      "number": 9,
      "title": "Souveraineté — Trois mots, même question, différentes réponses",
      "goblinChecks": 2,
-     "openVerifyFlags": 0
+     "openVerifyFlags": 0,
+     "status": "updated",
+     "statusDate": "2026-06-15"
     },
     {
      "number": 10,
      "title": "Vie privée et surveillance — Ce que l'IA sait de vous, et qui d'autre le sait",
      "goblinChecks": 2,
-     "openVerifyFlags": 0
+     "openVerifyFlags": 0,
+     "status": "updated",
+     "statusDate": "2026-06-13"
     },
     {
      "number": 11,
@@ -94,19 +102,25 @@
      "number": 12,
      "title": "Film et médias — Quand l'IA débarque sur le plateau",
      "goblinChecks": 2,
-     "openVerifyFlags": 0
+     "openVerifyFlags": 0,
+     "status": "updated",
+     "statusDate": "2026-06-15"
     },
     {
      "number": 13,
      "title": "Désinformation et hypertrucages — Ce que l'image empirique montre réellement",
      "goblinChecks": 1,
-     "openVerifyFlags": 0
+     "openVerifyFlags": 0,
+     "status": "updated",
+     "statusDate": "2026-06-15"
     },
     {
      "number": 14,
      "title": "Éthique, biais et équité — La question n'est pas celle que vous croyez",
      "goblinChecks": 2,
-     "openVerifyFlags": 0
+     "openVerifyFlags": 0,
+     "status": "updated",
+     "statusDate": "2026-06-13"
     },
     {
      "number": 15,
