@@ -32,6 +32,11 @@ def part_of(n):
 
 VERIFY_RE = re.compile(r"<!--\s*VERIFY[^>]*-->")
 GOBLIN_RE = re.compile(r"^> \*\*🧌 GOBLIN CHECK[^\n]*(?:\n>[^\n]*)*", re.M)
+# Chapter freshness marker, e.g. <!-- STATUS: updated 2026-06-18 -->
+# Placed on its own line under "# Chapter N". The reader shows a NEW/UPDATED
+# badge in the table of contents; it auto-expires client-side ~30 days after
+# the date, so a stale tag never lingers even if the site is not rebuilt.
+STATUS_RE = re.compile(r"<!--\s*STATUS:\s*(new|updated)\s+(\d{4}-\d{2}-\d{2})\s*-->", re.I)
 
 SUBTITLE = "A Field Guide to AI, Power, and Data in Canada"
 
@@ -53,6 +58,13 @@ def split_chapters(text):
     return front, chapters, appendix
 
 def parse_chapter(num, body):
+    # Freshness marker (NEW/UPDATED badge in the TOC). Read it, then drop it
+    # from the body so it never reaches the reader's display text.
+    sm = STATUS_RE.search(body)
+    status = sm.group(1).lower() if sm else None
+    status_date = sm.group(2) if sm else None
+    body = STATUS_RE.sub("", body)
+
     lines = body.split("\n")
     # Title = first '## ' line
     title = next((l[3:].strip() for l in lines if l.startswith("## ")), f"Chapter {num}")
@@ -121,6 +133,8 @@ def parse_chapter(num, body):
         "biasLabel": bias_label,
         "sources": src_list,
         "verifyFlags": verify_flags,
+        "status": status,
+        "statusDate": status_date,
     }
 
 # ---------------------------------------------------------------------------
@@ -314,9 +328,12 @@ def main():
     appendix_doc = parse_appendix(appendix) if appendix else None
     extra_docs = [front_doc] + ([appendix_doc] if appendix_doc else [])
 
+    # The freshness marker only needs to ride along in book.json (the TOC reads
+    # it there). Keep it out of the per-chapter docs so those files don't churn.
     for ch in chapters + extra_docs:
+        out_ch = {k: v for k, v in ch.items() if k not in ("status", "statusDate")}
         with open(os.path.join(OUT, "chapters", f"ch{ch['number']:02d}.json"), "w", encoding="utf-8") as f:
-            json.dump(ch, f, ensure_ascii=False, indent=1)
+            json.dump(out_ch, f, ensure_ascii=False, indent=1)
 
     book = {
         "title": "Data Goblin",
@@ -326,7 +343,9 @@ def main():
         "parts": [{"part": p, "region": r, "chapters": [
                     {"number": c["number"], "title": c["title"],
                      "goblinChecks": len(c["goblinChecks"]),
-                     "openVerifyFlags": len(c["verifyFlags"])}
+                     "openVerifyFlags": len(c["verifyFlags"]),
+                     **({"status": c["status"], "statusDate": c["statusDate"]}
+                        if c.get("status") else {})}
                     for c in chapters if c["number"] in rng]}
                   for rng, p, r in PARTS],
         "backMatter": {"number": 21, "title": "Source Library Appendix", "region": "The Hoard"}

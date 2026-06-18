@@ -22,7 +22,9 @@
      "number": 2,
      "title": "How Machines Actually Learn — A Working Understanding Without The Math",
      "goblinChecks": 2,
-     "openVerifyFlags": 0
+     "openVerifyFlags": 0,
+     "status": "updated",
+     "statusDate": "2026-06-13"
     },
     {
      "number": 3,
@@ -52,7 +54,9 @@
      "number": 6,
      "title": "Infrastructure Reality — What's Actually Sitting in the Ground",
      "goblinChecks": 2,
-     "openVerifyFlags": 0
+     "openVerifyFlags": 0,
+     "status": "updated",
+     "statusDate": "2026-06-15"
     },
     {
      "number": 7,
@@ -76,13 +80,17 @@
      "number": 9,
      "title": "Sovereignty — Three Words, Same Question, Different Answers",
      "goblinChecks": 2,
-     "openVerifyFlags": 0
+     "openVerifyFlags": 0,
+     "status": "updated",
+     "statusDate": "2026-06-15"
     },
     {
      "number": 10,
      "title": "Privacy & Surveillance — What AI Knows About You, And Who Else Does",
      "goblinChecks": 2,
-     "openVerifyFlags": 0
+     "openVerifyFlags": 0,
+     "status": "updated",
+     "statusDate": "2026-06-13"
     },
     {
      "number": 11,
@@ -94,19 +102,25 @@
      "number": 12,
      "title": "Film & Media — The Prompt Hits The Set",
      "goblinChecks": 2,
-     "openVerifyFlags": 0
+     "openVerifyFlags": 0,
+     "status": "updated",
+     "statusDate": "2026-06-15"
     },
     {
      "number": 13,
      "title": "Misinformation & Deepfakes — What The Empirical Picture Actually Shows",
      "goblinChecks": 1,
-     "openVerifyFlags": 0
+     "openVerifyFlags": 0,
+     "status": "updated",
+     "statusDate": "2026-06-15"
     },
     {
      "number": 14,
      "title": "Ethics, Bias & Fairness — The Question Is Not What You Think It Is",
      "goblinChecks": 2,
-     "openVerifyFlags": 0
+     "openVerifyFlags": 0,
+     "status": "updated",
+     "statusDate": "2026-06-13"
     },
     {
      "number": 15,

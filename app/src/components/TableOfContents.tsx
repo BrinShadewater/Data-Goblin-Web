@@ -7,6 +7,51 @@ import type { Book } from "../types";
 import { displayRegion } from "../regionLabels";
 import { tr } from "../i18n";
 
+// A chapter's NEW/UPDATED badge auto-expires this many days after its date,
+// so a stale tag never lingers even if the site isn't rebuilt.
+const STATUS_TTL_DAYS = 30;
+
+/** Returns "new" | "updated" only while the marker is still fresh; else null. */
+function freshStatus(
+  status?: "new" | "updated",
+  statusDate?: string,
+): "new" | "updated" | null {
+  if (!status || !statusDate) return null;
+  const then = Date.parse(statusDate);
+  if (Number.isNaN(then)) return null;
+  const ageDays = (Date.now() - then) / 86_400_000;
+  return ageDays >= 0 && ageDays <= STATUS_TTL_DAYS ? status : null;
+}
+
+function StatusBadge({ status, active }: { status: "new" | "updated"; active: boolean }) {
+  const { c } = useTheme();
+  const green = c(...P.green);
+  const onActive = c("#ffffff", "#0d1018");
+  const tone = active ? onActive : green;
+  return (
+    <span
+      style={{
+        marginLeft: "auto",
+        alignSelf: "center",
+        flexShrink: 0,
+        fontFamily: MONO,
+        fontSize: "8px",
+        fontWeight: 800,
+        letterSpacing: "0.12em",
+        textTransform: "uppercase",
+        lineHeight: 1,
+        padding: "2px 5px",
+        borderRadius: "3px",
+        color: tone,
+        border: `1px solid ${tone}`,
+        opacity: active ? 0.85 : 1,
+      }}
+    >
+      {status === "new" ? tr("New") : tr("Updated")}
+    </span>
+  );
+}
+
 function TocItem({
   num,
   indexLabel,
@@ -14,6 +59,8 @@ function TocItem({
   active,
   touch,
   onNavigate,
+  status,
+  statusDate,
 }: {
   num: number;
   indexLabel: string;
@@ -21,7 +68,10 @@ function TocItem({
   active: boolean;
   touch: boolean;
   onNavigate?: () => void;
+  status?: "new" | "updated";
+  statusDate?: string;
 }) {
+  const fresh = freshStatus(status, statusDate);
   const { c } = useTheme();
   const navigate = useNavigate();
   const [hovered, setHovered] = useState(false);
@@ -73,6 +123,7 @@ function TocItem({
       <span style={{ fontFamily: UI, fontSize: touch ? "13.5px" : "14px", fontWeight: active ? 700 : 500, color: active ? activeText : text, lineHeight: 1.35 }}>
         {title}
       </span>
+      {fresh && <StatusBadge status={fresh} active={active} />}
     </button>
   );
 }
@@ -135,6 +186,8 @@ export function TocList({
               active={ch.number === activeChapter}
               touch={touch}
               onNavigate={onNavigate}
+              status={ch.status}
+              statusDate={ch.statusDate}
             />
           ))}
         </div>

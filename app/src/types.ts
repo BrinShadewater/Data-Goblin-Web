@@ -5,6 +5,11 @@ export interface BookChapterRef {
   title: string;
   goblinChecks: number;
   openVerifyFlags: number;
+  /** Freshness marker from the manuscript (<!-- STATUS: new|updated DATE -->).
+   *  Drives the NEW/UPDATED badge in the TOC; auto-expires client-side. */
+  status?: "new" | "updated";
+  /** ISO date (YYYY-MM-DD) the chapter was added/updated. */
+  statusDate?: string;
 }
 
 export interface BookPart {
