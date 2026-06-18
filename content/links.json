@@ -626,5 +626,13 @@
  {
   "name": "ISED Code",
   "url": "https://ised-isde.canada.ca/site/ised/en/voluntary-code-conduct-responsible-development-and-management-advanced-generative-ai-systems"
+ },
+ {
+  "name": "StatCan Experimental estimates",
+  "url": "https://www150.statcan.gc.ca/n1/pub/36-28-0001/2024009/article/00004-eng.htm"
+ },
+ {
+  "name": "The Daily 2024-09-03",
+  "url": "https://www150.statcan.gc.ca/n1/daily-quotidien/240903/dq240903b-eng.htm"
  }
 ]

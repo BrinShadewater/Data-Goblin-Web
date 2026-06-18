@@ -647,5 +647,22 @@
   "status": "fixed",
   "detail": "⚠️ **Kept-promise gap.** The public Updates log omits the **Wonder Valley/SLCN correction** (the book's flagship \"logged in the open\" change) and states *Hell Grind* more flatly than the hedged book body. | Add a dated Wonder Valley correction entry; match the *Hell Grind* hedge. | site `UpdatesPage` · book L26 / L1210",
   "links": []
+ },
+ {
+  "id": 59,
+  "section": "Citation-precision pass — June 18, 2026",
+  "claim": "StatCan 31%/29% AI occupational exposure",
+  "status": "resolved",
+  "detail": "✅ CONFIRMED + 🔧 FIXED. Source: StatCan, \"Exposure to artificial intelligence in Canadian jobs: Experimental estimates\" (cat. 36-28-0001/2024009/00004). May 2021 data: **31%** of employees 18–64 in jobs **highly exposed to AI and relatively less complementary** with it; **29%** highly exposed **and** complementary; **40%** not highly exposed. \"Largely unchanged\" vs 2016 — a snapshot, **not a forecast**. Manuscript fixes: (a) Ch 5 recap conflation removed — the 60%-business-adoption target was wrongly presented as \"splitting into\" the 31%/29% exposure figures (two unrelated 60%s); (b) Ch 15 CUPE paragraph re-attributes \"dramatically change or disappear\" as the brief's gloss, not StatCan's wording (matching the precision notes already at the Ch 15 GOBLIN CHECK and empirical-baseline sections). | [StatCan Experimental estimates](https://www150.statcan.gc.ca/n1/pub/36-28-0001/2024009/article/00004-eng.htm) · [The Daily 2024-09-03](https://www150.statcan.gc.ca/n1/daily-quotidien/240903/dq240903b-eng.htm)",
+  "links": [
+   [
+    "StatCan Experimental estimates",
+    "https://www150.statcan.gc.ca/n1/pub/36-28-0001/2024009/article/00004-eng.htm"
+   ],
+   [
+    "The Daily 2024-09-03",
+    "https://www150.statcan.gc.ca/n1/daily-quotidien/240903/dq240903b-eng.htm"
+   ]
+  ]
  }
 ]
