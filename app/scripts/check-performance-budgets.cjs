@@ -8,7 +8,7 @@ const artDir = path.join(appDir, "public", "art");
 
 const BUDGETS = {
   chunks: {
-    "index-": { raw: 60 * 1024, gzip: 18 * 1024 }, // gzip 15->18: i18n + URL-based FR routing + audio context (dictionary itself is lazy-loaded, see ui-fr chunk)
+    "index-": { raw: 64 * 1024, gzip: 20 * 1024 }, // raw 60->64 / gzip 18->20: incremental entry-bundle growth from i18n + URL-based FR routing + audio context (dictionary itself is lazy-loaded, see ui-fr chunk). Entry chunk still ~20 kB gzip — tiny; keep tight.
     "react-vendor-": { raw: 390 * 1024, gzip: 120 * 1024 },
     "icons-vendor-": { raw: 34 * 1024, gzip: 14 * 1024 }, // ~30 distinct lucide icons, already tree-shaken (~1 kB each); the old 13/6 was aspirational and never actually met
     "Markdown-": { raw: 205 * 1024, gzip: 60 * 1024 },
@@ -17,9 +17,9 @@ const BUDGETS = {
   anyJsChunkRaw: 390 * 1024,
   maxPublicArtRaw: 500 * 1024,
   maxResponsiveVariantRaw: 400 * 1024,
-  totalOriginalPublicArtRaw: 8 * 1024 * 1024, // raised from 6: 42 chapter figures added (lazy-loaded, no initial-load cost)
+  totalOriginalPublicArtRaw: 16 * 1024 * 1024, // raised from 8: bilingual four-variant figure set now complete (light/dark x EN/FR; dark+FR variants count as originals, ~48 figures x 4) + 22 chapter covers. All lazy-loaded, no initial-load cost.
   totalResponsiveVariantRaw: 5.0 * 1024 * 1024, // raised from 4.5: bilingual edition adds a French map + flag variant set
-  totalPublicArtRaw: 13 * 1024 * 1024, // raised from 10.5: 42 chapter figures added (lazy-loaded)
+  totalPublicArtRaw: 21 * 1024 * 1024, // raised from 13: tracks the originals bump above (complete bilingual figure set + chapter covers + responsive variants). All lazy-loaded.
 };
 
 function fail(message) {
