@@ -4,7 +4,7 @@
   "section": "A. Confirmed this pass (receipts in hand)",
   "claim": "Cohere Série D investisseur principal",
   "status": "resolved",
-  "detail": "✅  **Investissements PSP** a mené la **Juillet 2024** 500 millions de dollars à 5,5 milliards de dollars (et non pas à l'IBPC, ni en décembre). Collecte ultérieure ~6.8B$. Toutes les références de l'IRPC ont été corrigées. |  [BetaKit](https://betakit.com/cohere-series-d-tops-out-at-500-million-raised-at-5-5-billion-valuation/) ,  [Nouvelles de Crunchbase](https://news.crunchbase.com/venture/ai-cohere-valuation-rises-psp-cisco-fijitsu/) ,  [Investissements PSP](https://www.investpsp.com/en/news/fresh-funding-enables-cohere-to-accelerate-its-global-expansion-and-build-the-next-generation-of-secure-enterprise-and-sovereign-ai-solutions/)",
+  "detail": "✅  **Investissements PSP** a mené la **Juillet 2024** 500 millions de dollars à 5,5 milliards de dollars (et non pas à l'IBPC, ni en décembre). Collecte ultérieure ~6.8B$. Toutes les références de l'IRCP ont été corrigées. |  [BetaKit](https://betakit.com/cohere-series-d-tops-out-at-500-million-raised-at-5-5-billion-valuation/) ,  [Nouvelles de Crunchbase](https://news.crunchbase.com/venture/ai-cohere-valuation-rises-psp-cisco-fijitsu/) ,  [Investissements PSP](https://www.investpsp.com/en/news/fresh-funding-enables-cohere-to-accelerate-its-global-expansion-and-build-the-next-generation-of-secure-enterprise-and-sovereign-ai-solutions/)",
   "links": [
    [
     "BetaKit",
@@ -25,7 +25,7 @@
   "section": "A. Confirmed this pass (receipts in hand)",
   "claim": "Convention-cadre du Conseil de l'Europe sur l'IA",
   "status": "resolved",
-  "detail": "**Le Canada a signé le 11 février 2025** (Sommet d'action de Paris IA). La conclusion du Manuscrit « Le Canada n'a pas signé » a été fausse, remplacée partout par « signée mais non ratifiée ». Confirmer le statut de ratification à la publication. |  [Canada.ca](https://www.canada.ca/en/global-affairs/news/2025/02/canada-signs-the-council-of-europe-framework-convention-on-artificial-intelligence-and-human-rights-democracy-and-the-rule-of-law.html) ,  [Conseil de l'Europe](https://www.coe.int/en/web/portal/-/canada-and-japan-sign-council-of-europe-s-first-ever-global-treaty-on-ai)",
+  "detail": "**Canada SIGNÉ LE 11 février 2025** (Sommet d'action de Paris IA). La conclusion du Manuscrit « Le Canada n'a pas signé » a été fausse, remplacée partout par « signée mais non ratifiée ». Confirmer le statut de ratification à la publication. |  [Canada.ca](https://www.canada.ca/en/global-affairs/news/2025/02/canada-signs-the-council-of-europe-framework-convention-on-artificial-intelligence-and-human-rights-democracy-and-the-rule-of-law.html) ,  [Conseil de l'Europe](https://www.coe.int/en/web/portal/-/canada-and-japan-sign-council-of-europe-s-first-ever-global-treaty-on-ai)",
   "links": [
    [
     "Canada.ca",
@@ -487,6 +487,23 @@
   "links": []
  },
  {
+  "id": 40,
+  "section": "C. Open — needs primary source before publication",
+  "claim": "Chiffres des MW urbains + nombre d'installations/de parts",
+  "status": "resolved",
+  "detail": "RÉSOLU 2026-06-18 — **Les MW par ville sont des chiffres de RNCan.** Ressources naturelles *Guide des pratiques exemplaires pour les centres de données canadiens* (2024), Aperçu: \"La demande électrique a été estimée à **320 MW, 520 MW et 46 MW** Pour [Toronto, Montréal et Vancouver] respectivement. » C'est le même guide gouvernemental que le livre cite déjà pour la part nationale de 1,4 %→2,1 % (ligne 39). Ensemble de données sous-jacentes = l'analyse du marché canadien des serveurs et des centres de données commandée par RNCan, 2021, mise à jour 2023, qui n'est pas publiée séparément. **« Montréal le plus grand / plus grand que Toronto » est la commande de RNCan par demande électrique totale (520 > 320)** — défendable et d'origine gouvernementale; corroboré par le relevé de l'ensemble des installations de Baxtel (~544 MW Montréal). CAVÉE MÉTHODOLOGIE : selon l'offre de *colocation*, les analystes actuels (CBRE/Mordor/DC Byte, 2025) classent Toronto en premier (~312–378 MW) sur Montréal (~126 MW) – la colocation exclut la charge hyperéchelle/crypto sur l'énergie peu chère d'Hydro-Québec que recueille le chiffre de la demande totale de RNCan. Les chiffres sont des estimations de l'ère ~2023. Sources : [Guide des pratiques exemplaires de RNCan pour les centres de données canadiens (2024)](https://oee.nrcan.gc.ca/publications/statistics/dac/2024/index.cfm) ,  [PDF](https://oee.nrcan.gc.ca/corporate/statistics/neud/dpa/data_e/downloads/dc/pdf/2024/2024-best-practice-guide-for-canadian-data-centres.pdf) .",
+  "links": [
+   [
+    "NRCan Best Practice Guide for Canadian Data Centres (2024)",
+    "https://oee.nrcan.gc.ca/publications/statistics/dac/2024/index.cfm"
+   ],
+   [
+    "PDF",
+    "https://oee.nrcan.gc.ca/corporate/statistics/neud/dpa/data_e/downloads/dc/pdf/2024/2024-best-practice-guide-for-canadian-data-centres.pdf"
+   ]
+  ]
+ },
+ {
   "id": 41,
   "section": "Fresh live re-verification — June 15, 2026 (full fact-check pass)",
   "claim": "Le projet de loi C-16 « n'établit pas... un mécanisme de retrait » (Ch 13)",
@@ -542,7 +559,7 @@
   "section": "Fresh live re-verification — June 15, 2026 (full fact-check pass)",
   "claim": "Annexe §F chiffres de l'élection-deepfake \"9.24% / 3.9% / 0,1%\"",
   "status": "fixed",
-  "detail": "**Annexe jamais mise à jour** — contredit le corps du Ch 13 corrigé. Papier vivant = **8.66% / 4.42% / 0.12%** (la même correction que le registre #32, uniquement pour le corps). Correction des figures de l'appendice pour correspondre au corps. [arXiv 2512.13915](https://arxiv.org/html/2512.13915)",
+  "detail": "**Annexe jamais mise à jour** — contredit le corps du Ch 13 corrigé. Papier en direct = **8.66% / 4.42% / 0.12%** (la même correction que le registre #32, uniquement pour le corps). Correction des figures de l'appendice pour correspondre au corps. [arXiv 2512.13915](https://arxiv.org/html/2512.13915)",
   "links": [
    [
     "arXiv 2512.13915",
