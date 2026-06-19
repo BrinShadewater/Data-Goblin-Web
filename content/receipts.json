@@ -487,6 +487,23 @@
   "links": []
  },
  {
+  "id": 40,
+  "section": "C. Open — needs primary source before publication",
+  "claim": "City MW figures + facility/share counts",
+  "status": "resolved",
+  "detail": "✅ RESOLVED 2026-06-18 — **per-city MW are NRCan figures, verbatim.** NRCan *Best Practice Guide for Canadian Data Centres* (2024), Overview: \"Electric demand was estimated at **320 MW, 520 MW, and 46 MW** for [Toronto, Montreal, and Vancouver] respectively.\" This is the same government guide the book already cites for the 1.4%→2.1% national share (row 39). Underlying dataset = NRCan's commissioned \"Canadian Market Analysis for Servers and Data Centres / DC ETA\" (2021, updated 2023), not separately published. **\"Montréal largest / larger than Toronto\" is NRCan's own ordering by total electric demand (520 > 320)** — defensible and government-sourced; corroborated by Baxtel's all-facility tally (~544 MW Montréal). METHODOLOGY CAVEAT: by *colocation* supply, current analysts (CBRE/Mordor/DC Byte, 2025) rank Toronto first (~312–378 MW) over Montréal (~126 MW) — colocation excludes the hyperscale/crypto load on cheap Hydro-Québec power that NRCan's total-demand figure captures. The figures are ~2023-era estimates. Sources: [NRCan Best Practice Guide for Canadian Data Centres (2024)](https://oee.nrcan.gc.ca/publications/statistics/dac/2024/index.cfm), [PDF](https://oee.nrcan.gc.ca/corporate/statistics/neud/dpa/data_e/downloads/dc/pdf/2024/2024-best-practice-guide-for-canadian-data-centres.pdf).",
+  "links": [
+   [
+    "NRCan Best Practice Guide for Canadian Data Centres (2024)",
+    "https://oee.nrcan.gc.ca/publications/statistics/dac/2024/index.cfm"
+   ],
+   [
+    "PDF",
+    "https://oee.nrcan.gc.ca/corporate/statistics/neud/dpa/data_e/downloads/dc/pdf/2024/2024-best-practice-guide-for-canadian-data-centres.pdf"
+   ]
+  ]
+ },
+ {
   "id": 41,
   "section": "Fresh live re-verification — June 15, 2026 (full fact-check pass)",
   "claim": "Bill C-16 \"does not establish… a takedown mechanism\" (Ch 13)",
