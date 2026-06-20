@@ -108,10 +108,10 @@ export function FieldGuidePage() {
           {error && <div style={statusStyle}>{tr("Could not load chapter")} {num}. ({error})</div>}
           {!chapter && !error && <div style={statusStyle}>{tr("Opening the field guide…")}</div>}
           {chapter && panels && (
+            <div style={{ position: "relative", width: "100%", maxWidth: "720px", height: "100%" }}>
             <div
               style={{
                 width: "100%",
-                maxWidth: "720px",
                 height: "100%",
                 boxShadow: pageShadow,
                 borderRadius: "3px",
@@ -128,7 +128,8 @@ export function FieldGuidePage() {
                 folio={folio(num, aligned + 1)}
                 opener={aligned === 0}
               />
-              <EdgeNav onPrev={goPrev} onNext={goNext} canPrev={canPrev} canNext={canNext} />
+            </div>
+            <EdgeNav onPrev={goPrev} onNext={goNext} canPrev={canPrev} canNext={canNext} outset={mode === "phone" ? 8 : -22} />
             </div>
           )}
         </div>
@@ -255,12 +256,12 @@ export function FieldGuidePage() {
         {error && <div style={{ ...statusStyle, textAlign: "left" }}>{tr("Could not load chapter")} {num}. ({error})</div>}
         {!chapter && !error && <div style={statusStyle}>{tr("Opening the field guide…")}</div>}
         {chapter && panels && (
+          <div style={{ position: "relative", width: "100%", maxWidth: "1400px", height: "100%" }}>
           <div
             style={{
               display: "grid",
               gridTemplateColumns: singleArtSpread ? "1fr" : "1fr 1fr",
               width: "100%",
-              maxWidth: "1400px",
               height: "100%",
               boxShadow: pageShadow,
               borderRadius: "3px",
@@ -269,7 +270,6 @@ export function FieldGuidePage() {
               border: `1px solid ${c("#b8ad92", "#262c3a")}`,
             }}
           >
-            <EdgeNav onPrev={goPrev} onNext={goNext} canPrev={canPrev} canNext={canNext} />
             <PagePanel
               key={`${num}-${aligned}-left`}
               chapter={chapter}
@@ -302,6 +302,8 @@ export function FieldGuidePage() {
                 />
               </>
             )}
+          </div>
+            <EdgeNav onPrev={goPrev} onNext={goNext} canPrev={canPrev} canNext={canNext} outset={-22} />
           </div>
         )}
       </div>

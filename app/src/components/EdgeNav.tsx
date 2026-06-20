@@ -14,11 +14,16 @@ export function EdgeNav({
   onNext,
   canPrev,
   canNext,
+  outset = 8,
 }: {
   onPrev: () => void;
   onNext: () => void;
   canPrev: boolean;
   canNext: boolean;
+  /** Horizontal offset in px. Positive = inset over the page; negative = nudged
+   *  out past the page edge into the side gutter (must be rendered outside any
+   *  overflow:hidden page container). */
+  outset?: number;
 }) {
   const { c } = useTheme();
   const base = {
@@ -47,7 +52,7 @@ export function EdgeNav({
         disabled={!canPrev}
         style={{
           ...base,
-          left: "8px",
+          left: `${outset}px`,
           opacity: canPrev ? 0.9 : 0,
           pointerEvents: canPrev ? "auto" : "none",
           cursor: canPrev ? "pointer" : "default",
@@ -61,7 +66,7 @@ export function EdgeNav({
         disabled={!canNext}
         style={{
           ...base,
-          right: "8px",
+          right: `${outset}px`,
           opacity: canNext ? 0.9 : 0,
           pointerEvents: canNext ? "auto" : "none",
           cursor: canNext ? "pointer" : "default",
