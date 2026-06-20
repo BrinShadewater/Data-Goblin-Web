@@ -31,17 +31,17 @@ const BOOK_STATS = [
   { n: "20", label: "chapters", icon: "book-nav" },
   { n: "123k", label: "words", icon: "note-nav" },
   { n: "47", label: "charts & figures", icon: "growth-nav" },
-  { n: "58", label: "tracked receipts", icon: "check-nav" },
-  { n: "157", label: "linked sources", icon: "portal-nav" },
+  { n: "60", label: "tracked receipts", icon: "journal-nav" },
+  { n: "161", label: "linked sources", icon: "portal-nav" },
   { n: "45", label: "glossary terms", icon: "chest-nav" },
 ];
 
 const DEVICE_STATS = [
   { n: "26", label: "Goblin Checks", icon: "check-nav" },
   { n: "20", label: "Goblin Traps", icon: "trap-nav" },
-  { n: "11", label: "Goblin Facts", icon: "data-nav" },
-  { n: "13", label: "Alignments", icon: "trailmarker-nav" },
-  { n: "13", label: "Examples", icon: "examples-nav" },
+  { n: "20", label: "Goblin Facts", icon: "data-nav" },
+  { n: "20", label: "Alignments", icon: "trailmarker-nav" },
+  { n: "20", label: "Examples", icon: "examples-nav" },
 ];
 
 /** A number that ticks up from 0 to its target the first time it scrolls into view. */
