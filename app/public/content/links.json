@@ -662,5 +662,233 @@
  {
   "name": "Hollywood Reporter",
   "url": "https://www.hollywoodreporter.com/business/business-news/directors-guild-canada-ai-protections-1236623437/"
+ },
+ {
+  "name": "Hypertec/Newswire",
+  "url": "https://hypertec.com/news/bell-ai-fabric-cohere-hypertec-and-buzz-hpc-announce-landmark-deal-to-advance-sovereign-ai-in-canada"
+ },
+ {
+  "name": "HIVE/BUZZ HPC US$220M",
+  "url": "https://www.hivedigitaltechnologies.com/news/hives-buzz-hpc-closes-usd-220-million-sovereign-ai-gpu-contract-with-bell-ai-fabric-for-cohere-inc/"
+ },
+ {
+  "name": "ISED",
+  "url": "https://www.canada.ca/en/innovation-science-economic-development/news/2026/05/government-of-canada-supports-44-canadian-companies-using-ai-to-transform-industries-and-create-jobs.html"
+ },
+ {
+  "name": "CBC Armour withdrawn",
+  "url": "https://www.cbc.ca/news/canada/sudbury/ai-data-centre-withdrawn-armour-township-9.7239102"
+ },
+ {
+  "name": "CBC backlash explained",
+  "url": "https://www.cbc.ca/news/canada/ai-data-centre-opposition-explained-9.7225796"
+ },
+ {
+  "name": "CBC Hamilton",
+  "url": "https://www.cbc.ca/news/canada/hamilton/data-centres-9.7227568"
+ },
+ {
+  "name": "CBC Vancouver",
+  "url": "https://www.cbc.ca/news/canada/british-columbia/protest-against-ai-data-centres-in-vancouver-9.7210309"
+ },
+ {
+  "name": "BNN Bloomberg/Reuters Alberta gas",
+  "url": "https://www.bnnbloomberg.ca/investing/commodities/2026/06/09/alberta-pitches-cheap-natural-gas-for-data-centre-boom-at-odds-with-canadas-clean-power-aims/"
+ },
+ {
+  "name": "Global News",
+  "url": "https://globalnews.ca/news/11896143/alberta-cheap-natural-gas-data-centers-environment/"
+ },
+ {
+  "name": "CBC Saskatoon chamber",
+  "url": "https://www.cbc.ca/news/canada/saskatchewan/saskatoon-s-chamber-of-commerce-wants-in-on-the-ai-data-centre-rush-but-would-the-price-be-worth-it-9.7235081"
+ },
+ {
+  "name": "CBC Bell Regina",
+  "url": "https://www.cbc.ca/news/canada/saskatchewan/ai-data-rm-of-sherwood-9.7130417"
+ },
+ {
+  "name": "Alberta.ca strategy",
+  "url": "https://www.alberta.ca/artificial-intelligence-data-centres-strategy"
+ },
+ {
+  "name": "Strategy PDF",
+  "url": "https://open.alberta.ca/publications/albertas-ai-data-centre-strategy"
+ },
+ {
+  "name": "Invest Ontario",
+  "url": "https://www.investontario.ca/press-release/invest-ontario-welcomes-microsofts-ai-infrastructure-expansion-ontario-supporting-1250-jobs"
+ },
+ {
+  "name": "Ontario newsroom",
+  "url": "https://news.ontario.ca/en/release/1007259/ontario-welcomes-microsofts-ai-infrastructure-expansion"
+ },
+ {
+  "name": "National Observer",
+  "url": "https://www.nationalobserver.com/2026/04/14/news/microsoft-ontario-data-centres-power-water-use"
+ },
+ {
+  "name": "CBC online-harms/age limits",
+  "url": "https://www.cbc.ca/news/politics/online-harms-social-media-ban-youth-teens-9.7228651"
+ },
+ {
+  "name": "Global News under-16",
+  "url": "https://globalnews.ca/news/11894610/canada-social-media-ban-teens-online-harms-bill/"
+ },
+ {
+  "name": "NYT",
+  "url": "https://www.nytimes.com/2026/06/10/world/canada/social-meda-kids-legislation-carney.html"
+ },
+ {
+  "name": "Hollywood Reporter UK/CA/AU",
+  "url": "https://www.hollywoodreporter.com/news/general-news/social-media-bans-uk-canada-australia-1236625997/"
+ },
+ {
+  "name": "CBC cameras",
+  "url": "https://www.cbc.ca/news/canada/british-columbia/surveillance-cameras-2026-world-cup-vancouver-9.7022777"
+ },
+ {
+  "name": "BIV $242M security",
+  "url": "https://www.biv.com/news/vancouver-police-prepare-for-fifa-crowds-protests-and-security-threats-12373226"
+ },
+ {
+  "name": "BC gov FIFA cost update",
+  "url": "https://news.gov.bc.ca/releases/2026TACS0027-000625"
+ },
+ {
+  "name": "OpenMedia",
+  "url": "https://openmedia.org/press/item/government-prematurely-ends-debate-on-bill-c-22-without-dealing-with-dangerous-surveillance-powers"
+ },
+ {
+  "name": "EFF",
+  "url": "https://www.eff.org/deeplinks/2026/06/canada-forging-ahead-its-dangerous-surveillance-bill"
+ },
+ {
+  "name": "OPC statement",
+  "url": "https://www.priv.gc.ca/en/opc-actions-and-decisions/advice-to-parliament/2026/parl_260526/"
+ },
+ {
+  "name": "Petition e-7416",
+  "url": "https://www.ourcommons.ca/petitions/en/Petition/Details?Petition=e-7416"
+ },
+ {
+  "name": "Amodei essay",
+  "url": "https://darioamodei.com/post/policy-on-the-ai-exponential"
+ },
+ {
+  "name": "Anthropic statement",
+  "url": "https://www.anthropic.com/news/statement-department-of-war"
+ },
+ {
+  "name": "Fortune",
+  "url": "https://fortune.com/2026/06/14/canadian-prime-minister-mark-carney-warns-u-s-restrictions-on-new-anthropic-ai-models-show-danger-of-relying-too-much-on-american-providers/"
+ },
+ {
+  "name": "LA Times",
+  "url": "https://www.latimes.com/world-nation/story/2026-06-14/canadas-mark-carney-says-u-s-ai-restrictions-underscore-risks-of-dependence"
+ },
+ {
+  "name": "Al Jazeera — export ban / alliances",
+  "url": "https://www.aljazeera.com/news/2026/6/19/us-export-ban-on-anthropics-ai-models-further-strains-alliances"
+ },
+ {
+  "name": "CBC moratorium",
+  "url": "https://www.cbc.ca/news/canada/hamilton/data-centre-moratorium-9.7237420"
+ },
+ {
+  "name": "CBC developer rebuttal",
+  "url": "https://www.cbc.ca/news/canada/hamilton/frid-street-data-centre-9.7235088"
+ },
+ {
+  "name": "CBC protest",
+  "url": "https://www.cbc.ca/news/canada/hamilton/data-centres-9.7227568"
+ },
+ {
+  "name": "CP24",
+  "url": "https://www.cp24.com/news/canada/2026/05/06/foreign-actors-producing-more-false-content-about-alberta-separatism-report/"
+ },
+ {
+  "name": "The Walrus",
+  "url": "https://thewalrus.ca/alberta-separatism-fuelled-by-russian-networks-and-us-influencers/"
+ },
+ {
+  "name": "BetaKit middle-power",
+  "url": "https://betakit.com/ai-experts-want-a-middle-power-coalition-to-set-safety-guardrails-some-think-canada-could-lead-it/"
+ },
+ {
+  "name": "Globe and Mail G7 AI",
+  "url": "https://www.theglobeandmail.com/business/article-ai-executives-g7-cohere-openai-anthropic/"
+ },
+ {
+  "name": "IRCC Chinook (CIMM)",
+  "url": "https://www.canada.ca/en/immigration-refugees-citizenship/corporate/transparency/committees/cimm-feb-15-17-2022/chinook-development-implementation-decision-making.html"
+ },
+ {
+  "name": "IRCC advanced-analytics TRV",
+  "url": "https://www.canada.ca/en/immigration-refugees-citizenship/corporate/transparency/committees/cimm-feb-15-17-2022/advanced-data-analytics-sort-process-trv.html"
+ },
+ {
+  "name": "TRV AIA dataset",
+  "url": "https://open.canada.ca/data/en/dataset/6cba99b1-ea2c-4f8a-b954-3843ecd3a7f0"
+ },
+ {
+  "name": "IRCC AI Strategy 2026",
+  "url": "https://www.canada.ca/en/immigration-refugees-citizenship/corporate/transparency/artificial-intelligence-strategy.html"
+ },
+ {
+  "name": "Haghshenas 2023 FC 464",
+  "url": "https://www.canlii.org/en/ca/fct/doc/2023/2023fc464/2023fc464.html"
+ },
+ {
+  "name": "Bots at the Gate",
+  "url": "https://citizenlab.ca/research/bots-at-the-gate-human-rights-analysis-automated-decision-making-in-canadas-immigration-refugee-system/"
+ },
+ {
+  "name": "CIMM Report 12",
+  "url": "https://www.ourcommons.ca/documentviewer/en/44-1/CIMM/report-12/page-84"
+ },
+ {
+  "name": "CBC CBSA ReportIn FR app",
+  "url": "https://www.cbc.ca/news/canada/windsor/cbsa-facial-recogntion-app-deportation-1.7296313"
+ },
+ {
+  "name": "CBC CBSA AI traveller risk + bias",
+  "url": "https://www.cbc.ca/news/canada/windsor/artificial-intelligence-bias-border-canada-screening-1.7624051"
+ },
+ {
+  "name": "Hydro-Québec AI forecasting",
+  "url": "https://www.power-technology.com/features/redefining-load-forecasting-ai-smart-grids/"
+ },
+ {
+  "name": "SenseNet",
+  "url": "https://www.biv.com/news/technology/bc-ai-wildfire-detection-firm-scores-14m-funding-boost-11383740"
+ },
+ {
+  "name": "GHGSat",
+  "url": "https://www.ghgsat.com/en/newsroom/leveraging-ai-and-innovative-technologies-to-tackle-methane-emissions/"
+ },
+ {
+  "name": "AI Climate Hoax (Stand.earth)",
+  "url": "https://stand.earth/press-releases/report-exposes-big-techs-ai-climate-hoax-74-of-industrys-claims-about-ais-climate-benefits-are-unproven/"
+ },
+ {
+  "name": "Nobel Chemistry 2024",
+  "url": "https://www.nobelprize.org/prizes/chemistry/2024/press-release/"
+ },
+ {
+  "name": "AlphaFold \"hypotheses\" (Nature Methods)",
+  "url": "https://www.nature.com/articles/s41592-023-02087-4"
+ },
+ {
+  "name": "CHARTwatch (CMAJ)",
+  "url": "https://www.cmaj.ca/content/196/30/E1027"
+ },
+ {
+  "name": "Epic Sepsis failure (JAMA)",
+  "url": "https://jamanetwork.com/journals/jamainternalmedicine/fullarticle/2781307"
+ },
+ {
+  "name": "Leakage (Patterns)",
+  "url": "https://www.cell.com/patterns/fulltext/S2666-3899(23"
  }
 ]

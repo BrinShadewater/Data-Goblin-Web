@@ -719,5 +719,428 @@
     "https://www.hollywoodreporter.com/business/business-news/directors-guild-canada-ai-protections-1236623437/"
    ]
   ]
+ },
+ {
+  "id": 62,
+  "section": "Citation-precision pass — June 18, 2026",
+  "claim": "Bell–Cohere–Hypertec–BUZZ HPC Merritt sovereign-AI deal (Ch 6)",
+  "status": "resolved",
+  "detail": "✅ CONFIRMED 2026-06-19. June 18 2026: Bell AI Fabric, Cohere, Hypertec, and BUZZ HPC announced a deal to run Cohere's models on Bell's Merritt, BC data centre (~6.5 MW, expansion to roughly double by early 2027) on NVIDIA DGX servers assembled in Canada by Hypertec; BUZZ HPC (HIVE Digital) closed a reported US$220M sovereign-AI GPU contract with Bell AI Fabric for Cohere. Branded \"sovereign AI.\" **LEAN: corporate self-disclosure** (joint press release) — the \"sovereign\" framing is the companies' claim; the silicon remains US-designed/Taiwan-fabbed NVIDIA. Builds on the July 2025 Bell–Cohere partnership already in Ch 6. | [Hypertec/Newswire](https://hypertec.com/news/bell-ai-fabric-cohere-hypertec-and-buzz-hpc-announce-landmark-deal-to-advance-sovereign-ai-in-canada) · [CBC](https://www.cbc.ca/news/business/bell-cohere-ai-infrastructure-deal-9.7240577) · [HIVE/BUZZ HPC US$220M](https://www.hivedigitaltechnologies.com/news/hives-buzz-hpc-closes-usd-220-million-sovereign-ai-gpu-contract-with-bell-ai-fabric-for-cohere-inc/)",
+  "links": [
+   [
+    "Hypertec/Newswire",
+    "https://hypertec.com/news/bell-ai-fabric-cohere-hypertec-and-buzz-hpc-announce-landmark-deal-to-advance-sovereign-ai-in-canada"
+   ],
+   [
+    "CBC",
+    "https://www.cbc.ca/news/business/bell-cohere-ai-infrastructure-deal-9.7240577"
+   ],
+   [
+    "HIVE/BUZZ HPC US$220M",
+    "https://www.hivedigitaltechnologies.com/news/hives-buzz-hpc-closes-usd-220-million-sovereign-ai-gpu-contract-with-bell-ai-fabric-for-cohere-inc/"
+   ]
+  ]
+ },
+ {
+  "id": 63,
+  "section": "Citation-precision pass — June 18, 2026",
+  "claim": "AI Compute Access Fund sovereign-compute subsidy split (Ch 5)",
+  "status": "resolved",
+  "detail": "✅ CONFIRMED 2026-06-19. The federal AI Compute Access Fund subsidizes compute at 50 cents on the dollar for foreign-provider compute and 67 cents for Canadian-provider compute — a funded incentive toward sovereign compute (Minister Solomon, Web Summit Vancouver, May 2026). The $66M-to-44-SMEs first tranche is already in Ch 5. **LEAN: government operational/announcement.** | [CBC](https://www.cbc.ca/news/politics/ai-minister-names-44-projects-getting-federal-money-to-access-compute-power-9.7196774) · [BetaKit](https://betakit.com/feds-announce-66-million-for-44-businesses-through-ai-compute-access-fund/) · [ISED](https://www.canada.ca/en/innovation-science-economic-development/news/2026/05/government-of-canada-supports-44-canadian-companies-using-ai-to-transform-industries-and-create-jobs.html)",
+  "links": [
+   [
+    "CBC",
+    "https://www.cbc.ca/news/politics/ai-minister-names-44-projects-getting-federal-money-to-access-compute-power-9.7196774"
+   ],
+   [
+    "BetaKit",
+    "https://betakit.com/feds-announce-66-million-for-44-businesses-through-ai-compute-access-fund/"
+   ],
+   [
+    "ISED",
+    "https://www.canada.ca/en/innovation-science-economic-development/news/2026/05/government-of-canada-supports-44-canadian-companies-using-ai-to-transform-industries-and-create-jobs.html"
+   ]
+  ]
+ },
+ {
+  "id": 64,
+  "section": "Citation-precision pass — June 18, 2026",
+  "claim": "Canadian data-centre siting backlash (Ch 6)",
+  "status": "resolved",
+  "detail": "✅ CONFIRMED 2026-06-19. Community opposition contesting/halting AI data-centre siting across provinces: Armour Township, ON — developer (Almaguin Data) withdrew a proposed 2 MW AI data centre in June 2026 after a 1,000+ signature petition (water, power, noise the cited concerns); hundreds protested a proposed Hamilton campus (city drafting a framework); protesters marched against new data centres in Vancouver. CBC's explainer ties the backlash to land/electricity/water demands. **LEAN: mainstream press reporting local opposition.** | [CBC Armour withdrawn](https://www.cbc.ca/news/canada/sudbury/ai-data-centre-withdrawn-armour-township-9.7239102) · [CBC backlash explained](https://www.cbc.ca/news/canada/ai-data-centre-opposition-explained-9.7225796) · [CBC Hamilton](https://www.cbc.ca/news/canada/hamilton/data-centres-9.7227568) · [CBC Vancouver](https://www.cbc.ca/news/canada/british-columbia/protest-against-ai-data-centres-in-vancouver-9.7210309)",
+  "links": [
+   [
+    "CBC Armour withdrawn",
+    "https://www.cbc.ca/news/canada/sudbury/ai-data-centre-withdrawn-armour-township-9.7239102"
+   ],
+   [
+    "CBC backlash explained",
+    "https://www.cbc.ca/news/canada/ai-data-centre-opposition-explained-9.7225796"
+   ],
+   [
+    "CBC Hamilton",
+    "https://www.cbc.ca/news/canada/hamilton/data-centres-9.7227568"
+   ],
+   [
+    "CBC Vancouver",
+    "https://www.cbc.ca/news/canada/british-columbia/protest-against-ai-data-centres-in-vancouver-9.7210309"
+   ]
+  ]
+ },
+ {
+  "id": 65,
+  "section": "Citation-precision pass — June 18, 2026",
+  "claim": "Alberta gas-for-data-centres + provincial scramble (Ch 6)",
+  "status": "resolved",
+  "detail": "✅ CONFIRMED 2026-06-19. Alberta is pitching cheap natural gas for the AI data-centre boom, at odds with the federal clean-power framing: ~100 hyperscale DCs in the works nationally with ~90% slated for Alberta, whose grid emissions intensity runs several times (≈5×) the national average; Alberta's technology minister called gas \"really the only option for the next three to five years.\" Saskatchewan courting the rush: Bell's ~$1.7B build near Regina (RM of Sherwood), billed as Canada's largest AI DC (online 2027), approved amid protest; Saskatoon's chamber of commerce wants in. **LEAN: mainstream press + provincial-government framing.** | [BNN Bloomberg/Reuters Alberta gas](https://www.bnnbloomberg.ca/investing/commodities/2026/06/09/alberta-pitches-cheap-natural-gas-for-data-centre-boom-at-odds-with-canadas-clean-power-aims/) · [Global News](https://globalnews.ca/news/11896143/alberta-cheap-natural-gas-data-centers-environment/) · [CBC Saskatoon chamber](https://www.cbc.ca/news/canada/saskatchewan/saskatoon-s-chamber-of-commerce-wants-in-on-the-ai-data-centre-rush-but-would-the-price-be-worth-it-9.7235081) · [CBC Bell Regina](https://www.cbc.ca/news/canada/saskatchewan/ai-data-rm-of-sherwood-9.7130417)",
+  "links": [
+   [
+    "BNN Bloomberg/Reuters Alberta gas",
+    "https://www.bnnbloomberg.ca/investing/commodities/2026/06/09/alberta-pitches-cheap-natural-gas-for-data-centre-boom-at-odds-with-canadas-clean-power-aims/"
+   ],
+   [
+    "Global News",
+    "https://globalnews.ca/news/11896143/alberta-cheap-natural-gas-data-centers-environment/"
+   ],
+   [
+    "CBC Saskatoon chamber",
+    "https://www.cbc.ca/news/canada/saskatchewan/saskatoon-s-chamber-of-commerce-wants-in-on-the-ai-data-centre-rush-but-would-the-price-be-worth-it-9.7235081"
+   ],
+   [
+    "CBC Bell Regina",
+    "https://www.cbc.ca/news/canada/saskatchewan/ai-data-rm-of-sherwood-9.7130417"
+   ]
+  ]
+ },
+ {
+  "id": 66,
+  "section": "Citation-precision pass — June 18, 2026",
+  "claim": "Alberta AI Data Centres Strategy (Ch 6)",
+  "status": "resolved",
+  "detail": "✅ CONFIRMED 2026-06-19. Alberta's formal \"Artificial Intelligence Data Centres Strategy: Powering the Future of Artificial Intelligence\" (Ministry of Technology and Innovation; page published Nov 2025): three pillars — Power capacity (off-grid + grid; natural-gas reserves plus renewables and carbon capture \"where feasible\"), Sustainable cooling, Economic growth (touts \"lowest tax regime in Canada\"); plus \"regulatory modernization\" to cut permitting timelines, an \"AI Data Centre Concierge Program,\" and Indigenous co-ownership language. **LEAN: provincial-government framing** (self-promotional \"Alberta Advantage\"). | [Alberta.ca strategy](https://www.alberta.ca/artificial-intelligence-data-centres-strategy) · [Strategy PDF](https://open.alberta.ca/publications/albertas-ai-data-centre-strategy)",
+  "links": [
+   [
+    "Alberta.ca strategy",
+    "https://www.alberta.ca/artificial-intelligence-data-centres-strategy"
+   ],
+   [
+    "Strategy PDF",
+    "https://open.alberta.ca/publications/albertas-ai-data-centre-strategy"
+   ]
+  ]
+ },
+ {
+  "id": 67,
+  "section": "Citation-precision pass — June 18, 2026",
+  "claim": "Microsoft Ontario AI infrastructure expansion (Ch 6)",
+  "status": "resolved",
+  "detail": "✅ CONFIRMED 2026-06-19. Part of Microsoft's ~$19B Canadian cloud/AI infrastructure commitment (2023–2027); April 2026 Invest Ontario welcome of an Azure Canada Central expansion — two new York Region data centres (Markham, Vaughan) plus Toronto, ~1,250 jobs (≈1,000 construction + 250 permanent). Microsoft separately pledged the new Ontario DCs \"won't increase power bills.\" **LEAN: government + corporate announcement** (figures are the province's/company's). | [Invest Ontario](https://www.investontario.ca/press-release/invest-ontario-welcomes-microsofts-ai-infrastructure-expansion-ontario-supporting-1250-jobs) · [Ontario newsroom](https://news.ontario.ca/en/release/1007259/ontario-welcomes-microsofts-ai-infrastructure-expansion) · [National Observer](https://www.nationalobserver.com/2026/04/14/news/microsoft-ontario-data-centres-power-water-use)",
+  "links": [
+   [
+    "Invest Ontario",
+    "https://www.investontario.ca/press-release/invest-ontario-welcomes-microsofts-ai-infrastructure-expansion-ontario-supporting-1250-jobs"
+   ],
+   [
+    "Ontario newsroom",
+    "https://news.ontario.ca/en/release/1007259/ontario-welcomes-microsofts-ai-infrastructure-expansion"
+   ],
+   [
+    "National Observer",
+    "https://www.nationalobserver.com/2026/04/14/news/microsoft-ontario-data-centres-power-water-use"
+   ]
+  ]
+ },
+ {
+  "id": 68,
+  "section": "Citation-precision pass — June 18, 2026",
+  "claim": "Digital Safety Act / under-16 social-media ban (Ch 16)",
+  "status": "resolved",
+  "detail": "✅ CONFIRMED 2026-06-19. The Carney government tabled the Digital Safety Act on June 10 2026 (Ottawa's fourth online-harms attempt since 2021). Centrepiece: a ban on social-media accounts for under-16s, with a platform exemption route; creates a new Digital Safety Commission of Canada (independent regulator). Officials concede realistic enforcement ~late 2027/2028 (≈1 year to pass + ~18 months to stand up the regulator). Narrowing/feasibility doubts noted by experts. **LEAN: government bill + mainstream-press reporting.** | [CBC online-harms/age limits](https://www.cbc.ca/news/politics/online-harms-social-media-ban-youth-teens-9.7228651) · [Global News under-16](https://globalnews.ca/news/11894610/canada-social-media-ban-teens-online-harms-bill/) · [NYT](https://www.nytimes.com/2026/06/10/world/canada/social-meda-kids-legislation-carney.html) · [Hollywood Reporter UK/CA/AU](https://www.hollywoodreporter.com/news/general-news/social-media-bans-uk-canada-australia-1236625997/)",
+  "links": [
+   [
+    "CBC online-harms/age limits",
+    "https://www.cbc.ca/news/politics/online-harms-social-media-ban-youth-teens-9.7228651"
+   ],
+   [
+    "Global News under-16",
+    "https://globalnews.ca/news/11894610/canada-social-media-ban-teens-online-harms-bill/"
+   ],
+   [
+    "NYT",
+    "https://www.nytimes.com/2026/06/10/world/canada/social-meda-kids-legislation-carney.html"
+   ],
+   [
+    "Hollywood Reporter UK/CA/AU",
+    "https://www.hollywoodreporter.com/news/general-news/social-media-bans-uk-canada-australia-1236625997/"
+   ]
+  ]
+ },
+ {
+  "id": 69,
+  "section": "Citation-precision pass — June 18, 2026",
+  "claim": "FIFA 2026 World Cup Vancouver surveillance + FR ban (Ch 10)",
+  "status": "resolved",
+  "detail": "✅ CONFIRMED 2026-06-19. For the 2026 FIFA World Cup, Vancouver plans up to 200 new monitored cameras plus integration of ~1,000 existing ones (security budget reported ~$242M); the network carries an express prohibition on facial recognition, biometric analysis, and automated identification, with a privacy impact assessment alongside the BC privacy commissioner. **LEAN: city/police + mainstream press**; civil-society privacy scrutiny noted. | [CBC cameras](https://www.cbc.ca/news/canada/british-columbia/surveillance-cameras-2026-world-cup-vancouver-9.7022777) · [BIV $242M security](https://www.biv.com/news/vancouver-police-prepare-for-fifa-crowds-protests-and-security-threats-12373226) · [BC gov FIFA cost update](https://news.gov.bc.ca/releases/2026TACS0027-000625)",
+  "links": [
+   [
+    "CBC cameras",
+    "https://www.cbc.ca/news/canada/british-columbia/surveillance-cameras-2026-world-cup-vancouver-9.7022777"
+   ],
+   [
+    "BIV $242M security",
+    "https://www.biv.com/news/vancouver-police-prepare-for-fifa-crowds-protests-and-security-threats-12373226"
+   ],
+   [
+    "BC gov FIFA cost update",
+    "https://news.gov.bc.ca/releases/2026TACS0027-000625"
+   ]
+  ]
+ },
+ {
+  "id": 70,
+  "section": "Citation-precision pass — June 18, 2026",
+  "claim": "Bill C-22 (Lawful Access Act, 2026) (Ch 10)",
+  "status": "resolved",
+  "detail": "✅ CONFIRMED 2026-06-19. Federal lawful-access bill (45th Parliament): up to 1-year metadata retention; Part 2 (Supporting Access to Authorized Information Act) lets the Minister of Public Safety issue secret orders compelling providers to build access / weaken encryption, with gag rules + limited judicial check; expanded foreign info-sharing. Government ended SECU committee debate June 16 2026 without addressing Part 2. **LEAN — name each:** advocacy (OpenMedia, EFF, CDT) demands withdrawal; the Privacy Commissioner (Dufresne, May 26 2026 statement) gave calibrated advice (welcomed some tailoring; urged necessity/proportionality + encryption \"systemic vulnerability\" protections); government bill. Petition e-7416. | [OpenMedia](https://openmedia.org/press/item/government-prematurely-ends-debate-on-bill-c-22-without-dealing-with-dangerous-surveillance-powers) · [EFF](https://www.eff.org/deeplinks/2026/06/canada-forging-ahead-its-dangerous-surveillance-bill) · [OPC statement](https://www.priv.gc.ca/en/opc-actions-and-decisions/advice-to-parliament/2026/parl_260526/) · [Petition e-7416](https://www.ourcommons.ca/petitions/en/Petition/Details?Petition=e-7416)",
+  "links": [
+   [
+    "OpenMedia",
+    "https://openmedia.org/press/item/government-prematurely-ends-debate-on-bill-c-22-without-dealing-with-dangerous-surveillance-powers"
+   ],
+   [
+    "EFF",
+    "https://www.eff.org/deeplinks/2026/06/canada-forging-ahead-its-dangerous-surveillance-bill"
+   ],
+   [
+    "OPC statement",
+    "https://www.priv.gc.ca/en/opc-actions-and-decisions/advice-to-parliament/2026/parl_260526/"
+   ],
+   [
+    "Petition e-7416",
+    "https://www.ourcommons.ca/petitions/en/Petition/Details?Petition=e-7416"
+   ]
+  ]
+ },
+ {
+  "id": 71,
+  "section": "Citation-precision pass — June 18, 2026",
+  "claim": "Amodei \"Policy on the AI Exponential\" — Anthropic's binding-regulation shift (Ch 16)",
+  "status": "resolved",
+  "detail": "✅ CONFIRMED 2026-06-19. June 2026 essay by Anthropic CEO Dario Amodei proposing a sweeping agenda: binding/enforceable frontier-model regulation (FAA-style testing), job-displacement support, civil-liberties protections, a global democratic-AI coalition — a shift from Anthropic's earlier transparency-advocacy toward calling for binding rules. **LEAN: industry/corporate self-disclosure** — a well-resourced incumbent's preferred regulatory design (rules it is better placed to absorb than smaller rivals); read accordingly. | [Amodei essay](https://darioamodei.com/post/policy-on-the-ai-exponential)",
+  "links": [
+   [
+    "Amodei essay",
+    "https://darioamodei.com/post/policy-on-the-ai-exponential"
+   ]
+  ]
+ },
+ {
+  "id": 72,
+  "section": "Citation-precision pass — June 18, 2026",
+  "claim": "Anthropic refuses DoD unrestricted-military-use terms (Ch 16)",
+  "status": "resolved",
+  "detail": "✅ CONFIRMED 2026-06-19. Anthropic (Amodei) said it \"cannot in good conscience accede\" to updated US Department of Defense (\"Department of War\") contract language that, per Anthropic, would permit unrestricted military use of Claude with inadequate blocks on mass surveillance of Americans and fully autonomous weapons; Anthropic has separately deployed models to defense/intelligence for some uses. **LEAN: corporate self-disclosure** (Anthropic's framing of a contract dispute; a public refusal is also a PR act). | [Anthropic statement](https://www.anthropic.com/news/statement-department-of-war)",
+  "links": [
+   [
+    "Anthropic statement",
+    "https://www.anthropic.com/news/statement-department-of-war"
+   ]
+  ]
+ },
+ {
+  "id": 73,
+  "section": "Citation-precision pass — June 18, 2026",
+  "claim": "Carney: US Anthropic export restrictions show AI-dependence risk (Ch 6)",
+  "status": "resolved",
+  "detail": "✅ CONFIRMED 2026-06-19. June 2026: a US export-control directive restricted Anthropic's newest models (Fable 5 / Mythos 5) for foreign nationals — Anthropic disabled them for all users (see Source Library L2) — straining allied access; PM Mark Carney (June 14) cited the episode as evidence of the danger of Canada relying too heavily on American AI providers, i.e. the sovereign-AI rationale voiced by the PM himself. **LEAN: government framing** (PM advancing the sovereignty push) + mainstream press. | [Fortune](https://fortune.com/2026/06/14/canadian-prime-minister-mark-carney-warns-u-s-restrictions-on-new-anthropic-ai-models-show-danger-of-relying-too-much-on-american-providers/) · [LA Times](https://www.latimes.com/world-nation/story/2026-06-14/canadas-mark-carney-says-u-s-ai-restrictions-underscore-risks-of-dependence) · [Al Jazeera — export ban / alliances](https://www.aljazeera.com/news/2026/6/19/us-export-ban-on-anthropics-ai-models-further-strains-alliances)",
+  "links": [
+   [
+    "Fortune",
+    "https://fortune.com/2026/06/14/canadian-prime-minister-mark-carney-warns-u-s-restrictions-on-new-anthropic-ai-models-show-danger-of-relying-too-much-on-american-providers/"
+   ],
+   [
+    "LA Times",
+    "https://www.latimes.com/world-nation/story/2026-06-14/canadas-mark-carney-says-u-s-ai-restrictions-underscore-risks-of-dependence"
+   ],
+   [
+    "Al Jazeera — export ban / alliances",
+    "https://www.aljazeera.com/news/2026/6/19/us-export-ban-on-anthropics-ai-models-further-strains-alliances"
+   ]
+  ]
+ },
+ {
+  "id": 74,
+  "section": "Citation-precision pass — June 18, 2026",
+  "claim": "Hamilton AI data-centre opposition, moratorium move + developer rebuttal (Ch 6)",
+  "status": "resolved",
+  "detail": "✅ CONFIRMED 2026-06-19. Hundreds protested a proposed Hamilton AI data centre (Frid St / former Spectator building; also the Stelco/Steelport lands); the city planning committee unanimously moved to draft a moratorium bylaw pending a local framework. The developer behind one Hamilton proposal argued that building cleaner data centres is better than building none. **LEAN: mainstream press; developer's \"cleaner\" claim is self-interested and unverified.** | [CBC moratorium](https://www.cbc.ca/news/canada/hamilton/data-centre-moratorium-9.7237420) · [CBC developer rebuttal](https://www.cbc.ca/news/canada/hamilton/frid-street-data-centre-9.7235088) · [CBC protest](https://www.cbc.ca/news/canada/hamilton/data-centres-9.7227568)",
+  "links": [
+   [
+    "CBC moratorium",
+    "https://www.cbc.ca/news/canada/hamilton/data-centre-moratorium-9.7237420"
+   ],
+   [
+    "CBC developer rebuttal",
+    "https://www.cbc.ca/news/canada/hamilton/frid-street-data-centre-9.7235088"
+   ],
+   [
+    "CBC protest",
+    "https://www.cbc.ca/news/canada/hamilton/data-centres-9.7227568"
+   ]
+  ]
+ },
+ {
+  "id": 75,
+  "section": "Citation-precision pass — June 18, 2026",
+  "claim": "Cipher AI tracks foreign amplification of Alberta separatism (Ch 13)",
+  "status": "resolved",
+  "detail": "✅ CONFIRMED 2026-06-19. Cipher AI (Edmonton/Regina; spinout of the University of Regina's Centre for AI, Data, and Conflict) used AI to track foreign disinformation amplifying the Alberta-separatism debate, attributing campaigns to Russian networks and US influencers. **KEY NUANCE (Cipher's own): foreign actors amplified but did not manufacture the movement.** LEAN: startup/research report (self-interest in the threat) + mainstream press. | [BetaKit](https://betakit.com/meet-the-ai-company-tracking-the-foreign-actors-stoking-alberta-separatism/) · [CP24](https://www.cp24.com/news/canada/2026/05/06/foreign-actors-producing-more-false-content-about-alberta-separatism-report/) · [Globe and Mail](https://www.theglobeandmail.com/canada/article-alberta-separation-being-targeted-by-foreign-actors-seeking-to-stoke/) · [The Walrus](https://thewalrus.ca/alberta-separatism-fuelled-by-russian-networks-and-us-influencers/)",
+  "links": [
+   [
+    "BetaKit",
+    "https://betakit.com/meet-the-ai-company-tracking-the-foreign-actors-stoking-alberta-separatism/"
+   ],
+   [
+    "CP24",
+    "https://www.cp24.com/news/canada/2026/05/06/foreign-actors-producing-more-false-content-about-alberta-separatism-report/"
+   ],
+   [
+    "Globe and Mail",
+    "https://www.theglobeandmail.com/canada/article-alberta-separation-being-targeted-by-foreign-actors-seeking-to-stoke/"
+   ],
+   [
+    "The Walrus",
+    "https://thewalrus.ca/alberta-separatism-fuelled-by-russian-networks-and-us-influencers/"
+   ]
+  ]
+ },
+ {
+  "id": 76,
+  "section": "Citation-precision pass — June 18, 2026",
+  "claim": "Middle-power AI-safety coalition + International AI Safety Report + G7 (Ch 16)",
+  "status": "resolved",
+  "detail": "✅ CONFIRMED 2026-06-19. AI-policy figures and the federal government (AI for All \"trusted partnerships\" pillar) propose a middle-power coalition of aligned democracies to set AI guardrails and reduce dependence on US frontier labs; intellectual anchor is the 2nd annual International AI Safety Report (100+ experts, chaired by Yoshua Bengio). At the June 2026 G7 (France), European + Canadian leaders sought checks on US AI dominance (attendees incl. Altman, Hassabis, Amodei + smaller labs incl. Cohere, Mistral); Carney: sovereignty needs \"unhindered access to AI,\" must \"build out and diversify.\" **LEAN: government framing + expert assessment + mainstream press.** | [BetaKit middle-power](https://betakit.com/ai-experts-want-a-middle-power-coalition-to-set-safety-guardrails-some-think-canada-could-lead-it/) · [Globe and Mail G7 AI](https://www.theglobeandmail.com/business/article-ai-executives-g7-cohere-openai-anthropic/)",
+  "links": [
+   [
+    "BetaKit middle-power",
+    "https://betakit.com/ai-experts-want-a-middle-power-coalition-to-set-safety-guardrails-some-think-canada-could-lead-it/"
+   ],
+   [
+    "Globe and Mail G7 AI",
+    "https://www.theglobeandmail.com/business/article-ai-executives-g7-cohere-openai-anthropic/"
+   ]
+  ]
+ },
+ {
+  "id": 77,
+  "section": "Citation-precision pass — June 18, 2026",
+  "claim": "IRCC immigration AI: Chinook vs ML triage, Directive/AIA, courts (Ch 10)",
+  "status": "resolved",
+  "detail": "✅ CONFIRMED 2026-06-19. **Chinook = Excel-based processing/visualization tool, NOT AI** (IRCC: \"does not utilize artificial intelligence, nor advanced analytics for decision-making\"); piloted 2018/launched 2019; Module 4 generates refusal-notes boilerplate; ~18–30% efficiency gain; classified non-AI, so NOT covered by the Treasury Board Directive on Automated Decision-Making and carries no AIA. **Separate ML \"advanced analytics\" triage** (since 2018; all countries since Jan 2022) sorts TRV applications by complexity, auto-approves eligibility on routine files (~87% faster), and NEVER auto-refuses (an officer makes every refusal); AIA published (TRV, \"moderate\"/Level II); extended to visitor records, IEC work permits, spousal (May 2024); IRCC's first departmental AI Strategy issued Feb 20 2026. Courts: Haghshenas 2023 FC 464 (AI use \"irrelevant\"; officer decided); Khosravi 2023 FC 805 (\"truncated vision … may well be unreasonable\"); Mehrara 2024 FC 1554 (risk-indicator + materials-deletion caveats). **CAUTION: press/litigants conflate Chinook with the ML system — keep the distinction.** | [IRCC Chinook (CIMM)](https://www.canada.ca/en/immigration-refugees-citizenship/corporate/transparency/committees/cimm-feb-15-17-2022/chinook-development-implementation-decision-making.html) · [IRCC advanced-analytics TRV](https://www.canada.ca/en/immigration-refugees-citizenship/corporate/transparency/committees/cimm-feb-15-17-2022/advanced-data-analytics-sort-process-trv.html) · [TRV AIA dataset](https://open.canada.ca/data/en/dataset/6cba99b1-ea2c-4f8a-b954-3843ecd3a7f0) · [IRCC AI Strategy 2026](https://www.canada.ca/en/immigration-refugees-citizenship/corporate/transparency/artificial-intelligence-strategy.html) · [Haghshenas 2023 FC 464](https://www.canlii.org/en/ca/fct/doc/2023/2023fc464/2023fc464.html)",
+  "links": [
+   [
+    "IRCC Chinook (CIMM)",
+    "https://www.canada.ca/en/immigration-refugees-citizenship/corporate/transparency/committees/cimm-feb-15-17-2022/chinook-development-implementation-decision-making.html"
+   ],
+   [
+    "IRCC advanced-analytics TRV",
+    "https://www.canada.ca/en/immigration-refugees-citizenship/corporate/transparency/committees/cimm-feb-15-17-2022/advanced-data-analytics-sort-process-trv.html"
+   ],
+   [
+    "TRV AIA dataset",
+    "https://open.canada.ca/data/en/dataset/6cba99b1-ea2c-4f8a-b954-3843ecd3a7f0"
+   ],
+   [
+    "IRCC AI Strategy 2026",
+    "https://www.canada.ca/en/immigration-refugees-citizenship/corporate/transparency/artificial-intelligence-strategy.html"
+   ],
+   [
+    "Haghshenas 2023 FC 464",
+    "https://www.canlii.org/en/ca/fct/doc/2023/2023fc464/2023fc464.html"
+   ]
+  ]
+ },
+ {
+  "id": 78,
+  "section": "Citation-precision pass — June 18, 2026",
+  "claim": "Immigration-AI critique + CBSA border AI (Ch 10)",
+  "status": "resolved",
+  "detail": "✅ CONFIRMED 2026-06-19. Citizen Lab + IHRP (U of T), *Bots at the Gate* (Molnar & Gill, Sept 26 2018): human-rights critique of immigration automated decision-making; called for a freeze + binding standards + independent oversight. Follow-ups: Refugee Law Lab (York); Molnar, *The Walls Have Eyes* (2024). CIMM Report 12 (Nov 2022) scrutinized Chinook amid higher refusal rates for francophone-African applicants. CBSA: \"ReportIn\" facial-recognition app to track deportation-order subjects (matching algorithm withheld as a trade secret, 2024); AI \"Traveller Compliance Indicator\" risk-scoring (bias warning, 2025); the AVATAR AI lie-detector was tested only in an Ottawa lab, not on real travellers. **KEY CAVEAT: study-permit refusal rates rose as the tools spread, but this also tracks study-permit caps + integrity crackdowns — correlation, NOT established causation; do not claim the AI caused refusals.** **LEAN: academic human-rights advocacy** (Citizen Lab/Molnar) + investigative press + parliamentary committee; IRCC efficiency figures are self-reported. | [Bots at the Gate](https://citizenlab.ca/research/bots-at-the-gate-human-rights-analysis-automated-decision-making-in-canadas-immigration-refugee-system/) · [CIMM Report 12](https://www.ourcommons.ca/documentviewer/en/44-1/CIMM/report-12/page-84) · [CBC CBSA ReportIn FR app](https://www.cbc.ca/news/canada/windsor/cbsa-facial-recogntion-app-deportation-1.7296313) · [CBC CBSA AI traveller risk + bias](https://www.cbc.ca/news/canada/windsor/artificial-intelligence-bias-border-canada-screening-1.7624051)",
+  "links": [
+   [
+    "Bots at the Gate",
+    "https://citizenlab.ca/research/bots-at-the-gate-human-rights-analysis-automated-decision-making-in-canadas-immigration-refugee-system/"
+   ],
+   [
+    "CIMM Report 12",
+    "https://www.ourcommons.ca/documentviewer/en/44-1/CIMM/report-12/page-84"
+   ],
+   [
+    "CBC CBSA ReportIn FR app",
+    "https://www.cbc.ca/news/canada/windsor/cbsa-facial-recogntion-app-deportation-1.7296313"
+   ],
+   [
+    "CBC CBSA AI traveller risk + bias",
+    "https://www.cbc.ca/news/canada/windsor/artificial-intelligence-bias-border-canada-screening-1.7624051"
+   ]
+  ]
+ },
+ {
+  "id": 79,
+  "section": "Citation-precision pass — June 18, 2026",
+  "claim": "AI-for-climate: demonstrated uses, IEA balance, greenwashing critique (Ch 8)",
+  "status": "resolved",
+  "detail": "✅ CONFIRMED 2026-06-19. Demonstrated (mostly narrow ML): Hydro-Québec AI load-forecasting in production since 2023 (credited during a 2024 heatwave); GHGSat (Montréal) AI methane-plume detection; SenseNet (Vancouver) detected 217 fires in a Vernon BC pilot; AI weather models (GraphCast/GenCast) beat ECMWF on its own benchmarks (Science 2023; Nature Dec 2024). Calibrated anchor: IEA *Energy and AI* (2025) — data centres <1.5% of energy-sector emissions; AI could cut ~5% of 2035 energy-sector emissions (\"no momentum\" to guarantee it); footprint fears AND benefit hopes both overstated. Rebound/Jevons (FAccT 2025). Greenwashing critique: Stand.earth/Ketan Joshi \"AI Climate Hoax\" (Feb 2026) — 154 claims, ~74% \"unproven\" (**ADVOCACY — present as the skeptics' number**); the \"5–10% of emissions\" claim traces to a 2021 BCG blog post. **LEAN: IEA neutral baseline; company case studies; NGO/advocacy critique (flagged).** | [IEA Energy and AI](https://www.iea.org/reports/energy-and-ai/executive-summary) · [Hydro-Québec AI forecasting](https://www.power-technology.com/features/redefining-load-forecasting-ai-smart-grids/) · [SenseNet](https://www.biv.com/news/technology/bc-ai-wildfire-detection-firm-scores-14m-funding-boost-11383740) · [GHGSat](https://www.ghgsat.com/en/newsroom/leveraging-ai-and-innovative-technologies-to-tackle-methane-emissions/) · [AI Climate Hoax (Stand.earth)](https://stand.earth/press-releases/report-exposes-big-techs-ai-climate-hoax-74-of-industrys-claims-about-ais-climate-benefits-are-unproven/)",
+  "links": [
+   [
+    "IEA Energy and AI",
+    "https://www.iea.org/reports/energy-and-ai/executive-summary"
+   ],
+   [
+    "Hydro-Québec AI forecasting",
+    "https://www.power-technology.com/features/redefining-load-forecasting-ai-smart-grids/"
+   ],
+   [
+    "SenseNet",
+    "https://www.biv.com/news/technology/bc-ai-wildfire-detection-firm-scores-14m-funding-boost-11383740"
+   ],
+   [
+    "GHGSat",
+    "https://www.ghgsat.com/en/newsroom/leveraging-ai-and-innovative-technologies-to-tackle-methane-emissions/"
+   ],
+   [
+    "AI Climate Hoax (Stand.earth)",
+    "https://stand.earth/press-releases/report-exposes-big-techs-ai-climate-hoax-74-of-industrys-claims-about-ais-climate-benefits-are-unproven/"
+   ]
+  ]
+ },
+ {
+  "id": 80,
+  "section": "Citation-precision pass — June 18, 2026",
+  "claim": "AI-for-science/medicine: demonstrated benefits + skeptical counterweights (Ch 20)",
+  "status": "resolved",
+  "detail": "✅ CONFIRMED 2026-06-19. Demonstrated: AlphaFold (2024 Nobel Chemistry — Hassabis/Jumper/Baker; ~200M structures), framed as \"valuable hypotheses, not experimental structures\" (Terwilliger, Nature Methods 2023); AI weather (GraphCast/GenCast) beat ECMWF benchmarks (Science 2023; Nature Dec 2024); CHARTwatch (Unity Health Toronto) ~26% drop in unexpected non-palliative in-hospital deaths on one GIM ward (CMAJ 2024 — pre/post, single ward, NOT an RCT); MASAI mammography RCT (Lancet 2023/2026). Counterweights: Epic Sepsis Model failed external validation (AUC 0.63, missed ~2/3 of cases; JAMA Intern Med 2021); Kapoor & Narayanan data-leakage across 17 fields / 294 papers (Patterns 2023); Obermeyer race-bias-in-care algorithm (Science 2019); FDA \"clearance ≠ proven outcomes\"; \"Canada funded it ≠ it worked\" (Compute Fund subsidizes compute, not outcomes). **LEAN: peer-reviewed (strongest) vs vendor/press; CHARTwatch is non-randomized.** | [Nobel Chemistry 2024](https://www.nobelprize.org/prizes/chemistry/2024/press-release/) · [AlphaFold \"hypotheses\" (Nature Methods)](https://www.nature.com/articles/s41592-023-02087-4) · [CHARTwatch (CMAJ)](https://www.cmaj.ca/content/196/30/E1027) · [Epic Sepsis failure (JAMA)](https://jamanetwork.com/journals/jamainternalmedicine/fullarticle/2781307) · [Leakage (Patterns)](https://www.cell.com/patterns/fulltext/S2666-3899(23)00159-9)",
+  "links": [
+   [
+    "Nobel Chemistry 2024",
+    "https://www.nobelprize.org/prizes/chemistry/2024/press-release/"
+   ],
+   [
+    "AlphaFold \"hypotheses\" (Nature Methods)",
+    "https://www.nature.com/articles/s41592-023-02087-4"
+   ],
+   [
+    "CHARTwatch (CMAJ)",
+    "https://www.cmaj.ca/content/196/30/E1027"
+   ],
+   [
+    "Epic Sepsis failure (JAMA)",
+    "https://jamanetwork.com/journals/jamainternalmedicine/fullarticle/2781307"
+   ],
+   [
+    "Leakage (Patterns)",
+    "https://www.cell.com/patterns/fulltext/S2666-3899(23"
+   ]
+  ]
  }
 ]
