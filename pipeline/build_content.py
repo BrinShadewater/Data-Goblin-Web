@@ -377,6 +377,41 @@ def main():
     json.dump(traps, open(os.path.join(OUT, "traps.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     print(f"goblin traps: {len(traps)}" + ("" if len(traps) == 20 else "  ← WARN: expected 20"))
 
+    # ---- stats.json — live counts for the About page (single source of truth,
+    # so the "by the numbers" cards never drift from the manuscript again) ----
+    def _count(pat):
+        return len(re.findall(pat, text, flags=re.M))
+    # figures = unique base figure srcs registered in the art-map (light-EN; the
+    # reader derives the dark/FR variants at runtime).
+    figures = 0
+    art_map_path = os.path.join(OUT, "art-map.json")
+    if os.path.exists(art_map_path):
+        am = json.load(open(art_map_path, encoding="utf-8"))
+        figs = set()
+        for doc in (am.get("docs") or {}).values():
+            for panel in doc.get("panels", []) or []:
+                src = panel.get("src", "")
+                if src.startswith("figures/"):
+                    figs.add(src)
+        figures = len(figs)
+    stats = {
+        "chapters": len(chapters),
+        "words": f"{round(len(text.split()) / 1000)}k",
+        "figures": figures,
+        "receipts": len(receipts),
+        "links": len(links),
+        "glossary": len(glossary),
+        "goblinChecks": sum(len(c["goblinChecks"]) for c in chapters),
+        "goblinTraps": len(traps),
+        "goblinFacts": _count(r"^> \*\*GOBLIN FACT"),
+        "alignments": _count(r"^> \*\*ALIGNMENT"),
+        "examples": _count(r"^> \*\*EXAMPLE"),
+    }
+    json.dump(stats, open(os.path.join(OUT, "stats.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    if os.path.isdir(app_content):
+        json.dump(stats, open(os.path.join(app_content, "stats.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    print(f"stats: {stats}")
+
     # ---- validation report ----
     print(f"chapters: {len(chapters)}")
     print(f"front matter (ch00): {len(front_doc['sections'])} sections — "
