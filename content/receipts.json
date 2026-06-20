@@ -698,5 +698,26 @@
     "https://www.cer-rec.gc.ca/en/data-analysis/energy-commodities/electricity/report/canadas-renewable-power/index.html"
    ]
   ]
+ },
+ {
+  "id": 61,
+  "section": "Citation-precision pass — June 18, 2026",
+  "claim": "DGC *Manifesto on the Value of Human Creativity* (Ch 12)",
+  "status": "resolved",
+  "detail": "✅ CONFIRMED 2026-06-19. The Directors Guild of Canada released the *Manifesto on the Value of Human Creativity* at the Banff World Media Festival (~June 16–17, 2026). Core principles: \"art is not content\" and \"tools are not authors\"; frames AI's risk as cultural as well as economic (systems \"optimized for scale\" flattening regional/national voices); asks for stronger human-authorship protections, safeguards against displacement of creative workers, and **standardized, mandatory disclosure of AI use**; paired with a \"Low-Carbon GenAI Toolkit.\" Quote (Warren P. Sonoda, DGC National President): \"Human creativity is not an inefficiency to be optimized away.\" **LEAN: civil-society / creative-labour advocacy** — a guild advocating for its members; name the lean, don't dismiss it. The primary PDF is image-based (no extractable text layer); wording confirmed via the DGC announcement + trade press. Builds on the DGC's 2024 Bill C-27 testimony already cited (Ch 12 + Source Library). | [DGC Manifesto PDF](https://files.dgc.ca/assets/national/Policy/AI/Manifesto-EN.pdf) · [Broadcast Dialogue 2026-06-17](https://broadcastdialogue.com/dgc-unveils-manifesto-in-response-to-rapid-rise-of-ai-tech-across-av-sector/) · [Hollywood Reporter](https://www.hollywoodreporter.com/business/business-news/directors-guild-canada-ai-protections-1236623437/)",
+  "links": [
+   [
+    "DGC Manifesto PDF",
+    "https://files.dgc.ca/assets/national/Policy/AI/Manifesto-EN.pdf"
+   ],
+   [
+    "Broadcast Dialogue 2026-06-17",
+    "https://broadcastdialogue.com/dgc-unveils-manifesto-in-response-to-rapid-rise-of-ai-tech-across-av-sector/"
+   ],
+   [
+    "Hollywood Reporter",
+    "https://www.hollywoodreporter.com/business/business-news/directors-guild-canada-ai-protections-1236623437/"
+   ]
+  ]
  }
 ]
