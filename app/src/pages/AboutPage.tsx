@@ -20,10 +20,10 @@ function extractParagraph(md: string, marker: string): string | null {
 }
 
 const PRINCIPLES = [
-  { title: "Plain language, always", body: "Every concept is explained in terms anyone can understand. No technical or policy background required — just curiosity." },
+  { title: "Plain language, always", body: "Every concept is explained in terms anyone can understand. No technical or policy background required, just curiosity." },
   { title: "Show the receipts", body: "Every load-bearing claim is tracked in the Receipts ledger. You should be able to verify anything in this guide." },
   { title: "Name the power", body: "AI is not neutral technology. It is built, owned, and deployed by specific interests. This guide names them." },
-  { title: "Canada-specific perspective", body: "The guide reads AI through Canadian law, policy, infrastructure, and history — and engages Indigenous-led data frameworks like OCAP." },
+  { title: "Canada-specific perspective", body: "The guide reads AI through Canadian law, policy, infrastructure, and history. It also engages Indigenous-led data frameworks like OCAP." },
   { title: "Calibrated suspicion is healthy", body: "The Suspicion Meter isn't cynicism — it's calibrated scepticism. The goblin collects receipts, not grudges." },
 ];
 
@@ -210,7 +210,7 @@ export function AboutPage() {
               {book?.subtitle ?? "A Field Guide to AI, Power, and Data in Canada"}
             </div>
             <p style={{ fontFamily: BODY, fontSize: "15.5px", color: body, lineHeight: 1.7, margin: 0 }}>
-              {tr("A working manual on artificial intelligence, data centres, and digital sovereignty, written for Canadians who want to participate in the conversation but were never given the manual. It is not a textbook. It is not a press release. It is not neutral. It is a working document — meant to be read, returned to, argued with, and used.")}
+              {tr("A working manual on artificial intelligence, data centres, and digital sovereignty, written for Canadians who want to participate in the conversation but were never given the manual. It is not a textbook. It is not a press release. It is not neutral. It is a working document: meant to be read, returned to, argued with, and used.")}
             </p>
           </div>
         </div>

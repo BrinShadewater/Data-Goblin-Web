@@ -94,7 +94,7 @@ export function ReceiptsPage() {
         {tab === "sources" && (
           <>
             <p style={{ fontFamily: BODY, fontSize: "15.5px", color: body, lineHeight: 1.65, margin: "0 0 20px" }}>
-              {tr("Every chapter’s primary sources. The goblin keeps the receipts — open a chapter to see what it leans on, and follow the links to read the originals yourself.")}
+              {tr("Every chapter’s primary sources. The goblin keeps the receipts: open a chapter to see what it leans on, and follow the links to read the originals yourself.")}
             </p>
             {!book && (
               <p style={{ fontFamily: BODY, fontStyle: "italic", color: muted }}>{tr("Pulling the source hoard…")}</p>

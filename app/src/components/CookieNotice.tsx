@@ -131,7 +131,7 @@ export function CookieNotice() {
               {tr("Manage Preferences")}
             </h2>
             <p style={{ fontFamily: BODY, fontSize: "14px", lineHeight: 1.6, color: body, margin: "0 0 14px" }}>
-              {tr("Essential storage keeps the guide functional. Optional preferences remember comfort settings. Analytics, when enabled, loads Vercel Speed Insights to measure page performance (Core Web Vitals) — no cookies, no personal data, no ad tracking.")}
+              {tr("Essential storage keeps the guide functional. Optional preferences remember comfort settings. Analytics, when enabled, loads Vercel Speed Insights to measure page performance (Core Web Vitals): no cookies, no personal data, no ad tracking.")}
             </p>
             {[
               ["Essential", "Required for consent and basic reading features.", true, true] as const,

@@ -13,10 +13,10 @@ const GUIDELINES = [
 ];
 
 const REVISION_STEPS = [
-  { cmd: null, text: "Edit the manuscript markdown (DataGoblin-Complete.md) — the single source of truth for every chapter, trap, and recap." },
+  { cmd: null, text: "Edit the manuscript markdown (DataGoblin-Complete.md): the single source of truth for every chapter, trap, and recap." },
   { cmd: "python3 site/pipeline/build_content.py", text: "Run the content pipeline. It re-parses the manuscript, the Receipts Ledger, and the Glossary into site/content/*.json." },
   { cmd: "site/update-content.sh  (or update-content.bat)", text: "Or run the one-step update script: it runs the pipeline, copies site/content into the app's public/content, and prints a summary of what changed." },
-  { cmd: null, text: "Reload the site. Chapters, traps, receipts, and glossary all render from the regenerated JSON — nothing in the app is hardcoded." },
+  { cmd: null, text: "Reload the site. Chapters, traps, receipts, and glossary all render from the regenerated JSON. Nothing in the app is hardcoded." },
 ];
 
 export function GuidelinesPanel() {
@@ -75,7 +75,7 @@ export function RevisionFlowCard() {
         <h2 style={{ fontFamily: DISPLAY, fontSize: "18px", fontWeight: 800, color: navy, margin: 0 }}>{tr("How revisions work")}</h2>
       </div>
       <p style={{ fontFamily: BODY, fontSize: "14.5px", color: body, lineHeight: 1.65, margin: "0 0 14px" }}>
-        {tr("The website never edits content directly — everything you read here is generated from the manuscript. When a correction is accepted, the revision flow is:")}
+        {tr("The website never edits content directly: everything you read here is generated from the manuscript. When a correction is accepted, the revision flow is:")}
       </p>
       <ol style={{ margin: 0, paddingLeft: "20px", display: "flex", flexDirection: "column", gap: "10px" }}>
         {REVISION_STEPS.map((s, i) => (

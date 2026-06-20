@@ -17,7 +17,7 @@ const UPDATES: UpdateEntry[] = [
     tag: "Reader",
     title: "More Goblin Facts, Alignments, and Examples across the guide",
     items: [
-      "Twenty-three new margin callouts now fill the chapters that were still missing them: nine Goblin Facts (a hard number with a source — GPT-3's 175-billion-parameter scale, the Gender Shades 34.7%-versus-0.8% accuracy gap, the 60%-by-2034 adoption target against a 19.2% floor), seven Alignment cues (which layer is the sovereignty flag actually on? disclosed, or verified?), and seven plain-language Examples (three reviews of the same restaurant; the cook who read ten thousand cookbooks; the self-checkout).",
+      "Twenty-three new margin callouts now fill the chapters that were still missing them: nine Goblin Facts (a hard number with a source: GPT-3's 175-billion-parameter scale, the Gender Shades 34.7%-versus-0.8% accuracy gap, the 60%-by-2034 adoption target against a 19.2% floor), seven Alignment cues (which layer is the sovereignty flag actually on? disclosed, or verified?), and seven plain-language Examples (three reviews of the same restaurant; the cook who read ten thousand cookbooks; the self-checkout).",
       "Two sources were verified and added to the receipts ledger to back the new figures: the GPT-3 scale paper and the Gender Shades study.",
       "The French edition was re-synced so the new callouts carry over. The new ones appear as machine translation for now, consistent with the under-review banner.",
     ],
@@ -27,9 +27,9 @@ const UPDATES: UpdateEntry[] = [
     tag: "Reader",
     title: "Two dozen new worked examples, audio volume, and layout fixes",
     items: [
-      "A worked Example or an Alignment cue now lands in nearly every chapter — plain-language analogies (the cloud is a building with a hydro bill; the efficient furnace and the bigger house) and quick orientation checks (which rung on the enforceability ladder? whose law runs the server?). Twenty-four in all, in both editions.",
+      "A worked Example or an Alignment cue now lands in nearly every chapter: plain-language analogies (the cloud is a building with a hydro bill; the efficient furnace and the bigger house) and quick orientation checks (which rung on the enforceability ladder? whose law runs the server?). Twenty-four in all, in both editions.",
       "Read-aloud now has a volume slider next to the speed control.",
-      "Chapter recaps no longer strand their heading and icon at the bottom of the previous page — the recap starts fresh with its body underneath. And the About-page counters tick up a little more slowly.",
+      "Chapter recaps no longer strand their heading and icon at the bottom of the previous page. The recap starts fresh with its body underneath. And the About-page counters tick up a little more slowly.",
     ],
   },
   {
@@ -38,7 +38,7 @@ const UPDATES: UpdateEntry[] = [
     title: "Dark-mode and French versions of every data figure",
     items: [
       "All 42 data figures were redrawn for dark mode and translated into French. The reader now loads the right version automatically for your theme and your language, so the charts read cleanly in dark mode and in the French edition.",
-      "While re-checking the French, the edition was regenerated with cleaner machine translation, corrected chapter titles (including the Film & Media chapter), and consistent terminology — biais, hypertrucage, souveraineté. It stays labelled machine-translated and under review.",
+      "While re-checking the French, the edition was regenerated with cleaner machine translation, corrected chapter titles (including the Film & Media chapter), and consistent terminology: biais, hypertrucage, souveraineté. It stays labelled machine-translated and under review.",
     ],
   },
   {
@@ -55,11 +55,11 @@ const UPDATES: UpdateEntry[] = [
     tag: "Corrections",
     title: "Corrections — Wonder Valley reversal, and a fresh fact-check pass",
     items: [
-      "Wonder Valley / Sturgeon Lake Cree Nation, corrected in public: an earlier draft described the Nation as an equity participant in the Wonder Valley data-centre project. The documented record is the opposite — the Nation says it was not consulted, demanded a halt (Chief Sunshine's open letter, January 13, 2025), and is in court over the Crown's duty to consult as of June 2026. Chapters 6 and 9 were rewritten to the record; the correction note stays in the book.",
+      "Wonder Valley / Sturgeon Lake Cree Nation, corrected in public: an earlier draft described the Nation as an equity participant in the Wonder Valley data-centre project. The documented record is the opposite: the Nation says it was not consulted, demanded a halt (Chief Sunshine's open letter, January 13, 2025), and is in court over the Crown's duty to consult as of June 2026. Chapters 6 and 9 were rewritten to the record; the correction note stays in the book.",
       "Bill C-16: a May 2026 committee amendment added a 48-hour platform takedown duty (and 'nearly nude' coverage); the bill is advancing through Parliament as of June 2026. The Chapter 13 line that said it created no takedown mechanism was corrected.",
-      "The Toronto Star v. OpenAI jurisdiction ruling is dated November 7, 2025 (not the 27th), and OpenAI has appealed — the book now says so.",
+      "The Toronto Star v. OpenAI jurisdiction ruling is dated November 7, 2025 (not the 27th), and OpenAI has appealed. The book now says so.",
       "The 2025 election-deepfake figures in the Source Library were aligned to the published paper (8.66% right / 4.42% left / 0.12% harmful reach), matching the chapter body.",
-      "The $100M Venture Scientist Fund is a private Mila–Inovia venture fund, not a federal program — corrected in Chapters 5 and 7.",
+      "The $100M Venture Scientist Fund is a private Mila–Inovia venture fund, not a federal program. Corrected in Chapters 5 and 7.",
       "The point at which global data-centre electricity overtakes Canada's total power use was moved from 2026 to the late 2020s, matching the IEA trajectory.",
     ],
   },
@@ -68,9 +68,9 @@ const UPDATES: UpdateEntry[] = [
     tag: "Edition",
     title: "French edition — readability fixes on the front door",
     items: [
-      "Corrected the French edition's three most systematic machine-translation errors, edition-wide: 'lean' — the book's core idea — had been rendered as 'maigre' (skinny) and is now 'biais'; the mascot is now spelled 'gobelin'; and 'AI' is now 'IA' throughout. The 'Data Goblin' name and the Goblin Check / Chapter Recap markers are preserved.",
-      "Hand-polished the highest-traffic French UI — the home page, the Toolkit's source-bias categories, and the 'name the lean' explainer — replacing machine phrasing with proper French.",
-      "The French edition is still machine-translated and labelled under review. A full resync to the latest English — the de-templated chapter headings and the new Film & Media material — is the next French pass.",
+      "Corrected the French edition's three most systematic machine-translation errors, edition-wide: 'lean' (the book's core idea) had been rendered as 'maigre' (skinny) and is now 'biais'; the mascot is now spelled 'gobelin'; and 'AI' is now 'IA' throughout. The 'Data Goblin' name and the Goblin Check / Chapter Recap markers are preserved.",
+      "Hand-polished the highest-traffic French UI (the home page, the Toolkit's source-bias categories, and the 'name the lean' explainer), replacing machine phrasing with proper French.",
+      "The French edition is still machine-translated and labelled under review. A full resync to the latest English (the de-templated chapter headings and the new Film & Media material) is the next French pass.",
     ],
   },
   {
@@ -78,8 +78,8 @@ const UPDATES: UpdateEntry[] = [
     tag: "New sections",
     title: "Film & Media chapter — new Canadian beats",
     items: [
-      "A new section on the certification question: Canada's CanCon points system and the CPTC/PSTC labour credits all reward Canadian people, and have no answer yet for AI doing the creative work — so 'made in Canada' and 'made by Canadians' can quietly drift apart inside the same certified production.",
-      "The Quebec/Montréal dubbing (doublage) industry as one of the most AI-exposed corners of the screen economy — UDA and ANDP, AI voice synthesis, and the consent fight, with YouTube and Amazon already shipping AI dubs.",
+      "A new section on the certification question: Canada's CanCon points system and the CPTC/PSTC labour credits all reward Canadian people, and have no answer yet for AI doing the creative work. So 'made in Canada' and 'made by Canadians' can quietly drift apart inside the same certified production.",
+      "The Quebec/Montréal dubbing (doublage) industry as one of the most AI-exposed corners of the screen economy: UDA and ANDP, AI voice synthesis, and the consent fight, with YouTube and Amazon already shipping AI dubs.",
       "Sector scale added (≈$10.2B production volume, ≈181,000 jobs in 2024/25), plus below-the-line crew unions, the Canadian Federation of Musicians, and the deceased-performer consent question. Six new sources added to the receipts ledger.",
     ],
   },
@@ -88,7 +88,7 @@ const UPDATES: UpdateEntry[] = [
     tag: "New",
     title: "Forty-two data figures, wired into the guide",
     items: [
-      "The guide now has its own data. Forty-two charts and diagrams run through the chapters — the source-bias map, the chip-to-mine supply chain, province-by-province grid carbon, the transparency drop, the deepfake-prevalence breakdown — each with a plain-language explainer underneath.",
+      "The guide now has its own data. Forty-two charts and diagrams run through the chapters: the source-bias map, the chip-to-mine supply chain, province-by-province grid carbon, the transparency drop, the deepfake-prevalence breakdown. Each comes with a plain-language explainer underneath.",
       "Every figure draws a number that is already in the text and already in the receipts ledger. Nothing on a chart is a new claim; the figures just make the existing ones visible. They are drawn as vector art, so they stay sharp and change when a figure changes.",
       "New page-turn buttons on the left and right edges of each page, plus tooltip and keyboard fixes, for easier reading on any screen.",
     ],
@@ -108,10 +108,10 @@ const UPDATES: UpdateEntry[] = [
     tag: "Edition",
     title: "Editorial polish, legal pass, and a living-document commitment",
     items: [
-      "This web edition is explicitly a living document: it gets corrected and extended as bills pass, cases settle, and the evidence moves — and every change is logged here, in the open. A print edition, if one ever ships, will be a dated snapshot; the web version is where the guide stays current.",
-      "A full readability and voice pass across all twenty chapters — tighter prose, with no facts, figures, or sources changed.",
+      "This web edition is explicitly a living document: it gets corrected and extended as bills pass, cases settle, and the evidence moves. Every change is logged here, in the open. A print edition, if one ever ships, will be a dated snapshot; the web version is where the guide stays current.",
+      "A full readability and voice pass across all twenty chapters: tighter prose, with no facts, figures, or sources changed.",
       "A fresh legal review and fixes: active litigation kept as allegation, and claims about named people and companies tightened to what the reporting actually supports.",
-      "The Film & Media chapter's sources pinned to specific trade-press reporting (Variety, The Hollywood Reporter, Deadline) — including Variety's reporting on the AI feature Hell Grind shown at Cannes' Marché du Film.",
+      "The Film & Media chapter's sources pinned to specific trade-press reporting (Variety, The Hollywood Reporter, Deadline), including Variety's reporting on the AI feature Hell Grind shown at Cannes' Marché du Film.",
       "Twenty-five new research sources verified and logged in the receipts ledger, with corporate self-disclosures (Anthropic, OpenAI) flagged as exactly that.",
     ],
   },
@@ -120,9 +120,9 @@ const UPDATES: UpdateEntry[] = [
     tag: "Edition",
     title: "French edition added (machine-translated, under review)",
     items: [
-      "A full French edition is now live — switch with the FR/EN toggle in the top bar, or in the menu on mobile. A banner marks it as machine-translated and under review.",
+      "A full French edition is now live: switch with the FR/EN toggle in the top bar, or in the menu on mobile. A banner marks it as machine-translated and under review.",
       "It is an honest machine translation, not a hand translation: structure, links, numbers, and the Goblin Check and Chapter Recap callouts are preserved, but the French wording has not been human-edited yet.",
-      "Extras keyed to the English text — receipt popovers, glossary tooltips, and reference auto-links — are switched off in French for now. The English edition keeps them; re-curating them in French is a later pass.",
+      "Extras keyed to the English text (receipt popovers, glossary tooltips, and reference auto-links) are switched off in French for now. The English edition keeps them; re-curating them in French is a later pass.",
     ],
   },
   {
@@ -130,10 +130,10 @@ const UPDATES: UpdateEntry[] = [
     tag: "New sections",
     title: "Four new sections added",
     items: [
-      "AI agents (Chapter 2) — what changes when a model can act on your behalf, and the Canadian accountability gap it opens.",
-      "Open-weight models (Chapter 9) — a real but partial lever for Canadian AI sovereignty.",
-      "Disability & the fairness debate (Chapter 14) — AI as assistive benefit and as structural harm.",
-      "AI companions (Chapter 10) — the intimate data you confide in, and a near-blank Canadian regulatory picture.",
+      "AI agents (Chapter 2): what changes when a model can act on your behalf, and the Canadian accountability gap it opens.",
+      "Open-weight models (Chapter 9): a real but partial lever for Canadian AI sovereignty.",
+      "Disability & the fairness debate (Chapter 14): AI as assistive benefit and as structural harm.",
+      "AI companions (Chapter 10): the intimate data you confide in, and a near-blank Canadian regulatory picture.",
     ],
   },
   {
@@ -141,12 +141,12 @@ const UPDATES: UpdateEntry[] = [
     tag: "Corrections",
     title: "Verification & corrections pass",
     items: [
-      "Cohere's lead investor corrected to PSP Investments (not CPPIB) — July 2024 round, US$5.5B valuation.",
+      "Cohere's lead investor corrected to PSP Investments (not CPPIB): July 2024 round, US$5.5B valuation.",
       "Canada signed the Council of Europe AI Convention on February 11, 2025; earlier text wrongly implied it had not. Now stated as signed but not ratified.",
-      "The recurring Owen et al. finding re-scoped to 54% of energy-transition-mineral projects on or near Indigenous and peasant lands — projects sited, not material volumes, with the AI extension flagged as the guide's own move.",
+      "The recurring Owen et al. finding re-scoped to 54% of energy-transition-mineral projects on or near Indigenous and peasant lands (projects sited, not material volumes), with the AI extension flagged as the guide's own move.",
       "Stanford Foundation Model Transparency Index figures corrected (mean 58 to 40.7; Mistral 55 to 18).",
       "A mis-cited case replaced with Ewert v. Canada (2018 SCC 30); the DGC witness corrected to Dave Forget; Ontario's gap restated as the absence of a provincial private-sector privacy law.",
-      "New section added — AI agents (Chapter 2): what changes when a model is wired to act, and the Canadian accountability gap it opens.",
+      "New section added. AI agents (Chapter 2): what changes when a model is wired to act, and the Canadian accountability gap it opens.",
     ],
   },
   {
@@ -180,7 +180,7 @@ export function UpdatesPage() {
         eyebrowMarginBottom="9px"
         titleSize="clamp(38px, 5vw, 58px)"
         titleLineHeight={1}
-        description={tr("Every fact in this guide carries an invisible “as of June 2026” tag. When the world moves past the page — a bill passes, a case settles, a number is corrected — the change is logged here, in the open. Receipts, not quiet edits.")}
+        description={tr("Every fact in this guide carries an invisible “as of June 2026” tag. When the world moves past the page (a bill passes, a case settles, a number is corrected), the change is logged here, in the open. Receipts, not quiet edits.")}
         descriptionSize="17px"
         descriptionLineHeight={1.7}
         descriptionMaxWidth="760px"
@@ -224,7 +224,7 @@ export function UpdatesPage() {
 
       <StaticCard marginBottom="0" padding="18px 20px" style={{ marginTop: "12px" }}>
         <p style={{ fontFamily: BODY, fontSize: "15px", color: body, lineHeight: 1.7, margin: "0 0 10px" }}>
-          {tr("The full claim-by-claim record — what was checked, what was corrected, and what is still open — lives in the Receipts ledger. When something in the guide collides with something newer, trust the newer thing. Then ask the goblin’s questions about it too: who counted that, what got left out, and can I see the receipt?")}
+          {tr("The full claim-by-claim record (what was checked, what was corrected, and what is still open) lives in the Receipts ledger. When something in the guide collides with something newer, trust the newer thing. Then ask the goblin’s questions about it too: who counted that, what got left out, and can I see the receipt?")}
         </p>
         <Link to="/receipts" style={{ fontFamily: UI, fontSize: "14px", fontWeight: 800, color: navy }}>
           {tr("Open receipts")}

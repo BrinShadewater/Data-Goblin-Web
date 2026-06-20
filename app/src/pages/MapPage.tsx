@@ -10,11 +10,11 @@ import { useLanguage } from "../LanguageContext";
 // Region notes, in part order (Part I…V). Keyed by index so they survive the
 // French edition, where part.region itself is translated.
 const REGION_NOTES: string[] = [
-  "Foundations — what AI actually is, how it learns, and what it is physically made of.",
-  "The Canadian landscape — the strategy, the infrastructure, and the actors who hold the power.",
-  "Hard questions — environment, sovereignty, privacy, IP, film and media, deepfakes, ethics, and jobs.",
-  "Governance — how Canadian AI is actually regulated, and what you can and cannot know.",
-  "Path forward — the portable analytical toolkit and what Canada could actually do.",
+  "Foundations: what AI actually is, how it learns, and what it is physically made of.",
+  "The Canadian landscape: the strategy, the infrastructure, and the actors who hold the power.",
+  "Hard questions: environment, sovereignty, privacy, IP, film and media, deepfakes, ethics, and jobs.",
+  "Governance: how Canadian AI is actually regulated, and what you can and cannot know.",
+  "Path forward: the portable analytical toolkit and what Canada could actually do.",
 ];
 
 /** The five regions of the field guide, each listing its chapters. */

@@ -10,7 +10,7 @@ import { tr } from "../i18n";
 // (Chapter 1, "How to read this manual").
 const SOURCES: { name: string; lean: string }[] = [
   { name: "Government framing", lean: "Press releases, ministerial speeches, strategic announcements. Leans toward justifying current policy." },
-  { name: "Government operational", lean: "Technical guides, registers, statistical reports. Generally lower lean — but watch the scope and the definitions." },
+  { name: "Government operational", lean: "Technical guides, registers, statistical reports. Generally lower lean, though watch the scope and the definitions." },
   { name: "Government leaked / draft", lean: "Working documents not meant for release. Useful as evidence of internal disagreement; leans according to who leaked it and why." },
   { name: "Civil society / advocacy", lean: "Unions, Indigenous organizations, public-interest non-profits. Leans toward the constituency the organization represents." },
   { name: "Academic peer-reviewed", lean: "Journal articles, conference proceedings. Leans toward what the field counts as rigour — which is itself a position." },
@@ -70,7 +70,7 @@ export function ToolkitPage() {
         eyebrowLetterSpacing="0.26em"
         titleSize="clamp(34px, 5vw, 54px)"
         titleLineHeight={1}
-        description={tr("This is the method the whole guide runs on, in one place. Drop in any claim you've read about AI — a headline, a government line, a corporate stat — and work it through the goblin's four questions. Nothing is sent anywhere; this all stays in your browser.")}
+        description={tr("This is the method the whole guide runs on, in one place. Drop in any claim you've read about AI (a headline, a government line, a corporate stat) and work it through the goblin's four questions. Nothing is sent anywhere; this all stays in your browser.")}
         descriptionSize="17px"
         descriptionLineHeight={1.7}
         descriptionMaxWidth="780px"
@@ -80,7 +80,7 @@ export function ToolkitPage() {
       <StaticCard padding="20px 22px" marginBottom="12px">
         <Kicker color={green} letterSpacing="0.18em">{tr("1 · The claim")}</Kicker>
         <p style={{ fontFamily: BODY, fontSize: "14px", color: muted, lineHeight: 1.6, margin: "0 0 10px" }}>
-          {tr("Paste or type the claim you want to test. (Optional — you can also just think one through.)")}
+          {tr("Paste or type the claim you want to test. (Optional: you can also just think one through.)")}
         </p>
         <textarea
           value={claim}
@@ -209,7 +209,7 @@ export function ToolkitPage() {
           )}
           <p style={{ fontFamily: BODY, fontSize: "15.5px", color: body, lineHeight: 1.7, margin: 0 }}>
             {source !== null && (
-              <>{tr("This reads as")} <strong style={{ color: navy }}>{tr(SOURCES[source].name).toLowerCase()}</strong>{tr(", so the lean to watch is built in — weigh it, don't dismiss it.")} </>
+              <>{tr("This reads as")} <strong style={{ color: navy }}>{tr(SOURCES[source].name).toLowerCase()}</strong>{tr(", so the lean to watch is built in. Weigh it, don't dismiss it.")} </>
             )}
             {r && (
               r.ok
@@ -232,7 +232,7 @@ export function ToolkitPage() {
 
       <StaticCard marginBottom="0" padding="16px 20px" style={{ marginTop: "12px" }}>
         <p style={{ fontFamily: BODY, fontSize: "14px", color: muted, lineHeight: 1.7, margin: 0 }}>
-          {tr("This toolkit is the short version of the method the guide builds across twenty chapters. For the long version — and the worked examples — start with")}{" "}
+          {tr("This toolkit is the short version of the method the guide builds across twenty chapters. For the long version (and the worked examples), start with")}{" "}
           <Link to="/chapter/1" style={{ fontWeight: 800, color: navy }}>{tr("Chapter 1")}</Link>{" "}
           {tr("or jump to")}{" "}
           <Link to="/chapter/20" style={{ fontWeight: 800, color: navy }}>{tr("Chapter 20")}</Link>{tr(", where it all comes together.")}
