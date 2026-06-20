@@ -642,5 +642,13 @@
  {
   "name": "The Daily 2024-09-03",
   "url": "https://www150.statcan.gc.ca/n1/daily-quotidien/240903/dq240903b-eng.htm"
+ },
+ {
+  "name": "Alberta GHG performance",
+  "url": "https://www.alberta.ca/albertas-greenhouse-gas-emissions-reduction-performance"
+ },
+ {
+  "name": "CER renewable/electricity mix",
+  "url": "https://www.cer-rec.gc.ca/en/data-analysis/energy-commodities/electricity/report/canadas-renewable-power/index.html"
  }
 ]

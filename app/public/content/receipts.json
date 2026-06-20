@@ -681,5 +681,22 @@
     "https://www150.statcan.gc.ca/n1/daily-quotidien/240903/dq240903b-eng.htm"
    ]
   ]
+ },
+ {
+  "id": 60,
+  "section": "Citation-precision pass — June 18, 2026",
+  "claim": "Provincial grid carbon intensity & Canada non-emitting share (Ch 8 grid section + fig-8.1)",
+  "status": "resolved",
+  "detail": "✅ CONFIRMED 2026-06-19. Quebec/Manitoba grid ≈30 g CO₂e/kWh; Alberta ≈470 g/kWh in 2023 (Alberta.ca GHG performance, down from 580 g in 2005). So the book's \"Montréal ≈1/15th of Alberta's carbon intensity\" and fig-8.1's 100 MW illustration (≈26,000 t/yr in QC vs ≈394,000 t/yr in AB, computed at 30 vs ~450 g/kWh) are internally consistent and primary-sourced. Canada non-emitting share: CER 2023 mix = hydro 57.4% + nuclear 13.5% + other renewables 9.1% ≈ **80%**. NOTE: the manuscript's \"roughly 82% in 2023\" (hedged) matches the 2022 value and rounds each component up; precise 2023 ≈ 80% — optional tighten to \"≈80% in 2023 (82% in 2022)\". | [Alberta GHG performance](https://www.alberta.ca/albertas-greenhouse-gas-emissions-reduction-performance) · [CER renewable/electricity mix](https://www.cer-rec.gc.ca/en/data-analysis/energy-commodities/electricity/report/canadas-renewable-power/index.html)",
+  "links": [
+   [
+    "Alberta GHG performance",
+    "https://www.alberta.ca/albertas-greenhouse-gas-emissions-reduction-performance"
+   ],
+   [
+    "CER renewable/electricity mix",
+    "https://www.cer-rec.gc.ca/en/data-analysis/energy-commodities/electricity/report/canadas-renewable-power/index.html"
+   ]
+  ]
  }
 ]
