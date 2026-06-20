@@ -1142,5 +1142,105 @@
     "https://www.cell.com/patterns/fulltext/S2666-3899(23"
    ]
   ]
+ },
+ {
+  "id": 81,
+  "section": "Citation-precision pass — June 18, 2026",
+  "claim": "Welfare automation: Ontario SAMS + international anchors (Ch 10)",
+  "status": "resolved",
+  "detail": "✅ CONFIRMED 2026-06-19. Ontario's Social Assistance Management System (SAMS; IBM Cúram; launched Nov 11 2014) for Ontario Works/ODSP is **rules-based case management, NOT machine learning** (the Chinook-style precision point). Auditor General of Ontario (2015): went live with 16% of functions untested + a 1-in-8 failure rate on those tested; only system ever connected to gov accounting without passing payment testing; ~$140M in benefit-calculation errors; 771 serious defects (July 2015); ~$290M total. Scholarship (Jennifer Raso): automation constrains caseworker discretion so outputs become effectively final; \"Welfare Fraud 2.0\" (CJC 2019) on big-data welfare surveillance. **No confirmed deployed ML fraud-scoring in Canadian welfare — do not assert one.** International anchors (rules-based automation gone wrong): Australia Robodebt (income-averaging, unlawful, 440,000+ affected; Royal Commission July 2023 \"crude and cruel\"; ~$1.8B settlement); Netherlands toeslagenaffaire (tens of thousands wrongly accused, ethnic profiling; SyRI banned by Hague court Feb 2020; toppled the Rutte government Jan 2021). **LEAN: gov audit + academic + litigation/press.** | [AG Ontario 2015 (SAMS)](https://auditor.on.ca/en/content/annualreports/arreports/en15/3.12en15.pdf) · [Raso (CJLJ)](https://www.cambridge.org/core/journals/canadian-journal-of-law-and-jurisprudence/article/discretion-in-the-automated-administrative-state/FA1C98652224469270FC5DDDC300C07E) · [Robodebt Royal Commission](https://lsj.com.au/articles/crude-cruel-and-unlawful-robodebt-royal-commission-findings/) · [Dutch benefits scandal](https://en.wikipedia.org/wiki/Dutch_childcare_benefits_scandal)",
+  "links": [
+   [
+    "AG Ontario 2015 (SAMS)",
+    "https://auditor.on.ca/en/content/annualreports/arreports/en15/3.12en15.pdf"
+   ],
+   [
+    "Raso (CJLJ)",
+    "https://www.cambridge.org/core/journals/canadian-journal-of-law-and-jurisprudence/article/discretion-in-the-automated-administrative-state/FA1C98652224469270FC5DDDC300C07E"
+   ],
+   [
+    "Robodebt Royal Commission",
+    "https://lsj.com.au/articles/crude-cruel-and-unlawful-robodebt-royal-commission-findings/"
+   ],
+   [
+    "Dutch benefits scandal",
+    "https://en.wikipedia.org/wiki/Dutch_childcare_benefits_scandal"
+   ]
+  ]
+ },
+ {
+  "id": 82,
+  "section": "Citation-precision pass — June 18, 2026",
+  "claim": "Canadian police AI: Clearview, predictive policing, facial recognition (Ch 10)",
+  "status": "resolved",
+  "detail": "✅ CONFIRMED 2026-06-19. Clearview AI: joint federal/provincial privacy commissioners found it mass surveillance + illegal (Feb 3 2021); OPC found RCMP use violated the Privacy Act (June 10 2021 — RCMP reported 78 searches, vendor records showed 521); Toronto police denied then admitted use (~2,800 images Oct 2019–Feb 2020; 84 investigations); Calgary/Windsor/BC also; OPC ordered Clearview to stop (Dec 2021); BC appeals court confirmed the violation (Feb 2026). Predictive policing: VPD GeoDASH (location/property-crime since ~2015, with safeguards); Saskatchewan SPPAL (missing-persons/at-risk-youth focus); Citizen Lab \"To Surveil and Predict\" (2020) urged a moratorium. Facial recognition: Calgary first (2014, NEC, ~300k mugshots); Peel/York adopted IDEMIA (2024-25), a system tied to a Black man's wrongful arrest in the US. Oversight: FPT commissioners' FR guidance + call for a legal framework (May 2022); ETHI report (Oct 2022, 19 recs incl. moratorium); TPS AI-use policy (Feb 2022). No comprehensive Canadian law. **LEAN: regulator + journalism + academic (Citizen Lab, advocacy) vs police rationale (efficiency/public safety).** | [OPC Clearview joint finding](https://www.priv.gc.ca/en/opc-actions-and-decisions/investigations/investigations-into-businesses/2021/pipeda-2021-001/) · [OPC RCMP/Clearview (Privacy Act)](https://www.priv.gc.ca/en/opc-actions-and-decisions/ar_index/202021/sr_rcmp/) · [Citizen Lab To Surveil and Predict](https://citizenlab.ca/2020/09/to-surveil-and-predict-a-human-rights-analysis-of-algorithmic-policing-in-canada/) · [ETHI FR report](https://www.ourcommons.ca/documentviewer/en/44-1/ETHI/report-6/page-87)",
+  "links": [
+   [
+    "OPC Clearview joint finding",
+    "https://www.priv.gc.ca/en/opc-actions-and-decisions/investigations/investigations-into-businesses/2021/pipeda-2021-001/"
+   ],
+   [
+    "OPC RCMP/Clearview (Privacy Act)",
+    "https://www.priv.gc.ca/en/opc-actions-and-decisions/ar_index/202021/sr_rcmp/"
+   ],
+   [
+    "Citizen Lab To Surveil and Predict",
+    "https://citizenlab.ca/2020/09/to-surveil-and-predict-a-human-rights-analysis-of-algorithmic-policing-in-canada/"
+   ],
+   [
+    "ETHI FR report",
+    "https://www.ourcommons.ca/documentviewer/en/44-1/ETHI/report-6/page-87"
+   ]
+  ]
+ },
+ {
+  "id": 83,
+  "section": "Citation-precision pass — June 18, 2026",
+  "claim": "Ewert v. Canada + criminal-justice risk tools (Ch 10)",
+  "status": "resolved",
+  "detail": "✅ CONFIRMED 2026-06-19. *Ewert v. Canada*, 2018 SCC 30 (June 13 2018, 7–2): a Métis inmate challenged CSC actuarial risk tools (PCL-R, VRAG, SORAG, Static-99, VRS-SO) not validated for Indigenous offenders; SCC held CSC breached s.24(1) CCRA (duty to ensure accurate information). **STATUTORY, not Charter — the s.7/s.15 Charter claims were REJECTED, and the Court did NOT declare the tools invalid, only that their validity for Indigenous offenders was unconfirmed** (keep precise). Dissent: Rowe & Côté JJ. Indigenous overrepresentation: StatCan (Jan 2026) — Indigenous adults 33.2% of average custody count vs ~4.3% of population (~10x rate, rising). No COMPAS-style algorithmic bail in Canada (LCO; bail = judicial discretion, *Antic*/*Zora*); US comparator COMPAS/ProPublica (calibration-vs-error-rate tradeoff). CSC funded a culturally-informed tool (U of Regina, completed 2023-24); not yet deployed as of 2026. **LEAN: SCC (neutral) + StatCan + Indigenous/academic scholarship (critical).** | [Ewert 2018 SCC 30 (CanLII)](https://www.canlii.org/en/ca/scc/doc/2018/2018scc30/2018scc30.html) · [SCC Case in Brief](https://www.scc-csc.ca/pdf/cb/2018/37233-eng.pdf) · [StatCan custody 2023/24](https://www150.statcan.gc.ca/n1/daily-quotidien/260114/dq260114b-eng.htm) · [Yellowhead critique](https://yellowheadinstitute.org/2024/violence-of-justice-policy/)",
+  "links": [
+   [
+    "Ewert 2018 SCC 30 (CanLII)",
+    "https://www.canlii.org/en/ca/scc/doc/2018/2018scc30/2018scc30.html"
+   ],
+   [
+    "SCC Case in Brief",
+    "https://www.scc-csc.ca/pdf/cb/2018/37233-eng.pdf"
+   ],
+   [
+    "StatCan custody 2023/24",
+    "https://www150.statcan.gc.ca/n1/daily-quotidien/260114/dq260114b-eng.htm"
+   ],
+   [
+    "Yellowhead critique",
+    "https://yellowheadinstitute.org/2024/violence-of-justice-policy/"
+   ]
+  ]
+ },
+ {
+  "id": 84,
+  "section": "Citation-precision pass — June 18, 2026",
+  "claim": "Administrative-AI accountability gap: Directive scope + LCO (Ch 10)",
+  "status": "resolved",
+  "detail": "✅ CONFIRMED 2026-06-19. The federal Treasury Board Directive on Automated Decision-Making (in force 2019) applies ONLY to federal institutions and public-facing systems — so provincial welfare, policing, and courts (the highest-impact administrative-AI domains) fall OUTSIDE it (the jurisdictional gap). Law Commission of Ontario, \"Accountable AI\" (June 2022, 19 recs): do not deploy high-risk government AI before a binding \"Trustworthy AI\" framework in legislation; Ontario should adopt a provincial equivalent of the federal Directive; \"systemic legal issues cannot be addressed through individual litigation, 'ethical AI' guidelines, or piecemeal legislation.\" Admin-law backstop: *Vavilov* (2019 SCC 65) centres the right to intelligible reasons → the black-box challenge; Charter s.7/s.15 angles are anticipatory (no tested Canadian government-algorithm precedent). Framing: Virginia Eubanks, *Automating Inequality* / \"digital poorhouse\" (US comparator). **LEAN: government (Directive) + independent law-reform (LCO) + academic/advocacy (Eubanks, US).** | [TBS Directive on ADM](https://www.tbs-sct.canada.ca/pol/doc-eng.aspx?id=32592) · [LCO Accountable AI](https://www.lco-cdo.org/en/the-lco-releases-accountable-ai-final-report/) · [Vavilov 2019 SCC 65](https://www.scc-csc.ca/judgments-jugements/cb/2019/37748-37896-37897/) · [Eubanks, Digital Poorhouse (Harper's)](https://harpers.org/archive/2018/01/the-digital-poorhouse/)",
+  "links": [
+   [
+    "TBS Directive on ADM",
+    "https://www.tbs-sct.canada.ca/pol/doc-eng.aspx?id=32592"
+   ],
+   [
+    "LCO Accountable AI",
+    "https://www.lco-cdo.org/en/the-lco-releases-accountable-ai-final-report/"
+   ],
+   [
+    "Vavilov 2019 SCC 65",
+    "https://www.scc-csc.ca/judgments-jugements/cb/2019/37748-37896-37897/"
+   ],
+   [
+    "Eubanks, Digital Poorhouse (Harper's)",
+    "https://harpers.org/archive/2018/01/the-digital-poorhouse/"
+   ]
+  ]
  }
 ]
