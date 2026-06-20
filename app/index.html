@@ -224,6 +224,11 @@
       html, body, #root { height: 100%; margin: 0; padding: 0; }
       html, body { overflow-x: hidden; }
       * { box-sizing: border-box; }
+      /* The prerendered crawler fallback lives inside #root for SEO/AI engines
+         (which read the raw HTML, not CSS). Hide it from real browsers so it
+         never flashes as an unstyled heading+link list before React mounts and
+         replaces #root with the styled app. */
+      [data-prerender-shell] { display: none !important; }
       html[data-theme="dark"] body { background: #080c12; }
       html[data-theme="light"] body { background: #d8d2c4; }
       body { font-family: 'Source Serif 4', Georgia, serif; -webkit-font-smoothing: antialiased; }
