@@ -160,7 +160,7 @@ const UPDATES: UpdateEntry[] = [
 ];
 
 const PENDING: string[] = [
-  "A handful of provincial energy and water figures and per-city data-centre megawatt estimates that are cited from secondary sources and not yet independently confirmed against primary documents.",
+  "A handful of provincial energy and water figures cited from secondary sources and not yet independently confirmed against primary documents.",
 ];
 
 export function UpdatesPage() {
