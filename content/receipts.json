@@ -1484,5 +1484,80 @@
     "https://www.cpacanada.ca/news/innovation/ai-washing"
    ]
   ]
+ },
+ {
+  "id": 95,
+  "section": "Citation-precision pass — June 18, 2026",
+  "claim": "Canadian screen sub-sectors (animation/VFX/games): AI uses + bust attribution (Ch 12)",
+  "status": "resolved",
+  "detail": "✅ CONFIRMED 2026-06-19 (primary, Globe + ESAC). Quebec animation/VFX permanent jobs fell two-thirds, 8,037 FTE (2022) → 2,603 (2024) (Quebec Film & Television Council, via Globe and Mail); national animation/VFX revenue ~$1.9B in 2023 (StatCan, ~3× 2015). **ATTRIBUTION CAUTION (load-bearing): the collapse is driven by the post-pandemic streaming bust + 2021–22 inflation/rates + 2023 WGA/SAG strikes + Quebec's March 2024 cap of its tax credit at 65% for international clients — NOT primarily AI, which the same reporting calls an emerging, still-unclear threat. Do NOT attribute the job losses to AI.** AI uses (assist-framed): Ubisoft Montréal \"Ghostwriter\" NPC-bark drafting (GDC 2023); MARZ (Toronto) AI de-aging/lip-sync; EA (Vancouver-area) × Stability AI game textures; ESAC survey — studios use gen-AI \"primarily as a brainstorming and idea generation tool,\" +25% intend to. Games sector: $5.1B GDP ($3.9B direct), 34,010 FTEs, 821 studios (2023-24); **foreign-owned firms = ~88% of industry employment** (ownership asymmetry mirrors the film side). Job Bank rates 3D Animation Artist \"strong labour surplus\" to 2033 (multi-causal). Virtual-production counterweight: Pixomondo × William F. White (Vancouver) built the then-world's-largest LED stage. **LEAN: industry association (ESAC/QFTC — self-interested on sizing) + mainstream press (Globe) + government (StatCan, Job Bank) + company self-disclosure (Ubisoft/MARZ/EA).** | [Globe — Quebec VFX/animation jobs+tax+AI](https://www.theglobeandmail.com/arts/article-canada-animation-visual-effects-industry-jobs-tax-ai/) · [ESAC Canada's Video Game Industry 2024](https://canadasvideogameindustry.ca/) · [Ubisoft Ghostwriter](https://news.ubisoft.com/en-us/article/7Cm07zbBGy4Xml6WgYi25d/) · [Pixomondo×WFW largest LED stage](https://www.tvtechnology.com/news/guinness-declares-pxo-x-wfw-vancouver-virtual-production-stage-worlds-largest-led-stage)",
+  "links": [
+   [
+    "Globe — Quebec VFX/animation jobs+tax+AI",
+    "https://www.theglobeandmail.com/arts/article-canada-animation-visual-effects-industry-jobs-tax-ai/"
+   ],
+   [
+    "ESAC Canada's Video Game Industry 2024",
+    "https://canadasvideogameindustry.ca/"
+   ],
+   [
+    "Ubisoft Ghostwriter",
+    "https://news.ubisoft.com/en-us/article/7Cm07zbBGy4Xml6WgYi25d/"
+   ],
+   [
+    "Pixomondo×WFW largest LED stage",
+    "https://www.tvtechnology.com/news/guinness-declares-pxo-x-wfw-vancouver-virtual-production-stage-worlds-largest-led-stage"
+   ]
+  ]
+ },
+ {
+  "id": 96,
+  "section": "Citation-precision pass — June 18, 2026",
+  "claim": "AI as assistive benefit on screen: captioning + Indigenous-language localization + consent caveat (Ch 12)",
+  "status": "resolved",
+  "detail": "✅ CONFIRMED 2026-06-19 (primary, Google + ITK). Captioning: CBC/Radio-Canada AI transcription/captioning pipeline (vendor case study: Moov AI / Microsoft) auto-transcribes 1,000+ files/day to support subtitling; CRTC accuracy standards require human review for live (English 98% NER / French 85%); CBC policy keeps humans in the loop except approved TTS/captioning. Localization: Inuktut (spoken by 39,000+ Inuit) became the FIRST Canadian Indigenous language on Google Translate (Oct 17 2024), built WITH Inuit Tapiriit Kanatami (Natan Obed endorsement), both writing systems (syllabics + Roman); **Google's own caveat: \"will still make many mistakes.\"** NRC Indigenous Languages Technology Project (ReadAlong Studio, Gramble); Library and Archives Canada uses Transkribus (AI handwriting/print recognition). **CONSENT CAVEAT (ties to Ch9 data sovereignty): Indigenous-language AI built without community consent risks being \"basically a colonialism product\" (Kirt Ejesiak, via APTN); OCAP®/CARE principles apply to assistive uses too.** **LEAN: company/vendor self-disclosure (Google, Moov AI — promotional) + government (CRTC, NRC, LAC) + Indigenous-org (ITK) + Indigenous-org/press caution (APTN).** | [Google — Inuktut on Translate](https://blog.google/intl/en-ca/company-news/technology/google-translate-learns-inuktut/) · [Moov AI / CBC captioning](https://moov.ai/en/projects/cbc-radio-canada) · [NRC Indigenous Languages Tech](https://nrc.canada.ca/en/research-development/research-collaboration/programs/canadian-indigenous-languages-technology-project) · [APTN — AI + Indigenous languages cautions](https://www.aptnnews.ca/national-news/language-experts-praise-ai-but-offer-warnings-as-well/)",
+  "links": [
+   [
+    "Google — Inuktut on Translate",
+    "https://blog.google/intl/en-ca/company-news/technology/google-translate-learns-inuktut/"
+   ],
+   [
+    "Moov AI / CBC captioning",
+    "https://moov.ai/en/projects/cbc-radio-canada"
+   ],
+   [
+    "NRC Indigenous Languages Tech",
+    "https://nrc.canada.ca/en/research-development/research-collaboration/programs/canadian-indigenous-languages-technology-project"
+   ],
+   [
+    "APTN — AI + Indigenous languages cautions",
+    "https://www.aptnnews.ca/national-news/language-experts-praise-ai-but-offer-warnings-as-well/"
+   ]
+  ]
+ },
+ {
+  "id": 97,
+  "section": "Citation-precision pass — June 18, 2026",
+  "claim": "Canadian performer/writer AI clause mechanics + dubbing carve-out + enforcement lag (Ch 12)",
+  "status": "resolved",
+  "detail": "✅ CONFIRMED 2026-06-19 (primary, UBCP/ACTRA). BC performer agreement (BCMPA) Article F: digital replicas require ≥48h notice, a \"reasonably specific description\" of intended use, and \"explicit, informed consent… signed or initialed\"; consent \"continue[s] to be valid after death, unless specifically limited\"; an EBDR used in lieu of the performer is paid the minimum daily fee per day; **background-performer replicas \"shall NOT be used to meet the background counts\" (Art. D501)** — a structural anti-substitution clause. **CARVE-OUT (load-bearing, verbatim): \"When a production adjusts the voice to a foreign language, consent is currently not required\"** — i.e. AI foreign-language dubbing, the use pressing hardest on Quebec doublage actors, is exempt. ENFORCEMENT/LAG: clauses are new (2024-25), modelled on US SAG-AFTRA, lag it ~1-2 yrs, no track record yet (CBC Dec 2023: \"no such regulations are in place in Canada\"); BC member Jeremy Leroux on an earlier extension: \"for 18 months we're not going to talk about AI… the conversation will be over by the time we get there.\" Writers Guild of Canada IPA (ratified May 2024): producers must disclose AI-generated material, it gets no credit, members' work not used to train AI. IATSE \"Core Principles\" (July 2023) = US-HQ international policy, NOT a Canadian bargaining outcome. **LEAN: union (primary on member protections; advocacy on framing) + mainstream press (Globe/CBC).** | [UBCP/ACTRA Understanding AI (Article F)](https://ubcpactra.ca/understanding-ai/) · [ACTRA IPA 2025-27 (official PDF)](https://www.actra.ca/wp-content/uploads/2025/06/ACTRA-CMPA-AQPM-Independent-Production-Agreement-2025-2027_OFFICIAL-COPY.pdf) · [WGC–CMPA deal (Deadline)](https://deadline.com/2024/05/writers-guild-canada-cmpa-reach-production-agreement-1235906997/) · [Globe — BC film unions + AI](https://www.theglobeandmail.com/arts/article-bc-film-union-contracts-ai/)",
+  "links": [
+   [
+    "UBCP/ACTRA Understanding AI (Article F)",
+    "https://ubcpactra.ca/understanding-ai/"
+   ],
+   [
+    "ACTRA IPA 2025-27 (official PDF)",
+    "https://www.actra.ca/wp-content/uploads/2025/06/ACTRA-CMPA-AQPM-Independent-Production-Agreement-2025-2027_OFFICIAL-COPY.pdf"
+   ],
+   [
+    "WGC–CMPA deal (Deadline)",
+    "https://deadline.com/2024/05/writers-guild-canada-cmpa-reach-production-agreement-1235906997/"
+   ],
+   [
+    "Globe — BC film unions + AI",
+    "https://www.theglobeandmail.com/arts/article-bc-film-union-contracts-ai/"
+   ]
+  ]
  }
 ]
