@@ -13,6 +13,26 @@ interface UpdateEntry {
 
 const UPDATES: UpdateEntry[] = [
   {
+    date: "June 21, 2026",
+    tag: "Corrections",
+    title: "Two named-official fixes, and a clarity pass on Chapter 5",
+    items: [
+      "Chapter 13: corrected the post-election SITE Task Force testimony. It was Nathalie Drouin (National Security and Intelligence Advisor) and David Morrison (Deputy Minister of Foreign Affairs); an earlier draft wrongly added the Information Commissioner to that line. Fixed in the chapter body and the source list.",
+      "Chapter 7: the Telus line now notes the CEO succession — Darren Entwistle retires June 30, 2026, with Victor Dodig taking over July 1. Caught in a sweep that re-checked every named official in the book against current sources; the cabinet, the other telecom CEOs, the Privacy Commissioner, and the institute heads all checked out.",
+      "Chapter 5: tightened “silent on” to “does not commit to” (the guide's own rule about not overstating what a policy leaves out), and glossed GFANZ as a global net-zero finance coalition.",
+    ],
+  },
+  {
+    date: "June 21, 2026",
+    tag: "Reader",
+    title: "A money table for the AI for All chapter, and a faster site on mobile",
+    items: [
+      "Chapter 5 now has a “Follow the money” table laying out every AI for All funding commitment in one scannable place — the same figures as the text, easier to take in at a glance.",
+      "The site loads noticeably faster on phones now, after a pass on how the fonts and the opening screen load. No reading content changed.",
+      "Each chapter now carries its own description for search results and link previews, so a shared chapter link shows what that chapter is about instead of the generic site blurb.",
+    ],
+  },
+  {
     date: "June 16, 2026",
     tag: "Reader",
     title: "More Goblin Facts, Alignments, and Examples across the guide",
