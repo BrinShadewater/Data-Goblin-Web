@@ -4,7 +4,7 @@
   "section": "A. Confirmed this pass (receipts in hand)",
   "claim": "Cohere Série D investisseur principal",
   "status": "resolved",
-  "detail": "✅  **Investissements PSP** a mené la **Juillet 2024** 500 millions de dollars à 5,5 milliards de dollars (et non pas à l'IBPC, ni en décembre). Collecte ultérieure ~6.8B$. Toutes les références de l'IRPC ont été corrigées. |  [BetaKit](https://betakit.com/cohere-series-d-tops-out-at-500-million-raised-at-5-5-billion-valuation/) ,  [Nouvelles de Crunchbase](https://news.crunchbase.com/venture/ai-cohere-valuation-rises-psp-cisco-fijitsu/) ,  [Investissements PSP](https://www.investpsp.com/en/news/fresh-funding-enables-cohere-to-accelerate-its-global-expansion-and-build-the-next-generation-of-secure-enterprise-and-sovereign-ai-solutions/)",
+  "detail": "✅  **Investissements PSP** a mené la **Juillet 2024** 500 millions de dollars à 5,5 milliards de dollars (et non pas à l'IBPC, ni en décembre). Collecte ultérieure ~6.8B$. Toutes les références de l'IRCP ont été corrigées. |  [BetaKit](https://betakit.com/cohere-series-d-tops-out-at-500-million-raised-at-5-5-billion-valuation/) ,  [Nouvelles de Crunchbase](https://news.crunchbase.com/venture/ai-cohere-valuation-rises-psp-cisco-fijitsu/) ,  [Investissements PSP](https://www.investpsp.com/en/news/fresh-funding-enables-cohere-to-accelerate-its-global-expansion-and-build-the-next-generation-of-secure-enterprise-and-sovereign-ai-solutions/)",
   "links": [
    [
     "BetaKit",
@@ -149,7 +149,7 @@
   "section": "A. Confirmed this pass (receipts in hand)",
   "claim": "Erica Lapadat Janzen BC + IA talk",
   "status": "resolved",
-  "detail": "La page vidéo de Public BC + IA documente la conférence d'Erica Lapadat Janzen sur la \"Soft Violence in IA Art Discourse\" Vancouver IA; transcription revue à partir de la source jointe. |  [BC + page vidéo de l'IA](https://bc-ai.ca/videos/2026-02-05-soft-violence-in-ai-art-discourse-vancouver-ai-meetup-j/) ,  [YouTube](https://www.youtube.com/watch?v=hiPu28YjDaE)",
+  "detail": "La page vidéo de Public BC + IA documente la conférence d'Erica Lapadat Janzen sur la \"Soft Violence in IA Art Discourse\" Vancouver IA; transcription revue à partir de la source ci-jointe. |  [BC + page vidéo de l'IA](https://bc-ai.ca/videos/2026-02-05-soft-violence-in-ai-art-discourse-vancouver-ai-meetup-j/) ,  [YouTube](https://www.youtube.com/watch?v=hiPu28YjDaE)",
   "links": [
    [
     "BC + AI video page",
@@ -177,7 +177,7 @@
  {
   "id": 58,
   "section": "A. Confirmed this pass (receipts in hand)",
-  "claim": "Écart d'erreur entre les ombres de genre (Ch. 14 Fait de Gobelin)",
+  "claim": "Écart d'erreur entre les ombres de genre (Ch. 15 Gobelin Fait)",
   "status": "resolved",
   "detail": "✅  **CONFIRMÉ.** Buolamwini & Gebru, \"Gender Shades\" (PMLR 2018) : les systèmes commerciaux de classification des sexes mal classés **femmes plus foncées jusqu'à 34,7%** du temps vs **0,8 % pour les hommes à peau plus légère** (IBM, Microsoft, Face++). Ajouté en tant que Ch. 14 Gobelin Fact (2026-06-16) pour rendre exact le libellé existant du manuscrit « plus de dix fois plus élevé »; paires avec la vérification Gobeline adjacente en moyenne. |  [PMLR v81](https://proceedings.mlr.press/v81/buolamwini18a.html) ,  [Nouvelles du MIT](https://news.mit.edu/2018/study-finds-gender-skin-type-bias-artificial-intelligence-systems-0212)",
   "links": [
@@ -252,7 +252,7 @@
   "section": "B. Fixed from known record (spot-check recommended)",
   "claim": "Australie « deux ans d'emprisonnement »",
   "status": "fixed",
-  "detail": "Jusqu'à **6 ans (7 ans de plus)** , 2024 modifications fédérales 12, Ch. 15",
+  "detail": "Jusqu'à **6 ans (7 ans de plus)** , 2024 amendements fédéraux 12, Ch. 15",
   "links": []
  },
  {
@@ -322,7 +322,7 @@
  {
   "id": 21,
   "section": "B. Fixed from known record (spot-check recommended)",
-  "claim": "Le comté de Loudoun \"utilise 25 % de l'électricité de Virginie \"",
+  "claim": "Le comté de Loudoun \"utilise 25% de l'électricité de Virginie \"",
   "status": "fixed",
   "detail": "La flotte de datacenters à l'échelle nationale - 25%; Loudoun est l'ancre — confirmer la scission 8",
   "links": []
@@ -380,7 +380,7 @@
   "section": "B. Fixed from known record (spot-check recommended)",
   "claim": "Legg–Hutter \"leur source pour ce qu'est l'intelligence\"",
   "status": "fixed",
-  "detail": "Maintenant : une enquête de ~70 définitions ; la généalogie est Lewis/Whanga/Yolgörmez argumenté lecture. 1, 13",
+  "detail": "Maintenant: une enquête de ~70 définitions; la généalogie est Lewis/Whanga/Yolgörmez argumenté lecture. 1, 13",
   "links": []
  },
  {
@@ -430,7 +430,7 @@
   "section": "C. Open — needs primary source before publication",
   "claim": "Juin 2026 détails de la semaine de lancement",
   "status": "resolved",
-  "detail": "- LARGEMENT RÉSOLVÉ : le dossier d'information contient des captures de source pour PMO (4 juin), Solomon/CPAC + ISED (5 juin), 66 M$ de sortie (12 mai), BC + IA post, USTR NTE Canada extrait, fuite de couverture d'ébauche ( capture directe CBC bloquée — URL + sauvegarde BetaKit incluse). BC + IA post vérifié à partir de la page en direct 2026-06-10: citation de feuille d'érable VERBATIM ✓, 19,2% citation ✓; noms de croisement + de pilier corrigés dans Ch. 5; 66 M$/44 sociétés/16,8 M$ avant J.-C. vérifiés à partir de la capture d'ISDE ✓; drapeau de nuage souverain USTR ✓. Projet en fuite vérifié par l'AUTEUR au regard de l'article 2026-06-10 de la SRC: 50%+/2030 ✓, \"pas d'option domestique abordable\" ✓ mot pour mot, étranger-cloud/data/IP phrase ف, KPMG–U Melbourne 47-country rang ✓. **Fil de superintelligence NON dans le texte de la SRC — retiré du manuscrit avec une note publique.** CLOSED 2026-06-11: Carney cite des citations vérifiées dans l'article de lancement de CBC (Lopez Steven, 4 juin) — la ligne pays sentient était une défense du pilier de souveraineté contre les questions commerciales américaines; ligne d'alphabétisation et de confiance confirmée. Calculer le fonds corrigé (+700M$ au lancement →1B$). Les autres membres de l'Alliance de technologie souveraine et le Fonds de recherche scientifique de 100 millions de dollars ont encore besoin de reçus. Voir Sources/cbc-launch-article-vérification-2026-06.md + cbc‐leaked-draft-auteur-vérIFICATION-202606.mj. → Sources/preuve_pack_ledgers/Ledger_33_AI_for_All_launch_week/ + Sources/bc-ai-all-of-us-live-capture-2026-06.md",
+  "detail": "- LARGEMENT RÉSOLVÉ : le dossier d'information contient des captures de source pour PMO (4 juin), Solomon/CPAC + ISED (5 juin), 66 M$ de sortie (12 mai), BC + IA post, USTR NTE Canada extrait, fuite de couverture d'ébauche ( capture directe CBC bloquée — URL + sauvegarde BetaKit incluse). BC + IA post vérifié à partir de la page en direct 2026-06-10: citation de feuille d'érable VERBATIM ✓, 19,2% citation ✓; noms de croisement + de pilier corrigés dans Ch. 5; 66 M$/44 sociétés/16,8 M$ BC vérifiés à partir de la capture d'ISDE ✓; drapeau souverain-cloud de l'USTR ✓. Projet en fuite vérifié par l'AUTEUR au regard de l'article 2026-06-10 de la SRC: 50%+/2030 ✓, \"pas d'option domestique abordable\" ✓ mot pour mot, étranger-cloud/data/IP phrase ف, KPMG–U Melbourne 47-country rang ✓. **Fil de superintelligence NON dans le texte de la SRC — retiré du manuscrit avec une note publique.** CLOSED 2026-06-11: Carney cite des citations vérifiées in extenso dans l'article de lancement de la SRC (Lopez Steven, 4 juin) — la ligne pays sentient était une défense du pilier de souveraineté contre les questions commerciales américaines; ligne d'alphabétisation et de confiance confirmée. Calculer le fonds corrigé (+700M$ au lancement →1B$). Les autres membres de l'Alliance de technologie souveraine et le Fonds de recherche scientifique de 100 millions de dollars ont encore besoin de reçus. Voir Sources/cbc-launch-article-vérification-2026-06.md + cbc‐leaked-draft-auteur-vérIFICATION-202606.mj. → Sources/preuve_pack_ledgers/Ledger_33_AI_for_All_launch_week/ + Sources/bc-ai-all-of-us-live-capture-2026-06.md",
   "links": []
  },
  {
@@ -454,7 +454,7 @@
   "section": "C. Open — needs primary source before publication",
   "claim": "Vallée des merveilles / SLCN",
   "status": "resolved",
-  "detail": "— **RÉCLAMATIONS** : aucune preuve d'un rôle d'équité/de gouvernance du SLCN. Dossier documenté : projet annoncé en décembre 2024 par O'Leary Ventures + MD de Greenview; lettre ouverte du chef Sunshine (13 janvier 2025) – La nation déclare qu'elle n'a pas été consultée, qu'on l'a suspendue; action en justice du devoir de consulter en juin 2026 (la question de la consultation est en direct devant la cour); Utah JV numérique O'LEARY (février 2026). **C'est vrai. 6 et 9 études de cas ont été réécrites au dossier, avec une note de correction publique.** → Sources/preuves_pack_leggers/Ledger_36_Wonder_Valley_SLCN/",
+  "detail": "— **RÉCLAMATIONS** : aucune preuve d'un rôle d'équité/de gouvernance du SLCN. Dossier documenté : projet annoncé en décembre 2024 par O'Leary Ventures + MD de Greenview; lettre ouverte du chef Sunshine (13 janvier 2025) – La nation déclare qu'elle n'a pas été consultée, qu'on l'a suspendue; action en justice du devoir de consulter en juin 2026 (la question de la consultation est en direct devant la cour); Utah JV numérique O'LEARY (février 2026). **C'est vrai. 6 et 9 études de cas ont été réécrites au dossier, avec une note de correction publique.** → Sources/preuves_pack_legers/Ledger_36_Wonder_Valley_SLCN/",
   "links": []
  },
  {
@@ -491,7 +491,7 @@
   "section": "C. Open — needs primary source before publication",
   "claim": "Chiffres des MW urbains + nombre d'installations/de parts",
   "status": "resolved",
-  "detail": "RÉSOLU 2026-06-18 — **Les MW par ville sont des chiffres de RNCan.** Ressources naturelles *Guide des pratiques exemplaires pour les centres de données canadiens* (2024), Aperçu: \"La demande électrique a été estimée à **320 MW, 520 MW et 46 MW** Pour [Toronto, Montréal et Vancouver] respectivement. » C'est le même guide gouvernemental que le livre cite déjà pour la part nationale de 1,4 %→2,1 % (ligne 39). Ensemble de données sous-jacentes = l'analyse du marché canadien des serveurs et des centres de données commandée par RNCan, 2021, mise à jour 2023, qui n'est pas publiée séparément. **« Montréal le plus grand / plus grand que Toronto » est la commande de RNCan par demande électrique totale (520 > 320)** — défendable et d'origine gouvernementale; corroboré par le relevé de l'ensemble des installations de Baxtel (~544 MW Montréal). CAVÉE MÉTHODOLOGIE : selon l'offre de *colocation*, les analystes actuels (CBRE/Mordor/DC Byte, 2025) classent Toronto en premier (~312–378 MW) sur Montréal (~126 MW) – la colocation exclut la charge hyperéchelle/crypto sur l'énergie peu chère d'Hydro-Québec que recueille le chiffre de la demande totale de RNCan. Les chiffres sont des estimations de l'ère ~2023. Sources : [Guide des pratiques exemplaires de RNCan pour les centres de données canadiens (2024)](https://oee.nrcan.gc.ca/publications/statistics/dac/2024/index.cfm) ,  [PDF](https://oee.nrcan.gc.ca/corporate/statistics/neud/dpa/data_e/downloads/dc/pdf/2024/2024-best-practice-guide-for-canadian-data-centres.pdf) .",
+  "detail": "RÉSOLU 2026-06-18 — **Les MW par ville sont des chiffres de RNCan.** Ressources naturelles *Guide des pratiques exemplaires pour les centres de données canadiens* (2024), Aperçu: \"La demande électrique a été estimée à **320 MW, 520 MW et 46 MW** Pour [Toronto, Montréal et Vancouver] respectivement. » C'est le même guide gouvernemental que le livre cite déjà pour la part nationale de 1,4 %→2,1 % (ligne 39). Ensemble de données sous-jacentes = l'analyse du marché canadien des serveurs et des centres de données commandée par RNCan, 2021, mise à jour 2023, qui n'est pas publiée séparément. **« Montréal le plus grand / plus grand que Toronto » est la commande de RNCan par demande électrique totale (520 > 320)** — défendable et d'origine gouvernementale; corroboré par le relevé de l'ensemble des installations de Baxtel (~544 MW Montréal). CAVÉE MÉTHODOLOGIE : selon l'offre de *colocation*, les analystes actuels (CBRE/Mordor/DC Byte, 2025) classent Toronto en premier (~312–378 MW) sur Montréal (~126 MW) – la colocation exclut la charge hyperéchelle/crypto sur l'énergie peu chère d'Hydro-Québec que recueille le chiffre de la demande totale de RNCan. Les chiffres sont des estimations d'environ 2023 ans. Sources : [Guide des pratiques exemplaires de RNCan pour les centres de données canadiens (2024)](https://oee.nrcan.gc.ca/publications/statistics/dac/2024/index.cfm) ,  [PDF](https://oee.nrcan.gc.ca/corporate/statistics/neud/dpa/data_e/downloads/dc/pdf/2024/2024-best-practice-guide-for-canadian-data-centres.pdf) .",
   "links": [
    [
     "NRCan Best Practice Guide for Canadian Data Centres (2024)",
@@ -649,7 +649,7 @@
   "section": "Fresh live re-verification — June 15, 2026 (full fact-check pass)",
   "claim": "La liste des « originaux » du Code volontaire comprend TELUS (Ch 5)",
   "status": "fixed",
-  "detail": "⚠️  **C'est probablement mal daté.** TELUS Digital figure parmi les **Nov 2024 ajouts** , pas la cohorte de lancement de septembre 2023 (BlackBerry/OpenText/Ada/Cohere/Coveo). Vérifier la date de signature de TELUS sur la page ISDE; si novembre 2024, quitter « les originaux ». [Code ISDE](https://ised-isde.canada.ca/site/ised/en/voluntary-code-conduct-responsible-development-and-management-advanced-generative-ai-systems)",
+  "detail": "⚠️  **C'est probablement mal daté.** TELUS Digital figure parmi les **Nov 2024 ajouts** , pas la cohorte de lancement de septembre 2023 (BlackBerry/OpenText/Ada/Cohere/Coveo). Vérifier la date de signature de TELUS sur la page ISDE; si novembre 2024, quitter les « originaux ». [Code ISDE](https://ised-isde.canada.ca/site/ised/en/voluntary-code-conduct-responsible-development-and-management-advanced-generative-ai-systems)",
   "links": [
    [
     "ISED Code",
@@ -687,7 +687,7 @@
   "section": "Citation-precision pass — June 18, 2026",
   "claim": "Intensité du carbone du réseau provincial et part non émettrice du Canada (section 8 du réseau + fig-8.1)",
   "status": "resolved",
-  "detail": "* CONFIRMÉ 2026-06-19. Québec/Manitoba : grille de 30 g CO2e/kWh; Alberta : 470 g/k Whh en 2023 (Alberta.ca : rendement des GES, en baisse par rapport à 580 g en 2005). Ainsi, l'illustration de 100 MW du livre « Montréal 1/15e de l'intensité en carbone de la province » et celle de la figure 8.1 ($26 000 t/an au Québec contre $394 000t/an en Alberta, calculée à 30 vs ~450 g/kWh) sont cohérentes et de source primaire. Part non émettrice au Canada : URCE 2023 mixte = hydro 57,4 % + nucléaire 13,5 % + autres énergies renouvelables 9,1 % **80%** . NOTE: le manuscrit \"environ 82 % en 2023\" (hedged) correspond à la valeur de 2022 et arrondit chaque composant vers le haut; précise 2023 80% — resserrage facultatif à \"=80% en 2022 (82% en 2022)\". |  [Rendement de l'Alberta en matière de GES](https://www.alberta.ca/albertas-greenhouse-gas-emissions-reduction-performance)  ·  [URCE, mélange énergie renouvelable/électricité](https://www.cer-rec.gc.ca/en/data-analysis/energy-commodities/electricity/report/canadas-renewable-power/index.html)",
+  "detail": "* CONFIRMÉ 2026-06-19. Québec/Manitoba : grille de 30 g CO2e/kWh; Alberta : 470 g/k Whh en 2023 (Alberta.ca : rendement des GES, en baisse par rapport à 580 g en 2005). Ainsi, l'illustration de 100 MW du livre « Montréal 1/15e de l'intensité en carbone de la province » et celle de la figure 8.1 ($26 000 t/an au Québec contre $394 000t/an en Alberta, calculée à 30 vs ~450 g/kWh) sont cohérentes et de source primaire. Part non émettrice au Canada : mélange de CRE 2023 = énergie hydraulique 57,4% + énergie nucléaire 13,5% + autres énergies renouvelables 9,1% **80%** . NOTE: le manuscrit \"environ 82 % en 2023\" (hedged) correspond à la valeur de 2022 et arrondit chaque composant vers le haut; précise 2023 80% — resserrage facultatif à \"=80% en 2022 (82% en 2022)\". |  [Rendement de l'Alberta en matière de GES](https://www.alberta.ca/albertas-greenhouse-gas-emissions-reduction-performance)  ·  [URCE, mélange énergie renouvelable/électricité](https://www.cer-rec.gc.ca/en/data-analysis/energy-commodities/electricity/report/canadas-renewable-power/index.html)",
   "links": [
    [
     "Alberta GHG performance",
@@ -834,7 +834,7 @@
   "section": "Citation-precision pass — June 18, 2026",
   "claim": "Extension de l'infrastructure d'IA de Microsoft Ontario (Ch 6)",
   "status": "resolved",
-  "detail": "* CONFIRMÉ 2026-06-19. Une partie de l'engagement canadien en matière d'infrastructure infonuagique/IA (2023-2027) de Microsoft, soit ~19 milliards de dollars; avril 2026 Investir l'Ontario accueille favorablement une expansion d'Azure Canada Central — deux nouveaux centres de données de la région de York (Markham, Vaughan) plus Toronto, ~1 250 emplois (=1 000 constructions + 250 emplois permanents). Microsoft s'est engagé séparément à ce que les nouveaux DC de l'Ontario « n'augmentent pas les factures d'électricité ». **LEAN: annonce gouvernementale + société** (les chiffres sont ceux de la province ou de la compagnie). |  [Investir en Ontario](https://www.investontario.ca/press-release/invest-ontario-welcomes-microsofts-ai-infrastructure-expansion-ontario-supporting-1250-jobs)  ·  [Salle de nouvelles de l'Ontario](https://news.ontario.ca/en/release/1007259/ontario-welcomes-microsofts-ai-infrastructure-expansion)  ·  [Observateur national](https://www.nationalobserver.com/2026/04/14/news/microsoft-ontario-data-centres-power-water-use)",
+  "detail": "* CONFIRMÉ 2026-06-19. Une partie de l'engagement canadien en matière d'infrastructure infonuagique/IA (2023-2027) de Microsoft, soit ~19 milliards de dollars; avril 2026 Investir l'Ontario accueille favorablement une expansion d'Azure Canada Central — deux nouveaux centres de données de la région de York (Markham, Vaughan) plus Toronto, ~1 250 emplois (=1 000 constructions + 250 emplois permanents). Microsoft s'est engagé séparément à ce que les nouveaux DC de l'Ontario « n'augmentent pas les factures d'électricité ». **LEAN: gouvernement + annonce d'entreprise** (les chiffres sont ceux de la province ou de la compagnie). |  [Investir en Ontario](https://www.investontario.ca/press-release/invest-ontario-welcomes-microsofts-ai-infrastructure-expansion-ontario-supporting-1250-jobs)  ·  [Salle de nouvelles de l'Ontario](https://news.ontario.ca/en/release/1007259/ontario-welcomes-microsofts-ai-infrastructure-expansion)  ·  [Observateur national](https://www.nationalobserver.com/2026/04/14/news/microsoft-ontario-data-centres-power-water-use)",
   "links": [
    [
     "Invest Ontario",
@@ -853,7 +853,7 @@
  {
   "id": 68,
   "section": "Citation-precision pass — June 18, 2026",
-  "claim": "Loi sur la sécurité numérique / interdiction des médias sociaux de moins de 16 ans (Ch 16)",
+  "claim": "Loi sur la sécurité numérique / interdiction des médias sociaux de moins de 16 ans (Ch 17)",
   "status": "resolved",
   "detail": "* CONFIRMÉ 2026-06-19. Le gouvernement Carney a déposé la Loi sur la sécurité numérique le 10 juin 2026 (la quatrième tentative de dommages en ligne d'Ottawa depuis 2021). Pièce maîtresse : une interdiction des comptes de médias sociaux pour les moins de 16 ans, avec un itinéraire d'exemption de plate-forme; crée une nouvelle Commission de la sécurité numérique du Canada (réglementaire indépendant). Les fonctionnaires concèdent l'application réaliste ~fin 2027/2028 (=1 an pour passer + ~18 mois pour se lever le régulateur). Les experts ont relevé des doutes de portée limitée ou de faisabilité. **LEAN: projet de loi du gouvernement + rapports de presse générale.**  |  [CBC en ligne - Limites d'âge et de préjudices](https://www.cbc.ca/news/politics/online-harms-social-media-ban-youth-teens-9.7228651)  ·  [Nouvelles mondiales de moins de 16 ans](https://globalnews.ca/news/11894610/canada-social-media-ban-teens-online-harms-bill/)  ·  [NYT](https://www.nytimes.com/2026/06/10/world/canada/social-meda-kids-legislation-carney.html)  ·  [Hollywood Reporter Royaume-Uni/CA/UA](https://www.hollywoodreporter.com/news/general-news/social-media-bans-uk-canada-australia-1236625997/)",
   "links": [
@@ -924,9 +924,9 @@
  {
   "id": 71,
   "section": "Citation-precision pass — June 18, 2026",
-  "claim": "Amodei \"Politique sur l'IA Exponentielle\" — Le changement de reliure-réglementation d'Anthropic (Ch 16)",
+  "claim": "Amodei \"Politique sur l'IA Exponentiel\" — Le changement de reliure-réglementation d'Anthropic (Ch 17)",
   "status": "resolved",
-  "detail": "* CONFIRMÉ 2026-06-19. Juin 2026 essai de Dario Amodei, PDG d'Anthropic, proposant un vaste programme : une réglementation contraignante/en vigueur à la frontière (tests de type FAA), un soutien au déplacement d'emplois, des protections civiles-libertés, une coalition mondiale démocratique-IA – un changement de la préconisation de transparence d'Antthropique vers l'appel à des règles contraignantes. **LEAN: industrie/société autodivulgation** — la conception réglementaire préférée d'un titulaire disposant de ressources suffisantes (règles qu'il est mieux placé pour absorber que de petits concurrents); lire en conséquence. [Essai d'Amodei](https://darioamodei.com/post/policy-on-the-ai-exponential)",
+  "detail": "* CONFIRMÉ 2026-06-19. Juin 2026 essai de Dario Amodei, PDG d'Anthropic, proposant un vaste programme : une réglementation contraignante/en vigueur à la frontière (tests de type FAA), un soutien au déplacement d'emplois, des protections civiles-libertés, une coalition mondiale démocratique-IA – un changement de la préconisation de transparence d'Antthropique vers l'appel à des règles contraignantes. **LEAN: industrie/société autodivulgation** — la conception réglementaire préférée d'un titulaire disposant de ressources suffisantes (règles qu'il est mieux placé pour absorber que les rivaux plus petits); lire en conséquence. [Essai d'Amodei](https://darioamodei.com/post/policy-on-the-ai-exponential)",
   "links": [
    [
     "Amodei essay",
@@ -937,7 +937,7 @@
  {
   "id": 72,
   "section": "Citation-precision pass — June 18, 2026",
-  "claim": "L'anthropique refuse les conditions d'utilisation du DoD sans restriction, militaire (Ch 16)",
+  "claim": "L'anthropique refuse les conditions d'utilisation sans restriction du DoD pour les militaires (Ch 17)",
   "status": "resolved",
   "detail": "* CONFIRMÉ 2026-06-19. Anthropic (Amodei) a déclaré qu'il « ne peut pas en bonne conscience adhérer » à la version actualisée du contrat du Département de la Défense des États-Unis (« Department of War ») qui, par Anthropic, permettrait une utilisation militaire illimitée de Claude avec des blocs inadéquats sur la surveillance de masse des Américains et des armes entièrement autonomes; Anthropic a déployé séparément des modèles pour la défense/intelligence pour certains usages. **LEAN: auto-divulgation des entreprises** (Cadrage d'un différend contractuel par anthropologie; un refus public est aussi une loi sur les relations publiques). [Déclaration anthropique](https://www.anthropic.com/news/statement-department-of-war)",
   "links": [
@@ -950,7 +950,7 @@
  {
   "id": 73,
   "section": "Citation-precision pass — June 18, 2026",
-  "claim": "Carney: les restrictions à l'exportation anthropiques des États-Unis montrent un risque de dépendance aux IA (Ch 6)",
+  "claim": "Carney: les restrictions à l'exportation anthropiques américaines montrent un risque de dépendance à l'«IA» (Ch 6)",
   "status": "resolved",
   "detail": "* CONFIRMÉ 2026-06-19. Juin 2026: une directive américaine sur le contrôle des exportations a restreint les nouveaux modèles d'Anthropic (Fable 5 / Mythos 5) pour les ressortissants étrangers — L'anthropique les a désactivés pour tous les utilisateurs (voir Source Library L2) — l'accès aux alliés; le PM Mark Carney (14 juin) a cité l'épisode comme preuve du danger que le Canada fait trop confiance aux fournisseurs américains d'IA, c.-à-d. la raison d'être de l'IA souverain exprimée par le PM lui-même. **LEAN: cadre gouvernemental** (PM faisant avancer la poussée de souveraineté) + presse générale. |  [Fortune](https://fortune.com/2026/06/14/canadian-prime-minister-mark-carney-warns-u-s-restrictions-on-new-anthropic-ai-models-show-danger-of-relying-too-much-on-american-providers/)  ·  [LA Heures](https://www.latimes.com/world-nation/story/2026-06-14/canadas-mark-carney-says-u-s-ai-restrictions-underscore-risks-of-dependence)  ·  [Al Jazeera — interdiction d'exportation / alliances](https://www.aljazeera.com/news/2026/6/19/us-export-ban-on-anthropics-ai-models-further-strains-alliances)",
   "links": [
@@ -994,7 +994,7 @@
   "section": "Citation-precision pass — June 18, 2026",
   "claim": "L'IA du chiffre suit l'amplification étrangère du séparatisme de l'Alberta (Ch 13)",
   "status": "resolved",
-  "detail": "* CONFIRMÉ 2026-06-19. Cipher IA (Edmonton/Regina; spinout du Centre for IA, Data and Conflict de l'Université de Regina) a utilisé l'IA pour suivre la désinformation étrangère amplifiant le débat sur le séparatisme en Alberta, attribuant des campagnes aux réseaux russes et aux influenceurs américains. **NUANCE CLÉS (la propre de Cipher) : les acteurs étrangers ont amplifié mais n'ont pas fabriqué le mouvement.** LEAN: rapport startup/research (intérêt personnel pour la menace) + presse générale. |  [BetaKit](https://betakit.com/meet-the-ai-company-tracking-the-foreign-actors-stoking-alberta-separatism/)  ·  [CP24](https://www.cp24.com/news/canada/2026/05/06/foreign-actors-producing-more-false-content-about-alberta-separatism-report/)  ·  [Globe et Mail](https://www.theglobeandmail.com/canada/article-alberta-separation-being-targeted-by-foreign-actors-seeking-to-stoke/)  ·  [Le Walrus](https://thewalrus.ca/alberta-separatism-fuelled-by-russian-networks-and-us-influencers/)",
+  "detail": "* CONFIRMÉ 2026-06-19. Cipher IA (Edmonton/Regina; spinout du Centre for IA, Data and Conflict de l'Université de Regina) a utilisé l'IA pour suivre la désinformation étrangère amplifiant le débat albertaine-séparatisme, attribuant des campagnes aux réseaux russes et aux influenceurs américains. **NUANCE CLÉS (la propre de Cipher) : les acteurs étrangers ont amplifié mais n'ont pas fabriqué le mouvement.** LEAN: rapport startup/research (intérêt personnel pour la menace) + presse générale. |  [BetaKit](https://betakit.com/meet-the-ai-company-tracking-the-foreign-actors-stoking-alberta-separatism/)  ·  [CP24](https://www.cp24.com/news/canada/2026/05/06/foreign-actors-producing-more-false-content-about-alberta-separatism-report/)  ·  [Globe et Mail](https://www.theglobeandmail.com/canada/article-alberta-separation-being-targeted-by-foreign-actors-seeking-to-stoke/)  ·  [Le Walrus](https://thewalrus.ca/alberta-separatism-fuelled-by-russian-networks-and-us-influencers/)",
   "links": [
    [
     "BetaKit",
@@ -1017,7 +1017,7 @@
  {
   "id": 76,
   "section": "Citation-precision pass — June 18, 2026",
-  "claim": "Coalition pour la sécurité de l'IA de moyenne puissance + Rapport international sur la sécurité des IA + G7 (Ch 16)",
+  "claim": "Coalition pour la sécurité de l'IA de moyenne puissance + Rapport international sur la sécurité des IA + G7 (Ch 17)",
   "status": "resolved",
   "detail": "* CONFIRMÉ 2026-06-19. Les responsables de la politique d'IA et le gouvernement fédéral (le pilier «partenariats confiants») proposent une coalition de pouvoirs intermédiaires de démocraties alignées pour établir des garde-corps d'IA et réduire la dépendance à l'égard des laboratoires américains frontaliers; l'ancrage intellectuel est le 2e rapport annuel international sur la sécurité de l'IA (100 experts+, présidé par Yoshua Bengio). Lors du G7 de juin 2026 (France), les dirigeants européens et canadiens ont demandé des contrôles sur la domination américaine de l'IA (attendus y compris. Altman, Hassabis, Amodei + laboratoires plus petits, y compris. Cohere, Mistral); Carney: la souveraineté a besoin d'un «accès sans entrave à l'IA», doit «construire et diversifier». **LEAN: cadrage gouvernemental + évaluation d'experts + presse générale.**  |  [BetaKit puissance moyenne](https://betakit.com/ai-experts-want-a-middle-power-coalition-to-set-safety-guardrails-some-think-canada-could-lead-it/)  ·  [Globe and Mail G7 IA](https://www.theglobeandmail.com/business/article-ai-executives-g7-cohere-openai-anthropic/)",
   "links": [
@@ -1065,7 +1065,7 @@
   "section": "Citation-precision pass — June 18, 2026",
   "claim": "Critique Immigration-IA + ASFC frontière IA (Ch 10)",
   "status": "resolved",
-  "detail": "* CONFIRMÉ 2026-06-19. Citizen Lab + IHRP (U of T), *Des bots à la porte* (Molnar & Gill, 26 septembre 2018) : critique des droits de l'homme à l'égard de la prise de décision automatisée en matière d'immigration ; appel à un gel + normes contraignantes + supervision indépendante. Suivi : Laboratoire de droit des réfugiés (York); Molnar, *Les murs ont des yeux* (2024). Le rapport 12 du CIMM (novembre 2022) a examiné le Chinook dans un contexte de taux de refus plus élevés pour les demandeurs francophones-africains. ASFC : application de reconnaissance faciale « ReportIn » pour suivre les sujets d'ordre déportation (algorithme d'appariement retenu comme secret commercial, 2024); identification des risques par l'« indicateur de conformité des voyageurs » de l'IA (avertissement de biais, 2025); le détecteur de mensonge AVATAR IA n'a été testé que dans un laboratoire d'Ottawa, et non sur de vrais voyageurs. **CLÉS CAVEAT: les taux de refus de permis d'étude ont augmenté à mesure que les outils se propagent, mais cela suit également les bouchons de permis de l'étude + les mesures de répression d'intégrité — corrélation, PAS de lien établi; ne prétendez pas que l'IA a causé des refus.**   **LEAN: plaidoyer universitaire en faveur des droits de l'homme** (Citizen Lab/Molnar) + presse d'enquête + commission parlementaire; les chiffres d'efficacité de l'IRCC sont auto-déclarés. |  [Des bots à la porte](https://citizenlab.ca/research/bots-at-the-gate-human-rights-analysis-automated-decision-making-in-canadas-immigration-refugee-system/)  ·  [Rapport du CIMM 12](https://www.ourcommons.ca/documentviewer/en/44-1/CIMM/report-12/page-84)  ·  [Rapport de l'ASFC de la SRC dans l'application FR](https://www.cbc.ca/news/canada/windsor/cbsa-facial-recogntion-app-deportation-1.7296313)  ·  [CBC ASFC Risque de voyage en IA + partialité](https://www.cbc.ca/news/canada/windsor/artificial-intelligence-bias-border-canada-screening-1.7624051)",
+  "detail": "* CONFIRMÉ 2026-06-19. Citizen Lab + IHRP (U of T), *Des bots à la porte* (Molnar & Gill, 26 septembre 2018) : critique des droits de l'homme à l'égard de la prise de décision automatisée en matière d'immigration ; appel à un gel + normes contraignantes + supervision indépendante. Suivi : Laboratoire de droit des réfugiés (York); Molnar, *Les murs ont des yeux* (2024). Le rapport 12 du CIMM (novembre 2022) a examiné le Chinook dans un contexte de taux de refus plus élevés pour les demandeurs francophones-africains. ASFC : application de reconnaissance faciale « ReportIn » pour suivre les sujets d'ordre déportation (algorithme d'appariement retenu comme secret commercial, 2024); identification des risques par l'« indicateur de conformité des voyageurs » de l'IA (avertissement de biais, 2025); le détecteur de mensonge AVATAR IA n'a été testé que dans un laboratoire d'Ottawa, et non sur de vrais voyageurs. **CLÉS CAVEAT: les taux de refus de permis d'étude ont augmenté à mesure que les outils se propagent, mais cela suit également les bouchons de permis de l'étude + les mesures de répression d'intégrité — corrélation, PAS de lien établi; ne prétendez pas que l'IA a causé des refus.**   **LEAN: plaidoyer universitaire en faveur des droits de l'homme** (Citizen Lab/Molnar) + presse d'enquête + commission parlementaire; les chiffres d'efficacité de l'IRCC sont auto-déclarés. |  [Des bots à la porte](https://citizenlab.ca/research/bots-at-the-gate-human-rights-analysis-automated-decision-making-in-canadas-immigration-refugee-system/)  ·  [Rapport du CIMM 12](https://www.ourcommons.ca/documentviewer/en/44-1/CIMM/report-12/page-84)  ·  [Rapport de l'ASFC de la SRC dans l'application FR](https://www.cbc.ca/news/canada/windsor/cbsa-facial-recogntion-app-deportation-1.7296313)  ·  [CBC ASFC Risque pour les voyageurs de l'IA + partialité](https://www.cbc.ca/news/canada/windsor/artificial-intelligence-bias-border-canada-screening-1.7624051)",
   "links": [
    [
     "Bots at the Gate",
@@ -1117,7 +1117,7 @@
  {
   "id": 80,
   "section": "Citation-precision pass — June 18, 2026",
-  "claim": "IA-pour-science/médecine: avantages démontrés + contrepoids sceptique (Ch 20)",
+  "claim": "IA-pour-science/médecine: avantages démontrés + contrepoids sceptique (Ch 21)",
   "status": "resolved",
   "detail": "* CONFIRMÉ 2026-06-19. Démonstration : AlphaFold (2024 Nobel Chemistry — Hassabis/Jumper/Baker; ~200M structures), encadrée comme «hypothèses de valeur, non structures expérimentales» (Terwilliger, Nature Methods 2023); la météo de l'IA (GraphCast/GenCast) a battu les repères ECMWF (Science 2023; Nature Dec 2024); CHARTwatch (Unity Health Toronto) ~26 % de décès imprévus non palliatifs dans un hôpital (CMAJ 2024 — avant/après, un seul service, PAS un RCT); MASAI mammographie RCT (Lancet 2023/2026). Contrepoids : Le modèle Epic Sepsis a échoué à la validation externe (AUC 0.63 manqué ~2/3 des cas; JAMA Intern Med 2021); Kapoor & Narayanan data-leakage sur 17 champs / 294 documents (Patters 2023); Obermeyer race-bias-in-care algorithme (Science 2019); FDA « Clearance --résultats prouvés »; « Le Canada l'a financé -) (Le Fonds de calcul subventionne le calcul, et non les résultats). **LEAN : examen par les pairs (le plus fort) par rapport au fournisseur/presse; CHARTwatch n'est pas randomisé.**  |  [Prix Nobel de chimie 2024](https://www.nobelprize.org/prizes/chemistry/2024/press-release/)  ·  [AlphaFold \"hypothèses\" (Méthodes Nature)](https://www.nature.com/articles/s41592-023-02087-4)  ·  [CHARTwatch (CMAJ)](https://www.cmaj.ca/content/196/30/E1027)  ·  [Insuffisance de septicémie épique (JAMA)](https://jamanetwork.com/journals/jamainternalmedicine/fullarticle/2781307)  ·  [Fuites (Patternes)](https://www.cell.com/patterns/fulltext/S2666-3899(23) 00159-9)",
   "links": [
@@ -1173,7 +1173,7 @@
   "section": "Citation-precision pass — June 18, 2026",
   "claim": "IA de la police canadienne : clairvoyant, police prédictive, reconnaissance faciale (Ch 10)",
   "status": "resolved",
-  "detail": "* CONFIRMÉ 2026-06-19. Clearview IA : les commissaires à la protection de la vie privée fédéraux et provinciaux ont conclu qu'il y avait eu une surveillance de masse + illégal (le 3 février 2021); le CPVP a constaté que l'utilisation de la GRC violait la Loi sur la protection des renseignements personnels (10 juin 2021 — la GRC a signalé 78 perquisitions, les dossiers des fournisseurs ont montré 521); la police de Toronto a refusé d'utiliser alors (~2 800 images octobre 2019–février 2020; 84 enquêtes); Calgary/Windsor/BC également; le Commissariat a ordonné à Clearview de cesser (décembre 2021) et la cour d'appel de la Colombie-Britannique a confirmé la violation (le 20 février 2026). Services de police prédictifs : GéoDASH (lieu/propriété-crime depuis ~2015, avec protection); Saskatchewan SPPAL (personnes manquantes/à risque-jeunes); Citizen Lab « Surveiller et prédire » (2020) a préconisé un moratoire. Reconnaissance faciale : Calgary d'abord (2014, NEC, ~300k mugshots); Peel/York adopte l'IDEMIA (2024-25), un système lié à l'arrestation injustifiée d'un Noir aux États-Unis. Surveillance : orientation des commissaires FPT en matière de FR + appel à un cadre juridique (mai 2022); rapport ETHI (octobre 2022, 19 recommandations incl. la politique sur l'utilisation de l'IA du TPS (février 2022). Aucune loi canadienne complète. **LEAN: régulateur + journalisme + académique (Citizen Lab, plaidoyer) contre justification policière (efficacité/sécurité publique).**  |  [Constatations communes du CPVP](https://www.priv.gc.ca/en/opc-actions-and-decisions/investigations/investigations-into-businesses/2021/pipeda-2021-001/)  ·  [CPVP GRC/Clearview (Loi sur la protection des renseignements personnels)](https://www.priv.gc.ca/en/opc-actions-and-decisions/ar_index/202021/sr_rcmp/)  ·  [Citizen Lab pour surveiller et prédire](https://citizenlab.ca/2020/09/to-surveil-and-predict-a-human-rights-analysis-of-algorithmic-policing-in-canada/)  ·  [Rapport ETHI FR](https://www.ourcommons.ca/documentviewer/en/44-1/ETHI/report-6/page-87)",
+  "detail": "* CONFIRMÉ 2026-06-19. Clearview IA : les commissaires à la protection de la vie privée fédéraux et provinciaux ont conclu qu'il y avait eu une surveillance de masse + illégal (le 3 février 2021); le CPVP a constaté que l'utilisation de la GRC violait la Loi sur la protection des renseignements personnels (10 juin 2021 — la GRC a signalé 78 perquisitions, les dossiers des fournisseurs ont montré 521); la police de Toronto a refusé d'utiliser alors (~2 800 images octobre 2019–février 2020; 84 enquêtes); Calgary/Windsor/BC également; le Commissariat a ordonné à Clearview de cesser (décembre 2021) et la cour d'appel de la Colombie-Britannique a confirmé la violation (le 20 février 2026). Services de police prédictifs : GéoDASH (lieu/propriété-crime depuis ~2015, avec protection); Saskatchewan SPPAL (personnes manquantes/à risque-jeunes); Citizen Lab « Surveiller et prédire » (2020) a préconisé un moratoire. Reconnaissance faciale : Calgary d'abord (2014, NEC, ~300k mugshots); Peel/York adopte l'IDEMIA (2024-25), un système lié à l'arrestation injustifiée d'un Noir aux États-Unis. Surveillance: orientations des commissaires FPT en matière de FR + appel à un cadre juridique (mai 2022); rapport ETHI (octobre 2022, 19 réc. la politique sur l'utilisation de l'IA du TPS (février 2022). Aucune loi canadienne complète. **LEAN: régulateur + journalisme + académique (Citizen Lab, plaidoyer) contre justification policière (efficacité/sécurité publique).**  |  [Constatations communes du CPVP](https://www.priv.gc.ca/en/opc-actions-and-decisions/investigations/investigations-into-businesses/2021/pipeda-2021-001/)  ·  [CPVP GRC/Clearview (Loi sur la protection des renseignements personnels)](https://www.priv.gc.ca/en/opc-actions-and-decisions/ar_index/202021/sr_rcmp/)  ·  [Citizen Lab pour surveiller et prédire](https://citizenlab.ca/2020/09/to-surveil-and-predict-a-human-rights-analysis-of-algorithmic-policing-in-canada/)  ·  [Rapport ETHI FR](https://www.ourcommons.ca/documentviewer/en/44-1/ETHI/report-6/page-87)",
   "links": [
    [
     "OPC Clearview joint finding",
@@ -1246,7 +1246,7 @@
  {
   "id": 85,
   "section": "Citation-precision pass — June 18, 2026",
-  "claim": "L'IA dans l'éducation K-12: fragmentation de la gouvernance + données sur les étudiants (Ch 14)",
+  "claim": "L'IA dans l'éducation K-12: fragmentation de la gouvernance + données sur les étudiants (Ch 15)",
   "status": "resolved",
   "detail": "* CONFIRMÉ 2026-06-19. L'éducation est provinciale; en 2026, seulement la C.-B., le Québec et le Nouveau-Brunswick ont un gouvernement K-12 qui donne des conseils sur l'IA, tous des conseils (délégués aux conseils d'administration/enseignants); l'Ontario/Alberta/la plupart des autres n'en sont pas ou « en développement ». L'AIDA fédérale a omis l'éducation. CTF/FCE - mémoire de politique (2024): l'AIDA n'a pas de dispositions K-12; demande au CMEC + Ottawa d'agir; préoccupations = surveillance, exploitation des données commerciales (~20 milliards de dollars US sur le marché edtech), fracture numérique/équité, déprofessionnelle. Données sur les étudiants : Québec Law 25 (consentement parental de moins de 14 ans; droit d'examen humain du SMA); résolution conjointe des commissaires FPT à la protection de la vie privée EdTech (8 octobre 2025) – aucune utilisation secondaire / formation IA sur les données des étudiants sans consentement; violation de PowerSchool (janvier 2025, ~5,2 millions de Canadiens; les conseils d'administration n'avaient pas de clauses contractuelles concernant la protection des renseignements personnels). Comparaison internationale: la Norvège (juin 2026) a recommandé l'IA «en général pas» dans les classes 1 à 7, âge, accès coupé (une recommandation, PAS une interdiction légale). **LEAN : gouvernement provincial (conseil) + syndicat des enseignants (avocat) + organisme de réglementation.**  |  [BC K-12 IA guidance](https://www2.gov.bc.ca/gov/content/education-training/k-12/administration/program-management/ai-in-education)  ·  [Exposé de politique générale du FCT](https://www.ctf-fce.ca/wp-content/uploads/2023/12/3-ENAI-policy-brief-AGM-2024.pdf)  ·  [Résolution FPT EdTech](https://www.priv.gc.ca/en/about-the-opc/what-we-do/provincial-and-territorial-collaboration/joint-resolutions-with-provinces-and-territories/res_20251008_edtech/)  ·  [Directives de la Norvège (regjeringen.no)](https://www.regjeringen.no/no/aktuelt/kunstig-intelligens-skal-i-all-hovedsak-ikke-brukes-i-barneskolen/id3166807/)",
   "links": [
@@ -1271,7 +1271,7 @@
  {
   "id": 86,
   "section": "Citation-precision pass — June 18, 2026",
-  "claim": "Détecteurs de texte d'IA : peu fiables + biaisés; universités canadiennes refusant (Ch 14)",
+  "claim": "Détecteurs de texte IA : peu fiables + biaisés; universités canadiennes refusant (Ch 15)",
   "status": "resolved",
   "detail": "* CONFIRMÉ 2026-06-19. OpenAI a retiré son propre classificateur de texte IA (20 juillet 2023) en citant une faible précision (elle n'avait signalé que 26 % du texte IA). Stanford/Liang et al., « Les détecteurs GPT sont biaisés contre les écrivains anglais non autochtones » (Patterns, 10 juillet 2023) : les détecteurs ont mal classé **61,22 % des essais TOEFL** (anglais non autochtone) comme IA alors qu'ils étaient presque parfaits pour les essais américains de 8e année – pénalisant ainsi une gamme linguistique plus simple. La revendication fausse-positive de Turnitin <1 % contestée (WaPo tests; Turnitine a ajouté une mise en garde). Universités canadiennes : L'UBC a refusé de permettre la détection de l'IA de Turner (avril 2023, réaffirmée en août 2023); Waterloo l'a abandonnée (septembre 2025, citant un biais contre l'anglais non autochtone); Guelph recommande de ne pas soumettre de travail aux détecteurs. **Le préjudice faux positif neurodivergent = un CONCERN fondé, non encore quantifié — n'affirme pas de statistique.**   **LEAN: entreprise + université + presse.**  |  [Classement OpenAI retiré](https://openai.com/index/new-ai-classifier-for-indicating-ai-written-text/)  ·  [Liang et al. (arXiv 2304.02819)](https://arxiv.org/abs/2304.02819)  ·  [UBC ne permet pas la détection de l'IA](https://lthub.ubc.ca/2023/08/28/ubc-affirms-decision-to-not-enable-turnitin-ai-detection/)  ·  [Waterloo arrête](https://uwaterloo.ca/academic-integrity/news/discontinuing-use-ai-detection-functionality-turnitin)",
   "links": [
@@ -1296,9 +1296,9 @@
  {
   "id": 87,
   "section": "Citation-precision pass — June 18, 2026",
-  "claim": "Proctoration/Linkletter d'IA + tuteurs d'IA (démonstration vs hyped) + consensus sur l'intégrité (Ch 14)",
+  "claim": "Proctoration/Linkletter d'IA + tuteurs d'IA (démonstration vs hyped) + consensus sur l'intégrité (Ch 15)",
   "status": "resolved",
-  "detail": "* CONFIRMÉ 2026-06-19. Proctoration : La détection faciale de Proctorio a révélé que les visages noirs manquaient ~57 % du temps (Satheesan, par l'intermédiaire du vice); le recul des étudiants canadiens (uOttawa/UBC, Respondus, 2020). MARQUE AFFAIRE CANADIENNE : Proctorio a poursuivi Ian Linkletter de l'UBC (Cour suprême de la Colombie-Britannique, sept. 2020) au sujet de tweets qui la critiquent; anti-SLAPP a refusé en grande partie, la CSC a refusé le congé; il a terminé par un congé sans consentement le 12 novembre 2025 (sans argent, termes confidentiels) — un frisson de 5 ans. BCcampus \"Au-delà de la surveillance\" (Oct 2024). Tutorat de l'IA: DEMONSTRATED — Harvard Physics RCT (Kestin et al. 2024, n=194) : tutorat spécialement conçu → >2x apprentissage en moins de temps (mais fortement conçu, session/sujet unique, PAS hors-la-solde). HYPED — Khanmigo « un non-événement » pour beaucoup (Sal Khan); l'ancre de vente « Bloom 2-sigma » est surestimée (~aspirée dans des synthèses ultérieures); **AUCUN ECR canadien comparablement rigoureux.** Consensus (Sarah Eaton, U Calgary; ICAI; BCcampus) : redessiner l'évaluation, ne pas détecter-et-punir; l'utilisation d'un détecteur secret est elle-même une atteinte à l'intégrité par l'instructeur. **LEAN: presse/défense (proctoration) + évaluation par les pairs (Harvard RCT, États-Unis) + consensus académique.**  |  [Cas de linkletter (Ubyssey)](https://ubyssey.ca/news/proctorio-lawsuit-ends/)  ·  [Harvard IA tuteur RCT (Gazette)](https://news.harvard.edu/gazette/story/2024/09/professor-tailored-ai-tutor-to-physics-course-engagement-doubled/)  ·  [Eaton (Affaires universitaires)](https://universityaffairs.ca/career-advice/focusing-on-genai-detection-is-a-no-win-approach-for-instructors/)  ·  [BCcampus au-delà de la surveillance](https://bccampus.ca/2024/10/16/beyond-surveillance-the-case-against-ai-proctoring-ai-detection/)",
+  "detail": "* CONFIRMÉ 2026-06-19. Proctoration : La détection faciale de Proctorio a révélé que les visages noirs manquaient ~57 % du temps (Satheesan, par l'intermédiaire du vice); le recul des étudiants canadiens (uOttawa/UBC, Respondus, 2020). MARQUE AFFAIRE CANADIENNE : Proctorio a poursuivi Ian Linkletter de l'UBC (Cour suprême de la Colombie-Britannique, sept. 2020) au sujet de tweets qui la critiquent; anti-SLAPP a refusé en grande partie, la CSC a refusé le congé; il a terminé par un congé sans consentement le 12 novembre 2025 (sans argent, termes confidentiels) — un frisson de 5 ans. BCcampus \"Au-delà de la surveillance\" (Oct 2024). Tuteurs de l'IA: DEMONSTRATED — Harvard Physics RCT (Kestin et al. 2024, n=194) : tuteur spécialement conçu → >2x apprentissage en moins de temps (mais fortement conçu, session/sujet unique, PAS hors-la-selle). HYPED — Khanmigo « un non-événement » pour beaucoup (Sal Khan); l'ancre de vente « Bloom 2-sigma » est surestimée (~aspirée dans des synthèses ultérieures); **AUCUN ECR canadien comparablement rigoureux.** Consensus (Sarah Eaton, U Calgary; ICAI; BCcampus) : redessiner l'évaluation, ne pas détecter-et-punir; l'utilisation d'un détecteur secret est elle-même une atteinte à l'intégrité par l'instructeur. **LEAN: presse/défense (proctoration) + examen par les pairs (Harvard RCT, États-Unis) + consensus académique.**  |  [Cas de linkletter (Ubyssey)](https://ubyssey.ca/news/proctorio-lawsuit-ends/)  ·  [Harvard IA tuteur RCT (Gazette)](https://news.harvard.edu/gazette/story/2024/09/professor-tailored-ai-tutor-to-physics-course-engagement-doubled/)  ·  [Eaton (Affaires universitaires)](https://universityaffairs.ca/career-advice/focusing-on-genai-detection-is-a-no-win-approach-for-instructors/)  ·  [BCcampus au-delà de la surveillance](https://bccampus.ca/2024/10/16/beyond-surveillance-the-case-against-ai-proctoring-ai-detection/)",
   "links": [
    [
     "Linkletter case (Ubyssey)",
@@ -1388,9 +1388,9 @@
  {
   "id": 91,
   "section": "Citation-precision pass — June 18, 2026",
-  "claim": "CAN-ASC-6.2 norme d'IA accessible + règle ontarienne de surveillance des travailleurs (Ch 14)",
+  "claim": "CAN-ASC-6.2 norme d'IA accessible + règle ontarienne de surveillance des travailleurs (Ch 15)",
   "status": "resolved",
-  "detail": "* CONFIRMÉ 2026-06-19. Normes d'accessibilité Le Canada a publié le 3 décembre 2025 CAN-ASC-6.2:2025 «Systèmes d'intelligence artificielle accessibles et équitables», qui est la première norme nationale au monde sur l'IA accessible et équitable; élaborée en vertu de la Loi sur le Canada accessible par un comité technique composé principalement de personnes handicapées; une norme nationale du Canada (Conseil canadien des normes). Nécessite : les personnes handicapées à chaque étape du cycle de vie; les personnes invalides dans les données de formation; « partager les résultats de performance séparément pour les personnes souffrant d'un handicap »; un droit à une alternative ou une révision humaine (p. ex., les utilisateurs de Sourds peuvent choisir un interprète humain); et « éviter d'utiliser l'IA pour juger les personnes en fonction de leur corps, de leurs mouvements, de leur expression faciale ou de leurs émotions ». **LIMITÉE : VOLONTAIRE** (peuvent informer un futur règlement de l'ACA; non pas une loi contraignante; l'ACC atteint des entités sous réglementation fédérale, pas p. ex. un vendeur privé de proctoring). Contraste : La règle de surveillance électronique de l'Ontario (SEC, projet de loi 88 Travaillant pour les travailleurs 2022, 25+ employés) est **transparence uniquement** — aucun droit à la vie privée, aucune limite d'utilisation. **LEAN : organisme gouvernemental/normes + gouvernement (Ontario).**  |  [Canada.ca — Première norme mondiale d'accessibilité aux IA](https://www.canada.ca/en/accessibility-standards-canada/news/2025/12/canada-releases-worlds-first-standard-on-accessible-and-equitable-ai.html)  ·  [CAN-ASC-6.2 résumé](https://accessible.canada.ca/creating-accessibility-standards/overview-asc-62-accessible-equitable-artificial-intelligence-systems)  ·  [Politique ontarienne de surveillance électronique](https://www.ontario.ca/document/your-guide-employment-standards-act-0/written-policy-electronic-monitoring-employees)",
+  "detail": "* CONFIRMÉ 2026-06-19. Normes d'accessibilité Le Canada a publié le 3 décembre 2025 CAN-ASC-6.2:2025 «Systèmes d'intelligence artificielle accessibles et équitables», qui est la première norme nationale au monde sur l'IA accessible et équitable; élaborée en vertu de la Loi sur le Canada accessible par un comité technique composé principalement de personnes handicapées; une norme nationale du Canada (Conseil canadien des normes). Nécessite : les personnes handicapées à chaque étape du cycle de vie; les personnes invalides dans les données de formation; « partager les résultats de performance séparément pour les personnes souffrant d'un handicap »; un droit à une alternative ou une révision humaine (p. ex., les utilisateurs de Sourds peuvent choisir un interprète humain); et « éviter d'utiliser l'IA pour juger les personnes en fonction de leur corps, de leurs mouvements, de leur expression faciale ou de leurs émotions ». **LIMITÉE : VOLONTAIRE** (peuvent informer un futur règlement de l'ACA; non pas une loi contraignante; l'ACC atteint des entités sous réglementation fédérale, pas p. ex. un vendeur privé de proctoring). Contraste : La règle de surveillance électronique de l'Ontario (SEC, projet de loi 88 Travaillant pour les travailleurs 2022, 25+ employés) est **transparence uniquement** — aucun droit à la vie privée, aucune limite d'utilisation. **LEAN : organisme gouvernemental/normes + gouvernement (Ontario).**  |  [Canada.ca — Première norme mondiale d'accessibilité aux IA](https://www.canada.ca/en/accessibility-standards-canada/news/2025/12/canada-releases-worlds-first-standard-on-accessible-and-equitable-ai.html)  ·  [Résumé CAN-ASC-6.2](https://accessible.canada.ca/creating-accessibility-standards/overview-asc-62-accessible-equitable-artificial-intelligence-systems)  ·  [Politique ontarienne de surveillance électronique](https://www.ontario.ca/document/your-guide-employment-standards-act-0/written-policy-electronic-monitoring-employees)",
   "links": [
    [
     "Canada.ca — world's first AI accessibility standard",
@@ -1409,9 +1409,9 @@
  {
   "id": 92,
   "section": "Citation-precision pass — June 18, 2026",
-  "claim": "Invalidité IA: biais d'embauche (autisme), surveillance, avantages-ADM, Treviranus, assistance à l'envers (Ch 14)",
+  "claim": "Invalidité IA: biais d'embauche (autisme), surveillance, avantages-ADM, Treviranus, assistance à l'envers (Ch 15)",
   "status": "resolved",
-  "detail": "* CONFIRMÉ 2026-06-19. Préjugé d'embauche : U. Étude de Washington (Glazko et coll., ACM FACCT juin 2024) — GPT-4 classé CV LOWER lorsqu'ils incluaient des distinctions honorifiques liées au handicap; l'autisme a subi le pire des six handicaps testés (système rationalisé «moins d'accent sur le leadership»); l'anti-modalité incite à réduire mais ne l'a pas éliminée (INTERNATIONAL/universitaire). Les outils d'entretien vidéo et d'amélioration de l'IA désavantagent les candidats autistes (Bloomberg Law; US DOJ/EEOC ADA guidance 2022). Surveillance : la productivité de l'IA/la notation des effets, étalonnée selon les normes neurotypiques, pénalise les modèles ADHD/autistiques (défense/analyse – étiquetés comme tels). Avantages-ADM ancres internationales: Australie Robodebt (illégalité; ~470k affecté; ~1,2B$ de règlement; paiements d'invalidité/maladie touchés) + critique de planification algorithmique du NDIS. Treviranus (OCAD Inclusive Design Research Centre) : ML correspond à la moyenne → des personnes plus ou moins résistantes sur le plan structurel (« design pour les bords »; W3C 2020). UPSIDE d'aide: Soyez mes yeux + GPT-4 (\"Be My IA\") dans Microsoft's Disability Answer Desk — ~4 min avg résolution, 90%+ succès, 4.85/5 CSAT ( **VENDEUR-REPORTÉ, non vérifié** ). **LEAN : académique (plus fort) + plaidoyer/presse + entreprise (chiffres d'assistivité déclarés par le fournisseur); international clairement étiqueté; avantages ODSP/AISH canadiens-dommage IA NON confirmé et non revendiqué.**  |  [OW ChatGPT biais handicap](https://www.washington.edu/news/2024/06/21/chatgpt-ai-bias-ableism-disability-resume-cv/)  ·  [Treviranus, nous comptons (W3C 2020)](https://www.w3.org/2020/06/machine-learning-workshop/talks/we_count_fair_treatment_disability_and_machine_learning.html)  ·  [Commission royale Robodebt (UQ)](https://stories.uq.edu.au/momentum-magazine/robodebt-algorithmic-decision-making-mistakes/index.html)  ·  [Soyez mes yeux / Microsoft](https://www.bemyeyes.com/blog/introducing-microsofts-ai-powered-disability-answer-desk-on-be-my-eyes)",
+  "detail": "* CONFIRMÉ 2026-06-19. Préjugé d'embauche : U. Étude de Washington (Glazko et coll., ACM FACCT juin 2024) — GPT-4 classé CV LOWER lorsqu'ils incluaient des distinctions honorifiques liées au handicap; l'autisme a subi le pire des six handicaps testés (système rationalisé «moins d'accent sur le leadership»); l'anti-modalité incite à réduire mais ne l'a pas éliminée (INTERNATIONAL/universitaire). Les outils d'entretien vidéo et d'amélioration de l'IA désavantagent les candidats autistes (Bloomberg Law; US DOJ/EEOC ADA guidance 2022). Surveillance : la productivité de l'IA/la notation des effets calibrée en fonction des normes neurotypiques pénalise les modèles ADHD/autistiques (défense/analyse – étiquetés comme tels). Avantages-ADM ancres internationales: Australie Robodebt (illégalité; ~470k affecté; ~1,2B$ de règlement; paiements d'invalidité/maladie touchés) + critique de planification algorithmique du NDIS. Treviranus (OCAD Inclusive Design Research Centre) : ML correspond à la moyenne → des personnes plus ou moins résistantes sur le plan structurel (« design pour les bords »; W3C 2020). UPSIDE d'aide: Soyez mes yeux + GPT-4 (\"Be My IA\") dans Microsoft's Disability Answer Desk — ~4 min avg résolution, 90%+ succès, 4.85/5 CSAT ( **VENDEUR-REPORTÉ, non vérifié** ). **LEAN : académique (plus fort) + plaidoyer/presse + entreprise (chiffres d'assistivité déclarés par le fournisseur); international clairement étiqueté; avantages ODSP/AISH canadiens-dommage IA NON confirmé et non revendiqué.**  |  [OW ChatGPT biais handicap](https://www.washington.edu/news/2024/06/21/chatgpt-ai-bias-ableism-disability-resume-cv/)  ·  [Treviranus, nous comptons (W3C 2020)](https://www.w3.org/2020/06/machine-learning-workshop/talks/we_count_fair_treatment_disability_and_machine_learning.html)  ·  [Commission royale Robodebt (UQ)](https://stories.uq.edu.au/momentum-magazine/robodebt-algorithmic-decision-making-mistakes/index.html)  ·  [Soyez mes yeux / Microsoft](https://www.bemyeyes.com/blog/introducing-microsofts-ai-powered-disability-answer-desk-on-be-my-eyes)",
   "links": [
    [
     "UW ChatGPT disability bias",
@@ -1434,7 +1434,7 @@
  {
   "id": 93,
   "section": "Citation-precision pass — June 18, 2026",
-  "claim": "IA + cybersécurité au Canada : évaluation des menaces du CST, défense, double usage, C-26/C-8 (Ch 16)",
+  "claim": "IA + cybersécurité au Canada : évaluation des menaces du CST, défense, double usage, C-26/C-8 (Ch 17)",
   "status": "resolved",
   "detail": "* CONFIRMÉ 2026-06-19. CST / Centre canadien de cybersécurité, Évaluation nationale de la cybermenace 2025-2026 (publiée le 30 octobre 2024) : L'IA est « Trend 1 » – les acteurs de la menace « presque certainement » utilisent les LLM pour l'hameçonnage à grande échelle/ingénierie sociale, les outils générateurs pour les faucilles profondes et l'IA qui font des ransomwares... \"la cybermenace la plus sophistiquée et active de l'État\"; le DDoS lié à la Russie a frappé les sites fédéraux + Québec, y compris. la page publique de l'OMP (2023). DEFENCE: Anthropique \"Projet Glasswing\" ( **ENTREPRISE AUTO-DISCLOSURE** ) — il + ~50 partenaires ont signalé 10 000 vulnérabilités élevées/critiques trouvées via son modèle; étendu à environ 150 orgs (15 pays et plus); une banque partenaire a arrêté un transfert frauduleux de 1,5 million de dollars américains (Anthropic-reported, non audité de manière indépendante). Ancre à double usage : Rapport international sur la sécurité de l'IA (présidé par le Bengio) – L'IA réduit les coûts d'attaque et les pertes, mais « aucune preuve substantielle » permet aux agresseurs de trouver un équilibre entre l'infraction et la défense. Le CSE a jugé que l'IA était « très peu probable » pour saper fondamentalement les élections fédérales de 2025. Gouvernance : La Loi sur la protection des cybersystèmes critiques (projet de loi C-26) est décédée à la suite d'une prorogation en janvier 2025 et a été présentée de nouveau sous le nom de projet de loiC-8 (juin 2025); l'EDSTA de l'Ontario et le projet de Loi 51 du Manitoba fusionnent l'IA et la gouvernance de la cybersécurité. **LEAN: gouvernement/régulateur (CSE) + auto-divulgation des entreprises (Glasswing, signalé) + académique (rapport Bengio).**  |  [CSE NCTA 2025-2026](https://www.cyber.gc.ca/en/guidance/national-cyber-threat-assessment-2025-2026)  ·  [Aile de verre anthropique](https://www.anthropic.com/glasswing)  ·  [Rapport de sécurité Intl IA (arXiv)](https://arxiv.org/pdf/2412.05282)  ·  [Projet de loi C-26 (LEGISinfo)](https://www.parl.ca/legisinfo/en/bill/44-1/c-26)",
   "links": [
@@ -1459,9 +1459,9 @@
  {
   "id": 94,
   "section": "Citation-precision pass — June 18, 2026",
-  "claim": "L'IA dans l'économie canadienne des ressources et de l'agriculture (Ch 15)",
+  "claim": "L'IA dans l'économie canadienne des ressources et de l'agriculture (Ch 16)",
   "status": "resolved",
-  "detail": "* CONFIRMÉ 2026-06-19. La plupart du temps ML/automatisation/vision par ordinateur, pas générateur. Exploitation minière : L'usine de base de Suncor (Fort McMurray) déplace TOUS les minerais via des camions de transport autonomes, ~120 d'ici 2025 (la plus grande flotte d'un seul site à l'échelle mondiale); le programme prévoit une réduction d'environ 400 positions nettes (~200 000 $/an de rôles d'exploitant), Unifor a qualifié cette situation de menace plus importante que tout ralentissement pétrolier (cas de déplacement canadien canonique; les chiffres du dénombrement proviennent de ~2017-18, exécuté en 2024-25). Agriculture : la stratégie fédérale annonce la précision ag; le regroupement d'Industries protéiques Canada (8 M$ IA, mai 2025); mais l'adoption est mince (~27% auto-vireur, ~3,5 % drones; ~1⁄3 ménages ruraux manquent de bande large fiable = contrainte contraignante; le groupement d'outils à haut capex sur les grandes exploitations → consolidation). Forêts : RNCan/Service canadien des forêts Inventaire forestier LiDAR+ML (dirigé par le gouvernement). Énergie: contrôle de process Imperial Kearl ML crédité d'une sortie record (~281k bpd 2024; **Contribution de ML non isolée proprement** ; trade-press). Risque de lavage de l'IA : avis du personnel de la CSA 51-365 met en garde contre les allégations d'IA non étayées; MMC Ventures 2019 a trouvé ~40% des « startups d'IA » européennes n'utilisaient essentiellement aucune IA. **LEAN: entreprise/industrie (promotionnel) + gouvernement + syndicat (Unifor) + presse; chiffres marqués où vendeur/secondaire.**  |  [Fulotte autonome Suncor](https://www.suncor.com/en-ca/news-and-stories/our-stories/growing-the-largest-autonomous-fleet-in-canada)  ·  [Pertes d'emplois Unifor/CBC](https://www.cbc.ca/news/canada/calgary/suncor-driverless-trucks-job-losses-1.4512659)  ·  [Industries protéiques Canada 15M$](https://www.proteinindustriescanada.ca/news-releases/15m-genomics-ai)  ·  [RNCan Inventaire forestier LiDAR](https://natural-resources.canada.ca/forests-forestry/sustainable-forest-management/aerial-lidar-forest-inventory-monitoring)  ·  [CPA Canada lavage de l'IA](https://www.cpacanada.ca/news/innovation/ai-washing)",
+  "detail": "* CONFIRMÉ 2026-06-19. La plupart du temps ML/automatisation/vision par ordinateur, pas générateur. Exploitation minière : L'usine de base de Suncor (Fort McMurray) déplace TOUS les minerais via des camions de transport autonomes, ~120 d'ici 2025 (la plus grande flotte d'un seul site à l'échelle mondiale); le programme prévoit une réduction d'environ 400 positions nettes (~200 000 $/an de rôles d'exploitant), Unifor a qualifié cette situation de menace plus importante que tout ralentissement pétrolier (cas de déplacement canadien canonique; les chiffres du dénombrement proviennent de ~2017-18, exécuté en 2024-25). Agriculture : la stratégie fédérale annonce la précision ag; le regroupement d'Industries protéiques Canada (8 M$ IA, mai 2025); mais l'adoption est mince (~27% auto-vireur, ~3,5 % drones; ~1⁄3 ménages ruraux manquent de bande large fiable = contrainte contraignante; le groupement d'outils à haut capex sur les grandes exploitations → consolidation). Forêts : RNCan/Service canadien des forêts Inventaire forestier LiDAR+ML (dirigé par le gouvernement). Énergie : contrôle de process Imperial Kearl ML crédité d'une sortie record (~281k bpd 2024; **Contribution de ML non isolée proprement** ; trade-press). Risque de lavage de l'IA : avis du personnel de la CSA 51-365 met en garde contre les allégations d'IA non étayées; MMC Ventures 2019 a trouvé ~40% des « startups d'IA » européennes n'utilisaient essentiellement aucune IA. **LEAN: entreprise/industrie (promotionnel) + gouvernement + syndicat (Unifor) + presse; chiffres marqués où vendeur/secondaire.**  |  [Fulotte autonome Suncor](https://www.suncor.com/en-ca/news-and-stories/our-stories/growing-the-largest-autonomous-fleet-in-canada)  ·  [Pertes d'emplois Unifor/CBC](https://www.cbc.ca/news/canada/calgary/suncor-driverless-trucks-job-losses-1.4512659)  ·  [Industries protéiques Canada 15M$](https://www.proteinindustriescanada.ca/news-releases/15m-genomics-ai)  ·  [RNCan Inventaire forestier LiDAR](https://natural-resources.canada.ca/forests-forestry/sustainable-forest-management/aerial-lidar-forest-inventory-monitoring)  ·  [CPA Canada lavage de l'IA](https://www.cpacanada.ca/news/innovation/ai-washing)",
   "links": [
    [
     "Suncor autonomous fleet",
@@ -1540,7 +1540,7 @@
   "section": "Citation-precision pass — June 18, 2026",
   "claim": "Mécanique de la clause d'IA de l'artiste/auteur canadien + débardage et retard dans l'exécution (Ch 12)",
   "status": "resolved",
-  "detail": "(primaire, UBCP/ACTRA). Accord d'artiste interprète de la Colombie-Britannique (ACGPB) Article F : les répliques numériques exigent un préavis ≥48h, une « description raisonnablement spécifique » de l'utilisation prévue et un « consentement explicite, éclairé... signé ou paraphé »; le consentement « continue[s] à être valide après le décès, à moins qu'il ne soit expressément limité »; un EBDR utilisé en remplacement de l ́artiste est payé le tarif quotidien minimum par jour; **les répliques du perforateur de fond « ne doivent PAS être utilisées pour répondre au nombre de fond » (art. D501)** — une clause antisubstitution structurelle. **CARVE-OUT (chargé, verbal) : « Lorsqu'une production ajuste la voix à une langue étrangère, le consentement n'est pas requis pour l'instant. »** — c'est-à-dire Le doublage en langue étrangère de l'IA, qui est l'usage le plus difficile pour les acteurs québécois du doublement, est exempté. EXÉCUTION/GAL : les clauses sont nouvelles (2024-25), modélisées sur le modèle de US SAG-AFTRA, larguer ~1-2 ans, pas encore d'antécédents (CBC déc. 2023 : « aucun règlement de ce genre n'est en place au Canada »); membre de la Colombie-Britannique Jeremy Leroux sur une prolongation antérieure : « Pendant 18 mois, nous ne parlerons pas d'IA... la conversation sera terminée au moment où nous y arriverons ». IATSE « Principes de base » (juillet 2023) = politique internationale du Siège des États-Unis, PAS un résultat de négociation canadien. **LEAN: union (primaire sur les protections des membres; plaidoyer sur le cadrage) + presse générale (Globe/CBC).**  |  [UBCP/ACTRA Comprendre l'IA (article F)](https://ubcpactra.ca/understanding-ai/)  ·  [ACTRA IPA 2025-27 (PDF officiel)](https://www.actra.ca/wp-content/uploads/2025/06/ACTRA-CMPA-AQPM-Independent-Production-Agreement-2025-2027_OFFICIAL-COPY.pdf)  ·  [Accord entre le Groupe de travail et l'ACGP (délai)](https://deadline.com/2024/05/writers-guild-canada-cmpa-reach-production-agreement-1235906997/)  ·  [Globe — Unions de films de la Colombie-Britannique + IA](https://www.theglobeandmail.com/arts/article-bc-film-union-contracts-ai/)",
+  "detail": "(primaire, UBCP/ACTRA). Accord d'artiste interprète de la Colombie-Britannique (ACGPB) Article F : les répliques numériques exigent un préavis ≥48h, une « description raisonnablement spécifique » de l'utilisation prévue et un « consentement explicite, éclairé... signé ou paraphé »; le consentement « continue[s] à être valide après le décès, à moins qu'il ne soit expressément limité »; un EBDR utilisé en remplacement de l ́artiste est payé le tarif quotidien minimum par jour; **les répliques de l'arrière-plan-performeur « ne doivent PAS être utilisées pour répondre aux chiffres de l'« arrière-plan » (art. D501)** — une clause antisubstitution structurelle. **CARVE-OUT (chargé, verbal) : « Lorsqu'une production ajuste la voix à une langue étrangère, le consentement n'est pas requis pour l'instant. »** — c'est-à-dire IA doublage en langue étrangère, l'utilisation pressante sur les acteurs québécois du doublement, est exemptée. EXÉCUTION/GAL : les clauses sont nouvelles (2024-25), modélisées sur le modèle de US SAG-AFTRA, larguer ~1-2 ans, pas encore d'antécédents (CBC déc. 2023 : « aucun règlement de ce genre n'est en place au Canada »); membre de la Colombie-Britannique Jeremy Leroux sur une prolongation antérieure : « Pendant 18 mois, nous ne parlerons pas d'IA... la conversation sera terminée au moment où nous y arriverons ». IATSE « Principes de base » (juillet 2023) = politique internationale du Siège des États-Unis, PAS un résultat de négociation canadien. **LEAN: union (primaire sur les protections des membres; plaidoyer sur le cadrage) + presse générale (Globe/CBC).**  |  [UBCP/ACTRA Comprendre l'IA (article F)](https://ubcpactra.ca/understanding-ai/)  ·  [ACTRA IPA 2025-27 (PDF officiel)](https://www.actra.ca/wp-content/uploads/2025/06/ACTRA-CMPA-AQPM-Independent-Production-Agreement-2025-2027_OFFICIAL-COPY.pdf)  ·  [Accord entre le Groupe de travail et l'ACGP (délai)](https://deadline.com/2024/05/writers-guild-canada-cmpa-reach-production-agreement-1235906997/)  ·  [Globe — Unions de cinéma de la Colombie-Britannique + IA](https://www.theglobeandmail.com/arts/article-bc-film-union-contracts-ai/)",
   "links": [
    [
     "UBCP/ACTRA Understanding AI (Article F)",
@@ -1557,6 +1557,124 @@
    [
     "Globe — BC film unions + AI",
     "https://www.theglobeandmail.com/arts/article-bc-film-union-contracts-ai/"
+   ]
+  ]
+ },
+ {
+  "id": 98,
+  "section": "Citation-precision pass — June 18, 2026",
+  "claim": "Online News Act (C-18), Meta bloc, Google deal (Ch 14)",
+  "status": "resolved",
+  "detail": "• CONFIRMED 2026-06-20 (primaire). Loi sur les nouvelles en ligne (projet de loi C-18) sanction royale le 22 juin 2023; règlement final publié le 15 décembre 2023 (en vigueur le 19 décembre; Gazette du Canada Partie II, 3 janvier 2024). Meta a bloqué les nouvelles canadiennes sur Facebook/Instagram à partir d'août 2023, toujours en vigueur (CRTC 3 déc. 2025 lettre : aucune mesure réglementaire prévue, « continuera de surveiller la situation »). Marché de Google : ~100 M$/an indexés à l'inflation en un seul collectif (Collective du journalisme canadien) en échange d'une exemption de 5 ans de la négociation obligatoire (annonce du 29 novembre 2023). **LEAN : primaire gouvernement/régulateur (statut, Patrimoine, CRTC); les choix opposés des plateformes (blocs Meta, Google-pay) sont auto-intéressés.**  |  [LÉGISinfo C-18](https://www.parl.ca/legisinfo/en/bill/44-1/c-18)  ·  [Heritage final regs + Google deal](https://www.canada.ca/en/canadian-heritage/news/2023/12/minister-st-onge-releases-final-regulations-for-the-online-news-act.html)  ·  [Métalettre du CRTC (déc. 2025)](https://crtc.gc.ca/eng/archive/2025/lb251203.htm)",
+  "links": [
+   [
+    "LEGISinfo C-18",
+    "https://www.parl.ca/legisinfo/en/bill/44-1/c-18"
+   ],
+   [
+    "Heritage final regs + Google deal",
+    "https://www.canada.ca/en/canadian-heritage/news/2023/12/minister-st-onge-releases-final-regulations-for-the-online-news-act.html"
+   ],
+   [
+    "CRTC Meta letter (Dec 2025)",
+    "https://crtc.gc.ca/eng/archive/2025/lb251203.htm"
+   ]
+  ]
+ },
+ {
+  "id": 99,
+  "section": "Citation-precision pass — June 18, 2026",
+  "claim": "effondrement des revenus des nouvelles + fermetures locales (Ch 14)",
+  "status": "resolved",
+  "detail": "• CONFIRMED 2026-06-20 (primaire). StatCan « Éditeurs de journaux, 2024 » (Le Quotidien, 10 novembre 2025) : total des revenus d'exploitation 1,6 milliard de dollars, en baisse de 17,9% par rapport à 2022; les ventes publicitaires ont chuté de 26,1% à 722,8 millions de dollars (annonce imprimée −34,3%; publicité numérique −11,9%). Fermetures locales: Projet de recherche TMU Local News / Local News Map — 603 agences de presse locales ont fermé leurs portes dans 388 communautés entre 2008 et le 1er octobre 2025 (une fraction seulement a relancé et survécu); \"news désert\" cadrage. **C'est le plancher pré-IA — le déclin est la migration de publicité, PAS l'IA générative.**   **LEAN: gouvernement (StatCan) + académique/sans but lucratif (TMU / April Lindgren).**  |  [StatCan journaux 2024](https://www150.statcan.gc.ca/n1/daily-quotidien/251110/dq251110a-eng.htm)  ·  [Projet de recherche sur les nouvelles locales (octobre 2025)](https://localnewsresearchproject.ca/2025/10/31/the-rise-of-news-deserts-local-journalism-in-crisis/)",
+  "links": [
+   [
+    "StatCan newspapers 2024",
+    "https://www150.statcan.gc.ca/n1/daily-quotidien/251110/dq251110a-eng.htm"
+   ],
+   [
+    "Local News Research Project (Oct 2025)",
+    "https://localnewsresearchproject.ca/2025/10/31/the-rise-of-news-deserts-local-journalism-in-crisis/"
+   ]
+  ]
+ },
+ {
+  "id": 100,
+  "section": "Citation-precision pass — June 18, 2026",
+  "claim": "Newsroom Lignes directrices sur l'IA + Automatisation des sophis (Ch 14)",
+  "status": "resolved",
+  "detail": "- CONFIRMED 2026-06-20 (primaire/cité; CORPORATE AUTO-DISCLOSURE). CBC News : « Les employés de CBC News, et non les outils d'IA, créent et sont responsables de notre journalisme » ; pas d'IA « au premier stade de la composition » pour le contenu du public ; un découpage étroit pour transformer le contenu (text-to-speech, légendes) sans publication préalable d'un humain dans la boucle. The Canadian Press (EIC Andrea Baillie) : La sortie de l'IA est « un matériau source non vétusté... chaque mot doit être vérifié »; barre la copie de réécriture/édition de l 'IA. Globe and Mail: barres IA pour \"écrire ou éditer des histoires\" et le photojournalisme; le net \"ne va pas l'utiliser pour écrire nos histoires\" est **Melissa Stasiuk via J-Source, PAS la page politique** . Le Conseil de presse du Québec a adopté un principe d'IA (avril 2024) qui exige le contrôle éditorial humain du contenu d'IA avant sa publication. Sophi.io de Globe place « plus de 99% » du contenu sur ses pages numériques (vendor/Mather Economics auto-rapport, pas un audit). **LEAN: auto-divulgation de l'entreprise — lire pour ce à quoi ils ne s'engagent PAS (esp. la dotation en personnel).**  |  [Lignes directrices de CBC IA](https://www.cbc.ca/news/ai-principles-practices-cbc-news-9.7205947)  ·  [Lignes directrices Globe IA](https://www.theglobeandmail.com/canada/article-the-globe-and-mails-guidelines-on-ai-and-the-newsroom/)  ·  [Conseil de presse QC](https://conseildepresse.qc.ca/actualites/le-conseil-de-presse-lance-son-nouveau-principe-deontologique-sur-lintelligence-artificielle/)  ·  [J-Source — IA dans les salles de presse du Cdn](https://j-source.ca/ai-in-canadian-newsrooms-media-engaging-cautiously/)",
+  "links": [
+   [
+    "CBC AI guidelines",
+    "https://www.cbc.ca/news/ai-principles-practices-cbc-news-9.7205947"
+   ],
+   [
+    "Globe AI guidelines",
+    "https://www.theglobeandmail.com/canada/article-the-globe-and-mails-guidelines-on-ai-and-the-newsroom/"
+   ],
+   [
+    "Conseil de presse QC",
+    "https://conseildepresse.qc.ca/actualites/le-conseil-de-presse-lance-son-nouveau-principe-deontologique-sur-lintelligence-artificielle/"
+   ],
+   [
+    "J-Source — AI in Cdn newsrooms",
+    "https://j-source.ca/ai-in-canadian-newsrooms-media-engaging-cautiously/"
+   ]
+  ]
+ },
+ {
+  "id": 101,
+  "section": "Citation-precision pass — June 18, 2026",
+  "claim": "Mises à pied dans le secteur des nouvelles: Bell, Corus (Ch 14)",
+  "status": "resolved",
+  "detail": "- CONFIRMED 2026-06-20 (unifor primaire). Bell Media coupes de masse février 2024: Unifor décrit ~4 800 emplois dans toute l'entreprise, ~800 membres Unifor, ~100 dans les médias ( **aucun communiqué de presse BCE/Bell confirmant la localisation de 4 800 personnes — attribut à la caractérisation par Unifor de l'annonce de Bell** ). Un tour Bell séparé au début de 2026 coupe ~20 Unifor membres incl. 11 journalistes (ne pas congeler les deux événements). La restructuration de Corus/Global News Juin 2024 : 35 membres d'Unifor coupés; Unifor titre « Global News licenciements grossissent les déserts d'information partout au Canada ». **ATTENTION: la plupart des coupes dues à la dette, à la publicité et à la consolidation ne sont pas attribuées à l'IA.**   **LEAN: union (primaire sur les comptes; plaidoyer sur le cadrage).**  |  [Unifor Bell (Fév 2024)](https://www.unifor.org/news/all-news/bell-axes-workers-while-lining-pockets-shareholders)  ·  [Unifor Bell (2026)](https://www.unifor.org/news/all-news/canadian-journalism-hit-again-bell-media-lays-20-unifor-members-nationwide)  ·  [Unifor Global/Corus](https://www.unifor.org/news/all-news/global-news-layoffs-magnify-news-deserts-across-canada)",
+  "links": [
+   [
+    "Unifor Bell (Feb 2024)",
+    "https://www.unifor.org/news/all-news/bell-axes-workers-while-lining-pockets-shareholders"
+   ],
+   [
+    "Unifor Bell (2026)",
+    "https://www.unifor.org/news/all-news/canadian-journalism-hit-again-bell-media-lays-20-unifor-members-nationwide"
+   ],
+   [
+    "Unifor Global/Corus",
+    "https://www.unifor.org/news/all-news/global-news-layoffs-magnify-news-deserts-across-canada"
+   ]
+  ]
+ },
+ {
+  "id": 102,
+  "section": "Citation-precision pass — June 18, 2026",
+  "claim": "Coalition canadienne de nouvelles c. OpenAI (Ch 14)",
+  "status": "resolved",
+  "detail": "- CONFIRMED 2026-06-20 (cour/presse). La Coalition (CBC/Radio-Canada, The Canadian Press, Torstar, The Globe and Mail, Postmedia, Metroland) a poursuivi OpenAI devant la Cour supérieure de justice de l'Ontario (~29 nov. 2024) pour avoir allégué la mise au rebut non autorisé du journalisme pour former ChatGPT; elle a demandé des dommages-intérêts. STATUT: les éditeurs ont remporté la motion de compétence ( *Toronto Star Newspapers Ltd. c. Royaume-Uni OpenAI* , juge Kimmel, 7 novembre 2025 — produit en Ontario); **OpenAI a fait appel de la décision de compétence; le fond n'est pas déterminé.** La doctrine du droit d'auteur est traitée dans le chapitre 11. **LEAN: dossier judiciaire + presse.**  |  [CBC — la coalition poursuit OpenAI](https://www.cbc.ca/news/business/openai-canadian-lawsuit-1.7396940)  ·  [Globe — les éditeurs gagnent la motion de compétence](https://www.theglobeandmail.com/business/article-openai-chatgpt-media-outlets-win-motion-ontario-court/)",
+  "links": [
+   [
+    "CBC — coalition sues OpenAI",
+    "https://www.cbc.ca/news/business/openai-canadian-lawsuit-1.7396940"
+   ],
+   [
+    "Globe — publishers win jurisdiction motion",
+    "https://www.theglobeandmail.com/business/article-openai-chatgpt-media-outlets-win-motion-ontario-court/"
+   ]
+  ]
+ },
+ {
+  "id": 103,
+  "section": "Citation-precision pass — June 18, 2026",
+  "claim": "Les réseaux \"slop\"/\"slopaganda\", élections de 2025 (Ch 14)",
+  "status": "resolved",
+  "detail": "(réseau de recherche/presse). Le Réseau canadien de recherche sur les médias numériques (CDMRN / McGill Media Ecosystem Observatory) a documenté des annonces d'IA qui se font passer pour de vraies marques de nouvelles canadiennes (**La SRC et CTV ont confirmé** ; une annonce française a utilisé le logo CBC/Radio-Canada) pour des escroqueries cryptographiques et des investissements, ainsi que 7 vidéos Carney deepfake sur plus de 25 comptes Facebook. ( **Toronto Sun / La Presse NON confirmé à CDMRN — exclu.** ) Séparément, les réseaux YouTube « IA slop » se présentant comme des nouvelles canadiennes ont poussé à la fraude électorale et au séparatisme en Alberta — DFRLab (Atlantic Council, 17 juillet 2025) : 42 chaînes, 771 vidéos, 5M+ vues avant les prises de vue. Le volet albertaine-séparatisme a été surnommé « slopaganda » par **CBC/CDMRN (terme NOT from DFRLab, qui dit \"IA slop\")** . Détection/régulation traitée en Ch 13; se connecte à l'IA du chiffre (reçu no 75). **LEAN: réseau de recherche universitaire (CDMRN) + think-tank (DFRLab — [INTL] US) + presse; dépendant des méthodes.**  |  [CDMRN — fausses nouvelles de l'IA arnaque](https://www.cdmrn.ca/publications/scam-ai-fake-news)  ·  [DFRLab — Chaînes d'information IA](https://dfrlab.org/2025/07/17/ai-generated-news-channels-spread-election-fraud-and-separatist-narratives-in-canada/)",
+  "links": [
+   [
+    "CDMRN — scam AI fake news",
+    "https://www.cdmrn.ca/publications/scam-ai-fake-news"
+   ],
+   [
+    "DFRLab — AI news channels",
+    "https://dfrlab.org/2025/07/17/ai-generated-news-channels-spread-election-fraud-and-separatist-narratives-in-canada/"
    ]
   ]
  }
