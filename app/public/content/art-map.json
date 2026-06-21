@@ -354,7 +354,12 @@
     "14": {
       "opener": null,
       "accents": [],
-      "panels": []
+      "panels": [
+        {
+          "src": "figures/fig-14.1-news-revenue-decline.webp",
+          "caption": "Before anyone blamed AI, the money was already leaving: Canadian newspaper revenue fell 17.9% from 2022 to 2024, advertising sales by about a quarter, and print ads by more than a third. AI arrived at an industry that was already shrinking."
+        }
+      ]
     },
     "15": {
       "opener": "medium/ch14-cover-medium.webp",
