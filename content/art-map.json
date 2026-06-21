@@ -378,11 +378,11 @@
           "caption": null
         },
         {
-          "src": "figures/fig-14.1-three-biases.webp",
+          "src": "figures/fig-15.1-three-biases.webp",
           "caption": "Bias in AI is not only a data-cleaning problem. Cleaning the data reaches statistical bias, but social bias (stereotypes baked into the corpus) and structural bias (the metric chosen, the people the system was built to serve) sit in the outer rings, untouched. A system 99% accurate on average can still be 90% accurate on your face."
         },
         {
-          "src": "figures/fig-14.2-gender-shades.webp",
+          "src": "figures/fig-15.2-gender-shades.webp",
           "caption": "An accuracy score is an average, and averages hide the people the system fails. The Gender Shades study found commercial face-classifiers misread lighter-skinned men 0.8% of the time and darker-skinned women up to 34.7% — the same product, off by more than fortyfold depending on whose face it met. \"Ninety-nine percent accurate\" overall is not ninety-nine percent accurate on you."
         }
       ]
@@ -400,23 +400,23 @@
           "caption": null
         },
         {
-          "src": "figures/fig-15.1-jobs-adoption.webp",
+          "src": "figures/fig-16.1-jobs-adoption.webp",
           "caption": "Canadian business AI adoption is accelerating — 6.1% to 19.2% in two years, against a 60% target for 2034. The displacement-versus-augmentation debate misses the real move: work shifting toward lower wages, less stability, and more surveillance, even as the aggregate employment numbers stay calm."
         },
         {
-          "src": "figures/fig-15.2-sector-adoption.webp",
+          "src": "figures/fig-16.2-sector-adoption.webp",
           "caption": "AI adoption isn't evenly spread: information, professional-services, and finance run roughly triple the 12.2% national average. That's the white-collar, desk-work economy — and exactly where the displacement pressure concentrates."
         },
         {
-          "src": "figures/fig-15.3-adoption-gauge.webp",
+          "src": "figures/fig-16.3-adoption-gauge.webp",
           "caption": "Canadian business AI adoption tripled in two years to 19.2%. The federal target is 60% by 2034 — another near-tripling — ambitious, but on these curves not impossible."
         },
         {
-          "src": "figures/fig-15.4-jobs-waffle.webp",
+          "src": "figures/fig-16.4-jobs-waffle.webp",
           "caption": "Canada's own framing splits the affected workforce in two: roughly 31 of every 100 jobs likely to dramatically change or disappear, and 29 likely to work alongside AI. The neat binary leaves out a third outcome this chapter keeps finding: the same job, kept, but intensified and surveilled."
         },
         {
-          "src": "figures/fig-15.5-theoretical-vs-observed.webp",
+          "src": "figures/fig-16.5-theoretical-vs-observed.webp",
           "caption": "Two shapes, one story. The blue is what large language models could theoretically do across each job's tasks; the red is what they are observed actually doing in real work. The red is a fraction of the blue, and both crowd into the same white-collar corners: computer and math, office and admin, business and finance. The gap is the part worth watching, because it is what narrows as capability, adoption, and deployment catch up. (US data, after Anthropic's Economic Index; read it as the pattern, not a Canadian measurement.)",
           "withPrev": true
         }
@@ -438,19 +438,19 @@
           "caption": null
         },
         {
-          "src": "figures/fig-16.1-governance-jurisdiction.webp",
+          "src": "figures/fig-17.1-governance-jurisdiction.webp",
           "caption": "There is no single switch for AI in Canada. The 1867 Constitution puts most of the places AI actually touches a life — health, employment, education — under provincial jurisdiction, which is why the same hiring tool can get six different regulatory answers depending on who's asking and where."
         },
         {
-          "src": "figures/fig-16.2-governance-architecture.webp",
+          "src": "figures/fig-17.2-governance-architecture.webp",
           "caption": "Canada has real AI-governance institutions and no central coordinator — no designated AI regulator and no binding AI law since AIDA died in January 2025. Authority is scattered across federal departments, research and oversight bodies, sectoral regulators, and the provinces, which is why the same AI use can fall under several rules at once, or none. ---"
         },
         {
-          "src": "figures/fig-16.3-signed-not-signed.webp",
+          "src": "figures/fig-17.3-signed-not-signed.webp",
           "caption": "Canada readily joins the soft, voluntary AI instruments — the OECD principles, the G7 code, UNESCO ethics, and (on paper) the Council of Europe convention. The binding commitments are the gaps: the Beijing performer-rights treaty unsigned, and no binding domestic AI law since AIDA died."
         },
         {
-          "src": "figures/fig-16.4-voluntary-code.webp",
+          "src": "figures/fig-17.4-voluntary-code.webp",
           "caption": "Forty-six organizations signed Canada's Voluntary Code of Conduct on generative AI. The number of binding enforcement mechanisms attached to those signatures is zero: no penalty, no audit, no mandatory disclosure (and Microsoft never signed). A signatory list tells you who was willing to be seen signing, not what happens when someone breaks the code — because nothing does."
         }
       ]
@@ -468,19 +468,19 @@
           "caption": null
         },
         {
-          "src": "figures/fig-17.1-transparency-drop.webp",
+          "src": "figures/fig-18.1-transparency-drop.webp",
           "caption": "In the year AI deployment grew fastest, the companies building it became measurably less transparent: the mean Stanford transparency score fell 17 points, and engagement with the assessment collapsed from 74% to 30%. Transparency is the precondition for every other kind of accountability — and it went the wrong way."
         },
         {
-          "src": "figures/fig-17.2-fmti-engagement.webp",
+          "src": "figures/fig-18.2-fmti-engagement.webp",
           "caption": "It is not only that companies disclosed less; most stopped participating in the transparency assessment at all, with engagement falling from 74% to 30% in a single year. Declining to be measured is itself a finding."
         },
         {
-          "src": "figures/fig-17.3-transparency-dumbbell.webp",
+          "src": "figures/fig-18.3-transparency-dumbbell.webp",
           "caption": "From 2024 to 2025 transparency fell almost everywhere — Meta, Mistral, and OpenAI all dropped, and the mean fell 17 points. The handful that rose did so mostly by holding steady while everyone around them slid; IBM's 95 was the lone high."
         },
         {
-          "src": "figures/fig-17.4-pue-reporting.webp",
+          "src": "figures/fig-18.4-pue-reporting.webp",
           "caption": "You cannot hold a number you were never given. Only about 22 of every 100 Canadian data centres report their energy efficiency, against roughly 71 of 100 worldwide: Canada discloses less about its own footprint than the global baseline. The transparency gap sits upstream of every accountability gap that follows it."
         }
       ]
@@ -498,7 +498,7 @@
           "caption": null
         },
         {
-          "src": "figures/fig-18.1-toolkit-flow.webp",
+          "src": "figures/fig-19.1-toolkit-flow.webp",
           "caption": "This is the guide's actual product: three portable questions for any AI claim, from any source — who counted it, what got left out of the count, and can anyone outside the building check. Apply them to government, corporate, advocacy, and academic claims alike — and to this book's. The goblin isn't in the margins anymore; it's you."
         }
       ]
@@ -516,7 +516,7 @@
           "caption": null
         },
         {
-          "src": "figures/fig-19.1-coalition.webp",
+          "src": "figures/fig-20.1-coalition.webp",
           "caption": "A likeness-rights law is a coalition waiting to be picked up: performers' unions want it to protect their faces and voices, privacy researchers want it to stop non-consensual deepfakes — the same mechanism for opposite reasons. The pieces already exist (Denmark's precedent, disclosure thresholds half-built); what's missing is coordination, not feasibility. ---"
         }
       ]
