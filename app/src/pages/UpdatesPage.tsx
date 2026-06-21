@@ -30,6 +30,7 @@ const UPDATES: UpdateEntry[] = [
       "Chapter 5 now has a “Follow the money” table laying out every AI for All funding commitment in one scannable place — the same figures as the text, easier to take in at a glance.",
       "The site loads noticeably faster on phones now, after a pass on how the fonts and the opening screen load. No reading content changed.",
       "Each chapter now carries its own description for search results and link previews, so a shared chapter link shows what that chapter is about instead of the generic site blurb.",
+      "Chapter 14 (The News) has a new newsroom cover illustration.",
     ],
   },
   {
