@@ -1430,5 +1430,59 @@
     "https://www.bemyeyes.com/blog/introducing-microsofts-ai-powered-disability-answer-desk-on-be-my-eyes"
    ]
   ]
+ },
+ {
+  "id": 93,
+  "section": "Citation-precision pass — June 18, 2026",
+  "claim": "AI + cybersecurity in Canada: CSE threat assessment, defence, dual-use, C-26/C-8 (Ch 16)",
+  "status": "resolved",
+  "detail": "✅ CONFIRMED 2026-06-19. CSE / Canadian Centre for Cyber Security, National Cyber Threat Assessment 2025-2026 (released Oct 30 2024): AI is \"Trend 1\" — threat actors \"almost certainly\" using LLMs for scaled phishing/social engineering, generative tools for deepfakes, and AI making ransomware \"cheaper and faster... harder to detect\"; PRC \"most sophisticated and active state cyber threat\"; Russia-linked DDoS hit federal + Quebec sites incl. the PMO public page (2023). DEFENCE: Anthropic \"Project Glasswing\" (**CORPORATE SELF-DISCLOSURE**) — it + ~50 partners reported 10,000+ high/critical vulnerabilities found via its model; expanded to ~150 orgs (15+ countries); a partner bank stopped a US$1.5M fraudulent transfer (Anthropic-reported, not independently audited). Dual-use anchor: International AI Safety Report (Bengio-chaired) — AI lowers attack cost/skill but \"no substantial evidence yet\" it tips the offence-defence balance to attackers. CSE judged AI \"very unlikely\" to fundamentally undermine the 2025 federal election. Governance: Critical Cyber Systems Protection Act (Bill C-26) died on prorogation Jan 2025, reintroduced as Bill C-8 (June 2025); Ontario EDSTA + Manitoba Bill 51 fuse AI + cybersecurity governance. **LEAN: government/regulator (CSE) + corporate self-disclosure (Glasswing, flagged) + academic (Bengio report).** | [CSE NCTA 2025-2026](https://www.cyber.gc.ca/en/guidance/national-cyber-threat-assessment-2025-2026) · [Anthropic Glasswing](https://www.anthropic.com/glasswing) · [Intl AI Safety Report (arXiv)](https://arxiv.org/pdf/2412.05282) · [Bill C-26 (LEGISinfo)](https://www.parl.ca/legisinfo/en/bill/44-1/c-26)",
+  "links": [
+   [
+    "CSE NCTA 2025-2026",
+    "https://www.cyber.gc.ca/en/guidance/national-cyber-threat-assessment-2025-2026"
+   ],
+   [
+    "Anthropic Glasswing",
+    "https://www.anthropic.com/glasswing"
+   ],
+   [
+    "Intl AI Safety Report (arXiv)",
+    "https://arxiv.org/pdf/2412.05282"
+   ],
+   [
+    "Bill C-26 (LEGISinfo)",
+    "https://www.parl.ca/legisinfo/en/bill/44-1/c-26"
+   ]
+  ]
+ },
+ {
+  "id": 94,
+  "section": "Citation-precision pass — June 18, 2026",
+  "claim": "AI in Canada's resource/agriculture economy (Ch 15)",
+  "status": "resolved",
+  "detail": "✅ CONFIRMED 2026-06-19. Mostly ML/automation/computer-vision, not generative. Mining: Suncor Base Plant (Fort McMurray) moves ALL ore via autonomous haul trucks, ~120 by 2025 (largest single-site fleet globally); program projected to cut ~400 net positions (~$200k/yr operator roles), Unifor called it a bigger threat than any oil downturn (the canonical Canadian displacement case; headcount figures originate ~2017-18, executed 2024-25). Agriculture: federal strategy flags precision ag; Protein Industries Canada cluster ($8M AI, May 2025); but adoption thin (~27% auto-steer, ~3.5% drones; ~⅓ rural households lack reliable broadband = binding constraint; high-capex tools cluster on large farms → consolidation). Forestry: NRCan/Canadian Forest Service LiDAR+ML forest inventory (government-led). Energy: Imperial Kearl process-control ML credited with record output (~281k bpd 2024; **ML contribution not cleanly isolated**; trade-press). AI-washing risk: CSA Staff Notice 51-365 warns on unsubstantiated AI claims; MMC Ventures 2019 found ~40% of European \"AI startups\" used essentially no AI. **LEAN: company/industry (promotional) + government + union (Unifor) + press; figures flagged where vendor/secondary.** | [Suncor autonomous fleet](https://www.suncor.com/en-ca/news-and-stories/our-stories/growing-the-largest-autonomous-fleet-in-canada) · [Unifor/CBC job losses](https://www.cbc.ca/news/canada/calgary/suncor-driverless-trucks-job-losses-1.4512659) · [Protein Industries Canada $15M](https://www.proteinindustriescanada.ca/news-releases/15m-genomics-ai) · [NRCan LiDAR forest inventory](https://natural-resources.canada.ca/forests-forestry/sustainable-forest-management/aerial-lidar-forest-inventory-monitoring) · [CPA Canada AI-washing](https://www.cpacanada.ca/news/innovation/ai-washing)",
+  "links": [
+   [
+    "Suncor autonomous fleet",
+    "https://www.suncor.com/en-ca/news-and-stories/our-stories/growing-the-largest-autonomous-fleet-in-canada"
+   ],
+   [
+    "Unifor/CBC job losses",
+    "https://www.cbc.ca/news/canada/calgary/suncor-driverless-trucks-job-losses-1.4512659"
+   ],
+   [
+    "Protein Industries Canada $15M",
+    "https://www.proteinindustriescanada.ca/news-releases/15m-genomics-ai"
+   ],
+   [
+    "NRCan LiDAR forest inventory",
+    "https://natural-resources.canada.ca/forests-forestry/sustainable-forest-management/aerial-lidar-forest-inventory-monitoring"
+   ],
+   [
+    "CPA Canada AI-washing",
+    "https://www.cpacanada.ca/news/innovation/ai-washing"
+   ]
+  ]
  }
 ]
