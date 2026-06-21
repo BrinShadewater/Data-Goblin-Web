@@ -41,12 +41,36 @@ function chapterTitle(dir, n, lang) {
     return lang === "fr" ? `Chapitre ${n} : ${t}` : `Chapter ${n}: ${t}`;
   } catch { return lang === "fr" ? `Chapitre ${n}` : `Chapter ${n}`; }
 }
+// Per-chapter meta description: strip markdown from the chapter's own intro
+// (startHere, else its first section) and clip to ~155 chars at a word boundary.
+// Falls back to the site default if the chapter has no usable lede.
+function stripMd(s) {
+  return String(s || "")
+    .replace(/\[([^\]]+)\]\([^)]*\)/g, "$1")
+    .replace(/[*_`#>]/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+function clipDesc(s) {
+  if (s.length <= 155) return s;
+  const cut = s.slice(0, 155);
+  const i = cut.lastIndexOf(" ");
+  return (i > 60 ? cut.slice(0, i) : cut).replace(/[\s,;:.—-]+$/, "") + "…";
+}
+function chapterDesc(dir, n, fallback) {
+  try {
+    const ch = JSON.parse(fs.readFileSync(path.join(dir, `ch${String(n).padStart(2, "0")}.json`), "utf8"));
+    const lede = ch.startHere || (Array.isArray(ch.sections) && ch.sections[0] && ch.sections[0].markdown) || "";
+    const d = clipDesc(stripMd(lede));
+    return d.length >= 60 ? d : fallback;
+  } catch { return fallback; }
+}
 try {
   const enDir = path.join(DIST, "content", "chapters");
   const frDir = path.join(DIST, "content", "fr", "chapters");
   for (const f of fs.readdirSync(enDir).filter((n) => /^ch\d+\.json$/.test(n))) {
     const n = JSON.parse(fs.readFileSync(path.join(enDir, f), "utf8")).number;
-    ROUTE_META.push([`/chapter/${n}`, chapterTitle(enDir, n, "en"), DESC_EN, chapterTitle(frDir, n, "fr"), DESC_FR]);
+    ROUTE_META.push([`/chapter/${n}`, chapterTitle(enDir, n, "en"), chapterDesc(enDir, n, DESC_EN), chapterTitle(frDir, n, "fr"), chapterDesc(frDir, n, DESC_FR)]);
   }
 } catch (e) { console.warn("prerender-meta: chapter read warning —", e.message); }
 
