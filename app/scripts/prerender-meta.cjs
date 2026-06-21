@@ -215,41 +215,7 @@ function routeBodyHtml(route, lang) {
 // replaces it on mount, so real users never see it, but raw-HTML crawlers and
 // non-rendering AI bots get a real H1, an intro paragraph, internal links, and —
 // for chapter routes — the full chapter body.
-// Visible, styled homepage hero rendered into #root so first paint (and the LCP
-// hero image) happen from raw HTML instead of waiting on the React bundle. React's
-// createRoot replaces it on mount with the matching LandingHero, so the swap is
-// near-invisible (same image URL, same layout). EN only; FR keeps the light
-// crawler shell. Styling lives in index.html critical CSS (.dg-* classes).
-function homeHeroHtml() {
-  const nav = NAV_EN.map(([href, label]) => `<a href="${href}">${esc(label)}</a>`).join("") + `<a href="/fr">Édition française</a>`;
-  const flagSet = "/art/panels/canada-flag-panel-640w.webp 640w, /art/panels/canada-flag-panel-960w.webp 960w, /art/panels/canada-flag-panel.webp 1024w";
-  const heroSet = "/art/panels/hero-panel-640w.webp 640w, /art/panels/hero-panel-960w.webp 960w, /art/panels/hero-panel.webp 1024w";
-  return `<div data-prerender-hero>` +
-    `<div class="dg-topbar"></div>` +
-    `<main class="dg-heromain"><section class="dg-hero">` +
-      `<div class="dg-hero-col">` +
-        `<div class="dg-hero-eyebrow">Free interactive web book · June 2026</div>` +
-        `<div class="dg-hero-titlerow">` +
-          `<h1 class="dg-hero-title">Data Goblin</h1>` +
-          `<img class="dg-hero-flag" src="/art/panels/canada-flag-panel-640w.webp" srcset="${flagSet}" sizes="(max-width: 720px) 150px, 210px" width="1024" height="1024" alt="" aria-hidden="true" decoding="async" />` +
-        `</div>` +
-        `<p class="dg-hero-subtitle">A Field Guide to AI, Power, and Data in Canada</p>` +
-        `<p class="dg-hero-body">A plain-language guide for reading AI claims in Canada: who counted what, who benefits, what is still contested, and where the receipts live.</p>` +
-        `<div class="dg-hero-cta">` +
-          `<a class="dg-hero-btn dg-hero-btn-primary" href="/chapter/1">Begin with Chapter 1</a>` +
-          `<a class="dg-hero-btn dg-hero-btn-secondary" href="/guide">Open the guide</a>` +
-        `</div>` +
-      `</div>` +
-      `<div class="dg-hero-card">` +
-        `<img class="dg-hero-img" src="/art/panels/hero-panel-640w.webp" srcset="${heroSet}" sizes="(max-width: 720px) 92vw, (max-width: 1100px) 46vw, 650px" width="1024" height="1024" alt="Data Goblin inspecting a trail of receipts and glowing evidence crystals" fetchpriority="high" decoding="async" />` +
-      `</div>` +
-    `</section></main>` +
-    `<nav class="dg-srnav" aria-label="Primary navigation">${nav}</nav>` +
-  `</div>`;
-}
-
 function seoShell(route, h1, desc, lang) {
-  if (route === "" && lang === "en") return homeHeroHtml();
   const nav = (lang === "fr" ? NAV_FR : NAV_EN).map(([href, label]) => `<a href="${href}">${esc(label)}</a>`).join("");
   const altHref = lang === "fr" ? (route || "/") : "/fr" + route;
   const altLabel = lang === "fr" ? "English edition" : "Édition française";
