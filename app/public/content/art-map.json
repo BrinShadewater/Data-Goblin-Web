@@ -352,6 +352,11 @@
       ]
     },
     "14": {
+      "opener": null,
+      "accents": [],
+      "panels": []
+    },
+    "15": {
       "opener": "medium/ch14-cover-medium.webp",
       "accents": [
         "small/sorting.webp",
@@ -373,7 +378,7 @@
         }
       ]
     },
-    "15": {
+    "16": {
       "opener": "medium/ch15-cover-medium.webp",
       "accents": [
         "small/robot.webp",
@@ -408,7 +413,7 @@
         }
       ]
     },
-    "16": {
+    "17": {
       "opener": "medium/ch16-cover-medium.webp",
       "accents": [
         "small/security-act.webp",
@@ -441,7 +446,7 @@
         }
       ]
     },
-    "17": {
+    "18": {
       "opener": "medium/ch17-cover-medium.webp",
       "accents": [
         "small/security-badge.webp",
@@ -471,7 +476,7 @@
         }
       ]
     },
-    "18": {
+    "19": {
       "opener": "medium/ch18-cover-medium.webp",
       "accents": [
         "small/ai-knowledge.webp",
@@ -489,7 +494,7 @@
         }
       ]
     },
-    "19": {
+    "20": {
       "opener": "medium/ch19-cover-medium.webp",
       "accents": [
         "small/canada-and-beaver.webp",
@@ -507,7 +512,7 @@
         }
       ]
     },
-    "20": {
+    "21": {
       "opener": "medium/ch20-cover-medium.webp",
       "accents": [
         "small/waving-mascot.webp",
@@ -525,7 +530,7 @@
         }
       ]
     },
-    "21": {
+    "22": {
       "opener": "panels/receipts-panel.webp",
       "accents": [
         "small/field-notes.webp",

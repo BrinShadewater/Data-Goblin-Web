@@ -23,7 +23,7 @@ export function ListenBar() {
 
   const label =
     chapterNumber === 0 ? tr("Front Matter")
-      : chapterNumber === 21 ? tr("Appendix")
+      : chapterNumber === 22 ? tr("Appendix")
         : `${tr("Ch.")} ${chapterNumber}`;
 
   const iconBtn = {

@@ -43,7 +43,7 @@ export function FieldGuidePage() {
   const { chapter, error, panels } = usePaginatedChapter(num);
   const { aligned, page, pageCount, step, goNext, goPrev } = usePageNavigation({ num, panels, single });
   const firstDoc = book?.frontMatter?.number ?? 0;
-  const lastDoc = book?.backMatter?.number ?? 21;
+  const lastDoc = book?.backMatter?.number ?? 22;
   const canPrev = !(num <= firstDoc && page === 0);
   const canNext = !(num >= lastDoc && page >= pageCount - 1);
   const { bookmarked, onToggleBookmark } = useReaderBookmark({ num, chapter, panels, aligned, step });
@@ -55,8 +55,8 @@ export function FieldGuidePage() {
     if (!chapter) return;
     const main = chapter.title.split(" — ")[0];
     const label = lang === "fr"
-      ? (num === 0 ? "Pages liminaires" : num === 21 ? "Annexe — Bibliothèque des sources" : `Chapitre ${num} : ${main}`)
-      : (num === 0 ? "Front Matter" : num === 21 ? "Source Library Appendix" : `Chapter ${num}: ${main}`);
+      ? (num === 0 ? "Pages liminaires" : num === 22 ? "Annexe — Bibliothèque des sources" : `Chapitre ${num} : ${main}`)
+      : (num === 0 ? "Front Matter" : num === 22 ? "Source Library Appendix" : `Chapter ${num}: ${main}`);
     document.title = `${label} — Data Goblin`;
   }, [chapter, num, lang]);
 
@@ -203,7 +203,7 @@ export function FieldGuidePage() {
                   >
                     <span style={{ fontFamily: MONO, fontSize: "9px", fontWeight: 800, letterSpacing: "0.2em", textTransform: "uppercase", color: c(...P.muted) }}>
                       {tr("Field Guide Tools ·")}{" "}
-                      {num === 0 ? "Front Matter" : num === 21 ? "Appendix" : `Ch. ${num}`}
+                      {num === 0 ? "Front Matter" : num === 22 ? "Appendix" : `Ch. ${num}`}
                     </span>
                     <button
                       onClick={() => setToolsOpen(false)}

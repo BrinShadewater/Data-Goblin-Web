@@ -21,9 +21,9 @@ os.makedirs(os.path.join(OUT, "chapters"), exist_ok=True)
 PARTS = [
     (range(1, 5),   "Part I — Foundations",        "The Land"),
     (range(5, 8),   "Part II — Canadian Landscape", "The Creatures"),
-    (range(8, 16),  "Part III — Hard Questions",    "The Weather"),
-    (range(16, 18), "Part IV — Governance",         "The Map"),
-    (range(18, 21), "Part V — Path Forward",        "The Tools"),
+    (range(8, 17),  "Part III — Hard Questions",    "The Weather"),
+    (range(17, 19), "Part IV — Governance",         "The Map"),
+    (range(19, 22), "Part V — Path Forward",        "The Tools"),
 ]
 def part_of(n):
     for rng, part, region in PARTS:
@@ -225,7 +225,7 @@ def parse_appendix(appendix):
         # Fallback: promote the first block of the first section.
         start_parts.append(sections[0]["markdown"].split("\n\n")[0])
     return {
-        "number": 21,
+        "number": 22,
         "title": "Source Library Appendix" + (f" — {subtitle}" if subtitle else ""),
         "part": "Back Matter",
         "region": "The Hoard",
@@ -348,7 +348,7 @@ def main():
                         if c.get("status") else {})}
                     for c in chapters if c["number"] in rng]}
                   for rng, p, r in PARTS],
-        "backMatter": {"number": 21, "title": "Source Library Appendix", "region": "The Hoard"}
+        "backMatter": {"number": 22, "title": "Source Library Appendix", "region": "The Hoard"}
                       if appendix_doc else None,
         "frontmatterMarkdown": VERIFY_RE.sub("", front),
         "appendixMarkdown": VERIFY_RE.sub("", "# Source Library Appendix" + appendix) if appendix else "",

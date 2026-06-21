@@ -21,7 +21,7 @@ export function RightSidebar({ chapter }: { chapter: Chapter }) {
     >
       <div style={{ fontFamily: MONO, fontSize: "9.5px", fontWeight: 800, letterSpacing: "0.18em", textTransform: "uppercase", color: muted, margin: "2px 2px 12px" }}>
         {tr("Field Guide Tools ·")}{" "}
-        {chapter.number === 0 ? tr("Front Matter") : chapter.number === 21 ? tr("Appendix") : `${tr("Ch.")} ${chapter.number}`}
+        {chapter.number === 0 ? tr("Front Matter") : chapter.number === 22 ? tr("Appendix") : `${tr("Ch.")} ${chapter.number}`}
       </div>
       <GoblinTools chapter={chapter} showBookmarks />
     </aside>

@@ -77,44 +77,44 @@
   "trapTitle": "\"I can always tell.\"",
   "text": "You can't, and neither could the commenters who kept \"detecting\" AI in fully practical film footage after the actual AI shots were removed. Detection confidence doesn't track what's synthetic — which cuts both ways: fake content gets believed, and real work gets disbelieved. A label, once applied, doesn't come off. That's the harm the prevalence statistics don't capture."
  },
- "14": {
-  "chapter": 14,
+ "15": {
+  "chapter": 15,
   "chapterTitle": "Ethics, Bias & Fairness",
   "trapTitle": "Bias is a data-cleaning problem.",
   "text": "Cleaning the data reaches statistical bias. It doesn't reach the metric someone chose, the proxy someone picked, or the question of who the system was built to serve — and a system that's 99% accurate on average and 90% accurate on your face is not, for you, 99% accurate. Averages are where disparities go to do public relations."
  },
- "15": {
-  "chapter": 15,
+ "16": {
+  "chapter": 16,
   "chapterTitle": "Jobs & Economy",
   "trapTitle": "Either AI takes the jobs or it doesn't.",
   "text": "The displacement-versus-augmentation framing hides the third thing actually happening: work shifting toward lower wages, less stability, and more surveillance while the aggregate employment numbers stay calm. \"No widespread unemployment\" and \"the captioning department no longer exists\" are both true sentences about the same country. Aggregates are where individual bad years go to disappear."
  },
- "16": {
-  "chapter": 16,
+ "17": {
+  "chapter": 17,
   "chapterTitle": "How AI Is Governed in Canada",
   "trapTitle": "Canada should just pass the EU AI Act.",
   "text": "Every one-statute fix runs aground on the same rock: 1867. Healthcare, employment, education — the places AI actually touches a life — are mostly provincial jurisdiction, which is why Quebec can lead and Ottawa can't simply follow. Anyone selling you a single-law solution hasn't read the Constitution Act, and probably shouldn't be selling you anything."
  },
- "17": {
-  "chapter": 17,
+ "18": {
+  "chapter": 18,
   "chapterTitle": "Transparency & Accountability",
   "trapTitle": "They published a report, so they're transparent.",
   "text": "Disclosure is not verification. A sustainability report measures what the company chose to measure, in the scope that flatters it, checked by nobody — self-marked homework with a nice cover. The question is never \"did they publish?\" It's \"can anyone outside the building check?\" Where the answer is no, the report is a press release with charts."
  },
- "18": {
-  "chapter": 18,
+ "19": {
+  "chapter": 19,
   "chapterTitle": "Frameworks for Deciding",
   "trapTitle": "A biased source is a dismissible source.",
   "text": "The lean is not the lie. The union brief leans toward workers and contains verifiable evidence; the corporate paper leans toward the company and contains careful measurement. Dismissing a source because it leans throws away the evidence with the framing — and leaves you with only the sources whose lean you can't see, which is worse. Name the lean. Then use the source."
  },
- "19": {
-  "chapter": 19,
+ "20": {
+  "chapter": 20,
   "chapterTitle": "What Canada Could Do",
   "trapTitle": "It's inevitable — nothing can be done.",
   "text": "Inevitability is a sales pitch, not a finding. The mechanisms exist and are mapped: likeness rights with a Danish precedent, disclosure regimes the provincial grid operators already half-built, Indigenous data governance frameworks waiting on one Treasury Board directive. What's missing is coordination, not feasibility — and \"nothing can be done\" is what the beneficiaries of nothing-being-done would prefer you conclude."
  },
- "20": {
-  "chapter": 20,
+ "21": {
+  "chapter": 21,
   "chapterTitle": "Navigating the Conversation",
   "trapTitle": "You finished the book, so you're done.",
   "text": "The facts in this book started expiring the day it was printed; the method is the part that keeps. The final trap is treating the manual as an authority instead of a demonstration — the three pocket questions apply to the next AI claim you meet, and to this book's claims too. Especially those. Ask who counted. Ask what got left out. Ask to see the receipt."
