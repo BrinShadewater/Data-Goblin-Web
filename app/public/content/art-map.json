@@ -358,6 +358,10 @@
         {
           "src": "figures/fig-14.1-news-revenue-decline.webp",
           "caption": "Before anyone blamed AI, the money was already leaving: Canadian newspaper revenue fell 17.9% from 2022 to 2024, advertising sales by about a quarter, and print ads by more than a third. AI arrived at an industry that was already shrinking."
+        },
+        {
+          "src": "figures/fig-14.2-newsroom-automation.webp",
+          "caption": "Placing isn't writing, but it is editorial judgment: which story leads, which gets buried. At The Globe and Mail, the in-house system Sophi makes more than 99% of those calls on its digital pages. The figure is the operator's own, not an independent audit, and editors still curate the very top slots, but the 'what you see first' decision is now mostly the machine's."
         }
       ]
     },
