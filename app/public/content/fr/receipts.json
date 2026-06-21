@@ -4,7 +4,7 @@
   "section": "A. Confirmed this pass (receipts in hand)",
   "claim": "Cohere Série D investisseur principal",
   "status": "resolved",
-  "detail": "✅  **Investissements PSP** a mené la **Juillet 2024** 500 millions de dollars à 5,5 milliards de dollars (et non pas à l'IBPC, ni en décembre). Collecte ultérieure ~6.8B$. Toutes les références de l'IRPC ont été corrigées. |  [BetaKit](https://betakit.com/cohere-series-d-tops-out-at-500-million-raised-at-5-5-billion-valuation/) ,  [Nouvelles de Crunchbase](https://news.crunchbase.com/venture/ai-cohere-valuation-rises-psp-cisco-fijitsu/) ,  [Investissements PSP](https://www.investpsp.com/en/news/fresh-funding-enables-cohere-to-accelerate-its-global-expansion-and-build-the-next-generation-of-secure-enterprise-and-sovereign-ai-solutions/)",
+  "detail": "✅  **Investissements PSP** a mené la **Juillet 2024** 500 millions de dollars à 5,5 milliards de dollars (et non pas à l'IBPC, ni en décembre). Collecte ultérieure ~6.8B$. Toutes les références de l'IRCP ont été corrigées. |  [BetaKit](https://betakit.com/cohere-series-d-tops-out-at-500-million-raised-at-5-5-billion-valuation/) ,  [Nouvelles de Crunchbase](https://news.crunchbase.com/venture/ai-cohere-valuation-rises-psp-cisco-fijitsu/) ,  [Investissements PSP](https://www.investpsp.com/en/news/fresh-funding-enables-cohere-to-accelerate-its-global-expansion-and-build-the-next-generation-of-secure-enterprise-and-sovereign-ai-solutions/)",
   "links": [
    [
     "BetaKit",
@@ -25,7 +25,7 @@
   "section": "A. Confirmed this pass (receipts in hand)",
   "claim": "Convention-cadre du Conseil de l'Europe sur l'IA",
   "status": "resolved",
-  "detail": "**Le Canada a signé le 11 février 2025** (Sommet d'action de Paris IA). La conclusion du Manuscrit « Le Canada n'a pas signé » a été fausse, remplacée partout par « signée mais non ratifiée ». Confirmer le statut de ratification à la publication. |  [Canada.ca](https://www.canada.ca/en/global-affairs/news/2025/02/canada-signs-the-council-of-europe-framework-convention-on-artificial-intelligence-and-human-rights-democracy-and-the-rule-of-law.html) ,  [Conseil de l'Europe](https://www.coe.int/en/web/portal/-/canada-and-japan-sign-council-of-europe-s-first-ever-global-treaty-on-ai)",
+  "detail": "**Canada SIGNÉ LE 11 février 2025** (Sommet d'action de Paris IA). La conclusion du Manuscrit « Le Canada n'a pas signé » a été fausse, remplacée partout par « signée mais non ratifiée ». Confirmer le statut de ratification à la publication. |  [Canada.ca](https://www.canada.ca/en/global-affairs/news/2025/02/canada-signs-the-council-of-europe-framework-convention-on-artificial-intelligence-and-human-rights-democracy-and-the-rule-of-law.html) ,  [Conseil de l'Europe](https://www.coe.int/en/web/portal/-/canada-and-japan-sign-council-of-europe-s-first-ever-global-treaty-on-ai)",
   "links": [
    [
     "Canada.ca",
@@ -454,7 +454,7 @@
   "section": "C. Open — needs primary source before publication",
   "claim": "Vallée des merveilles / SLCN",
   "status": "resolved",
-  "detail": "— **RÉCLAMATIONS** : aucune preuve d'un rôle d'équité/de gouvernance du SLCN. Dossier documenté : projet annoncé en décembre 2024 par O'Leary Ventures + MD de Greenview; lettre ouverte du chef Sunshine (13 janvier 2025) – La nation déclare qu'elle n'a pas été consultée, qu'on l'a suspendue; action en justice du devoir de consulter en juin 2026 (la question de la consultation est en direct devant la cour); Utah JV numérique O'LEARY (février 2026). **C'est vrai. 6 et 9 études de cas réécrites au dossier, avec une note de correction publique.** → Sources/preuves_pack_legers/Ledger_36_Wonder_Valley_SLCN/",
+  "detail": "— **RÉCLAMATIONS** : aucune preuve d'un rôle d'équité/de gouvernance du SLCN. Dossier documenté : projet annoncé en décembre 2024 par O'Leary Ventures + MD de Greenview; lettre ouverte du chef Sunshine (13 janvier 2025) – La nation déclare qu'elle n'a pas été consultée, qu'on l'a suspendue; action en justice du devoir de consulter en juin 2026 (la question de la consultation est en direct devant la cour); Utah JV numérique O'LEARY (février 2026). **C'est vrai. 6 et 9 études de cas ont été réécrites au dossier, avec une note de correction publique.** → Sources/preuves_pack_leggers/Ledger_36_Wonder_Valley_SLCN/",
   "links": []
  },
  {
@@ -559,7 +559,7 @@
   "section": "Fresh live re-verification — June 15, 2026 (full fact-check pass)",
   "claim": "Annexe §F chiffres de l'élection-deepfake \"9.24% / 3.9% / 0,1%\"",
   "status": "fixed",
-  "detail": "**Annexe jamais mise à jour** — contredit le corps du Ch 13 corrigé. Papier en direct = **8.66% / 4.42% / 0.12%** (la même correction que le registre #32, uniquement pour le corps). Correction des figures de l'appendice pour correspondre au corps. [arXiv 2512.13915](https://arxiv.org/html/2512.13915)",
+  "detail": "**Annexe jamais mise à jour** — contredit le corps du Ch 13 corrigé. Papier vivant = **8.66% / 4.42% / 0.12%** (la même correction que le registre #32, uniquement pour le corps). Correction des figures de l'appendice pour correspondre au corps. [arXiv 2512.13915](https://arxiv.org/html/2512.13915)",
   "links": [
    [
     "arXiv 2512.13915",
@@ -604,7 +604,7 @@
  {
   "id": 47,
   "section": "Fresh live re-verification — June 15, 2026 (full fact-check pass)",
-  "claim": "L'Alliance pour la technologie souveraine « a déjà signé des partenariats internationaux sur l'IA (incl. UE, Royaume-Uni, Inde, plusieurs États du Golfe)» (Ch 5/16/19)",
+  "claim": "L'Alliance de la technologie souveraine « a déjà signé des partenariats internationaux sur l'IA (incl. UE, Royaume-Uni, Inde, plusieurs États du Golfe)\" (Ch 5/16/19)",
   "status": "resolved",
   "detail": "✅  **Reconnité-CONFIRMÉE.** Une note d'entrée a remis en question la date de février 2026. *bilatérale* libération, mais la **4 juin * Lancement de l'IA pour tous* nommé les douze** Allemagne, Australie, Espagne, Finlande, Inde, Norvège, Qatar, Arabie saoudite, Suède, Émirats arabes unis, Royaume-Uni. **Gardez la réclamation.**.Épinglez le reçu au lancement du 4 juin (PMO/ISED/IAPP), et non à la version bilatérale de février. |  [PMO 4 juin](https://www.pm.gc.ca/en/news/news-releases/2026/06/04/prime-minister-carney-launches-ai-all-canadas-new-national-artificial)  ·  [IAPP](https://iapp.org/news/a/canada-launches-ai-strategy-to-advance-digital-sovereignty-adoption)",
   "links": [
@@ -687,7 +687,7 @@
   "section": "Citation-precision pass — June 18, 2026",
   "claim": "Intensité du carbone du réseau provincial et part non émettrice du Canada (section 8 du réseau + fig-8.1)",
   "status": "resolved",
-  "detail": "* CONFIRMÉ 2026-06-19. Québec/Manitoba : grille de 30 g CO2e/kWh; Alberta : 470 g/k Whh en 2023 (Alberta.ca : rendement des GES, en baisse par rapport à 580 g en 2005). Ainsi, l'illustration de 100 MW du livre « Montréal 1/15e de l'intensité en carbone de la province » et celle de la figure 8.1 ($26 000 t/an au Québec contre $394 000t/an en Alberta, calculée à 30 vs ~450 g/kWh) sont cohérentes et de source primaire. Part non émettrice au Canada : mélange de CRE 2023 = énergie hydraulique 57,4% + énergie nucléaire 13,5% + autres énergies renouvelables 9,1% **80%** . NOTE: le manuscrit \"environ 82 % en 2023\" (hedged) correspond à la valeur de 2022 et arrondit chaque composant vers le haut; précise 2023 80% — resserrage facultatif à \"=80% en 2022 (82% en 2022)\". |  [Rendement de l'Alberta en matière de GES](https://www.alberta.ca/albertas-greenhouse-gas-emissions-reduction-performance)  ·  [URCE, mélange énergie renouvelable/électricité](https://www.cer-rec.gc.ca/en/data-analysis/energy-commodities/electricity/report/canadas-renewable-power/index.html)",
+  "detail": "* CONFIRMÉ 2026-06-19. Québec/Manitoba : grille de 30 g CO2e/kWh; Alberta : 470 g/k Whh en 2023 (Alberta.ca : rendement des GES, en baisse par rapport à 580 g en 2005). Ainsi, l'illustration de 100 MW du livre « Montréal 1/15e de l'intensité en carbone de la province » et celle de la figure 8.1 ($26 000 t/an au Québec contre $394 000t/an en Alberta, calculée à 30 vs ~450 g/kWh) sont cohérentes et de source primaire. Part non émettrice au Canada : URCE 2023 mixte = hydro 57,4 % + nucléaire 13,5 % + autres énergies renouvelables 9,1 % **80%** . NOTE: le manuscrit \"environ 82 % en 2023\" (hedged) correspond à la valeur de 2022 et arrondit chaque composant vers le haut; précise 2023 80% — resserrage facultatif à \"=80% en 2022 (82% en 2022)\". |  [Rendement de l'Alberta en matière de GES](https://www.alberta.ca/albertas-greenhouse-gas-emissions-reduction-performance)  ·  [URCE, mélange énergie renouvelable/électricité](https://www.cer-rec.gc.ca/en/data-analysis/energy-commodities/electricity/report/canadas-renewable-power/index.html)",
   "links": [
    [
     "Alberta GHG performance",
@@ -725,7 +725,7 @@
   "section": "Citation-precision pass — June 18, 2026",
   "claim": "Bell–Cohere–Hypertec–BUZZ HPC Merritt soverent-IA deal (Ch 6)",
   "status": "resolved",
-  "detail": "* CONFIRMÉ 2026-06-19. 18 juin 2026 : Bell IA Fabric, Cohere, Hypertec et BUZZ HPC annoncent un accord pour la gestion des modèles de Coherer sur le centre de données Merritt (C.-B.) de Bell (~6,5 MW, l'expansion à environ doubler au début de 2027) sur les serveurs NVIDIA DGX assemblés au Canada par Hypertec; BUAZHPC (HIVE Digital) a conclu un contrat GPU souverain-IA de 220 millions de dollars US avec Bell IA Fabric for Cothere. **LEAN: auto-divulgation des entreprises** (communiqué de presse conjoint) — le cadrage \"souverain\" est la revendication des sociétés; le silicium reste conçu aux États-Unis/façonné par Taiwan NVIDIA. S'appuie sur le partenariat Bell–Cohere de juillet 2025 déjà en Ch 6. |  [Hypertec/Newswire](https://hypertec.com/news/bell-ai-fabric-cohere-hypertec-and-buzz-hpc-announce-landmark-deal-to-advance-sovereign-ai-in-canada)  ·  [Société Radio-Canada](https://www.cbc.ca/news/business/bell-cohere-ai-infrastructure-deal-9.7240577)  ·  [HIVE/BUZZ HPC 220 M$ US](https://www.hivedigitaltechnologies.com/news/hives-buzz-hpc-closes-usd-220-million-sovereign-ai-gpu-contract-with-bell-ai-fabric-for-cohere-inc/)",
+  "detail": "* CONFIRMÉ 2026-06-19. 18 juin 2026 : Bell IA Fabric, Cohere, Hypertec et BUZZ HPC annoncent un accord pour la gestion des modèles de Coherer sur le centre de données Merritt (C.-B.) de Bell (~6,5 MW, l'expansion à environ doubler au début de 2027) sur les serveurs NVIDIA DGX assemblés au Canada par Hypertec; BUAZHPC (HIVE Digital) a conclu un contrat GPU souverain-IA de 220 millions de dollars US avec Bell IA Fabric for Cothere. **LEAN: auto-divulgation des entreprises** (communiqué de presse conjoint) — le cadrage \"sovereign\" est la revendication des entreprises; le silicium reste conçu aux États-Unis/façonné par Taiwan NVIDIA. S'appuie sur le partenariat Bell–Cohere de juillet 2025 déjà en Ch 6. |  [Hypertec/Newswire](https://hypertec.com/news/bell-ai-fabric-cohere-hypertec-and-buzz-hpc-announce-landmark-deal-to-advance-sovereign-ai-in-canada)  ·  [Société Radio-Canada](https://www.cbc.ca/news/business/bell-cohere-ai-infrastructure-deal-9.7240577)  ·  [HIVE/BUZZ HPC 220 M$ US](https://www.hivedigitaltechnologies.com/news/hives-buzz-hpc-closes-usd-220-million-sovereign-ai-gpu-contract-with-bell-ai-fabric-for-cohere-inc/)",
   "links": [
    [
     "Hypertec/Newswire",
@@ -1223,7 +1223,7 @@
   "section": "Citation-precision pass — June 18, 2026",
   "claim": "Lacune administrative et responsabilité en matière d'IA: champ d'application de la directive + CDO (Ch 10)",
   "status": "resolved",
-  "detail": "* CONFIRMÉ 2026-06-19. La Directive sur la prise de décisions automatisées du Conseil du Trésor fédéral (en vigueur en 2019) s'applique SEULEMENT aux institutions fédérales et aux systèmes publics, de sorte que le bien-être des provinces, les services de police et les tribunaux (les domaines d'application administrative et d'accès à l'information les plus importants) ne s'y trouvent pas (l'écart entre les compétences). Commission du droit de l'Ontario, « IA responsable » (juin 2022, 19 réc.) : ne pas déployer d'IA gouvernementale à risque élevé avant qu'un cadre contraignant « IA fiable » soit adopté; l' Ontario devrait adopter un équivalent provincial de la Directive fédérale; « les questions juridiques systémiques ne peuvent être réglées par le biais de litiges individuels, de lignes directrices sur l'IA éthique ou de lois fragmentaires ». *Vavilov* (2019 CCN 65) centre le droit aux raisons intelligibles → le défi de la boîte noire; les angles de l'art.7/s.15 de la Charte sont anticipatifs (pas de précédent éprouvé du gouvernement canadien-algorithme). Framing: Virginia Eubanks, *Inégalités automatisantes* / \"numital poorhouse\" (comparateur américain). **LEAN: gouvernement (Directive) + loi-réforme indépendante (LCO) + académique/avocat (Eubanks, États-Unis).**  |  [Directive du SCT sur les SMA](https://www.tbs-sct.canada.ca/pol/doc-eng.aspx?id=32592)  ·  [CDO responsable IA](https://www.lco-cdo.org/en/the-lco-releases-accountable-ai-final-report/)  ·  [Vavilov 2019 CSC 65](https://www.scc-csc.ca/judgments-jugements/cb/2019/37748-37896-37897/)  ·  [Eubanks, Digital Poorhouse (Harper)](https://harpers.org/archive/2018/01/the-digital-poorhouse/)",
+  "detail": "* CONFIRMÉ 2026-06-19. La Directive sur la prise de décisions automatisées du Conseil du Trésor fédéral (en vigueur en 2019) s'applique SEULEMENT aux institutions fédérales et aux systèmes publics, de sorte que le bien-être des provinces, les services de police et les tribunaux (les domaines d'application administrative et d'accès aux renseignements les plus importants) tombent hors de leur portée (l'écart entre les compétences). Commission du droit de l'Ontario, « IA responsable » (juin 2022, 19 réc.) : ne pas déployer d'IA gouvernementale à risque élevé avant qu'un cadre contraignant « IA fiable » soit adopté; l' Ontario devrait adopter un équivalent provincial de la Directive fédérale; « les questions juridiques systémiques ne peuvent être réglées par le biais de litiges individuels, de lignes directrices sur l'IA éthique ou de lois fragmentaires ». *Vavilov* (2019 CCN 65) centre le droit aux raisons intelligibles → le défi de la boîte noire; les angles de l'art.7/s.15 de la Charte sont anticipatifs (pas de précédent éprouvé du gouvernement canadien-algorithme). Framing: Virginia Eubanks, *Inégalités automatisantes* / \"numital poorhouse\" (comparateur américain). **LEAN: gouvernement (Directive) + loi-réforme indépendante (LCO) + académique/avocat (Eubanks, États-Unis).**  |  [Directive du SCT sur les SMA](https://www.tbs-sct.canada.ca/pol/doc-eng.aspx?id=32592)  ·  [CDO responsable IA](https://www.lco-cdo.org/en/the-lco-releases-accountable-ai-final-report/)  ·  [Vavilov 2019 CSC 65](https://www.scc-csc.ca/judgments-jugements/cb/2019/37748-37896-37897/)  ·  [Eubanks, Digital Poorhouse (Harper)](https://harpers.org/archive/2018/01/the-digital-poorhouse/)",
   "links": [
    [
     "TBS Directive on ADM",
@@ -1271,7 +1271,7 @@
  {
   "id": 86,
   "section": "Citation-precision pass — June 18, 2026",
-  "claim": "Détecteurs de texte d'IA : peu fiables + biaisés; les universités canadiennes refusent (Ch 14)",
+  "claim": "Détecteurs de texte d'IA : peu fiables + biaisés; universités canadiennes refusant (Ch 14)",
   "status": "resolved",
   "detail": "* CONFIRMÉ 2026-06-19. OpenAI a retiré son propre classificateur de texte IA (20 juillet 2023) en citant une faible précision (elle n'avait signalé que 26 % du texte IA). Stanford/Liang et al., « Les détecteurs GPT sont biaisés contre les écrivains anglais non autochtones » (Patterns, 10 juillet 2023) : les détecteurs ont mal classé **61,22 % des essais TOEFL** (anglais non autochtone) comme IA alors qu'ils étaient presque parfaits pour les essais américains de 8e année – pénalisant ainsi une gamme linguistique plus simple. La revendication fausse-positive de Turnitin <1 % contestée (WaPo tests; Turnitine a ajouté une mise en garde). Universités canadiennes : L'UBC a refusé de permettre la détection de l'IA de Turner (avril 2023, réaffirmée en août 2023); Waterloo l'a abandonnée (septembre 2025, citant un biais contre l'anglais non autochtone); Guelph recommande de ne pas soumettre de travail aux détecteurs. **Le préjudice faux positif neurodivergent = un CONCERN fondé, non encore quantifié — n'affirme pas de statistique.**   **LEAN: entreprise + université + presse.**  |  [Classement OpenAI retiré](https://openai.com/index/new-ai-classifier-for-indicating-ai-written-text/)  ·  [Liang et al. (arXiv 2304.02819)](https://arxiv.org/abs/2304.02819)  ·  [UBC ne permet pas la détection de l'IA](https://lthub.ubc.ca/2023/08/28/ubc-affirms-decision-to-not-enable-turnitin-ai-detection/)  ·  [Waterloo arrête](https://uwaterloo.ca/academic-integrity/news/discontinuing-use-ai-detection-functionality-turnitin)",
   "links": [
@@ -1344,7 +1344,7 @@
   "section": "Citation-precision pass — June 18, 2026",
   "claim": "Prix algorithmiques/collusion + lavage de l'IA: limites + comparateurs américains (Ch 7)",
   "status": "resolved",
-  "detail": "* CONFIRMÉ 2026-06-19. Canada : Loi sur la concurrence, art. 90.1 modifiée (en vigueur le 15 décembre 2024) afin que les ordres civils puissent conclure des accords entre les non-concurrents (à voix haute); le papier à prix algorithmique du Bureau, en juin 2025, indique des algorithmes de tarification permettant une coordination tacite/à voix basse, mais note que le paragraphe 45/90.1 exige toujours la preuve d'une entente (« réunion des esprits ») — l'écart entre les mesures d'application pour la collusion tacite autonome. Comparateur américain: DOJ + états v. RealPage (algorithme du prix des loyers utilisant les données des concurrents; Sherman Act); règlement proposé fin novembre 2025 (pas d'admission; certains États continuent). Lavage IA : **AUCUN cas d'exécution confirmé au Canada** (outils de marketing trompeur + accès privé sont les crochets disponibles). États-Unis: FTC \"Opération IA Comply\" (sept. 25 2024, 5 entreprises); SEC a réglé Delphia + Global Predictions pour les fausses demandes d'IA (mars 2024). **LEAN: régulateur + loi-firm + presse; États-Unis clairement étiqueté.**  |  [Papier de tarification algorithmique du Bureau](https://competition-bureau.canada.ca/en/how-we-foster-competition/education-and-outreach/publications/algorithmic-pricing-and-competition-discussion-paper)  ·  [Page réelle du DOJ (ProPublica)](https://www.propublica.org/article/doj-realpage-settlement-rental-price-fixing-case)  ·  [FTC Opération IA Conformité](https://www.ftc.gov/news-events/news/press-releases/2024/09/ftc-announces-crackdown-deceptive-ai-claims-schemes)",
+  "detail": "* CONFIRMÉ 2026-06-19. Canada : Loi sur la concurrence, art. 90.1 modifiée (en vigueur le 15 décembre 2024) afin que les ordres civils puissent conclure des accords entre les non-concurrents (à voix haute); le papier à prix algorithmique du Bureau, en juin 2025, indique des algorithmes de tarification permettant une coordination tacite/à voix basse, mais note que le paragraphe 45/90.1 exige toujours la preuve d'une entente (« réunion des esprits ») — l'écart entre les mesures d'application pour la collusion tacite autonome. Comparateur américain: DOJ + états v. RealPage (algorithme du prix des loyers utilisant les données des concurrents; Sherman Act); règlement proposé fin novembre 2025 (pas d'admission; certains États continuent). Lavage IA : **AUCUN cas d'exécution confirmé au Canada** (outils de marketing trompeur + accès privé sont les crochets disponibles). États-Unis: FTC \"Opération IA Comply\" (sept. 25 2024, 5 entreprises); SEC a réglé Delphia + Global Predictions pour les fausses demandes d'IA (mars 2024). **LEAN: régulateur + loi-firm + presse; États-Unis clairement étiqueté.**  |  [Papier de tarification algorithmique du Bureau](https://competition-bureau.canada.ca/en/how-we-foster-competition/education-and-outreach/publications/algorithmic-pricing-and-competition-discussion-paper)  ·  [Page réelle du DOJ (ProPublica)](https://www.propublica.org/article/doj-realpage-settlement-rental-price-fixing-case)  ·  [FTC Opération IA Se conformer](https://www.ftc.gov/news-events/news/press-releases/2024/09/ftc-announces-crackdown-deceptive-ai-claims-schemes)",
   "links": [
    [
     "Bureau algorithmic pricing paper",
@@ -1428,6 +1428,60 @@
    [
     "Be My Eyes / Microsoft",
     "https://www.bemyeyes.com/blog/introducing-microsofts-ai-powered-disability-answer-desk-on-be-my-eyes"
+   ]
+  ]
+ },
+ {
+  "id": 93,
+  "section": "Citation-precision pass — June 18, 2026",
+  "claim": "IA + cybersécurité au Canada : évaluation des menaces du CST, défense, double usage, C-26/C-8 (Ch 16)",
+  "status": "resolved",
+  "detail": "* CONFIRMÉ 2026-06-19. CST / Centre canadien de cybersécurité, Évaluation nationale de la cybermenace 2025-2026 (publiée le 30 octobre 2024) : L'IA est « Trend 1 » – les acteurs de la menace « presque certainement » utilisent les LLM pour l'hameçonnage à grande échelle/ingénierie sociale, les outils générateurs pour les faucilles profondes et l'IA qui font des ransomwares... \"la cybermenace la plus sophistiquée et active de l'État\"; le DDoS lié à la Russie a frappé les sites fédéraux + Québec, y compris. la page publique de l'OMP (2023). DEFENCE: Anthropique \"Projet Glasswing\" ( **ENTREPRISE AUTO-DISCLOSURE** ) — il + ~50 partenaires ont signalé 10 000 vulnérabilités élevées/critiques trouvées via son modèle; étendu à environ 150 orgs (15 pays et plus); une banque partenaire a arrêté un transfert frauduleux de 1,5 million de dollars américains (Anthropic-reported, non audité de manière indépendante). Ancre à double usage : Rapport international sur la sécurité de l'IA (présidé par le Bengio) – L'IA réduit les coûts d'attaque et les pertes, mais « aucune preuve substantielle » permet aux agresseurs de trouver un équilibre entre l'infraction et la défense. Le CSE a jugé que l'IA était « très peu probable » pour saper fondamentalement les élections fédérales de 2025. Gouvernance : La Loi sur la protection des cybersystèmes critiques (projet de loi C-26) est décédée à la suite d'une prorogation en janvier 2025 et a été présentée de nouveau sous le nom de projet de loiC-8 (juin 2025); l'EDSTA de l'Ontario et le projet de Loi 51 du Manitoba fusionnent l'IA et la gouvernance de la cybersécurité. **LEAN: gouvernement/régulateur (CSE) + auto-divulgation des entreprises (Glasswing, signalé) + académique (rapport Bengio).**  |  [CSE NCTA 2025-2026](https://www.cyber.gc.ca/en/guidance/national-cyber-threat-assessment-2025-2026)  ·  [Aile de verre anthropique](https://www.anthropic.com/glasswing)  ·  [Rapport de sécurité Intl IA (arXiv)](https://arxiv.org/pdf/2412.05282)  ·  [Projet de loi C-26 (LEGISinfo)](https://www.parl.ca/legisinfo/en/bill/44-1/c-26)",
+  "links": [
+   [
+    "CSE NCTA 2025-2026",
+    "https://www.cyber.gc.ca/en/guidance/national-cyber-threat-assessment-2025-2026"
+   ],
+   [
+    "Anthropic Glasswing",
+    "https://www.anthropic.com/glasswing"
+   ],
+   [
+    "Intl AI Safety Report (arXiv)",
+    "https://arxiv.org/pdf/2412.05282"
+   ],
+   [
+    "Bill C-26 (LEGISinfo)",
+    "https://www.parl.ca/legisinfo/en/bill/44-1/c-26"
+   ]
+  ]
+ },
+ {
+  "id": 94,
+  "section": "Citation-precision pass — June 18, 2026",
+  "claim": "L'IA dans l'économie canadienne des ressources et de l'agriculture (Ch 15)",
+  "status": "resolved",
+  "detail": "* CONFIRMÉ 2026-06-19. La plupart du temps ML/automatisation/vision par ordinateur, pas générateur. Exploitation minière : L'usine de base de Suncor (Fort McMurray) déplace TOUS les minerais via des camions de transport autonomes, ~120 d'ici 2025 (la plus grande flotte d'un seul site à l'échelle mondiale); le programme prévoit une réduction d'environ 400 positions nettes (~200 000 $/an de rôles d'exploitant), Unifor a qualifié cette situation de menace plus importante que tout ralentissement pétrolier (cas de déplacement canadien canonique; les chiffres du dénombrement proviennent de ~2017-18, exécuté en 2024-25). Agriculture : la stratégie fédérale annonce la précision ag; le regroupement d'Industries protéiques Canada (8 M$ IA, mai 2025); mais l'adoption est mince (~27% auto-vireur, ~3,5 % drones; ~1⁄3 ménages ruraux manquent de bande large fiable = contrainte contraignante; le groupement d'outils à haut capex sur les grandes exploitations → consolidation). Forêts : RNCan/Service canadien des forêts Inventaire forestier LiDAR+ML (dirigé par le gouvernement). Énergie : contrôle de process Imperial Kearl ML crédité d'une sortie record (~281k bpd 2024; **Contribution de ML non isolée proprement** ; trade-press). Risque de lavage de l'IA : avis du personnel de la CSA 51-365 met en garde contre les allégations d'IA non étayées; MMC Ventures 2019 a trouvé ~40% des « startups d'IA » européennes n'utilisaient essentiellement aucune IA. **LEAN: entreprise/industrie (promotionnel) + gouvernement + syndicat (Unifor) + presse; chiffres marqués où vendeur/secondaire.**  |  [Fulotte autonome Suncor](https://www.suncor.com/en-ca/news-and-stories/our-stories/growing-the-largest-autonomous-fleet-in-canada)  ·  [Pertes d'emplois Unifor/CBC](https://www.cbc.ca/news/canada/calgary/suncor-driverless-trucks-job-losses-1.4512659)  ·  [Industries protéiques Canada 15M$](https://www.proteinindustriescanada.ca/news-releases/15m-genomics-ai)  ·  [RNCan Inventaire forestier LiDAR](https://natural-resources.canada.ca/forests-forestry/sustainable-forest-management/aerial-lidar-forest-inventory-monitoring)  ·  [CPA Canada lavage de l'IA](https://www.cpacanada.ca/news/innovation/ai-washing)",
+  "links": [
+   [
+    "Suncor autonomous fleet",
+    "https://www.suncor.com/en-ca/news-and-stories/our-stories/growing-the-largest-autonomous-fleet-in-canada"
+   ],
+   [
+    "Unifor/CBC job losses",
+    "https://www.cbc.ca/news/canada/calgary/suncor-driverless-trucks-job-losses-1.4512659"
+   ],
+   [
+    "Protein Industries Canada $15M",
+    "https://www.proteinindustriescanada.ca/news-releases/15m-genomics-ai"
+   ],
+   [
+    "NRCan LiDAR forest inventory",
+    "https://natural-resources.canada.ca/forests-forestry/sustainable-forest-management/aerial-lidar-forest-inventory-monitoring"
+   ],
+   [
+    "CPA Canada AI-washing",
+    "https://www.cpacanada.ca/news/innovation/ai-washing"
    ]
   ]
  }
