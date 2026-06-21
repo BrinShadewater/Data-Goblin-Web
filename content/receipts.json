@@ -1317,5 +1317,72 @@
     "https://bccampus.ca/2024/10/16/beyond-surveillance-the-case-against-ai-proctoring-ai-detection/"
    ]
   ]
+ },
+ {
+  "id": 88,
+  "section": "Citation-precision pass — June 18, 2026",
+  "claim": "Competition Bureau AI work + Competition Act amendments (Ch 7)",
+  "status": "resolved",
+  "detail": "✅ CONFIRMED 2026-06-19. Competition Bureau \"Artificial intelligence and competition\" discussion paper (March 20 2024; consultation to July 7 2024) + \"What We Heard\" report (Jan 27 2025, 28 submissions): named risks = data/compute as barriers to entry, economies of scale, network effects, platform self-preferencing, algorithmic/tacit collusion, deceptive AI marketing (deepfakes); respondents favoured technology-neutral, principle-based rules. Competition Summit \"Competition in the AI Era\" (Sept 16 2024; keynote FTC Chair Lina Khan). Separate \"Algorithmic pricing and competition\" discussion paper (June 10 2025). Competition Act reforms: Bill C-56 (Royal Assent Dec 15 2023) repealed the efficiencies defence + strengthened abuse-of-dominance + added market-study powers; Bill C-59 (Royal Assent June 20 2024) strengthened drip-pricing, added greenwashing-substantiation rules, and created a private right of access to the Tribunal (in force June 20 2025). **LEAN: government/regulator + law-firm summaries.** | [Bureau AI & competition](https://competition-bureau.canada.ca/en/how-we-foster-competition/education-and-outreach/artificial-intelligence-and-competition) · [What We Heard](https://competition-bureau.canada.ca/en/how-we-foster-competition/education-and-outreach/consultation-artificial-intelligence-and-competition-what-we-heard) · [Bureau guide to 2024 amendments](https://competition-bureau.canada.ca/en/how-we-foster-competition/education-and-outreach/guide-june-2024-amendments-competition-act)",
+  "links": [
+   [
+    "Bureau AI & competition",
+    "https://competition-bureau.canada.ca/en/how-we-foster-competition/education-and-outreach/artificial-intelligence-and-competition"
+   ],
+   [
+    "What We Heard",
+    "https://competition-bureau.canada.ca/en/how-we-foster-competition/education-and-outreach/consultation-artificial-intelligence-and-competition-what-we-heard"
+   ],
+   [
+    "Bureau guide to 2024 amendments",
+    "https://competition-bureau.canada.ca/en/how-we-foster-competition/education-and-outreach/guide-june-2024-amendments-competition-act"
+   ]
+  ]
+ },
+ {
+  "id": 89,
+  "section": "Citation-precision pass — June 18, 2026",
+  "claim": "Algorithmic pricing/collusion + AI-washing: limits + US comparators (Ch 7)",
+  "status": "resolved",
+  "detail": "✅ CONFIRMED 2026-06-19. Canada: Competition Act s.90.1 amended (in force Dec 15 2024) so civil orders can reach agreements between NON-competitors (hub-and-spoke); the Bureau's June 2025 algorithmic-pricing paper flags pricing algorithms enabling tacit/hub-and-spoke coordination but notes ss.45/90.1 still require proving an AGREEMENT (\"meeting of the minds\") — the enforcement gap for autonomous tacit collusion. US comparator: DOJ + states v. RealPage (rent-pricing algorithm using competitor data; Sherman Act); proposed settlement ~late Nov 2025 (no admission; some states continue). AI-washing: **NO confirmed Canadian enforcement case** (deceptive-marketing tools + private access are the available hooks). US: FTC \"Operation AI Comply\" (Sept 25 2024, 5 firms); SEC settled Delphia + Global Predictions for false AI claims (March 2024). **LEAN: regulator + law-firm + press; US clearly labelled.** | [Bureau algorithmic pricing paper](https://competition-bureau.canada.ca/en/how-we-foster-competition/education-and-outreach/publications/algorithmic-pricing-and-competition-discussion-paper) · [DOJ RealPage (ProPublica)](https://www.propublica.org/article/doj-realpage-settlement-rental-price-fixing-case) · [FTC Operation AI Comply](https://www.ftc.gov/news-events/news/press-releases/2024/09/ftc-announces-crackdown-deceptive-ai-claims-schemes)",
+  "links": [
+   [
+    "Bureau algorithmic pricing paper",
+    "https://competition-bureau.canada.ca/en/how-we-foster-competition/education-and-outreach/publications/algorithmic-pricing-and-competition-discussion-paper"
+   ],
+   [
+    "DOJ RealPage (ProPublica)",
+    "https://www.propublica.org/article/doj-realpage-settlement-rental-price-fixing-case"
+   ],
+   [
+    "FTC Operation AI Comply",
+    "https://www.ftc.gov/news-events/news/press-releases/2024/09/ftc-announces-crackdown-deceptive-ai-claims-schemes"
+   ]
+  ]
+ },
+ {
+  "id": 90,
+  "section": "Citation-precision pass — June 18, 2026",
+  "claim": "AI market structure: concentration vs democratization (Ch 7)",
+  "status": "resolved",
+  "detail": "✅ CONFIRMED 2026-06-19. CONCENTRATION: NVIDIA ~80–90% of AI accelerators / >90% of training chips (analyst estimates, source-dependent); AWS+Microsoft+Google ~63% of global cloud (Synergy, Q3 2025); big-tech-into-lab investments (Microsoft-OpenAI, Amazon/Google-Anthropic, >$20B combined) flagged as quasi-vertical-integration by the US FTC 6(b) staff report (Jan 2025); UK CMA/EU reviewed the partnerships and cleared / found no merger control (2024-25). DEMOCRATIZATION: open-weight models (Llama, Mistral, DeepSeek, Cohere Aya) lower entry barriers; inference cost fell ~280x in ~18 months (Stanford AI Index 2025); DeepSeek-R1 (Jan 20 2025) ~matched the US frontier cheaply and triggered a record ~US$589B single-day NVIDIA drop (Jan 27 2025). Credible voices both ways (Bruegel/INET: entrenches incumbents; Stanford/Goldman: lowers barriers). CANADA: Cohere the lone scaled foundation-model firm (~US$6.8B; ~$240M federal, March 2025); startups largely train on foreign cloud (the compute divide; the $700M Compute Access Fund + sovereign-compute target address it). **LEAN: market-research/analyst + regulator + academic + company; figures are ranges.** | [Synergy cloud share](https://www.srgresearch.com/articles/cloud-market-share-trends-big-three-together-hold-63-while-oracle-and-the-neoclouds-inch-higher) · [FTC 6(b) AI partnerships report](https://www.ftc.gov/news-events/news/press-releases/2025/01/ftc-issues-staff-report-ai-partnerships-investments-study) · [Stanford AI Index 2025](https://hai.stanford.edu/ai-index/2025-ai-index-report/research-and-development) · [DeepSeek/NVIDIA $589B (CSET)](https://cset.georgetown.edu/article/deepseeks-release-of-an-open-weight-frontier-ai-model/)",
+  "links": [
+   [
+    "Synergy cloud share",
+    "https://www.srgresearch.com/articles/cloud-market-share-trends-big-three-together-hold-63-while-oracle-and-the-neoclouds-inch-higher"
+   ],
+   [
+    "FTC 6(b) AI partnerships report",
+    "https://www.ftc.gov/news-events/news/press-releases/2025/01/ftc-issues-staff-report-ai-partnerships-investments-study"
+   ],
+   [
+    "Stanford AI Index 2025",
+    "https://hai.stanford.edu/ai-index/2025-ai-index-report/research-and-development"
+   ],
+   [
+    "DeepSeek/NVIDIA $589B (CSET)",
+    "https://cset.georgetown.edu/article/deepseeks-release-of-an-open-weight-frontier-ai-model/"
+   ]
+  ]
  }
 ]
