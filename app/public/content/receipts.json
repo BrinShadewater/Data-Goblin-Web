@@ -1384,5 +1384,51 @@
     "https://cset.georgetown.edu/article/deepseeks-release-of-an-open-weight-frontier-ai-model/"
    ]
   ]
+ },
+ {
+  "id": 91,
+  "section": "Citation-precision pass — June 18, 2026",
+  "claim": "CAN-ASC-6.2 accessible-AI standard + Ontario worker-monitoring rule (Ch 14)",
+  "status": "resolved",
+  "detail": "✅ CONFIRMED 2026-06-19. Accessibility Standards Canada published CAN-ASC-6.2:2025 \"Accessible and Equitable Artificial Intelligence Systems\" on Dec 3 2025 — billed as the world's first national standard on accessible/equitable AI; developed under the Accessible Canada Act by a technical committee made up primarily of people with disabilities; a National Standard of Canada (Standards Council of Canada). Requires: disabled people in every lifecycle stage; disabled people in training data; \"share performance results separately for people with disabilities\"; a right to a human alternative/review (e.g., Deaf users may choose a human interpreter); and avoid \"using AI to judge people based on their body, movement, facial expressions, or emotions.\" **LIMIT: VOLUNTARY** (can inform a future ACA regulation; not binding law; the ACA reaches federally regulated entities, not e.g. a private proctoring vendor). Contrast: Ontario's electronic-monitoring rule (ESA, Bill 88 Working for Workers 2022, 25+ employees) is **transparency-only** — no right to privacy, no use limits. **LEAN: government/standards body + government (Ontario).** | [Canada.ca — world's first AI accessibility standard](https://www.canada.ca/en/accessibility-standards-canada/news/2025/12/canada-releases-worlds-first-standard-on-accessible-and-equitable-ai.html) · [CAN-ASC-6.2 summary](https://accessible.canada.ca/creating-accessibility-standards/overview-asc-62-accessible-equitable-artificial-intelligence-systems) · [Ontario electronic-monitoring policy](https://www.ontario.ca/document/your-guide-employment-standards-act-0/written-policy-electronic-monitoring-employees)",
+  "links": [
+   [
+    "Canada.ca — world's first AI accessibility standard",
+    "https://www.canada.ca/en/accessibility-standards-canada/news/2025/12/canada-releases-worlds-first-standard-on-accessible-and-equitable-ai.html"
+   ],
+   [
+    "CAN-ASC-6.2 summary",
+    "https://accessible.canada.ca/creating-accessibility-standards/overview-asc-62-accessible-equitable-artificial-intelligence-systems"
+   ],
+   [
+    "Ontario electronic-monitoring policy",
+    "https://www.ontario.ca/document/your-guide-employment-standards-act-0/written-policy-electronic-monitoring-employees"
+   ]
+  ]
+ },
+ {
+  "id": 92,
+  "section": "Citation-precision pass — June 18, 2026",
+  "claim": "Disability AI: hiring bias (autism), monitoring, benefits-ADM, Treviranus, assistive upside (Ch 14)",
+  "status": "resolved",
+  "detail": "✅ CONFIRMED 2026-06-19. Hiring bias: U. Washington study (Glazko et al., ACM FAccT June 2024) — GPT-4 ranked résumés LOWER when they included disability-related honours; autism fared worst of 6 disabilities tested (system rationalized \"less emphasis on leadership\"); anti-ableism prompts reduced but did not eliminate it (INTERNATIONAL/academic). AI video-interview/affect tools disadvantage autistic candidates (Bloomberg Law; US DOJ/EEOC ADA guidance 2022). Monitoring: AI productivity/affect scoring calibrated to neurotypical norms penalizes ADHD/autistic patterns (advocacy/analysis — labelled as such). Benefits-ADM international anchors: Australia Robodebt (unlawful; ~470k affected; ~A$1.2B settlement; hit disability/illness payments) + NDIS algorithmic-planning critique. Treviranus (OCAD Inclusive Design Research Centre): ML fits the average → structurally fails outliers/disabled people (\"design for the edges\"; W3C 2020). Assistive UPSIDE: Be My Eyes + GPT-4 (\"Be My AI\") in Microsoft's Disability Answer Desk — ~4-min avg resolution, 90%+ success, 4.85/5 CSAT (**VENDOR-REPORTED, not audited**). **LEAN: academic (strongest) + advocacy/press + company (assistive figures vendor-reported); international clearly labelled; Canadian ODSP/AISH benefits-AI harm NOT confirmed and not asserted.** | [UW ChatGPT disability bias](https://www.washington.edu/news/2024/06/21/chatgpt-ai-bias-ableism-disability-resume-cv/) · [Treviranus, We Count (W3C 2020)](https://www.w3.org/2020/06/machine-learning-workshop/talks/we_count_fair_treatment_disability_and_machine_learning.html) · [Robodebt Royal Commission (UQ)](https://stories.uq.edu.au/momentum-magazine/robodebt-algorithmic-decision-making-mistakes/index.html) · [Be My Eyes / Microsoft](https://www.bemyeyes.com/blog/introducing-microsofts-ai-powered-disability-answer-desk-on-be-my-eyes)",
+  "links": [
+   [
+    "UW ChatGPT disability bias",
+    "https://www.washington.edu/news/2024/06/21/chatgpt-ai-bias-ableism-disability-resume-cv/"
+   ],
+   [
+    "Treviranus, We Count (W3C 2020)",
+    "https://www.w3.org/2020/06/machine-learning-workshop/talks/we_count_fair_treatment_disability_and_machine_learning.html"
+   ],
+   [
+    "Robodebt Royal Commission (UQ)",
+    "https://stories.uq.edu.au/momentum-magazine/robodebt-algorithmic-decision-making-mistakes/index.html"
+   ],
+   [
+    "Be My Eyes / Microsoft",
+    "https://www.bemyeyes.com/blog/introducing-microsofts-ai-powered-disability-answer-desk-on-be-my-eyes"
+   ]
+  ]
  }
 ]
