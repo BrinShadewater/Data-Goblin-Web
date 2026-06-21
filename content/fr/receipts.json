@@ -61,7 +61,7 @@
  {
   "id": 4,
   "section": "A. Confirmed this pass (receipts in hand)",
-  "claim": "Droit danois des droits de la personne",
+  "claim": "Loi danoise sur les droits de la personne",
   "status": "resolved",
   "detail": "- **Proposition 2025** , pas 2024 loi: consultation Juillet 2025, notification TRIS Oct 2025 , vote prévu Q1/Q2 2026. Comprend les exceptions de satire/parodie/critique de puissance + protection post mortem de 50 ans. Toutes les références « 2024 lois » ont été corrigées; confirmer la promulgation lors de la publication. |  [Plesner](https://plesner.com/en/news/personal-identity-meets-copyright-denmark-moves-regulate-deepfakes-copyright-act) ,  [WEF](https://www.weforum.org/stories/2025/07/deepfake-legislation-denmark-digital-id/)",
   "links": [
@@ -119,7 +119,7 @@
   "section": "A. Confirmed this pass (receipts in hand)",
   "claim": "Cadre de contribution de la Loi sur la diffusion en ligne du CRTC",
   "status": "resolved",
-  "detail": "Le CRTC 2026-96 affirme que la Loi sur la diffusion en ligne exige une modernisation du cadre canadien de radiodiffusion et des contributions significatives des services de diffusion en direct au contenu canadien et autochtone; elle établit un cadre modernisé pour les dépenses de programmation canadienne, y compris les exigences relatives aux contributions des grands groupes de propriété. [CRTC 2026-96](https://crtc.gc.ca/eng/archive/2026/2026-96.htm)",
+  "detail": "Le CRTC 2026-96 affirme que la Loi sur la diffusion en ligne exige la modernisation du cadre canadien de radiodiffusion et des contributions significatives des services de diffusion en direct au contenu canadien et autochtone; elle établit un cadre modernisé pour les dépenses de programmation canadienne, y compris les exigences relatives aux contributions de grands groupes de propriété. [CRTC 2026-96](https://crtc.gc.ca/eng/archive/2026/2026-96.htm)",
   "links": [
    [
     "CRTC 2026-96",
@@ -462,7 +462,7 @@
   "section": "C. Open — needs primary source before publication",
   "claim": "Directeurs généraux des instituts",
   "status": "resolved",
-  "detail": "Vecteur : **Glenda Crisp** , Président-directeur général depuis le 21 avril 2025 — fixé en texte ( [annonce](https://vectorinstitute.ai/vector-institute-announces-the-appointment-of-glenda-crisp-as-president-and-ceo/) ). Mila : Pisano confirmé en cours avec des citations de lancement enregistrées dans l'article de lancement de CBC (4 juin 2026)",
+  "detail": "Vecteur : **Glenda Crisp** , Président-directeur général depuis le 21 avril 2025 — fixé en texte ( [annonce](https://vectorinstitute.ai/vector-institute-announces-the-appointment-of-glenda-crisp-as-president-and-ceo/) ). Mila -- RESOLVÉ: Pisano confirmé en cours avec des citations de lancement sur disque dans l'article de lancement de CBC (4 juin 2026)",
   "links": [
    [
     "announcement",
@@ -649,7 +649,7 @@
   "section": "Fresh live re-verification — June 15, 2026 (full fact-check pass)",
   "claim": "La liste des « originaux » du Code volontaire comprend TELUS (Ch 5)",
   "status": "fixed",
-  "detail": "⚠️  **C'est probablement mal daté.** TELUS Digital figure parmi les **Nov 2024 ajouts** , pas la cohorte de lancement de septembre 2023 (BlackBerry/OpenText/Ada/Cohere/Coveo). Vérifier la date de signature de TELUS sur la page ISDE; si novembre 2024, quitter les « originaux ». [Code ISDE](https://ised-isde.canada.ca/site/ised/en/voluntary-code-conduct-responsible-development-and-management-advanced-generative-ai-systems)",
+  "detail": "⚠️  **C'est probablement mal daté.** TELUS Digital figure parmi les **Nov 2024 ajouts** , pas la cohorte de lancement de septembre 2023 (BlackBerry/OpenText/Ada/Cohere/Coveo). Vérifier la date de signature de TELUS sur la page ISDE; si novembre 2024, quitter « les originaux ». [Code ISDE](https://ised-isde.canada.ca/site/ised/en/voluntary-code-conduct-responsible-development-and-management-advanced-generative-ai-systems)",
   "links": [
    [
     "ISED Code",
@@ -834,7 +834,7 @@
   "section": "Citation-precision pass — June 18, 2026",
   "claim": "Extension de l'infrastructure d'IA de Microsoft Ontario (Ch 6)",
   "status": "resolved",
-  "detail": "* CONFIRMÉ 2026-06-19. Une partie de l'engagement canadien en matière d'infrastructure infonuagique/IA (2023-2027) de Microsoft, soit ~19 milliards de dollars; avril 2026 Investir l'Ontario accueille favorablement une expansion d'Azure Canada Central — deux nouveaux centres de données de la région de York (Markham, Vaughan) plus Toronto, ~1 250 emplois (=1 000 constructions + 250 emplois permanents). Microsoft s'est engagé séparément à ce que les nouveaux DC de l'Ontario « n'augmentent pas les factures d'électricité ». **LEAN: annonce gouvernementale + société** (les chiffres sont ceux de la province ou de la compagnie). |  [Investir en Ontario](https://www.investontario.ca/press-release/invest-ontario-welcomes-microsofts-ai-infrastructure-expansion-ontario-supporting-1250-jobs)  ·  [Salle de nouvelles de l'Ontario](https://news.ontario.ca/en/release/1007259/ontario-welcomes-microsofts-ai-infrastructure-expansion)  ·  [Observateur national](https://www.nationalobserver.com/2026/04/14/news/microsoft-ontario-data-centres-power-water-use)",
+  "detail": "* CONFIRMÉ 2026-06-19. Une partie de l'engagement canadien en matière d'infrastructure infonuagique/IA (2023-2027) de Microsoft, soit ~19 milliards de dollars; avril 2026 Investir l'Ontario accueille favorablement une expansion d'Azure Canada Central — deux nouveaux centres de données de la région de York (Markham, Vaughan) plus Toronto, ~1 250 emplois (=1 000 constructions + 250 emplois permanents). Microsoft s'est engagé séparément à ce que les nouveaux DC de l'Ontario « n'augmentent pas les factures d'électricité ». **LEAN: gouvernement + annonce d'entreprise** (les chiffres sont ceux de la province ou de la compagnie). |  [Investir en Ontario](https://www.investontario.ca/press-release/invest-ontario-welcomes-microsofts-ai-infrastructure-expansion-ontario-supporting-1250-jobs)  ·  [Salle de nouvelles de l'Ontario](https://news.ontario.ca/en/release/1007259/ontario-welcomes-microsofts-ai-infrastructure-expansion)  ·  [Observateur national](https://www.nationalobserver.com/2026/04/14/news/microsoft-ontario-data-centres-power-water-use)",
   "links": [
    [
     "Invest Ontario",
@@ -950,7 +950,7 @@
  {
   "id": 73,
   "section": "Citation-precision pass — June 18, 2026",
-  "claim": "Carney: les restrictions à l'exportation anthropiques des États-Unis montrent un risque de dépendance aux IA (Ch 6)",
+  "claim": "Carney: les restrictions à l'exportation anthropiques américaines montrent un risque de dépendance à l'«IA» (Ch 6)",
   "status": "resolved",
   "detail": "* CONFIRMÉ 2026-06-19. Juin 2026: une directive américaine sur le contrôle des exportations a restreint les nouveaux modèles d'Anthropic (Fable 5 / Mythos 5) pour les ressortissants étrangers — L'anthropique les a désactivés pour tous les utilisateurs (voir Source Library L2) — l'accès aux alliés; le PM Mark Carney (14 juin) a cité l'épisode comme preuve du danger que le Canada fait trop confiance aux fournisseurs américains d'IA, c.-à-d. la raison d'être de l'IA souverain exprimée par le PM lui-même. **LEAN: cadre gouvernemental** (PM faisant avancer la poussée de souveraineté) + presse générale. |  [Fortune](https://fortune.com/2026/06/14/canadian-prime-minister-mark-carney-warns-u-s-restrictions-on-new-anthropic-ai-models-show-danger-of-relying-too-much-on-american-providers/)  ·  [LA Heures](https://www.latimes.com/world-nation/story/2026-06-14/canadas-mark-carney-says-u-s-ai-restrictions-underscore-risks-of-dependence)  ·  [Al Jazeera — interdiction d'exportation / alliances](https://www.aljazeera.com/news/2026/6/19/us-export-ban-on-anthropics-ai-models-further-strains-alliances)",
   "links": [
@@ -1065,7 +1065,7 @@
   "section": "Citation-precision pass — June 18, 2026",
   "claim": "Critique Immigration-IA + ASFC frontière IA (Ch 10)",
   "status": "resolved",
-  "detail": "* CONFIRMÉ 2026-06-19. Citizen Lab + IHRP (U of T), *Des bots à la porte* (Molnar & Gill, 26 septembre 2018) : critique des droits de l'homme à l'égard de la prise de décision automatisée en matière d'immigration ; appel au gel + normes contraignantes + supervision indépendante. Suivi : Laboratoire de droit des réfugiés (York); Molnar, *Les murs ont des yeux* (2024). Le rapport 12 du CIMM (novembre 2022) a examiné le Chinook dans un contexte de taux de refus plus élevés pour les demandeurs francophones-africains. ASFC : application de reconnaissance faciale « ReportIn » pour suivre les sujets d'ordre déportation (algorithme d'appariement retenu comme secret commercial, 2024); identification des risques par l'« indicateur de conformité des voyageurs » de l'IA (avertissement de biais, 2025); le détecteur de mensonge AVATAR IA n'a été testé que dans un laboratoire d'Ottawa, et non sur de vrais voyageurs. **CLÉS CAVEAT: les taux de refus de permis d'étude ont augmenté à mesure que les outils se propagent, mais cela suit également les bouchons de permis de l'étude + les mesures de répression d'intégrité — corrélation, PAS de lien établi; ne prétendez pas que l'IA a causé des refus.**   **LEAN: plaidoyer universitaire en faveur des droits de l'homme** (Citizen Lab/Molnar) + presse d'enquête + commission parlementaire; les chiffres d'efficacité de l'IRCC sont auto-déclarés. |  [Des bots à la porte](https://citizenlab.ca/research/bots-at-the-gate-human-rights-analysis-automated-decision-making-in-canadas-immigration-refugee-system/)  ·  [Rapport du CIMM 12](https://www.ourcommons.ca/documentviewer/en/44-1/CIMM/report-12/page-84)  ·  [Rapport de l'ASFC de la SRC dans l'application FR](https://www.cbc.ca/news/canada/windsor/cbsa-facial-recogntion-app-deportation-1.7296313)  ·  [CBC ASFC Risque de voyage en IA + partialité](https://www.cbc.ca/news/canada/windsor/artificial-intelligence-bias-border-canada-screening-1.7624051)",
+  "detail": "* CONFIRMÉ 2026-06-19. Citizen Lab + IHRP (U of T), *Des bots à la porte* (Molnar & Gill, 26 septembre 2018) : critique des droits de l'homme à l'égard de la prise de décision automatisée en matière d'immigration ; appel à un gel + normes contraignantes + supervision indépendante. Suivi : Laboratoire de droit des réfugiés (York); Molnar, *Les murs ont des yeux* (2024). Le rapport 12 du CIMM (novembre 2022) a examiné le Chinook dans un contexte de taux de refus plus élevés pour les demandeurs francophones-africains. ASFC : application de reconnaissance faciale « ReportIn » pour suivre les sujets d'ordre déportation (algorithme d'appariement retenu comme secret commercial, 2024); identification des risques par l'« indicateur de conformité des voyageurs » de l'IA (avertissement de biais, 2025); le détecteur de mensonge AVATAR IA n'a été testé que dans un laboratoire d'Ottawa, et non sur de vrais voyageurs. **CLÉS CAVEAT: les taux de refus de permis d'étude ont augmenté à mesure que les outils se propagent, mais cela suit également les bouchons de permis de l'étude + les mesures de répression d'intégrité — corrélation, PAS de lien établi; ne prétendez pas que l'IA a causé des refus.**   **LEAN: plaidoyer universitaire en faveur des droits de l'homme** (Citizen Lab/Molnar) + presse d'enquête + commission parlementaire; les chiffres d'efficacité de l'IRCC sont auto-déclarés. |  [Des bots à la porte](https://citizenlab.ca/research/bots-at-the-gate-human-rights-analysis-automated-decision-making-in-canadas-immigration-refugee-system/)  ·  [Rapport du CIMM 12](https://www.ourcommons.ca/documentviewer/en/44-1/CIMM/report-12/page-84)  ·  [Rapport de l'ASFC de la SRC dans l'application FR](https://www.cbc.ca/news/canada/windsor/cbsa-facial-recogntion-app-deportation-1.7296313)  ·  [CBC ASFC Risque pour les voyageurs de l'IA + partialité](https://www.cbc.ca/news/canada/windsor/artificial-intelligence-bias-border-canada-screening-1.7624051)",
   "links": [
    [
     "Bots at the Gate",
@@ -1298,7 +1298,7 @@
   "section": "Citation-precision pass — June 18, 2026",
   "claim": "Proctoration/Linkletter d'IA + tuteurs d'IA (démonstration vs hyped) + consensus sur l'intégrité (Ch 14)",
   "status": "resolved",
-  "detail": "* CONFIRMÉ 2026-06-19. Proctoration : La détection faciale de Proctorio a révélé que les visages noirs manquaient ~57 % du temps (Satheesan, par l'intermédiaire du vice); le recul des étudiants canadiens (uOttawa/UBC, Respondus, 2020). MARQUE AFFAIRE CANADIENNE : Proctorio a poursuivi Ian Linkletter de l'UBC (Cour suprême de la Colombie-Britannique, sept. 2020) au sujet de tweets qui la critiquent; anti-SLAPP a refusé en grande partie, la CSC a refusé le congé; il a terminé par un congé sans consentement le 12 novembre 2025 (sans argent, termes confidentiels) — un frisson de 5 ans. BCcampus \"Au-delà de la surveillance\" (Oct 2024). Tutorat de l'IA: DEMONSTRATED — Harvard Physics RCT (Kestin et al. 2024, n=194) : tuteur spécialement conçu → >2x apprentissage en moins de temps (mais fortement conçu, session/sujet unique, PAS hors-la-selle). HYPED — Khanmigo « un non-événement » pour beaucoup (Sal Khan); l'ancre de vente « Bloom 2-sigma » est surestimée (~aspirée dans des synthèses ultérieures); **AUCUN ECR canadien comparablement rigoureux.** Consensus (Sarah Eaton, U Calgary; ICAI; BCcampus) : redessiner l'évaluation, ne pas détecter-et-punir; l'utilisation d'un détecteur secret est elle-même une atteinte à l'intégrité par l'instructeur. **LEAN: presse/défense (proctoration) + examen par les pairs (Harvard RCT, États-Unis) + consensus académique.**  |  [Cas de linkletter (Ubyssey)](https://ubyssey.ca/news/proctorio-lawsuit-ends/)  ·  [Harvard IA tuteur RCT (Gazette)](https://news.harvard.edu/gazette/story/2024/09/professor-tailored-ai-tutor-to-physics-course-engagement-doubled/)  ·  [Eaton (Affaires universitaires)](https://universityaffairs.ca/career-advice/focusing-on-genai-detection-is-a-no-win-approach-for-instructors/)  ·  [BCcampus au-delà de la surveillance](https://bccampus.ca/2024/10/16/beyond-surveillance-the-case-against-ai-proctoring-ai-detection/)",
+  "detail": "* CONFIRMÉ 2026-06-19. Proctoration : La détection faciale de Proctorio a révélé que les visages noirs manquaient ~57 % du temps (Satheesan, par l'intermédiaire du vice); le recul des étudiants canadiens (uOttawa/UBC, Respondus, 2020). MARQUE AFFAIRE CANADIENNE : Proctorio a poursuivi Ian Linkletter de l'UBC (Cour suprême de la Colombie-Britannique, sept. 2020) au sujet de tweets qui la critiquent; anti-SLAPP a refusé en grande partie, la CSC a refusé le congé; il a terminé par un congé sans consentement le 12 novembre 2025 (sans argent, termes confidentiels) — un frisson de 5 ans. BCcampus \"Au-delà de la surveillance\" (Oct 2024). Tuteurs de l'IA: DEMONSTRATED — Harvard Physics RCT (Kestin et al. 2024, n=194) : tuteur spécialement conçu → >2x apprentissage en moins de temps (mais fortement conçu, session/sujet unique, PAS hors-la-selle). HYPED — Khanmigo « un non-événement » pour beaucoup (Sal Khan); l'ancre de vente « Bloom 2-sigma » est surestimée (~aspirée dans des synthèses ultérieures); **AUCUN ECR canadien comparablement rigoureux.** Consensus (Sarah Eaton, U Calgary; ICAI; BCcampus) : redessiner l'évaluation, ne pas détecter-et-punir; l'utilisation d'un détecteur secret est elle-même une atteinte à l'intégrité par l'instructeur. **LEAN: presse/défense (proctoration) + évaluation par les pairs (Harvard RCT, États-Unis) + consensus académique.**  |  [Cas de linkletter (Ubyssey)](https://ubyssey.ca/news/proctorio-lawsuit-ends/)  ·  [Harvard IA tuteur RCT (Gazette)](https://news.harvard.edu/gazette/story/2024/09/professor-tailored-ai-tutor-to-physics-course-engagement-doubled/)  ·  [Eaton (Affaires universitaires)](https://universityaffairs.ca/career-advice/focusing-on-genai-detection-is-a-no-win-approach-for-instructors/)  ·  [BCcampus au-delà de la surveillance](https://bccampus.ca/2024/10/16/beyond-surveillance-the-case-against-ai-proctoring-ai-detection/)",
   "links": [
    [
     "Linkletter case (Ubyssey)",
@@ -1315,6 +1315,73 @@
    [
     "BCcampus Beyond Surveillance",
     "https://bccampus.ca/2024/10/16/beyond-surveillance-the-case-against-ai-proctoring-ai-detection/"
+   ]
+  ]
+ },
+ {
+  "id": 88,
+  "section": "Citation-precision pass — June 18, 2026",
+  "claim": "Bureau de la concurrence Travaux d'IA + modifications de la Loi sur la concurrence (Ch 7)",
+  "status": "resolved",
+  "detail": "* CONFIRMÉ 2026-06-19. Document de travail du Bureau de la concurrence intitulé « Intelligence artificielle et concurrence » (20 mars 2024; consultation jusqu'au 7 juillet 2024) + rapport « Ce que nous avons entendu » (27 janvier 2025, 28 communications) : noms des risques = données/calculs comme obstacles à l'entrée, économies d'échelle, effets sur les réseaux, auto-préférés par les plates-formes, collusion algorithmique/tacitique, marketing trompeur de l'IA (deepfakes); les répondants étaient en faveur de règles fondées sur des principes qui ne sont pas neutres sur le plan technologique. Sommet de la concurrence \"La compétition à l'ère de l'IA\" (sept. 16 2024; principale présidente du CCF, Lina Khan). Document de travail distinct sur les prix et la concurrence algorithmiques (10 juin 2025). Réformes de la Loi sur la concurrence : Le projet de loi C-56 (Sanction royale le 15 décembre 2023) a abrogé les règles relatives à l'efficacité de la défense et renforcé l'abus de domination et ajouté des pouvoirs d'étude de marché; le projet de Loi C-59 (Sanctions royales le 20 juin 2024) a renforcé le prix d'entrée, ajouté des règles de justification du lavage écologique et créé un droit privé d'accès au Tribunal (en vigueur le 20juin 2025). **LEAN: résumés gouvernement/régulateur + cabinets de droit.**  |  [Bureau IA & concurrence](https://competition-bureau.canada.ca/en/how-we-foster-competition/education-and-outreach/artificial-intelligence-and-competition)  ·  [Ce que nous avons entendu](https://competition-bureau.canada.ca/en/how-we-foster-competition/education-and-outreach/consultation-artificial-intelligence-and-competition-what-we-heard)  ·  [Guide du Bureau pour les amendements 2024](https://competition-bureau.canada.ca/en/how-we-foster-competition/education-and-outreach/guide-june-2024-amendments-competition-act)",
+  "links": [
+   [
+    "Bureau AI & competition",
+    "https://competition-bureau.canada.ca/en/how-we-foster-competition/education-and-outreach/artificial-intelligence-and-competition"
+   ],
+   [
+    "What We Heard",
+    "https://competition-bureau.canada.ca/en/how-we-foster-competition/education-and-outreach/consultation-artificial-intelligence-and-competition-what-we-heard"
+   ],
+   [
+    "Bureau guide to 2024 amendments",
+    "https://competition-bureau.canada.ca/en/how-we-foster-competition/education-and-outreach/guide-june-2024-amendments-competition-act"
+   ]
+  ]
+ },
+ {
+  "id": 89,
+  "section": "Citation-precision pass — June 18, 2026",
+  "claim": "Prix algorithmiques/collusion + lavage de l'IA: limites + comparateurs américains (Ch 7)",
+  "status": "resolved",
+  "detail": "* CONFIRMÉ 2026-06-19. Canada : Loi sur la concurrence, art. 90.1 modifiée (en vigueur le 15 décembre 2024) afin que les ordres civils puissent conclure des accords entre les non-concurrents (à voix haute); le papier à prix algorithmique du Bureau, en juin 2025, indique des algorithmes de tarification permettant une coordination tacite/à voix basse, mais note que le paragraphe 45/90.1 exige toujours la preuve d'une entente (« réunion des esprits ») — l'écart entre les mesures d'application pour la collusion tacite autonome. Comparateur américain: DOJ + états v. RealPage (algorithme de prix du location utilisant les données des concurrents; Sherman Act); proposition de règlement fin novembre 2025 (pas d'admission; certains États continuent). Lavage IA : **AUCUN cas d'exécution confirmé au Canada** (outils de marketing trompeur + accès privé sont les crochets disponibles). États-Unis: FTC \"Opération IA Comply\" (sept. 25 2024, 5 entreprises); SEC a réglé Delphia + Global Predictions pour les fausses demandes d'IA (mars 2024). **LEAN: régulateur + loi-firm + presse; États-Unis clairement étiqueté.**  |  [Papier de tarification algorithmique du Bureau](https://competition-bureau.canada.ca/en/how-we-foster-competition/education-and-outreach/publications/algorithmic-pricing-and-competition-discussion-paper)  ·  [Page réelle du DOJ (ProPublica)](https://www.propublica.org/article/doj-realpage-settlement-rental-price-fixing-case)  ·  [FTC Opération IA Conformité](https://www.ftc.gov/news-events/news/press-releases/2024/09/ftc-announces-crackdown-deceptive-ai-claims-schemes)",
+  "links": [
+   [
+    "Bureau algorithmic pricing paper",
+    "https://competition-bureau.canada.ca/en/how-we-foster-competition/education-and-outreach/publications/algorithmic-pricing-and-competition-discussion-paper"
+   ],
+   [
+    "DOJ RealPage (ProPublica)",
+    "https://www.propublica.org/article/doj-realpage-settlement-rental-price-fixing-case"
+   ],
+   [
+    "FTC Operation AI Comply",
+    "https://www.ftc.gov/news-events/news/press-releases/2024/09/ftc-announces-crackdown-deceptive-ai-claims-schemes"
+   ]
+  ]
+ },
+ {
+  "id": 90,
+  "section": "Citation-precision pass — June 18, 2026",
+  "claim": "Structure du marché IA : concentration contre démocratisation (Ch 7)",
+  "status": "resolved",
+  "detail": "* CONFIRMÉ 2026-06-19. CONCENTRATION: NVIDIA ~80–90% des accélérateurs d'IA / >90% de puces d ́entraînement (estimations analytiques, fonction de la source); AWS+Microsoft+Google ~63% du cloud mondial (Synergy, T3 2025); investissements dans les grandes technologies en laboratoire (Micro Soft-OpenAI, Amazon/Googles-Anthropic, >20B combiné) marqués comme quasi-vertical-intégration par le rapport du personnel de la FTC 6(b) des États-Unis (janvier 2025); CMA/UE du Royaume-Uni a examiné les partenariats et a autorisé / trouvé aucun contrôle des concentrations (2024-25). DÉMOCRATISATION : les modèles à poids ouvert (Llama, Mistral, DeepSeek, Cohere Aya) ont réduit les barrières d'entrée; le coût de l'inférence a diminué de ~280x en ~18 mois (indice IA de Stanford 2025); Deep Seek-R1 (20 janvier 2025) ~a égalé la frontière américaine à bon marché et a déclenché une baisse record de ~589 milliards de dollars américains pour un seul jour (27 janvier 2020). Des voix crédibles dans les deux sens (Bruegel/INET : entrenches les titulaires; Stanford/Goldman : baisse les barrières). CANADA : Cohére de la société modèle de fondation à échelle unique (~6.8 milliards de dollars américains; ~240 millions de dollars fédéraux, mars 2025); les start-up s'entraînent en grande partie sur le nuage étranger (la fracture de calcul; le 700 M$ du Fonds d'accès au calcul + la cible de calcul souverain s'y attaque). **LEAN: recherche-marché/analyse + régulateur + académique + entreprise; les chiffres sont des fourchettes.**  |  [Partage de nuage de synergie](https://www.srgresearch.com/articles/cloud-market-share-trends-big-three-together-hold-63-while-oracle-and-the-neoclouds-inch-higher)  ·  [FTC 6b) Rapport sur les partenariats en matière d'IA](https://www.ftc.gov/news-events/news/press-releases/2025/01/ftc-issues-staff-report-ai-partnerships-investments-study)  ·  [Indice d'IA de Stanford 2025](https://hai.stanford.edu/ai-index/2025-ai-index-report/research-and-development)  ·  [DeepSeek/NVIDIA 589B$ (CSET)](https://cset.georgetown.edu/article/deepseeks-release-of-an-open-weight-frontier-ai-model/)",
+  "links": [
+   [
+    "Synergy cloud share",
+    "https://www.srgresearch.com/articles/cloud-market-share-trends-big-three-together-hold-63-while-oracle-and-the-neoclouds-inch-higher"
+   ],
+   [
+    "FTC 6(b) AI partnerships report",
+    "https://www.ftc.gov/news-events/news/press-releases/2025/01/ftc-issues-staff-report-ai-partnerships-investments-study"
+   ],
+   [
+    "Stanford AI Index 2025",
+    "https://hai.stanford.edu/ai-index/2025-ai-index-report/research-and-development"
+   ],
+   [
+    "DeepSeek/NVIDIA $589B (CSET)",
+    "https://cset.georgetown.edu/article/deepseeks-release-of-an-open-weight-frontier-ai-model/"
    ]
   ]
  }
