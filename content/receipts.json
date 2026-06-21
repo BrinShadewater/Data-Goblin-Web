@@ -1242,5 +1242,80 @@
     "https://harpers.org/archive/2018/01/the-digital-poorhouse/"
    ]
   ]
+ },
+ {
+  "id": 85,
+  "section": "Citation-precision pass — June 18, 2026",
+  "claim": "AI in K-12 education: governance fragmentation + student data (Ch 14)",
+  "status": "resolved",
+  "detail": "✅ CONFIRMED 2026-06-19. Education is provincial; as of 2026 only BC, Quebec, and New Brunswick have government K-12 generative-AI guidance, all advisory (delegating to boards/teachers); Ontario/Alberta/most others none or \"in development.\" CMEC (pan-Canadian coordinating body) issued no framework (one closed discussion June 2025, no deliverable). Federal AIDA omitted education. CTF/FCE policy brief (2024): AIDA has no K-12 provisions; calls on CMEC + Ottawa to act; concerns = surveillance, commercial data exploitation (~US$20B edtech market), digital divide/equity, deprofessionalization. Student data: Quebec Law 25 (parental consent under-14; ADM human-review right); FPT privacy commissioners' joint EdTech resolution (Oct 8 2025) — no secondary use / AI-training on student data without consent; PowerSchool breach (Jan 2025, ~5.2M Canadians; boards lacked privacy contract terms). International comparator: Norway (June 2026) recommended AI \"in the main not\" in grades 1–7, age-tiered, accessibility carve-outs (a recommendation, NOT a statutory ban). **LEAN: provincial gov (advisory) + teacher union (advocacy) + regulator.** | [BC K-12 AI guidance](https://www2.gov.bc.ca/gov/content/education-training/k-12/administration/program-management/ai-in-education) · [CTF policy brief](https://www.ctf-fce.ca/wp-content/uploads/2023/12/3-ENAI-policy-brief-AGM-2024.pdf) · [FPT EdTech resolution](https://www.priv.gc.ca/en/about-the-opc/what-we-do/provincial-and-territorial-collaboration/joint-resolutions-with-provinces-and-territories/res_20251008_edtech/) · [Norway guidance (regjeringen.no)](https://www.regjeringen.no/no/aktuelt/kunstig-intelligens-skal-i-all-hovedsak-ikke-brukes-i-barneskolen/id3166807/)",
+  "links": [
+   [
+    "BC K-12 AI guidance",
+    "https://www2.gov.bc.ca/gov/content/education-training/k-12/administration/program-management/ai-in-education"
+   ],
+   [
+    "CTF policy brief",
+    "https://www.ctf-fce.ca/wp-content/uploads/2023/12/3-ENAI-policy-brief-AGM-2024.pdf"
+   ],
+   [
+    "FPT EdTech resolution",
+    "https://www.priv.gc.ca/en/about-the-opc/what-we-do/provincial-and-territorial-collaboration/joint-resolutions-with-provinces-and-territories/res_20251008_edtech/"
+   ],
+   [
+    "Norway guidance (regjeringen.no)",
+    "https://www.regjeringen.no/no/aktuelt/kunstig-intelligens-skal-i-all-hovedsak-ikke-brukes-i-barneskolen/id3166807/"
+   ]
+  ]
+ },
+ {
+  "id": 86,
+  "section": "Citation-precision pass — June 18, 2026",
+  "claim": "AI text detectors: unreliable + biased; Canadian universities refusing (Ch 14)",
+  "status": "resolved",
+  "detail": "✅ CONFIRMED 2026-06-19. OpenAI retired its own AI-text classifier (July 20 2023) citing low accuracy (it had flagged only 26% of AI text). Stanford/Liang et al., \"GPT detectors are biased against non-native English writers\" (Patterns, July 10 2023): detectors misclassified **61.22% of TOEFL essays** (non-native English) as AI while near-perfect on US 8th-grade essays — penalizing simpler linguistic range. Turnitin's <1% false-positive claim challenged (WaPo tests; Turnitin added a caveat). Canadian universities: UBC declined to enable Turnitin AI detection (Apr 2023, reaffirmed Aug 2023); Waterloo discontinued it (Sept 2025, citing bias against non-native English); Guelph advises against submitting work to detectors. **Neurodivergent false-positive harm = a grounded CONCERN, not yet quantified — do not assert a stat.** **LEAN: company + peer-reviewed academic + universities + press.** | [OpenAI classifier retired](https://openai.com/index/new-ai-classifier-for-indicating-ai-written-text/) · [Liang et al. (arXiv 2304.02819)](https://arxiv.org/abs/2304.02819) · [UBC not enabling AI detection](https://lthub.ubc.ca/2023/08/28/ubc-affirms-decision-to-not-enable-turnitin-ai-detection/) · [Waterloo discontinues](https://uwaterloo.ca/academic-integrity/news/discontinuing-use-ai-detection-functionality-turnitin)",
+  "links": [
+   [
+    "OpenAI classifier retired",
+    "https://openai.com/index/new-ai-classifier-for-indicating-ai-written-text/"
+   ],
+   [
+    "Liang et al. (arXiv 2304.02819)",
+    "https://arxiv.org/abs/2304.02819"
+   ],
+   [
+    "UBC not enabling AI detection",
+    "https://lthub.ubc.ca/2023/08/28/ubc-affirms-decision-to-not-enable-turnitin-ai-detection/"
+   ],
+   [
+    "Waterloo discontinues",
+    "https://uwaterloo.ca/academic-integrity/news/discontinuing-use-ai-detection-functionality-turnitin"
+   ]
+  ]
+ },
+ {
+  "id": 87,
+  "section": "Citation-precision pass — June 18, 2026",
+  "claim": "AI proctoring/Linkletter + AI tutors (demonstrated vs hyped) + integrity consensus (Ch 14)",
+  "status": "resolved",
+  "detail": "✅ CONFIRMED 2026-06-19. Proctoring: Proctorio facial detection found to miss Black faces ~57% of the time (Satheesan, via Vice); Canadian student pushback (uOttawa/UBC, Respondus, 2020). MARQUEE CANADIAN CASE: Proctorio sued UBC's Ian Linkletter (BC Supreme Court, Sept 2020) over tweets criticizing it; anti-SLAPP largely refused, SCC declined leave; ended in consent dismissal Nov 12 2025 (no money, terms confidential) — a 5-yr chill. BCcampus \"Beyond Surveillance\" (Oct 2024). AI tutors: DEMONSTRATED — Harvard physics RCT (Kestin et al. 2024, n=194): purpose-built tutor → >2x learning in less time (but heavily engineered, single session/topic, NOT off-the-shelf). HYPED — Khanmigo \"a non-event\" for many (Sal Khan); the \"Bloom 2-sigma\" sales anchor is overstated (~halved in later syntheses); **NO comparably rigorous Canadian RCT.** Consensus (Sarah Eaton, U Calgary; ICAI; BCcampus): redesign assessment, don't detect-and-punish; covert detector use is itself an integrity breach by the instructor. **LEAN: press/advocacy (proctoring) + peer-reviewed (Harvard RCT, US) + academic consensus.** | [Linkletter case (Ubyssey)](https://ubyssey.ca/news/proctorio-lawsuit-ends/) · [Harvard AI tutor RCT (Gazette)](https://news.harvard.edu/gazette/story/2024/09/professor-tailored-ai-tutor-to-physics-course-engagement-doubled/) · [Eaton (University Affairs)](https://universityaffairs.ca/career-advice/focusing-on-genai-detection-is-a-no-win-approach-for-instructors/) · [BCcampus Beyond Surveillance](https://bccampus.ca/2024/10/16/beyond-surveillance-the-case-against-ai-proctoring-ai-detection/)",
+  "links": [
+   [
+    "Linkletter case (Ubyssey)",
+    "https://ubyssey.ca/news/proctorio-lawsuit-ends/"
+   ],
+   [
+    "Harvard AI tutor RCT (Gazette)",
+    "https://news.harvard.edu/gazette/story/2024/09/professor-tailored-ai-tutor-to-physics-course-engagement-doubled/"
+   ],
+   [
+    "Eaton (University Affairs)",
+    "https://universityaffairs.ca/career-advice/focusing-on-genai-detection-is-a-no-win-approach-for-instructors/"
+   ],
+   [
+    "BCcampus Beyond Surveillance",
+    "https://bccampus.ca/2024/10/16/beyond-surveillance-the-case-against-ai-proctoring-ai-detection/"
+   ]
+  ]
  }
 ]

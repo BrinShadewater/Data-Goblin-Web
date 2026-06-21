@@ -954,5 +954,53 @@
  {
   "name": "Eubanks, Digital Poorhouse (Harper's)",
   "url": "https://harpers.org/archive/2018/01/the-digital-poorhouse/"
+ },
+ {
+  "name": "BC K-12 AI guidance",
+  "url": "https://www2.gov.bc.ca/gov/content/education-training/k-12/administration/program-management/ai-in-education"
+ },
+ {
+  "name": "CTF policy brief",
+  "url": "https://www.ctf-fce.ca/wp-content/uploads/2023/12/3-ENAI-policy-brief-AGM-2024.pdf"
+ },
+ {
+  "name": "FPT EdTech resolution",
+  "url": "https://www.priv.gc.ca/en/about-the-opc/what-we-do/provincial-and-territorial-collaboration/joint-resolutions-with-provinces-and-territories/res_20251008_edtech/"
+ },
+ {
+  "name": "Norway guidance (regjeringen.no)",
+  "url": "https://www.regjeringen.no/no/aktuelt/kunstig-intelligens-skal-i-all-hovedsak-ikke-brukes-i-barneskolen/id3166807/"
+ },
+ {
+  "name": "OpenAI classifier retired",
+  "url": "https://openai.com/index/new-ai-classifier-for-indicating-ai-written-text/"
+ },
+ {
+  "name": "Liang et al. (arXiv 2304.02819)",
+  "url": "https://arxiv.org/abs/2304.02819"
+ },
+ {
+  "name": "UBC not enabling AI detection",
+  "url": "https://lthub.ubc.ca/2023/08/28/ubc-affirms-decision-to-not-enable-turnitin-ai-detection/"
+ },
+ {
+  "name": "Waterloo discontinues",
+  "url": "https://uwaterloo.ca/academic-integrity/news/discontinuing-use-ai-detection-functionality-turnitin"
+ },
+ {
+  "name": "Linkletter case (Ubyssey)",
+  "url": "https://ubyssey.ca/news/proctorio-lawsuit-ends/"
+ },
+ {
+  "name": "Harvard AI tutor RCT (Gazette)",
+  "url": "https://news.harvard.edu/gazette/story/2024/09/professor-tailored-ai-tutor-to-physics-course-engagement-doubled/"
+ },
+ {
+  "name": "Eaton (University Affairs)",
+  "url": "https://universityaffairs.ca/career-advice/focusing-on-genai-detection-is-a-no-win-approach-for-instructors/"
+ },
+ {
+  "name": "BCcampus Beyond Surveillance",
+  "url": "https://bccampus.ca/2024/10/16/beyond-surveillance-the-case-against-ai-proctoring-ai-detection/"
  }
 ]
