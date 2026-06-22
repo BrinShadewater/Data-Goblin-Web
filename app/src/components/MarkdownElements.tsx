@@ -67,7 +67,10 @@ export function useMarkdownComponents(): Components {
                 ? children.map((x) => (typeof x === "string" ? x : "")).join("")
                 : "";
           const def = glossMap?.get(term.toLowerCase());
-          if (def) return <GlossaryTerm term={term} def={def} />;
+          if (def) {
+            const url = href && href !== "#loot" ? href : undefined;
+            return <GlossaryTerm term={term} def={def} url={url} />;
+          }
           return <>{children}</>;
         }
         const auto = title === AUTOLINK_TITLE;

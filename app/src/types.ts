@@ -116,4 +116,9 @@ export interface GlossaryEntry {
   def: string;
   chapters: string;
   letter: string;
+  /** Optional authoritative source (LEGISinfo for bills, official site for orgs).
+   *  When present, the in-book term becomes a link: hover shows the definition,
+   *  click opens this URL in a new tab. Authored as a trailing <url> in
+   *  Glossary-Draft.md and parsed by build_content.py. */
+  url?: string;
 }

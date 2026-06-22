@@ -208,7 +208,7 @@ export function ReceiptMarker({ receipt, children }: { receipt: Receipt; childre
   );
 }
 
-export function GlossaryTerm({ term, def }: { term: string; def: string }) {
+export function GlossaryTerm({ term, def, url }: { term: string; def: string; url?: string }) {
   const { c } = useTheme();
   const cleanDef = def
     .replace(/[*_]{1,3}([^*_]+)[*_]{1,3}/g, "$1")
@@ -216,27 +216,45 @@ export function GlossaryTerm({ term, def }: { term: string; def: string }) {
   const [open, setOpen] = useState(false);
   const anchorRef = useRef<HTMLSpanElement>(null);
   const navy = c(...P.navy);
+  const hover = {
+    onMouseEnter: () => setOpen(true),
+    onMouseLeave: () => setOpen(false),
+    onFocus: () => setOpen(true),
+    onBlur: () => setOpen(false),
+  };
+  const termStyle = { borderBottom: `1px dotted ${navy}`, color: "inherit" } as const;
   return (
-    <span style={{ position: "relative", display: "inline" }}>
-      <span
-        role="button"
-        tabIndex={0}
-        ref={anchorRef}
-        aria-label={`Definition of ${term}`}
-        aria-expanded={open}
-        onMouseEnter={() => setOpen(true)}
-        onMouseLeave={() => setOpen(false)}
-        onFocus={() => setOpen(true)}
-        onBlur={() => setOpen(false)}
-        onClick={(e) => { e.preventDefault(); setOpen((o) => !o); }}
-        onKeyDown={(e) => {
-          if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setOpen((o) => !o); }
-          if (e.key === "Escape") setOpen(false);
-        }}
-        style={{ borderBottom: `1px dotted ${navy}`, color: "inherit", cursor: "help" }}
-      >
-        {term}
-      </span>
+    <span ref={anchorRef} style={{ position: "relative", display: "inline" }}>
+      {url ? (
+        // Has a source: the word is a link — hover defines, click opens the source.
+        <a
+          href={url}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`${term} — hover for definition, click to open source`}
+          {...hover}
+          style={{ ...termStyle, cursor: "pointer", textDecoration: "none" }}
+        >
+          {term}
+        </a>
+      ) : (
+        // No source: definition-only — click toggles the popover (tap-friendly).
+        <span
+          role="button"
+          tabIndex={0}
+          aria-label={`Definition of ${term}`}
+          aria-expanded={open}
+          {...hover}
+          onClick={(e) => { e.preventDefault(); setOpen((o) => !o); }}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setOpen((o) => !o); }
+            if (e.key === "Escape") setOpen(false);
+          }}
+          style={{ ...termStyle, cursor: "help" }}
+        >
+          {term}
+        </span>
+      )}
       <AnchoredPopover anchorRef={anchorRef} open={open} width={280}>
         <span
           style={{
@@ -262,6 +280,11 @@ export function GlossaryTerm({ term, def }: { term: string; def: string }) {
             Loot · Glossary
           </span>
           {cleanDef}
+          {url && (
+            <span style={{ display: "block", marginTop: "7px", fontFamily: MONO, fontSize: "9.5px", fontWeight: 700, letterSpacing: "0.06em", color: navy }}>
+              ↗ click the term to open the source
+            </span>
+          )}
         </span>
       </AnchoredPopover>
     </span>

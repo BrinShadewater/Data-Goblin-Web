@@ -3,270 +3,553 @@
   "term": "AGI (Artificial General Intelligence)",
   "def": "A hypothesized future AI matching or exceeding human performance across most cognitive tasks. Whether it's achievable, when, and what \"intelligence\" even means in that sentence are all contested — the last one more than the field usually admits.",
   "chapters": "Chs. 1, 2",
-  "letter": "A"
+  "letter": "A",
+  "url": ""
  },
  {
   "term": "AIDA (Artificial Intelligence and Data Act)",
   "def": "Canada's attempted comprehensive AI law, Part 3 of Bill C-27. Died with the January 2025 prorogation. Everything in this book about \"the regulatory vacuum\" is the AIDA-shaped hole.",
   "chapters": "Chs. 10, 15",
-  "letter": "A"
+  "letter": "A",
+  "url": ""
  },
  {
   "term": "Algorithmic management",
   "def": "Running workers by software: AI-driven dispatch, scoring, scheduling, discipline. The boss is a dashboard; the appeal process is mostly vibes.",
   "chapters": "Chs. 10, 14",
-  "letter": "A"
+  "letter": "A",
+  "url": ""
  },
  {
   "term": "Alignment",
   "def": "Fine-tuning aimed at making a model's behaviour match human values — which immediately raises the question *whose*. Not solved; jailbreaks are the proof.",
   "chapters": "Ch. 2",
-  "letter": "A"
+  "letter": "A",
+  "url": ""
  },
  {
   "term": "Attention",
   "def": "The transformer mechanism that weighs every previous token when predicting the next one. The reason your chatbot remembers the pronoun from three paragraphs ago — and the reason the chips run hot.",
   "chapters": "Ch. 2",
-  "letter": "A"
+  "letter": "A",
+  "url": ""
  },
  {
   "term": "Behind-the-meter generation",
   "def": "A power plant built for one customer, bypassing the public grid — the architecture proposed for Wonder Valley, among others. As a category, faster to permit and harder for outside observers to track than grid-connected generation.",
   "chapters": "Ch. 6",
-  "letter": "B"
+  "letter": "B",
+  "url": ""
  },
  {
   "term": "Bias (three senses)",
   "def": "*Statistical*: systematic mathematical error. *Social*: systematic favouritism for or against groups of people. *Structural*: a system reproducing existing power and resource distributions even when the math is \"fair.\" Conversations that slide between these without flagging the switch are how everyone ends up shouting.",
   "chapters": "Ch. 15",
-  "letter": "B"
+  "letter": "B",
+  "url": ""
  },
  {
   "term": "Bias-mapping",
   "def": "This book's core method: every source leans; the lean is nameable; naming it is not the same as dismissing the source. The goblin's whole personality, systematized.",
   "chapters": "Chs. 1, 17",
-  "letter": "B"
+  "letter": "B",
+  "url": ""
  },
  {
   "term": "CARE Principles",
   "def": "Collective benefit, Authority to control, Responsibility, Ethics — the Global Indigenous Data Alliance's framework for Indigenous data governance, built as a counterweight to \"open data\" defaults.",
   "chapters": "Ch. 9",
-  "letter": "C"
+  "letter": "C",
+  "url": ""
  },
  {
   "term": "CLOUD Act",
   "def": "US law (2018) compelling US-headquartered companies to produce data they hold *anywhere in the world* under US legal process. The reason \"the server is in Montréal\" doesn't end the sovereignty conversation.",
   "chapters": "Ch. 9",
-  "letter": "C"
+  "letter": "C",
+  "url": ""
  },
  {
   "term": "Colocation",
   "def": "Renting space, power, and cooling in someone else's data centre. Much of \"Canadian\" cloud capacity physically lives here.",
   "chapters": "Ch. 6",
-  "letter": "C"
+  "letter": "C",
+  "url": ""
  },
  {
   "term": "Commissioned research",
   "def": "Studies produced by professional research firms for the entity being studied. Not corruption; not independent measurement either. Check who paid for the cake.",
   "chapters": "Ch. 7",
-  "letter": "C"
+  "letter": "C",
+  "url": ""
  },
  {
   "term": "Common Crawl",
   "def": "A nonprofit archive of the scraped web since 2008; the starting flour in most foundation-model recipes. Contains the best technical documentation on Earth and also every forum argument you've ever regretted.",
   "chapters": "Ch. 3",
-  "letter": "C"
+  "letter": "C",
+  "url": ""
  },
  {
   "term": "Deepfake",
   "def": "Synthetic media depicting a real, identifiable person doing or saying something they didn't. Bill C-16, tabled December 2025, would extend Canadian criminal law to the sexualized kind; most of the rest is legally on its own.",
   "chapters": "Ch. 13",
-  "letter": "D"
+  "letter": "D",
+  "url": ""
  },
  {
   "term": "Embodied carbon",
   "def": "The emissions baked into making the hardware — mining, fabbing, shipping — before the first prompt runs. Routinely excluded from per-prompt math, which is exactly why the goblin asks about scope.",
   "chapters": "Chs. 4, 8",
-  "letter": "E"
+  "letter": "E",
+  "url": ""
  },
  {
   "term": "Emergence",
   "def": "Capabilities that show up at large scale that smaller models lack — or possibly an artifact of how we measure. Contested, like most exciting words.",
   "chapters": "Ch. 2",
-  "letter": "E"
+  "letter": "E",
+  "url": ""
  },
  {
   "term": "Fine-tuning",
   "def": "The cheaper second stage of training that shapes a base model's behaviour for actual products. Pre-training decides what the model *knows*; fine-tuning decides how it *acts* in front of customers.",
   "chapters": "Ch. 2",
-  "letter": "F"
+  "letter": "F",
+  "url": ""
  },
  {
   "term": "Foundation model",
   "def": "A large model trained on broad data that other applications build on — the substrate layer of the current AI economy, and the layer with the least training-data disclosure, per every edition of the FMTI.",
   "chapters": "Chs. 2, 16",
-  "letter": "F"
+  "letter": "F",
+  "url": ""
  },
  {
   "term": "Freely accessible vs. freely usable",
   "def": "The distinction the phrase \"publicly available\" is designed to blur. Readable is not licensable. Your car is publicly visible.",
   "chapters": "Ch. 3",
-  "letter": "F"
+  "letter": "F",
+  "url": ""
  },
  {
   "term": "FMTI (Foundation Model Transparency Index)",
   "def": "Stanford's annual scoring of major developers' disclosure across 100 indicators. Measures what companies *say*, not whether it's true — a feature to keep in mind in both directions.",
   "chapters": "Ch. 18",
-  "letter": "F"
+  "letter": "F",
+  "url": ""
  },
  {
   "term": "Hallucination",
   "def": "The field's word for a model confidently producing falsehoods. A revealing word choice: it implies a system that normally perceives reality and occasionally slips, when the system never perceives reality at all and frequently happens to match it.",
   "chapters": "Ch. 2",
-  "letter": "H"
+  "letter": "H",
+  "url": ""
  },
  {
   "term": "Hyperscaler",
   "def": "The handful of giants (AWS, Microsoft, Google, and peers) operating cloud infrastructure at global scale — including most of the capacity \"Canadian\" AI actually runs on.",
   "chapters": "Ch. 6",
-  "letter": "H"
+  "letter": "H",
+  "url": ""
  },
  {
   "term": "Indigenous data sovereignty",
   "def": "The principle that Indigenous peoples retain ownership and governance of data about themselves, their communities, lands, and knowledge — collective rights, organized at the level of nations, predating the AI debate by decades. See OCAP, NISR, CARE.",
   "chapters": "Ch. 9",
-  "letter": "I"
+  "letter": "I",
+  "url": ""
  },
  {
   "term": "Inference",
   "def": "What happens each time you use a trained model. Tiny per query; multiplied by billions of queries a day. The per-query number and the total head in opposite directions — see Jevons.",
   "chapters": "Chs. 2, 8",
-  "letter": "I"
+  "letter": "I",
+  "url": ""
  },
  {
   "term": "Inferential extraction",
   "def": "What systems deduce about you from data that seemed harmless on its own. The data points were consented to; the introductions weren't.",
   "chapters": "Ch. 10",
-  "letter": "I"
+  "letter": "I",
+  "url": ""
  },
  {
   "term": "Jevons' paradox",
   "def": "Efficiency gains that increase total consumption, because cheaper-per-use means used-everywhere. Watt's engine was the efficient one; Britain burned more coal. The single most load-bearing analytical tool in this book's environmental chapters.",
   "chapters": "Ch. 8",
-  "letter": "J"
+  "letter": "J",
+  "url": ""
  },
  {
   "term": "Law 25",
   "def": "Quebec's modernized privacy law — automated-decision rights, GDPR-scale penalties, the strongest framework in Canada and the standing rebuke to everywhere else in Canada.",
   "chapters": "Ch. 10",
-  "letter": "L"
+  "letter": "L",
+  "url": ""
  },
  {
   "term": "Likeness rights / NIL",
   "def": "A legal claim over your own name, image, likeness, and voice, enforceable against unauthorized use — the single mechanism where performer unions and deepfake-harm researchers converge from opposite directions.",
   "chapters": "Chs. 11, 12",
-  "letter": "L"
+  "letter": "L",
+  "url": ""
  },
  {
   "term": "LLM (Large Language Model)",
   "def": "A transformer trained on enormous text corpora to predict the next token — which, scaled up, produces something that looks impressively like understanding and mechanically isn't.",
   "chapters": "Ch. 2",
-  "letter": "L"
+  "letter": "L",
+  "url": ""
  },
  {
   "term": "Model collapse",
   "def": "Degradation that can occur when models train on the outputs of earlier models — the photocopier photocopying photocopies.",
   "chapters": "Ch. 3",
-  "letter": "M"
+  "letter": "M",
+  "url": ""
  },
  {
   "term": "NISR (National Inuit Strategy on Research)",
   "def": "Inuit Tapiriit Kanatami's 2018 framework for Inuit governance of research, including control over data. Predates the generative-AI moment; applies to it anyway.",
   "chapters": "Ch. 9",
-  "letter": "N"
+  "letter": "N",
+  "url": ""
  },
  {
   "term": "OCAP® Principles",
   "def": "First Nations Ownership, Control, Access, and Possession of First Nations data — FNIGC's framework, est. 1998. The oldest and most operationally specific of the Indigenous data sovereignty frameworks. OCAP® is a registered trademark of the First Nations Information Governance Centre.",
   "chapters": "Ch. 9",
-  "letter": "O"
+  "letter": "O",
+  "url": ""
  },
  {
   "term": "Parameter",
   "def": "One of the millions-to-trillions of adjustable numbers inside a model. \"The model learned\" means \"the parameters moved.\"",
   "chapters": "Ch. 2",
-  "letter": "P"
+  "letter": "P",
+  "url": ""
  },
  {
   "term": "PIPEDA",
   "def": "Canada's federal private-sector privacy law, vintage 2000 — old enough to have never met a smartphone, now refereeing foundation models.",
   "chapters": "Ch. 10",
-  "letter": "P"
+  "letter": "P",
+  "url": ""
  },
  {
   "term": "Pre-training",
   "def": "The expensive first stage: building a base model from massive data. Establishes what the model knows, with no opinions yet about behaving in public.",
   "chapters": "Ch. 2",
-  "letter": "P"
+  "letter": "P",
+  "url": ""
  },
  {
   "term": "PUE (Power Usage Effectiveness)",
   "def": "Total facility energy ÷ computing energy. 1.0 is perfect; the global average is ~1.5; only 22% of Canadian facilities will tell you theirs.",
   "chapters": "Ch. 6",
-  "letter": "P"
+  "letter": "P",
+  "url": ""
  },
  {
   "term": "RLHF (Reinforcement Learning from Human Feedback)",
   "def": "Training a model to produce outputs humans rate highly. How chatbots got polite — and where a company's values quietly enter the product.",
   "chapters": "Ch. 2",
-  "letter": "R"
+  "letter": "R",
+  "url": ""
  },
  {
   "term": "Sovereign cloud",
   "def": "Marketing term for Canadian-jurisdiction hosting. Answers *whose law* at the contract layer; says nothing about whose chips, whose capital, or whose data governance. See: maple leaf, invoice.",
   "chapters": "Chs. 6, 9",
-  "letter": "S"
+  "letter": "S",
+  "url": ""
  },
  {
   "term": "Synthetic data",
   "def": "Training data generated by other AI systems. Scales nicely; see model collapse for the catch.",
   "chapters": "Ch. 3",
-  "letter": "S"
+  "letter": "S",
+  "url": ""
  },
  {
   "term": "TDM (Text and Data Mining) exception",
   "def": "A copyright carve-out permitting computational analysis of protected works — the centrepiece of the Geist/Craig position, the EU model, and the creator organizations' objections, all at once.",
   "chapters": "Ch. 11",
-  "letter": "T"
+  "letter": "T",
+  "url": ""
  },
  {
   "term": "Token",
   "def": "The unit a language model actually reads and writes — word fragments, roughly. You think in ideas; the model bills in tokens.",
   "chapters": "Ch. 2",
-  "letter": "T"
+  "letter": "T",
+  "url": ""
  },
  {
   "term": "Training",
   "def": "The energy-intensive process of building a model from data, as distinct from *inference* (using it). Conflating the two is the original sin of most AI environmental arguments, in both directions.",
   "chapters": "Chs. 2, 8",
-  "letter": "T"
+  "letter": "T",
+  "url": ""
  },
  {
   "term": "Transformer",
   "def": "The 2017 architecture (Vaswani et al., \"Attention Is All You Need\") under every current major model. One of its eight co-authors went home to Toronto and co-founded Cohere — Canadian content, certified.",
   "chapters": "Ch. 2",
-  "letter": "T"
+  "letter": "T",
+  "url": ""
  },
  {
   "term": "Voluntary Code of Conduct",
   "def": "ISED's 2023 framework for responsible generative AI. Voluntary, as advertised: no enforcement, no penalties, and Microsoft had not signed as of June 2026. Real as a signal; not law.",
   "chapters": "Chs. 5, 15",
-  "letter": "V"
+  "letter": "V",
+  "url": ""
  },
  {
   "term": "WUE (Water Usage Effectiveness)",
   "def": "Litres of water per kWh of computing. Reported even less often than PUE, which takes doing.",
   "chapters": "Ch. 6",
-  "letter": "W"
+  "letter": "W",
+  "url": ""
+ },
+ {
+  "term": "C-16 (Protecting Victims Act)",
+  "def": "Federal bill amending the Criminal Code, including provisions that extend the non-consensual-intimate-image offence to synthetic (AI-generated) sexual images. Introduced December 2025; check the chapter for its current legislative status.",
+  "chapters": "Chs. 13, 14",
+  "letter": "C",
+  "url": "https://www.parl.ca/legisinfo/en/bill/45-1/c-16"
+ },
+ {
+  "term": "C-18 (Online News Act)",
+  "def": "The 2023 law requiring large platforms to pay for the Canadian news they carry. Meta answered by blocking news; Google negotiated an exemption instead.",
+  "chapters": "Ch. 14",
+  "letter": "C",
+  "url": "https://www.parl.ca/legisinfo/en/bill/44-1/c-18"
+ },
+ {
+  "term": "C-27 (Digital Charter Implementation Act)",
+  "def": "The omnibus bill that carried AIDA plus a privacy-law overhaul. Died on the January 2025 prorogation, taking AIDA with it.",
+  "chapters": "Chs. 5, 10",
+  "letter": "C",
+  "url": "https://www.parl.ca/legisinfo/en/bill/44-1/c-27"
+ },
+ {
+  "term": "C-11 (Online Streaming Act)",
+  "def": "The 2023 law bringing streaming platforms under the *Broadcasting Act* and CRTC oversight, Canadian-content rules included.",
+  "chapters": "Ch. 12",
+  "letter": "C",
+  "url": "https://www.parl.ca/legisinfo/en/bill/44-1/c-11"
+ },
+ {
+  "term": "C-63 (Online Harms Act)",
+  "def": "The Trudeau-era attempt at a comprehensive online-harms regime — a regulator, takedown duties, broad content categories. Died in 2025; the narrower C-16 is the successor on deepfakes.",
+  "chapters": "Ch. 13",
+  "letter": "C",
+  "url": "https://www.parl.ca/legisinfo/en/bill/44-1/c-63"
+ },
+ {
+  "term": "CRTC (Canadian Radio-television and Telecommunications Commission)",
+  "def": "The federal broadcasting and telecom regulator. Administers the Online News Act exemption and the streaming rules; one of the sectoral regulators doing AI-adjacent work without an AI-specific mandate.",
+  "chapters": "Chs. 14, 17",
+  "letter": "C",
+  "url": "https://crtc.gc.ca"
+ },
+ {
+  "term": "OPC (Office of the Privacy Commissioner of Canada)",
+  "def": "The federal privacy watchdog. Investigates, reports, and recommends — but under PIPEDA it largely cannot fine, which is the recurring \"regulated but not enforceable\" problem.",
+  "chapters": "Ch. 10",
+  "letter": "O",
+  "url": "https://www.priv.gc.ca"
+ },
+ {
+  "term": "FNIGC (First Nations Information Governance Centre)",
+  "def": "The First Nations organization that stewards OCAP® and First Nations data governance in Canada.",
+  "chapters": "Ch. 9",
+  "letter": "F",
+  "url": "https://fnigc.ca"
+ },
+ {
+  "term": "OSFI (Office of the Superintendent of Financial Institutions)",
+  "def": "Canada's banking and insurance regulator, increasingly setting expectations for AI model risk in finance.",
+  "chapters": "Ch. 17",
+  "letter": "O",
+  "url": "https://www.osfi-bsif.gc.ca"
+ },
+ {
+  "term": "ISED (Innovation, Science and Economic Development Canada)",
+  "def": "The federal department that owns most of the AI-strategy file — the Pan-Canadian AI Strategy, the Voluntary Code of Conduct, and the *AI for All* launch.",
+  "chapters": "Chs. 5, 17",
+  "letter": "I",
+  "url": "https://ised-isde.canada.ca"
+ },
+ {
+  "term": "Treasury Board of Canada Secretariat",
+  "def": "The central agency that sets rules for the federal public service, including the Directive on Automated Decision-Making and the federal AI register.",
+  "chapters": "Chs. 10, 17",
+  "letter": "T",
+  "url": "https://www.canada.ca/en/treasury-board-secretariat.html"
+ },
+ {
+  "term": "Statistics Canada",
+  "def": "The national statistical agency. Its surveys are the load-bearing source behind this book's AI-adoption and news-revenue numbers — government-operational data, lower lean, but watch the definitions.",
+  "chapters": "Chs. 14, 16",
+  "letter": "S",
+  "url": "https://www.statcan.gc.ca"
+ },
+ {
+  "term": "Mila",
+  "def": "The Quebec AI institute founded by Yoshua Bengio — one of Canada's three federally funded AI institutes, and among the largest academic deep-learning clusters in the world.",
+  "chapters": "Ch. 7",
+  "letter": "M",
+  "url": "https://mila.quebec"
+ },
+ {
+  "term": "Vector Institute",
+  "def": "Toronto's AI research institute, associated with Geoffrey Hinton; one of the three national AI institutes under the Pan-Canadian strategy.",
+  "chapters": "Ch. 7",
+  "letter": "V",
+  "url": "https://vectorinstitute.ai"
+ },
+ {
+  "term": "Amii (Alberta Machine Intelligence Institute)",
+  "def": "The Edmonton-based AI institute, the third of Canada's federally funded trio, with deep reinforcement-learning roots.",
+  "chapters": "Ch. 7",
+  "letter": "A",
+  "url": "https://www.amii.ca"
+ },
+ {
+  "term": "CIFAR (Canadian Institute for Advanced Research)",
+  "def": "The research organization that funds the Pan-Canadian AI Strategy and convenes much of the country's AI talent.",
+  "chapters": "Ch. 7",
+  "letter": "C",
+  "url": "https://cifar.ca"
+ },
+ {
+  "term": "Cohere",
+  "def": "The Toronto-founded foundation-model company — Canada's clearest \"national champion\" in frontier AI, co-founded by one of the *Transformer* paper's authors.",
+  "chapters": "Ch. 7",
+  "letter": "C",
+  "url": "https://cohere.com"
+ },
+ {
+  "term": "ITK (Inuit Tapiriit Kanatami)",
+  "def": "The national representative organization for Inuit in Canada; author of the National Inuit Strategy on Research (NISR).",
+  "chapters": "Ch. 9",
+  "letter": "I",
+  "url": "https://www.itk.ca"
+ },
+ {
+  "term": "GIDA (Global Indigenous Data Alliance)",
+  "def": "The international network that stewards the CARE Principles for Indigenous data governance.",
+  "chapters": "Ch. 9",
+  "letter": "G",
+  "url": "https://www.gida-global.org"
+ },
+ {
+  "term": "ACTRA (Alliance of Canadian Cinema, Television and Radio Artists)",
+  "def": "The union for English-language performers in Canada; an early mover on AI likeness and consent provisions in its agreements.",
+  "chapters": "Ch. 12",
+  "letter": "A",
+  "url": "https://www.actra.ca"
+ },
+ {
+  "term": "DGC (Directors Guild of Canada)",
+  "def": "The union representing directors and other screen-craft workers; active in the parliamentary AI-and-creators debate.",
+  "chapters": "Ch. 12",
+  "letter": "D",
+  "url": "https://www.dgc.ca"
+ },
+ {
+  "term": "CUPE (Canadian Union of Public Employees)",
+  "def": "Canada's largest union; its Senate brief is the book's go-to for concrete worker-side AI-governance asks.",
+  "chapters": "Ch. 16",
+  "letter": "C",
+  "url": "https://cupe.ca"
+ },
+ {
+  "term": "Unifor",
+  "def": "Canada's largest private-sector union; its release counts are the sourced basis for the media-layoff figures in the news chapter.",
+  "chapters": "Ch. 14",
+  "letter": "U",
+  "url": "https://www.unifor.org"
+ },
+ {
+  "term": "CJC (Canadian Journalism Collective)",
+  "def": "The non-profit that distributes Google's ~$100M/year Online News Act payment to Canadian outlets.",
+  "chapters": "Ch. 14",
+  "letter": "C",
+  "url": "https://cjc-ccj.ca/en/"
+ },
+ {
+  "term": "CDMRN (Canadian Digital Media Research Network)",
+  "def": "The research network that documented AI-impersonation and synthetic-news operations during the 2025 federal election.",
+  "chapters": "Chs. 13, 14",
+  "letter": "C",
+  "url": "https://www.cdmrn.ca"
+ },
+ {
+  "term": "DFRLab (Digital Forensic Research Lab)",
+  "def": "The Atlantic Council unit whose analysis counted the \"AI slop\" YouTube network posing as Canadian news.",
+  "chapters": "Ch. 14",
+  "letter": "D",
+  "url": "https://www.atlanticcouncil.org/programs/digital-forensic-research-lab/"
+ },
+ {
+  "term": "Duty to consult",
+  "def": "The Crown's constitutional obligation to consult, and where appropriate accommodate, Indigenous peoples when a decision may affect their rights — the legal hinge in the data-centre consultation disputes.",
+  "chapters": "Chs. 6, 9",
+  "letter": "D",
+  "url": ""
+ },
+ {
+  "term": "Royal assent",
+  "def": "The final step at which a bill passed by Parliament becomes law. \"Tabled\" or \"passed third reading\" is not the same as \"in force\" — a distinction this book keeps insisting on.",
+  "chapters": "Chs. 10, 13",
+  "letter": "R",
+  "url": ""
+ },
+ {
+  "term": "Prorogation",
+  "def": "The formal ending of a parliamentary session. Bills still on the order paper die and must be reintroduced — which is exactly how AIDA and the Online Harms Act vanished in January 2025.",
+  "chapters": "Chs. 5, 10",
+  "letter": "P",
+  "url": ""
+ },
+ {
+  "term": "Fair dealing",
+  "def": "Canada's copyright exception allowing limited use of protected works for purposes like research, criticism, and education. Narrower than US \"fair use,\" and central to the text-and-data-mining fight.",
+  "chapters": "Ch. 11",
+  "letter": "F",
+  "url": ""
+ },
+ {
+  "term": "Mark Carney",
+  "def": "Prime Minister of Canada (as of 2026); launched the *AI for All* strategy. Roles rotate — treat the title as a snapshot.",
+  "chapters": "Ch. 5",
+  "letter": "M",
+  "url": "https://www.pm.gc.ca"
+ },
+ {
+  "term": "Yoshua Bengio",
+  "def": "Montreal deep-learning pioneer, Turing Award laureate, Mila founder, and chair of the International AI Safety Report.",
+  "chapters": "Chs. 1, 7",
+  "letter": "Y",
+  "url": "https://yoshuabengio.org"
+ },
+ {
+  "term": "Geoffrey Hinton",
+  "def": "The \"godfather of deep learning,\" associated with Toronto and the Vector Institute; 2018 Turing Award and 2024 Nobel laureate.",
+  "chapters": "Chs. 1, 7",
+  "letter": "G",
+  "url": "https://www.cs.toronto.edu/~hinton/"
+ },
+ {
+  "term": "Philippe Dufresne",
+  "def": "Privacy Commissioner of Canada (as of 2026), leading the OPC's AI-and-privacy work.",
+  "chapters": "Ch. 10",
+  "letter": "P",
+  "url": "https://www.priv.gc.ca"
  }
 ]

@@ -292,12 +292,19 @@ def parse_glossary(text):
         if term.lower().startswith(("statuses", "chapter recap")):  # safety
             continue
         d = " ".join(m.group(2).split())
+        # Optional trailing source link, authored as <https://...> at the very end.
+        url = ""
+        um = re.search(r"\s*<(https?://[^>]+)>\s*$", d)
+        if um:
+            url = um.group(1)
+            d = d[:um.start()].strip()
         ref = re.search(r"\((Chs?\.[^)]+)\)\s*$", d)
         terms.append({
             "term": term,
             "def": re.sub(r"\((Chs?\.[^)]+)\)\s*$", "", d).strip(),
             "chapters": ref.group(1) if ref else "",
             "letter": term[0].upper(),
+            "url": url,
         })
     return terms
 
