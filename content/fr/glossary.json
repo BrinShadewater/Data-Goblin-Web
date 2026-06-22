@@ -3,270 +3,553 @@
   "term": "AGI (Renseignements généraux artificiels)",
   "def": "Un futur appariement d'IA hypothétique ou surpasse la performance humaine pour la plupart des tâches cognitives. S'il est réalisable, quand, et ce que \"intelligence\" signifie même dans cette phrase sont tous contestés — le dernier plus que le champ admet habituellement.",
   "chapters": "Chs. 1, 2",
-  "letter": "A"
+  "letter": "A",
+  "url": ""
  },
  {
   "term": "AIDA (Loi sur l'intelligence artificielle et les données)",
   "def": "La tentative du Canada d'adopter une loi complète sur l'IA, partie 3 du projet de loi C-27. Décédé avec la prorogation de janvier 2025. Tout ce qui est dans ce livre sur \"le vide réglementaire\" est le trou en forme d'AIDA.",
   "chapters": "Chs. 10, 15",
-  "letter": "A"
+  "letter": "A",
+  "url": ""
  },
  {
   "term": "Gestion algorithmique",
   "def": "Coureurs par logiciel : répartition par IA, notation, programmation, discipline. Le patron est un tableau de bord; le processus d'appel est surtout des vibrations.",
   "chapters": "Chs. 10, 14",
-  "letter": "A"
+  "letter": "A",
+  "url": ""
  },
  {
   "term": "Alignement",
   "def": "Le réglage fin visant à faire correspondre le comportement d'un modèle aux valeurs humaines — ce qui soulève immédiatement la question *dont* . Non résolu ; les jailbreaks en sont la preuve.",
   "chapters": "Ch. 2",
-  "letter": "A"
+  "letter": "A",
+  "url": ""
  },
  {
   "term": "Garde à vue",
   "def": "Le mécanisme du transformateur qui pèse chaque jeton précédent lors de la prédiction du prochain. La raison pour laquelle votre chatbot se souvient du pronom d'il y a trois paragraphes — et la raison pour lequel les puces fonctionnent chaud.",
   "chapters": "Ch. 2",
-  "letter": "A"
+  "letter": "A",
+  "url": ""
  },
  {
   "term": "La génération derrière le mètre",
   "def": "Une centrale électrique construite pour un client, contournant le réseau public — l'architecture proposée pour Wonder Valley, entre autres. En tant que catégorie, plus rapide à permettre et plus difficile pour les observateurs extérieurs à suivre que la génération connectée au réseau.",
   "chapters": "Ch. 6",
-  "letter": "B"
+  "letter": "B",
+  "url": ""
  },
  {
   "term": "Bizarre (trois sens)",
   "def": "*Statistiques* : erreur mathématique systématique. *Services sociaux* : favoritisme systématique pour ou contre les groupes de personnes. *Structurel* : un système reproduisant les distributions de puissance et de ressources existantes, même lorsque les maths sont « justes ». Les conversations qui se glissent entre eux sans braquer le commutateur sont la façon dont tout le monde finit par crier.",
   "chapters": "Ch. 15",
-  "letter": "B"
+  "letter": "B",
+  "url": ""
  },
  {
   "term": "Cartographie des préjugés",
   "def": "La méthode de base de ce livre : chaque source se penche ; le biais est nommable ; le nommer n'est pas la même chose que rejeter la source. Toute la personnalité du gobelin, systématisée.",
   "chapters": "Chs. 1, 17",
-  "letter": "B"
+  "letter": "B",
+  "url": ""
  },
  {
   "term": "Principes relatifs à la protection de l ' enfance",
   "def": "Bénéfice collectif, Autorité de contrôle, Responsabilité, Éthique – le cadre de l'Alliance mondiale des données autochtones pour la gouvernance des données indigènes, construit comme un contrepoids aux « données ouvertes » par défaut.",
   "chapters": "Ch. 9",
-  "letter": "C"
+  "letter": "C",
+  "url": ""
  },
  {
   "term": "Loi sur les droits de la personne",
   "def": "La loi américaine (2018) oblige les entreprises dont le siège est aux États-Unis à produire des données qu'elles détiennent *partout dans le monde* dans le cadre du processus juridique américain. La raison pour laquelle « le serveur est à Montréal » ne met pas fin à la conversation sur la souveraineté.",
   "chapters": "Ch. 9",
-  "letter": "C"
+  "letter": "C",
+  "url": ""
  },
  {
   "term": "Colocation",
   "def": "Louer de l'espace, du courant et du refroidissement dans le centre informatique de quelqu'un d'autre. Une grande partie de la capacité nuageuse « canadienne » vit physiquement ici.",
   "chapters": "Ch. 6",
-  "letter": "C"
+  "letter": "C",
+  "url": ""
  },
  {
   "term": "Recherches commandées",
   "def": "Études réalisées par des firmes de recherche professionnelle pour l'entité étudiée. Pas de corruption, pas de mesure indépendante non plus. Vérifiez qui a payé le gâteau.",
   "chapters": "Ch. 7",
-  "letter": "C"
+  "letter": "C",
+  "url": ""
  },
  {
   "term": "Crawl commun",
   "def": "Une archive à but non lucratif de la toile grattée depuis 2008; la farine de départ dans la plupart des recettes de modèle de fondation. Contient la meilleure documentation technique sur Terre et aussi tous les arguments de forum que vous avez jamais regrettés.",
   "chapters": "Ch. 3",
-  "letter": "C"
+  "letter": "C",
+  "url": ""
  },
  {
   "term": "Faux-feux",
   "def": "Les médias synthétiques représentant une personne réelle et identifiable faisant ou disant quelque chose qu'elle n'a pas fait. Le projet de loi C-16, déposé en décembre 2025, étendrait le droit criminel canadien au genre sexualisé; la plupart des autres sont légalement seuls.",
   "chapters": "Ch. 13",
-  "letter": "D"
+  "letter": "D",
+  "url": ""
  },
  {
   "term": "Carbone incorporé",
   "def": "Les émissions se sont transformées en matériel — exploitation minière, pêche, expédition — avant la première livraison rapide. En général exclu des mathématiques à la demande, c'est exactement pourquoi le gobelin s'interroge sur la portée.",
   "chapters": "Chs. 4, 8",
-  "letter": "E"
+  "letter": "E",
+  "url": ""
  },
  {
   "term": "Émergence",
   "def": "Les capacités qui apparaissent à grande échelle que les modèles plus petits manquent — ou peut - être un artéfact de la façon dont nous mesurons. Contesté, comme des mots passionnants.",
   "chapters": "Ch. 2",
-  "letter": "E"
+  "letter": "E",
+  "url": ""
  },
  {
   "term": "Fin de réglage",
   "def": "La deuxième étape moins coûteuse de la formation qui façonne le comportement d'un modèle de base pour les produits réels. La pré-formation décide de ce que le modèle *sait* ; le réglage fin décide de la façon dont il *actes* devant les clients.",
   "chapters": "Ch. 2",
-  "letter": "F"
+  "letter": "F",
+  "url": ""
  },
  {
   "term": "Modèle de fondation",
   "def": "Un modèle de grande envergure a été formé à l'utilisation de données générales sur lesquelles reposent d'autres applications, soit la couche substrat de l'économie actuelle des IA, et la couche avec la moins formation-divulgation des données, pour chaque édition de l'«ITM».",
   "chapters": "Chs. 2, 16",
-  "letter": "F"
+  "letter": "F",
+  "url": ""
  },
  {
   "term": "Libre accès contre. facilement utilisables",
   "def": "La distinction entre les mots « publiquement disponible » est conçue pour brouiller. Lisible n'est pas admissible. Votre voiture est visible publiquement.",
   "chapters": "Ch. 3",
-  "letter": "F"
+  "letter": "F",
+  "url": ""
  },
  {
   "term": "FMTI (Indice de transparence du modèle de fondation)",
   "def": "La notation annuelle de Stanford de la divulgation des principaux développeurs sur 100 indicateurs. Mesure ce que les entreprises *dire* , pas si c'est vrai — une caractéristique à garder à l'esprit dans les deux directions.",
   "chapters": "Ch. 18",
-  "letter": "F"
+  "letter": "F",
+  "url": ""
  },
  {
   "term": "hallucination",
   "def": "Le mot du champ pour un modèle produisant avec confiance des mensonges. Un choix de mots révélateur : il implique un système qui perçoit normalement la réalité et qui se glisse parfois, alors que le système ne perçoit jamais la réalité du tout et qu'il arrive souvent de la faire correspondre.",
   "chapters": "Ch. 2",
-  "letter": "H"
+  "letter": "H",
+  "url": ""
  },
  {
   "term": "Hyperscaleur",
   "def": "La poignée de géants (AWS, Microsoft, Google et ses pairs) qui exploitent l'infrastructure cloud à l'échelle mondiale, y compris la plupart de la capacité « canadienne » d'IA fonctionne en fait.",
   "chapters": "Ch. 6",
-  "letter": "H"
+  "letter": "H",
+  "url": ""
  },
  {
   "term": "Souveraineté des données autochtones",
   "def": "Le principe selon lequel les peuples autochtones conservent la propriété et la gouvernance des données sur eux-mêmes, leurs communautés, leurs terres et leurs connaissances - droits collectifs, organisés au niveau des nations, précédant le débat sur l'IA de décennies auparavant. Voir OCAP, NISR, CARE.",
   "chapters": "Ch. 9",
-  "letter": "I"
+  "letter": "I",
+  "url": ""
  },
  {
   "term": "Inférence",
   "def": "Ce qui se passe chaque fois que vous utilisez un modèle formé. Petit par requête; multiplié par des milliards de requêtes par jour. Le nombre par pression et la tête totale dans les directions opposées — voir Jevons.",
   "chapters": "Chs. 2, 8",
-  "letter": "I"
+  "letter": "I",
+  "url": ""
  },
  {
   "term": "Extraction inferentielle",
   "def": "Ce que les systèmes en déduit de vous à partir de données qui semblaient inoffensives par eux-mêmes. Les points de données ont été acceptés, les introductions n'ont pas été acceptées.",
   "chapters": "Ch. 10",
-  "letter": "I"
+  "letter": "I",
+  "url": ""
  },
  {
   "term": "Le paradoxe de Jevons",
   "def": "Les gains d'efficacité qui augmentent la consommation totale, parce que les moyens utilisés sont moins chers par utilisation partout. Le moteur de Watt était le plus efficace; la Grande-Bretagne brûlait plus de charbon. L'outil analytique le plus chargé dans les chapitres environnementaux de ce livre.",
   "chapters": "Ch. 8",
-  "letter": "J"
+  "letter": "J",
+  "url": ""
  },
  {
   "term": "Loi 25",
   "def": "La loi québécoise modernisée sur la protection de la vie privée — les droits de décision automatisés, les sanctions à l'échelle du RGPD, le cadre le plus solide au Canada et le reproche permanent à partout ailleurs au Canada.",
   "chapters": "Ch. 10",
-  "letter": "L"
+  "letter": "L",
+  "url": ""
  },
  {
   "term": "Droits de ressemblance / NIL",
   "def": "Une revendication légale sur votre propre nom, image, ressemblance et voix, opposable contre une utilisation non autorisée - le mécanisme unique où les syndicats d'interprètes et les chercheurs de faux-pharmaceaux convergent de directions opposées.",
   "chapters": "Chs. 11, 12",
-  "letter": "L"
+  "letter": "L",
+  "url": ""
  },
  {
   "term": "LLM (Modèle de langage plus large)",
   "def": "Un transformateur formé sur d'énormes corpus textuels pour prédire le prochain jeton — qui, à l'échelle, produit quelque chose qui ressemble de façon impressionnante à la compréhension et mécanique n'est pas.",
   "chapters": "Ch. 2",
-  "letter": "L"
+  "letter": "L",
+  "url": ""
  },
  {
   "term": "Modèle d'effondrement",
   "def": "Dégradation qui peut se produire lorsque les modèles s'entraînent sur les sorties des modèles précédents — la photocopieuse photocopieuse.",
   "chapters": "Ch. 3",
-  "letter": "M"
+  "letter": "M",
+  "url": ""
  },
  {
   "term": "CSRN (Stratégie nationale inuite sur la recherche)",
   "def": "Cadre de gouvernance de la recherche pour les Inuit Tapiriit Kanatami 2018, y compris le contrôle des données. Prédate le moment générateur-IA; s'applique à lui de toute façon.",
   "chapters": "Ch. 9",
-  "letter": "N"
+  "letter": "N",
+  "url": ""
  },
  {
-  "term": "Principes du PACO",
+  "term": "Principes OCAP®",
   "def": "La propriété, le contrôle, l'accès et la possession des données sur les Premières nations — cadre du CGRFNI, est. 1998. Les cadres de souveraineté des données autochtones les plus anciens et les plus spécifiques sur le plan opérationnel. Le PACO® est une marque déposée du Centre de gouvernance de l'information des Premières nations.",
   "chapters": "Ch. 9",
-  "letter": "O"
+  "letter": "O",
+  "url": ""
  },
  {
   "term": "Paramètre",
   "def": "L'un des millions de numéros réglables dans un modèle. \"Le modèle appris\" signifie \"les paramètres déplacés\".",
   "chapters": "Ch. 2",
-  "letter": "P"
+  "letter": "P",
+  "url": ""
  },
  {
   "term": "LPRPDÉ",
   "def": "La loi fédérale sur la protection de la vie privée du secteur privé, vintage 2000 — assez vieille pour n'avoir jamais rencontré de smartphone, maintenant arbitrer des modèles de fondation.",
   "chapters": "Ch. 10",
-  "letter": "P"
+  "letter": "P",
+  "url": ""
  },
  {
   "term": "Préformation",
   "def": "La première étape coûteuse : construire un modèle de base à partir de données massives. Établit ce que le modèle sait, sans avoir encore d'opinions sur le comportement en public.",
   "chapters": "Ch. 2",
-  "letter": "P"
+  "letter": "P",
+  "url": ""
  },
  {
   "term": "PUE (Efficacité d'utilisation de la puissance)",
   "def": "Énergie totale de l'installation ÷ énergie informatique. 1.0 est parfait; la moyenne mondiale est de ~1,5; seulement 22 % des installations canadiennes vous indiqueront la leur.",
   "chapters": "Ch. 6",
-  "letter": "P"
+  "letter": "P",
+  "url": ""
  },
  {
   "term": "RLHF (Renforcement Apprentissage de la rétroaction humaine)",
   "def": "La formation d'un modèle pour produire des résultats humains est très élevée. Comment les chatbots sont devenus polis — et où les valeurs d'une entreprise entrent discrètement dans le produit.",
   "chapters": "Ch. 2",
-  "letter": "R"
+  "letter": "R",
+  "url": ""
  },
  {
   "term": "Nuage souverain",
   "def": "Terme de commercialisation pour l'accueil des tribunaux canadiens. Réponses *dont la loi* à la couche de contrat; ne dit rien sur les puces, le capital ou la gouvernance des données. Voir: feuille d'érable, facture.",
   "chapters": "Chs. 6, 9",
-  "letter": "S"
+  "letter": "S",
+  "url": ""
  },
  {
   "term": "Données synthétiques",
   "def": "Données de formation générées par d'autres systèmes d'IA. Échelles agréablement; voir modèle effondrement pour la prise.",
   "chapters": "Ch. 3",
-  "letter": "S"
+  "letter": "S",
+  "url": ""
  },
  {
   "term": "Exception concernant le TDM (texte et extraction de données)",
   "def": "Un droit d'auteur a été créé pour permettre l'analyse computationnelle des oeuvres protégées — la pièce maîtresse de la position Geist/Craig, le modèle européen et les objections des organisations créatrices, toutes à la fois.",
   "chapters": "Ch. 11",
-  "letter": "T"
+  "letter": "T",
+  "url": ""
  },
  {
   "term": "Jeton",
   "def": "L'unité d'un modèle de langue lit et écrit en fait — des fragments de mots, à peu près. Vous pensez en idées, les factures modèles en jetons.",
   "chapters": "Ch. 2",
-  "letter": "T"
+  "letter": "T",
+  "url": ""
  },
  {
   "term": "Formation",
   "def": "Le processus d'élaboration d'un modèle à forte intensité énergétique à partir de données, distinct de *inférence* (en utilisant ce modèle). Confler les deux est le péché originel de la plupart des arguments environnementaux de l'IA, dans les deux sens.",
   "chapters": "Chs. 2, 8",
-  "letter": "T"
+  "letter": "T",
+  "url": ""
  },
  {
   "term": "Transformateur",
   "def": "L'architecture 2017 (Vaswani et al., \"Attention is All You Need\") sous chaque modèle majeur actuel. L'un de ses huit co-auteurs est rentré à Toronto et a cofondé Cohere — contenu canadien, certifié.",
   "chapters": "Ch. 2",
-  "letter": "T"
+  "letter": "T",
+  "url": ""
  },
  {
   "term": "Code de conduite volontaire",
   "def": "Cadre d'ISDE 2023 pour l'IA génératrice responsable. Volontaire, comme annoncé : aucune exécution, aucune sanction, et Microsoft n'avait pas signé à partir de juin 2026. Vrai comme un signal; pas de loi.",
   "chapters": "Chs. 5, 15",
-  "letter": "V"
+  "letter": "V",
+  "url": ""
  },
  {
   "term": "UCE (efficacité de l'utilisation de l 'eau)",
   "def": "Litres d'eau par kWh de calcul. Signalé encore moins souvent que PUE, ce qui exige de faire.",
   "chapters": "Ch. 6",
-  "letter": "W"
+  "letter": "W",
+  "url": ""
+ },
+ {
+  "term": "C-16 (Loi sur la protection des victimes)",
+  "def": "Projet de loi fédéral modifiant le Code criminel, y compris des dispositions qui étendent l'infraction d'image non consensuelle aux images sexuelles synthétiques (IA). Introduit en décembre 2025; a reçu la sanction royale le 18 juin 2026, avec la plupart des dispositions en vigueur le 18 juillet 2026.",
+  "chapters": "Chs. 13, 14",
+  "letter": "C",
+  "url": "https://www.parl.ca/legisinfo/en/bill/45-1/c-16"
+ },
+ {
+  "term": "C-18 (Loi sur les nouvelles en ligne)",
+  "def": "La loi de 2023 exige que les grandes plateformes paient pour les nouvelles canadiennes qu'elles diffusent. Meta a répondu en bloquant les nouvelles; Google a négocié une exemption à la place.",
+  "chapters": "Ch. 14",
+  "letter": "C",
+  "url": "https://www.parl.ca/legisinfo/en/bill/44-1/c-18"
+ },
+ {
+  "term": "C-27 (Loi de mise en oeuvre de la Charte numérique)",
+  "def": "Le projet de loi omnibus qui a porté l'AIDA plus une révision du droit à la vie privée. Décédé lors de la prorogation de janvier 2025, prenant l'AIDA avec elle.",
+  "chapters": "Chs. 5, 10",
+  "letter": "C",
+  "url": "https://www.parl.ca/legisinfo/en/bill/44-1/c-27"
+ },
+ {
+  "term": "C-11 (Loi sur la diffusion en ligne)",
+  "def": "La loi de 2023 portant sur les plateformes de diffusion en continu sous la surveillance de *Loi sur la radiodiffusion* et du CRTC, notamment les règles relatives au contenu canadien.",
+  "chapters": "Ch. 12",
+  "letter": "C",
+  "url": "https://www.parl.ca/legisinfo/en/bill/44-1/c-11"
+ },
+ {
+  "term": "C-63 (Loi sur les dommages en ligne)",
+  "def": "L'ère Trudeau tente de mettre en place un régime complet de dommages en ligne — un organisme de réglementation, des fonctions de retrait, de grandes catégories de contenu. Décédé en 2025; le C-16 plus étroit est le successeur sur les fakes profonds.",
+  "chapters": "Ch. 13",
+  "letter": "C",
+  "url": "https://www.parl.ca/legisinfo/en/bill/44-1/c-63"
+ },
+ {
+  "term": "CRTC (Conseil de la radiodiffusion et des télécommunications canadiennes)",
+  "def": "L'organisme fédéral de réglementation de la radiodiffusion et des télécommunications. Administre l'exemption de la loi sur les nouvelles en ligne et les règles de diffusion; l'un des organismes de réglementation sectoriels qui travaillent dans le domaine de l'IA sans mandat spécifique à cette dernière.",
+  "chapters": "Chs. 14, 17",
+  "letter": "C",
+  "url": "https://crtc.gc.ca"
+ },
+ {
+  "term": "CPVP (Commissariat à la protection de la vie privée du Canada)",
+  "def": "Le chien de garde fédéral de la vie privée. Enquêter, faire rapport et recommander — mais, en vertu de la LPRPDE, elle ne peut en grande partie s'amender, ce qui est le problème récurrent « réglementé mais non exécutoire ».",
+  "chapters": "Ch. 10",
+  "letter": "O",
+  "url": "https://www.priv.gc.ca"
+ },
+ {
+  "term": "FNIGC (Centre de gouvernance de l'information des Premières nations)",
+  "def": "L'organisation des Premières nations qui gère la gouvernance des données du PACOMD et des Premières Nations au Canada.",
+  "chapters": "Ch. 9",
+  "letter": "F",
+  "url": "https://fnigc.ca"
+ },
+ {
+  "term": "BSIF (Bureau du surintendant des institutions financières)",
+  "def": "L'organisme canadien de réglementation bancaire et d'assurance, qui établit de plus en plus d'attentes pour le modèle de risque d'IA dans le domaine financier.",
+  "chapters": "Ch. 17",
+  "letter": "O",
+  "url": "https://www.osfi-bsif.gc.ca"
+ },
+ {
+  "term": "ISDE (Innovation, Sciences et Développement économique Canada)",
+  "def": "Le ministère fédéral qui détient la plus grande partie du dossier stratégique de l'IA, soit la Stratégie pancanadienne sur l'IA, le Code de conduite volontaire et le lancement du *IA pour tous*.",
+  "chapters": "Chs. 5, 17",
+  "letter": "I",
+  "url": "https://ised-isde.canada.ca"
+ },
+ {
+  "term": "Secrétariat du Conseil du Trésor du Canada",
+  "def": "L'organisme central qui établit les règles pour la fonction publique fédérale, y compris la Directive sur la prise de décisions automatisées et le registre fédéral des IA.",
+  "chapters": "Chs. 10, 17",
+  "letter": "T",
+  "url": "https://www.canada.ca/en/treasury-board-secretariat.html"
+ },
+ {
+  "term": "Statistique Canada",
+  "def": "L'agence nationale de statistique. Ses enquêtes sont la source de charge derrière l'adoption de l'IA et les chiffres des recettes d'actualité — les données opérationnelles du gouvernement, moins biais, mais regardez les définitions.",
+  "chapters": "Chs. 14, 16",
+  "letter": "S",
+  "url": "https://www.statcan.gc.ca"
+ },
+ {
+  "term": "Mila",
+  "def": "L'institut québécois d'IA fondé par Yoshua Bengio, l'un des trois instituts d'IA financés par le gouvernement fédéral au Canada, et l'une des plus grandes grappes universitaires d'apprentissage approfondi au monde.",
+  "chapters": "Ch. 7",
+  "letter": "M",
+  "url": "https://mila.quebec"
+ },
+ {
+  "term": "Institut des vecteurs",
+  "def": "L'institut de recherche de Toronto sur l'IA, associé à Geoffrey Hinton; l'un des trois instituts nationaux d'IA dans le cadre de la stratégie pancanadienne.",
+  "chapters": "Ch. 7",
+  "letter": "V",
+  "url": "https://vectorinstitute.ai"
+ },
+ {
+  "term": "Amii (Alberta Machine Intelligence Institute)",
+  "def": "L'institut d'IA, situé à Edmonton, le troisième des trios financés par le gouvernement fédéral, a de profondes racines dans l'apprentissage.",
+  "chapters": "Ch. 7",
+  "letter": "A",
+  "url": "https://www.amii.ca"
+ },
+ {
+  "term": "CIFAR (Institut canadien de recherche avancée)",
+  "def": "L'organisme de recherche qui finance la Stratégie pancanadienne sur l'IA et rassemble une grande partie des talents du pays en matière d'IA.",
+  "chapters": "Ch. 7",
+  "letter": "C",
+  "url": "https://cifar.ca"
+ },
+ {
+  "term": "Cohérence",
+  "def": "La société de modèle de fondation Toronto – le « champion national » le plus clair du Canada dans l'IA frontalière, cofondée par l'un des auteurs du document *Transformateur*.",
+  "chapters": "Ch. 7",
+  "letter": "C",
+  "url": "https://cohere.com"
+ },
+ {
+  "term": "ITK (Inuit Tapiriit Kanatami)",
+  "def": "Organisation nationale représentative pour les Inuits au Canada; auteur de la Stratégie nationale inuite sur la recherche (SNIR).",
+  "chapters": "Ch. 9",
+  "letter": "I",
+  "url": "https://www.itk.ca"
+ },
+ {
+  "term": "IDA (Alliance mondiale des données autochtones)",
+  "def": "Le réseau international qui gère les Principes CARE pour la gouvernance des données autochtones.",
+  "chapters": "Ch. 9",
+  "letter": "G",
+  "url": "https://www.gida-global.org"
+ },
+ {
+  "term": "ACTRA (Alliance des artistes canadiens du cinéma, de la télévision et de la radio)",
+  "def": "Le syndicat des artistes interprètes ou exécutants de langue anglaise au Canada; une initiative précoce concernant les dispositions relatives à la ressemblance et au consentement en matière d'IA dans ses ententes.",
+  "chapters": "Ch. 12",
+  "letter": "A",
+  "url": "https://www.actra.ca"
+ },
+ {
+  "term": "DGC (Guilde des directeurs du Canada)",
+  "def": "Le syndicat représentant les directeurs et autres travailleurs de l'art scénique; actif dans le débat parlementaire IA-and-creators.",
+  "chapters": "Ch. 12",
+  "letter": "D",
+  "url": "https://www.dgc.ca"
+ },
+ {
+  "term": "CUPE (Union canadienne des employés de la fonction publique)",
+  "def": "Le plus grand syndicat du Canada; son mémoire au Sénat est l'objet du livre sur la gouvernance concrète de l'IA côté ouvrier.",
+  "chapters": "Ch. 16",
+  "letter": "C",
+  "url": "https://cupe.ca"
+ },
+ {
+  "term": "Unité",
+  "def": "Le plus grand syndicat du secteur privé au Canada; ses chiffres de diffusion constituent la base des chiffres des mises à pied dans les médias dans le chapitre des nouvelles.",
+  "chapters": "Ch. 14",
+  "letter": "U",
+  "url": "https://www.unifor.org"
+ },
+ {
+  "term": "CJC (Collective du journalisme canadien)",
+  "def": "L'organisme sans but lucratif qui distribue le paiement de Google ~100 M$/an Loi sur les nouvelles en ligne aux points de vente canadiens.",
+  "chapters": "Ch. 14",
+  "letter": "C",
+  "url": "https://cjc-ccj.ca/en/"
+ },
+ {
+  "term": "CDMRN (Réseau canadien de recherche sur les médias numériques)",
+  "def": "Le réseau de recherche qui a documenté l'identité de l'IA et les opérations de nouvelles synthétiques lors des élections fédérales de 2025.",
+  "chapters": "Chs. 13, 14",
+  "letter": "C",
+  "url": "https://www.cdmrn.ca"
+ },
+ {
+  "term": "DFRLab (Labo de recherche médico-légale numérique)",
+  "def": "L'unité du Conseil de l'Atlantique dont l'analyse a compté le réseau YouTube « IA slop » comme une nouvelle canadienne.",
+  "chapters": "Ch. 14",
+  "letter": "D",
+  "url": "https://www.atlanticcouncil.org/programs/digital-forensic-research-lab/"
+ },
+ {
+  "term": "Obligation de consulter",
+  "def": "L'obligation constitutionnelle de la Couronne de consulter les peuples autochtones et, le cas échéant, de s'y accommoder lorsqu'une décision peut porter atteinte à leurs droits, c'est-à-dire la base juridique des différends relatifs aux consultations au centre de données.",
+  "chapters": "Chs. 6, 9",
+  "letter": "D",
+  "url": ""
+ },
+ {
+  "term": "Avis conforme royal",
+  "def": "L'étape finale à laquelle un projet de loi adopté par le Parlement devient loi. \"Tabled\" ou \"passed three reading\" n'est pas la même chose que \"en vigueur\", une distinction que ce livre continue à insister.",
+  "chapters": "Chs. 10, 13",
+  "letter": "R",
+  "url": ""
+ },
+ {
+  "term": "Prorogation",
+  "def": "La clôture officielle d'une session parlementaire. Les projets de loi qui figurent encore sur le carnet de commandes doivent être réintroduits — c'est exactement ainsi que l'AIDA et la Loi sur les dommages en ligne ont disparu en janvier 2025.",
+  "chapters": "Chs. 5, 10",
+  "letter": "P",
+  "url": ""
+ },
+ {
+  "term": "Commerce équitable",
+  "def": "L'exception au droit d'auteur du Canada permet une utilisation limitée des oeuvres protégées à des fins telles que la recherche, la critique et l'éducation. Plus étroite que les États-Unis, et au centre de la lutte pour l'extraction de texte et de données.",
+  "chapters": "Ch. 11",
+  "letter": "F",
+  "url": ""
+ },
+ {
+  "term": "Mark Carney",
+  "def": "Premier ministre du Canada (à partir de 2026); *IA pour tous* stratégie. Les rôles tournent — traitez le titre comme un instantané.",
+  "chapters": "Ch. 5",
+  "letter": "M",
+  "url": "https://www.pm.gc.ca"
+ },
+ {
+  "term": "Yoshua Bengio",
+  "def": "Pionnier de l'apprentissage profond à Montréal, lauréat du Prix Turing, fondateur de Mila et président du Rapport international sur la sécurité des IA.",
+  "chapters": "Chs. 1, 7",
+  "letter": "Y",
+  "url": "https://yoshuabengio.org"
+ },
+ {
+  "term": "Geoffrey Hinton",
+  "def": "Le « parrain de l'apprentissage profond », associé à Toronto et au Vector Institute; 2018 Turing Award et 2024 prix Nobel.",
+  "chapters": "Chs. 1, 7",
+  "letter": "G",
+  "url": "https://www.cs.toronto.edu/~hinton/"
+ },
+ {
+  "term": "Philippe Dufresne",
+  "def": "Commissaire à la protection de la vie privée du Canada (en date de 2026), dirigeant le travail d'IA et de protection des renseignements personnels du Commissariat.",
+  "chapters": "Ch. 10",
+  "letter": "P",
+  "url": "https://www.priv.gc.ca"
  }
 ]
