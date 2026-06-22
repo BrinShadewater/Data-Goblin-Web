@@ -372,7 +372,7 @@
  },
  {
   "term": "BSIF (Bureau du surintendant des institutions financières)",
-  "def": "L'organisme canadien de réglementation bancaire et d'assurance, qui établit de plus en plus d'attentes pour le modèle de risque d'IA dans le domaine financier.",
+  "def": "L'organisme de réglementation des banques et des assurances du Canada — et tranquillement l'un des premiers organismes fédéraux à mettre le risque d'IA par écrit, parce que l'argent concentre l'esprit.",
   "chapters": "Ch. 17",
   "letter": "O",
   "url": "https://www.osfi-bsif.gc.ca"
@@ -400,7 +400,7 @@
  },
  {
   "term": "Mila",
-  "def": "L'institut québécois d'IA fondé par Yoshua Bengio, l'un des trois instituts d'IA financés par le gouvernement fédéral au Canada, et l'une des plus grandes grappes universitaires d'apprentissage approfondi au monde.",
+  "def": "L'institut québécois d'IA fondé par Yoshua Bengio, l'un des trois instituts d'IA financés par le gouvernement fédéral au Canada, et l'une des plus grandes communautés universitaires d'apprentissage approfondi partout.",
   "chapters": "Ch. 7",
   "letter": "M",
   "url": "https://mila.quebec"
@@ -421,7 +421,7 @@
  },
  {
   "term": "CIFAR (Institut canadien de recherche avancée)",
-  "def": "L'organisme de recherche qui finance la Stratégie pancanadienne sur l'IA et rassemble une grande partie des talents du pays en matière d'IA.",
+  "def": "L'organisme de recherche qui gère la Stratégie pancanadienne sur l'IA au nom d'Ottawa et rassemble une grande partie des talents du pays en matière d'IA. L'argent de la stratégie est fédéral; CIFAR est la main qu'elle traverse.",
   "chapters": "Ch. 7",
   "letter": "C",
   "url": "https://cifar.ca"
@@ -477,7 +477,7 @@
  },
  {
   "term": "CJC (Collective du journalisme canadien)",
-  "def": "L'organisme sans but lucratif qui distribue le paiement de Google ~100 M$/an Loi sur les nouvelles en ligne aux points de vente canadiens.",
+  "def": "L'organisme sans but lucratif qui divise le paiement de Google ~100 M$ par année en vertu de la Loi sur les nouvelles en ligne entre les points de vente canadiens — le chèque que la loi a produit, après Meta marchait.",
   "chapters": "Ch. 14",
   "letter": "C",
   "url": "https://cjc-ccj.ca/en/"

@@ -43,7 +43,7 @@ function phrasesFor(term: string): Phrase[] {
   return out;
 }
 
-interface Cand { phrase: string; def: string; url: string; cs: boolean; }
+interface Cand { phrase: string; def: string; url: string; cs: boolean; entry: number; }
 
 const candCache = new WeakMap<GlossaryEntry[], Cand[]>();
 export function glossaryCandidates(glossary: GlossaryEntry[]): Cand[] {
@@ -51,13 +51,15 @@ export function glossaryCandidates(glossary: GlossaryEntry[]): Cand[] {
   if (!c) {
     const seen = new Set<string>();
     c = [];
+    let entry = 0;
     for (const g of glossary) {
       for (const p of phrasesFor(g.term)) {
         const key = p.text.toLowerCase();
         if (seen.has(key)) continue;
         seen.add(key);
-        c.push({ phrase: p.text, def: g.def, url: g.url || "", cs: p.cs });
+        c.push({ phrase: p.text, def: g.def, url: g.url || "", cs: p.cs, entry });
       }
+      entry++;
     }
     c.sort((a, b) => b.phrase.length - a.phrase.length);
     candCache.set(glossary, c);
@@ -99,7 +101,10 @@ export function glossaryLinkBlocks(blocks: Block[], glossary: GlossaryEntry[]): 
   );
   if (present.length === 0) return blocks;
 
+  // Don't link both an acronym and its expansion (same entry) on one page.
+  const usedEntries = new Set<number>();
   for (const g of present) {
+    if (usedEntries.has(g.entry)) continue;
     const re = new RegExp(`\\b${escapeRe(g.phrase)}\\b`, g.cs ? "" : "i");
     const href = g.url || "#loot";
     outer: for (let i = 0; i < texts.length; i++) {
@@ -117,7 +122,8 @@ export function glossaryLinkBlocks(blocks: Block[], glossary: GlossaryEntry[]): 
               text.slice(0, at) +
               `[${matched}](${href} "${GLOSSARY_TITLE}")` +
               text.slice(at + matched.length);
-            break outer; // first occurrence per page only
+            usedEntries.add(g.entry);
+            break outer; // first occurrence per page per entry
           }
         }
         offset += line.length + 1;

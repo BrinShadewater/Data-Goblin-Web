@@ -341,9 +341,10 @@ export function ToolkitPage() {
                 ? <>{tr("On the evidence, you’ve marked it")} <strong style={{ color: green }}>{tr("independently verified")}</strong> {tr("— the receipt holds, and that’s the rare strong case.")} </>
                 : <>{tr("On the evidence, it’s only")} <strong style={{ color: c(...P.red) }}>{tr(r.label).toLowerCase()}</strong> {tr("— so treat the strength of the wording with matching caution.")} </>
             )}
-            {scope.size > 0 && (
-              <>{tr("Watch the scope, too:")} {[...scope].map((k) => tr(SCOPE.find((s) => s.key === k)!.label).toLowerCase()).join(", ")}. </>
-            )}
+            {scope.size > 0 && (() => {
+              const list = [...scope].map((k) => tr(SCOPE.find((s) => s.key === k)!.label).toLowerCase()).join(", ");
+              return <>{tr("Watch the scope, too:")} {list}{/[.?!]$/.test(list) ? "" : "."} </>;
+            })()}
           </p>
           <p style={{ fontFamily: BODY, fontSize: "14.5px", color: body, lineHeight: 1.7, margin: "12px 0 0" }}>
             {tr("Before you repeat it, ask the goblin’s three:")} <strong style={{ color: navy }}>{tr("who counted it")}</strong>, <strong style={{ color: navy }}>{tr("what got left out of the scope")}</strong>{tr(", and")} <strong style={{ color: navy }}>{tr("can you see the receipt")}</strong>{tr("? Discounting a source for its lean is as wrong as accepting it as neutral. Hold a contested claim as contested.")}

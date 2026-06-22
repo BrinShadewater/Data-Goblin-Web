@@ -372,7 +372,7 @@
  },
  {
   "term": "OSFI (Office of the Superintendent of Financial Institutions)",
-  "def": "Canada's banking and insurance regulator, increasingly setting expectations for AI model risk in finance.",
+  "def": "Canada's banking and insurance regulator — and quietly one of the first federal bodies to put AI model risk in writing, because money concentrates the mind.",
   "chapters": "Ch. 17",
   "letter": "O",
   "url": "https://www.osfi-bsif.gc.ca"
@@ -400,7 +400,7 @@
  },
  {
   "term": "Mila",
-  "def": "The Quebec AI institute founded by Yoshua Bengio — one of Canada's three federally funded AI institutes, and among the largest academic deep-learning clusters in the world.",
+  "def": "The Quebec AI institute founded by Yoshua Bengio — one of Canada's three federally funded AI institutes, and one of the largest academic deep-learning communities anywhere.",
   "chapters": "Ch. 7",
   "letter": "M",
   "url": "https://mila.quebec"
@@ -421,7 +421,7 @@
  },
  {
   "term": "CIFAR (Canadian Institute for Advanced Research)",
-  "def": "The research organization that funds the Pan-Canadian AI Strategy and convenes much of the country's AI talent.",
+  "def": "The research organization that runs the Pan-Canadian AI Strategy on Ottawa's behalf and convenes much of the country's AI talent. The strategy's money is federal; CIFAR is the hand it flows through.",
   "chapters": "Ch. 7",
   "letter": "C",
   "url": "https://cifar.ca"
@@ -477,7 +477,7 @@
  },
  {
   "term": "CJC (Canadian Journalism Collective)",
-  "def": "The non-profit that distributes Google's ~$100M/year Online News Act payment to Canadian outlets.",
+  "def": "The non-profit that splits Google's ~$100M-a-year Online News Act payment among Canadian outlets — the cheque the law actually produced, after Meta walked.",
   "chapters": "Ch. 14",
   "letter": "C",
   "url": "https://cjc-ccj.ca/en/"
