@@ -46,7 +46,11 @@ export function EdgeNav({
   };
   return (
     <>
+      {/* On phones (<700px) the page fills the width, so the edge arrows would
+          sit on top of the text — hide them; swipe + bottom bar handle paging. */}
+      <style>{`@media (max-width: 699px){ .dg-edgenav{ display: none !important; } }`}</style>
       <button
+        className="dg-edgenav"
         aria-label={tr("Previous page")}
         onClick={onPrev}
         disabled={!canPrev}
@@ -61,6 +65,7 @@ export function EdgeNav({
         <ChevronLeft size={28} strokeWidth={2.5} />
       </button>
       <button
+        className="dg-edgenav"
         aria-label={tr("Next page")}
         onClick={onNext}
         disabled={!canNext}
