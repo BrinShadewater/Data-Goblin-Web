@@ -6,6 +6,7 @@ import { ListenProvider } from "./ListenContext";
 import { ListenBar } from "./components/ListenBar";
 import { ReaderProvider, useReader } from "./reader";
 import { P } from "./theme";
+import { isBackMatter } from "./readerUtils";
 import { TopNav } from "./components/TopNav";
 import { MobileDrawer } from "./components/MobileDrawer";
 import { CookieNotice } from "./components/CookieNotice";
@@ -45,8 +46,8 @@ function docTitleFor(pathname: string): string {
   const ch = base.match(/^\/chapter\/(\d+)/);
   if (ch) {
     const n = Number(ch[1]);
-    if (fr) return (n === 0 ? "Pages liminaires" : n === 22 ? "Annexe — Bibliothèque des sources" : `Chapitre ${n}`) + " — Data Goblin";
-    return (n === 0 ? "Front Matter" : n === 22 ? "Source Library Appendix" : `Chapter ${n}`) + " — Data Goblin";
+    if (fr) return (n === 0 ? "Pages liminaires" : isBackMatter(n) ? "Annexe — Bibliothèque des sources" : `Chapitre ${n}`) + " — Data Goblin";
+    return (n === 0 ? "Front Matter" : isBackMatter(n) ? "Source Library Appendix" : `Chapter ${n}`) + " — Data Goblin";
   }
   return fr
     ? "Data Goblin — Guide de terrain sur l'IA, la puissance et les données au Canada"

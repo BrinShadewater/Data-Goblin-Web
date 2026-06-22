@@ -3,6 +3,7 @@ import { useTheme } from "../ThemeContext";
 import { MONO, P, UI } from "../theme";
 import { tr } from "../i18n";
 import { useListen, SPEEDS } from "../ListenContext";
+import { isBackMatter } from "../readerUtils";
 
 /**
  * Persistent read-aloud strip. Appears under the header whenever audio is
@@ -23,7 +24,7 @@ export function ListenBar() {
 
   const label =
     chapterNumber === 0 ? tr("Front Matter")
-      : chapterNumber === 22 ? tr("Appendix")
+      : isBackMatter(chapterNumber) ? tr("Appendix")
         : `${tr("Ch.")} ${chapterNumber}`;
 
   const iconBtn = {

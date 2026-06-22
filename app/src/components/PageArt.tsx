@@ -4,6 +4,26 @@ import { useLanguage, type Lang } from "../LanguageContext";
 import { DISPLAY, P } from "../theme";
 import { artAspectRatio, artDimensions, artSrcSet, artUrl } from "../useContent";
 
+/**
+ * Figure numbering is in transition. Today every data figure carries a "Fig X.Y"
+ * label BAKED INTO THE IMAGE (bottom-right corner, drawn by figures/build_figs.py).
+ * The plan is to render the number at display time instead, so renumbering a chapter
+ * never re-touches the image files.
+ *
+ * Flip this to `false` ONLY in the same change that (a) strips the baked label from
+ * every figure in public/art/figures/ (all four variants: base, -dark, -fr, -dark-fr)
+ * and (b) drops the `Fig {fig}` line from the generators — otherwise the reader shows
+ * the number twice (baked corner + caption). While it stays `true`, behaviour is
+ * exactly as before: the caption renders with no number prefix.
+ */
+const BAKED_FIGURE_LABELS = true;
+
+/** "figures/fig-14.1-news-revenue-decline.webp" -> "Figure 14.1" (else null). */
+export function figureLabel(src: string): string | null {
+  const m = src.match(/fig-(\d+)\.(\d+)-/);
+  return m ? `Figure ${m[1]}.${m[2]}` : null;
+}
+
 export function artBlendStyle(dark: boolean) {
   return {
     mixBlendMode: dark ? ("normal" as const) : ("multiply" as const),
@@ -104,6 +124,9 @@ export function FigureBlock({ src, caption }: { src: string; caption?: string | 
   const { lang } = useLanguage();
   const dimensions = artDimensions(src);
   const { url, onError, isFigure } = useVariantSrc(src, dark, lang);
+  // Display-time figure number (from the filename), shown only once the baked
+  // labels have been stripped from the images — see BAKED_FIGURE_LABELS above.
+  const figNum = !BAKED_FIGURE_LABELS && isFigure ? figureLabel(src) : null;
   return (
     <figure
       style={{
@@ -134,7 +157,7 @@ export function FigureBlock({ src, caption }: { src: string; caption?: string | 
           ...(isFigure ? {} : artBlendStyle(dark)),
         }}
       />
-      {caption && (
+      {(caption || figNum) && (
         <figcaption
           style={{
             fontFamily: DISPLAY,
@@ -147,6 +170,11 @@ export function FigureBlock({ src, caption }: { src: string; caption?: string | 
             maxWidth: "520px",
           }}
         >
+          {figNum && (
+            <span style={{ fontStyle: "normal", fontWeight: 600 }}>
+              {figNum}.{caption ? " " : ""}
+            </span>
+          )}
           {caption}
         </figcaption>
       )}

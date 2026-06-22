@@ -1,9 +1,34 @@
 import type { Block } from "./pagination";
-import type { Chapter } from "./types";
+import type { Book, Chapter } from "./types";
 
-/** Document chain: 0 = Front Matter, 1-20 = chapters, 21 = Source Library Appendix. */
+/** Document chain: 0 = Front Matter, 1..N = chapters, N+1 = Source Library Appendix.
+ *  N grows when chapters are inserted, so prefer the book-driven helpers below
+ *  (frontMatterNumber / backMatterNumber / isBackMatter) over these constants —
+ *  they read the real numbers from book.json. The constants are the fallback used
+ *  where the loaded Book isn't in scope (e.g. module-level helpers, folio). */
 export const FIRST_DOC = 0;
-export const LAST_DOC = 21;
+/** Fallback appendix doc number when the Book metadata isn't available. Keep this
+ *  in sync with the highest chapter + 1 (21 chapters -> appendix is doc 22). */
+export const LAST_DOC = 22;
+
+/** Front-matter doc number (always 0) from the book, with a safe fallback. */
+export const frontMatterNumber = (book?: Book | null): number =>
+  book?.frontMatter?.number ?? FIRST_DOC;
+
+/** Back-matter (Source Library Appendix) doc number from the book, with a fallback. */
+export const backMatterNumber = (book?: Book | null): number =>
+  book?.backMatter?.number ?? LAST_DOC;
+
+/** True when doc `n` is the back-matter appendix (not a numbered chapter). Pass the
+ *  loaded Book where you have it so the check follows the real appendix number; the
+ *  fallback keeps the old behaviour where the Book isn't in scope. Accepts a nullable
+ *  doc number (a null/undefined doc is never the appendix). */
+export const isBackMatter = (n: number | null | undefined, book?: Book | null): boolean =>
+  n === backMatterNumber(book);
+
+/** True when doc `n` is the front matter (doc 0). */
+export const isFrontMatter = (n: number | null | undefined, book?: Book | null): boolean =>
+  n === frontMatterNumber(book);
 
 /** Lowercase roman numeral for front-matter folios. */
 export function roman(n: number): string {

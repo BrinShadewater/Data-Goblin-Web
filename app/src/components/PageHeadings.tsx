@@ -8,6 +8,7 @@ import { chapterWordCount, readingMinutes } from "../readingText";
 import { GoblinMascot, NavIcon } from "./GoblinMascot";
 import { artBlendStyle } from "./PageArt";
 import { tr } from "../i18n";
+import { isBackMatter } from "../readerUtils";
 
 
 export function SectionHeading({ heading, first, accent }: { heading: string; first: boolean; accent?: string }) {
@@ -82,7 +83,7 @@ export function OpenerHeader({ chapter }: { chapter: Chapter }) {
         }}
       >
         {displayRegion(chapter.region)}
-        {chapter.number === 0 ? "" : chapter.number === 22 ? " · Appendix" : ` · Chapter ${chapter.number}`}
+        {chapter.number === 0 ? "" : isBackMatter(chapter.number) ? " · Appendix" : ` · Chapter ${chapter.number}`}
         {readMins ? ` · ${readMins} min read` : ""}
       </div>
       <h1
