@@ -15,7 +15,7 @@ Toolchain (see FRENCH-EDITION-HANDOFF.md):
   pip install ctranslate2 sentencepiece
   Argos en_fr model unpacked at $DG_MT_MODEL (model/ + sentencepiece.model)
 """
-import os, re, sys, json, glob, time
+import os, re, sys, json, glob, time, hashlib
 
 MODEL_DIR = os.environ.get("DG_MT_MODEL", "/tmp/en_fr_pkg/translate-en_fr-1_9")
 SRC = os.environ.get("DG_CONTENT_SRC", "app/public/content")
@@ -292,22 +292,87 @@ def _write(path, data):
     with open(path, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=1)
 
-def main(targets):
-    t0 = time.time()
-    def want(name): return (not targets) or name in targets
-    if want("book"):
-        print("book.json ...", flush=True)
-        _write(f"{OUT}/book.json", _batched(translate_book, json.load(open(f"{SRC}/book.json", encoding="utf-8"))))
+# ----- change detection ------------------------------------------------------
+# A full resync retranslates all ~23 docs (~7 min). Most edits touch one chapter.
+# We fingerprint each EN source file and only retranslate the ones whose source
+# changed since the last run, recorded in fr/.translation-manifest.json.
+MANIFEST = f"{OUT}/.translation-manifest.json"
+
+def _src_fingerprint(path):
+    """SHA-256 of the EN source file's bytes. Missing file -> None."""
+    try:
+        h = hashlib.sha256()
+        with open(path, "rb") as f:
+            for chunk in iter(lambda: f.read(65536), b""):
+                h.update(chunk)
+        return h.hexdigest()
+    except FileNotFoundError:
+        return None
+
+def _load_manifest():
+    try:
+        with open(MANIFEST, encoding="utf-8") as f:
+            return json.load(f)
+    except Exception:
+        return {}
+
+def _save_manifest(m):
+    os.makedirs(os.path.dirname(MANIFEST), exist_ok=True)
+    with open(MANIFEST, "w", encoding="utf-8") as f:
+        json.dump(m, f, ensure_ascii=False, indent=1, sort_keys=True)
+
+def _units():
+    """Ordered (name, group, src_path, translate_fn, out_path). group lets a
+    target like 'chapters' select every chapter unit at once."""
+    u = [("book", None, f"{SRC}/book.json", translate_book, f"{OUT}/book.json")]
     for cf in sorted(glob.glob(f"{SRC}/chapters/ch*.json")):
-        name = os.path.basename(cf)[:-5]
-        if not want(name) and not want("chapters"):
-            continue
+        nm = os.path.basename(cf)[:-5]
+        u.append((nm, "chapters", cf, translate_chapter, f"{OUT}/chapters/{nm}.json"))
+    u.append(("glossary", None, f"{SRC}/glossary.json", translate_glossary, f"{OUT}/glossary.json"))
+    u.append(("receipts", None, f"{SRC}/receipts.json", translate_receipts, f"{OUT}/receipts.json"))
+    return u
+
+def main(argv):
+    # Split flags from positional targets so existing callers (a list of target
+    # names) keep working unchanged; flags are additive.
+    flags = {a for a in argv if a.startswith("--")}
+    targets = [a for a in argv if not a.startswith("--")]
+    changed_only = "--changed" in flags
+    list_only = "--list-changed" in flags
+    if "--help" in flags or "-h" in flags:
+        print("usage: translate_fr.py [book|chapters|chNN|glossary|receipts ...] "
+              "[--changed] [--list-changed]")
+        print("  --changed       only retranslate docs whose EN source changed since last run")
+        print("  --list-changed  print what --changed would do, then exit (no MT)")
+        return 0
+    t0 = time.time()
+    def want(name, group): return (not targets) or name in targets or (group and group in targets)
+
+    manifest = _load_manifest()
+    units = _units()
+    selected = [(n, g, s, fn, o, _src_fingerprint(s)) for (n, g, s, fn, o) in units if want(n, g)]
+    # Under --changed, keep only docs whose fingerprint differs from the manifest
+    # (or that were never translated). A None fingerprint means the source is gone.
+    stale = [t for t in selected if t[5] is not None and manifest.get(t[0]) != t[5]]
+
+    if list_only:
+        names = [t[0] for t in (stale if changed_only else selected)]
+        print(f"would translate {len(names)} doc(s): {names}")
+        return 0
+
+    todo = stale if changed_only else [t for t in selected if t[5] is not None]
+    if changed_only and not todo:
+        print("Nothing changed since last run — French edition is up to date.")
+        return 0
+
+    for name, group, src, fn, out, fp in todo:
         print(f"{name} ...", flush=True)
-        _write(f"{OUT}/chapters/{name}.json",
-               _batched(translate_chapter, json.load(open(cf, encoding="utf-8"))))
-    if want("glossary"):
-        print("glossary.json ...", flush=True)
-        _write(f"{OUT}/glossary.json", _batched(translate_glossary, json.load(open(f"{SRC}/glossary.json", encoding="utf-8"))))
-    if want("receipts"):
-        print("receipts.json ...", flush=True)
-        _write(f"{OUT}/receipts.json", _batched(translate_receipts, json.load(open(f"{SRC}/receipts.json", encoding="utf-8"))))
+        _write(out, _batched(fn, json.load(open(src, encoding="utf-8"))))
+        manifest[name] = fp
+        _save_manifest(manifest)   # persist incrementally so a crash keeps progress
+    print(f"done — {len(todo)} doc(s) in {time.time() - t0:.1f}s", flush=True)
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main(sys.argv[1:]))
