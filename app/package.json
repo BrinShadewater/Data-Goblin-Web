@@ -28,7 +28,7 @@
     "react-markdown": "^9.0.1",
     "react-router-dom": "^6.28.0",
     "remark-gfm": "^4.0.0",
-    "resend": "^6.12.4"
+    "resend": "^6.17.1"
   },
   "devDependencies": {
     "@types/node": "^24.13.2",
