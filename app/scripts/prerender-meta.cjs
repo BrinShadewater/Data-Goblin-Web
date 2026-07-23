@@ -12,7 +12,24 @@ const BUILD_DATE = new Date().toISOString().slice(0, 10); // dateModified for Ar
 const PUBLISHED = "2026-06-04"; // first edition / AI for All launch
 const indexPath = path.join(DIST, "index.html");
 if (!fs.existsSync(indexPath)) { console.error("prerender-meta: dist/index.html missing — skipping"); process.exit(0); }
-const base = fs.readFileSync(indexPath, "utf8");
+let base = fs.readFileSync(indexPath, "utf8");
+
+// Rebuild the Book schema's hasPart (in the index.html JSON-LD graph) straight from
+// book.json, so the structured chapter list can't silently drift from the real book
+// — it had (it was missing "The News" and shifted every later chapter by one).
+try {
+  const b = JSON.parse(fs.readFileSync(path.join(DIST, "content", "book.json"), "utf8"));
+  const chaps = [];
+  for (const part of b.parts || []) for (const ch of part.chapters || []) {
+    if (typeof ch.number === "number") chaps.push([ch.number, String(ch.title || "").split(" — ")[0]]);
+  }
+  if (chaps.length && /"hasPart":\s*\[/.test(base)) {
+    const hasPart = chaps.map(([n, t]) =>
+      `        {\n          "@type": "Chapter",\n          "position": ${n},\n          "name": ${JSON.stringify(t)},\n          "url": "${SITE}/chapter/${n}"\n        }`
+    ).join(",\n");
+    base = base.replace(/"hasPart":\s*\[[\s\S]*?\n(\s*)\]/, `"hasPart": [\n${hasPart}\n$1]`);
+  }
+} catch (e) { console.warn("prerender-meta: book hasPart rebuild warning —", e.message); }
 
 const DESC_EN = "A free, open field guide to AI, data centres, and digital sovereignty, written for Canadians. Every claim comes with a receipt.";
 const DESC_FR = "Un guide de terrain gratuit sur l'IA, les centres de données et la souveraineté numérique au Canada. Chaque affirmation a son reçu.";
@@ -206,13 +223,55 @@ function receiptsBodyHtml(lang) {
   return `<section data-prerender-body>${h}</section>`;
 }
 
-// Dispatch a route to its body builder. Chapters, the guide TOC, the glossary, and
-// the receipts ledger all get full inlined content; everything else stays shell-only.
+// /topic/* — theme hubs. Each lists the chapters that go deepest on that theme as
+// real internal links, so the crawlable shell is a curated cluster, not just an H1.
+// Keep in sync with src/topics.ts (primary chapter first, then `related`).
+const TOPIC_CHAPTERS = {
+  "sovereignty": [9, 6, 4, 7, 20],
+  "data-centres": [6, 4, 8, 9],
+  "environment": [8, 4, 6],
+  "copyright": [11, 12, 3, 14],
+  "film-media": [12, 11, 13, 16],
+  "deepfakes": [13, 14, 17, 18],
+  "privacy": [10, 3, 18, 17],
+  "labour": [16, 7, 15, 20],
+  "governance": [17, 18, 9, 19, 20],
+};
+function bookChapterTitles(lang) {
+  const dir = lang === "fr" ? path.join(DIST, "content", "fr") : path.join(DIST, "content");
+  const map = {};
+  try {
+    const b = JSON.parse(fs.readFileSync(path.join(dir, "book.json"), "utf8"));
+    for (const part of b.parts || []) for (const ch of part.chapters || []) map[ch.number] = String(ch.title || "").split(" — ")[0];
+  } catch { /* empty map -> falls back to "Chapter N" */ }
+  return map;
+}
+function topicBodyHtml(route, lang) {
+  const m = route.match(/^\/topic\/([a-z-]+)$/);
+  if (!m) return "";
+  const chapters = TOPIC_CHAPTERS[m[1]];
+  if (!chapters || !chapters.length) return "";
+  const fr = lang === "fr";
+  const pfx = fr ? "/fr" : "";
+  const titles = bookChapterTitles(lang);
+  const heading = fr ? "Dans ce guide" : "In this guide";
+  const items = chapters.map((n) => {
+    const num = fr ? `Chapitre ${n}` : `Chapter ${n}`;
+    const t = titles[n] || num;
+    return `<li><a href="${pfx}/chapter/${n}">${esc(num)}: ${esc(t)}</a></li>`;
+  }).join("");
+  return `<nav data-prerender-body aria-label="${esc(heading)}"><h2>${esc(heading)}</h2><ul>${items}</ul></nav>`;
+}
+
+// Dispatch a route to its body builder. Chapters, the guide TOC, the glossary, the
+// receipts ledger, and the topic hubs all get full inlined content; everything else
+// stays shell-only.
 function routeBodyHtml(route, lang) {
   if (/^\/chapter\/\d+$/.test(route)) return chapterBodyHtml(route, lang);
   if (route === "/guide") return guideBodyHtml(lang);
   if (route === "/loot") return glossaryBodyHtml(lang);
   if (route === "/receipts") return receiptsBodyHtml(lang);
+  if (/^\/topic\//.test(route)) return topicBodyHtml(route, lang);
   return "";
 }
 
@@ -285,6 +344,44 @@ function articleJsonLd(route, headline, self, lang) {
   return `\n    <script type="application/ld+json">\n${JSON.stringify(obj, null, 2)}\n    </script>`;
 }
 
+// Per-page BreadcrumbList so chapters and topics show a crumb trail in search
+// results and read as part of a hierarchy, not as orphaned pages.
+function breadcrumbJsonLd(route, name, self, lang) {
+  const fr = lang === "fr";
+  const pfx = fr ? "/fr" : "";
+  const crumbs = [[fr ? "Accueil" : "Home", SITE + (fr ? "/fr" : "/")]];
+  if (/^\/chapter\/\d+$/.test(route)) crumbs.push([fr ? "Guide de terrain" : "Field Guide", SITE + pfx + "/guide"]);
+  else if (/^\/topic\//.test(route)) crumbs.push([fr ? "Carte" : "Map", SITE + pfx + "/map"]);
+  else if (route === "") return "";
+  crumbs.push([name, self]);
+  const obj = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: crumbs.map((c, i) => ({ "@type": "ListItem", position: i + 1, name: c[0], item: c[1] })),
+  };
+  return `\n    <script type="application/ld+json">\n${JSON.stringify(obj, null, 2)}\n    </script>`;
+}
+
+// /loot glossary as a DefinedTermSet — each term becomes a structured DefinedTerm,
+// which search + AI engines can lift as a definition (fits the guide's plain-language aim).
+function glossaryJsonLd(route, lang) {
+  if (route !== "/loot") return "";
+  const dir = lang === "fr" ? path.join(DIST, "content", "fr") : path.join(DIST, "content");
+  let g;
+  try { g = JSON.parse(fs.readFileSync(path.join(dir, "glossary.json"), "utf8")); } catch { return ""; }
+  if (!Array.isArray(g) || !g.length) return "";
+  const self = SITE + (lang === "fr" ? "/fr" : "") + "/loot";
+  const obj = {
+    "@context": "https://schema.org",
+    "@type": "DefinedTermSet",
+    "@id": self + "#glossary",
+    name: lang === "fr" ? "Glossaire Data Goblin" : "Data Goblin Glossary",
+    url: self,
+    hasDefinedTerm: g.map((e) => ({ "@type": "DefinedTerm", name: e.term, description: stripMd(e.def || ""), inDefinedTermSet: self + "#glossary" })),
+  };
+  return `\n    <script type="application/ld+json">\n${JSON.stringify(obj, null, 2)}\n    </script>`;
+}
+
 function render(route, h1, fullTitle, desc, lang) {
   const urlEn = SITE + (route || "/");
   const urlFr = SITE + "/fr" + route; // "" -> /fr, "/map" -> /fr/map
@@ -306,8 +403,12 @@ function render(route, h1, fullTitle, desc, lang) {
     `\n    <link rel="alternate" hreflang="x-default" href="${esc(urlEn)}" />`;
   h = h.replace(/<link rel="canonical" href="[^"]*" \/>/, alternates);
   h = h.replace('<div id="root"></div>', `<div id="root">${seoShell(route, h1, desc, lang)}</div>`);
-  const extra = articleJsonLd(route, h1, self, lang);
-  if (extra) h = h.replace("</head>", `${extra}\n  </head>`);
+  const extras = [
+    articleJsonLd(route, h1, self, lang),
+    breadcrumbJsonLd(route, h1, self, lang),
+    glossaryJsonLd(route, lang),
+  ].filter(Boolean).join("");
+  if (extras) h = h.replace("</head>", `${extras}\n  </head>`);
   return h;
 }
 

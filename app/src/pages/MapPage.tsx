@@ -6,6 +6,7 @@ import { displayRegion } from "../regionLabels";
 import { LoadingMessage, PageHeading, StaticPageShell } from "../components/StaticPage";
 import { tr } from "../i18n";
 import { useLanguage } from "../LanguageContext";
+import { TOPIC_LIST } from "../topics";
 
 // Region notes, in part order (Part I…V). Keyed by index so they survive the
 // French edition, where part.region itself is translated.
@@ -91,6 +92,24 @@ export function MapPage() {
               </div>
             </div>
           ))}
+        </div>
+
+        <div style={{ marginTop: "44px" }}>
+          <h2 style={{ fontFamily: DISPLAY, fontSize: "21px", fontWeight: 800, color: navy, margin: "0 0 4px", textAlign: "center" }}>{tr("Browse by topic")}</h2>
+          <p style={{ fontFamily: BODY, fontSize: "13.5px", lineHeight: 1.6, color: muted, margin: "0 auto 18px", textAlign: "center", maxWidth: "560px" }}>
+            {tr("The same chapters, gathered by theme instead of by region.")}
+          </p>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "10px" }}>
+            {TOPIC_LIST.map((t) => (
+              <Link
+                key={t.slug}
+                to={`/topic/${t.slug}`}
+                style={{ display: "block", background: c(...P.cardBg), border: `1px solid ${border}`, borderLeft: `3px solid ${green}`, borderRadius: RADIUS, padding: "14px 16px", fontFamily: UI, fontSize: "14px", fontWeight: 700, color: navy, textDecoration: "none", transition: "background 0.3s" }}
+              >
+                {tr(t.title)}
+              </Link>
+            ))}
+          </div>
         </div>
     </StaticPageShell>
   );

@@ -4,7 +4,7 @@ import { useTheme } from "../ThemeContext";
 import { BODY, MONO, P, UI } from "../theme";
 import { Kicker, PageHeading, StaticCard, StaticPageShell } from "../components/StaticPage";
 import { Markdown } from "../components/Markdown";
-import { useChapter } from "../useContent";
+import { useBook, useChapter } from "../useContent";
 import { TOPICS, TOPIC_LIST } from "../topics";
 import { tr } from "../i18n";
 
@@ -16,6 +16,15 @@ export function TopicPage() {
   const navy = c(...P.navy);
   const green = c(...P.green);
   const { data: chapter } = useChapter(topic ? topic.chapter : -1);
+  const { data: book } = useBook();
+  const chapterTitle = (n: number) => {
+    for (const part of book?.parts ?? []) {
+      for (const ch of part.chapters ?? []) {
+        if (ch.number === n) return ch.title.split(" — ")[0];
+      }
+    }
+    return `#${n}`;
+  };
 
   if (!topic) {
     return (
@@ -59,6 +68,20 @@ export function TopicPage() {
           {tr("Read the full chapter →")}
         </Link>
       </StaticCard>
+
+      {topic.related.length > 0 && (
+        <StaticCard padding="18px 20px" style={{ marginTop: "14px" }}>
+          <Kicker color={green} letterSpacing="0.18em">{tr("More chapters on this topic")}</Kicker>
+          <div style={{ display: "flex", flexDirection: "column", gap: "6px", marginTop: "8px" }}>
+            {topic.related.map((n) => (
+              <Link key={n} to={`/chapter/${n}`} className="gob-link" style={{ display: "flex", gap: "8px", alignItems: "baseline", textAlign: "left" }}>
+                <span style={{ fontFamily: MONO, fontSize: "9.5px", color: muted, minWidth: "20px", flexShrink: 0 }}>{n}.</span>
+                <span style={{ fontFamily: UI, fontSize: "14px", fontWeight: 700, color: navy, lineHeight: 1.4 }}>{chapterTitle(n)}</span>
+              </Link>
+            ))}
+          </div>
+        </StaticCard>
+      )}
 
       <StaticCard marginBottom="0" padding="18px 20px" style={{ marginTop: "14px" }}>
         <div style={{ fontFamily: MONO, fontSize: "9.5px", fontWeight: 800, letterSpacing: "0.2em", textTransform: "uppercase", color: muted, marginBottom: "10px" }}>{tr("Browse other topics")}</div>
