@@ -20,16 +20,18 @@ const HOME_FULL_EN = "Data Goblin — A Field Guide to AI, Power, and Data in Ca
 const HOME_FULL_FR = "Data Goblin — Guide de terrain sur l'IA, la puissance et les données au Canada";
 
 // route -> { en: [title, desc], fr: [title, desc] }   (title is the page name; "— Data Goblin" is appended)
+// Descriptions are unique per route (~140–160 chars) so no two pages share a meta
+// description and none is too short — search snippets stay distinct and readable.
 const ROUTE_META = [
-  ["/guide", "Field Guide", DESC_EN, "Guide de terrain", DESC_FR],
-  ["/map", "Map", "Browse the field guide by region and question.", "Carte", "Parcourez le guide par région et par question."],
-  ["/loot", "Glossary", "Plain-language definitions for the AI, data, and sovereignty terms the guide uses.", "Glossaire", "Définitions en langage clair des termes d'IA, de données et de souveraineté utilisés dans le guide."],
-  ["/receipts", "Receipts", "The claim-by-claim source ledger behind the guide.", "Reçus", "Le registre des sources, revendication par revendication, derrière le guide."],
-  ["/about", "About", "About Data Goblin and Shadewater Labs.", "À propos", "À propos de Data Goblin et de Shadewater Labs."],
-  ["/contribute", "Contribute", "Suggest a source, flag an error, or help improve the guide.", "Contribuer", "Suggérez une source, signalez une erreur ou aidez à améliorer le guide."],
-  ["/updates", "Updates & Corrections", "A dated log of what changed and what was corrected in the guide.", "Mises à jour et corrections", "Un journal daté de ce qui a changé et de ce qui a été corrigé dans le guide."],
+  ["/guide", "Field Guide", "The full table of contents for Data Goblin, the free field guide to AI, data centres, and digital sovereignty in Canada — chapter by chapter, all sourced.", "Guide de terrain", "La table des matières complète de Data Goblin, le guide de terrain gratuit sur l'IA, les centres de données et la souveraineté numérique au Canada."],
+  ["/map", "Map", "Browse Data Goblin by region and by question to find the chapters that answer what you want to know about AI, data, and power in Canada.", "Carte", "Parcourez Data Goblin par région et par question pour trouver les chapitres qui répondent à vos questions sur l'IA, les données et le pouvoir au Canada."],
+  ["/loot", "Glossary", "Plain-language definitions for the AI, data-centre, and digital-sovereignty terms used across the guide, each one linked to a source you can check.", "Glossaire", "Définitions en langage clair des termes d'IA, de centres de données et de souveraineté numérique du guide, chacune reliée à une source vérifiable."],
+  ["/receipts", "Receipts", "The claim-by-claim source ledger behind Data Goblin: every factual statement in the guide, matched to the receipt that backs it up.", "Reçus", "Le registre des sources derrière Data Goblin, revendication par revendication : chaque affirmation du guide, reliée au reçu qui la confirme."],
+  ["/about", "About", "Who makes Data Goblin and why: an independent, free field guide from Shadewater Labs on AI, power, and data in Canada, with every claim sourced.", "À propos", "Qui fait Data Goblin et pourquoi : un guide de terrain indépendant et gratuit de Shadewater Labs sur l'IA, le pouvoir et les données au Canada."],
+  ["/contribute", "Contribute", "Suggest a source, flag an error, or help improve Data Goblin. It is an open, community-checked field guide, and your corrections make it better.", "Contribuer", "Suggérez une source, signalez une erreur ou aidez à améliorer Data Goblin. Ce guide ouvert et vérifié par la communauté s'améliore grâce à vous."],
+  ["/updates", "Updates & Corrections", "A dated log of what changed in Data Goblin: new chapters, corrections, and updated sources, so you can see exactly how the guide has evolved.", "Mises à jour et corrections", "Un journal daté des changements de Data Goblin : nouveaux chapitres, corrections et sources mises à jour, pour suivre l'évolution du guide."],
   ["/toolkit", "The Toolkit · Test Any AI Claim", "Run any AI claim through the guide’s bias-mapping method: who’s making it, what’s the scope, and where’s the receipt.", "La boîte à outils · Tester toute allégation d'IA", "Passez n'importe quelle allégation d'IA au crible de la méthode de cartographie des biais du guide : qui la formule, quelle est la portée, et où est le reçu."],
-  ["/privacy", "Privacy", "What this site stores, and what it does not.", "Confidentialité", "Ce que ce site stocke, et ce qu'il ne stocke pas."],
+  ["/privacy", "Privacy", "What this site stores and what it does not. Data Goblin runs without ad trackers or personal profiles, and this page spells out exactly what that means.", "Confidentialité", "Ce que ce site stocke et ce qu'il ne stocke pas. Data Goblin fonctionne sans traqueurs publicitaires ni profils personnels, et cette page l'explique."],
 ];
 
 function chapterTitle(dir, n, lang) {
@@ -74,18 +76,21 @@ try {
   }
 } catch (e) { console.warn("prerender-meta: chapter read warning —", e.message); }
 
+// Topic hubs. Each carries a unique EN/FR meta description (~140–160 chars) so the
+// hub pages — which are shell-only, no inlined body — are not duplicates of each
+// other or of the home page, and read as distinct results for non-branded queries.
 const TOPICS = [
-  ["sovereignty", "AI Sovereignty in Canada", "La souveraineté de l'IA au Canada"],
-  ["data-centres", "Canada's AI Data Centres", "Les centres de données d'IA du Canada"],
-  ["environment", "AI's Environmental Footprint", "L'empreinte environnementale de l'IA"],
-  ["copyright", "AI, Copyright & Creators in Canada", "IA, droit d'auteur et créateurs au Canada"],
-  ["film-media", "AI, Film & Media in Canada", "IA, cinéma et médias au Canada"],
-  ["deepfakes", "Deepfakes & Misinformation", "Hypertrucages et désinformation"],
-  ["privacy", "AI, Privacy & Surveillance", "IA, vie privée et surveillance"],
-  ["labour", "AI, Jobs & the Canadian Economy", "IA, emploi et économie canadienne"],
-  ["governance", "How AI Is Governed in Canada", "Comment l'IA est gouvernée au Canada"],
+  ["sovereignty", "AI Sovereignty in Canada", "Can Canada run its own AI? The chapters on compute, data, and dependence on foreign providers, and what digital sovereignty really means here.", "La souveraineté de l'IA au Canada", "Le Canada peut-il faire tourner sa propre IA ? Les chapitres sur le calcul, les données, la dépendance aux fournisseurs étrangers et le sens de la souveraineté."],
+  ["data-centres", "Canada's AI Data Centres", "Where Canada's AI data centres are being built, who funds them, and what they cost in power, water, and land. The chapters that follow the buildout.", "Les centres de données d'IA du Canada", "Où se construisent les centres de données d'IA au Canada, qui les finance, et ce qu'ils coûtent en énergie, en eau et en terrain."],
+  ["environment", "AI's Environmental Footprint", "The energy, water, and emissions behind AI in Canada: what the numbers say, what is still contested, and where each figure comes from.", "L'empreinte environnementale de l'IA", "L'énergie, l'eau et les émissions derrière l'IA au Canada : ce que disent les chiffres, ce qui reste contesté, et d'où vient chaque donnée."],
+  ["copyright", "AI, Copyright & Creators in Canada", "How AI training uses creators' work, what Canadian copyright law says, and the fights over consent and pay. The chapters for artists and writers.", "IA, droit d'auteur et créateurs au Canada", "Comment l'entraînement de l'IA utilise le travail des créateurs, ce que dit le droit d'auteur canadien, et les débats sur le consentement et la rémunération."],
+  ["film-media", "AI, Film & Media in Canada", "AI in Canadian film, TV, and media: synthetic actors, dubbing, and the labour questions behind them. The chapters on screens and storytelling.", "IA, cinéma et médias au Canada", "L'IA dans le cinéma, la télévision et les médias canadiens : acteurs synthétiques, doublage et les questions de travail qui les accompagnent."],
+  ["deepfakes", "Deepfakes & Misinformation", "How deepfakes and synthetic media spread in Canada, how to spot them, and what the law can and cannot do. The chapters on trust and evidence.", "Hypertrucages et désinformation", "Comment les hypertrucages et les médias synthétiques se propagent au Canada, comment les repérer, et ce que la loi peut ou ne peut pas faire."],
+  ["privacy", "AI, Privacy & Surveillance", "What AI systems collect, how surveillance works in Canada, and the privacy rights you actually have. The chapters on the data kept about you.", "IA, vie privée et surveillance", "Ce que collectent les systèmes d'IA, comment fonctionne la surveillance au Canada, et les droits à la vie privée que vous avez réellement."],
+  ["labour", "AI, Jobs & the Canadian Economy", "What AI is doing to Canadian jobs and wages, which claims hold up, and which are just hype. The chapters on work, automation, and who benefits.", "IA, emploi et économie canadienne", "Ce que l'IA fait aux emplois et aux salaires au Canada, quelles affirmations tiennent la route, et lesquelles ne sont que du battage."],
+  ["governance", "How AI Is Governed in Canada", "The bills, agencies, and rules shaping AI in Canada, from Bill C-16 to the CRTC and the Privacy Commissioner. The chapters on who sets the guardrails.", "Comment l'IA est gouvernée au Canada", "Les projets de loi, les organismes et les règles qui encadrent l'IA au Canada, de C-16 au CRTC et au Commissariat à la vie privée."],
 ];
-for (const [slug, en, fr] of TOPICS) ROUTE_META.push([`/topic/${slug}`, en, DESC_EN, fr, DESC_FR]);
+for (const [slug, en, enDesc, fr, frDesc] of TOPICS) ROUTE_META.push([`/topic/${slug}`, en, enDesc, fr, frDesc]);
 
 const esc = (s) => s.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
