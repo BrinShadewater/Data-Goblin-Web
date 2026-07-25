@@ -49,7 +49,7 @@ responsive behavior, art, routing, persistence, or pagination.
 Run these after each behavior-preserving refactor pass:
 
 ```powershell
-cd C:\Users\Alex\Desktop\Project Goblin\site
+cd C:\Users\Alex4\Desktop\Shadewater Labs\Projects\Project Goblin\site
 .\update-content.bat
 cd app
 $env:NODE_ENV='development'
@@ -59,7 +59,7 @@ npm run verify
 For a faster pagination-only check after editing `app/src/pagination.ts`:
 
 ```powershell
-cd C:\Users\Alex\Desktop\Project Goblin\site\app
+cd C:\Users\Alex4\Desktop\Shadewater Labs\Projects\Project Goblin\site\app
 $env:NODE_ENV='development'
 npm run check:pagination
 ```
