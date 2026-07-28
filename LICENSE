@@ -2,12 +2,6 @@ MIT License
 
 Copyright (c) 2026 Alex Yesilcimen
 
-SCOPE: This licence covers the SOFTWARE in this repository only — the site
-source code, build scripts, and content pipeline. It does NOT cover the book
-content in `content/` (chapters, receipts, glossary, traps, statistics, and
-their French translations) or the data figures in `app/public/art/figures/`,
-which are licensed separately. See LICENSE-CONTENT.md.
-
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
@@ -25,3 +19,21 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+---
+
+SCOPE OF THIS LICENCE
+
+The MIT terms above cover the SOFTWARE in this repository only — the site
+source code, build scripts, and content pipeline.
+
+They do NOT cover:
+
+  - The book content in `content/` (chapters, receipts ledger, glossary,
+    traps, statistics, and the French translations)
+  - The data figures in `app/public/art/figures/`
+
+Those are licensed under Creative Commons Attribution-NonCommercial 4.0
+International (CC BY-NC 4.0). See LICENSE-CONTENT.md for the full terms,
+including the separate treatment of AI-generated illustrations and cited
+third-party sources.
