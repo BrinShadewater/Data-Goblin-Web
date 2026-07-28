@@ -94,7 +94,12 @@ Project Goblin/
 
 ## Licence
 
-- **Text** — [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/): free to share and adapt for non-commercial purposes, with attribution to Data Goblin / Brin Shadewater and a link back.
+This repo is dual-licensed. Full terms in [`LICENSE`](LICENSE) (code) and
+[`LICENSE-CONTENT.md`](LICENSE-CONTENT.md) (book).
+
+- **Code** — [MIT](LICENSE): the site source, build scripts, and content pipeline.
+- **Text** — [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/): free to share and adapt for non-commercial purposes, with attribution to Data Goblin / Alex Yesilcimen and a link back.
+- **Data figures** (`app/public/art/figures/`) — CC BY-NC 4.0, same as the text. They are authored editorial work built from the manuscript and the Receipts Ledger.
 - **Illustrations** — AI-generated; no copyright is asserted over the generated images (see the in-book "note on the illustrations and marks").
-- **Third-party material** — quotations, data, and figures remain the property of their original owners and are used under fair dealing with attribution.
-- **Commercial use** — ask first.
+- **Third-party material** — quotations, data, and cited sources remain the property of their original owners and are used under fair dealing with attribution.
+- **Commercial use** — ask first. The answer is often yes.
