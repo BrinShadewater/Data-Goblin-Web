@@ -10,8 +10,25 @@ external audit reports without checking against it.
 
 ## The environment trap that breaks builds silently
 
-**This machine has `NODE_ENV=production` set globally.** A plain `npm install` skips
-devDependencies and the build then fails in a way that looks unrelated. Always:
+**Corrected 2026-07-28: `NODE_ENV` is no longer set to `production`.** Checked at both User and
+Machine scope and it is unset at both, so the original justification for this section is gone.
+The commands below are still the right habit — being explicit costs nothing and survives the
+variable coming back — but do not spend time debugging a `NODE_ENV` that is not set.
+
+Two related facts also changed, both found by running the commands rather than trusting the note:
+
+- **`node`, `npm` and `npx` are on PATH now** (`v22.23.1`, from `AppData\Local\hermes\node\`).
+  Earlier notes say the only Node is the one bundled with OpenAI Codex. That is stale.
+- **`npx tsc` fails here, and that does not mean TypeScript is missing.** It is installed at
+  `app\node_modules\typescript\bin\tsc` and passes; Hermes's `npx` just does not resolve the
+  project-local binary. Call it by path:
+  `node node_modules\typescript\bin\tsc --noEmit -p .`
+
+**What has not changed:** the bundle build still cannot run on this host, because `rolldown`
+ships only `binding-linux-x64-gnu`/`musl` in this checkout and there is no win32 binding.
+Typecheck is a real gate; the build is Vercel's job.
+
+The original guidance follows.
 
 ```
 $env:NODE_ENV='development'; npm install --include=dev
