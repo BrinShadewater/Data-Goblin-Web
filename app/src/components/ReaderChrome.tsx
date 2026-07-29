@@ -94,7 +94,7 @@ export function CompactPageProgress({
         {tr("Page")} {page + 1} {tr("of")} {pageCount}
       </div>
       <div style={{ width: "100%", maxWidth: "240px", height: "3px", borderRadius: "2px", background: c("#ccc2a8", "#222837"), overflow: "hidden" }}>
-        <div style={{ width: `${Math.round(progress * 100)}%`, height: "100%", background: progressBlue, transition: "width 0.3s" }} />
+        <div style={{ width: "100%", height: "100%", background: progressBlue, transformOrigin: "left", transform: `scaleX(${progress})`, transition: "transform 0.3s" }} />
       </div>
     </div>
   );

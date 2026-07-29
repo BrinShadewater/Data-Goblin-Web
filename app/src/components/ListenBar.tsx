@@ -56,7 +56,7 @@ export function ListenBar() {
         <Square size={13} />
       </button>
       <div style={{ flex: 1, minWidth: "40px", height: "5px", background: c(...P.inputBg), borderRadius: "3px", overflow: "hidden" }}>
-        <div style={{ width: `${Math.round(progress * 100)}%`, height: "100%", background: green, transition: "width 0.3s" }} />
+        <div style={{ width: "100%", height: "100%", background: green, transformOrigin: "left", transform: `scaleX(${progress})`, transition: "transform 0.3s" }} />
       </div>
       <div style={{ display: "flex", alignItems: "center", gap: "6px", flexShrink: 0 }} title={tr("Volume")}>
         <Volume2 size={14} color={muted} aria-hidden="true" />
