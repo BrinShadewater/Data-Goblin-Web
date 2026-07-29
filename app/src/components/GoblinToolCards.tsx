@@ -94,7 +94,7 @@ export function SuspicionMeterCard({ chapter }: { chapter: Chapter }) {
     <ToolCard icon={<NavIcon name="insight-nav" size={TOKENS.icon.sidebarTool} />} title={tr("Suspicion Meter")}>
       <div title={formula}>
         <div style={{ height: "10px", background: c("#ded6c2", "#1d2230"), borderRadius: "5px", overflow: "hidden", border: `1px solid ${border}` }}>
-          <div style={{ width: `${pct}%`, height: "100%", background: meterColor, transition: "width 0.4s" }} />
+          <div style={{ width: "100%", height: "100%", background: meterColor, transformOrigin: "left", transform: `scaleX(${pct / 100})`, transition: "transform 0.4s" }} />
         </div>
         <div style={{ fontFamily: UI, fontSize: "12.5px", fontWeight: TOKENS.weight.toolLabel, color: meterColor, margin: "7px 0 4px" }}>
           {tr(suspicion.label)} ({pct}%)

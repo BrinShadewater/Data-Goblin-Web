@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "app/src/**"
+        ],
+        "createdAt": "2026-07-29T03:05:10.563Z",
+        "reason": "Left-rule callouts are the book's editorial vocabulary (Goblin Check, Goblin Traps, Chapter Recap, receipts) - a documentation convention here, not a card tab"
+      }
+    ]
+  }
+}
