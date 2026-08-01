@@ -1,4 +1,5 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { ChevronDown, Menu, Moon, Sun } from "lucide-react";
 import { useLocation } from "react-router";
 import { NavLink, useNavigate } from "../i18nNav";
@@ -11,6 +12,9 @@ import { isNavActive, OVERFLOW_NAV, PRIMARY_NAV } from "../navigation";
 import { preloadReaderRoute } from "../lazyRoutes";
 import { useFocusTrap } from "../focusTrap";
 import { GoblinIcon, NavIcon } from "./GoblinMascot";
+
+/** Width of the More panel. Fixed, because the portal anchors it by pixel. */
+const MENU_WIDTH = 210;
 
 /**
  * The "More" menu holding the nav items that don't earn a labelled slot.
@@ -25,7 +29,11 @@ function MoreMenu({ pathname }: { pathname: string }) {
   const { c } = useTheme();
   const [open, setOpen] = useState(false);
   const wrapRef = useRef<HTMLDivElement>(null);
-  const menuRef = useFocusTrap<HTMLDivElement>(open, () => setOpen(false));
+  const [anchor, setAnchor] = useState<{ top: number; left: number } | null>(null);
+  // Gated on `anchor`, not `open`: the panel only mounts once its position has
+  // been measured, so trapping on `open` alone ran while the ref was still
+  // null and focus never entered the menu.
+  const menuRef = useFocusTrap<HTMLDivElement>(open && anchor !== null, () => setOpen(false));
 
   const green = c(...P.green);
   const muted = c(...P.muted);
@@ -36,15 +44,46 @@ function MoreMenu({ pathname }: { pathname: string }) {
   // menu must not survive a back/forward either.
   useEffect(() => setOpen(false), [pathname]);
 
-  // Pointer outside the trigger+panel closes it. Escape and focus containment
-  // come from useFocusTrap.
+  // Pointer outside the trigger AND outside the panel closes it. The panel is
+  // portalled out of this subtree, so both have to be checked. Escape and focus
+  // containment come from useFocusTrap.
   useEffect(() => {
     if (!open) return;
     const onPointer = (e: PointerEvent) => {
-      if (!wrapRef.current?.contains(e.target as Node)) setOpen(false);
+      const t = e.target as Node;
+      if (!wrapRef.current?.contains(t) && !menuRef.current?.contains(t)) setOpen(false);
     };
     document.addEventListener("pointerdown", onPointer);
     return () => document.removeEventListener("pointerdown", onPointer);
+  }, [open, menuRef]);
+
+  // The panel renders in a portal on <body>, because `nav` is overflow:hidden
+  // (it has to be — it is the flex track that clips nav items rather than
+  // letting them spill into the search box). An absolutely-positioned dropdown
+  // inside it was cropped to the 54px nav row, so only the top of the first
+  // item survived. A portal cannot be clipped by an ancestor, but it also
+  // cannot inherit position from one, so the panel is anchored to the
+  // trigger's viewport rect and re-measured whenever that could move.
+  useLayoutEffect(() => {
+    if (!open) {
+      setAnchor(null);
+      return;
+    }
+    const measure = () => {
+      const el = wrapRef.current;
+      if (!el) return;
+      const r = el.getBoundingClientRect();
+      // Keep the panel on screen if the trigger sits near the right edge.
+      const left = Math.min(r.left, window.innerWidth - MENU_WIDTH - 8);
+      setAnchor({ top: r.bottom + 6, left: Math.max(8, left) });
+    };
+    measure();
+    window.addEventListener("resize", measure);
+    window.addEventListener("scroll", measure, true);
+    return () => {
+      window.removeEventListener("resize", measure);
+      window.removeEventListener("scroll", measure, true);
+    };
   }, [open]);
 
   return (
@@ -76,23 +115,24 @@ function MoreMenu({ pathname }: { pathname: string }) {
         <ChevronDown size={14} style={{ transform: open ? "rotate(180deg)" : "none", transition: "transform 0.15s" }} />
       </button>
 
-      {open && (
+      {open && anchor && createPortal(
         <div
           ref={menuRef}
           tabIndex={-1}
           role="menu"
           aria-label={tr("More")}
           style={{
-            position: "absolute",
-            top: "calc(100% + 6px)",
-            left: 0,
-            minWidth: "210px",
+            position: "fixed",
+            top: `${anchor.top}px`,
+            left: `${anchor.left}px`,
+            width: `${MENU_WIDTH}px`,
             background: c(...P.panelBg),
             border: `1px solid ${border}`,
             borderRadius: "3px",
             boxShadow: c("0 8px 24px rgba(40,30,10,0.18)", "0 8px 24px rgba(0,0,0,0.6)"),
             padding: "5px",
-            zIndex: 60,
+            // Above the header (zIndex 50) and the reader chrome.
+            zIndex: 210,
           }}
         >
           {OVERFLOW_NAV.map((l) => {
@@ -124,7 +164,8 @@ function MoreMenu({ pathname }: { pathname: string }) {
               </NavLink>
             );
           })}
-        </div>
+        </div>,
+        document.body
       )}
     </div>
   );
