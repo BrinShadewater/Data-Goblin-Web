@@ -354,6 +354,75 @@ export function paginatePanelsCached(
 // ---------------------------------------------------------------------------
 
 /** Sentinel meaning "open the chapter at its last panel" (clamped on load). */
+// ---------------------------------------------------------------------------
+// Content anchors.
+//
+// A panel index is an ORDINAL, not an address. The same chapter paginates to
+// 28 / 35 / 53 / 69 panels depending on viewport and reading mode, so a stored
+// index points at different prose after any re-pagination — which silently
+// broke bookmarks: the record kept a snippet of one passage and reopened
+// somewhere else entirely. Worse, the trigger was usually the dyslexia-friendly
+// toggle, so the reward for accommodating yourself was losing your place.
+//
+// The fix is to anchor on CONTENT. Blocks themselves never change when the
+// reader re-paginates — only their grouping into panels does — so a hash of a
+// block's own text is stable across every layout. No pipeline change needed.
+// ---------------------------------------------------------------------------
+
+/**
+ * How much text a block contributes, for offset arithmetic.
+ *
+ * The anchor is a CHARACTER OFFSET into the chapter's prose, not a hash of the
+ * block that happens to start a page. Two earlier attempts failed here, and the
+ * reason is worth keeping: the packer splits long prose (`splitRecap`) at
+ * different points for different budgets, so neither a whole-text hash nor a
+ * text-prefix hash survives — a panel can begin with a continuation fragment
+ * that only exists at one budget. Offsets do survive, because repagination
+ * regroups the same characters without adding or removing any. The
+ * `sanity-pagination` gate asserts exactly that (no block loss, paginated prose
+ * equals source prose), so this anchor rests on an invariant the build enforces.
+ */
+function blockLength(b: Block): number {
+  switch (b.kind) {
+    case "heading": return b.heading.length;
+    case "md": return b.text.length;
+    case "trap": return b.trap.trapTitle.length + b.trap.text.length;
+    case "bias": return b.text.length;
+    case "panel":
+    case "figure": return 0; // art carries no prose; it must not shift offsets
+  }
+}
+
+/** Character offset, into the chapter's prose, of the start of a panel. */
+export function anchorForPanel(panels: Block[][], panelIndex: number): string | null {
+  if (panelIndex < 0 || panelIndex >= panels.length) return null;
+  let offset = 0;
+  for (let p = 0; p < panelIndex; p++) {
+    for (const b of panels[p]) offset += blockLength(b);
+  }
+  return String(offset);
+}
+
+/**
+ * Which panel now holds the character at `anchor`? Returns null for an
+ * unparseable anchor so callers can fall back to a stored index rather than
+ * silently dumping the reader on page one.
+ */
+export function panelForAnchor(panels: Block[][], anchor: string): number | null {
+  const target = Number(anchor);
+  if (!Number.isFinite(target) || target < 0) return null;
+  let offset = 0;
+  for (let p = 0; p < panels.length; p++) {
+    let panelLength = 0;
+    for (const b of panels[p]) panelLength += blockLength(b);
+    // The target sits inside this panel when it starts before the panel ends.
+    if (target < offset + panelLength) return p;
+    offset += panelLength;
+  }
+  // Past the end (chapter shortened) — the last panel is the closest honest answer.
+  return panels.length > 0 ? panels.length - 1 : null;
+}
+
 export const LAST_PANEL = 1_000_000;
 
 const panelKey = (chapter: number) => `goblin-panel-ch${chapter}`;
@@ -376,6 +445,35 @@ export function getSavedPanel(chapter: number): number {
     /* storage unavailable */
   }
   return 0;
+}
+
+/**
+ * One-shot anchor handoff for jumping into a chapter at a specific passage.
+ *
+ * A bookmark is opened from another route, so it cannot resolve its own anchor
+ * — the target chapter has not been paginated yet. It leaves the anchor here;
+ * the reader consumes it once the panels for that chapter exist. One-shot, so a
+ * later ordinary visit to the same chapter is not dragged back to the bookmark.
+ */
+const pendingKey = (chapter: number) => `goblin-pending-anchor-ch${chapter}`;
+
+export function savePendingAnchor(chapter: number, anchor: string | undefined): void {
+  if (!anchor) return;
+  try {
+    sessionStorage.setItem(pendingKey(chapter), anchor);
+  } catch {
+    /* storage unavailable — the panel index still gets the reader close */
+  }
+}
+
+export function takePendingAnchor(chapter: number): string | null {
+  try {
+    const v = sessionStorage.getItem(pendingKey(chapter));
+    if (v) sessionStorage.removeItem(pendingKey(chapter));
+    return v;
+  } catch {
+    return null;
+  }
 }
 
 export function savePanel(chapter: number, index: number): void {

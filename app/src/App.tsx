@@ -2,6 +2,7 @@ import { createElement, Suspense, useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes, useLocation } from "react-router";
 import { ThemeProvider, useTheme } from "./ThemeContext";
 import { LanguageProvider, useLanguage } from "./LanguageContext";
+import { tr } from "./i18n";
 import { ListenProvider } from "./ListenContext";
 import { ListenBar } from "./components/ListenBar";
 import { ReaderProvider, useReader } from "./reader";
@@ -109,7 +110,24 @@ function Shell() {
         a.gob-link:hover { text-decoration: underline; }
         a.gob-autolink { text-decoration: underline dotted; text-underline-offset: 3px; }
         a.gob-autolink:hover { text-decoration: underline solid; }
+        /* Skip link: off-screen until focused, then pinned top-left. Without it
+           a keyboard reader crossed ~38 chrome stops — nine nav items, search,
+           four toggles, the whole TOC — before reaching a word of the book. */
+        .dg-skip {
+          position: absolute; left: -9999px; top: 0; z-index: 300;
+          padding: 10px 14px; border-radius: 0 0 3px 0;
+          font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 700;
+          text-decoration: none;
+        }
+        .dg-skip:focus { left: 0; }
       `}</style>
+      <a
+        className="dg-skip"
+        href="#dg-main"
+        style={{ background: c(...P.panelBg), color: c(...P.green), border: `2px solid ${c(...P.green)}` }}
+      >
+        {tr("Skip to content")}
+      </a>
       <TopNav searchQuery={searchQuery} onSearch={setSearchQuery} onMenu={() => setDrawerOpen(true)} />
       {lang === "fr" && (
         <div

@@ -7,7 +7,7 @@ import { useLanguage } from "../LanguageContext";
 import { BODY, MONO, P, RADIUS, TOKENS, UI } from "../theme";
 import { isNavActive, NAV_ITEMS } from "../navigation";
 import { removeBookmark, saveLastLocation, useBookmarks } from "../bookmarks";
-import { savePanel } from "../pagination";
+import { savePanel, savePendingAnchor } from "../pagination";
 import { NavIcon } from "./GoblinMascot";
 import { tr } from "../i18n";
 
@@ -200,6 +200,7 @@ export function MobileBookmarks({ onNavigate }: { onNavigate: () => void }) {
           <button
             onClick={() => {
               savePanel(bm.doc, bm.panelIndex);
+              savePendingAnchor(bm.doc, bm.anchor);
               saveLastLocation(bm.doc, bm.panelIndex);
               navigate(`/chapter/${bm.doc}`);
               onNavigate();

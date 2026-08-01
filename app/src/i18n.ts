@@ -32,3 +32,24 @@ export function tr(s: string): string {
   if (currentLang !== "fr" || !FR) return s;
   return FR[s] ?? s;
 }
+
+/**
+ * Translate a sentence that contains values, as ONE unit.
+ *
+ *   trf("{n} of {total} sources are corporate.", { n: 3, total: 12 })
+ *
+ * Use this instead of calling tr() on the fragments around an interpolated
+ * value. Fragment translation looked fine in English and shattered in French:
+ * the Suspicion Meter used to render
+ *   "…dans ses 12 sources d'énergie (8Pourcentage. Plongez pour la formule."
+ * — an unclosed bracket, a word spliced into the middle of a number, and a
+ * mistranslation, because each fragment was translated without the others.
+ * A whole sentence gives the translator the grammar and lets French put the
+ * values wherever French wants them.
+ */
+export function trf(template: string, params: Record<string, string | number>): string {
+  const s = tr(template);
+  return s.replace(/\{(\w+)\}/g, (whole, key) =>
+    key in params ? String(params[key]) : whole
+  );
+}

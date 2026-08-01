@@ -3,8 +3,11 @@ import { useParams } from "react-router";
 import { useNavigate } from "./i18nNav";
 import { getLastLocation, saveLastLocation, toggleBookmark, useBookmarks } from "./bookmarks";
 import {
+  anchorForPanel,
   budgetsFor,
   getSavedPanel,
+  panelForAnchor,
+  takePendingAnchor,
   hasAnySavedPosition,
   LAST_PANEL,
   paginatePanelsCached,
@@ -72,10 +75,18 @@ export function usePageNavigation({
   num,
   panels,
   single,
+  panelsReady,
 }: {
   num: number;
   panels: Block[][] | null;
   single: boolean;
+  /**
+   * True only when `panels` belong to chapter `num`. During a chapter change
+   * the previous chapter's panels survive a render, and resolving an anchor
+   * against them consumed the one-shot bookmark handoff against the wrong
+   * chapter — every bookmark opened on page one.
+   */
+  panelsReady: boolean;
 }) {
   const navigate = useNavigate();
   const { lang } = useLanguage();
@@ -86,11 +97,63 @@ export function usePageNavigation({
     setPanelIdx(getSavedPanel(num));
   }, [num]);
 
+  // Hold position by CONTENT across re-pagination.
+  //
+  // Changing viewport or reading mode re-paginates the chapter to a different
+  // number of panels. Keeping the raw index meant the reader stayed on "page
+  // 23" while the prose under them changed — measured: ch9 page 23 of 59, turn
+  // on dyslexia-friendly type, 69 panels, different passage. The dyslexic
+  // reader in particular got moved at the exact moment they accommodated
+  // themselves.
+  //
+  // So: remember the anchor of the panel we are on, and after the repack, jump
+  // to whichever panel now holds that block. `panels` is referentially stable
+  // per (chapter, budgets) thanks to paginatePanelsCached, so this runs once
+  // per real repagination rather than every render.
+  const anchorRef = useRef<string | null>(null);
+  const lastPanelsRef = useRef<Block[][] | null>(null);
+  const pendingChapterRef = useRef<number | null>(null);
+  useEffect(() => {
+    if (!panels || !panelsReady) return;
+    const previous = lastPanelsRef.current;
+    lastPanelsRef.current = panels;
+
+    // Arriving in a chapter: honour a bookmark's anchor if one was handed over.
+    if (pendingChapterRef.current !== num) {
+      pendingChapterRef.current = num;
+      const pending = takePendingAnchor(num);
+      if (pending) {
+        const at = panelForAnchor(panels, pending);
+        if (at != null) {
+          anchorRef.current = pending;
+          setPanelIdx(at);
+          return;
+        }
+      }
+      return;
+    }
+
+    if (!previous || previous === panels) return;
+    const anchor = anchorRef.current;
+    if (!anchor) return;
+    const found = panelForAnchor(panels, anchor);
+    // null means the anchor is gone (chapter text changed) — keep the clamped
+    // index rather than silently throwing the reader back to page one.
+    if (found != null) setPanelIdx(found);
+  }, [panels, num, panelsReady]);
+
   const panelCount = panels ? panels.length : 1;
   const clamped = Math.max(0, Math.min(panelIdx, panelCount - 1));
   const aligned = single ? clamped : clamped - (clamped % 2);
   const pageCount = Math.max(1, Math.ceil(panelCount / step));
   const page = Math.floor(aligned / step);
+
+  // Keep the anchor in step with wherever the reader actually is, so the next
+  // repagination has something current to restore to.
+  useEffect(() => {
+    if (!panels || !panelsReady) return;
+    anchorRef.current = anchorForPanel(panels, aligned) ?? anchorRef.current;
+  }, [panels, aligned, panelsReady]);
 
   useEffect(() => {
     if (panels) {
@@ -174,6 +237,8 @@ export function useReaderBookmark({
       existing ?? {
         doc: num,
         panelIndex: aligned,
+        // Anchor the bookmark to the passage, not the page number.
+        anchor: anchorForPanel(panels, aligned) ?? undefined,
         chapterTitle:
           num === FIRST_DOC ? "Front Matter" : num === LAST_DOC ? "Appendix" : `${num}. ${chapter.title.split(" — ")[0]}`,
         snippet: panelSnippet(panels[aligned] ?? [], chapter),

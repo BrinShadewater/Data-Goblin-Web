@@ -11,6 +11,15 @@ import { useEffect, useState } from "react";
 export interface Bookmark {
   doc: number;
   panelIndex: number;
+  /**
+   * Content anchor for the passage this bookmark actually marks (see
+   * `anchorForPanel` in pagination.ts). `panelIndex` alone is an ordinal, so a
+   * bookmark saved at one viewport or reading mode reopened at a different
+   * passage — it kept the snippet below and delivered other prose. The anchor
+   * is resolved first and the index is the fallback for records saved before
+   * this existed, so old bookmarks keep working.
+   */
+  anchor?: string;
   chapterTitle: string;
   snippet: string;
   ts: number;

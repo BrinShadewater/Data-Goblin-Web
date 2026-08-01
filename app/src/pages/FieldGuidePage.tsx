@@ -14,7 +14,7 @@ import { useBook } from "../useContent";
 import { useLanguage } from "../LanguageContext";
 import { folio, backMatterNumber, isBackMatter } from "../readerUtils";
 import { SINGLE_MAX_PX } from "../reader";
-import { tr } from "../i18n";
+import { tr, trf } from "../i18n";
 import {
   useChapterRoute,
   usePageNavigation,
@@ -51,7 +51,7 @@ export function FieldGuidePage() {
   const { lang } = useLanguage();
   const { data: book } = useBook();
   const { chapter, error, panels } = usePaginatedChapter(num);
-  const { aligned, page, pageCount, step, goNext, goPrev } = usePageNavigation({ num, panels, single });
+  const { aligned, page, pageCount, step, goNext, goPrev } = usePageNavigation({ num, panels, single, panelsReady: chapter?.number === num });
   const firstDoc = book?.frontMatter?.number ?? 0;
   const lastDoc = backMatterNumber(book);
   const canPrev = !(num <= firstDoc && page === 0);
@@ -90,7 +90,7 @@ export function FieldGuidePage() {
   // region, rendered in both layouts, announces the new position. Chapter is
   // included because turning past the last page crosses into the next chapter.
   const liveAnnouncement = chapter
-    ? `${chapter.title.split(" — ")[0]} — ${tr("Page")} ${page + 1} ${tr("of")} ${pageCount}`
+    ? trf("{chapter} — Page {n} of {total}", { chapter: chapter.title.split(" — ")[0], n: page + 1, total: pageCount })
     : "";
   const pageLiveRegion = (
     <div
@@ -131,7 +131,9 @@ export function FieldGuidePage() {
     return (
       <div style={{ display: "flex", flexDirection: "column", flex: 1, minHeight: 0, position: "relative" }}>
         {pageLiveRegion}
-        <div
+        <main
+          id="dg-main"
+          aria-label={chapter ? trf("{chapter} — reading area", { chapter: chapter.title.split(" — ")[0] }) : tr("Reading area")}
           onTouchStart={onTouchStart}
           onTouchEnd={onTouchEnd}
           style={{
@@ -172,7 +174,7 @@ export function FieldGuidePage() {
             <EdgeNav onPrev={goPrev} onNext={goNext} canPrev={canPrev} canNext={canNext} outset={mode === "phone" ? 8 : -22} />
             </div>
           )}
-        </div>
+        </main>
 
         {bottomBar}
 
@@ -288,7 +290,9 @@ export function FieldGuidePage() {
       {pageLiveRegion}
       <LeftSidebar book={book} activeChapter={num} />
 
-      <div
+      <main
+        id="dg-main"
+        aria-label={chapter ? trf("{chapter} — reading area", { chapter: chapter.title.split(" — ")[0] }) : tr("Reading area")}
         style={{
           minWidth: 0,
           minHeight: 0,
@@ -359,7 +363,7 @@ export function FieldGuidePage() {
             <EdgeNav onPrev={goPrev} onNext={goNext} canPrev={canPrev} canNext={canNext} outset={-22} />
           </div>
         )}
-      </div>
+      </main>
 
       <div style={{ display: "flex", flexDirection: "column", minHeight: 0 }}>
         {chapter ? (

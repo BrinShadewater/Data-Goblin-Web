@@ -7,7 +7,7 @@ import { useLocalStorage } from "../useLocalStorage";
 import type { Chapter } from "../types";
 import { NavIcon } from "./GoblinMascot";
 import { ToolCard } from "./ToolCard";
-import { tr } from "../i18n";
+import { tr, trf } from "../i18n";
 
 export function NotesCard({ chapterNumber }: { chapterNumber: number }) {
   const { c } = useTheme();
@@ -77,22 +77,25 @@ export function NotesCard({ chapterNumber }: { chapterNumber: number }) {
 
 export function SuspicionMeterCard({ chapter }: { chapter: Chapter }) {
   const { c } = useTheme();
+  const [formulaOpen, setFormulaOpen] = useState(false);
   const border = c(...P.borderSoft);
   const muted = c(...P.muted);
+  const body = c(...P.body);
   const suspicion = computeSuspicion(chapter.verifyFlags, chapter.sources);
   const pct = Math.round(suspicion.value * 100);
+  // Light half darkened from #5a8a3a, which came in at 4.02:1 on the parchment
+  // surface — under the 4.5:1 floor at this 12.5px size. #4f7d31 is 4.79:1.
+  // The dark halves already passed and are unchanged.
   const meterColor =
-    suspicion.value < 0.15 ? c("#5a8a3a", "#74b85e") : suspicion.value < 0.35 ? c("#b8860b", "#d9a23f") : c("#a8321f", "#e06848");
+    suspicion.value < 0.15 ? c("#4f7d31", "#74b85e") : suspicion.value < 0.35 ? c("#b8860b", "#d9a23f") : c("#a8321f", "#e06848");
 
   if (chapter.sources.length === 0) return null;
 
-  const formula = tr(
-    `Computed, not random: min(1, corporate-source share + 0.4·min(1, openVerifyFlags/4)). This chapter: ${suspicion.openFlags} open verification flag${suspicion.openFlags === 1 ? "" : "s"}; ${Math.round(suspicion.corporateShare * 100)}% of ${suspicion.totalSources} sources are corporate self-disclosure.`
-  );
+  const corporatePct = Math.round(suspicion.corporateShare * 100);
 
   return (
     <ToolCard icon={<NavIcon name="insight-nav" size={TOKENS.icon.sidebarTool} />} title={tr("Suspicion Meter")}>
-      <div title={formula}>
+      <div>
         <div style={{ height: "10px", background: c("#ded6c2", "#1d2230"), borderRadius: "5px", overflow: "hidden", border: `1px solid ${border}` }}>
           <div style={{ width: "100%", height: "100%", background: meterColor, transformOrigin: "left", transform: `scaleX(${pct / 100})`, transition: "transform 0.4s" }} />
         </div>
@@ -100,9 +103,56 @@ export function SuspicionMeterCard({ chapter }: { chapter: Chapter }) {
           {tr(suspicion.label)} ({pct}%)
         </div>
       </div>
-      <p title={formula} style={{ fontFamily: UI, fontSize: "11px", lineHeight: 1.5, color: muted, margin: 0, cursor: "help" }}>
-        {tr("Computed from this chapter’s open verification flags (")}{suspicion.openFlags}{tr(") and the share of corporate self-disclosure in its")} {suspicion.totalSources} {tr("sources (")}{Math.round(suspicion.corporateShare * 100)}{tr("%). Hover for the formula.")}
+
+      {/* One whole sentence, not fragments around the numbers — see trf(). */}
+      <p style={{ fontFamily: UI, fontSize: "11px", lineHeight: 1.5, color: muted, margin: 0 }}>
+        {trf(
+          "Computed from this chapter’s {flags} open verification flag(s) and the share of corporate self-disclosure in its {sources} sources ({pct}%).",
+          { flags: suspicion.openFlags, sources: suspicion.totalSources, pct: corporatePct }
+        )}
       </p>
+
+      {/*
+        The formula used to live only in a `title` attribute, on a non-focusable
+        element, under copy that said "Hover for the formula" — unreachable on
+        touch and by keyboard. The meter's whole point is that it shows its
+        working, so the working is a real disclosure now.
+      */}
+      <button
+        onClick={() => setFormulaOpen((v) => !v)}
+        aria-expanded={formulaOpen}
+        aria-controls="dg-suspicion-formula"
+        style={{
+          display: "inline-flex",
+          alignItems: "center",
+          gap: "5px",
+          marginTop: "8px",
+          padding: "6px 8px",
+          background: "transparent",
+          border: `1px solid ${border}`,
+          borderRadius: RADIUS,
+          cursor: "pointer",
+          fontFamily: UI,
+          fontSize: "10px",
+          fontWeight: 800,
+          letterSpacing: "0.1em",
+          textTransform: "uppercase",
+          color: meterColor,
+        }}
+      >
+        {formulaOpen ? tr("Hide the formula") : tr("See the formula")}
+      </button>
+      {formulaOpen && (
+        <p
+          id="dg-suspicion-formula"
+          style={{ fontFamily: UI, fontSize: "11px", lineHeight: 1.55, color: body, margin: "8px 0 0" }}
+        >
+          {trf(
+            "Computed, not random: min(1, corporate-source share + 0.4·min(1, openVerifyFlags/4)). This chapter: {flags} open verification flag(s); {pct}% of {sources} sources are corporate self-disclosure.",
+            { flags: suspicion.openFlags, sources: suspicion.totalSources, pct: corporatePct }
+          )}
+        </p>
+      )}
     </ToolCard>
   );
 }

@@ -7,7 +7,7 @@ import type { Chapter } from "../types";
 import { chapterWordCount, readingMinutes } from "../readingText";
 import { GoblinMascot, NavIcon } from "./GoblinMascot";
 import { artBlendStyle } from "./PageArt";
-import { tr } from "../i18n";
+import { tr, trf } from "../i18n";
 import { isBackMatter } from "../readerUtils";
 
 
@@ -82,9 +82,16 @@ export function OpenerHeader({ chapter }: { chapter: Chapter }) {
           marginBottom: "18px",
         }}
       >
+        {/* These three were hard-coded, so the French kicker read
+            "LA MÉTÉO · CHAPTER 9 · 33 MIN READ" — English chrome bolted onto a
+            translated region name, above every chapter title in the edition. */}
         {displayRegion(chapter.region)}
-        {chapter.number === 0 ? "" : isBackMatter(chapter.number) ? " · Appendix" : ` · Chapter ${chapter.number}`}
-        {readMins ? ` · ${readMins} min read` : ""}
+        {chapter.number === 0
+          ? ""
+          : isBackMatter(chapter.number)
+            ? ` · ${tr("Appendix")}`
+            : ` · ${trf("Chapter {n}", { n: chapter.number })}`}
+        {readMins ? ` · ${trf("{n} min read", { n: readMins })}` : ""}
       </div>
       <h1
         style={{

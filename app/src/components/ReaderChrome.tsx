@@ -4,7 +4,7 @@ import { useTheme } from "../ThemeContext";
 import { MONO, P, TOKENS, UI } from "../theme";
 import { savePanel } from "../pagination";
 import { NavIcon } from "./GoblinMascot";
-import { tr } from "../i18n";
+import { tr, trf } from "../i18n";
 
 export function ReaderBookmarkButton({
   bookmarked,
@@ -91,7 +91,7 @@ export function CompactPageProgress({
   return (
     <div style={{ flex: 1, minWidth: 0, display: "flex", flexDirection: "column", alignItems: "center", gap: "6px" }}>
       <div style={{ fontFamily: MONO, fontSize: "9px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: progressBlue, whiteSpace: "nowrap" }}>
-        {tr("Page")} {page + 1} {tr("of")} {pageCount}
+        {trf("Page {n} of {total}", { n: page + 1, total: pageCount })}
       </div>
       <div style={{ width: "100%", maxWidth: "240px", height: "3px", borderRadius: "2px", background: c("#ccc2a8", "#222837"), overflow: "hidden" }}>
         <div style={{ width: "100%", height: "100%", background: progressBlue, transformOrigin: "left", transform: `scaleX(${progress})`, transition: "transform 0.3s" }} />
@@ -211,7 +211,7 @@ export function ProgressGuide({
         })}
       </div>
       <div style={{ fontFamily: MONO, fontSize: "8px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: progressBlue, textAlign: "center" }}>
-        {tr("Page")} {page + 1} {tr("of")} {pageCount}
+        {trf("Page {n} of {total}", { n: page + 1, total: pageCount })}
       </div>
     </div>
   );
