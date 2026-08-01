@@ -65,17 +65,21 @@ const check = (label, ok, detail) => {
   if (!ok) failures++;
 };
 
-// The tightest desktop budget the layout can produce: the NARROWEST two-page
-// spread, at the 1500px threshold where the spread takes over from the single
-// wide page (reader.tsx SPREAD_MIN_VW). That is a ~386px column against the
-// ~588px reference, quantized by widthScaleFor. Below 1500px the reader shows
-// one wide page whose column is *wider* than this, so this is the worst case.
-// Kept as a literal so this gate fails loudly if that mapping is retuned.
-const NARROW_WIDTH_SCALE = 0.64;
+// As of 2026-08-01 the desktop text column is CONSTANT — ~494px at every width
+// from 1025px to 2560px, because the measure is now the invariant the layout
+// holds (reader.tsx: SINGLE_MAX_PX / SPREAD_MAX_PX / SPREAD_MIN_VW). So
+// widthScale is 1.0 across the whole desktop range and there is no longer a
+// "narrow desktop" budget to test.
+//
+// What is still worth pinning is the FLOOR. reader.tsx clamps widthScale at
+// MIN_WIDTH_SCALE, so that is the narrowest budget the layout can ever hand the
+// packer. Testing it keeps this gate honest if the caps are ever loosened and
+// narrow columns come back.
+const MIN_WIDTH_SCALE = 0.46;
 
 const MODES = [
   { name: "desktop", budgets: budgetsFor("desktop", false) },
-  { name: "desktop@1500-spread", budgets: budgetsFor("desktop", false, 1, NARROW_WIDTH_SCALE) },
+  { name: "desktop@min-scale", budgets: budgetsFor("desktop", false, 1, MIN_WIDTH_SCALE) },
   { name: "tablet", budgets: budgetsFor("tablet", false) },
   { name: "phone", budgets: budgetsFor("phone", false) },
   { name: "phone+dyslexic", budgets: budgetsFor("phone", true) },
