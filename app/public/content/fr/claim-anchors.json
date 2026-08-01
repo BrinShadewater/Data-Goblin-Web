@@ -171,5 +171,65 @@
    "id": 49,
    "status": "resolved"
   }
+ ],
+ "13": [
+  {
+   "anchor": "cas aggravés",
+   "id": 12,
+   "status": "fixed"
+  },
+  {
+   "anchor": "AB 2839",
+   "id": 18,
+   "status": "fixed"
+  },
+  {
+   "anchor": "8.66%",
+   "id": 32,
+   "status": "resolved"
+  }
+ ],
+ "15": [
+  {
+   "anchor": "retour en arrière du GPT-4o",
+   "id": 15,
+   "status": "fixed"
+  }
+ ],
+ "16": [
+  {
+   "anchor": "Les employeurs canadiens dépensent environ",
+   "id": 35,
+   "status": "resolved"
+  },
+  {
+   "anchor": "CWA Canada",
+   "id": 9,
+   "status": "fixed"
+  }
+ ],
+ "17": [
+  {
+   "anchor": "Convention-cadre du Conseil de l'Europe sur l'IA",
+   "id": 2,
+   "status": "resolved"
+  },
+  {
+   "anchor": "IA Security Institute",
+   "id": 16,
+   "status": "fixed"
+  },
+  {
+   "anchor": "plan d'action en juillet 2025",
+   "id": 17,
+   "status": "fixed"
+  }
+ ],
+ "18": [
+  {
+   "anchor": "40.7",
+   "id": 31,
+   "status": "resolved"
+  }
  ]
 }

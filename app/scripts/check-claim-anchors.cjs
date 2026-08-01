@@ -21,26 +21,36 @@ const path = require("path");
 const CONTENT = path.join(__dirname, "..", "public", "content");
 
 /**
- * Anchors already broken when this check was written, on 2026-07-31. They are a
- * RATCHET, not an exemption: the build fails if anything outside this list stops
- * resolving, and it also fails if an entry here starts resolving, so the list
+ * Anchors still broken, down from seventeen when this check was written on
+ * 2026-07-31. A RATCHET, not an exemption: the build fails if anything outside
+ * this list stops resolving, AND if an entry here starts resolving, so the list
  * can only shrink.
  *
- * All but "golf" look like chapter drift — chapters were inserted and
- * claim-anchors.json was never renumbered, so ch12's anchors are now in ch13,
- * ch13's in ch15, ch14's in ch16, ch15's in ch17, ch16's in ch18. Several are
- * NOT safe to renumber mechanically, because the phrase appears in more than
- * one candidate chapter (#34 and #8 in both ch10 and a later one), and picking
- * wrong would attach a verified source to the wrong sentence. Deciding which
- * sentence each receipt verifies is an editorial call — see WORK-LOG.
+ * The cause was chapter drift — chapters were inserted and claim-anchors.json
+ * was never renumbered. The ten anchors whose phrase occurs in exactly one
+ * chapter were moved there by scripts/reanchor-chapter-drift.cjs.
+ *
+ * These seven are left because they are NOT mechanical. Each needs someone to
+ * decide which sentence the receipt actually verifies, and getting it wrong
+ * attaches a verified source to the wrong claim:
+ *
+ *   8#42  "golf" — appears in no chapter at all. The ledger entry is about
+ *         Bill C-16's status, so the anchor looks simply wrong.
+ *   12#11 "TAKE IT DOWN Act" — ch13 (substantive, 4 hits) or ch17 (passing).
+ *   12#4  "Denmark" — ch11, ch13 or ch20 all discuss the likeness-rights law.
+ *   13#34 "2024-25 privacy opinion research" — ch10 and ch15 carry near
+ *         identical sentences; chapter drift points at ch15, topic at ch10.
+ *   13#7  "Ewert v. Canada" — ch10 treats it in full, ch15 refers back to it.
+ *   15#10 "€35" — ch17 and ch18 both state the EU AI Act fine.
+ *   16#8  "private-sector privacy law" — ch10 (general) or ch18 (the Ontario
+ *         sentence the ledger entry is actually about).
  */
 const KNOWN_UNRESOLVED = new Set([
-  "8#42", // "golf" — not in any chapter; looks like a bad anchor for the Bill C-16 entry
-  "12#11", "12#12", "12#4", "12#18", "12#32",
-  "13#34", "13#7", "13#15",
-  "14#35", "14#9",
-  "15#2", "15#16", "15#17", "15#10",
-  "16#8", "16#31",
+  "8#42",
+  "12#11", "12#4",
+  "13#34", "13#7",
+  "15#10",
+  "16#8",
 ]);
 
 const load = (rel) => {

@@ -182,11 +182,6 @@
    "status": "fixed"
   },
   {
-   "anchor": "aggravated",
-   "id": 12,
-   "status": "fixed"
-  },
-  {
    "anchor": "Bill C-16",
    "id": 49,
    "status": "resolved"
@@ -194,16 +189,6 @@
   {
    "anchor": "Denmark",
    "id": 4,
-   "status": "resolved"
-  },
-  {
-   "anchor": "AB 2839",
-   "id": 18,
-   "status": "fixed"
-  },
-  {
-   "anchor": "8.66%",
-   "id": 32,
    "status": "resolved"
   }
  ],
@@ -219,12 +204,39 @@
    "status": "fixed"
   },
   {
+   "anchor": "aggravated",
+   "id": 12,
+   "status": "fixed"
+  },
+  {
+   "anchor": "AB 2839",
+   "id": 18,
+   "status": "fixed"
+  },
+  {
+   "anchor": "8.66%",
+   "id": 32,
+   "status": "resolved"
+  }
+ ],
+ "15": [
+  {
+   "anchor": "€35",
+   "id": 10,
+   "status": "fixed"
+  },
+  {
    "anchor": "GPT-4o rollback",
    "id": 15,
    "status": "fixed"
   }
  ],
- "14": [
+ "16": [
+  {
+   "anchor": "private-sector privacy law",
+   "id": 8,
+   "status": "fixed"
+  },
   {
    "anchor": "per employee",
    "id": 35,
@@ -236,7 +248,7 @@
    "status": "fixed"
   }
  ],
- "15": [
+ "17": [
   {
    "anchor": "Council of Europe AI Framework Convention",
    "id": 2,
@@ -251,19 +263,9 @@
    "anchor": "AI Action Plan",
    "id": 17,
    "status": "fixed"
-  },
-  {
-   "anchor": "€35",
-   "id": 10,
-   "status": "fixed"
   }
  ],
- "16": [
-  {
-   "anchor": "private-sector privacy law",
-   "id": 8,
-   "status": "fixed"
-  },
+ "18": [
   {
    "anchor": "40.7",
    "id": 31,

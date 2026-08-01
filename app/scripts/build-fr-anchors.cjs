@@ -59,6 +59,17 @@ const FR = {
   },
   11: { 29: "n'a ni signé ni adhéré" },
   12: { 49: "projet de loi C-16" },
+  // Added after reanchor-chapter-drift.cjs moved these to the chapters their
+  // phrases actually live in; they had been dead in English, so they had never
+  // needed a French phrase before.
+  13: { 12: "cas aggravés" },
+  15: { 15: "retour en arrière du GPT-4o" },
+  16: { 35: "Les employeurs canadiens dépensent environ" },
+  17: {
+    2: "Convention-cadre du Conseil de l'Europe sur l'IA",
+    16: "IA Security Institute",
+    17: "plan d'action en juillet 2025",
+  },
 };
 
 /**
