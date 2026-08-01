@@ -1,0 +1,26 @@
+{
+  "_readme": [
+    "Hand corrections applied to the machine-translated French edition AFTER MT.",
+    "",
+    "The FR edition is OPUS-MT output, labelled 'under review' in the UI. Most of its",
+    "roughness is acceptable for a machine translation. These are the cases where MT",
+    "changed a FACT, not just the phrasing — those cannot be left, because the book's",
+    "whole argument is that its claims are checkable.",
+    "",
+    "Applied in two places, both reading this file so they cannot drift:",
+    "  pipeline/translate_fr.py     — on every translation run, in _write()",
+    "  app/scripts/apply-fr-corrections.cjs — repairs already-generated FR JSON",
+    "",
+    "Each entry is a literal find/replace over the FR JSON string values, scoped to",
+    "one file so a phrase cannot be rewritten somewhere it was correct. Add a 'why'.",
+    "Keep this list SHORT: it is for factual errors, not style."
+  ],
+  "corrections": [
+    {
+      "file": "chapters/ch06.json",
+      "find": "environ un dixième de l'intensité",
+      "replace": "environ un quinzième de l'intensité",
+      "why": "MT rendered 'one-fifteenth' as 'un dixième' (one tenth). The English claim, and the source behind ledger entry 24, is one-fifteenth: a Montréal data centre on the Hydro-Québec grid against a gas-dominated Alberta one. A wrong number in the sentence a receipt marker points at."
+    }
+  ]
+}

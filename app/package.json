@@ -19,7 +19,8 @@
     "check:built-site": "node scripts/check-built-site-smoke.cjs",
     "check:browser": "node scripts/check-browser-smoke.cjs",
     "verify": "node scripts/verify.cjs",
-    "check:anchors": "node scripts/check-claim-anchors.cjs"
+    "check:anchors": "node scripts/check-claim-anchors.cjs",
+    "fix:fr": "node scripts/apply-fr-corrections.cjs"
   },
   "dependencies": {
     "@vercel/speed-insights": "^2.0.0",

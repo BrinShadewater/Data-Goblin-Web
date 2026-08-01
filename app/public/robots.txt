@@ -1,4 +1,36 @@
+# Data Goblin — a free, public-interest field guide to AI, power, and data in
+# Canada. Read it, quote it, argue with it.
+#
+# On AI crawlers: allowed, deliberately rather than by omission. A book that
+# spends its length asking who trained on what, and whether anyone was asked,
+# should say what it does with its own text instead of leaving it implied.
+#
+# The guide is free to read and licensed for non-commercial reuse with
+# attribution (CC BY-NC 4.0 — github.com/BrinShadewater/Data-Goblin-Web, file
+# LICENSE-CONTENT.md). If it turns up inside a
+# model's answer, a citation back to the receipt is the entire point.
+#
+# This is a permission, not a waiver of that licence.
+
 User-agent: *
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: CCBot
 Allow: /
 
 Sitemap: https://datagoblin.ca/sitemap.xml
