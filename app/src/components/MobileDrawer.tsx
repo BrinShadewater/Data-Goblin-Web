@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { X } from "lucide-react";
-import { useLocation } from "react-router-dom";
+import { useLocation } from "react-router";
 import { useTheme } from "../ThemeContext";
 import { DISPLAY, P, TOKENS } from "../theme";
 import { GoblinIcon } from "./GoblinMascot";

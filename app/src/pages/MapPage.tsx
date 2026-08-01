@@ -48,7 +48,7 @@ export function MapPage() {
             height={mapDimensions?.height}
             alt={tr("Fantasy map of Canada for Data Goblin, with the goblin standing in front")}
             loading="eager"
-            fetchpriority="high"
+            fetchPriority="high"
             decoding="async"
             style={{
               display: "block",

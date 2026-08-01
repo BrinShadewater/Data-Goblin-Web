@@ -17,7 +17,7 @@ site/
     art-map.json              <- HAND-EDITABLE. The one content file humans edit. See below.
   update-content.bat          <- run after ANY manuscript/ledger/glossary/trap edit
   commit-and-push.bat "msg"   <- add -A, commit, push (prompts for message if no arg)
-  app/                        <- Vite + React 18 + TypeScript, plain inline styles (no Tailwind)
+  app/                        <- Vite + React 19 + TypeScript, plain inline styles (no Tailwind)
     public/content/           <- deploy copy of content/ (written by update-content.bat)
     public/art/               <- WebP art: icons/ (38), panels/ (27), medium/ (18), small/ (120)
     src/pagination.ts         <- book pagination engine (pure logic, no React)

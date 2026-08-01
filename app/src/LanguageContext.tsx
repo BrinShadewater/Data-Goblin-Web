@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useReducer, ReactNode } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router";
 import { setUiLang, onI18nReady } from "./i18n";
 
 export type Lang = "en" | "fr";

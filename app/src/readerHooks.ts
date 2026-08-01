@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState, type TouchEvent } from "react";
-import { useParams } from "react-router-dom";
+import { useParams } from "react-router";
 import { useNavigate } from "./i18nNav";
 import { getLastLocation, saveLastLocation, toggleBookmark, useBookmarks } from "./bookmarks";
 import {
