@@ -287,8 +287,49 @@ def translate_traps(obj):
             if "text" in v:      v["text"] = tr_text(v["text"])
     return obj
 
+_CORRECTIONS_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                                 "fr-corrections.json")
+
+def _load_corrections():
+    """Hand corrections for MT output, keyed by output file (see the readme in
+    fr-corrections.json). These exist for cases where MT changed a FACT, not
+    just the phrasing — a wrong number in a sentence a receipt points at cannot
+    be left standing in a book whose argument is that its claims are checkable."""
+    try:
+        with open(_CORRECTIONS_PATH, encoding="utf-8") as f:
+            return json.load(f).get("corrections", [])
+    except FileNotFoundError:
+        return []
+
+def _apply_corrections(rel_path, data):
+    """Literal find/replace over string values, scoped to one output file."""
+    fixes = [c for c in _load_corrections()
+             if c.get("file", "").replace("\\", "/") == rel_path.replace("\\", "/")]
+    if not fixes:
+        return data, 0
+    n = 0
+    def walk(o):
+        nonlocal n
+        if isinstance(o, str):
+            s = o
+            for c in fixes:
+                if c["find"] in s:
+                    s = s.replace(c["find"], c["replace"])
+                    n += 1
+            return s
+        if isinstance(o, list):
+            return [walk(v) for v in o]
+        if isinstance(o, dict):
+            return {k: walk(v) for k, v in o.items()}
+        return o
+    return walk(data), n
+
 def _write(path, data):
     os.makedirs(os.path.dirname(path), exist_ok=True)
+    rel = os.path.relpath(path, OUT).replace("\\", "/")
+    data, n = _apply_corrections(rel, data)
+    if n:
+        print(f"  [corrections] {rel}: applied {n}")
     with open(path, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=1)
 

@@ -44,7 +44,10 @@ const FR = {
     13: "règlement délégué",
     14: "GPU de centres de données",
     41: "1 200 MW",
-    // 24 ("one-fifteenth") is deliberately absent — see UNTRANSLATABLE below.
+    // Anchorable again as of 2026-08-01: the French said "un dixième" (one
+    // tenth) for one-fifteenth, so this was held back rather than let a receipt
+    // vouch for a wrong number. pipeline/fr-corrections.json fixes the text.
+    24: "un quinzième",
   },
   8: {
     27: "54 % des projets énergétiques-transition-minéraux du monde",
@@ -90,14 +93,15 @@ const FR = {
 /**
  * Anchors left out on purpose, with the reason. These are not oversights.
  *
- * ch6 #24 "one-fifteenth" — the French edition renders this as "un dixième"
- *   (one tenth). That is a machine-translation error: the English claim, and
- *   the source behind ledger entry 24, is one-fifteenth. Anchoring the receipt
- *   to "un dixième" would attach a verified source to a wrong number and make
- *   the apparatus vouch for the error. Left unanchored until the French text
- *   is corrected.
+ * Empty as of 2026-08-01. It held ch6 #24, where the French rendered
+ * "one-fifteenth" as "un dixième" (one tenth) — anchoring a receipt there would
+ * have made the apparatus vouch for a wrong number. The French text is
+ * corrected now (pipeline/fr-corrections.json), so the anchor is back.
+ *
+ * If MT ever mangles a fact again, park the anchor here with the reason rather
+ * than pointing a receipt at wrong text.
  */
-const UNTRANSLATABLE = [{ chapter: 6, id: 24, reason: "FR text says 'un dixième' (one tenth) for one-fifteenth" }];
+const UNTRANSLATABLE = [];
 
 const load = (dir, num) => {
   const p = path.join(CONTENT, dir, "chapters", `ch${String(num).padStart(2, "0")}.json`);

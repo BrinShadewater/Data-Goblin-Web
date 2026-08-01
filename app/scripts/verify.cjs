@@ -39,6 +39,7 @@ runPythonSyncCheck();
 run("Pagination sanity", process.execPath, [path.join(appDir, "scripts", "run-pagination-sanity.cjs")]);
 run("Contribution mailto sanity", process.execPath, [path.join(appDir, "scripts", "check-contribute-mailto.cjs")]);
 run("Claim anchors", process.execPath, [path.join(appDir, "scripts", "check-claim-anchors.cjs")]);
+run("French corrections", process.execPath, [path.join(appDir, "scripts", "apply-fr-corrections.cjs"), "--check"]);
 if (process.platform === "win32") {
   run("Production build", process.env.ComSpec || "cmd.exe", ["/d", "/s", "/c", "npm run build"]);
 } else {
