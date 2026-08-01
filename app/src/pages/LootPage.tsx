@@ -87,7 +87,9 @@ export function LootPage() {
                   fontFamily: MONO,
                   fontSize: "12px",
                   fontWeight: l === activeLetter ? 800 : 500,
-                  color: l === activeLetter ? "#ffffff" : green,
+                  // Theme pair, not hard white: P.green flips light in dark
+                  // mode, so white-on-green fell to ~2.4:1 at night.
+                  color: l === activeLetter ? c("#f4f0e0", "#0d1018") : green,
                   background: l === activeLetter ? green : "transparent",
                   border: `1px solid ${l === activeLetter ? green : border}`,
                   borderRadius: RADIUS,

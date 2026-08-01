@@ -74,6 +74,35 @@ export function FieldGuidePage() {
     textAlign: "center" as const,
   };
 
+  // Page turns are a pure in-place re-render: arrows, swipe, edge tap and the
+  // bottom bar all change the panel with no route change and no focus move, so
+  // assistive tech had no way to know the page had turned. One polite live
+  // region, rendered in both layouts, announces the new position. Chapter is
+  // included because turning past the last page crosses into the next chapter.
+  const liveAnnouncement = chapter
+    ? `${chapter.title.split(" — ")[0]} — ${tr("Page")} ${page + 1} ${tr("of")} ${pageCount}`
+    : "";
+  const pageLiveRegion = (
+    <div
+      aria-live="polite"
+      aria-atomic="true"
+      style={{
+        position: "absolute",
+        width: "1px",
+        height: "1px",
+        margin: "-1px",
+        padding: 0,
+        border: 0,
+        overflow: "hidden",
+        clip: "rect(0 0 0 0)",
+        clipPath: "inset(50%)",
+        whiteSpace: "nowrap",
+      }}
+    >
+      {liveAnnouncement}
+    </div>
+  );
+
   const bottomBar = (
     <BottomBar
       book={book}
@@ -91,6 +120,7 @@ export function FieldGuidePage() {
   if (single) {
     return (
       <div style={{ display: "flex", flexDirection: "column", flex: 1, minHeight: 0, position: "relative" }}>
+        {pageLiveRegion}
         <div
           onTouchStart={onTouchStart}
           onTouchEnd={onTouchEnd}
@@ -238,8 +268,10 @@ export function FieldGuidePage() {
         gridTemplateRows: "minmax(0, 1fr) auto",
         flex: 1,
         minHeight: 0,
+        position: "relative",
       }}
     >
+      {pageLiveRegion}
       <LeftSidebar book={book} activeChapter={num} />
 
       <div
@@ -261,6 +293,13 @@ export function FieldGuidePage() {
             style={{
               display: "grid",
               gridTemplateColumns: singleArtSpread ? "1fr" : "1fr 1fr",
+              // Without an explicit row track the implicit row sizes to its
+              // content, so PagePanel's height:100% resolves against the tall
+              // row rather than the spread, its scroller reads
+              // scrollHeight === clientHeight, and an over-budget page is
+              // silently clipped instead of scrolling. minmax(0, 1fr) pins the
+              // row to the spread and restores the overflow fallback.
+              gridTemplateRows: "minmax(0, 1fr)",
               width: "100%",
               height: "100%",
               boxShadow: pageShadow,

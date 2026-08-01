@@ -24,9 +24,14 @@ Two related facts also changed, both found by running the commands rather than t
   project-local binary. Call it by path:
   `node node_modules\typescript\bin\tsc --noEmit -p .`
 
-**What has not changed:** the bundle build still cannot run on this host, because `rolldown`
-ships only `binding-linux-x64-gnu`/`musl` in this checkout and there is no win32 binding.
-Typecheck is a real gate; the build is Vercel's job.
+**Corrected 2026-07-31: the bundle build now runs on this host.** This section previously said
+it could not, because `rolldown` shipped only `binding-linux-x64-gnu`/`musl` with no win32
+binding. `npm run build` completes locally today — exit 0, 2063 modules, ~800ms, followed by
+`prerender-meta` writing 84 route shells and the sitemap. `node scripts/verify.cjs` runs the
+whole chain green except **Browser smoke**, which fails on a missing Playwright binary
+(`npx playwright install` fixes it) rather than on anything in the app.
+
+Verify before relying on either claim: `$env:NODE_ENV='development'; npm run build`.
 
 The original guidance follows.
 

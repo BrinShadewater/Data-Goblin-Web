@@ -53,10 +53,26 @@ export const ACCENT_COST = 180;
  * Budget for the active viewport mode + reading mode. Phone panels hold
  * ≈60% of a desktop panel; tablet single pages ≈85%; the dyslexia-friendly
  * face (larger metrics, 1.8 line-height) costs a further ~15%.
+ *
+ * The budget is an area: lines per page × characters per line. `heightScale`
+ * carries the first term, `widthScale` the second. Both default to 1 so
+ * callers that only care about the reference desktop (the sanity gate) are
+ * unaffected. Width matters because the desktop spread keeps splitting into
+ * two columns however narrow the window gets — at 1280px each text column is
+ * ~276px against the ~596px the budget was tuned at, so a width-blind budget
+ * packs roughly twice the prose a page can hold.
  */
-export function budgetsFor(mode: ReaderMode, dyslexic: boolean, heightScale = 1): Budgets {
+export function budgetsFor(
+  mode: ReaderMode,
+  dyslexic: boolean,
+  heightScale = 1,
+  widthScale = 1
+): Budgets {
   const scale =
-    (mode === "phone" ? 0.6 : mode === "tablet" ? 0.85 : 1) * (dyslexic ? 0.85 : 1) * heightScale;
+    (mode === "phone" ? 0.6 : mode === "tablet" ? 0.85 : 1) *
+    (dyslexic ? 0.85 : 1) *
+    heightScale *
+    widthScale;
   return {
     panel: Math.round(PANEL_BUDGET * scale),
     opener: Math.round(OPENER_BUDGET * scale),

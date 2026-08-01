@@ -42,6 +42,7 @@ export function TopNav({
           DATA GOBLIN
         </div>
         <div
+          className="dg-logo-sub"
           style={{
             fontFamily: MONO,
             fontSize: compact ? "8.5px" : "10.5px",
@@ -123,7 +124,31 @@ export function TopNav({
     >
       {logo}
 
-      <style>{`@media (max-width: 1880px){ .dg-navlabel{ display:none; } }`}</style>
+      {/*
+        Nine labelled nav items are a tight fit, and the old 1880px breakpoint
+        revealed them into an overflow:hidden nav that needed ~2120px — so
+        between 1881px and ~2120px the trailing labels were silently clipped
+        rather than hidden. Measured in the browser at the tightened metrics
+        below: the labelled nav needs a 1114px track against 708px of fixed
+        chrome, so labels fit from ~1822px once the logo subtitle steps aside
+        (it costs a further ~172px, hence the second breakpoint). Below the
+        label breakpoint they hide cleanly and each icon keeps its `title` as
+        its accessible name.
+
+        Nine top-level items is the real constraint here — see WORK-LOG.
+      */}
+      <style>{`
+        @media (max-width: 2010px){ .dg-logo-sub{ display:none; } }
+        @media (max-width: 1830px){ .dg-navlabel{ display:none; } }
+        /* Below ~1300px the 48px nav icons alone overrun the track and the
+           overflow:hidden nav drops the trailing items. 34px seats all nine
+           from ~1150px up. Narrower than that, nine top-level items genuinely
+           do not fit and want an IA decision, not a smaller icon. */
+        @media (max-width: 1300px){
+          .dg-navlink img, .dg-navlink svg{ width:34px !important; height:34px !important; }
+          .dg-navlink{ padding:9px 5px !important; }
+        }
+      `}</style>
 
       <nav style={{ display: "flex", alignItems: "center", gap: "3px", flex: 1, minWidth: 0, overflow: "hidden" }}>
         {NAV_ITEMS.map((l) => (
@@ -131,6 +156,7 @@ export function TopNav({
             key={l.to}
             to={l.to}
             end={l.to === "/"}
+            className="dg-navlink"
             title={tr(l.label)}
             onMouseEnter={l.to === "/guide" ? preloadReaderRoute : undefined}
             onFocus={l.to === "/guide" ? preloadReaderRoute : undefined}
@@ -138,18 +164,21 @@ export function TopNav({
               const active = isActive || isNavActive(location.pathname, l);
               return ({
               fontFamily: UI,
-              fontSize: "13.5px",
+              // 12px/0.04em rather than 13.5px/0.06em: the tighter metrics are
+              // what let the labels appear ~330px earlier than they otherwise
+              // would, and this is UI chrome, never reading type.
+              fontSize: "12px",
               fontWeight: active ? 700 : 500,
-              letterSpacing: "0.06em",
+              letterSpacing: "0.04em",
               textTransform: "uppercase" as const,
               color: active ? green : muted,
               textDecoration: "none",
-              padding: "9px 11px",
+              padding: "9px 7px",
               borderBottom: active ? `2px solid ${green}` : "2px solid transparent",
               transition: "color 0.15s",
               display: "inline-flex",
               alignItems: "center",
-              gap: "7px",
+              gap: "5px",
             });
             }}
           >

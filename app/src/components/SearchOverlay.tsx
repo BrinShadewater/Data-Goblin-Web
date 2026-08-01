@@ -106,7 +106,8 @@ export function SearchOverlay({ query, onClose }: { query: string; onClose: () =
             <button key={`c${i}`} onClick={() => { navigate(`/chapter/${r.num}`); onClose(); }} style={rowStyle} {...hover}>
               <div style={{ display: "flex", gap: "10px", alignItems: "flex-start" }}>
                 <div style={{ width: "20px", height: "20px", borderRadius: "50%", background: navy, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                  <span style={{ fontFamily: UI, fontSize: "8px", fontWeight: 800, color: "#fff" }}>{r.num}</span>
+                  {/* Theme pair, not hard white: P.navy flips light in dark mode. */}
+                  <span style={{ fontFamily: UI, fontSize: "8px", fontWeight: 800, color: c("#f4f0e0", "#0d1018") }}>{r.num}</span>
                 </div>
                 <div>
                   <div style={{ fontFamily: UI, fontSize: "11px", fontWeight: 700, color: navy, marginBottom: "2px" }}>{r.title}</div>

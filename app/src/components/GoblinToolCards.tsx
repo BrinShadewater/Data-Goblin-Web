@@ -107,6 +107,20 @@ export function SuspicionMeterCard({ chapter }: { chapter: Chapter }) {
   );
 }
 
+/**
+ * Renders **bold** spans in a short string of manuscript text. Quest items come
+ * straight from the chapter recap, which is authored markdown, so the asterisks
+ * were printing literally ("**the model is the data**"). The emphasis carries
+ * meaning here, so it is rendered rather than stripped — but with a minimal
+ * inline pass rather than the full Markdown component, because these strings
+ * live inside a <button> and block-level output would be invalid nesting.
+ */
+function inlineEmphasis(text: string) {
+  return text.split(/\*\*(.+?)\*\*/g).map((part, i) =>
+    i % 2 === 1 ? <strong key={i}>{part}</strong> : part
+  );
+}
+
 export function QuestItemsCard({ chapter }: { chapter: Chapter }) {
   const { c } = useTheme();
   const [done, setDone] = useLocalStorage<number[]>(`goblin-quests-ch${chapter.number}`, []);
@@ -156,7 +170,7 @@ export function QuestItemsCard({ chapter }: { chapter: Chapter }) {
                 textDecoration: checked ? "line-through" : "none",
               }}
             >
-              {item}
+              {inlineEmphasis(item)}
             </span>
           </button>
         );

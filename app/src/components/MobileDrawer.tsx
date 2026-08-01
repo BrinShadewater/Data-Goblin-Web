@@ -1,9 +1,10 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { X } from "lucide-react";
 import { useLocation } from "react-router-dom";
 import { useTheme } from "../ThemeContext";
 import { DISPLAY, P, TOKENS } from "../theme";
 import { GoblinIcon } from "./GoblinMascot";
+import { useFocusTrap } from "../focusTrap";
 import { TocList } from "./TableOfContents";
 import { useBook } from "../useContent";
 import { tr } from "../i18n";
@@ -13,21 +14,35 @@ import { DrawerSectionLabel, MobileBookmarks, MobileDrawerToggles, MobileNavLink
  * Phone/tablet hamburger drawer: nav links, region-grouped TOC (shared with
  * the desktop sidebar, touch-restyled), and saved bookmarks. Closes on scrim
  * tap, Escape, or any selection.
+ *
+ * The panel stays mounted so it can slide, but a closed drawer must not haunt
+ * the page: parked at translateX(-105%) it still carried ~40 tabbable controls
+ * and a role="dialog" aria-modal into the tree, so keyboard users tabbed
+ * through an invisible menu. `visibility: hidden` takes the whole subtree out
+ * of the tab order and the accessibility tree; unmounting would kill the slide.
+ * Focus is trapped while open, which also supplies the Escape handler.
  */
 export function MobileDrawer({ open, onClose }: { open: boolean; onClose: () => void }) {
   const { c } = useTheme();
   const location = useLocation();
   const { data: book } = useBook();
+  const trapRef = useFocusTrap<HTMLDivElement>(open, onClose);
 
-  // Escape closes the drawer.
+  // Visibility lags the close by the length of the slide so the panel can
+  // animate out before it leaves the accessibility tree. This is a timer
+  // rather than a `transition: visibility 0s 0.25s`, because a CSS transition
+  // only advances while the page produces frames — in a background tab it
+  // never completes, and the drawer would stay focusable indefinitely. That is
+  // precisely the bug being fixed, so it must not depend on frames.
+  const [visible, setVisible] = useState(open);
   useEffect(() => {
-    if (!open) return;
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
-    };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [open, onClose]);
+    if (open) {
+      setVisible(true);
+      return;
+    }
+    const t = setTimeout(() => setVisible(false), 250);
+    return () => clearTimeout(t);
+  }, [open]);
 
   const chMatch = location.pathname.match(/^\/chapter\/(\d+)/);
   const activeChapter = chMatch ? parseInt(chMatch[1], 10) : -1;
@@ -56,6 +71,8 @@ export function MobileDrawer({ open, onClose }: { open: boolean; onClose: () => 
       />
       {/* Panel */}
       <div
+        ref={trapRef}
+        tabIndex={-1}
         role="dialog"
         aria-modal="true"
         aria-label="Menu"
@@ -69,6 +86,7 @@ export function MobileDrawer({ open, onClose }: { open: boolean; onClose: () => 
           borderRight: `1px solid ${border}`,
           zIndex: 200,
           transform: open ? "translateX(0)" : "translateX(-105%)",
+          visibility: visible ? "visible" : "hidden",
           transition: "transform 0.25s ease",
           display: "flex",
           flexDirection: "column",
