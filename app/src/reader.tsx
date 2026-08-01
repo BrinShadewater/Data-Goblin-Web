@@ -35,13 +35,34 @@ const READER_CHROME = 596;
 const SPREAD_MAX = 1400;
 const PANEL_PADDING = 66;
 
-/** Width of one page's text column at a given window width, in CSS px. */
-function textColumnWidth(vw: number): number {
-  const well = Math.min(SPREAD_MAX, vw - READER_CHROME);
-  return Math.max(120, well / 2 - PANEL_PADDING);
+/**
+ * Below this window width the reader shows ONE wide page instead of the
+ * two-page spread. The spread splits the well in half however narrow the
+ * window gets, so at 1280px each column was ~275px — roughly 33 characters a
+ * line, far below the ~65 that prose wants, and it forced twice the page
+ * turns. One page at the same width gives a ~618px column, close to the
+ * reference the type was tuned at.
+ */
+export const SPREAD_MIN_VW = 1500;
+
+/** Is the two-page spread in play at this window width? */
+export function spreadFor(vw: number): boolean {
+  return modeFor(vw) === "desktop" && vw >= SPREAD_MIN_VW;
 }
 
-const REFERENCE_COL = textColumnWidth(REFERENCE_VW);
+/**
+ * Width of one page's text column at a given window width, in CSS px. Must
+ * track FieldGuidePage's maxWidth caps — 1400px for the spread, 720px for a
+ * single wide page — or the budget will size for a column that isn't rendered.
+ */
+export const SINGLE_MAX_PX = 720;
+function textColumnWidth(vw: number, spread: boolean): number {
+  const available = vw - READER_CHROME;
+  const well = Math.min(spread ? SPREAD_MAX : SINGLE_MAX_PX, available);
+  return Math.max(120, (spread ? well / 2 : well) - PANEL_PADDING);
+}
+
+const REFERENCE_COL = textColumnWidth(REFERENCE_VW, true);
 
 // Below ~1200px the spread's columns get so narrow that scaling the budget all
 // the way down would leave pages too short to pack cleanly (and would push
@@ -52,21 +73,30 @@ const MIN_WIDTH_SCALE = 0.46;
 
 function widthScaleFor(vw: number): number {
   if (!vw || modeFor(vw) !== "desktop") return 1;
-  const raw = Math.max(MIN_WIDTH_SCALE, Math.min(1.1, textColumnWidth(vw) / REFERENCE_COL));
+  const raw = Math.max(
+    MIN_WIDTH_SCALE,
+    Math.min(1.1, textColumnWidth(vw, spreadFor(vw)) / REFERENCE_COL)
+  );
   // Same coarse quantization as the height scale, so a drag-resize doesn't
   // re-paginate on every tick.
   return Math.round(raw / 0.04) * 0.04;
 }
 
 /** Live viewport mode: phone <700px, tablet 700–1024px, desktop >1024px. */
-export function useViewport(): { mode: ReaderMode; heightScale: number; widthScale: number } {
+export function useViewport(): {
+  mode: ReaderMode;
+  heightScale: number;
+  widthScale: number;
+  spread: boolean;
+} {
   const read = () =>
     typeof window === "undefined"
-      ? { mode: "desktop" as ReaderMode, heightScale: 1, widthScale: 1 }
+      ? { mode: "desktop" as ReaderMode, heightScale: 1, widthScale: 1, spread: true }
       : {
           mode: modeFor(window.innerWidth),
           heightScale: heightScaleFor(window.innerHeight),
           widthScale: widthScaleFor(window.innerWidth),
+          spread: spreadFor(window.innerWidth),
         };
   const [vp, setVp] = useState(read);
   useEffect(() => {
@@ -75,7 +105,8 @@ export function useViewport(): { mode: ReaderMode; heightScale: number; widthSca
         const next = read();
         return next.mode === prev.mode &&
           next.heightScale === prev.heightScale &&
-          next.widthScale === prev.widthScale
+          next.widthScale === prev.widthScale &&
+          next.spread === prev.spread
           ? prev
           : next;
       });
@@ -91,6 +122,8 @@ interface ReaderCtx {
   heightScale: number;
   /** Budget multiplier from the live text-column width (1 = reference width). */
   widthScale: number;
+  /** Two-page spread (wide desktop) vs one wide page (narrow desktop). */
+  spread: boolean;
   /** Dyslexia-friendly type: Atkinson Hyperlegible, looser spacing, no italics. */
   dyslexic: boolean;
   toggleDyslexic: () => void;
@@ -104,13 +137,14 @@ const Ctx = createContext<ReaderCtx>({
   mode: "desktop",
   heightScale: 1,
   widthScale: 1,
+  spread: true,
   dyslexic: false,
   toggleDyslexic: () => {},
   t: typeScale("desktop", false),
 });
 
 export function ReaderProvider({ children }: { children: ReactNode }) {
-  const { mode, heightScale, widthScale } = useViewport();
+  const { mode, heightScale, widthScale, spread } = useViewport();
   const [dyslexic, setDyslexic] = useState<boolean>(() => {
     try {
       return localStorage.getItem(READING_KEY) === "dyslexic";
@@ -140,11 +174,12 @@ export function ReaderProvider({ children }: { children: ReactNode }) {
       mode,
       heightScale,
       widthScale,
+      spread,
       dyslexic,
       toggleDyslexic: () => setDyslexic((v) => !v),
       t: typeScale(mode, dyslexic),
     }),
-    [mode, heightScale, widthScale, dyslexic]
+    [mode, heightScale, widthScale, spread, dyslexic]
   );
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
 }
