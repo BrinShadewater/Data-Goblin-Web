@@ -159,6 +159,10 @@ export function ReaderProvider({ children }: { children: ReactNode }) {
       /* private mode — ignore */
     }
   }, [dyslexic]);
+  // Atkinson is self-hosted like every other face (scripts/fetch-fonts.cjs) but
+  // kept out of the main stylesheet and injected on first use: it is ~99 kB
+  // that most readers never need, and loading it eagerly would tax everyone for
+  // a mode few enable.
   useEffect(() => {
     if (!dyslexic || typeof document === "undefined") return;
     const id = "dg-dyslexia-font";
@@ -166,7 +170,7 @@ export function ReaderProvider({ children }: { children: ReactNode }) {
     const link = document.createElement("link");
     link.id = id;
     link.rel = "stylesheet";
-    link.href = "https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap";
+    link.href = "/fonts/atkinson.css";
     document.head.appendChild(link);
   }, [dyslexic]);
   const value = useMemo<ReaderCtx>(

@@ -454,7 +454,11 @@ export function TopNav({
         rather than about fit.
       */}
       <style>{`
-        @media (max-width: 1500px){ .dg-logo-sub{ display:none; } }
+        /* The tagline costs the nav ~172px of the same row. Yielding it below
+           2100px is what lets the nav labels appear from ~1810px instead of
+           ~2130px — naming the destinations beats decorating the logo at the
+           widths people actually browse at. */
+        @media (max-width: 2100px){ .dg-logo-sub{ display:none; } }
         @media (max-width: 1360px){
           .dg-navlink img, .dg-navlink svg{ width:34px !important; height:34px !important; }
           .dg-navlink{ padding:9px 5px !important; }

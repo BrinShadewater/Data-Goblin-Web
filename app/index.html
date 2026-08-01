@@ -215,21 +215,17 @@
         d.style.colorScheme = dark ? "dark" : "light";
       })();
     </script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..700;1,8..60,300..700&family=JetBrains+Mono:wght@400..800&family=Inter:ital,opsz,wght@0,14..32,300..800;1,14..32,300..800&family=Caveat:wght@400&display=optional" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..700;1,8..60,300..700&family=JetBrains+Mono:wght@400..800&family=Inter:ital,opsz,wght@0,14..32,300..800;1,14..32,300..800&family=Caveat:wght@400&display=optional"
-      rel="stylesheet"
-      media="print"
-      onload="this.media='all'"
-    />
-    <noscript>
-      <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..700;1,8..60,300..700&family=JetBrains+Mono:wght@400..800&family=Inter:ital,opsz,wght@0,14..32,300..800;1,14..32,300..800&family=Caveat:wght@400&display=optional"
-        rel="stylesheet"
-      />
-    </noscript>
+    <!--
+      Fonts are self-hosted from /fonts (see scripts/fetch-fonts.cjs). The site
+      makes no third-party font requests, so no reader's IP reaches a font CDN —
+      which is the least a book about data sovereignty can do. Same woff2 bytes
+      Google was serving, minus a DNS lookup and TLS handshake to another origin.
+    -->
+    <link rel="preload" as="style" href="/fonts/fonts.css" />
+    <link rel="stylesheet" href="/fonts/fonts.css" />
+    <!-- The two faces above the fold, fetched without waiting for the CSS. -->
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/source-serif-4-latin-normal-300-700.woff2" />
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/playfair-display-latin-normal-400-900.woff2" />
     <style>
       html, body, #root { height: 100%; margin: 0; padding: 0; }
       html, body { overflow-x: hidden; }

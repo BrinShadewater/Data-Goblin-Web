@@ -33,15 +33,21 @@ function PagePanelInner({
   const { data: glossary } = useGlossary();
   const { data: claimAnchors } = useClaimAnchors();
   const linkedBlocks = useMemo(() => {
-    // The inline auto-linkers (receipts, reference links, glossary tooltips)
-    // are keyed on English text and would silently no-op on French content, so
-    // they only run for the English edition. (FR re-curation is a future pass.)
-    if (lang !== "en") return blocks;
     let b = blocks;
+    // Receipts run in BOTH editions. The anchors are verbatim prose phrases, so
+    // the French edition loads its own hand-checked set (fr/claim-anchors.json);
+    // before that existed the English anchors matched nothing and the receipts
+    // apparatus was invisible in French — on the one page whose whole argument
+    // is showing its work.
     const anchors = claimAnchors?.[String(chapter.number)];
     if (anchors && anchors.length > 0) b = receiptLinkBlocks(b, anchors);
-    if (links && links.length > 0) b = autolinkBlocks(b, links);
-    if (glossary && glossary.length > 0) b = glossaryLinkBlocks(b, glossary);
+    // Reference autolinks and glossary tooltips are still keyed on English text
+    // and would silently no-op on French content. Their French curation is a
+    // separate pass; leaving them off is honest, running them would not help.
+    if (lang === "en") {
+      if (links && links.length > 0) b = autolinkBlocks(b, links);
+      if (glossary && glossary.length > 0) b = glossaryLinkBlocks(b, glossary);
+    }
     return b;
   }, [blocks, links, glossary, claimAnchors, chapter.number, lang]);
   const padding =
