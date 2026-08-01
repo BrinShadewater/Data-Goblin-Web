@@ -25,10 +25,13 @@ import {
 } from "../readerHooks";
 
 /**
- * The Field Guide reader. Desktop (>1024px): TOC sidebar / two-page book
- * spread / tools sidebar / bottom bar. Phone (<700px) and tablet portrait
- * (700–1024px): a single page with swipe navigation, a compact bottom bar,
- * and the goblin tools behind a floating 🧌 bottom sheet. Routes "/" and
+ * The Field Guide reader. Desktop (>1024px): TOC sidebar / book / tools
+ * sidebar / bottom bar — where "book" is a two-page spread at ≥1500px and a
+ * single wide page below that (see DESIGN.md § Layout; the spread's columns
+ * get too narrow to read before the window does). Phone (<700px) and tablet
+ * portrait (700–1024px): a single page with swipe navigation, a compact
+ * bottom bar, and the goblin tools behind a floating 🧌 bottom sheet.
+ * Routes "/" and
  * "/chapter/:num", where :num runs 0 (front matter) through 21 (appendix).
  * ArrowLeft/ArrowRight and the bottom-bar buttons turn pages, crossing
  * document boundaries at either end. Positions are stored as panel indices.

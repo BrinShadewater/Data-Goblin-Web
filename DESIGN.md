@@ -85,6 +85,32 @@ Paginated reader — content is measured into pages, so layout changes can cause
 loss or stub pages. `sanity-pagination` is a real gate: no block loss, no stub last
 page, no panel over twice budget. If pagination logic changes, recompile before testing.
 
+**The two-page spread is a wide-desktop treatment, not the desktop treatment.** Below
+`SPREAD_MIN_VW` (1500px, `reader.tsx`) the reader shows **one wide page** in the same
+desktop chrome — sidebars, bottom bar, edge nav — and turns one page at a time. The
+spread splits the well in half however narrow the window gets, so at 1280px it gave two
+~275px columns, about 33 characters a line against the ~65 prose wants. Measured on
+chapter 2 at 1280×800, one wide page beats the spread on *both* axes — 31 pages vs 35,
+and a 616px column vs 275px — because per-page vertical space is identical either way,
+so one wide column holds more than two narrow ones. Changed 2026-07-31.
+
+Three separate ideas, easy to conflate — keep them apart:
+
+- `compact` — phone/tablet chrome (no sidebars, swipe, tools sheet)
+- `spread` — the two-page book, wide desktop only
+- a narrow desktop is **neither**: full desktop chrome, single page
+
+**The page budget is an area: lines × characters-per-line.** `heightScale` carries the
+first term and `widthScale` the second, both in `reader.tsx`. A width-blind budget
+over-packs narrow columns — that is what silently clipped 800+px off every page before
+2026-07-31. `textColumnWidth()` must track `FieldGuidePage`'s `maxWidth` caps (1400px
+spread, `SINGLE_MAX_PX` = 720px single) or the budget sizes for a column that is not
+rendered. Change them together.
+
+The tightest desktop budget is the **narrowest spread** (1500px, ~386px column), not the
+narrowest desktop — everything below 1500px gets a *wider* column, not a narrower one.
+That is the case `sanity-pagination` pins as `desktop@1500-spread`.
+
 ## Shapes
 
 `RADIUS = "2px"` throughout. This is a deliberately hard-edged, printed-page feel. Do
