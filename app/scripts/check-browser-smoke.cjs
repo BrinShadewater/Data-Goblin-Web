@@ -183,6 +183,14 @@ async function runInteractionSmoke(browser, baseUrl) {
     await page.getByRole("link", { name: /Open the guide/i }).click();
     await page.waitForURL(/\/guide/);
 
+    // waitForURL only proves the URL changed, not that the reader route has
+    // mounted. Typing into the search box before React is listening loses the
+    // input event, and the next render resets the controlled input to "" — the
+    // search silently never happens and the assertion below times out. Waiting
+    // for the reader's own page indicator proves the route rendered and the app
+    // is interactive.
+    await page.getByText(/PAGE\s*1\s*OF/i).first().waitFor({ state: "visible" });
+
     await page.getByPlaceholder("Search the guide…").fill("privacy");
     await page.getByText(/result.*privacy|results.*privacy/i).waitFor({ state: "visible" });
     await page.keyboard.press("Escape").catch(() => {});
