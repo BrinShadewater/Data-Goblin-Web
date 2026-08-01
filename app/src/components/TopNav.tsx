@@ -1,4 +1,5 @@
-import { Menu, Moon, Sun } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { ChevronDown, Menu, Moon, Sun } from "lucide-react";
 import { useLocation } from "react-router-dom";
 import { NavLink, useNavigate } from "../i18nNav";
 import { useTheme } from "../ThemeContext";
@@ -6,9 +7,128 @@ import { useLanguage } from "../LanguageContext";
 import { tr } from "../i18n";
 import { useReader } from "../reader";
 import { DISPLAY, MONO, P, TOKENS, UI } from "../theme";
-import { isNavActive, NAV_ITEMS } from "../navigation";
+import { isNavActive, OVERFLOW_NAV, PRIMARY_NAV } from "../navigation";
 import { preloadReaderRoute } from "../lazyRoutes";
+import { useFocusTrap } from "../focusTrap";
 import { GoblinIcon, NavIcon } from "./GoblinMascot";
+
+/**
+ * The "More" menu holding the nav items that don't earn a labelled slot.
+ *
+ * Nine labelled items never fit the header at laptop widths (see navigation.ts),
+ * so the primary five are labelled inline and the rest live here — every
+ * destination still reachable, none of them reduced to an unlabelled icon.
+ * The trigger reads as active whenever the current route is inside the menu,
+ * so a reader on /about doesn't see an entirely unlit nav.
+ */
+function MoreMenu({ pathname }: { pathname: string }) {
+  const { c } = useTheme();
+  const [open, setOpen] = useState(false);
+  const wrapRef = useRef<HTMLDivElement>(null);
+  const menuRef = useFocusTrap<HTMLDivElement>(open, () => setOpen(false));
+
+  const green = c(...P.green);
+  const muted = c(...P.muted);
+  const border = c(...P.border);
+  const containsActive = OVERFLOW_NAV.some((i) => isNavActive(pathname, i));
+
+  // Any route change closes the menu — selecting an item navigates, and the
+  // menu must not survive a back/forward either.
+  useEffect(() => setOpen(false), [pathname]);
+
+  // Pointer outside the trigger+panel closes it. Escape and focus containment
+  // come from useFocusTrap.
+  useEffect(() => {
+    if (!open) return;
+    const onPointer = (e: PointerEvent) => {
+      if (!wrapRef.current?.contains(e.target as Node)) setOpen(false);
+    };
+    document.addEventListener("pointerdown", onPointer);
+    return () => document.removeEventListener("pointerdown", onPointer);
+  }, [open]);
+
+  return (
+    <div ref={wrapRef} style={{ position: "relative", flexShrink: 0 }}>
+      <button
+        onClick={() => setOpen((v) => !v)}
+        aria-haspopup="menu"
+        aria-expanded={open}
+        aria-label={tr("More")}
+        style={{
+          display: "inline-flex",
+          alignItems: "center",
+          gap: "4px",
+          background: "none",
+          border: "none",
+          cursor: "pointer",
+          fontFamily: UI,
+          fontSize: "12px",
+          fontWeight: open || containsActive ? 700 : 500,
+          letterSpacing: "0.04em",
+          textTransform: "uppercase",
+          color: open || containsActive ? green : muted,
+          padding: "9px 7px",
+          borderBottom: containsActive ? `2px solid ${green}` : "2px solid transparent",
+          transition: "color 0.15s",
+        }}
+      >
+        {tr("More")}
+        <ChevronDown size={14} style={{ transform: open ? "rotate(180deg)" : "none", transition: "transform 0.15s" }} />
+      </button>
+
+      {open && (
+        <div
+          ref={menuRef}
+          tabIndex={-1}
+          role="menu"
+          aria-label={tr("More")}
+          style={{
+            position: "absolute",
+            top: "calc(100% + 6px)",
+            left: 0,
+            minWidth: "210px",
+            background: c(...P.panelBg),
+            border: `1px solid ${border}`,
+            borderRadius: "3px",
+            boxShadow: c("0 8px 24px rgba(40,30,10,0.18)", "0 8px 24px rgba(0,0,0,0.6)"),
+            padding: "5px",
+            zIndex: 60,
+          }}
+        >
+          {OVERFLOW_NAV.map((l) => {
+            const active = isNavActive(pathname, l);
+            return (
+              <NavLink
+                key={l.to}
+                to={l.to}
+                end={l.to === "/"}
+                role="menuitem"
+                onClick={() => setOpen(false)}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "9px",
+                  padding: "9px 10px",
+                  borderRadius: "2px",
+                  textDecoration: "none",
+                  fontFamily: UI,
+                  fontSize: "12px",
+                  fontWeight: active ? 700 : 500,
+                  letterSpacing: "0.04em",
+                  textTransform: "uppercase",
+                  color: active ? green : muted,
+                }}
+              >
+                <NavIcon name={l.icon} size={26} />
+                {tr(l.label)}
+              </NavLink>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
+}
 
 export function TopNav({
   searchQuery,
@@ -125,33 +245,31 @@ export function TopNav({
       {logo}
 
       {/*
-        Nine labelled nav items are a tight fit, and the old 1880px breakpoint
-        revealed them into an overflow:hidden nav that needed ~2120px — so
-        between 1881px and ~2120px the trailing labels were silently clipped
-        rather than hidden. Measured in the browser at the tightened metrics
-        below: the labelled nav needs a 1114px track against 708px of fixed
-        chrome, so labels fit from ~1822px once the logo subtitle steps aside
-        (it costs a further ~172px, hence the second breakpoint). Below the
-        label breakpoint they hide cleanly and each icon keeps its `title` as
-        its accessible name.
+        Breakpoints below are measured in the browser, not calculated, and they
+        interlock — retune them together if the nav contents change.
 
-        Nine top-level items is the real constraint here — see WORK-LOG.
+        With five labelled items plus the More menu the labelled nav needs a
+        588px track (34px icons) or ~658px (48px icons), against ~657px of
+        fixed chrome — so labels fit from ~1244px, and the logo subtitle (a
+        further ~172px) can come back at ~1490px. The old nine-item nav needed
+        ~1114px and never fit below 1830px, which is why every laptop-width
+        visitor used to see unlabelled icons.
+
+        The icon-size step sits at 1360px rather than at the label breakpoint so
+        the 48px icons never switch on while the track is still too narrow for
+        them — a gap there would clip the trailing item.
       */}
       <style>{`
-        @media (max-width: 2010px){ .dg-logo-sub{ display:none; } }
-        @media (max-width: 1830px){ .dg-navlabel{ display:none; } }
-        /* Below ~1300px the 48px nav icons alone overrun the track and the
-           overflow:hidden nav drops the trailing items. 34px seats all nine
-           from ~1150px up. Narrower than that, nine top-level items genuinely
-           do not fit and want an IA decision, not a smaller icon. */
-        @media (max-width: 1300px){
+        @media (max-width: 1500px){ .dg-logo-sub{ display:none; } }
+        @media (max-width: 1250px){ .dg-navlabel{ display:none; } }
+        @media (max-width: 1360px){
           .dg-navlink img, .dg-navlink svg{ width:34px !important; height:34px !important; }
           .dg-navlink{ padding:9px 5px !important; }
         }
       `}</style>
 
       <nav style={{ display: "flex", alignItems: "center", gap: "3px", flex: 1, minWidth: 0, overflow: "hidden" }}>
-        {NAV_ITEMS.map((l) => (
+        {PRIMARY_NAV.map((l) => (
           <NavLink
             key={l.to}
             to={l.to}
@@ -183,9 +301,10 @@ export function TopNav({
             }}
           >
             <NavIcon name={l.icon} size={TOKENS.icon.headerNav} />
-            <span className="dg-navlabel">{tr(l.label)}</span>
+            <span className="dg-navlabel">{tr(l.short ?? l.label)}</span>
           </NavLink>
         ))}
+        <MoreMenu pathname={location.pathname} />
       </nav>
 
       <div
