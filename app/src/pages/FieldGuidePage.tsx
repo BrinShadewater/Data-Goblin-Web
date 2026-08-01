@@ -13,6 +13,7 @@ import { NavIcon } from "../components/GoblinMascot";
 import { useBook } from "../useContent";
 import { useLanguage } from "../LanguageContext";
 import { folio, backMatterNumber, isBackMatter } from "../readerUtils";
+import { SINGLE_MAX_PX } from "../reader";
 import { tr } from "../i18n";
 import {
   useChapterRoute,
@@ -34,8 +35,14 @@ import {
  */
 export function FieldGuidePage() {
   const { c } = useTheme();
-  const { mode } = useReader();
-  const single = mode !== "desktop";
+  const { mode, spread } = useReader();
+  // Two distinct things that used to be one flag:
+  //   compact — the phone/tablet chrome (no sidebars, swipe, tools sheet)
+  //   spread  — the two-page book spread, wide desktop only
+  // A narrow desktop now keeps the full desktop chrome but turns one wide
+  // page at a time, so it advances by 1 like the compact layouts do.
+  const compact = mode !== "desktop";
+  const single = !spread;
 
   const num = useChapterRoute();
   const { lang } = useLanguage();
@@ -117,7 +124,7 @@ export function FieldGuidePage() {
   );
 
   // ------------------------------------------------------------------ phone / tablet
-  if (single) {
+  if (compact) {
     return (
       <div style={{ display: "flex", flexDirection: "column", flex: 1, minHeight: 0, position: "relative" }}>
         {pageLiveRegion}
@@ -255,10 +262,14 @@ export function FieldGuidePage() {
     );
   }
 
-  // ------------------------------------------------------------------ desktop spread
+  // ------------------------------------------------------------------ desktop
+  // Wide desktop shows a two-page spread; narrow desktop shows one wide page
+  // in the same chrome, so `right` is simply empty there.
   const left = panels?.[aligned] ?? [];
-  const right = panels?.[aligned + 1] ?? [];
-  const singleArtSpread = left.length === 1 && left[0]?.kind === "panel" && right.length === 0;
+  const right = spread ? panels?.[aligned + 1] ?? [] : [];
+  // One full-bleed art page fills the whole spread rather than sitting beside
+  // a blank verso — and a single wide page is always its own full width.
+  const onePage = !spread || (left.length === 1 && left[0]?.kind === "panel" && right.length === 0);
 
   return (
     <div
@@ -288,11 +299,11 @@ export function FieldGuidePage() {
         {error && <div style={{ ...statusStyle, textAlign: "left" }}>{tr("Could not load chapter")} {num}. ({error})</div>}
         {!chapter && !error && <div style={statusStyle}>{tr("Opening the field guide…")}</div>}
         {chapter && panels && (
-          <div style={{ position: "relative", width: "100%", maxWidth: "1400px", height: "100%" }}>
+          <div style={{ position: "relative", width: "100%", maxWidth: spread ? "1400px" : `${SINGLE_MAX_PX}px`, height: "100%" }}>
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: singleArtSpread ? "1fr" : "1fr 1fr",
+              gridTemplateColumns: onePage ? "1fr" : "1fr 1fr",
               // Without an explicit row track the implicit row sizes to its
               // content, so PagePanel's height:100% resolves against the tall
               // row rather than the spread, its scroller reads
@@ -317,7 +328,7 @@ export function FieldGuidePage() {
               folio={folio(num, aligned + 1)}
               opener={aligned === 0}
             />
-            {!singleArtSpread && (
+            {!onePage && (
               <>
                 <PagePanel
                   key={`${num}-${aligned}-right`}
