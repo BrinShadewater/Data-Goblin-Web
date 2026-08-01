@@ -13,6 +13,7 @@ import { NavIcon } from "../components/GoblinMascot";
 import { useBook } from "../useContent";
 import { useLanguage } from "../LanguageContext";
 import { folio, backMatterNumber, isBackMatter } from "../readerUtils";
+import { SINGLE_MAX_PX } from "../reader";
 import { tr } from "../i18n";
 import {
   useChapterRoute,
@@ -24,18 +25,27 @@ import {
 } from "../readerHooks";
 
 /**
- * The Field Guide reader. Desktop (>1024px): TOC sidebar / two-page book
- * spread / tools sidebar / bottom bar. Phone (<700px) and tablet portrait
- * (700–1024px): a single page with swipe navigation, a compact bottom bar,
- * and the goblin tools behind a floating 🧌 bottom sheet. Routes "/" and
+ * The Field Guide reader. Desktop (>1024px): TOC sidebar / book / tools
+ * sidebar / bottom bar — where "book" is a two-page spread at ≥1500px and a
+ * single wide page below that (see DESIGN.md § Layout; the spread's columns
+ * get too narrow to read before the window does). Phone (<700px) and tablet
+ * portrait (700–1024px): a single page with swipe navigation, a compact
+ * bottom bar, and the goblin tools behind a floating 🧌 bottom sheet.
+ * Routes "/" and
  * "/chapter/:num", where :num runs 0 (front matter) through 21 (appendix).
  * ArrowLeft/ArrowRight and the bottom-bar buttons turn pages, crossing
  * document boundaries at either end. Positions are stored as panel indices.
  */
 export function FieldGuidePage() {
   const { c } = useTheme();
-  const { mode } = useReader();
-  const single = mode !== "desktop";
+  const { mode, spread } = useReader();
+  // Two distinct things that used to be one flag:
+  //   compact — the phone/tablet chrome (no sidebars, swipe, tools sheet)
+  //   spread  — the two-page book spread, wide desktop only
+  // A narrow desktop now keeps the full desktop chrome but turns one wide
+  // page at a time, so it advances by 1 like the compact layouts do.
+  const compact = mode !== "desktop";
+  const single = !spread;
 
   const num = useChapterRoute();
   const { lang } = useLanguage();
@@ -74,6 +84,35 @@ export function FieldGuidePage() {
     textAlign: "center" as const,
   };
 
+  // Page turns are a pure in-place re-render: arrows, swipe, edge tap and the
+  // bottom bar all change the panel with no route change and no focus move, so
+  // assistive tech had no way to know the page had turned. One polite live
+  // region, rendered in both layouts, announces the new position. Chapter is
+  // included because turning past the last page crosses into the next chapter.
+  const liveAnnouncement = chapter
+    ? `${chapter.title.split(" — ")[0]} — ${tr("Page")} ${page + 1} ${tr("of")} ${pageCount}`
+    : "";
+  const pageLiveRegion = (
+    <div
+      aria-live="polite"
+      aria-atomic="true"
+      style={{
+        position: "absolute",
+        width: "1px",
+        height: "1px",
+        margin: "-1px",
+        padding: 0,
+        border: 0,
+        overflow: "hidden",
+        clip: "rect(0 0 0 0)",
+        clipPath: "inset(50%)",
+        whiteSpace: "nowrap",
+      }}
+    >
+      {liveAnnouncement}
+    </div>
+  );
+
   const bottomBar = (
     <BottomBar
       book={book}
@@ -88,9 +127,10 @@ export function FieldGuidePage() {
   );
 
   // ------------------------------------------------------------------ phone / tablet
-  if (single) {
+  if (compact) {
     return (
       <div style={{ display: "flex", flexDirection: "column", flex: 1, minHeight: 0, position: "relative" }}>
+        {pageLiveRegion}
         <div
           onTouchStart={onTouchStart}
           onTouchEnd={onTouchEnd}
@@ -225,10 +265,14 @@ export function FieldGuidePage() {
     );
   }
 
-  // ------------------------------------------------------------------ desktop spread
+  // ------------------------------------------------------------------ desktop
+  // Wide desktop shows a two-page spread; narrow desktop shows one wide page
+  // in the same chrome, so `right` is simply empty there.
   const left = panels?.[aligned] ?? [];
-  const right = panels?.[aligned + 1] ?? [];
-  const singleArtSpread = left.length === 1 && left[0]?.kind === "panel" && right.length === 0;
+  const right = spread ? panels?.[aligned + 1] ?? [] : [];
+  // One full-bleed art page fills the whole spread rather than sitting beside
+  // a blank verso — and a single wide page is always its own full width.
+  const onePage = !spread || (left.length === 1 && left[0]?.kind === "panel" && right.length === 0);
 
   return (
     <div
@@ -238,8 +282,10 @@ export function FieldGuidePage() {
         gridTemplateRows: "minmax(0, 1fr) auto",
         flex: 1,
         minHeight: 0,
+        position: "relative",
       }}
     >
+      {pageLiveRegion}
       <LeftSidebar book={book} activeChapter={num} />
 
       <div
@@ -256,11 +302,18 @@ export function FieldGuidePage() {
         {error && <div style={{ ...statusStyle, textAlign: "left" }}>{tr("Could not load chapter")} {num}. ({error})</div>}
         {!chapter && !error && <div style={statusStyle}>{tr("Opening the field guide…")}</div>}
         {chapter && panels && (
-          <div style={{ position: "relative", width: "100%", maxWidth: "1400px", height: "100%" }}>
+          <div style={{ position: "relative", width: "100%", maxWidth: spread ? "1400px" : `${SINGLE_MAX_PX}px`, height: "100%" }}>
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: singleArtSpread ? "1fr" : "1fr 1fr",
+              gridTemplateColumns: onePage ? "1fr" : "1fr 1fr",
+              // Without an explicit row track the implicit row sizes to its
+              // content, so PagePanel's height:100% resolves against the tall
+              // row rather than the spread, its scroller reads
+              // scrollHeight === clientHeight, and an over-budget page is
+              // silently clipped instead of scrolling. minmax(0, 1fr) pins the
+              // row to the spread and restores the overflow fallback.
+              gridTemplateRows: "minmax(0, 1fr)",
               width: "100%",
               height: "100%",
               boxShadow: pageShadow,
@@ -278,7 +331,7 @@ export function FieldGuidePage() {
               folio={folio(num, aligned + 1)}
               opener={aligned === 0}
             />
-            {!singleArtSpread && (
+            {!onePage && (
               <>
                 <PagePanel
                   key={`${num}-${aligned}-right`}

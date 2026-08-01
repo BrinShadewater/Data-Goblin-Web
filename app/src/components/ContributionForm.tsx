@@ -203,7 +203,7 @@ export function ContributionForm({ onSuccess }: { onSuccess: () => void }) {
       <button
         type="submit"
         disabled={submitting}
-        style={{ display: "flex", alignItems: "center", gap: "8px", background: green, border: "none", borderRadius: RADIUS, padding: "10px 20px", fontFamily: UI, fontSize: "11px", fontWeight: 800, letterSpacing: "0.1em", textTransform: "uppercase", color: "#ffffff", cursor: submitting ? "wait" : "pointer", transition: "opacity 0.15s", opacity: submitting ? 0.7 : hover ? 0.85 : 1 }}
+        style={{ display: "flex", alignItems: "center", gap: "8px", background: green, border: "none", borderRadius: RADIUS, padding: "10px 20px", fontFamily: UI, fontSize: "11px", fontWeight: 800, letterSpacing: "0.1em", textTransform: "uppercase", color: c("#f4f0e0", "#0d1018"), cursor: submitting ? "wait" : "pointer", transition: "opacity 0.15s", opacity: submitting ? 0.7 : hover ? 0.85 : 1 }}
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
       >

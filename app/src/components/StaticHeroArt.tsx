@@ -39,7 +39,7 @@ export function StaticHeroArt({
         height={dimensions?.height}
         alt={alt}
         loading={eager ? "eager" : "lazy"}
-        fetchPriority={eager ? "high" : undefined}
+        fetchpriority={eager ? "high" : undefined}
         decoding="async"
         style={{
           display: "block",

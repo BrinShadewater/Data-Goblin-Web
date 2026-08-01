@@ -75,6 +75,33 @@ export function ReceiptsPage() {
           <h1 style={{ fontFamily: DISPLAY, fontSize: "36px", fontWeight: 900, color: navy, margin: "0 0 14px", lineHeight: 1.05, textTransform: "uppercase" }}>
             {tr("Receipts")}
           </h1>
+
+          {/*
+            The tally is the whole argument of this page, and it used to appear
+            only as 9px mono fine print at the very bottom of the Verification
+            Log tab — below the fold, on the tab most readers never open. It
+            reads as a stat under the H1 on both tabs now. The fine-print line
+            at the bottom of the log stays; it carries the as-of date.
+          */}
+          {receipts && (
+            <div style={{ display: "flex", gap: "26px", flexWrap: "wrap", margin: "0 0 16px" }}>
+              {[
+                { value: receipts.length, label: tr("ledger entries"), tone: navy },
+                { value: receipts.filter((r) => r.status === "open").length, label: tr("still open"), tone: green },
+                { value: totalChapters, label: tr("chapters covered"), tone: navy },
+              ].map((stat) => (
+                <div key={stat.label}>
+                  <div style={{ fontFamily: DISPLAY, fontSize: "26px", fontWeight: 900, color: stat.tone, lineHeight: 1 }}>
+                    {stat.value}
+                  </div>
+                  <div style={{ fontFamily: MONO, fontSize: "9px", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: muted, marginTop: "5px" }}>
+                    {stat.label}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+
           <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
             {tabButton("sources", <BookOpen size={12} strokeWidth={2.2} />, tr("Sources"))}
             {tabButton("log", <ScrollText size={12} strokeWidth={2.2} />, tr("Verification Log"))}

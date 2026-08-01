@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { X } from "lucide-react";
 import { useLocation } from "react-router-dom";
 import { useTheme } from "../ThemeContext";
 import { BODY, MONO, P, RADIUS, UI } from "../theme";
@@ -62,44 +63,84 @@ export function LootPage() {
             eager
           />
 
-          <div style={{ display: "flex", alignItems: "center", gap: "8px", background: c(...P.inputBg), border: `1px solid ${border}`, borderRadius: RADIUS, padding: "8px 14px", maxWidth: "380px", marginTop: "18px" }}>
-            <NavIcon name="search-nav" size={30} />
-            <input
-              type="text"
-              placeholder={tr("Search the glossary…")}
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              style={{ background: "transparent", border: "none", fontFamily: UI, fontSize: "13px", color: body, flex: 1 }}
-            />
+          {/*
+            The field had no accessible name (placeholder only), no way to get
+            back out of a search except selecting the text and deleting it, and
+            it hid the A–Z rail while active — so a search left the reader with
+            no visible route back to browsing.
+          */}
+          <div style={{ maxWidth: "380px", marginTop: "18px" }}>
+            <label
+              htmlFor="glossary-search"
+              style={{ display: "block", fontFamily: MONO, fontSize: "9px", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: muted, marginBottom: "6px" }}
+            >
+              {tr("Search the glossary")}
+            </label>
+            <div style={{ display: "flex", alignItems: "center", gap: "8px", background: c(...P.inputBg), border: `1px solid ${border}`, borderRadius: RADIUS, padding: "8px 14px" }}>
+              <NavIcon name="search-nav" size={30} />
+              <input
+                id="glossary-search"
+                type="search"
+                placeholder={tr("Search the glossary…")}
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                style={{ background: "transparent", border: "none", fontFamily: UI, fontSize: "13px", color: body, flex: 1, minWidth: 0 }}
+              />
+              {query && (
+                <button
+                  onClick={() => setQuery("")}
+                  aria-label={tr("Clear search")}
+                  title={tr("Clear search")}
+                  style={{ display: "flex", alignItems: "center", justifyContent: "center", width: "24px", height: "24px", flexShrink: 0, background: "none", border: "none", borderRadius: RADIUS, cursor: "pointer", color: muted, padding: 0 }}
+                >
+                  <X size={16} />
+                </button>
+              )}
+            </div>
           </div>
         </PageHeading>
 
         {error && <LoadingMessage>{tr("Could not load the glossary. (")}{error})</LoadingMessage>}
         {!terms && !error && <LoadingMessage>{tr("Unpacking the hoard…")}</LoadingMessage>}
 
-        {!query && terms && (
+        {/*
+          The rail stays mounted while searching — it used to disappear, which
+          removed the only visible way back to browsing. During a search no
+          letter reads as selected, and picking one clears the query and jumps
+          to that letter.
+        */}
+        {terms && (
           <div style={{ display: "flex", gap: "4px", flexWrap: "wrap", marginBottom: "20px" }}>
-            {alphabet.map((l) => (
-              <button
-                key={l}
-                onClick={() => setActiveLetter(l)}
-                style={{
-                  fontFamily: MONO,
-                  fontSize: "12px",
-                  fontWeight: l === activeLetter ? 800 : 500,
-                  color: l === activeLetter ? "#ffffff" : green,
-                  background: l === activeLetter ? green : "transparent",
-                  border: `1px solid ${l === activeLetter ? green : border}`,
-                  borderRadius: RADIUS,
-                  padding: "7px 12px",
-                  minWidth: "36px",
-                  cursor: "pointer",
-                  transition: "all 0.15s",
-                }}
-              >
-                {l}
-              </button>
-            ))}
+            {alphabet.map((l) => {
+              const selected = !query && l === activeLetter;
+              return (
+                <button
+                  key={l}
+                  onClick={() => {
+                    setQuery("");
+                    setActiveLetter(l);
+                  }}
+                  aria-pressed={selected}
+                  style={{
+                    fontFamily: MONO,
+                    fontSize: "12px",
+                    fontWeight: selected ? 800 : 500,
+                    // Theme pair, not hard white: P.green flips light in dark
+                    // mode, so white-on-green fell to ~2.4:1 at night.
+                    color: selected ? c("#f4f0e0", "#0d1018") : green,
+                    background: selected ? green : "transparent",
+                    border: `1px solid ${selected ? green : border}`,
+                    borderRadius: RADIUS,
+                    padding: "7px 12px",
+                    minWidth: "36px",
+                    cursor: "pointer",
+                    transition: "all 0.15s",
+                  }}
+                >
+                  {l}
+                </button>
+              );
+            })}
           </div>
         )}
 
@@ -124,9 +165,19 @@ export function LootPage() {
           ))}
         </div>
 
-        {!query && terms && (
-          <div style={{ marginTop: "20px", fontFamily: MONO, fontSize: "9px", color: muted }}>
-            {filtered.length} {tr("term")}{filtered.length !== 1 ? "s" : ""} {tr("under “")}{activeLetter}&rdquo; · {terms.length} {tr("total in the hoard")}
+        {/* The tally reported the browsing view only, and vanished exactly when
+            a reader most wants to know how many hits they got. */}
+        {terms && (
+          <div style={{ marginTop: "20px", fontFamily: MONO, fontSize: "9px", color: muted }} aria-live="polite">
+            {query ? (
+              <>
+                {filtered.length} {tr("term")}{filtered.length !== 1 ? "s" : ""} {tr("matching “")}{query}&rdquo; · {terms.length} {tr("total in the hoard")}
+              </>
+            ) : (
+              <>
+                {filtered.length} {tr("term")}{filtered.length !== 1 ? "s" : ""} {tr("under “")}{activeLetter}&rdquo; · {terms.length} {tr("total in the hoard")}
+              </>
+            )}
           </div>
         )}
     </StaticPageShell>

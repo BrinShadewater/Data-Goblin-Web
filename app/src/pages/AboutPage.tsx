@@ -186,7 +186,7 @@ export function AboutPage() {
               height={aboutDimensions?.height}
               alt={tr("Data Goblin hero art for the field guide")}
               loading="eager"
-              fetchPriority="high"
+              fetchpriority="high"
               decoding="async"
               style={{
                 display: "block",

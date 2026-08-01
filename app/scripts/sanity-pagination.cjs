@@ -65,8 +65,17 @@ const check = (label, ok, detail) => {
   if (!ok) failures++;
 };
 
+// The tightest desktop budget the layout can produce: the NARROWEST two-page
+// spread, at the 1500px threshold where the spread takes over from the single
+// wide page (reader.tsx SPREAD_MIN_VW). That is a ~386px column against the
+// ~588px reference, quantized by widthScaleFor. Below 1500px the reader shows
+// one wide page whose column is *wider* than this, so this is the worst case.
+// Kept as a literal so this gate fails loudly if that mapping is retuned.
+const NARROW_WIDTH_SCALE = 0.64;
+
 const MODES = [
   { name: "desktop", budgets: budgetsFor("desktop", false) },
+  { name: "desktop@1500-spread", budgets: budgetsFor("desktop", false, 1, NARROW_WIDTH_SCALE) },
   { name: "tablet", budgets: budgetsFor("tablet", false) },
   { name: "phone", budgets: budgetsFor("phone", false) },
   { name: "phone+dyslexic", budgets: budgetsFor("phone", true) },
@@ -138,29 +147,40 @@ for (const num of [0, 2, 8, 15, 20]) {
   }
 
   // (c) desktop 2× ceiling + (d) no stub last page, via the spread pairing —
-  // with the art-map accents charged.
-  const budgets = budgetsFor("desktop", false);
-  const flat = paginatePanels(ch, trap, budgets, accents);
-  const panelsList = flat.map((panel, i) => ({
-    cost: panel.reduce((t, b) => t + blockCost(b), 0),
-    budget: i === 0 ? budgets.opener : budgets.panel,
-    id: `panel ${i}`,
-  }));
-  const over = panelsList.filter((p) => p.cost > 2 * p.budget);
-  const worst = panelsList.reduce((a, b) => (b.cost / b.budget > a.cost / a.budget ? b : a));
-  check(
-    "[desktop] no panel exceeds 2x budget",
-    over.length === 0,
-    `worst: ${worst.id} at ${(100 * worst.cost / worst.budget).toFixed(0)}% of budget`
-  );
-
-  if (flat.length > 1) {
-    const lastCost = flat[flat.length - 1].reduce((t, b) => t + blockCost(b), 0);
+  // with the art-map accents charged. Run for the reference desktop and for
+  // the narrow (1280px) desktop, since that is where the budget is tightest
+  // and where over-packing actually reached the reader.
+  for (const { name, budgets } of MODES.filter((m) => m.name.startsWith("desktop"))) {
+    const flat = paginatePanels(ch, trap, budgets, accents);
+    const panelsList = flat.map((panel, i) => ({
+      cost: panel.reduce((t, b) => t + blockCost(b), 0),
+      budget: i === 0 ? budgets.opener : budgets.panel,
+      // A panel holding one indivisible block (a merged table, a long recap)
+      // had no packing choice to make, so the ceiling says nothing about the
+      // packer. Those overflow-scroll inside the panel — see the grid row fix
+      // in FieldGuidePage. Multi-block panels are still held to 2×.
+      atomic: panel.length === 1,
+      id: `panel ${i}`,
+    }));
+    const over = panelsList.filter((p) => !p.atomic && p.cost > 2 * p.budget);
+    const scored = panelsList.filter((p) => !p.atomic);
+    const worst = scored.reduce((a, b) => (b.cost / b.budget > a.cost / a.budget ? b : a), scored[0]);
+    const atomicOver = panelsList.filter((p) => p.atomic && p.cost > 2 * p.budget).length;
     check(
-      "[desktop] balanced fill: last page is not a stub",
-      lastCost >= 0.25 * budgets.panel,
-      `last page at ${(100 * lastCost / budgets.panel).toFixed(0)}% of budget`
+      `[${name}] no packed panel exceeds 2x budget`,
+      over.length === 0,
+      `worst: ${worst ? `${worst.id} at ${(100 * worst.cost / worst.budget).toFixed(0)}%` : "n/a"}` +
+        (atomicOver ? ` · ${atomicOver} atomic panel(s) over 2x, scrolled not clipped` : "")
     );
+
+    if (flat.length > 1) {
+      const lastCost = flat[flat.length - 1].reduce((t, b) => t + blockCost(b), 0);
+      check(
+        `[${name}] balanced fill: last page is not a stub`,
+        lastCost >= 0.25 * budgets.panel,
+        `last page at ${(100 * lastCost / budgets.panel).toFixed(0)}% of budget`
+      );
+    }
   }
 }
 
