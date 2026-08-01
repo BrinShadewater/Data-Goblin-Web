@@ -51,7 +51,7 @@ export function FieldGuidePage() {
   const { lang } = useLanguage();
   const { data: book } = useBook();
   const { chapter, error, panels } = usePaginatedChapter(num);
-  const { aligned, page, pageCount, step, goNext, goPrev } = usePageNavigation({ num, panels, single });
+  const { aligned, page, pageCount, step, goNext, goPrev } = usePageNavigation({ num, panels, single, panelsReady: chapter?.number === num });
   const firstDoc = book?.frontMatter?.number ?? 0;
   const lastDoc = backMatterNumber(book);
   const canPrev = !(num <= firstDoc && page === 0);

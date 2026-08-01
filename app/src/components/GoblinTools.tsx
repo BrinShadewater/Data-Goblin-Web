@@ -3,7 +3,7 @@ import { useNavigate } from "../i18nNav";
 import { useTheme } from "../ThemeContext";
 import { BODY, P, TOKENS, UI } from "../theme";
 import { removeBookmark, saveLastLocation, useBookmarks } from "../bookmarks";
-import { savePanel } from "../pagination";
+import { savePanel, savePendingAnchor } from "../pagination";
 import type { Chapter } from "../types";
 import { ChapterReceiptsCard } from "./ChapterReceiptsCard";
 import { NotesCard, QuestItemsCard, SuspicionMeterCard } from "./GoblinToolCards";
@@ -36,6 +36,7 @@ export function BookmarksCard() {
             <button
               onClick={() => {
                 savePanel(bm.doc, bm.panelIndex);
+                savePendingAnchor(bm.doc, bm.anchor);
                 saveLastLocation(bm.doc, bm.panelIndex);
                 navigate(`/chapter/${bm.doc}`);
               }}
