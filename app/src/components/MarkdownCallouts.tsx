@@ -6,6 +6,7 @@ import { useReader } from "../reader";
 import { BODY, MONO, P, RADIUS, TOKENS, UI } from "../theme";
 import type { Receipt } from "../types";
 import { NavIcon } from "./GoblinMascot";
+import { tr } from "../i18n";
 import { downloadCheckCard } from "../shareCard";
 import { AnchoredPopover } from "./AnchoredPopover";
 
@@ -139,7 +140,11 @@ export function ReceiptMarker({ receipt, children }: { receipt: Receipt; childre
   const [open, setOpen] = useState(false);
   const anchorRef = useRef<HTMLSpanElement>(null);
   const tone = receipt.status === "open" ? c(...P.amber) : c(...P.greenDeep);
-  const label = receipt.status === "open" ? "Still checking" : receipt.status === "fixed" ? "Corrected" : "Verified";
+  // Translated because these markers now appear in the French edition too —
+  // before fr/claim-anchors.json they matched nothing there, so nobody had
+  // seen this string in French.
+  const label =
+    receipt.status === "open" ? tr("Still checking") : receipt.status === "fixed" ? tr("Corrected") : tr("Verified");
   const detail = (receipt.detail || "")
     .replace(/\[([^\]]+)\]\([^)]*\)/g, "$1")
     .replace(/[*_]{1,3}([^*_]+)[*_]{1,3}/g, "$1")
@@ -154,7 +159,7 @@ export function ReceiptMarker({ receipt, children }: { receipt: Receipt; childre
         role="button"
         tabIndex={0}
         ref={anchorRef}
-        aria-label={`Receipt — ${label}`}
+        aria-label={`${tr("Receipt")} — ${label}`}
         aria-expanded={open}
         onMouseEnter={() => setOpen(true)}
         onMouseLeave={() => setOpen(false)}
@@ -182,7 +187,7 @@ export function ReceiptMarker({ receipt, children }: { receipt: Receipt; childre
           }}
         >
           <span style={{ display: "block", fontFamily: MONO, fontSize: "8.5px", fontWeight: 800, letterSpacing: "0.16em", textTransform: "uppercase", color: tone, marginBottom: "5px" }}>
-            Receipt &middot; {label}
+            {tr("Receipt")} &middot; {label}
           </span>
           <span style={{ display: "block", fontFamily: BODY, fontSize: "13px", lineHeight: 1.5, color: c(...P.body) }}>
             {detail}

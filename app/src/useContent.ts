@@ -18,7 +18,12 @@ const contentUrl = (relPath: string, lang: Lang) =>
 // Language-neutral content (art placement, link registry, claim anchors) has no
 // fr/ copy, so French pages would 404 on fr/ then fall back to EN. Pin these to
 // EN up front to skip the wasted request.
-const LANG_NEUTRAL = new Set(["art-map.json", "links.json", "claim-anchors.json"]);
+// art-map is art paths and links are English reference URLs, so both are the
+// same in either edition. claim-anchors is NOT neutral: anchors are verbatim
+// prose phrases, so the French edition needs French ones (fr/claim-anchors.json,
+// built by scripts/build-fr-anchors.cjs). fetchJson falls back to the English
+// file if the French one is missing.
+const LANG_NEUTRAL = new Set(["art-map.json", "links.json"]);
 
 /**
  * Load a content JSON. In French, fetch the machine-translated copy under
