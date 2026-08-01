@@ -187,6 +187,16 @@
    "anchor": "8.66%",
    "id": 32,
    "status": "resolved"
+  },
+  {
+   "anchor": "TAKE IT DOWN",
+   "id": 11,
+   "status": "fixed"
+  },
+  {
+   "anchor": "Danemark",
+   "id": 4,
+   "status": "resolved"
   }
  ],
  "15": [
@@ -230,6 +240,11 @@
    "anchor": "40.7",
    "id": 31,
    "status": "resolved"
+  },
+  {
+   "anchor": "loi générale sur la protection des renseignements personnels du secteur privé",
+   "id": 8,
+   "status": "fixed"
   }
  ]
 }

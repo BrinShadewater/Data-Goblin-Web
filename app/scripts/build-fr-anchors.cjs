@@ -62,7 +62,15 @@ const FR = {
   // Added after reanchor-chapter-drift.cjs moved these to the chapters their
   // phrases actually live in; they had been dead in English, so they had never
   // needed a French phrase before.
-  13: { 12: "cas aggravés" },
+  13: {
+    12: "cas aggravés",
+    4: "Danemark",
+    // The French edition does not name the Act in the takedown-duty paragraph
+    // the English anchors to; its only mention is "US TAKE IT DOWN" in the
+    // chapter's international-comparison sentence. Same statute, slightly
+    // different sentence — noted so nobody thinks it drifted.
+    11: "TAKE IT DOWN",
+  },
   15: { 15: "retour en arrière du GPT-4o" },
   16: { 35: "Les employeurs canadiens dépensent environ" },
   17: {
@@ -70,6 +78,7 @@ const FR = {
     16: "IA Security Institute",
     17: "plan d'action en juillet 2025",
   },
+  18: { 8: "loi générale sur la protection des renseignements personnels du secteur privé" },
 };
 
 /**

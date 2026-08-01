@@ -25,7 +25,10 @@ const COPIES = [
   path.join(__dirname, "..", "..", "content"),
 ];
 
-/** id, the chapter it is filed under now, and where the phrase actually is. */
+/**
+ * Anchors whose phrase occurs in exactly one chapter. Verified below, so these
+ * involve no choice at all.
+ */
 const MOVES = [
   { id: 12, from: "12", to: "13" }, // "aggravated"
   { id: 18, from: "12", to: "13" }, // "AB 2839"
@@ -39,6 +42,33 @@ const MOVES = [
   { id: 31, from: "16", to: "18" }, // "40.7"
 ];
 
+/**
+ * Anchors whose phrase appears in more than one chapter, so the destination is
+ * a judgement about which sentence the receipt verifies. Alex confirmed these
+ * three on 2026-07-31; they are applied with the ambiguity-guard relaxed and
+ * the reasoning recorded, because a script cannot derive them.
+ *
+ * Four others are deliberately NOT here and stay in the check's ratchet:
+ *   #10 "€35"  — ch17 vs ch18, both state the EU AI Act fine; a coin flip.
+ *   #7  "Ewert v. Canada" — ch10 treats it in full, ch15 refers back.
+ *   #34 "2024-25 privacy opinion research" — ch10 and ch15 are near identical.
+ *   #42 "golf" — in no chapter; a wrong anchor, not a drifted one.
+ */
+const JUDGED = [
+  {
+    id: 11, from: "12", to: "13",
+    why: 'TAKE IT DOWN Act: ch13 carries the substantive treatment (4 mentions incl. the takedown duty); ch17 mentions it once in passing.',
+  },
+  {
+    id: 4, from: "12", to: "13",
+    why: "Denmark: ch13 states the likeness-rights amendment itself, which is what ledger entry 4 is about; ch11 and ch20 cite it as precedent.",
+  },
+  {
+    id: 8, from: "16", to: "18",
+    why: 'Ontario private-sector privacy law: ledger entry 8 is specifically about Ontario, and ch18 is where "What Ontario lacks…" appears; ch10 is the general regime.',
+  },
+];
+
 const base = COPIES[0];
 const proseOf = (num) => {
   const p = path.join(base, "chapters", `ch${String(num).padStart(2, "0")}.json`);
@@ -50,11 +80,15 @@ const proseOf = (num) => {
 const anchors = JSON.parse(fs.readFileSync(path.join(base, "claim-anchors.json"), "utf8"));
 const moved = [];
 
+/** Already at its destination? Then this run is a no-op for that anchor. */
+const alreadyMoved = (id, to) => (anchors[to] || []).some((a) => a.id === id);
+
 for (const m of MOVES) {
+  if (alreadyMoved(m.id, m.to)) continue;
   const src = anchors[m.from] || [];
   const i = src.findIndex((a) => a.id === m.id);
   if (i < 0) {
-    console.error(`#${m.id}: not filed under ch${m.from} — already moved? Aborting.`);
+    console.error(`#${m.id}: not filed under ch${m.from} and not at ch${m.to}. Aborting.`);
     process.exit(1);
   }
   const entry = src[i];
@@ -77,6 +111,26 @@ for (const m of MOVES) {
   if (src.length === 0) delete anchors[m.from];
   (anchors[m.to] = anchors[m.to] || []).push(entry);
   moved.push(`#${m.id} ${JSON.stringify(entry.anchor)}  ch${m.from} -> ch${m.to}`);
+}
+
+for (const j of JUDGED) {
+  if (alreadyMoved(j.id, j.to)) continue;
+  const src = anchors[j.from] || [];
+  const i = src.findIndex((a) => a.id === j.id);
+  if (i < 0) {
+    console.error(`#${j.id}: not filed under ch${j.from} and not at ch${j.to}. Aborting.`);
+    process.exit(1);
+  }
+  const entry = src[i];
+  const dest = proseOf(j.to);
+  if (!dest || !dest.includes(entry.anchor)) {
+    console.error(`#${j.id}: ${JSON.stringify(entry.anchor)} is not in ch${j.to}. Aborting.`);
+    process.exit(1);
+  }
+  src.splice(i, 1);
+  if (src.length === 0) delete anchors[j.from];
+  (anchors[j.to] = anchors[j.to] || []).push(entry);
+  moved.push(`#${j.id} ${JSON.stringify(entry.anchor)}  ch${j.from} -> ch${j.to}   [judged] ${j.why}`);
 }
 
 const body = JSON.stringify(anchors, null, 1) + "\n";

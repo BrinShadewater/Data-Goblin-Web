@@ -30,28 +30,22 @@ const CONTENT = path.join(__dirname, "..", "public", "content");
  * was never renumbered. The ten anchors whose phrase occurs in exactly one
  * chapter were moved there by scripts/reanchor-chapter-drift.cjs.
  *
- * These seven are left because they are NOT mechanical. Each needs someone to
- * decide which sentence the receipt actually verifies, and getting it wrong
- * attaches a verified source to the wrong claim:
+ * Three more were resolved by Alex's judgement on 2026-07-31 (#11, #4, #8) and
+ * are recorded in that script's JUDGED list with the reasoning.
+ *
+ * These four remain because nobody could give a defensible answer yet. Each
+ * needs someone to decide which sentence the receipt verifies, and getting it
+ * wrong attaches a verified source to the wrong claim:
  *
  *   8#42  "golf" — appears in no chapter at all. The ledger entry is about
- *         Bill C-16's status, so the anchor looks simply wrong.
- *   12#11 "TAKE IT DOWN Act" — ch13 (substantive, 4 hits) or ch17 (passing).
- *   12#4  "Denmark" — ch11, ch13 or ch20 all discuss the likeness-rights law.
+ *         Bill C-16's status, so this is a wrong anchor rather than a drifted
+ *         one, and needs a phrase picked from wherever that receipt belongs.
  *   13#34 "2024-25 privacy opinion research" — ch10 and ch15 carry near
  *         identical sentences; chapter drift points at ch15, topic at ch10.
  *   13#7  "Ewert v. Canada" — ch10 treats it in full, ch15 refers back to it.
- *   15#10 "€35" — ch17 and ch18 both state the EU AI Act fine.
- *   16#8  "private-sector privacy law" — ch10 (general) or ch18 (the Ontario
- *         sentence the ledger entry is actually about).
+ *   15#10 "€35" — ch17 and ch18 both state the EU AI Act fine; a coin flip.
  */
-const KNOWN_UNRESOLVED = new Set([
-  "8#42",
-  "12#11", "12#4",
-  "13#34", "13#7",
-  "15#10",
-  "16#8",
-]);
+const KNOWN_UNRESOLVED = new Set(["8#42", "13#34", "13#7", "15#10"]);
 
 const load = (rel) => {
   const p = path.join(CONTENT, rel);

@@ -177,18 +177,8 @@
  ],
  "12": [
   {
-   "anchor": "TAKE IT DOWN Act",
-   "id": 11,
-   "status": "fixed"
-  },
-  {
    "anchor": "Bill C-16",
    "id": 49,
-   "status": "resolved"
-  },
-  {
-   "anchor": "Denmark",
-   "id": 4,
    "status": "resolved"
   }
  ],
@@ -217,6 +207,16 @@
    "anchor": "8.66%",
    "id": 32,
    "status": "resolved"
+  },
+  {
+   "anchor": "TAKE IT DOWN Act",
+   "id": 11,
+   "status": "fixed"
+  },
+  {
+   "anchor": "Denmark",
+   "id": 4,
+   "status": "resolved"
   }
  ],
  "15": [
@@ -232,11 +232,6 @@
   }
  ],
  "16": [
-  {
-   "anchor": "private-sector privacy law",
-   "id": 8,
-   "status": "fixed"
-  },
   {
    "anchor": "per employee",
    "id": 35,
@@ -270,6 +265,11 @@
    "anchor": "40.7",
    "id": 31,
    "status": "resolved"
+  },
+  {
+   "anchor": "private-sector privacy law",
+   "id": 8,
+   "status": "fixed"
   }
  ]
 }
