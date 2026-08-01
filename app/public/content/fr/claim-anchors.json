@@ -58,6 +58,11 @@
    "anchor": "USTR",
    "id": 33,
    "status": "resolved"
+  },
+  {
+   "anchor": "a déposé le projet de loi C-16 en décembre 2025",
+   "id": 42,
+   "status": "open"
   }
  ],
  "6": [
@@ -204,6 +209,16 @@
    "anchor": "retour en arrière du GPT-4o",
    "id": 15,
    "status": "fixed"
+  },
+  {
+   "anchor": "Ewert c. Canada",
+   "id": 7,
+   "status": "fixed"
+  },
+  {
+   "anchor": "Commissariat à la protection de la vie privée de 2024-25",
+   "id": 34,
+   "status": "resolved"
   }
  ],
  "16": [
@@ -232,6 +247,11 @@
   {
    "anchor": "plan d'action en juillet 2025",
    "id": 17,
+   "status": "fixed"
+  },
+  {
+   "anchor": "35 millions d'euros",
+   "id": 10,
    "status": "fixed"
   }
  ],

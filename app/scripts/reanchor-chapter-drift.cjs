@@ -55,6 +55,35 @@ const MOVES = [
  *   #42 "golf" — in no chapter; a wrong anchor, not a drifted one.
  */
 const JUDGED = [
+  // --- Second pass, 2026-08-01. Rule applied consistently: FOLLOW THE PROSE
+  // THAT MOVED. A receipt was written against a specific passage; when that
+  // passage moved chapters the receipt goes with it, even where a different
+  // chapter now discusses the same topic. That is why #7 and #34 go to ch15
+  // (the old ch13 content) rather than ch10, which covers the same subjects but
+  // is not the text these receipts were written against.
+  {
+    id: 10, from: "15", to: "17",
+    why: "EU AI Act fine: ch17 is where old ch15 landed. ch18 states the same figure, but this receipt was written against the governance chapter's text.",
+  },
+  {
+    id: 7, from: "13", to: "15",
+    why: 'Ewert v. Canada: corrects a confabulated "Mason v. Canada" in the old ch13, which is now ch15. ch10 treats the case in full — ch15 even says so — but the error being corrected lived here.',
+  },
+  {
+    id: 34, from: "13", to: "15",
+    why: "OPC 2024-25 polling: same old-ch13 passage as #7. ch10 carries a near-identical sentence, but this is the text the receipt was written against.",
+  },
+  {
+    // Not drift. The anchor was simply wrong — "golf" is in no chapter at all.
+    // Re-anchored to the sentence that actually makes the claim: ch5's "Sean
+    // Fraser as Justice Minister tabled Bill C-16 in December 2025". The ledger
+    // entry itself lists "(Ch 5/9/10/13, appendix)", ch5 first.
+    id: 42, from: "8", to: "5",
+    reanchorTo: "tabled Bill C-16 in December 2025",
+    why: 'Bill C-16 status: the old anchor "golf" matched nothing anywhere. ch5 states the tabling claim the ledger entry verifies.',
+  },
+
+  // --- First pass, confirmed 2026-07-31.
   {
     id: 11, from: "12", to: "13",
     why: 'TAKE IT DOWN Act: ch13 carries the substantive treatment (4 mentions incl. the takedown duty); ch17 mentions it once in passing.',
@@ -122,6 +151,9 @@ for (const j of JUDGED) {
     process.exit(1);
   }
   const entry = src[i];
+  // A judged move may also replace the phrase itself, for the case where the
+  // old anchor was simply wrong rather than drifted (#42's "golf").
+  if (j.reanchorTo) entry.anchor = j.reanchorTo;
   const dest = proseOf(j.to);
   if (!dest || !dest.includes(entry.anchor)) {
     console.error(`#${j.id}: ${JSON.stringify(entry.anchor)} is not in ch${j.to}. Aborting.`);

@@ -34,6 +34,7 @@ const FR = {
     25: "800 000",
   },
   5: {
+    42: "a déposé le projet de loi C-16 en décembre 2025",
     3: "Code de conduite volontaire",
     22: "Fonds d'accès informatique IA",
     26: "Bell IA Fabric",
@@ -71,9 +72,14 @@ const FR = {
     // different sentence — noted so nobody thinks it drifted.
     11: "TAKE IT DOWN",
   },
-  15: { 15: "retour en arrière du GPT-4o" },
+  15: {
+    15: "retour en arrière du GPT-4o",
+    7: "Ewert c. Canada",
+    34: "Commissariat à la protection de la vie privée de 2024-25",
+  },
   16: { 35: "Les employeurs canadiens dépensent environ" },
   17: {
+    10: "35 millions d'euros",
     2: "Convention-cadre du Conseil de l'Europe sur l'IA",
     16: "IA Security Institute",
     17: "plan d'action en juillet 2025",
