@@ -45,9 +45,13 @@ site can copy the prose; it cannot copy an auditable claim ledger.
 - Six skills cover this project (`data-goblin-manuscript-check` gates deploys;
   `deploy-web-edition` owns shipping; plus figures, receipts, i18n, voice).
 - `WORK-LOG.md` is the cross-agent handoff trail — read before starting, append after.
-- **The bundle build cannot run on this host** (rolldown ships no win32 binding).
-  Typecheck is the local gate: `node node_modules/typescript/bin/tsc --noEmit -p .`
-  from `app/`. The build is Vercel's job.
+- **Corrected 2026-08-01: the bundle build runs locally now.** This said it could not
+  (rolldown shipping no win32 binding). `npm run build` exits 0 in ~800ms, and
+  `node scripts/verify.cjs` runs the whole chain green — content sync, pagination, claim
+  anchors, FR corrections, mailto, build, image audit, budgets, built-site smoke, browser
+  smoke. Browser smoke needs `npx playwright install chromium` once. Typecheck remains
+  `node node_modules/typescript/bin/tsc --noEmit -p .` from `app/`. Do not measure bundle
+  size from a `NODE_ENV=development` build — dev React is roughly double.
 
 ## Capabilities and Constraints
 
