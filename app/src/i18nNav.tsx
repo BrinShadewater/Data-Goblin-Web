@@ -1,4 +1,4 @@
-// Language-aware navigation. Drop-in replacements for react-router-dom's Link,
+// Language-aware navigation. Drop-in replacements for react-router's Link,
 // NavLink, and useNavigate that keep the reader inside the current language: in
 // the French edition every internal "/x" link/navigation becomes "/fr/x", so
 // switching language is the only thing that crosses the EN<->FR boundary.
@@ -11,7 +11,7 @@ import {
   type NavLinkProps,
   type To,
   type NavigateOptions,
-} from "react-router-dom";
+} from "react-router";
 import { useLanguage, type Lang } from "./LanguageContext";
 
 function prefix(to: To, lang: Lang): To {

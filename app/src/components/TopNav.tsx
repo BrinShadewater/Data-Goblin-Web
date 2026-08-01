@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { ChevronDown, Menu, Moon, Sun } from "lucide-react";
-import { useLocation } from "react-router-dom";
+import { useLocation } from "react-router";
 import { NavLink, useNavigate } from "../i18nNav";
 import { useTheme } from "../ThemeContext";
 import { useLanguage } from "../LanguageContext";

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { X } from "lucide-react";
-import { useLocation } from "react-router-dom";
+import { useLocation } from "react-router";
 import { useTheme } from "../ThemeContext";
 import { BODY, MONO, P, RADIUS, UI } from "../theme";
 import { NavIcon } from "../components/GoblinMascot";

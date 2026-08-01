@@ -1,5 +1,5 @@
 import { createElement, Suspense, useEffect, useState } from "react";
-import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useLocation } from "react-router";
 import { ThemeProvider, useTheme } from "./ThemeContext";
 import { LanguageProvider, useLanguage } from "./LanguageContext";
 import { ListenProvider } from "./ListenContext";

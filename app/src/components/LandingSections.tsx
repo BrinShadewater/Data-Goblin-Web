@@ -69,7 +69,7 @@ export function LandingHero({
             alt=""
             aria-hidden
             loading="eager"
-            fetchpriority="high"
+            fetchPriority="high"
             decoding="async"
       style={{
         width: "clamp(132px, 14vw, 210px)",
@@ -154,7 +154,7 @@ export function LandingHero({
           height={heroDimensions?.height}
           alt={tr("Data Goblin inspecting a trail of receipts and glowing evidence crystals")}
           loading="eager"
-          fetchpriority="high"
+          fetchPriority="high"
           decoding="async"
           style={{
             display: "block",
