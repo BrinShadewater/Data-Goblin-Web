@@ -8,7 +8,7 @@ import { useLanguage } from "../LanguageContext";
 import { tr } from "../i18n";
 import { useReader } from "../reader";
 import { DISPLAY, MONO, P, TOKENS, UI } from "../theme";
-import { isNavActive, OVERFLOW_NAV, PRIMARY_NAV } from "../navigation";
+import { isNavActive, NAV_ITEMS, type NavItem } from "../navigation";
 import { preloadReaderRoute } from "../lazyRoutes";
 import { useFocusTrap } from "../focusTrap";
 import { GoblinIcon, NavIcon } from "./GoblinMascot";
@@ -17,15 +17,13 @@ import { GoblinIcon, NavIcon } from "./GoblinMascot";
 const MENU_WIDTH = 210;
 
 /**
- * The "More" menu holding the nav items that don't earn a labelled slot.
- *
- * Nine labelled items never fit the header at laptop widths (see navigation.ts),
- * so the primary five are labelled inline and the rest live here — every
- * destination still reachable, none of them reduced to an unlabelled icon.
- * The trigger reads as active whenever the current route is inside the menu,
- * so a reader on /about doesn't see an entirely unlit nav.
+ * Overflow menu for whatever the nav could not fit. It is a fallback, not a
+ * fixed part of the design: when every item fits, this is not rendered at all
+ * (see `DesktopNavItems`). The trigger reads as active whenever the current
+ * route is one of the hidden ones, so a reader on an overflowed page doesn't
+ * see an entirely unlit nav.
  */
-function MoreMenu({ pathname }: { pathname: string }) {
+function MoreMenu({ pathname, items }: { pathname: string; items: NavItem[] }) {
   const { c } = useTheme();
   const [open, setOpen] = useState(false);
   const wrapRef = useRef<HTMLDivElement>(null);
@@ -38,7 +36,7 @@ function MoreMenu({ pathname }: { pathname: string }) {
   const green = c(...P.green);
   const muted = c(...P.muted);
   const border = c(...P.border);
-  const containsActive = OVERFLOW_NAV.some((i) => isNavActive(pathname, i));
+  const containsActive = items.some((i) => isNavActive(pathname, i));
 
   // Any route change closes the menu — selecting an item navigates, and the
   // menu must not survive a back/forward either.
@@ -135,7 +133,7 @@ function MoreMenu({ pathname }: { pathname: string }) {
             zIndex: 210,
           }}
         >
-          {OVERFLOW_NAV.map((l) => {
+          {items.map((l) => {
             const active = isNavActive(pathname, l);
             return (
               <NavLink
@@ -168,6 +166,169 @@ function MoreMenu({ pathname }: { pathname: string }) {
         document.body
       )}
     </div>
+  );
+}
+
+/** Room to reserve for the More trigger when not everything fits. */
+const MORE_TRIGGER_W = 80;
+const NAV_GAP = 3;
+/** Gap between a nav item's icon and its label — see the NavLink style below. */
+const ICON_LABEL_GAP = 5;
+
+/**
+ * The desktop nav track. Measured, not breakpointed, and it degrades in this
+ * order:
+ *
+ *   1. every item, labelled
+ *   2. every item, icons only   <- labels are what gets sacrificed first
+ *   3. as many icons as fit, the rest in a More menu
+ *
+ * Seeing all nine destinations matters more than reading their names, so the
+ * labels go before any item does. A breakpoint cannot express this: whether
+ * the labels fit depends on how wide they are in the current language, the
+ * icon-size step, and how much room the logo and search box have taken. An
+ * earlier fixed "five labelled + More" split got it wrong in both directions —
+ * it hid four destinations at 1900px where all nine fit, and at 1280px it
+ * showed five labelled items when all nine icons would have fitted.
+ *
+ * One measuring pass does it: render everything labelled, read each item's
+ * width and each label's width, and derive the icon-only widths by subtraction.
+ * It runs in useLayoutEffect, so it settles before paint.
+ */
+function DesktopNavItems({
+  pathname,
+  green,
+  muted,
+}: {
+  pathname: string;
+  green: string;
+  muted: string;
+}) {
+  const navRef = useRef<HTMLElement>(null);
+  // null = "measure on the next layout"; otherwise the settled decision.
+  const [fit, setFit] = useState<{ labels: boolean; count: number } | null>(null);
+  // Track width at the last measurement. ResizeObserver fires once on observe()
+  // even when nothing moved, and re-measuring on that would reset state, which
+  // re-observes, which fires again — an endless loop that keeps tearing the nav
+  // down and rebuilding it. Only a genuine width change may trigger a re-measure.
+  const measuredWidth = useRef(-1);
+
+  useLayoutEffect(() => {
+    const nav = navRef.current;
+    if (!nav) return;
+
+    const decide = () => {
+      const avail = nav.clientWidth;
+      measuredWidth.current = avail;
+      const links = Array.from(nav.children).filter((el) => el.tagName === "A") as HTMLElement[];
+      if (links.length === 0) return;
+
+      const gaps = (n: number) => NAV_GAP * Math.max(0, n - 1);
+      const labelled = links.map((el) => el.offsetWidth);
+      // Icon-only width = the item minus its label and the gap before it.
+      const iconOnly = links.map((el, i) => {
+        const label = el.querySelector<HTMLElement>(".dg-navlabel");
+        const labelW = label ? label.offsetWidth : 0;
+        return labelled[i] - (labelW > 0 ? labelW + ICON_LABEL_GAP : 0);
+      });
+
+      const sum = (a: number[]) => a.reduce((x, y) => x + y, 0);
+
+      if (sum(labelled) + gaps(labelled.length) <= avail) {
+        setFit({ labels: true, count: NAV_ITEMS.length });
+        return;
+      }
+      if (sum(iconOnly) + gaps(iconOnly.length) <= avail) {
+        setFit({ labels: false, count: NAV_ITEMS.length });
+        return;
+      }
+      // Not even every icon fits, so the More trigger needs room too.
+      const budget = avail - MORE_TRIGGER_W - NAV_GAP;
+      let used = 0;
+      let n = 0;
+      for (const w of iconOnly) {
+        const next = used + w + (n > 0 ? NAV_GAP : 0);
+        if (next > budget) break;
+        used = next;
+        n++;
+      }
+      setFit({ labels: false, count: Math.max(1, Math.min(n, NAV_ITEMS.length)) });
+    };
+
+    if (fit === null) {
+      decide();
+      return;
+    }
+
+    // Re-measure from scratch when the track actually changes width — widths
+    // depend on the icon-size step and on label visibility, so nothing can be
+    // cached. The width guard is what stops the observe-callback loop.
+    let frame = 0;
+    const onResize = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        const el = navRef.current;
+        if (el && el.clientWidth !== measuredWidth.current) setFit(null);
+      });
+    };
+    const ro = new ResizeObserver(onResize);
+    ro.observe(nav);
+    return () => {
+      cancelAnimationFrame(frame);
+      ro.disconnect();
+    };
+  }, [fit, pathname]);
+
+  // While measuring, everything renders labelled so both widths are readable.
+  const measuring = fit === null;
+  const showLabels = measuring || fit.labels;
+  const shown = measuring ? NAV_ITEMS : NAV_ITEMS.slice(0, fit.count);
+  const overflow = measuring ? [] : NAV_ITEMS.slice(fit.count);
+
+  return (
+    <nav
+      ref={navRef}
+      style={{ display: "flex", alignItems: "center", gap: `${NAV_GAP}px`, flex: 1, minWidth: 0, overflow: "hidden" }}
+    >
+      {shown.map((l) => (
+        <NavLink
+          key={l.to}
+          to={l.to}
+          end={l.to === "/"}
+          className="dg-navlink"
+          title={tr(l.label)}
+          onMouseEnter={l.to === "/guide" ? preloadReaderRoute : undefined}
+          onFocus={l.to === "/guide" ? preloadReaderRoute : undefined}
+          style={({ isActive }) => {
+            const active = isActive || isNavActive(pathname, l);
+            return {
+              fontFamily: UI,
+              // 12px/0.04em rather than 13.5px/0.06em: the tighter metrics buy
+              // the labels ~330px, and this is UI chrome, never reading type.
+              fontSize: "12px",
+              fontWeight: active ? 700 : 500,
+              letterSpacing: "0.04em",
+              textTransform: "uppercase" as const,
+              color: active ? green : muted,
+              textDecoration: "none",
+              padding: "9px 7px",
+              borderBottom: active ? `2px solid ${green}` : "2px solid transparent",
+              transition: "color 0.15s",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "5px",
+              flexShrink: 0,
+            };
+          }}
+        >
+          <NavIcon name={l.icon} size={TOKENS.icon.headerNav} />
+          <span className="dg-navlabel" style={{ display: showLabels ? "inline" : "none" }}>
+            {tr(l.short ?? l.label)}
+          </span>
+        </NavLink>
+      ))}
+      {overflow.length > 0 && <MoreMenu pathname={pathname} items={overflow} />}
+    </nav>
   );
 }
 
@@ -286,67 +447,21 @@ export function TopNav({
       {logo}
 
       {/*
-        Breakpoints below are measured in the browser, not calculated, and they
-        interlock — retune them together if the nav contents change.
-
-        With five labelled items plus the More menu the labelled nav needs a
-        588px track (34px icons) or ~658px (48px icons), against ~657px of
-        fixed chrome — so labels fit from ~1244px, and the logo subtitle (a
-        further ~172px) can come back at ~1490px. The old nine-item nav needed
-        ~1114px and never fit below 1830px, which is why every laptop-width
-        visitor used to see unlabelled icons.
-
-        The icon-size step sits at 1360px rather than at the label breakpoint so
-        the 48px icons never switch on while the track is still too narrow for
-        them — a gap there would clip the trailing item.
+        Label visibility is NOT a breakpoint — DesktopNavItems measures whether
+        the labels fit and hides them if they don't. What stays in CSS is the
+        logo subtitle (it competes with the nav for the same row) and the icon
+        size step, which is about 48px icons being oversized in a tight track
+        rather than about fit.
       */}
       <style>{`
         @media (max-width: 1500px){ .dg-logo-sub{ display:none; } }
-        @media (max-width: 1250px){ .dg-navlabel{ display:none; } }
         @media (max-width: 1360px){
           .dg-navlink img, .dg-navlink svg{ width:34px !important; height:34px !important; }
           .dg-navlink{ padding:9px 5px !important; }
         }
       `}</style>
 
-      <nav style={{ display: "flex", alignItems: "center", gap: "3px", flex: 1, minWidth: 0, overflow: "hidden" }}>
-        {PRIMARY_NAV.map((l) => (
-          <NavLink
-            key={l.to}
-            to={l.to}
-            end={l.to === "/"}
-            className="dg-navlink"
-            title={tr(l.label)}
-            onMouseEnter={l.to === "/guide" ? preloadReaderRoute : undefined}
-            onFocus={l.to === "/guide" ? preloadReaderRoute : undefined}
-            style={({ isActive }) => {
-              const active = isActive || isNavActive(location.pathname, l);
-              return ({
-              fontFamily: UI,
-              // 12px/0.04em rather than 13.5px/0.06em: the tighter metrics are
-              // what let the labels appear ~330px earlier than they otherwise
-              // would, and this is UI chrome, never reading type.
-              fontSize: "12px",
-              fontWeight: active ? 700 : 500,
-              letterSpacing: "0.04em",
-              textTransform: "uppercase" as const,
-              color: active ? green : muted,
-              textDecoration: "none",
-              padding: "9px 7px",
-              borderBottom: active ? `2px solid ${green}` : "2px solid transparent",
-              transition: "color 0.15s",
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "5px",
-            });
-            }}
-          >
-            <NavIcon name={l.icon} size={TOKENS.icon.headerNav} />
-            <span className="dg-navlabel">{tr(l.short ?? l.label)}</span>
-          </NavLink>
-        ))}
-        <MoreMenu pathname={location.pathname} />
-      </nav>
+      <DesktopNavItems pathname={location.pathname} green={green} muted={muted} />
 
       <div
         style={{
