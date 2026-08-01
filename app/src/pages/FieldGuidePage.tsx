@@ -13,7 +13,7 @@ import { NavIcon } from "../components/GoblinMascot";
 import { useBook } from "../useContent";
 import { useLanguage } from "../LanguageContext";
 import { folio, backMatterNumber, isBackMatter } from "../readerUtils";
-import { SINGLE_MAX_PX } from "../reader";
+import { SIDEBAR_NARROW_VW, SINGLE_MAX_PX, SPREAD_MAX_PX } from "../reader";
 import { tr, trf } from "../i18n";
 import {
   useChapterRoute,
@@ -278,15 +278,25 @@ export function FieldGuidePage() {
 
   return (
     <div
+      className="dg-reader-grid"
       style={{
         display: "grid",
-        gridTemplateColumns: "260px minmax(0, 1fr) 280px",
+        gridTemplateColumns: "var(--dg-toc, 260px) minmax(0, 1fr) var(--dg-tools, 280px)",
         gridTemplateRows: "minmax(0, 1fr) auto",
         flex: 1,
         minHeight: 0,
         position: "relative",
       }}
     >
+      {/* The sidebars yield to the prose at narrow desktop widths. At 1025px the
+          full-width pair took 540px of the viewport and left a 48-character
+          line. Keep in step with readerChrome() in reader.tsx, which models
+          this for the character budget. */}
+      <style>{`
+        @media (max-width: ${SIDEBAR_NARROW_VW}px) {
+          .dg-reader-grid { --dg-toc: 196px; --dg-tools: 208px; }
+        }
+      `}</style>
       {pageLiveRegion}
       <LeftSidebar book={book} activeChapter={num} />
 
@@ -306,7 +316,7 @@ export function FieldGuidePage() {
         {error && <div style={{ ...statusStyle, textAlign: "left" }}>{tr("Could not load chapter")} {num}. ({error})</div>}
         {!chapter && !error && <div style={statusStyle}>{tr("Opening the field guide…")}</div>}
         {chapter && panels && (
-          <div style={{ position: "relative", width: "100%", maxWidth: spread ? "1400px" : `${SINGLE_MAX_PX}px`, height: "100%" }}>
+          <div style={{ position: "relative", width: "100%", maxWidth: spread ? `${SPREAD_MAX_PX}px` : `${SINGLE_MAX_PX}px`, height: "100%" }}>
           <div
             style={{
               display: "grid",

@@ -24,26 +24,41 @@ function heightScaleFor(vh: number): number {
   return Math.round(raw / 0.04) * 0.04;
 }
 
-// Window width the page budget was tuned for, and the reader chrome that
-// never belongs to the text column: the two desktop sidebars (260 + 280) plus
-// the centre well's horizontal padding (28 × 2). The spread is capped at
-// 1400px wide and each page carries 66px of its own horizontal padding
-// (36 + 30), so these constants track FieldGuidePage's grid and PagePanel's
-// padding — change them together.
+// Window width the page budget was tuned for. Each page carries 66px of its
+// own horizontal padding (36 + 30), so these constants track FieldGuidePage's
+// grid and PagePanel's padding — change them together.
 const REFERENCE_VW = 1920;
-const READER_CHROME = 596;
-const SPREAD_MAX = 1400;
+export const SPREAD_MAX_PX = 1120;
 const PANEL_PADDING = 66;
 
 /**
- * Below this window width the reader shows ONE wide page instead of the
- * two-page spread. The spread splits the well in half however narrow the
- * window gets, so at 1280px each column was ~275px — roughly 33 characters a
- * line, far below the ~65 that prose wants, and it forced twice the page
- * turns. One page at the same width gives a ~618px column, close to the
- * reference the type was tuned at.
+ * Chrome either side of the reading well: the two sidebars plus the centre
+ * well's horizontal padding (28 × 2).
+ *
+ * The sidebars are 260 + 280 normally, and narrow to 196 + 208 below
+ * SIDEBAR_NARROW_VW. At 1025px the full-width sidebars took 540px of a 1025px
+ * viewport and squeezed the text column to 363px — a 48-character line, when
+ * DESIGN.md asks for ~65. Chrome should yield to the prose, not the other way
+ * round. Keep these in step with the grid in FieldGuidePage and the media query
+ * beside it.
  */
-export const SPREAD_MIN_VW = 1500;
+export const SIDEBAR_NARROW_VW = 1200;
+const CHROME_WIDE = 260 + 280 + 56;
+const CHROME_NARROW = 196 + 208 + 56;
+const readerChrome = (vw: number) => (vw <= SIDEBAR_NARROW_VW ? CHROME_NARROW : CHROME_WIDE);
+
+/**
+ * Below this window width the reader shows ONE wide page instead of the
+ * two-page spread.
+ *
+ * The spread splits the well in half, so it only earns its place once half a
+ * well is still a comfortable line. Raised from 1500 on 2026-08-01: at 1500 the
+ * spread's columns were ~386px — a 52-character line — and 1600px gave 58,
+ * against DESIGN.md's ~65. A single page at those widths reads better and turns
+ * fewer times. The spread now waits until each of its two columns can hold the
+ * same measure a single page would.
+ */
+export const SPREAD_MIN_VW = 1720;
 
 /** Is the two-page spread in play at this window width? */
 export function spreadFor(vw: number): boolean {
@@ -51,14 +66,23 @@ export function spreadFor(vw: number): boolean {
 }
 
 /**
- * Width of one page's text column at a given window width, in CSS px. Must
- * track FieldGuidePage's maxWidth caps — 1400px for the spread, 720px for a
- * single wide page — or the budget will size for a column that isn't rendered.
+ * Width of one page's text column at a given window width, in CSS px.
+ *
+ * THE MEASURE IS THE INVARIANT. These caps exist to hold the line length near
+ * the ~65 characters DESIGN.md asks for, at every width, rather than letting
+ * the column grow with the window. Before 2026-08-01 the same chapter rendered
+ * at 48 / 83 / 87 / 58 / 85 characters a line across the desktop range — the
+ * least stable thing in the layout was the one thing a reading product most
+ * needs to hold steady, and 1440px, the commonest laptop width, was the worst
+ * of them at 87.
+ *
+ * Must track FieldGuidePage's maxWidth caps, or the character budget sizes for
+ * a column that is not the one rendered.
  */
-export const SINGLE_MAX_PX = 720;
+export const SINGLE_MAX_PX = 560;
 function textColumnWidth(vw: number, spread: boolean): number {
-  const available = vw - READER_CHROME;
-  const well = Math.min(spread ? SPREAD_MAX : SINGLE_MAX_PX, available);
+  const available = vw - readerChrome(vw);
+  const well = Math.min(spread ? SPREAD_MAX_PX : SINGLE_MAX_PX, available);
   return Math.max(120, (spread ? well / 2 : well) - PANEL_PADDING);
 }
 

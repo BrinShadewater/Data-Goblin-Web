@@ -85,14 +85,44 @@ Paginated reader — content is measured into pages, so layout changes can cause
 loss or stub pages. `sanity-pagination` is a real gate: no block loss, no stub last
 page, no panel over twice budget. If pagination logic changes, recompile before testing.
 
+**THE MEASURE IS THE INVARIANT.** The text column is held at ~494px — about 65
+characters a line — at *every* desktop width from 1025px to 2560px. The window grows;
+the line does not. Three constants in `reader.tsx` enforce it, and they only make sense
+together:
+
+| Constant | Value | Job |
+|---|---|---|
+| `SINGLE_MAX_PX` | 560 | caps the single page so a wide window cannot stretch the line |
+| `SPREAD_MAX_PX` | 1120 | caps the spread, which is two of those columns |
+| `SPREAD_MIN_VW` | 1720 | the spread waits until *half* a well is still a full measure |
+| `SIDEBAR_NARROW_VW` | 1200 | below this the sidebars shrink 260/280 → 196/208 so chrome yields to prose |
+
+Before 2026-08-01 the same chapter rendered at **48 / 83 / 87 / 58 / 85** characters a
+line across that range — the least stable thing in the layout was the one thing a
+reading product most needs to hold steady, and 1440px, the commonest laptop width, was
+the worst of them. It is flat now.
+
+Two consequences worth knowing. **The width-scale budget is 1.0 across all of desktop**,
+because the column no longer changes — so `sanity-pagination` tests the `MIN_WIDTH_SCALE`
+floor instead of a "narrow desktop" case that no longer exists. And **`readerChrome()` in
+`reader.tsx` must stay in step with the grid in `FieldGuidePage`** — it models the same
+sidebar widths so the character budget sizes for the column actually rendered.
+
 **The two-page spread is a wide-desktop treatment, not the desktop treatment.** Below
-`SPREAD_MIN_VW` (1500px, `reader.tsx`) the reader shows **one wide page** in the same
-desktop chrome — sidebars, bottom bar, edge nav — and turns one page at a time. The
-spread splits the well in half however narrow the window gets, so at 1280px it gave two
-~275px columns, about 33 characters a line against the ~65 prose wants. Measured on
-chapter 2 at 1280×800, one wide page beats the spread on *both* axes — 31 pages vs 35,
-and a 616px column vs 275px — because per-page vertical space is identical either way,
-so one wide column holds more than two narrow ones. Changed 2026-07-31.
+`SPREAD_MIN_VW` the reader shows **one wide page** in the same desktop chrome and turns
+one page at a time. The spread splits the well in half however narrow the window gets, so
+at 1280px it used to give two ~275px columns — about 33 characters a line. One wide page
+beat it on *both* axes (31 pages vs 35, 616px column vs 275px), because per-page vertical
+space is identical either way. Changed 2026-07-31, threshold raised 2026-08-01.
+
+**Reading position anchors on content, never on a page index.** A panel index is an
+ordinal: the same chapter paginates to 16 / 31 / 57 / 72 panels depending on width and
+reading mode. Position and bookmarks store a **character offset** into the chapter
+(`anchorForPanel` / `panelForAnchor`), resolved back to whichever panel holds it after a
+repack. Do not replace this with a hash of the block that starts a page — that was tried
+twice, whole-text and prefix, and both break because `splitRecap` splits long prose at
+different points for different budgets. Offsets survive because repagination regroups the
+same characters, which `sanity-pagination` already asserts.
 
 Three separate ideas, easy to conflate — keep them apart:
 
