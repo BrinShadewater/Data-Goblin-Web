@@ -58,6 +58,11 @@
    "anchor": "USTR",
    "id": 33,
    "status": "resolved"
+  },
+  {
+   "anchor": "tabled Bill C-16 in December 2025",
+   "id": 42,
+   "status": "open"
   }
  ],
  "6": [
@@ -119,11 +124,6 @@
    "anchor": "US$36",
    "id": 44,
    "status": "resolved"
-  },
-  {
-   "anchor": "golf",
-   "id": 42,
-   "status": "open"
   }
  ],
  "9": [
@@ -184,16 +184,6 @@
  ],
  "13": [
   {
-   "anchor": "2024-25 privacy opinion research",
-   "id": 34,
-   "status": "resolved"
-  },
-  {
-   "anchor": "Ewert v. Canada",
-   "id": 7,
-   "status": "fixed"
-  },
-  {
    "anchor": "aggravated",
    "id": 12,
    "status": "fixed"
@@ -221,14 +211,19 @@
  ],
  "15": [
   {
-   "anchor": "€35",
-   "id": 10,
-   "status": "fixed"
-  },
-  {
    "anchor": "GPT-4o rollback",
    "id": 15,
    "status": "fixed"
+  },
+  {
+   "anchor": "Ewert v. Canada",
+   "id": 7,
+   "status": "fixed"
+  },
+  {
+   "anchor": "2024-25 privacy opinion research",
+   "id": 34,
+   "status": "resolved"
   }
  ],
  "16": [
@@ -257,6 +252,11 @@
   {
    "anchor": "AI Action Plan",
    "id": 17,
+   "status": "fixed"
+  },
+  {
+   "anchor": "€35",
+   "id": 10,
    "status": "fixed"
   }
  ],
