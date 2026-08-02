@@ -1,5 +1,7 @@
 # Data Goblin — Interactive Edition Pipeline 🧾
 
+![Licence](https://img.shields.io/badge/licence-CC%20BY--NC-green?style=flat-square) ![Live](https://img.shields.io/badge/live-datagoblin.ca-brightgreen?style=flat-square) ![Bilingual](https://img.shields.io/badge/EN%20%7C%20FR-bilingual-blueviolet?style=flat-square) ![Shadewater Labs](https://img.shields.io/badge/Shadewater%20Labs-%E2%9A%97%EF%B8%8F-6b4fa2?style=flat-square)
+
 The bridge between the manuscript and the Figma Make mockup. One command turns the book, the Receipts Ledger, and the Glossary into the JSON your components consume.
 
 Data Goblin is an interactive field guide about AI, power, and data in Canada. The repo is organized around one central promise: the manuscript and receipts remain the source of truth, and the web app renders that evidence trail rather than inventing its own content. It is playful at the edges, serious in the receipts drawer.
