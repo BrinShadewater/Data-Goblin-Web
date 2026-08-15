@@ -11,6 +11,36 @@ function assert(condition, message) {
   }
 }
 
+/**
+ * Visible text a crawler that does not run JavaScript would read: drop script, style and
+ * comments, then tags. GPTBot, ClaudeBot and PerplexityBot do not execute JS — they read the
+ * raw HTML once and move on. Googlebot DOES render, so a prerender regression is invisible in
+ * Search Console and needs catching here.
+ */
+function crawlerVisibleText(html) {
+  return html
+    .replace(/<(script|style|noscript)\b[^>]*>[\s\S]*?<\/\1>/gi, " ")
+    .replace(/<!--[\s\S]*?-->/g, " ")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/&[a-z#0-9]+;/gi, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+/** Every dist/**\/index.html prerender-meta produced, relative to dist. */
+function collectRouteShells(dir = distDir, out = []) {
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    const full = path.join(dir, entry.name);
+    if (entry.isDirectory()) {
+      if (entry.name === "assets" || entry.name === "content") continue;
+      collectRouteShells(full, out);
+    } else if (entry.name === "index.html") {
+      out.push(path.relative(distDir, full).replace(/\\/g, "/"));
+    }
+  }
+  return out;
+}
+
 function contentType(filePath) {
   if (filePath.endsWith(".html")) return "text/html; charset=utf-8";
   if (filePath.endsWith(".js")) return "text/javascript; charset=utf-8";
@@ -72,7 +102,52 @@ async function main() {
       assert(routeShell.includes('id="root"'), `${route} did not return the app shell.`);
     }
 
-    console.log("Built site smoke checks passed.");
+    // ── Prerender guard ────────────────────────────────────────────────────────
+    // prerender-meta.cjs writes a per-route shell with real copy into each
+    // dist/<route>/index.html. That is what makes this site readable to AI crawlers,
+    // which do not run JavaScript. If it silently stopped emitting them — or emitted
+    // empty ones — every check above would still pass: dist/index.html would exist,
+    // #root would be present, the bundle would be fine, and Googlebot (which renders)
+    // would see no change. Nothing else in this suite would notice.
+    //
+    // Measured 2026-08-15: 84 shells; home 435 chars, /guide 1,181, /chapter/1 29,718,
+    // /about 270 (the thinnest). Thresholds sit below the real values so ordinary copy
+    // edits do not trip them, while a collapse to a bare shell fails hard.
+    const shells = collectRouteShells();
+    assert(
+      shells.length >= 50,
+      `expected prerender-meta to emit many route shells, found ${shells.length}. ` +
+        "It may have failed silently — the build still exits 0 when it writes nothing useful.",
+    );
+
+    for (const shell of shells) {
+      const html = fs.readFileSync(path.join(distDir, shell), "utf8");
+      const body = html.replace(/<(script|style|noscript)\b[^>]*>[\s\S]*?<\/\1>/gi, " ");
+      const text = crawlerVisibleText(html);
+
+      assert(/<h1[\s>]/i.test(body), `${shell} has no <h1> — crawlers cannot identify the page.`);
+      assert(
+        text.length > 200,
+        `${shell} carries only ${text.length} chars of crawler-visible text. ` +
+          "The prerendered copy has probably been lost.",
+      );
+    }
+
+    // The chapters are the book. A hero-sized shell here means chapter prose stopped
+    // being prerendered, which is the regression that would actually cost readers.
+    // Existence is asserted separately so a missing shell reports as a prerender failure
+    // rather than a raw ENOENT stack.
+    const chapterOnePath = path.join(distDir, "chapter", "1", "index.html");
+    assert(
+      fs.existsSync(chapterOnePath),
+      "chapter/1 shell is missing entirely — prerender-meta did not emit chapter routes.",
+    );
+    assert(
+      crawlerVisibleText(fs.readFileSync(chapterOnePath, "utf8")).length > 5000,
+      "chapter/1 shell lost its prerendered prose — chapters must ship real text, not just a hero.",
+    );
+
+    console.log(`Built site smoke checks passed (${shells.length} prerendered route shells verified).`);
   } finally {
     await new Promise((resolve) => server.close(resolve));
   }
