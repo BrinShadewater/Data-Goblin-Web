@@ -2,23 +2,43 @@
 
 ![Licence](https://img.shields.io/badge/licence-CC%20BY--NC-green?style=flat-square) ![Live](https://img.shields.io/badge/live-datagoblin.ca-brightgreen?style=flat-square) ![Bilingual](https://img.shields.io/badge/EN%20%7C%20FR-bilingual-blueviolet?style=flat-square) ![Shadewater Labs](https://img.shields.io/badge/Shadewater%20Labs-%E2%9A%97%EF%B8%8F-6b4fa2?style=flat-square)
 
-The bridge between the manuscript and the Figma Make mockup. One command turns the book, the Receipts Ledger, and the Glossary into the JSON your components consume.
+The bridge between the manuscript and the live reader at
+**[datagoblin.ca](https://datagoblin.ca)**. One command turns the book, the Receipts
+Ledger, and the Glossary into the JSON the reader consumes.
 
-Data Goblin is an interactive field guide about AI, power, and data in Canada. The repo is organized around one central promise: the manuscript and receipts remain the source of truth, and the web app renders that evidence trail rather than inventing its own content. It is playful at the edges, serious in the receipts drawer.
+Data Goblin is an interactive field guide about AI, power, and data in Canada. The repo
+is organized around one central promise: the manuscript and receipts remain the source of
+truth, and the web app renders that evidence trail rather than inventing its own content.
+It is playful at the edges, serious in the receipts drawer.
+
+## 🚦 Repository Status
+
+Live, in both languages. [datagoblin.ca](https://datagoblin.ca) serves the English and
+French editions from this repo via Vercel. Content changes flow through the pipeline
+below; code changes go through PRs like anywhere else. An earlier version of this README
+described a launch-prep project wiring mockup components to placeholder data — that era
+is over, and the reader is the real thing.
 
 ## 🧭 What This Project Does
 
 - Converts manuscript, receipt, glossary, trap, and link material into structured JSON.
-- Publishes a React reader with chapters, routes, receipts, search, notes, bookmarks, and theme controls.
-- Preserves verification flags instead of hiding unfinished evidence work.
-- Ships generated public content into the app so the reader can be built and deployed as a static site.
-- Keeps launch planning and guardrails close to the code.
+- Publishes a React reader with chapters, receipts, search, notes, bookmarks, data
+  figures, a listen bar, and theme controls.
+- Ships the French edition alongside the English one — machine-translated by the
+  OPUS-MT pipeline, then corrected, with a hand-curated UI dictionary for the chrome.
+- Preserves verification flags instead of hiding unfinished evidence work. An
+  unverified claim wears an honest "open flag" badge in public, which *is* the brand.
 
 ```
 python3 pipeline/build_content.py
 ```
 
-Re-run it any time the manuscript changes. The manuscript stays the single source of truth — nobody hand-edits chapter JSON, ever. (The goblin checked. Nobody.)
+Re-run it any time the manuscript changes. The manuscript stays the single source of
+truth — nobody hand-edits chapter JSON, ever. (The goblin checked. Nobody.)
+
+Chapter, receipt, and glossary counts are deliberately not recorded here — enumerated
+counts rot the moment the book grows. The build prints its own counts every run; trust
+the freshest output over any document, including this one.
 
 ## ✅ Validation
 
@@ -34,54 +54,29 @@ npm run verify
 `npm run verify` checks that generated content matches the deployed public
 copy, runs pagination sanity checks, and then runs the production build.
 
-## 🚦 Repository Status
-
-Launch-prep project. The app is functional, but the roadmap still calls out deployment, metadata, accessibility, and public-update surfaces before/around launch.
-
 ## 📦 What It Produces
 
-| File | Contents | Feeds mockup component |
-|---|---|---|
-| `content/book.json` | Title, parts → regions (The Land / The Creatures / The Weather / The Map / The Tools), TOC with per-chapter goblin-check and open-flag counts, front matter + appendix markdown | `LeftSidebar` (TOC), `TopNav`, `AboutPage` |
-| `content/chapters/ch01–ch19.json` | Per chapter: `title`, `part`, `region`, `startHere`, `sections[{heading, markdown}]`, `goblinChecks[]`, `recap[]`, `biasLabel`, `sources[]`, `verifyFlags[]` | `LeftPage` (title + Start Here + Goblin Note), `RightPage` (sections), `BottomBar` (prev/next) |
-| `content/receipts.json` | All 50 ledger rows: `{id, section, claim, status: resolved/fixed/open, detail, links[]}` | `ReceiptsPage` accordions + the **Show Receipts** sidebar panel |
-| `content/glossary.json` | 45 terms: `{term, def, chapters, letter}` | `LootPage` |
-
-## 🔢 Current Validated Counts (2026-06-10)
-
-20 chapters · 25 goblin checks · 19 recap boxes (127 bullets) · 20 bias labels · 18 chapter source-blocks · 56 receipt rows · 45 glossary terms · 0 inline verify flags open in chapter text.
-
-## 🧷 Mapping Notes For The Wiring Step
-
-- **Goblin Note callout (LeftPage)** ← `goblinChecks[0]` of the chapter; remaining checks render inline in `RightPage` at their section anchors.
-- **Goblin Trap callout (RightPage)** ← no manuscript device yet. Trap inventory to be authored from the overstatement audit (danger phrases, "publicly available," per-query vs aggregate). Until then, hide the Trap card rather than faking one.
-- **Quest Items (RightSidebar)** ← `recap[]` bullets, checkbox state in localStorage.
-- **Suspicion Meter (RightSidebar)** ← proposal: drive it from real data — the chapter's source-mix (share of corporate self-disclosure vs independent sources in `sources[]`) or `verifyFlags` count. Not vibes. The meter should be the bias-mapping method as UI.
-- **Show Receipts (RightSidebar)** ← chapter `sources[]` + `receipts.json` rows filtered to that chapter.
-- **Chapter count fix:** the mockup's `CHAPTER_TITLES` had 18 chapters — **Chapter 11 (IP & Copyright) was missing** and everything after shifted up one. `book.json` is canonical: 20 chapters, real titles, real part boundaries (I: 1–4, II: 5–7, III: 8–15, IV: 16–17, V: 18–20).
-- **Part colours (ReceiptsPage `PART_COLORS`)**: rebuild from `book.json` parts, not hardcoded ranges.
-- **Mascot provenance:** current mascot is an AI-generated PNG. For a book about AI disclosure, either commission the goblin or disclose the generation — decide before public launch. (The goblin box about it writes itself.)
+| File | Contents |
+|---|---|
+| `content/book.json` | Title, parts → regions (The Land / The Creatures / The Weather / The Map / The Tools), the TOC, front matter and appendix markdown |
+| `content/chapters/chNN.json` | Per chapter: sections, goblin checks, recap bullets, bias label, sources, verify flags |
+| `content/receipts.json` | The Receipts Ledger — every claim, its status, and its links |
+| `content/glossary.json` | The Loot page's terms |
+| `content/traps.json` | The Goblin Trap inventory, authored from the overstatement audit |
+| `content/fr/` | The French edition, mirroring all of the above |
 
 ## 🗂️ Folder Layout
 
 ```
-Project Goblin/
-  DataGoblin-Complete.md        ← single source of truth
-  Receipts-Ledger.md
-  Glossary-Draft.md
-  Sources/                      ← the receipt drawer
-  mockup-source/extracted-src/  ← components recovered from the .make file
-  site/
-    pipeline/build_content.py   ← this pipeline
-    content/                    ← generated JSON (gitignore later? no — commit it, receipts are the point)
+pipeline/       build_content.py, the FR resync and validation tools
+content/        generated JSON — committed on purpose; receipts are the point
+app/            the React reader, deployed to Vercel
+docs/           project brief, maintenance, and the local-storage contract
 ```
 
-## 🛠️ Next Build Steps
-
-1. Wire the extracted mockup components to `content/` (replace placeholder data imports).
-2. Author the Goblin Trap inventory (one per chapter, from the overstatement audit).
-3. Receipts deep-links: every `<!-- VERIFY -->` flag surfaces in the UI as an honest "open flag" badge — unverified claims wear it in public, which *is* the brand.
-4. Repo init + licence decision (CC BY-SA for text? MIT for code?) before the open-source release.
+The manuscript, the Receipts Ledger, and the private `Sources/` research captures live
+in the separate (private) manuscript repo — never here. Generated JSON crosses over;
+sources do not.
 
 ## 📚 Documentation
 
