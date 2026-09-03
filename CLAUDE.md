@@ -72,8 +72,11 @@ dependency; a known npm bug removes it on some installs.
   which is the hand-editable art control surface.
 - **Nothing from `../Sources/` enters this repo.** No file, no link, no reference.
 - Respect the `RESERVED` note on `indigenous-data-panel` (root `AGENTS.md`, guardrail 4).
-- **Leave committing and pushing to Alex** unless he says otherwise. `commit-and-push.bat`
-  exists but is his to run. `push-to-github.bat` was first-time setup only; never re-run it.
+- **Never commit to `main` or push to it.** Work on a `claude/*` (or `codex/*`) task
+  branch, push that branch, open a PR, and Alex merges. Pushing the branch and opening the
+  PR is the approved path, not a violation of it — this is how every change since #31 has
+  landed. `commit-and-push.bat` is Alex's direct-to-`main` shortcut and is his alone to run.
+  `push-to-github.bat` was first-time setup only; never re-run it.
 
 ## Definition of done
 
@@ -84,7 +87,7 @@ From `AGENTS.md`, reproduced because it is the gate rather than reference materi
 2. `sanity-pagination` passes: no block loss, no stub last page, no panel over twice budget.
 3. `npm run build` exits 0.
 4. Nothing from `../Sources/` entered the repo, and every art-map reference resolves.
-5. Committing and pushing is Alex's call.
+5. Changes land by PR from a task branch; merging is Alex's call.
 
 If pagination logic changed, recompile before testing. `AGENTS.md` has the exact `tsc`
 invocation and the `.js` to `.cjs` rename step.

@@ -68,7 +68,7 @@ site can copy the prose; it cannot copy an auditable claim ledger.
   - Never weaken the legal hedging: active litigation stays "alleged", absence claims
     stay date-stamped, OCAP® keeps its mark on first use per chapter, motive claims
     stay unresolved.
-- Committing and pushing are Alex's call in this repo unless he says otherwise.
+- Changes land by PR from a task branch; merging is Alex's call. Nothing goes to `main` directly.
 
 ## Brand Commitments
 
