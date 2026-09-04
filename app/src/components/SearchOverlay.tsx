@@ -2,6 +2,7 @@ import type { CSSProperties, MouseEvent } from "react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "../i18nNav";
 import { useTheme } from "../ThemeContext";
+import { useLanguage } from "../LanguageContext";
 import { BODY, P, RADIUS, UI } from "../theme";
 import { buildSearchIndex, getCachedSearchIndex, hasCachedSearchIndex, querySearchIndex } from "../search";
 import type { SearchHit } from "../search";
@@ -9,12 +10,24 @@ import { tr } from "../i18n";
 
 export function SearchOverlay({ query, onClose }: { query: string; onClose: () => void }) {
   const { c } = useTheme();
+  const { lang } = useLanguage();
   const navigate = useNavigate();
-  const [index, setIndex] = useState<SearchHit[]>(getCachedSearchIndex());
+  const [index, setIndex] = useState<SearchHit[]>(() => getCachedSearchIndex(lang));
 
   useEffect(() => {
-    buildSearchIndex().then(setIndex).catch(() => setIndex([]));
-  }, []);
+    let cancelled = false;
+    setIndex(getCachedSearchIndex(lang));
+    buildSearchIndex(lang)
+      .then((hits) => {
+        if (!cancelled) setIndex(hits);
+      })
+      .catch(() => {
+        if (!cancelled) setIndex([]);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [lang]);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -88,7 +101,7 @@ export function SearchOverlay({ query, onClose }: { query: string; onClose: () =
         }}
       >
         <div style={{ padding: "10px 16px", borderBottom: `1px solid ${border}`, fontFamily: UI, fontSize: "8px", fontWeight: 800, letterSpacing: "0.2em", textTransform: "uppercase", color: muted }}>
-          {!hasCachedSearchIndex() && index.length === 0
+          {!hasCachedSearchIndex(lang) && index.length === 0
             ? "Building index…"
             : results.length === 0
               ? `No results for "${q}"`
