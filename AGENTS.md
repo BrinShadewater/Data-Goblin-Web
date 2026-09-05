@@ -60,7 +60,8 @@ site/
 - **This machine has `NODE_ENV=production` set globally.** Plain `npm install` will skip
   devDependencies and silently break the build. Always:
   `$env:NODE_ENV='development'; npm install --include=dev`
-- Build: `$env:NODE_ENV='development'; npm run build` (tsc -b && vite build). tsc has
+- Build: `npm run build` (tsc -b && vite build) — with `NODE_ENV` **unset**; an explicit
+  `development` makes Vite 8 emit dev React (react-vendor ~400 kB) and `check:budgets` fails. tsc has
   `noUnusedLocals` — remove unused imports or the build fails.
 - The rollup native binary (`@rollup/rollup-win32-x64-msvc`) is pinned in
   optionalDependencies — a known npm bug deletes it on some installs; if vite errors with

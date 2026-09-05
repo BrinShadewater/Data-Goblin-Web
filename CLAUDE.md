@@ -51,7 +51,8 @@ binding. `npm run build` completes locally today — exit 0, 2063 modules, ~800m
 Playwright's browser present — `npx playwright install chromium` — which is a one-time local
 setup step, not a repo change.
 
-Verify before relying on either claim: `$env:NODE_ENV='development'; npm run build`, then
+Verify before relying on either claim: `npm run build` (leave `NODE_ENV` unset — an explicit
+`development` builds dev React and fails `check:budgets`), then
 `node scripts/verify.cjs`.
 
 The original guidance follows.

@@ -1,4 +1,5 @@
 import type { Book, Chapter, GlossaryEntry } from "./types";
+import type { Lang } from "./LanguageContext";
 import { chapterPath, fetchJson } from "./useContent";
 
 export type SearchHit =
@@ -6,26 +7,30 @@ export type SearchHit =
   | { type: "section"; num: number; chapterTitle: string; heading: string }
   | { type: "glossary"; term: string; def: string; letter: string };
 
-let searchIndex: SearchHit[] | null = null;
-let searchIndexPromise: Promise<SearchHit[]> | null = null;
+// One index per edition. The FR reader must search FR titles, headings and glossary
+// definitions; a shared cache would hand French readers English hits (or none).
+const searchIndex: Partial<Record<Lang, SearchHit[]>> = {};
+const searchIndexPromise: Partial<Record<Lang, Promise<SearchHit[]>>> = {};
 
-export function hasCachedSearchIndex() {
-  return searchIndex !== null;
+export function hasCachedSearchIndex(lang: Lang = "en") {
+  return searchIndex[lang] !== undefined;
 }
 
-export function getCachedSearchIndex() {
-  return searchIndex ?? [];
+export function getCachedSearchIndex(lang: Lang = "en") {
+  return searchIndex[lang] ?? [];
 }
 
-export function buildSearchIndex(): Promise<SearchHit[]> {
-  if (searchIndex) return Promise.resolve(searchIndex);
-  if (searchIndexPromise) return searchIndexPromise;
-  searchIndexPromise = (async () => {
+export function buildSearchIndex(lang: Lang = "en"): Promise<SearchHit[]> {
+  const cached = searchIndex[lang];
+  if (cached) return Promise.resolve(cached);
+  const pending = searchIndexPromise[lang];
+  if (pending) return pending;
+  const promise = (async () => {
     const hits: SearchHit[] = [];
-    const book = await fetchJson<Book>("book.json");
+    const book = await fetchJson<Book>("book.json", lang);
     const chapterRefs = book.parts.flatMap((p) => p.chapters);
     const chapters = await Promise.all(
-      chapterRefs.map((ref) => fetchJson<Chapter>(chapterPath(ref.number)).catch(() => null))
+      chapterRefs.map((ref) => fetchJson<Chapter>(chapterPath(ref.number), lang).catch(() => null))
     );
     for (const ch of chapters) {
       if (!ch) continue;
@@ -39,14 +44,15 @@ export function buildSearchIndex(): Promise<SearchHit[]> {
         hits.push({ type: "section", num: ch.number, chapterTitle: ch.title.split(" — ")[0], heading: s.heading });
       }
     }
-    const glossary = await fetchJson<GlossaryEntry[]>("glossary.json");
+    const glossary = await fetchJson<GlossaryEntry[]>("glossary.json", lang);
     for (const g of glossary) {
       hits.push({ type: "glossary", term: g.term, def: g.def, letter: g.letter });
     }
-    searchIndex = hits;
+    searchIndex[lang] = hits;
     return hits;
   })();
-  return searchIndexPromise;
+  searchIndexPromise[lang] = promise;
+  return promise;
 }
 
 function scoreSearchHit(hit: SearchHit, q: string): number {
