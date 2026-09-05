@@ -20,7 +20,8 @@
     "check:browser": "node scripts/check-browser-smoke.cjs",
     "verify": "node scripts/verify.cjs",
     "check:anchors": "node scripts/check-claim-anchors.cjs",
-    "fix:fr": "node scripts/apply-fr-corrections.cjs"
+    "fix:fr": "node scripts/apply-fr-corrections.cjs",
+    "check:i18n": "node scripts/check-i18n-gaps.cjs"
   },
   "dependencies": {
     "@vercel/speed-insights": "^2.0.0",
