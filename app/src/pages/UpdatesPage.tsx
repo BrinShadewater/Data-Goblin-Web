@@ -13,6 +13,37 @@ interface UpdateEntry {
 
 const UPDATES: UpdateEntry[] = [
   {
+    date: "September 4, 2026",
+    tag: "Reader",
+    title: "Search speaks French now",
+    items: [
+      "The French edition builds its own search index, so searching on /fr returns French chapter titles, section headings and glossary definitions instead of English ones, or nothing.",
+    ],
+  },
+  {
+    date: "August 1, 2026",
+    tag: "Reader",
+    title: "Reading position, receipts in French, and a nav that fits",
+    items: [
+      "Your place in a chapter is anchored to the text itself, not a page number, so it survives a resize or a switch between the spread and the single wide page.",
+      "Every receipt marker resolves again. Thirteen had drifted after chapter edits; 49 of 49 now land on the right claim, and the build checks this from now on.",
+      "The receipts apparatus works in French: markers, the per-chapter card and the ledger links.",
+      "Below 1500px the reader shows one wide page instead of a cramped two-page spread.",
+      "The nav shows every item that fits and only collapses into More as a real fallback. Added a skip link and a proper main landmark. The bias-score formula is disclosed inline.",
+      "Fonts are self-hosted and the Google Fonts origins are out of the CSP.",
+      "Fixed a factual error in the French edition. robots.txt now says where the guide stands on AI crawlers instead of leaving it implied.",
+    ],
+  },
+  {
+    date: "July 23, 2026",
+    tag: "Reader",
+    title: "Browse by topic",
+    items: [
+      "Topic pages cut across chapters, and the Map has a browse-by-topic section.",
+      "The code is MIT and the book is CC BY-NC 4.0, both spelled out in the repo.",
+    ],
+  },
+  {
     date: "June 21, 2026",
     tag: "Corrections",
     title: "Two named-official fixes, and a clarity pass on Chapter 5",

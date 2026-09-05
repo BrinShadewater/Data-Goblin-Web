@@ -5,6 +5,7 @@
 // x-default) so crawlers index each language at its own URL. Pure Node.
 const fs = require("fs");
 const path = require("path");
+const { execFileSync } = require("child_process");
 
 const DIST = process.env.PRERENDER_DIST ? path.resolve(process.env.PRERENDER_DIST) : path.resolve(__dirname, "../dist");
 const SITE = "https://datagoblin.ca";
@@ -431,6 +432,90 @@ for (const [route, enTitle, enDesc, frTitle, frDesc] of ROUTE_META) {
 }
 console.log(`prerender-meta: wrote ${count} per-route HTML shells (EN + FR)`);
 
+// ---- Sitemap lastmod: when the route's sources last changed, not when the build ran ----
+// Until 2026-09-05 every URL carried the build date, so each deploy told crawlers all 84
+// pages had changed that day. A route's date is the last commit touching its page and its
+// content file, read from git; on a shallow clone (Vercel) a boundary commit's date is not
+// evidence, so those fall back to the committed route-lastmod.json, and only a route with
+// no history at all gets the build date. Local builds rewrite that JSON; commit it.
+const APP = path.resolve(__dirname, "..");
+const REPO = path.resolve(APP, "..");
+const LASTMOD_FILE = path.join(__dirname, "route-lastmod.json");
+const ROUTE_SOURCES = {
+  "": ["app/src/pages/LandingPage.tsx", "app/public/content/book.json"],
+  "/guide": ["app/src/pages/FieldGuidePage.tsx", "app/public/content/book.json"],
+  "/map": ["app/src/pages/MapPage.tsx", "app/scripts/prerender-meta.cjs"],
+  "/loot": ["app/src/pages/LootPage.tsx", "app/public/content/glossary.json"],
+  "/receipts": ["app/src/pages/ReceiptsPage.tsx", "app/public/content/receipts.json"],
+  "/about": ["app/src/pages/AboutPage.tsx", "app/public/content/stats.json"],
+  "/contribute": ["app/src/pages/ContributePage.tsx"],
+  "/updates": ["app/src/pages/UpdatesPage.tsx"],
+  "/toolkit": ["app/src/pages/ToolkitPage.tsx"],
+  "/privacy": ["app/src/pages/PrivacyPage.tsx"],
+};
+function routeSources(route, lang) {
+  const chapter = route.match(/^\/chapter\/(\d+)$/);
+  if (chapter) {
+    const file = `ch${String(chapter[1]).padStart(2, "0")}.json`;
+    return [lang === "fr" ? `app/public/content/fr/chapters/${file}` : `app/public/content/chapters/${file}`];
+  }
+  if (route.startsWith("/topic/")) return ["app/src/pages/TopicPage.tsx", "app/scripts/prerender-meta.cjs", "app/public/content/book.json"];
+  return ROUTE_SOURCES[route] || [];
+}
+function git(...args) {
+  try {
+    return execFileSync("git", args, { cwd: REPO, encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] }).trim();
+  } catch {
+    return null;
+  }
+}
+const shallowBoundary = (() => {
+  if (git("rev-parse", "--is-shallow-repository") !== "true") return new Set();
+  const file = git("rev-parse", "--git-path", "shallow");
+  try {
+    return new Set(fs.readFileSync(path.resolve(REPO, file || ""), "utf8").split(/\r?\n/).filter(Boolean));
+  } catch {
+    return new Set();
+  }
+})();
+const previousLastMod = (() => {
+  try {
+    return JSON.parse(fs.readFileSync(LASTMOD_FILE, "utf8"));
+  } catch {
+    return {};
+  }
+})();
+const ISO_DAY = /^\d{4}-\d{2}-\d{2}$/;
+function lastModFor(loc, route, lang) {
+  const sources = routeSources(route, lang);
+  if (sources.length) {
+    const dirty = git("status", "--porcelain", "--", ...sources);
+    if (dirty) return BUILD_DATE;
+    const committed = git("log", "-1", "--format=%cs %H", "--", ...sources);
+    if (committed) {
+      const [date, sha] = committed.split(" ");
+      if (ISO_DAY.test(date) && !shallowBoundary.has(sha)) return date;
+    }
+  }
+  if (ISO_DAY.test(previousLastMod[loc] || "")) return previousLastMod[loc];
+  return BUILD_DATE;
+}
+
+// ---- The About page's fallback counts must match the manuscript's stats ----
+// They are literals so the cards paint before the fetch; they drifted by up to 44 receipts.
+{
+  const stats = JSON.parse(fs.readFileSync(path.join(APP, "public/content/stats.json"), "utf8"));
+  const about = fs.readFileSync(path.join(APP, "src/pages/AboutPage.tsx"), "utf8");
+  const drifted = [];
+  for (const [, key, n] of about.matchAll(/\{ key: "(\w+)", n: "([^"]+)"/g)) {
+    if (String(stats[key]) !== n) drifted.push(`${key}: AboutPage says ${n}, stats.json says ${stats[key]}`);
+  }
+  if (drifted.length) {
+    console.error("prerender-meta: About fallbacks drifted from content/stats.json:\n  " + drifted.join("\n  "));
+    process.exit(1);
+  }
+}
+
 // ---- Generate sitemap.xml (EN + FR, with hreflang alternates) ----
 function smMeta(route) {
   if (route === "") return ["1.0", "monthly"];
@@ -438,9 +523,9 @@ function smMeta(route) {
   if (route === "/guide" || route === "/loot" || route === "/receipts") return ["0.8", "yearly"];
   return ["0.6", "yearly"];
 }
-const today = BUILD_DATE;
 const allRoutes = [""].concat(ROUTE_META.map((r) => r[0]));
 let urlsXml = "";
+const lastModOut = {};
 for (const route of allRoutes) {
   const [prio, freq] = smMeta(route);
   const urlEn = SITE + (route || "/");
@@ -449,10 +534,13 @@ for (const route of allRoutes) {
     `\n    <xhtml:link rel="alternate" hreflang="en-CA" href="${esc(urlEn)}"/>` +
     `\n    <xhtml:link rel="alternate" hreflang="fr-CA" href="${esc(urlFr)}"/>` +
     `\n    <xhtml:link rel="alternate" hreflang="x-default" href="${esc(urlEn)}"/>`;
-  for (const loc of [urlEn, urlFr]) {
-    urlsXml += `\n  <url>\n    <loc>${esc(loc)}</loc>${alts}\n    <lastmod>${today}</lastmod>\n    <changefreq>${freq}</changefreq>\n    <priority>${prio}</priority>\n  </url>`;
+  for (const [loc, lang] of [[urlEn, "en"], [urlFr, "fr"]]) {
+    const lastmod = lastModFor(loc, route, lang);
+    lastModOut[loc] = lastmod;
+    urlsXml += `\n  <url>\n    <loc>${esc(loc)}</loc>${alts}\n    <lastmod>${lastmod}</lastmod>\n    <changefreq>${freq}</changefreq>\n    <priority>${prio}</priority>\n  </url>`;
   }
 }
 const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">${urlsXml}\n</urlset>\n`;
 fs.writeFileSync(path.join(DIST, "sitemap.xml"), sitemapXml);
+fs.writeFileSync(LASTMOD_FILE, JSON.stringify(lastModOut, null, 2) + "\n");
 console.log(`prerender-meta: wrote sitemap.xml with ${allRoutes.length * 2} URLs (EN + FR, hreflang)`);
