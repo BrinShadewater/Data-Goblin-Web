@@ -423,7 +423,7 @@ function render(route, h1, fullTitle, desc, lang) {
 const HERO_PRELOAD =
   '<link rel="preload" as="image" fetchpriority="high" ' +
   'href="/art/panels/hero-panel-960w.webp" ' +
-  'imagesrcset="/art/panels/hero-panel-640w.webp 640w, /art/panels/hero-panel-960w.webp 960w, /art/panels/hero-panel.webp 1024w" ' +
+  'imagesrcset="/art/panels/hero-panel-480w.webp 480w, /art/panels/hero-panel-640w.webp 640w, /art/panels/hero-panel-720w.webp 720w, /art/panels/hero-panel-960w.webp 960w, /art/panels/hero-panel.webp 1024w" ' +
   'imagesizes="(max-width: 720px) 92vw, (max-width: 1100px) 46vw, 650px" />';
 
 function write(relPath, html) {
