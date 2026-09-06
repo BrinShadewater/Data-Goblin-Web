@@ -133,6 +133,7 @@ export function FieldGuidePage() {
         {pageLiveRegion}
         <main
           id="dg-main"
+          tabIndex={-1}
           aria-label={chapter ? trf("{chapter} — reading area", { chapter: chapter.title.split(" — ")[0] }) : tr("Reading area")}
           onTouchStart={onTouchStart}
           onTouchEnd={onTouchEnd}
@@ -302,6 +303,7 @@ export function FieldGuidePage() {
 
       <main
         id="dg-main"
+          tabIndex={-1}
         aria-label={chapter ? trf("{chapter} — reading area", { chapter: chapter.title.split(" — ")[0] }) : tr("Reading area")}
         style={{
           minWidth: 0,
