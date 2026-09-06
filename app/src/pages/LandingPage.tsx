@@ -68,6 +68,10 @@ export function LandingPage() {
 
   return (
     <main
+      // The skip link in App.tsx targets #dg-main; the reader and static pages had it, the
+      // landing did not, so on the home page it jumped nowhere (Lighthouse skip-link, live).
+      id="dg-main"
+      tabIndex={-1}
       onPointerMove={moveWisps}
       onPointerLeave={resetWisps}
       style={{ flex: 1, overflowY: "auto", background: c(...P.panelBg), transition: "background 0.3s", position: "relative" }}
