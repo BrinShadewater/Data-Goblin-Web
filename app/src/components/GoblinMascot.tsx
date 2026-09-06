@@ -1,5 +1,5 @@
 import goblinMascotImg from "../assets/goblin-mascot.webp";
-import goblinHeadImg from "../assets/goblin-head-icon.webp";
+import goblinHeadImg from "../assets/goblin-head-icon-128.webp";
 import { artUrl } from "../useContent";
 
 interface GoblinMascotProps {
@@ -24,14 +24,18 @@ export function GoblinMascot({ size = 170 }: GoblinMascotProps) {
 /** Small goblin-head icon (the head-nav hero asset) used in the header,
  *  sidebars and callouts. Ships with true alpha and wide ears, so it renders
  *  uncropped — no circle mask. */
-export function GoblinIcon({ size = 20 }: { size?: number }) {
+/** Decorative by default: everywhere it appears the words "Data Goblin" sit beside it, and a
+ *  second "Data Goblin" from the alt text is what screen readers heard. Pass `alt` when it
+ *  stands alone. 128px source: the largest it renders is 62px. */
+export function GoblinIcon({ size = 20, alt = "" }: { size?: number; alt?: string }) {
   return (
     <img
       src={goblinHeadImg}
       width={size}
       height={size}
       decoding="async"
-      alt="Data Goblin"
+      alt={alt}
+      aria-hidden={alt === "" || undefined}
       style={{
         display: "inline-block",
         verticalAlign: "middle",

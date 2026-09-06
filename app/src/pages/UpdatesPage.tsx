@@ -13,6 +13,16 @@ interface UpdateEntry {
 
 const UPDATES: UpdateEntry[] = [
   {
+    date: "September 5, 2026",
+    tag: "Reader",
+    title: "Faster first paint on phones, and a skip link that lands",
+    items: [
+      "The hero art is requested with the page instead of after the app loads, and it ships in more sizes so a phone downloads the one it can show. Same picture, fewer bytes, sooner.",
+      "The keyboard skip link now lands on the content; before, it had nowhere focusable to go.",
+      "The goblin in the header no longer announces “Data Goblin” twice to screen readers, and it is served at the size it is drawn.",
+    ],
+  },
+  {
     date: "September 4, 2026",
     tag: "Reader",
     title: "Search speaks French now",

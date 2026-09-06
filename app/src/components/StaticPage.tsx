@@ -13,7 +13,7 @@ export function StaticPageShell({
 }) {
   const { c } = useTheme();
   return (
-    <main id="dg-main" style={{ flex: 1, overflowY: "auto", background: c(...P.panelBg), padding, transition: "background 0.3s" }}>
+    <main id="dg-main" tabIndex={-1} style={{ flex: 1, overflowY: "auto", background: c(...P.panelBg), padding, transition: "background 0.3s" }}>
       <div style={{ maxWidth, margin: "0 auto" }}>{children}</div>
     </main>
   );

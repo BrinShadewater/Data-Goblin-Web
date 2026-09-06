@@ -410,8 +410,21 @@ function render(route, h1, fullTitle, desc, lang) {
     glossaryJsonLd(route, lang),
   ].filter(Boolean).join("");
   if (extras) h = h.replace("</head>", `${extras}\n  </head>`);
+  // The hero panel is the LCP element on the home and about pages, and React inserts it after
+  // the bundle runs; the preload lets the browser fetch it with the HTML. Lighthouse mobile
+  // 2026-09-05: LCP 4.8 s with the image request starting ~2 s in. Same srcset/sizes as
+  // LandingHero, so the browser reuses the fetch rather than downloading a second candidate.
+  if (route === "" || route === "/about") {
+    h = h.replace("</head>", `${HERO_PRELOAD}\n  </head>`);
+  }
   return h;
 }
+
+const HERO_PRELOAD =
+  '<link rel="preload" as="image" fetchpriority="high" ' +
+  'href="/art/panels/hero-panel-960w.webp" ' +
+  'imagesrcset="/art/panels/hero-panel-480w.webp 480w, /art/panels/hero-panel-640w.webp 640w, /art/panels/hero-panel-720w.webp 720w, /art/panels/hero-panel-960w.webp 960w, /art/panels/hero-panel.webp 1024w" ' +
+  'imagesizes="(max-width: 720px) 92vw, (max-width: 1100px) 46vw, 650px" />';
 
 function write(relPath, html) {
   const dir = path.join(DIST, relPath);
