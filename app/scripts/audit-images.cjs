@@ -97,6 +97,59 @@ function printBucket(label, files) {
   }
 }
 
+/**
+ * Width of a WebP/PNG, read from the header. No dependency: the audit runs in the verify gate
+ * and adding an image library to read four numbers would cost more than it explains.
+ */
+function imageWidth(filePath) {
+  let fd;
+  try {
+    fd = fs.openSync(filePath, "r");
+    const head = Buffer.alloc(32);
+    fs.readSync(fd, head, 0, 32, 0);
+    if (head.slice(0, 4).toString("ascii") === "RIFF" && head.slice(8, 12).toString("ascii") === "WEBP") {
+      const fmt = head.slice(12, 16).toString("ascii");
+      if (fmt === "VP8X") return ((head[24] | (head[25] << 8) | (head[26] << 16)) & 0xffffff) + 1;
+      if (fmt === "VP8L") return (head.readUInt32LE(21) & 0x3fff) + 1;
+      if (fmt === "VP8 ") return head.readUInt16LE(26) & 0x3fff;
+      return null;
+    }
+    if (head.slice(1, 4).toString("ascii") === "PNG") return head.readUInt32BE(16);
+    return null;
+  } catch {
+    return null;
+  } finally {
+    if (fd !== undefined) fs.closeSync(fd);
+  }
+}
+
+// The nav icons render between 26px and 48px (see TOKENS.icon in src/theme.ts), and
+// assets/convert-new-art.py converts the whole set at 128px for exactly that reason. Two icons
+// once shipped at 256 because their sources lived in a different batch folder and bypassed the
+// converter; the audit missed it for weeks because it measures bytes, and at 19 kB they were
+// nowhere near its 90 kB threshold. Referenced icons only: unreferenced art is the "unused
+// originals" list below, and failing a build over an icon nothing loads would be noise.
+const ICON_MAX_WIDTH = 128;
+
+// head-nav.webp is 256px and stays that way for now: nothing in the app loads it (only a
+// comment in GoblinMascot.tsx names it; the header uses the bundled
+// src/assets/goblin-head-icon-128.webp, and the favicons are generated from a PNG). It also
+// cannot be regenerated faithfully — convert-new-art.py reads assets/nav-icons/head-nav.png
+// for the favicon set and that file is not there, so its true source is unknown. Exempted by
+// name rather than guessed at.
+const ICON_WIDTH_EXEMPT = new Set(["icons/head-nav.webp"]);
+
+function oversizedIcons(artFiles) {
+  return artFiles
+    // Every icon, not just referenced ones: NavIcon builds its path as a template literal
+    // (`icons/${name}.webp`), so collectReferences never matches one — which is why
+    // image-registry.json has to exempt `icons/*` from the unused list. Filtering on
+    // references here made this check pass over an empty set.
+    .filter((file) => file.rel.startsWith("icons/") && !ICON_WIDTH_EXEMPT.has(file.rel))
+    .map((file) => ({ ...file, width: imageWidth(path.join(artDir, file.rel)) }))
+    .filter((file) => file.width !== null && file.width > ICON_MAX_WIDTH);
+}
+
 function main() {
   const references = collectReferences();
   const artFiles = walkFiles(artDir, (file) => /\.(webp|png|jpe?g|ico)$/i.test(file))
@@ -134,6 +187,20 @@ function main() {
   console.log(`\nUnused originals excluding ignored app/icons: ${unused.length}`);
   for (const file of unused.slice(0, 20)) console.log(`- ${file.rel} ${format(file.size)}`);
   if (unused.length > 20) console.log(`- ...${unused.length - 20} more`);
+
+  const wideIcons = oversizedIcons(artFiles);
+  if (wideIcons.length > 0) {
+    console.log(`\nNav icons wider than ${ICON_MAX_WIDTH}px (they render at 26-48px):`);
+    for (const file of wideIcons) {
+      // References are usually empty here: NavIcon builds its path from a template literal.
+      const where = file.references.length > 0 ? ` · ${file.references.join(", ")}` : "";
+      console.log(`- ${file.rel} ${file.width}px ${format(file.size)}${where}`);
+    }
+    console.log("  Re-convert at 128px — assets/convert-new-art.py does this for the whole set.");
+    process.exitCode = 1;
+  } else {
+    console.log(`\nEvery nav icon is at most ${ICON_MAX_WIDTH}px wide.`);
+  }
 
   if (missingVariants.length > 0) {
     console.log("\nMissing registered responsive variants:");
