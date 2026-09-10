@@ -20,7 +20,21 @@ jobs:
           node-version: 22
           cache: npm
           cache-dependency-path: app/package-lock.json
+      # verify.cjs starts with pipeline/check_content_sync.py, invoked as `python` with a
+      # `py -3` fallback that only exists on Windows. Without this the first check would fail
+      # on the runner for a reason that has nothing to do with the code.
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
       - name: Install dependencies
         run: npm ci
-      - name: Build
-        run: npm run build
+      # playwright is a devDependency, so `npm ci` installs the library but not the browser it
+      # drives. check-browser-smoke.cjs calls chromium.launch(), which needs this.
+      - name: Install Playwright chromium
+        run: npx playwright install --with-deps chromium
+      # Was `npm run build`. The repo had nine check scripts and CI ran none of them, so their
+      # silence was indistinguishable from passing -- and one of them was genuinely failing.
+      # verify.cjs runs them in dependency order and does the production build in the middle.
+      - name: Verify
+        run: npm run verify
