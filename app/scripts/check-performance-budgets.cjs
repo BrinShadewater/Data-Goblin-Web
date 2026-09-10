@@ -106,7 +106,15 @@ function main() {
     fail(`public/art total ${format(totalArt)} exceeds budget ${format(BUDGETS.totalPublicArtRaw)}.`);
   }
 
-  console.log("Performance budgets passed.");
+  if (process.exitCode) {
+    // fail() only sets process.exitCode, so execution continues and this summary still
+    // runs. It used to say "passed" unconditionally, which meant a failing run printed
+    // success above its own violations -- and a log is how a person reads CI, so the
+    // exit code was the only place the truth appeared.
+    console.error("Performance budgets FAILED - see the violations above.");
+  } else {
+    console.log("Performance budgets passed.");
+  }
   console.log(`Largest JS chunks: ${jsFiles.slice(0, 5).map((file) => `${file.name} ${format(file.raw)} raw/${format(file.gzip)} gzip`).join(" · ")}`);
   if (largestArt) {
     console.log(`Largest original art asset: ${path.relative(appDir, largestArt.filePath)} ${format(largestArt.raw)} · total originals ${format(totalOriginalArt)} · variants ${format(totalVariantArt)} · total with variants ${format(totalArt)}`);
