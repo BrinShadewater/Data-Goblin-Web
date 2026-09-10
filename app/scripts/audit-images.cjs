@@ -131,21 +131,13 @@ function imageWidth(filePath) {
 // originals" list below, and failing a build over an icon nothing loads would be noise.
 const ICON_MAX_WIDTH = 128;
 
-// head-nav.webp is 256px and stays that way for now: nothing in the app loads it (only a
-// comment in GoblinMascot.tsx names it; the header uses the bundled
-// src/assets/goblin-head-icon-128.webp, and the favicons are generated from a PNG). It also
-// cannot be regenerated faithfully — convert-new-art.py reads assets/nav-icons/head-nav.png
-// for the favicon set and that file is not there, so its true source is unknown. Exempted by
-// name rather than guessed at.
-const ICON_WIDTH_EXEMPT = new Set(["icons/head-nav.webp"]);
-
 function oversizedIcons(artFiles) {
   return artFiles
     // Every icon, not just referenced ones: NavIcon builds its path as a template literal
     // (`icons/${name}.webp`), so collectReferences never matches one — which is why
     // image-registry.json has to exempt `icons/*` from the unused list. Filtering on
     // references here made this check pass over an empty set.
-    .filter((file) => file.rel.startsWith("icons/") && !ICON_WIDTH_EXEMPT.has(file.rel))
+    .filter((file) => file.rel.startsWith("icons/"))
     .map((file) => ({ ...file, width: imageWidth(path.join(artDir, file.rel)) }))
     .filter((file) => file.width !== null && file.width > ICON_MAX_WIDTH);
 }
