@@ -12,7 +12,6 @@ import { TopNav } from "./components/TopNav";
 import { MobileDrawer } from "./components/MobileDrawer";
 import { CookieNotice } from "./components/CookieNotice";
 import { AnalyticsConsentGate } from "./components/AnalyticsConsentGate";
-import goblinFavicon from "./assets/goblin-head-icon.webp";
 import { APP_ROUTES, SearchOverlay } from "./lazyRoutes";
 
 const ROUTE_TITLES: Record<string, string> = {
@@ -62,17 +61,6 @@ function Shell() {
   const [searchQuery, setSearchQuery] = useState("");
   const [drawerOpen, setDrawerOpen] = useState(false);
   const location = useLocation();
-
-  // Goblin-head favicon.
-  useEffect(() => {
-    let link = document.querySelector<HTMLLinkElement>("link[rel~='icon']");
-    if (!link) {
-      link = document.createElement("link");
-      link.rel = "icon";
-      document.head.appendChild(link);
-    }
-    link.href = goblinFavicon;
-  }, []);
 
   // Close the search overlay and the drawer when navigating.
   useEffect(() => {
