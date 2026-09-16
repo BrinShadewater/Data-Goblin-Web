@@ -36,6 +36,7 @@ function runPythonSyncCheck() {
 
 console.log("=== Generated content sync ===");
 runPythonSyncCheck();
+run("Deploy config", process.execPath, [path.join(appDir, "scripts", "check-deploy-config.cjs")]);
 run("Pagination sanity", process.execPath, [path.join(appDir, "scripts", "run-pagination-sanity.cjs")]);
 run("Contribution mailto sanity", process.execPath, [path.join(appDir, "scripts", "check-contribute-mailto.cjs")]);
 run("French UI dictionary covers every tr() literal", process.execPath, [path.join(appDir, "scripts", "check-i18n-gaps.cjs")]);

@@ -10,6 +10,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build && node scripts/prerender-meta.cjs && node scripts/indexnow-submit.cjs",
     "preview": "vite preview",
+    "check:deploy": "node scripts/check-deploy-config.cjs",
     "check:pagination": "node scripts/run-pagination-sanity.cjs",
     "check:contribute": "node scripts/check-contribute-mailto.cjs",
     "audit:images": "node scripts/audit-images.cjs",
