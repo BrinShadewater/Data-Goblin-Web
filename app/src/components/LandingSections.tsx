@@ -85,7 +85,9 @@ export function LandingHero({
           {subtitle}
         </p>
         <p style={{ fontFamily: BODY, fontSize: "18px", lineHeight: 1.7, color: body, maxWidth: "760px", margin: "0 0 28px" }}>
-          {tr("A plain-language guide for reading AI claims in Canada: who counted what, who benefits, what is still contested, and where the receipts live.")}
+          {lang === "fr"
+            ? tr("A plain-language guide for reading AI claims in Canada: who counted what, who benefits, what is still contested, and where the receipts live.")
+            : "Read Data Goblin, a free, interactive guide to AI, data centres, and digital sovereignty in Canada. Follow the sources behind each claim."}
         </p>
         <div style={{ display: "flex", flexWrap: "wrap", gap: "12px", alignItems: "center" }}>
           <button
