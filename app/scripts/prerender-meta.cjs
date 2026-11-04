@@ -34,6 +34,7 @@ try {
 
 const DESC_EN = "A free, open field guide to AI, data centres, and digital sovereignty, written for Canadians. Every claim comes with a receipt.";
 const DESC_FR = "Un guide de terrain gratuit sur l'IA, les centres de données et la souveraineté numérique au Canada. Chaque affirmation a son reçu.";
+const HOME_DESC_EN = "Read Data Goblin, a free, interactive guide to AI, data centres, and digital sovereignty in Canada. Follow the sources behind each claim.";
 const HOME_FULL_EN = "Data Goblin — A Field Guide to AI, Power, and Data in Canada";
 const HOME_FULL_FR = "Data Goblin — Guide de terrain sur l'IA, la puissance et les données au Canada";
 
@@ -299,7 +300,7 @@ function homeHeroHtml() {
           `<img class="dg-hero-flag" src="/art/panels/canada-flag-panel-640w.webp" srcset="${flagSet}" sizes="(max-width: 720px) 150px, 210px" width="1024" height="1024" alt="" aria-hidden="true" decoding="async" />` +
         `</div>` +
         `<p class="dg-hero-subtitle">A Field Guide to AI, Power, and Data in Canada</p>` +
-        `<p class="dg-hero-body">A plain-language guide for reading AI claims in Canada: who counted what, who benefits, what is still contested, and where the receipts live.</p>` +
+        `<p class="dg-hero-body">${esc(HOME_DESC_EN)}</p>` +
         `<div class="dg-hero-cta">` +
           `<a class="dg-hero-btn dg-hero-btn-primary" href="/chapter/1">Begin with Chapter 1</a>` +
           `<a class="dg-hero-btn dg-hero-btn-secondary" href="/guide">Open the guide</a>` +
@@ -434,7 +435,7 @@ function write(relPath, html) {
 
 let count = 0;
 // Home (both languages)
-write("", render("", HOME_FULL_EN, HOME_FULL_EN, DESC_EN, "en")); // overwrites dist/index.html with hreflang
+write("", render("", HOME_FULL_EN, HOME_FULL_EN, HOME_DESC_EN, "en")); // overwrites dist/index.html with hreflang
 write("fr", render("", HOME_FULL_FR, HOME_FULL_FR, DESC_FR, "fr"));
 count += 2;
 for (const [route, enTitle, enDesc, frTitle, frDesc] of ROUTE_META) {
