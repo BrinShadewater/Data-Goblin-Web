@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { X } from "lucide-react";
 import { useLocation } from "react-router";
+import { langPath } from "../LanguageContext";
 import { useTheme } from "../ThemeContext";
 import { DISPLAY, P, TOKENS } from "../theme";
 import { GoblinIcon } from "./GoblinMascot";
@@ -44,7 +45,7 @@ export function MobileDrawer({ open, onClose }: { open: boolean; onClose: () => 
     return () => clearTimeout(t);
   }, [open]);
 
-  const chMatch = location.pathname.match(/^\/chapter\/(\d+)/);
+  const chMatch = langPath(location.pathname, "en").match(/^\/chapter\/(\d+)\/?$/);
   const activeChapter = chMatch ? parseInt(chMatch[1], 10) : -1;
 
   const bg = c(...P.panelBgAlt);
