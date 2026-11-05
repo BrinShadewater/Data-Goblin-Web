@@ -56,8 +56,11 @@ function createServer() {
     const url = new URL(req.url || "/", "http://127.0.0.1");
     const requestedPath = decodeURIComponent(url.pathname);
     const relativePath = requestedPath === "/" ? "index.html" : requestedPath.replace(/^\/+/, "");
-    const filePath = path.resolve(distDir, relativePath);
+    let filePath = path.resolve(distDir, relativePath);
     const safePath = filePath.startsWith(distDir + path.sep) || filePath === path.join(distDir, "index.html");
+    if (safePath && fs.statSync(filePath, { throwIfNoEntry: false })?.isDirectory()) {
+      filePath = path.join(filePath, "index.html");
+    }
     const finalPath = safePath && fs.existsSync(filePath) && fs.statSync(filePath).isFile()
       ? filePath
       : path.join(distDir, "index.html");
@@ -66,15 +69,18 @@ function createServer() {
   });
 }
 
-async function withAppPage(browser, baseUrl, viewport, fn) {
+async function withAppPage(browser, baseUrl, viewport, fn, { javaScriptEnabled = true } = {}) {
   const context = await browser.newContext({
     viewport: { width: viewport.width, height: viewport.height },
     colorScheme: "light",
     reducedMotion: "reduce",
+    javaScriptEnabled,
   });
-  await context.addInitScript((consent) => {
-    window.localStorage.setItem("data-goblin-cookie-consent", JSON.stringify(consent));
-  }, CONSENT);
+  if (javaScriptEnabled) {
+    await context.addInitScript((consent) => {
+      window.localStorage.setItem("data-goblin-cookie-consent", JSON.stringify(consent));
+    }, CONSENT);
+  }
   const page = await context.newPage();
   const pageErrors = [];
   page.on("pageerror", (error) => pageErrors.push(error.message));
@@ -219,6 +225,38 @@ async function runInteractionSmoke(browser, baseUrl) {
   console.log("PASS interactions");
 }
 
+async function runGuideNavigationSmoke(browser, baseUrl) {
+  const editions = [
+    { prefix: "", title: /Data as Raw Material/i },
+    { prefix: "/fr", title: /matière première/i },
+  ];
+  for (const viewport of VIEWPORTS.filter(({ name }) => name !== "tablet")) {
+    for (const { prefix, title } of editions) {
+      const target = `${prefix}/chapter/3`;
+      for (const javaScriptEnabled of [true, false]) {
+        const scenario = `${prefix || "English"} · ${viewport.name} · JavaScript ${javaScriptEnabled ? "on" : "off"}`;
+        await withAppPage(browser, baseUrl, viewport, async (page) => {
+          await page.goto(`${baseUrl}${prefix}/guide`);
+          if (javaScriptEnabled && viewport.name === "mobile") {
+            await page.getByRole("button", { name: "Open menu", exact: true }).click();
+          }
+          const link = page.getByRole("link", { name: title });
+          assert(await link.getAttribute("href") === target, `${scenario}: Chapter 3 points to the wrong URL.`);
+          await link.click();
+          await page.waitForURL(`${baseUrl}${target}`);
+          await page.getByRole("heading", { level: 1, name: title }).waitFor({ state: "visible" });
+          if (!javaScriptEnabled) {
+            const article = page.getByRole("article");
+            await article.waitFor({ state: "visible" });
+            assert((await article.innerText()).trim().length > 1000, `${scenario}: Chapter text is missing.`);
+          }
+        }, { javaScriptEnabled });
+        console.log(`PASS guide navigation: ${scenario}`);
+      }
+    }
+  }
+}
+
 async function runTimingSmoke(browser, baseUrl) {
   await withAppPage(browser, baseUrl, VIEWPORTS[0], async (page) => {
     for (const route of TIMED_ROUTES) {
@@ -259,6 +297,7 @@ async function main() {
   const browser = await chromium.launch();
 
   try {
+    await runGuideNavigationSmoke(browser, baseUrl);
     await runRouteSmoke(browser, baseUrl);
     await runCookieSmoke(browser, baseUrl);
     await runInteractionSmoke(browser, baseUrl);
