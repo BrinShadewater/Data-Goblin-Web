@@ -257,6 +257,34 @@ async function runGuideNavigationSmoke(browser, baseUrl) {
   }
 }
 
+async function runChapterDiscoverySmoke(browser, baseUrl) {
+  for (const prefix of ["", "/fr"]) {
+    const target = `${prefix}/chapter/5`;
+    const title = prefix ? /histoire.*IA.*Canada/i : /Canada.*AI Story/i;
+    await withAppPage(browser, baseUrl, VIEWPORTS[2], async (page) => {
+      await page.goto(`${baseUrl}${prefix}/map`);
+      const link = page.getByRole("link", { name: title });
+      assert(await link.getAttribute("href") === target, "The static Map points to the wrong Chapter 5.");
+      await link.click();
+      await page.waitForURL(`${baseUrl}${target}`);
+      await page.getByRole("heading", { level: 1, name: title }).waitFor({ state: "visible" });
+      await page.getByRole("article").waitFor({ state: "visible" });
+    }, { javaScriptEnabled: false });
+
+    await withAppPage(browser, baseUrl, VIEWPORTS[0], async (page) => {
+      const response = await page.goto(`${baseUrl}${prefix}/topic/governance`);
+      assert(response?.ok() && (await response.text()).includes(`href="${target}"`),
+        "The governance HTML is missing its localized Chapter 5 link.");
+      const link = page.getByRole("link", { name: title });
+      assert(await link.getAttribute("href") === target, "The rendered governance link points to the wrong Chapter 5.");
+      await link.click();
+      await page.waitForURL(`${baseUrl}${target}`);
+      await page.getByRole("heading", { level: 1, name: title }).waitFor({ state: "visible" });
+    });
+    console.log(`PASS Chapter 5 discovery: ${prefix || "English"} Map and governance`);
+  }
+}
+
 async function runTimingSmoke(browser, baseUrl) {
   await withAppPage(browser, baseUrl, VIEWPORTS[0], async (page) => {
     for (const route of TIMED_ROUTES) {
@@ -298,6 +326,7 @@ async function main() {
 
   try {
     await runGuideNavigationSmoke(browser, baseUrl);
+    await runChapterDiscoverySmoke(browser, baseUrl);
     await runRouteSmoke(browser, baseUrl);
     await runCookieSmoke(browser, baseUrl);
     await runInteractionSmoke(browser, baseUrl);
