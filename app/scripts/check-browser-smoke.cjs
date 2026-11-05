@@ -285,6 +285,46 @@ async function runChapterDiscoverySmoke(browser, baseUrl) {
   }
 }
 
+async function runLanguageSwitchSmoke(browser, baseUrl) {
+  const routes = [
+    { path: "/chapter/3", en: /Data as Raw Material/i, fr: /matière première/i },
+    { path: "/chapter/5", en: /Canada.*AI Story/i, fr: /histoire.*IA.*Canada/i },
+    { path: "/topic/governance", en: /How AI Is Governed in Canada/i, fr: /gouvernée au Canada/i },
+    { path: "/topic/privacy", en: /AI, Privacy & Surveillance/i, fr: /vie privée et surveillance/i },
+  ];
+  const buttons = {
+    en: "Read in English",
+    fr: "Lire en français (traduction automatique)",
+  };
+  for (const viewport of VIEWPORTS.filter(({ name }) => name !== "tablet")) {
+    const mobile = viewport.name === "mobile";
+    for (const route of routes) {
+      await withAppPage(browser, baseUrl, viewport, async (page) => {
+        await page.goto(`${baseUrl}${route.path}`);
+        await page.getByRole("heading", { level: 1, name: route.en }).waitFor();
+        for (const language of ["fr", "en"]) {
+          const previousLanguage = language === "fr" ? "en" : "fr";
+          const previousPath = previousLanguage === "fr" ? `/fr${route.path}` : route.path;
+          const target = language === "fr" ? `/fr${route.path}` : route.path;
+          if (mobile) await page.getByRole("button", { name: "Open menu", exact: true }).click();
+          const controls = mobile ? page.getByRole("dialog", { name: "Menu" }) : page.getByRole("group", { name: "Language", exact: true });
+          const current = controls.getByRole("button", { name: buttons[previousLanguage], pressed: true });
+          await current.waitFor({ timeout: 8000 });
+          if (mobile && route.path.startsWith("/chapter/")) {
+            await controls.locator(`a[href="${previousPath}"][aria-current="page"]`).waitFor({ timeout: 8000 });
+          }
+          await controls.getByRole("button", { name: buttons[language] }).click();
+          await page.waitForURL(`${baseUrl}${target}`, { timeout: 8000 });
+          if (mobile) await controls.waitFor({ state: "hidden", timeout: 8000 });
+          await page.getByRole("heading", { level: 1, name: route[language] }).waitFor({ timeout: 8000 });
+          await page.locator(`html[lang="${language}-CA"]`).waitFor({ state: "attached", timeout: 8000 });
+        }
+      });
+      console.log(`PASS language switch: ${viewport.name} ${route.path} (English ↔ French)`);
+    }
+  }
+}
+
 async function runTimingSmoke(browser, baseUrl) {
   await withAppPage(browser, baseUrl, VIEWPORTS[0], async (page) => {
     for (const route of TIMED_ROUTES) {
@@ -325,6 +365,7 @@ async function main() {
   const browser = await chromium.launch();
 
   try {
+    await runLanguageSwitchSmoke(browser, baseUrl);
     await runGuideNavigationSmoke(browser, baseUrl);
     await runChapterDiscoverySmoke(browser, baseUrl);
     await runRouteSmoke(browser, baseUrl);
