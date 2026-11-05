@@ -19,7 +19,7 @@ export const TOPICS: Record<string, Topic> = {
   "deepfakes": { chapter: 13, related: [14, 17, 18], title: "Deepfakes & Misinformation", blurb: "What the 2025 Canadian election data actually showed, the Bill C-16 gap, and the international comparison." },
   "privacy": { chapter: 10, related: [3, 18, 17], title: "AI, Privacy & Surveillance", blurb: "What AI systems collect and infer, workplace monitoring, facial recognition, AI companions, and Quebec’s Law 25." },
   "labour": { chapter: 16, related: [7, 15, 20], title: "AI, Jobs & the Canadian Economy", blurb: "What the evidence shows, what Acemoglu and Autor disagree about, and the Canadian empirical baseline." },
-  "governance": { chapter: 17, related: [18, 9, 19, 20], title: "How AI Is Governed in Canada", blurb: "The post-AIDA institutional reality: who regulates what across federal, provincial, and sectoral layers." },
+  "governance": { chapter: 17, related: [5, 18, 9, 19, 20], title: "How AI Is Governed in Canada", blurb: "The post-AIDA institutional reality: who regulates what across federal, provincial, and sectoral layers." },
 };
 
 export const TOPIC_LIST = Object.entries(TOPICS).map(([slug, t]) => ({ slug, ...t }));

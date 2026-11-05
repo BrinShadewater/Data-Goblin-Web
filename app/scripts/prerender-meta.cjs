@@ -174,16 +174,15 @@ function chapterBodyHtml(route, lang) {
   return b ? `<article data-prerender-body>${b}</article>` : "";
 }
 
-// /guide — the table of contents, built from book.json parts so crawlers see every
-// part, region, and chapter link, not just an empty index shell.
-function guideBodyHtml(lang) {
+// The guide and Map use the same regional chapter list from the localized book.
+function chapterListHtml(lang, includeBookends) {
   const dir = lang === "fr" ? path.join(DIST, "content", "fr") : path.join(DIST, "content");
   let b;
   try { b = JSON.parse(fs.readFileSync(path.join(dir, "book.json"), "utf8")); } catch { return ""; }
   const fr = lang === "fr";
   const pfx = fr ? "/fr" : "";
-  let h = b.subtitle ? `<p>${esc(b.subtitle)}</p>` : "";
-  if (b.frontMatter) {
+  let h = includeBookends && b.subtitle ? `<p>${esc(b.subtitle)}</p>` : "";
+  if (includeBookends && b.frontMatter) {
     h += `<p><a href="${pfx}/chapter/${b.frontMatter.number}">${esc(b.frontMatter.title)}</a></p>`;
   }
   for (const part of b.parts || []) {
@@ -197,7 +196,7 @@ function guideBodyHtml(lang) {
     }
     h += "</ul>";
   }
-  if (b.backMatter) {
+  if (includeBookends && b.backMatter) {
     h += `<p><a href="${pfx}/chapter/${b.backMatter.number}">${esc(b.backMatter.title)}</a></p>`;
   }
   return h ? `<nav data-prerender-body aria-label="${fr ? "Chapitres" : "Chapters"}">${h}</nav>` : "";
@@ -243,7 +242,7 @@ const TOPIC_CHAPTERS = {
   "deepfakes": [13, 14, 17, 18],
   "privacy": [10, 3, 18, 17],
   "labour": [16, 7, 15, 20],
-  "governance": [17, 18, 9, 19, 20],
+  "governance": [17, 5, 18, 9, 19, 20],
 };
 function bookChapterTitles(lang) {
   const dir = lang === "fr" ? path.join(DIST, "content", "fr") : path.join(DIST, "content");
@@ -271,12 +270,10 @@ function topicBodyHtml(route, lang) {
   return `<nav data-prerender-body aria-label="${esc(heading)}"><h2>${esc(heading)}</h2><ul>${items}</ul></nav>`;
 }
 
-// Dispatch a route to its body builder. Chapters, the guide TOC, the glossary, the
-// receipts ledger, and the topic hubs all get full inlined content; everything else
-// stays shell-only.
+// Dispatch a route to its body builder. Other routes use the metadata shell.
 function routeBodyHtml(route, lang) {
   if (/^\/chapter\/\d+$/.test(route)) return chapterBodyHtml(route, lang);
-  if (route === "/guide") return guideBodyHtml(lang);
+  if (route === "/guide" || route === "/map") return chapterListHtml(lang, route === "/guide");
   if (route === "/loot") return glossaryBodyHtml(lang);
   if (route === "/receipts") return receiptsBodyHtml(lang);
   if (/^\/topic\//.test(route)) return topicBodyHtml(route, lang);
@@ -327,7 +324,7 @@ function seoShell(route, h1, desc, lang) {
   const altLabel = lang === "fr" ? "English edition" : "Édition française";
   const navLabel = lang === "fr" ? "Navigation principale" : "Primary navigation";
   const body = routeBodyHtml(route, lang);
-  const readerFallback = route === "/guide" || /^\/chapter\/\d+$/.test(route) ? " data-reader-fallback" : "";
+  const readerFallback = route === "/guide" || route === "/map" || /^\/chapter\/\d+$/.test(route) ? " data-reader-fallback" : "";
   return `<div data-prerender-shell${readerFallback}><h1>${esc(h1)}</h1><p>${esc(desc)}</p><nav aria-label="${navLabel}">${nav}<a href="${altHref}">${esc(altLabel)}</a></nav>${body}</div>`;
 }
 
