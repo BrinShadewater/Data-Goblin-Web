@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "../i18nNav";
+import { Link } from "../i18nNav";
 import { useTheme } from "../ThemeContext";
 import { MONO, P, UI } from "../theme";
 import { savePanel } from "../pagination";
@@ -73,7 +73,6 @@ function TocItem({
 }) {
   const fresh = freshStatus(status, statusDate);
   const { c } = useTheme();
-  const navigate = useNavigate();
   const [hovered, setHovered] = useState(false);
   const navy = c(...P.navy);
   const navyDeep = c(...P.navyDeep);
@@ -83,10 +82,12 @@ function TocItem({
   const partLabel = c(...P.faint);
 
   return (
-    <button
-      onClick={() => {
+    <Link
+      to={`/chapter/${num}`}
+      aria-current={active ? "page" : undefined}
+      onClick={(event) => {
+        if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
         savePanel(num, 0);
-        navigate(`/chapter/${num}`);
         onNavigate?.();
       }}
       style={{
@@ -103,6 +104,7 @@ function TocItem({
         borderBottom: "none",
         cursor: "pointer",
         textAlign: "left",
+        textDecoration: "none",
         transition: "background 0.1s",
       }}
       onMouseEnter={() => setHovered(true)}
@@ -124,7 +126,7 @@ function TocItem({
         {title}
       </span>
       {fresh && <StatusBadge status={fresh} active={active} />}
-    </button>
+    </Link>
   );
 }
 

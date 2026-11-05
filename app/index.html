@@ -226,6 +226,18 @@
     <!-- The two faces above the fold, fetched without waiting for the CSS. -->
     <link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/source-serif-4-latin-normal-300-700.woff2" />
     <link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/playfair-display-latin-normal-400-900.woff2" />
+    <noscript>
+      <style>
+        [data-prerender-shell][data-reader-fallback] {
+          display: block !important;
+          max-width: 48rem;
+          margin: auto;
+          padding: 1.5rem;
+          line-height: 1.6;
+        }
+        [data-reader-fallback] nav a { margin-inline-end: 1em; }
+      </style>
+    </noscript>
     <style>
       html, body, #root { height: 100%; margin: 0; padding: 0; }
       html, body { overflow-x: hidden; }

@@ -183,6 +183,9 @@ function guideBodyHtml(lang) {
   const fr = lang === "fr";
   const pfx = fr ? "/fr" : "";
   let h = b.subtitle ? `<p>${esc(b.subtitle)}</p>` : "";
+  if (b.frontMatter) {
+    h += `<p><a href="${pfx}/chapter/${b.frontMatter.number}">${esc(b.frontMatter.title)}</a></p>`;
+  }
   for (const part of b.parts || []) {
     const label = [part.part, part.region].filter(Boolean).map(esc).join(" · ");
     if (label) h += `<h2>${label}</h2>`;
@@ -193,6 +196,9 @@ function guideBodyHtml(lang) {
       h += `<li><a href="${pfx}/chapter/${ch.number}">${esc(num)}: ${esc(t)}</a></li>`;
     }
     h += "</ul>";
+  }
+  if (b.backMatter) {
+    h += `<p><a href="${pfx}/chapter/${b.backMatter.number}">${esc(b.backMatter.title)}</a></p>`;
   }
   return h ? `<nav data-prerender-body aria-label="${fr ? "Chapitres" : "Chapters"}">${h}</nav>` : "";
 }
@@ -321,7 +327,8 @@ function seoShell(route, h1, desc, lang) {
   const altLabel = lang === "fr" ? "English edition" : "Édition française";
   const navLabel = lang === "fr" ? "Navigation principale" : "Primary navigation";
   const body = routeBodyHtml(route, lang);
-  return `<div data-prerender-shell><h1>${esc(h1)}</h1><p>${esc(desc)}</p><nav aria-label="${navLabel}">${nav}<a href="${altHref}">${esc(altLabel)}</a></nav>${body}</div>`;
+  const readerFallback = route === "/guide" || /^\/chapter\/\d+$/.test(route) ? " data-reader-fallback" : "";
+  return `<div data-prerender-shell${readerFallback}><h1>${esc(h1)}</h1><p>${esc(desc)}</p><nav aria-label="${navLabel}">${nav}<a href="${altHref}">${esc(altLabel)}</a></nav>${body}</div>`;
 }
 
 // Per-chapter Article JSON-LD. Each chapter route becomes independently
