@@ -18,7 +18,7 @@ const BUDGETS = {
   maxPublicArtRaw: 500 * 1024,
   maxResponsiveVariantRaw: 400 * 1024,
   totalOriginalPublicArtRaw: 16 * 1024 * 1024, // raised from 8: bilingual four-variant figure set now complete (light/dark x EN/FR; dark+FR variants count as originals, ~48 figures x 4) + 22 chapter covers. All lazy-loaded, no initial-load cost.
-  totalResponsiveVariantRaw: 5.0 * 1024 * 1024, // raised from 4.5: bilingual edition adds a French map + flag variant set
+  totalResponsiveVariantRaw: 5.1 * 1024 * 1024, // +0.1 MiB for two Chapter 5 cover variants (81,106 bytes); originals unchanged
   totalPublicArtRaw: 21 * 1024 * 1024, // raised from 13: tracks the originals bump above (complete bilingual figure set + chapter covers + responsive variants). All lazy-loaded.
 };
 

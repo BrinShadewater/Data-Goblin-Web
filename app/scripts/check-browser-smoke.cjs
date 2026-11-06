@@ -541,6 +541,41 @@ async function runMobileDrawerImageSmoke(browser, baseUrl) {
   }
 }
 
+async function runChapterCoverImageSmoke(browser, baseUrl) {
+  const cases = [
+    { name: "desktop", width: 1440, height: 900, dpr: 1, css: 250, candidate: "-250w" },
+    { name: "mobile", width: 390, height: 844, dpr: 3, css: 170, candidate: "-510w" },
+    { name: "tablet", width: 900, height: 1100, dpr: 2, css: 220, candidate: "-510w" },
+    { name: "desktop-high-dpr", width: 1440, height: 900, dpr: 4, css: 250, candidate: "" },
+  ];
+  for (const fixture of cases) for (const prefix of ["", "/fr"]) {
+    const context = await browser.newContext({ viewport: { width: fixture.width, height: fixture.height }, deviceScaleFactor: fixture.dpr });
+    try {
+      await context.addInitScript((consent) => localStorage.setItem("data-goblin-cookie-consent", JSON.stringify(consent)), CONSENT);
+      const page = await context.newPage();
+      const requests = [], errors = [];
+      page.on("pageerror", (e) => errors.push(e.message));
+      page.on("request", (r) => { if (r.resourceType() === "image" && r.url().includes("/ch5-cover-medium")) requests.push(r.url()); });
+      await page.goto(`${baseUrl}${prefix}/chapter/5`, { waitUntil: "networkidle" });
+      const cover = page.locator('img[src$="/ch5-cover-medium.webp"]');
+      await cover.waitFor({ state: "visible" });
+      const info = await cover.evaluate((img) => ({ src: img.currentSrc, set: img.srcset, sizes: img.sizes, alt: img.getAttribute("alt"), hidden: img.getAttribute("aria-hidden"), loaded: img.complete && img.naturalWidth > 0, width: img.getBoundingClientRect().width, height: img.getBoundingClientRect().height }));
+      assert(info.loaded, "Chapter cover failed to load.");
+      assert(info.src.endsWith(`/ch5-cover-medium${fixture.candidate}.webp`), `Wrong cover candidate: ${info.src}`);
+      assert(info.set.includes("/ch5-cover-medium.webp 880w") && !info.set.includes("-880w.webp"), "Cover original-width fallback is invalid.");
+      assert(info.sizes === `${fixture.css}px` && Math.abs(info.width - fixture.css) < 1 && Math.abs(info.height - fixture.css) < 1, "Cover sizes or rendered dimensions changed.");
+      assert(info.alt === "" && info.hidden === "true", "Decorative cover accessibility changed.");
+      assert(requests.length === 1 && requests[0] === info.src, "Cover downloaded duplicate or unused candidates.");
+      assert(errors.length === 0, `Page errors: ${errors.join("; ")}`);
+      if (process.env.COVER_IMAGE_SCREENSHOTS && ["desktop", "mobile"].includes(fixture.name)) {
+        fs.mkdirSync(process.env.COVER_IMAGE_SCREENSHOTS, { recursive: true });
+        await page.screenshot({ path: path.join(process.env.COVER_IMAGE_SCREENSHOTS, `${fixture.name}-${prefix ? "fr" : "en"}.png`) });
+      }
+      console.log(`PASS chapter cover: ${fixture.name} ${prefix || "English"}`);
+    } finally { await context.close(); }
+  }
+}
+
 async function runHeroImageRequestsSmoke(browser, baseUrl) {
   for (const viewport of VIEWPORTS.filter(({ name }) => name !== "tablet")) {
     for (const prefix of ["", "/fr"]) {
@@ -586,6 +621,7 @@ async function main() {
 
   try {
     await runHeroImageRequestsSmoke(browser, baseUrl);
+    await runChapterCoverImageSmoke(browser, baseUrl);
     await runMobileDrawerImageSmoke(browser, baseUrl);
     await runLanguageSwitchSmoke(browser, baseUrl);
     await runMobileDrawerKeyboardSmoke(browser, baseUrl);
