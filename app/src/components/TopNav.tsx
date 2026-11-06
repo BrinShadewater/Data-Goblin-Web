@@ -406,8 +406,8 @@ export function TopNav({
         {logo}
         <button
           onClick={onMenu}
-          aria-label="Open menu"
-          title="Open menu"
+          aria-label={tr("Open menu")}
+          title={tr("Open menu")}
           style={{
             display: "flex",
             alignItems: "center",

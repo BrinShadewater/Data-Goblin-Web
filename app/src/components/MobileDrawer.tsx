@@ -106,7 +106,7 @@ export function MobileDrawer({ open, onClose }: { open: boolean; onClose: () => 
           </div>
           <button
             onClick={onClose}
-            aria-label="Close menu"
+            aria-label={tr("Close menu")}
             style={{ display: "flex", alignItems: "center", justifyContent: "center", width: "44px", height: "44px", background: "none", border: "none", cursor: "pointer", color: muted }}
           >
             <X size={22} />
