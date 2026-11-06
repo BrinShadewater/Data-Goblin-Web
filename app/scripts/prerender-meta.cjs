@@ -316,7 +316,7 @@ function routeBodyHtml(route, lang) {
 // near-invisible (same image URL, same layout). EN only; FR keeps the light
 // crawler shell. Styling lives in index.html critical CSS (.dg-* classes).
 function homeHeroHtml() {
-  const nav = NAV_EN.map(([href, label]) => `<a href="${href}">${esc(label)}</a>`).join("") + `<a href="/fr">Édition française</a>`;
+  const nav = NAV_EN.map(([href, label]) => `<a href="${href}">${esc(label)}</a>`).join("") + `<a href="/fr" hreflang="fr-CA" lang="fr-CA">Édition française</a>`;
   const flagSet = "/art/panels/canada-flag-panel-640w.webp 640w, /art/panels/canada-flag-panel-960w.webp 960w, /art/panels/canada-flag-panel.webp 1024w";
   const heroSet = "/art/panels/hero-panel-640w.webp 640w, /art/panels/hero-panel-960w.webp 960w, /art/panels/hero-panel.webp 1024w";
   return `<div data-prerender-hero>` +
@@ -348,9 +348,10 @@ function seoShell(route, h1, desc, lang) {
   const nav = (lang === "fr" ? NAV_FR : NAV_EN).map(([href, label]) => `<a href="${href}">${esc(label)}</a>`).join("");
   const altHref = lang === "fr" ? (route || "/") : "/fr" + route;
   const altLabel = lang === "fr" ? "English edition" : "Édition française";
+  const altLanguage = lang === "fr" ? "en-CA" : "fr-CA";
   const navLabel = lang === "fr" ? "Navigation principale" : "Primary navigation";
   const body = routeBodyHtml(route, lang);
-  return `<div data-prerender-shell><h1>${esc(h1)}</h1><p>${esc(desc)}</p><nav aria-label="${navLabel}">${nav}<a href="${altHref}">${esc(altLabel)}</a></nav>${body}</div>`;
+  return `<div data-prerender-shell><h1>${esc(h1)}</h1><p>${esc(desc)}</p><nav aria-label="${navLabel}">${nav}<a href="${altHref}" hreflang="${altLanguage}" lang="${altLanguage}">${esc(altLabel)}</a></nav>${body}</div>`;
 }
 
 // Per-chapter Article JSON-LD. Each chapter route becomes independently
