@@ -1,15 +1,17 @@
-"""Check required sitemap URLs, language metadata, and static link reachability."""
+"""Check required sitemap URLs, language metadata, and built links."""
 
 import argparse
 from collections import defaultdict
 from html.parser import HTMLParser
 from pathlib import Path
+import re
 import sys
-from urllib.parse import urljoin, urlsplit
+from urllib.parse import unquote, urljoin, urlsplit
 import xml.etree.ElementTree as ET
 
 
 SITE_ORIGIN = "https://datagoblin.ca"
+PADDED_CHAPTER = re.compile(r"(/(?:fr/)?chapter/)0+(2[0-2]|1[0-9]|[0-9])")
 
 
 def is_french(path):
@@ -25,6 +27,7 @@ class PageLinks(HTMLParser):
         self.canonicals = []
         self.links = []
         self.anchors = []
+        self.fragment_targets = set()
         self.base_href = None
 
     def handle_starttag(self, tag, attrs):
@@ -32,22 +35,25 @@ class PageLinks(HTMLParser):
             self.template_depth += 1
         if self.template_depth:
             return
+        attributes = dict(attrs)
+        if identifier := attributes.get("id"):
+            self.fragment_targets.add(identifier)
         if tag == "head":
             self.in_head = True
         elif tag == "body":
             self.in_body = True
         elif tag == "base" and self.in_head and self.base_href is None:
-            self.base_href = dict(attrs).get("href")
+            self.base_href = attributes.get("href")
         elif tag == "link" and self.in_head:
-            link = dict(attrs)
+            link = attributes
             if "canonical" in (link.get("rel") or "").lower().split():
                 self.canonicals.append(link.get("href"))
             self.links.append(link)
         elif tag == "a" and self.in_body:
-            anchor = dict(attrs)
-            href = (anchor.get("href") or "").strip()
-            if href and "nofollow" not in (anchor.get("rel") or "").lower().split():
-                self.anchors.append(href)
+            if name := attributes.get("name"):
+                self.fragment_targets.add(name)
+            if href := (attributes.get("href") or "").strip():
+                self.anchors.append((href, attributes))
 
     def handle_endtag(self, tag):
         if tag == "template" and self.template_depth:
@@ -121,7 +127,9 @@ def check_reachability(entries, pages):
     for url, page in pages.items():
         base = urljoin(url, page.base_href or "")
         targets = set()
-        for href in page.anchors:
+        for href, attributes in page.anchors:
+            if "nofollow" in (attributes.get("rel") or "").lower().split():
+                continue
             target = urlsplit(urljoin(base, href))
             if (target.scheme, target.netloc) == ("https", "datagoblin.ca"):
                 targets.add(SITE_ORIGIN + (target.path.rstrip("/") or "/"))
@@ -149,6 +157,43 @@ def check_reachability(entries, pages):
     return errors
 
 
+def check_link_integrity(dist, pages):
+    errors = []
+    count = 0
+    for source, page in pages.items():
+        base = urljoin(source, page.base_href or "")
+        for href, attributes in page.anchors:
+            target = urlsplit(urljoin(base, href))
+            if target.hostname != "datagoblin.ca" or target.scheme not in ("http", "https"):
+                continue
+            count += 1
+            path = unquote(target.path).rstrip("/") or "/"
+            label = f"{source}: href {href!r}"
+            alias = PADDED_CHAPTER.fullmatch(path)
+            if alias:
+                errors.append(f"{label} uses a chapter redirect. Link directly to {alias[1]}{alias[2]}.")
+                continue
+            if target.scheme != "https":
+                errors.append(f"{label} uses HTTP. Link directly to HTTPS.")
+            destination = pages.get(SITE_ORIGIN + path)
+            if destination is None:
+                # Downloads and other public files can be valid without a sitemap entry.
+                file = (dist / unquote(target.path).lstrip("/")).resolve()
+                if not file.is_relative_to(dist) or not file.is_file():
+                    errors.append(f"{label} points to a missing built destination.")
+                continue
+
+            if is_french(urlsplit(source).path) != is_french(path):
+                expected_language = "fr-ca" if is_french(path) else "en-ca"
+                if (attributes.get("hreflang") or "").lower() != expected_language:
+                    errors.append(f"{label} crosses editions without hreflang={expected_language}.")
+            fragment = unquote(target.fragment.split(":~:", 1)[0])
+            if fragment and fragment.lower() != "top" and fragment not in destination.fragment_targets:
+                errors.append(f"{label} points to missing fragment {fragment!r}.")
+    print(f"Checked {count} internal links across {len(pages)} built sitemap pages.")
+    return list(dict.fromkeys(errors))
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("sitemap", type=Path)
@@ -156,6 +201,8 @@ def main():
     parser.add_argument("--check-language-metadata", action="store_true")
     parser.add_argument("--check-reachability", action="store_true",
                         help="Follow same-edition links in the built HTML from each homepage.")
+    parser.add_argument("--check-link-integrity", action="store_true",
+                        help="Check built destinations, fragments, language and known redirects.")
     args = parser.parse_args()
 
     try:
@@ -174,14 +221,17 @@ def main():
                     duplicates.add(url)
                 entries[url] = entry
         errors = []
-        if args.check_language_metadata or args.check_reachability:
+        dist = args.sitemap.resolve().parent
+        if args.check_language_metadata or args.check_reachability or args.check_link_integrity:
             errors = [f"Duplicate sitemap URL: {url}" for url in sorted(duplicates)]
-            pages, page_errors = read_built_pages(args.sitemap.resolve().parent, entries)
+            pages, page_errors = read_built_pages(dist, entries)
             errors.extend(page_errors)
         if args.check_language_metadata:
             errors.extend(check_language_metadata(entries, pages))
         if args.check_reachability:
             errors.extend(check_reachability(entries, pages))
+        if args.check_link_integrity:
+            errors.extend(check_link_integrity(dist, pages))
     except (OSError, ValueError, ET.ParseError) as exc:
         sys.exit(f"Could not check sitemap completeness: {exc}")
 
