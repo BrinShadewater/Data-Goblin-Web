@@ -494,6 +494,41 @@ async function runGovernanceSummarySmoke(browser, baseUrl) {
   }
 }
 
+async function runHeroImageRequestsSmoke(browser, baseUrl) {
+  for (const viewport of VIEWPORTS.filter(({ name }) => name !== "tablet")) {
+    for (const prefix of ["", "/fr"]) {
+      for (const route of ["", "/about", "/chapter/5"]) {
+        const context = await browser.newContext({
+          viewport: { width: viewport.width, height: viewport.height },
+          deviceScaleFactor: viewport.name === "mobile" ? 3 : 1,
+          reducedMotion: "reduce",
+        });
+        try {
+          const page = await context.newPage();
+          const images = [];
+          page.on("request", (request) => {
+            if (request.resourceType() === "image" && /\/hero-panel(?:-\d+w)?\.webp/.test(request.url())) images.push(request.url());
+          });
+          await page.goto(`${baseUrl}${prefix}${route || "/"}`, { waitUntil: "networkidle" });
+          if (route === "/chapter/5") {
+            assert(images.length === 0, `Reader downloaded unused hero: ${images.join(", ")}`);
+          } else {
+            const hero = page.locator('img[src$="/hero-panel.webp"]');
+            await hero.waitFor({ state: "visible" });
+            const markup = await hero.evaluate((img) => ({ src: img.currentSrc, set: img.srcset, sizes: img.sizes }));
+            const preloads = page.locator('link[rel="preload"][as="image"][href*="hero-panel"]');
+            assert(await preloads.count() === 1, "Expected exactly one route-specific hero preload.");
+            assert(await preloads.getAttribute("imagesrcset") === markup.set, "Hero preload candidates differ from rendered image.");
+            assert(await preloads.getAttribute("imagesizes") === markup.sizes, "Hero preload sizes differ from rendered image.");
+            assert(images.length === 1 && images[0] === markup.src, `Hero must download one matching candidate: ${images.join(", ")}`);
+          }
+          console.log(`PASS hero requests: ${viewport.name} ${prefix}${route || "/"}`);
+        } finally { await context.close(); }
+      }
+    }
+  }
+}
+
 async function main() {
   assert(fs.existsSync(path.join(distDir, "index.html")), "dist/index.html not found. Run npm run build first.");
   const server = createServer();
@@ -503,6 +538,7 @@ async function main() {
   const browser = await chromium.launch();
 
   try {
+    await runHeroImageRequestsSmoke(browser, baseUrl);
     await runLanguageSwitchSmoke(browser, baseUrl);
     await runMobileDrawerKeyboardSmoke(browser, baseUrl);
     await runMapToReaderKeyboardSmoke(browser, baseUrl);

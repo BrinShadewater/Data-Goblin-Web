@@ -317,8 +317,8 @@ function routeBodyHtml(route, lang) {
 // crawler shell. Styling lives in index.html critical CSS (.dg-* classes).
 function homeHeroHtml() {
   const nav = NAV_EN.map(([href, label]) => `<a href="${href}">${esc(label)}</a>`).join("") + `<a href="/fr" hreflang="fr-CA" lang="fr-CA">Édition française</a>`;
-  const flagSet = "/art/panels/canada-flag-panel-640w.webp 640w, /art/panels/canada-flag-panel-960w.webp 960w, /art/panels/canada-flag-panel.webp 1024w";
-  const heroSet = "/art/panels/hero-panel-640w.webp 640w, /art/panels/hero-panel-960w.webp 960w, /art/panels/hero-panel.webp 1024w";
+  const flagSet = "/art/panels/canada-flag-panel-400w.webp 400w, /art/panels/canada-flag-panel-640w.webp 640w, /art/panels/canada-flag-panel-960w.webp 960w, /art/panels/canada-flag-panel.webp 1024w";
+  const heroSet = HERO_SRCSET;
   return `<div data-prerender-hero>` +
     `<nav class="dg-srnav" aria-label="Primary navigation">${nav}</nav>` +
     `<div class="dg-topbar"></div>` +
@@ -446,16 +446,19 @@ function render(route, h1, fullTitle, desc, lang) {
   // 2026-09-05: LCP 4.8 s with the image request starting ~2 s in. Same srcset/sizes as
   // LandingHero, so the browser reuses the fetch rather than downloading a second candidate.
   if (route === "" || route === "/about") {
-    h = h.replace("</head>", `${HERO_PRELOAD}\n  </head>`);
+    h = h.replace("</head>", `${heroPreload(route)}\n  </head>`);
   }
   return h;
 }
 
-const HERO_PRELOAD =
-  '<link rel="preload" as="image" fetchpriority="high" ' +
-  'href="/art/panels/hero-panel-960w.webp" ' +
-  'imagesrcset="/art/panels/hero-panel-480w.webp 480w, /art/panels/hero-panel-640w.webp 640w, /art/panels/hero-panel-720w.webp 720w, /art/panels/hero-panel-960w.webp 960w, /art/panels/hero-panel.webp 1024w" ' +
-  'imagesizes="(max-width: 720px) 92vw, (max-width: 1100px) 46vw, 650px" />';
+const HERO_SRCSET = "/art/panels/hero-panel-480w.webp 480w, /art/panels/hero-panel-640w.webp 640w, /art/panels/hero-panel-720w.webp 720w, /art/panels/hero-panel-960w.webp 960w, /art/panels/hero-panel.webp 1024w";
+function heroPreload(route) {
+  const sizes = route === "/about" ? "(max-width: 760px) 92vw, 520px"
+    : "(max-width: 720px) 92vw, (max-width: 1100px) 46vw, 650px";
+  return '<link rel="preload" as="image" fetchpriority="high" ' +
+    'href="/art/panels/hero-panel-960w.webp" ' +
+    `imagesrcset="${HERO_SRCSET}" imagesizes="${sizes}" />`;
+}
 
 function write(relPath, html) {
   const dir = path.join(DIST, relPath);
