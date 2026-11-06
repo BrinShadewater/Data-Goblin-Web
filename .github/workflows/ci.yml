@@ -41,4 +41,4 @@ jobs:
       - name: Check rendered page titles
         run: python -X utf8 scripts/check-built-titles.py dist
       - name: Check sitemap completeness
-        run: python -X utf8 scripts/check-sitemap-completeness.py dist/sitemap.xml scripts/expected-sitemap-urls.txt --check-language-metadata
+        run: python -X utf8 scripts/check-sitemap-completeness.py dist/sitemap.xml scripts/expected-sitemap-urls.txt --check-language-metadata --check-reachability
