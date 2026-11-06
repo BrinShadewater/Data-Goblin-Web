@@ -325,6 +325,75 @@ async function runLanguageSwitchSmoke(browser, baseUrl) {
   }
 }
 
+async function runMapToReaderKeyboardSmoke(browser, baseUrl) {
+  for (const viewport of VIEWPORTS.filter(({ name }) => name !== "tablet")) {
+    for (const prefix of ["", "/fr"]) {
+      await withAppPage(browser, baseUrl, viewport, async (page) => {
+        await page.goto(`${baseUrl}${prefix}/map`);
+        const target = `${prefix}/chapter/5`;
+        const link = page.locator(`#dg-main a[href="${target}"]`);
+        await link.waitFor({ state: "visible" });
+        const focused = () => link.evaluate((el) => el === document.activeElement);
+        for (let step = 0; step < 35 && !(await focused()); step++) {
+          await page.keyboard.press("Tab");
+        }
+        assert(await focused(), "Chapter 5 on the Map is unreachable by Tab.");
+        await page.keyboard.press("Enter");
+        await page.waitForURL(`${baseUrl}${target}`);
+        await page.waitForFunction(() => document.activeElement?.matches("main#dg-main"),
+          null, { timeout: 5000 });
+        const reader = page.locator("main#dg-main");
+        assert(await reader.getByRole("heading", {
+          level: 1,
+          name: prefix ? /histoire.*IA.*Canada/i : /Canada.*AI Story/i,
+        }).isVisible(), "Focus reached the reader before its chapter content appeared.");
+        await page.keyboard.press("Tab");
+        assert(await reader.evaluate((el) => el.contains(document.activeElement)),
+          "Tab after arrival should continue inside the chapter.");
+      });
+      console.log(`PASS Map-to-reader keyboard focus: ${viewport.name} ${prefix || "English"}`);
+    }
+  }
+}
+
+async function runMobileDrawerKeyboardSmoke(browser, baseUrl) {
+  const viewport = VIEWPORTS.find(({ name }) => name === "mobile");
+  for (const prefix of ["", "/fr"]) {
+    await withAppPage(browser, baseUrl, viewport, async (page) => {
+      await page.goto(`${baseUrl}${prefix}/chapter/5`);
+      const menu = page.getByRole("button", { name: "Open menu", exact: true });
+      const drawer = page.getByRole("dialog", { name: "Menu", exact: true });
+      const close = drawer.getByRole("button", { name: "Close menu", exact: true });
+      const focused = (locator) => locator.evaluate((el) => el === document.activeElement);
+      await menu.waitFor({ state: "visible" });
+      for (let step = 0; step < 12 && !(await focused(menu)); step++) {
+        await page.keyboard.press("Tab");
+      }
+      assert(await focused(menu), "The menu button is unreachable by Tab.");
+
+      await page.keyboard.press("Space");
+      await close.waitFor({ state: "visible" });
+      await page.waitForFunction(() => document.activeElement?.matches(
+        '[role="dialog"][aria-label="Menu"] button[aria-label="Close menu"]'
+      ), null, { timeout: 3000 });
+      await page.keyboard.press("Tab");
+      assert(await drawer.evaluate((el) => el.contains(document.activeElement)),
+        "Tab reached the page behind the open drawer.");
+      await page.keyboard.press("Shift+Tab");
+      assert(await focused(close), "Shift+Tab did not return to the close button.");
+      await page.keyboard.press("Shift+Tab");
+      assert(await drawer.evaluate((el) => el.contains(document.activeElement)) && !(await focused(close)),
+        "Shift+Tab did not wrap to the end of the drawer.");
+      await page.keyboard.press("Tab");
+      assert(await focused(close), "Tab did not wrap to the close button.");
+      await page.keyboard.press("Escape");
+      await drawer.waitFor({ state: "hidden" });
+      assert(await focused(menu), "Escape must return focus to the menu button.");
+    });
+    console.log(`PASS mobile drawer keyboard focus: ${prefix || "English"}`);
+  }
+}
+
 async function runTimingSmoke(browser, baseUrl) {
   await withAppPage(browser, baseUrl, VIEWPORTS[0], async (page) => {
     for (const route of TIMED_ROUTES) {
@@ -397,6 +466,8 @@ async function main() {
 
   try {
     await runLanguageSwitchSmoke(browser, baseUrl);
+    await runMobileDrawerKeyboardSmoke(browser, baseUrl);
+    await runMapToReaderKeyboardSmoke(browser, baseUrl);
     await runGuideNavigationSmoke(browser, baseUrl);
     await runChapterDiscoverySmoke(browser, baseUrl);
     await runGovernanceSummarySmoke(browser, baseUrl);
