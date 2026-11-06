@@ -1,6 +1,6 @@
 import { Bookmark as BookmarkIcon, Moon, Sun, X } from "lucide-react";
 import { useLocation } from "react-router";
-import { useNavigate } from "../i18nNav";
+import { Link, useNavigate } from "../i18nNav";
 import { useTheme } from "../ThemeContext";
 import { useReader } from "../reader";
 import { useLanguage } from "../LanguageContext";
@@ -128,7 +128,6 @@ export function MobileDrawerToggles() {
 
 export function MobileNavLinks({ onNavigate }: { onNavigate: () => void }) {
   const { c } = useTheme();
-  const navigate = useNavigate();
   const location = useLocation();
   const green = c(...P.green);
   const body = c(...P.body);
@@ -138,14 +137,16 @@ export function MobileNavLinks({ onNavigate }: { onNavigate: () => void }) {
       {NAV_ITEMS.map((item) => {
         const active = isNavActive(location.pathname, item);
         return (
-          <button
+          <Link
             key={item.to}
-            onClick={() => {
-              navigate(item.to);
+            to={item.to}
+            onClick={(event) => {
+              if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
               onNavigate();
             }}
             style={{
               display: "flex",
+              boxSizing: "border-box",
               alignItems: "center",
               gap: "10px",
               width: "100%",
@@ -160,13 +161,14 @@ export function MobileNavLinks({ onNavigate }: { onNavigate: () => void }) {
               fontWeight: active ? 700 : 500,
               letterSpacing: "0.06em",
               textTransform: "uppercase",
+              textDecoration: "none",
               color: active ? green : body,
               textAlign: "left",
             }}
           >
             <NavIcon name={item.icon} size={TOKENS.icon.mobileDrawerNav} />
             {tr(item.label)}
-          </button>
+          </Link>
         );
       })}
     </>

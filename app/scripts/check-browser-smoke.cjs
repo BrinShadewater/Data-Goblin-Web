@@ -238,7 +238,7 @@ async function runGuideNavigationSmoke(browser, baseUrl) {
         await withAppPage(browser, baseUrl, viewport, async (page) => {
           await page.goto(`${baseUrl}${prefix}/guide`);
           if (javaScriptEnabled && viewport.name === "mobile") {
-            await page.getByRole("button", { name: "Open menu", exact: true }).click();
+            await page.getByRole("button", { name: prefix ? "Ouvrir le menu" : "Open menu", exact: true }).click();
           }
           const link = page.getByRole("link", { name: title });
           assert(await link.getAttribute("href") === target, `${scenario}: Chapter 3 points to the wrong URL.`);
@@ -306,7 +306,7 @@ async function runLanguageSwitchSmoke(browser, baseUrl) {
           const previousLanguage = language === "fr" ? "en" : "fr";
           const previousPath = previousLanguage === "fr" ? `/fr${route.path}` : route.path;
           const target = language === "fr" ? `/fr${route.path}` : route.path;
-          if (mobile) await page.getByRole("button", { name: "Open menu", exact: true }).click();
+          if (mobile) await page.getByRole("button", { name: previousLanguage === "fr" ? "Ouvrir le menu" : "Open menu", exact: true }).click();
           const controls = mobile ? page.getByRole("dialog", { name: "Menu" }) : page.getByRole("group", { name: "Language", exact: true });
           const current = controls.getByRole("button", { name: buttons[previousLanguage], pressed: true });
           await current.waitFor({ timeout: 8000 });
@@ -361,9 +361,10 @@ async function runMobileDrawerKeyboardSmoke(browser, baseUrl) {
   for (const prefix of ["", "/fr"]) {
     await withAppPage(browser, baseUrl, viewport, async (page) => {
       await page.goto(`${baseUrl}${prefix}/chapter/5`);
-      const menu = page.getByRole("button", { name: "Open menu", exact: true });
+      const menu = page.getByRole("button", { name: prefix ? "Ouvrir le menu" : "Open menu", exact: true });
       const drawer = page.getByRole("dialog", { name: "Menu", exact: true });
-      const close = drawer.getByRole("button", { name: "Close menu", exact: true });
+      const closeName = prefix ? "Fermer le menu" : "Close menu";
+      const close = drawer.getByRole("button", { name: closeName, exact: true });
       const focused = (locator) => locator.evaluate((el) => el === document.activeElement);
       await menu.waitFor({ state: "visible" });
       for (let step = 0; step < 12 && !(await focused(menu)); step++) {
@@ -373,9 +374,9 @@ async function runMobileDrawerKeyboardSmoke(browser, baseUrl) {
 
       await page.keyboard.press("Space");
       await close.waitFor({ state: "visible" });
-      await page.waitForFunction(() => document.activeElement?.matches(
-        '[role="dialog"][aria-label="Menu"] button[aria-label="Close menu"]'
-      ), null, { timeout: 3000 });
+      await page.waitForFunction((name) => document.activeElement?.matches(
+        `[role="dialog"] button[aria-label="${name}"]`
+      ), closeName, { timeout: 3000 });
       await page.keyboard.press("Tab");
       assert(await drawer.evaluate((el) => el.contains(document.activeElement)),
         "Tab reached the page behind the open drawer.");
@@ -389,6 +390,18 @@ async function runMobileDrawerKeyboardSmoke(browser, baseUrl) {
       await page.keyboard.press("Escape");
       await drawer.waitFor({ state: "hidden" });
       assert(await focused(menu), "Escape must return focus to the menu button.");
+
+      await menu.press("Enter");
+      await close.click();
+      await drawer.waitFor({ state: "hidden" });
+      assert(await focused(menu), "The close button must return focus to the menu button.");
+
+      await menu.press("Enter");
+      const map = drawer.getByRole("link", { name: prefix ? "Carte" : "Map", exact: true });
+      assert(await map.getAttribute("href") === `${prefix}/map`, "The Map link must use the current language.");
+      await map.press("Enter");
+      await page.waitForURL(`${baseUrl}${prefix}/map`);
+      await drawer.waitFor({ state: "hidden" });
     });
     console.log(`PASS mobile drawer keyboard focus: ${prefix || "English"}`);
   }
