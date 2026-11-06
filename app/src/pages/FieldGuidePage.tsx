@@ -1,5 +1,6 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { X } from "lucide-react";
+import { useLocation, useNavigationType } from "react-router";
 import { useTheme } from "../ThemeContext";
 import { useReader } from "../reader";
 import { BODY, MONO, P, RADIUS } from "../theme";
@@ -60,6 +61,19 @@ export function FieldGuidePage() {
   const { onTouchStart, onTouchEnd } = useSwipePaging({ goNext, goPrev });
   const { toolsOpen, setToolsOpen } = useToolsSheet(num);
   const toolsTrapRef = useFocusTrap<HTMLDivElement>(toolsOpen, () => setToolsOpen(false));
+  const readingAreaRef = useRef<HTMLElement>(null);
+  const focusedEntry = useRef<string | null>(null);
+  const location = useLocation();
+  const navigationType = useNavigationType();
+  const focusReader = location.state?.focusReader === true;
+  const chapterReady = chapter?.number === num && !!panels;
+
+  useEffect(() => {
+    if (!focusReader || navigationType !== "PUSH" || !chapterReady || focusedEntry.current === location.key) return;
+    focusedEntry.current = location.key;
+    // Leave focus alone if the reader already moved it while the chapter loaded.
+    if (document.activeElement === document.body) readingAreaRef.current?.focus({ preventScroll: true });
+  }, [focusReader, navigationType, chapterReady, location.key]);
 
   useEffect(() => {
     if (!chapter) return;
@@ -133,6 +147,7 @@ export function FieldGuidePage() {
         {pageLiveRegion}
         <main
           id="dg-main"
+          ref={readingAreaRef}
           tabIndex={-1}
           aria-label={chapter ? trf("{chapter} — reading area", { chapter: chapter.title.split(" — ")[0] }) : tr("Reading area")}
           onTouchStart={onTouchStart}
@@ -303,6 +318,7 @@ export function FieldGuidePage() {
 
       <main
         id="dg-main"
+        ref={readingAreaRef}
           tabIndex={-1}
         aria-label={chapter ? trf("{chapter} — reading area", { chapter: chapter.title.split(" — ")[0] }) : tr("Reading area")}
         style={{

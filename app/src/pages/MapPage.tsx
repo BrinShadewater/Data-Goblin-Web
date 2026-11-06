@@ -80,6 +80,7 @@ export function MapPage() {
                   <Link
                     key={ch.number}
                     to={`/chapter/${ch.number}`}
+                    state={{ focusReader: true }}
                     className="gob-link"
                     style={{ display: "flex", gap: "8px", alignItems: "baseline", padding: "7px 0", textAlign: "left", width: "100%" }}
                   >

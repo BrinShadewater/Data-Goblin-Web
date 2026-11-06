@@ -21,7 +21,8 @@ import { DrawerSectionLabel, MobileBookmarks, MobileDrawerToggles, MobileNavLink
  * and a role="dialog" aria-modal into the tree, so keyboard users tabbed
  * through an invisible menu. `visibility: hidden` takes the whole subtree out
  * of the tab order and the accessibility tree; unmounting would kill the slide.
- * Focus is trapped while open, which also supplies the Escape handler.
+ * Make the panel visible in the same render that activates the focus trap.
+ * During the closing animation, inert takes it out of the tab order immediately.
  */
 export function MobileDrawer({ open, onClose }: { open: boolean; onClose: () => void }) {
   const { c } = useTheme();
@@ -77,6 +78,7 @@ export function MobileDrawer({ open, onClose }: { open: boolean; onClose: () => 
         role="dialog"
         aria-modal="true"
         aria-label="Menu"
+        inert={!open}
         style={{
           position: "fixed",
           top: 0,
@@ -87,7 +89,7 @@ export function MobileDrawer({ open, onClose }: { open: boolean; onClose: () => 
           borderRight: `1px solid ${border}`,
           zIndex: 200,
           transform: open ? "translateX(0)" : "translateX(-105%)",
-          visibility: visible ? "visible" : "hidden",
+          visibility: open || visible ? "visible" : "hidden",
           transition: "transform 0.25s ease",
           display: "flex",
           flexDirection: "column",
