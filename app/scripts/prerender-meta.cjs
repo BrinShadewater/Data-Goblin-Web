@@ -115,8 +115,8 @@ const esc = (s) => s.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g
 
 // Primary navigation rendered into the crawlable shell. This is the internal-link
 // surface non-JS crawlers (and AI engines) see; React replaces #root on mount.
-const NAV_EN = [["/", "Home"], ["/guide", "The Field Guide"], ["/chapter/1", "Start reading"], ["/map", "Map"], ["/loot", "Glossary"], ["/receipts", "Receipts"], ["/toolkit", "Toolkit"], ["/about", "About"], ["/contribute", "Contribute"]];
-const NAV_FR = [["/fr", "Accueil"], ["/fr/guide", "Le guide de terrain"], ["/fr/chapter/1", "Commencer la lecture"], ["/fr/map", "Carte"], ["/fr/loot", "Glossaire"], ["/fr/receipts", "Reçus"], ["/fr/toolkit", "Boîte à outils"], ["/fr/about", "À propos"], ["/fr/contribute", "Contribuer"]];
+const NAV_EN = [["/", "Home"], ["/guide", "The Field Guide"], ["/chapter/1", "Start reading"], ["/map", "Map"], ["/loot", "Glossary"], ["/receipts", "Receipts"], ["/toolkit", "Toolkit"], ["/about", "About"], ["/contribute", "Contribute"], ["/privacy", "Privacy"], ["/updates", "Updates"]];
+const NAV_FR = [["/fr", "Accueil"], ["/fr/guide", "Le guide de terrain"], ["/fr/chapter/1", "Commencer la lecture"], ["/fr/map", "Carte"], ["/fr/loot", "Glossaire"], ["/fr/receipts", "Reçus"], ["/fr/toolkit", "Boîte à outils"], ["/fr/about", "À propos"], ["/fr/contribute", "Contribuer"], ["/fr/privacy", "Confidentialité"], ["/fr/updates", "Mises à jour"]];
 
 // ---- Chapter body inliner ----
 // Render the full chapter text into the crawlable shell so non-JS crawlers and AI
@@ -271,9 +271,20 @@ function topicBodyHtml(route, lang) {
 }
 
 // Dispatch a route to its body builder. Other routes use the metadata shell.
+function topicListHtml(lang) {
+  const fr = lang === "fr";
+  const heading = fr ? "Parcourir par sujet" : "Browse by topic";
+  const prefix = fr ? "/fr" : "";
+  const links = TOPICS.map(([slug, en, , french]) =>
+    `<li><a href="${prefix}/topic/${slug}">${esc(fr ? french : en)}</a></li>`
+  ).join("");
+  return `<nav aria-label="${heading}"><h2>${heading}</h2><ul>${links}</ul></nav>`;
+}
+
 function routeBodyHtml(route, lang) {
   if (/^\/chapter\/\d+$/.test(route)) return chapterBodyHtml(route, lang);
-  if (route === "/guide" || route === "/map") return chapterListHtml(lang, route === "/guide");
+  if (route === "/guide") return chapterListHtml(lang, true);
+  if (route === "/map") return chapterListHtml(lang, false) + topicListHtml(lang);
   if (route === "/loot") return glossaryBodyHtml(lang);
   if (route === "/receipts") return receiptsBodyHtml(lang);
   if (/^\/topic\//.test(route)) return topicBodyHtml(route, lang);
@@ -294,6 +305,7 @@ function homeHeroHtml() {
   const flagSet = "/art/panels/canada-flag-panel-640w.webp 640w, /art/panels/canada-flag-panel-960w.webp 960w, /art/panels/canada-flag-panel.webp 1024w";
   const heroSet = "/art/panels/hero-panel-640w.webp 640w, /art/panels/hero-panel-960w.webp 960w, /art/panels/hero-panel.webp 1024w";
   return `<div data-prerender-hero>` +
+    `<nav class="dg-srnav" aria-label="Primary navigation">${nav}</nav>` +
     `<div class="dg-topbar"></div>` +
     `<main class="dg-heromain"><section class="dg-hero">` +
       `<div class="dg-hero-col">` +
@@ -313,7 +325,6 @@ function homeHeroHtml() {
         `<img class="dg-hero-img" src="/art/panels/hero-panel-640w.webp" srcset="${heroSet}" sizes="(max-width: 720px) 92vw, (max-width: 1100px) 46vw, 650px" width="1024" height="1024" alt="Data Goblin inspecting a trail of receipts and glowing evidence crystals" fetchpriority="high" decoding="async" />` +
       `</div>` +
     `</section></main>` +
-    `<nav class="dg-srnav" aria-label="Primary navigation">${nav}</nav>` +
   `</div>`;
 }
 
@@ -324,8 +335,7 @@ function seoShell(route, h1, desc, lang) {
   const altLabel = lang === "fr" ? "English edition" : "Édition française";
   const navLabel = lang === "fr" ? "Navigation principale" : "Primary navigation";
   const body = routeBodyHtml(route, lang);
-  const readerFallback = route === "/guide" || route === "/map" || /^\/chapter\/\d+$/.test(route) ? " data-reader-fallback" : "";
-  return `<div data-prerender-shell${readerFallback}><h1>${esc(h1)}</h1><p>${esc(desc)}</p><nav aria-label="${navLabel}">${nav}<a href="${altHref}">${esc(altLabel)}</a></nav>${body}</div>`;
+  return `<div data-prerender-shell><h1>${esc(h1)}</h1><p>${esc(desc)}</p><nav aria-label="${navLabel}">${nav}<a href="${altHref}">${esc(altLabel)}</a></nav>${body}</div>`;
 }
 
 // Per-chapter Article JSON-LD. Each chapter route becomes independently

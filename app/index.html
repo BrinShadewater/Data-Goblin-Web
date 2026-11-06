@@ -228,24 +228,37 @@
     <link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/playfair-display-latin-normal-400-900.woff2" />
     <noscript>
       <style>
-        [data-prerender-shell][data-reader-fallback] {
+        #root > [data-prerender-shell] {
           display: block !important;
           max-width: 48rem;
           margin: auto;
           padding: 1.5rem;
           line-height: 1.6;
         }
-        [data-reader-fallback] nav a { margin-inline-end: 1em; }
+        #root > [data-prerender-hero] { height: auto; min-height: 100dvh; }
+        [data-prerender-hero] .dg-topbar { display: none; }
+        [data-prerender-hero] .dg-srnav {
+          position: static;
+          width: auto;
+          height: auto;
+          padding: 1rem 1.5rem;
+          margin: 0;
+          overflow: visible;
+          clip: auto;
+          white-space: normal;
+        }
+        [data-prerender-shell] nav a, [data-prerender-hero] .dg-srnav a {
+          display: inline-block;
+          margin-inline-end: 1em;
+        }
       </style>
     </noscript>
     <style>
       html, body, #root { height: 100%; margin: 0; padding: 0; }
       html, body { overflow-x: hidden; }
       * { box-sizing: border-box; }
-      /* The prerendered crawler fallback lives inside #root for SEO/AI engines
-         (which read the raw HTML, not CSS). Hide it from real browsers so it
-         never flashes as an unstyled heading+link list before React mounts and
-         replaces #root with the styled app. */
+      /* With scripting enabled, keep the fallback from flashing before React
+         mounts. The noscript styles expose it when React cannot run. */
       [data-prerender-shell] { display: none !important; }
       html[data-theme="dark"] body { background: #080c12; }
       html[data-theme="light"] body { background: #d8d2c4; }
