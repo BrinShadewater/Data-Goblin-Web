@@ -72,7 +72,8 @@ function PagePanelInner({
         transition: "background 0.3s",
       }}
     >
-      <div style={{ flex: 1, minHeight: 0, overflowY: "auto", WebkitOverflowScrolling: "touch" }}>
+      {/* Keep this keyboard target stable when async inline links arrive or overflow changes. */}
+      <div data-reader-scroll tabIndex={0} style={{ flex: 1, minHeight: 0, overflowY: "auto", WebkitOverflowScrolling: "touch" }}>
         {opener && <OpenerHeader chapter={chapter} />}
         {linkedBlocks.map((block, i) => (
           <BlockView key={i} block={block} first={!opener && i === 0} />

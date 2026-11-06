@@ -326,9 +326,23 @@ async function runLanguageSwitchSmoke(browser, baseUrl) {
 }
 
 async function runMapToReaderKeyboardSmoke(browser, baseUrl) {
-  for (const viewport of VIEWPORTS.filter(({ name }) => name !== "tablet")) {
+  const cases = [
+    ...VIEWPORTS.filter(({ name }) => name !== "tablet"),
+    { name: "mobile-no-receipts", width: 390, height: 1800, noReceipts: true },
+    { name: "mobile-delayed-receipts", width: 390, height: 844, delayedReceipts: true },
+  ];
+  for (const viewport of cases) {
     for (const prefix of ["", "/fr"]) {
       await withAppPage(browser, baseUrl, viewport, async (page) => {
+        let releaseReceipts;
+        const receiptsGate = new Promise((resolve) => { releaseReceipts = resolve; });
+        if (viewport.noReceipts || viewport.delayedReceipts) {
+          await page.route("**/claim-anchors.json", async (route) => {
+            if (viewport.noReceipts) return route.fulfill({ json: {} });
+            await receiptsGate;
+            await route.continue();
+          });
+        }
         await page.goto(`${baseUrl}${prefix}/map`);
         const target = `${prefix}/chapter/5`;
         const link = page.locator(`#dg-main a[href="${target}"]`);
@@ -350,6 +364,17 @@ async function runMapToReaderKeyboardSmoke(browser, baseUrl) {
         await page.keyboard.press("Tab");
         assert(await reader.evaluate((el) => el.contains(document.activeElement)),
           "Tab after arrival should continue inside the chapter.");
+        if (viewport.noReceipts || viewport.delayedReceipts) {
+          const scroller = reader.locator('[data-reader-scroll]');
+          assert(await scroller.evaluate((el) => el === document.activeElement),
+            "Tab must reach the stable reader scroll area, including when it does not overflow.");
+          if (viewport.delayedReceipts) {
+            releaseReceipts();
+            await reader.locator('[role="button"][tabindex="0"]').first().waitFor();
+            assert(await scroller.evaluate((el) => el === document.activeElement),
+              "Loading inline receipt links must not remove focus from the reader scroll area.");
+          }
+        }
       });
       console.log(`PASS Map-to-reader keyboard focus: ${viewport.name} ${prefix || "English"}`);
     }
