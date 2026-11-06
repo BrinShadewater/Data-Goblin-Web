@@ -123,6 +123,6 @@ export function artSrcSet(rel: string) {
   const ext = rel.slice(rel.lastIndexOf("."));
   const base = rel.slice(0, -ext.length);
   return widths
-    .map((width) => `${artUrl(width === 1024 ? rel : `${base}-${width}w.webp`)} ${width}w`)
+    .map((width) => `${artUrl(width === RESPONSIVE_ART[rel].width ? rel : `${base}-${width}w.webp`)} ${width}w`)
     .join(", ");
 }

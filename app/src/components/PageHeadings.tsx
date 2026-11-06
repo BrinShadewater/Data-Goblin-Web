@@ -127,7 +127,7 @@ export function OpenerHeader({ chapter }: { chapter: Chapter }) {
           <img
             src={artUrl(openerArt)}
             srcSet={artSrcSet(openerArt)}
-            sizes="(max-width: 760px) 70vw, 250px"
+            sizes={openerDimensions ? `${artHeight * openerDimensions.width / openerDimensions.height}px` : "(max-width: 760px) 70vw, 250px"}
             width={openerDimensions?.width}
             height={openerDimensions?.height ?? artHeight}
             alt=""
