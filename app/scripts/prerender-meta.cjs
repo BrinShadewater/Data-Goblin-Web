@@ -138,6 +138,7 @@ function mdToHtml(md) {
   for (const block of String(md).split(/\n{2,}/)) {
     const t = block.trim();
     if (!t) continue;
+    if (t === "---") { out.push("<hr>"); continue; }
     const h = t.match(/^(#{1,6})\s+([\s\S]*)$/);
     if (h) { const lvl = Math.min(6, h[1].length + 2); out.push(`<h${lvl}>${inlineMd(h[2])}</h${lvl}>`); continue; }
     if (/^\s*[-*]\s+/.test(t)) {
@@ -149,16 +150,22 @@ function mdToHtml(md) {
   }
   return out.join("");
 }
-// Build the inlined body for a /chapter/N route in the given language. Returns ""
-// for non-chapter routes or if the source JSON is missing/unparseable.
+function localizedChapterPath(lang, number) {
+  const dir = lang === "fr" ? "content/fr/chapters" : "content/chapters";
+  return `${dir}/ch${String(number).padStart(2, "0")}.json`;
+}
+
+function readChapter(lang, number) {
+  try { return JSON.parse(fs.readFileSync(path.join(DIST, localizedChapterPath(lang, number)), "utf8")); }
+  catch { return null; }
+}
+
+// Build the inlined body for a /chapter/N route in the given language.
 function chapterBodyHtml(route, lang) {
   const m = route.match(/^\/chapter\/(\d+)$/);
   if (!m) return "";
-  const n = Number(m[1]);
-  const dir = lang === "fr" ? path.join(DIST, "content", "fr", "chapters") : path.join(DIST, "content", "chapters");
-  let ch;
-  try { ch = JSON.parse(fs.readFileSync(path.join(dir, `ch${String(n).padStart(2, "0")}.json`), "utf8")); }
-  catch { return ""; }
+  const ch = readChapter(lang, Number(m[1]));
+  if (!ch) return "";
   const fr = lang === "fr";
   let b = "";
   if (ch.startHere) b += `<p>${inlineMd(ch.startHere)}</p>`;
@@ -267,7 +274,15 @@ function topicBodyHtml(route, lang) {
     const t = titles[n] || num;
     return `<li><a href="${pfx}/chapter/${n}">${esc(num)}: ${esc(t)}</a></li>`;
   }).join("");
-  return `<nav data-prerender-body aria-label="${esc(heading)}"><h2>${esc(heading)}</h2><ul>${items}</ul></nav>`;
+  let summary = "";
+  if (m[1] === "governance") {
+    const startHere = readChapter(lang, chapters[0])?.startHere;
+    if (typeof startHere !== "string" || !startHere.trim()) {
+      throw new Error(`Missing ${lang} Governance summary in ${localizedChapterPath(lang, chapters[0])}`);
+    }
+    summary = `<section data-prerender-topic-summary><h2>${fr ? "Commencez ici." : "Start here"}</h2>${mdToHtml(startHere)}</section>`;
+  }
+  return summary + `<nav data-prerender-body aria-label="${esc(heading)}"><h2>${esc(heading)}</h2><ul>${items}</ul></nav>`;
 }
 
 // Dispatch a route to its body builder. Other routes use the metadata shell.
@@ -484,10 +499,15 @@ const ROUTE_SOURCES = {
 function routeSources(route, lang) {
   const chapter = route.match(/^\/chapter\/(\d+)$/);
   if (chapter) {
-    const file = `ch${String(chapter[1]).padStart(2, "0")}.json`;
-    return [lang === "fr" ? `app/public/content/fr/chapters/${file}` : `app/public/content/chapters/${file}`];
+    return [`app/public/${localizedChapterPath(lang, chapter[1])}`];
   }
-  if (route.startsWith("/topic/")) return ["app/src/pages/TopicPage.tsx", "app/scripts/prerender-meta.cjs", "app/public/content/book.json"];
+  if (route.startsWith("/topic/")) {
+    const sources = ["app/src/pages/TopicPage.tsx", "app/scripts/prerender-meta.cjs", "app/public/content/book.json"];
+    if (route === "/topic/governance") {
+      sources.push(`app/public/${localizedChapterPath(lang, TOPIC_CHAPTERS.governance[0])}`);
+    }
+    return sources;
+  }
   return ROUTE_SOURCES[route] || [];
 }
 function git(...args) {
