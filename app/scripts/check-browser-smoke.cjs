@@ -356,6 +356,37 @@ async function runTimingSmoke(browser, baseUrl) {
   });
 }
 
+async function runGovernanceSummarySmoke(browser, baseUrl) {
+  for (const { prefix, heading } of [
+    { prefix: "", heading: "Start here" },
+    { prefix: "/fr", heading: "Commencez ici." },
+  ]) {
+    const url = `${baseUrl}${prefix}/topic/governance`;
+    const readSummary = async (summary) => {
+      await summary.locator("p").first().waitFor({ state: "visible" });
+      const paragraphs = await summary.locator("p").allTextContents();
+      return paragraphs.map((text) => text.replace(/\s+/g, " ").trim());
+    };
+    let rendered;
+    await withAppPage(browser, baseUrl, VIEWPORTS[0], async (page) => {
+      await page.goto(url);
+      const card = page.locator(`#dg-main a[href="${prefix}/chapter/17"]`).locator("..");
+      await card.getByText(heading, { exact: true }).waitFor({ state: "visible" });
+      const markdown = card.locator(":scope > div").filter({ has: page.locator("p") });
+      rendered = await readSummary(markdown);
+    });
+    await withAppPage(browser, baseUrl, VIEWPORTS[0], async (page) => {
+      await page.goto(url);
+      const summary = page.locator("[data-prerender-topic-summary]");
+      await summary.getByRole("heading", { name: heading, exact: true }).waitFor({ state: "visible" });
+      const fallback = await readSummary(summary);
+      assert(JSON.stringify(fallback) === JSON.stringify(rendered),
+        `${prefix || "English"} Governance summary differs between static and rendered pages.`);
+    }, { javaScriptEnabled: false });
+    console.log(`PASS Governance summary parity: ${prefix || "English"}`);
+  }
+}
+
 async function main() {
   assert(fs.existsSync(path.join(distDir, "index.html")), "dist/index.html not found. Run npm run build first.");
   const server = createServer();
@@ -368,6 +399,7 @@ async function main() {
     await runLanguageSwitchSmoke(browser, baseUrl);
     await runGuideNavigationSmoke(browser, baseUrl);
     await runChapterDiscoverySmoke(browser, baseUrl);
+    await runGovernanceSummarySmoke(browser, baseUrl);
     await runRouteSmoke(browser, baseUrl);
     await runCookieSmoke(browser, baseUrl);
     await runInteractionSmoke(browser, baseUrl);
