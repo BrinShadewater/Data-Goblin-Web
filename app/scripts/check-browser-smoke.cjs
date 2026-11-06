@@ -494,6 +494,53 @@ async function runGovernanceSummarySmoke(browser, baseUrl) {
   }
 }
 
+async function runMobileDrawerImageSmoke(browser, baseUrl) {
+  for (const viewport of VIEWPORTS.filter(({ name }) => name !== "desktop")) {
+    for (const prefix of ["", "/fr"]) {
+      await withAppPage(browser, baseUrl, viewport, async (page) => {
+        const requests = [];
+        page.on("request", (request) => {
+          if (request.resourceType() === "image") requests.push(new URL(request.url()).pathname);
+        });
+        await page.goto(`${baseUrl}${prefix}/chapter/5`, { waitUntil: "networkidle" });
+        const menu = page.getByRole("button", { name: prefix ? "Ouvrir le menu" : "Open menu", exact: true });
+        const panel = page.locator('[role="dialog"][aria-label="Menu"]');
+        await menu.waitFor({ state: "visible" });
+        assert(!requests.some((url) => url.endsWith("/forge-nav.webp")), "Closed mobile menu downloaded its Updates icon.");
+        assert(await panel.locator("img").count() === 0, "Closed mobile menu mounted image content.");
+        await menu.click();
+        const updates = panel.locator('img[src$="/forge-nav.webp"]');
+        await updates.scrollIntoViewIfNeeded();
+        await page.waitForFunction(() => {
+          const img = document.querySelector('[role="dialog"] img[src$="/forge-nav.webp"]');
+          return img?.complete && img.naturalWidth > 0;
+        });
+        assert(requests.some((url) => url.endsWith("/forge-nav.webp")), "Opening the menu did not load its icon.");
+        await panel.getByRole("button", { name: prefix ? "Fermer le menu" : "Close menu", exact: true }).scrollIntoViewIfNeeded();
+        if (process.env.MENU_IMAGE_SCREENSHOTS) {
+          fs.mkdirSync(process.env.MENU_IMAGE_SCREENSHOTS, { recursive: true });
+          await page.screenshot({ path: path.join(process.env.MENU_IMAGE_SCREENSHOTS, `${viewport.name}-${prefix ? "fr" : "en"}-open.png`) });
+        }
+        await page.keyboard.press("Escape");
+        await panel.waitFor({ state: "hidden" });
+        assert(await panel.locator("img").count() === 0, "Closed menu retained image content after its animation.");
+        assert(await menu.evaluate((el) => el === document.activeElement), "Menu close lost focus return.");
+        await menu.click();
+        // Reopening before the closing timer expires must cancel that timer.
+        await page.keyboard.press("Escape");
+        await menu.click();
+        await page.waitForTimeout(350);
+        assert(await panel.isVisible() && await panel.locator("img").count() > 0, "Rapid reopen lost menu content.");
+        const map = panel.getByRole("link", { name: prefix ? "Carte" : "Map", exact: true });
+        await map.click();
+        await page.waitForURL(`${baseUrl}${prefix}/map`);
+        await panel.waitFor({ state: "hidden" });
+      });
+      console.log(`PASS mobile drawer images: ${viewport.name} ${prefix || "English"}`);
+    }
+  }
+}
+
 async function runHeroImageRequestsSmoke(browser, baseUrl) {
   for (const viewport of VIEWPORTS.filter(({ name }) => name !== "tablet")) {
     for (const prefix of ["", "/fr"]) {
@@ -539,6 +586,7 @@ async function main() {
 
   try {
     await runHeroImageRequestsSmoke(browser, baseUrl);
+    await runMobileDrawerImageSmoke(browser, baseUrl);
     await runLanguageSwitchSmoke(browser, baseUrl);
     await runMobileDrawerKeyboardSmoke(browser, baseUrl);
     await runMapToReaderKeyboardSmoke(browser, baseUrl);

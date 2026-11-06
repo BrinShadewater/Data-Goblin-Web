@@ -96,6 +96,9 @@ export function MobileDrawer({ open, onClose }: { open: boolean; onClose: () => 
           boxShadow: open ? c("4px 0 24px rgba(40,30,10,0.25)", "4px 0 24px rgba(0,0,0,0.6)") : "none",
         }}
       >
+        {/* Keep the shell for the slide, but defer content until first shown.
+            Retain it through the closing animation before releasing it. */}
+        {(open || visible) && <>
         {/* Header */}
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "8px 8px 8px 16px", borderBottom: `1px solid ${border}`, flexShrink: 0 }}>
           <div style={{ display: "flex", alignItems: "center", gap: "9px" }}>
@@ -125,6 +128,7 @@ export function MobileDrawer({ open, onClose }: { open: boolean; onClose: () => 
           <DrawerSectionLabel label={tr("Bookmarks")} color={green} />
           <MobileBookmarks onNavigate={onClose} />
         </div>
+        </>}
       </div>
     </>
   );
