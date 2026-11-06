@@ -32,12 +32,18 @@
     {
       "src": "/fr(?:/.*)?",
       "status": 404,
-      "dest": "/fr/404.html"
+      "dest": "/fr/404.html",
+      "headers": {
+        "Cache-Control": "no-store"
+      }
     },
     {
       "src": "/.*",
       "status": 404,
-      "dest": "/404.html"
+      "dest": "/404.html",
+      "headers": {
+        "Cache-Control": "no-store"
+      }
     }
   ]
 }

@@ -34,6 +34,7 @@ function runPythonSyncCheck() {
   }
 }
 
+run("Deployment cache policy", process.execPath, [path.join(appDir, "scripts", "check-cache-policy.cjs")]);
 console.log("=== Generated content sync ===");
 runPythonSyncCheck();
 run("Pagination sanity", process.execPath, [path.join(appDir, "scripts", "run-pagination-sanity.cjs")]);
