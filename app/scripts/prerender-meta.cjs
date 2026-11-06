@@ -462,10 +462,48 @@ function write(relPath, html) {
   fs.writeFileSync(path.join(dir, "index.html"), html);
 }
 
+function writeNotFound(lang) {
+  const fr = lang === "fr";
+  const title = fr ? "404 — Page introuvable" : "404 — Page not found";
+  const desc = fr ? "Cette page a peut-être été déplacée, ou son adresse est incorrecte."
+    : "This page may have moved, or its address may be incorrect.";
+  const prefix = fr ? "/fr" : "";
+  const links = (fr ? [["/fr", "Accueil"], ["/fr/guide", "Le guide de terrain"], ["/fr/map", "Carte"]]
+    : [["/", "Home"], ["/guide", "The Field Guide"], ["/map", "Map"]])
+    .map(([href, label]) => `<li><a href="${href}">${label}</a></li>`).join("");
+  const html = `<!doctype html>
+<html lang="${lang}-CA">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>${title} — Data Goblin</title>
+  <style>
+    body { margin: 0; background: #ece5d3; color: #23211a; font: 1.125rem/1.6 Georgia, serif; }
+    main { max-width: 40rem; margin: 2rem auto; padding: 1.5rem; }
+    h1 { color: #1a2e4a; line-height: 1.2; }
+    a { color: #2d5a27; }
+  </style>
+</head>
+<body>
+  <main>
+    <p>Data Goblin</p>
+    <h1>${title}</h1>
+    <p>${desc}</p>
+    <nav aria-label="${fr ? "Navigation principale" : "Primary navigation"}"><ul>${links}</ul></nav>
+  </main>
+</body>
+</html>
+`;
+  fs.writeFileSync(path.join(DIST, prefix.slice(1), "404.html"), html);
+}
+
 let count = 0;
 // Home (both languages)
 write("", render("", HOME_FULL_EN, HOME_FULL_EN, HOME_DESC_EN, "en")); // overwrites dist/index.html with hreflang
 write("fr", render("", HOME_FULL_FR, HOME_FULL_FR, DESC_FR, "fr"));
+writeNotFound("en");
+writeNotFound("fr");
 count += 2;
 for (const [route, enTitle, enDesc, frTitle, frDesc] of ROUTE_META) {
   const rel = route.replace(/^\//, "");
