@@ -36,7 +36,7 @@ export function MapPage() {
         <PageHeading
           eyebrow={tr("Data Goblin Field Guide")}
           title={tr("The Map")}
-          description={tr("The guide’s twenty chapters are organized into five regions. Pick a region, pick a chapter, and the field guide opens to that page.")}
+          description={tr("The guide’s 21 chapters are organized into five regions. Choose a chapter to open it in the reader.")}
           centered
           marginBottom="32px"
         >

@@ -20,9 +20,9 @@ export function ReaderBookmarkButton({
   return (
     <button
       onClick={onToggle}
-      aria-label={bookmarked ? "Remove bookmark" : "Bookmark this page"}
+      aria-label={bookmarked ? tr("Remove bookmark") : tr("Bookmark this page")}
       aria-pressed={bookmarked}
-      title={bookmarked ? "Remove bookmark" : "Bookmark this page"}
+      title={bookmarked ? tr("Remove bookmark") : tr("Bookmark this page")}
       style={{
         display: "flex",
         alignItems: "center",
@@ -57,7 +57,7 @@ export function CompactPageTurnButton({
     <button
       onClick={() => enabled && onTurn()}
       disabled={!enabled}
-      aria-label={direction === "prev" ? "Previous page" : "Next page"}
+      aria-label={direction === "prev" ? tr("Previous page") : tr("Next page")}
       style={{
         display: "flex",
         alignItems: "center",
