@@ -483,6 +483,8 @@ async function runFrenchReaderCopySmoke(browser, baseUrl) {
       await page.getByText(/^Les 21 chapitres du guide/).waitFor();
 
       await page.goto(baseUrl + "/fr/chapter/2");
+      // The compact controls mount before chapter data and pagination are ready.
+      await page.getByText(/^Page 1 sur (?:[2-9]|[1-9]\d+)$/).waitFor();
       await page.getByRole("button", { name: "Page précédente", exact: true }).last().waitFor();
       await page.getByRole("button", { name: "Page suivante", exact: true }).last().click();
       await page.getByText(/^Page 2 sur \d+$/).waitFor();
