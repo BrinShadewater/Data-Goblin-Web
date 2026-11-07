@@ -463,6 +463,44 @@ async function runTimingSmoke(browser, baseUrl) {
   });
 }
 
+async function runFrenchReaderCopySmoke(browser, baseUrl) {
+  const mobile = VIEWPORTS.find(({ name }) => name === "mobile");
+  const intro = "Data Goblin est un guide interactif gratuit sur l’IA, les centres de données et la souveraineté numérique au Canada. Consultez les sources qui étayent les affirmations du guide.";
+  for (const javaScriptEnabled of [true, false]) {
+    await withAppPage(browser, baseUrl, mobile, async (page) => {
+      await page.goto(baseUrl + "/fr");
+      await page.getByText(intro, { exact: true }).waitFor();
+      assert(await page.locator('meta[name="description"]').getAttribute("content") === intro,
+        "French homepage description differs from the visible intro.");
+
+      await page.goto(baseUrl + "/fr/map");
+      await page.getByRole("link", { name: "Hypertrucages et désinformation", exact: true }).waitFor();
+      assert(await page.locator('a[href^="/fr/chapter/"]').evaluateAll((links) => {
+        const paths = new Set(links.map((link) => link.getAttribute("href")));
+        return Array.from({ length: 21 }, (_, i) => paths.has("/fr/chapter/" + (i + 1))).every(Boolean);
+      }), "French Map must link to all 21 chapters.");
+      if (!javaScriptEnabled) return;
+      await page.getByText(/^Les 21 chapitres du guide/).waitFor();
+
+      await page.goto(baseUrl + "/fr/chapter/2");
+      // The compact controls mount before chapter data and pagination are ready.
+      await page.getByText(/^Page 1 sur (?:[2-9]|[1-9]\d+)$/).waitFor();
+      await page.getByRole("button", { name: "Page précédente", exact: true }).last().waitFor();
+      await page.getByRole("button", { name: "Page suivante", exact: true }).last().click();
+      await page.getByText(/^Page 2 sur \d+$/).waitFor();
+      await page.getByRole("button", { name: "Ajouter un signet à cette page", exact: true }).click();
+      const bookmarked = page.getByRole("button", { name: "Supprimer le signet", exact: true });
+      await bookmarked.waitFor();
+      assert(await bookmarked.getAttribute("aria-pressed") === "true", "The French bookmark did not toggle.");
+      await bookmarked.click();
+      await page.getByRole("button", { name: "Ajouter un signet à cette page", exact: true }).waitFor();
+      assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
+        "French reader overflows the mobile viewport.");
+    }, { javaScriptEnabled });
+    console.log(`PASS French copy and reader controls: JavaScript ${javaScriptEnabled ? "on" : "off"}`);
+  }
+}
+
 async function runGovernanceSummarySmoke(browser, baseUrl) {
   for (const { prefix, heading } of [
     { prefix: "", heading: "Start here" },
@@ -632,6 +670,7 @@ async function main() {
     await runGuideNavigationSmoke(browser, baseUrl);
     await runChapterDiscoverySmoke(browser, baseUrl);
     await runGovernanceSummarySmoke(browser, baseUrl);
+    await runFrenchReaderCopySmoke(browser, baseUrl);
     await runRouteSmoke(browser, baseUrl);
     await runCookieSmoke(browser, baseUrl);
     await runInteractionSmoke(browser, baseUrl);
