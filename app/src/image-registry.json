@@ -7,6 +7,10 @@
     "content-panel assets are chapter plate art referenced through art-map.json."
   ],
   "responsive": {
+    "medium/ch2-cover-medium.webp": { "role": "priority", "width": 880, "height": 880, "widths": [250, 510, 880] },
+    "medium/ch6-cover-medium.webp": { "role": "priority", "width": 880, "height": 880, "widths": [250, 510, 880] },
+    "medium/ch8-cover-medium.webp": { "role": "priority", "width": 880, "height": 880, "widths": [250, 510, 880] },
+    "medium/ch12-cover-medium.webp": { "role": "priority", "width": 880, "height": 880, "widths": [250, 510, 880] },
     "medium/ch5-cover-medium.webp": { "role": "priority", "width": 880, "height": 880, "widths": [250, 510, 880] },
     "panels/hero-panel.webp": { "role": "priority", "width": 1024, "height": 1024, "widths": [480, 640, 720, 960, 1024], "alt": "Data Goblin hero art for the field guide" },
     "panels/canada-map-panel.webp": { "role": "priority", "width": 1024, "height": 1024, "widths": [640, 960, 1024], "alt": "Fantasy map of Canada with the Data Goblin standing in front" },
