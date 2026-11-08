@@ -1,0 +1,38 @@
+[
+  {
+    "chapter": 3,
+    "section": "the-human-labour-layer",
+    "en": "Who labels the data used to train AI?",
+    "fr": "Qui étiquette les données utilisées pour entraîner une IA ?"
+  },
+  {
+    "chapter": 8,
+    "section": "training-versus-inference-the-most-important-environmental-distinction",
+    "en": "Does running an AI model use more energy than training it?",
+    "fr": "L’utilisation d’un modèle d’IA consomme-t-elle plus d’énergie que son entraînement ?"
+  },
+  {
+    "chapter": 10,
+    "section": "the-biometric-and-facial-recognition-layer",
+    "en": "Can police use facial recognition in Canada?",
+    "fr": "La police peut-elle utiliser la reconnaissance faciale au Canada ?"
+  },
+  {
+    "chapter": 10,
+    "section": "workplace-ai-surveillance-the-cupe-primary-documentation",
+    "en": "How do employers use AI to monitor workers?",
+    "fr": "Comment les employeurs utilisent-ils l’IA pour surveiller les employés ?"
+  },
+  {
+    "chapter": 11,
+    "section": "the-canadian-newspapers-v-openai-case",
+    "en": "Why did Canadian newspapers sue OpenAI?",
+    "fr": "Pourquoi des journaux canadiens poursuivent-ils OpenAI ?"
+  },
+  {
+    "chapter": 18,
+    "section": "the-stanford-fmti-the-empirical-baseline-for-industry-transparency",
+    "en": "How transparent are companies about their foundation models?",
+    "fr": "Comment mesure-t-on la transparence des entreprises qui développent des modèles de fondation ?"
+  }
+]

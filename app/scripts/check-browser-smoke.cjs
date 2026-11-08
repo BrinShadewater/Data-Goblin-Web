@@ -3,6 +3,7 @@ const http = require("http");
 const path = require("path");
 const { chromium } = require("playwright");
 const searchQuestions = require("./search-questions.json");
+const searchHoldoutQuestions = require("./search-holdout-questions.json");
 
 const appDir = path.resolve(__dirname, "..");
 const distDir = path.join(appDir, "dist");
@@ -734,7 +735,7 @@ async function runSearchQuestionsSmoke(browser, baseUrl) {
     await withAppPage(browser, baseUrl, VIEWPORTS[2], async (page) => {
       await page.context().route((url) => url.origin !== baseUrl, (route) =>
         route.fulfill({ contentType: "text/html", body: "<main>Source destination</main>" }));
-      for (const fixture of searchQuestions) {
+      for (const fixture of [...searchQuestions, ...searchHoldoutQuestions]) {
         await page.goto(baseUrl + (prefix || "/"));
         await page.getByRole("button", { name: searchLabel, exact: true }).tap();
         const dialog = page.getByRole("dialog", { name: searchLabel, exact: true });
@@ -749,6 +750,10 @@ async function runSearchQuestionsSmoke(browser, baseUrl) {
         await dialog.locator(`a[href="${resultPath}"]`).tap();
         await page.waitForURL(baseUrl + resultPath);
         await page.locator("[data-section-heading]:focus").waitFor();
+        if (!fixture.source) {
+          console.log(`PASS search question ${lang} #${rank}: ${question} → passage`);
+          continue;
+        }
         const sourceUrl = typeof fixture.source === "string" ? fixture.source : fixture.source[lang];
         const source = page.locator(`a[href="${sourceUrl}"]`).first();
         for (let turn = 0; turn < 10 && !(await source.isVisible()); turn++) {

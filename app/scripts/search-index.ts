@@ -15,9 +15,17 @@ const topicSearchLabels: Record<string, Record<Lang, string>> = {
 };
 
 const sectionKeywords: Record<string, Record<Lang, string>> = {
+  "3/the-human-labour-layer": {
+    en: "human workers label labeling labelling annotation tagging train training data AI",
+    fr: "travailleurs humains étiquettent étiquette étiquetage annotation données entraînement entraîner IA",
+  },
   "6/the-transparency-gap-in-operational-terms": {
     en: "Canadian data centre water use reporting report disclosure WUE",
     fr: "centres données canadiens déclarent consommation eau déclaration WUE",
+  },
+  "8/training-versus-inference-the-most-important-environmental-distinction": {
+    en: "AI model running training inference energy use electricity consumption",
+    fr: "modèle IA utilisation entraînement inférence énergie électricité consommation consomme",
   },
   "9/national-sovereignty-the-cloud-act-problem": {
     en: "US authorities access data stored in Canada CLOUD Act",
