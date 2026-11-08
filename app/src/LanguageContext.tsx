@@ -64,7 +64,8 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     const section = sectionLinkValue(search, hash);
     const pendingSection = section && /^\/(?:guide|chapter\/\d+)\/?$/.test(basePath(pathname))
       ? (section === hash.slice(1) ? hash : `?${new URLSearchParams({ section })}`) : "";
-    navigate(langPath(pathname, l) + pendingSection);
+    const receipt = /^\/receipts\/?$/.test(basePath(pathname)) && /^#receipt-\d+(?:-\d+)?$/.test(hash) ? hash : "";
+    navigate(langPath(pathname, l) + (pendingSection || receipt));
   };
   const toggle = () => setLang(lang === "en" ? "fr" : "en");
   return <Ctx.Provider value={{ lang, setLang, toggle, setReaderDestination }}>{children}</Ctx.Provider>;

@@ -171,7 +171,8 @@ export function ReceiptMarker({ receipt, children }: { receipt: Receipt; childre
   // seen this string in French.
   const label =
     receipt.status === "open" ? tr("Still checking") : receipt.status === "fixed" ? tr("Corrected") : tr("Verified");
-  const note = RECEIPT_NOTES[receipt.id]?.[lang];
+  const entry = RECEIPT_NOTES[receipt.id];
+  const note = entry?.[lang];
   const detail = note?.detail ?? (receipt.detail || "")
     .replace(/\[([^\]]+)\]\([^)]*\)/g, "$1")
     .replace(/[*_]{1,3}([^*_]+)[*_]{1,3}/g, "$1")
@@ -225,8 +226,10 @@ export function ReceiptMarker({ receipt, children }: { receipt: Receipt; childre
             </span>
           )}
           <span style={{ display: "block", marginTop: "8px" }}>
-            <Link to="/receipts" style={{ fontFamily: UI, fontSize: "12px", fontWeight: 700, color: c(...P.muted) }}>
-              {lang === "fr" ? "Voir le registre complet" : "See the full ledger"} &#8594;
+            <Link to={entry?.passage ? `/receipts#receipt-${receipt.id}` : "/receipts"} style={{ fontFamily: UI, fontSize: "12px", fontWeight: 700, color: c(...P.muted) }}>
+              {entry?.passage
+                ? (lang === "fr" ? "Voir ce reçu dans le registre" : "View this receipt in the ledger")
+                : (lang === "fr" ? "Voir le registre complet" : "See the full ledger")} &#8594;
             </Link>
           </span>
         </span>

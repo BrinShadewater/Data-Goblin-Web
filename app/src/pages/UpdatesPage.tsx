@@ -5,6 +5,7 @@ import { Kicker, PageHeading, StaticCard, StaticPageShell } from "../components/
 import { tr } from "../i18n";
 import { useLanguage } from "../LanguageContext";
 import { sectionHref } from "../sectionLinks";
+import latestUpdate from "../latestUpdate.json";
 
 interface UpdateEntry {
   date: string;
@@ -12,31 +13,6 @@ interface UpdateEntry {
   title: string;
   items: string[];
 }
-
-const CHAPTER_13_UPDATE = {
-  en: {
-    date: "November 7, 2026",
-    tag: "Reader",
-    title: "Mobile search and clearer evidence in Chapter 13",
-    items: [
-      "The mobile header now has Search. In English and French, you can open a topic, find a glossary term, or jump straight to a section of the guide.",
-      "We rewrote the French version of Chapter 13’s practical test for evaluating deepfake claims. It restores the study’s 0.12% figure and clarifies each of the six checks.",
-      "Select the percentage in either edition to see what the researchers counted and open the original study. The adjacent figure caption is available in both languages and reflects the enacted scope of Canada’s Protecting Victims Act.",
-    ],
-    link: "Open the Chapter 13 practical test",
-  },
-  fr: {
-    date: "7 novembre 2026",
-    tag: "Lecture",
-    title: "Recherche sur mobile et sources plus claires au chapitre 13",
-    items: [
-      "Le bouton de recherche est maintenant accessible dans l’en-tête sur mobile. En français et en anglais, vous pouvez ouvrir une page thématique, consulter le glossaire ou accéder directement à une section du guide.",
-      "Nous avons réécrit « Le test pratique » du chapitre 13, qui aide à évaluer les affirmations sur les hypertrucages. Le texte rétablit le chiffre de 0,12 % de l’étude et clarifie les six points à vérifier.",
-      "Sélectionnez le pourcentage pour voir ce que l’équipe de recherche a mesuré et consulter l’étude originale. La légende de la figure voisine est disponible dans les deux langues et précise la portée de la Loi visant à protéger les victimes.",
-    ],
-    link: "Ouvrir le test pratique du chapitre 13",
-  },
-};
 
 const UPDATES: UpdateEntry[] = [
   {
@@ -263,12 +239,12 @@ const PENDING: string[] = [
 export function UpdatesPage() {
   const { c } = useTheme();
   const { lang } = useLanguage();
-  const latest = CHAPTER_13_UPDATE[lang];
+  const latest = latestUpdate[lang];
   const updates = [
-    { ...latest, to: sectionHref(13, "the-working-test") },
+    { ...latest, links: [[latest.passageLabel, sectionHref(13, "the-working-test")], [latest.receiptLabel, "/receipts#receipt-32"]] },
     ...UPDATES.map((entry) => ({
       date: tr(entry.date), tag: tr(entry.tag), title: tr(entry.title), items: entry.items.map(tr),
-      link: undefined, to: undefined,
+      links: [],
     })),
   ];
   const body = c(...P.body);
@@ -313,11 +289,11 @@ export function UpdatesPage() {
                 </li>
               ))}
             </ul>
-            {entry.to && (
-              <Link to={entry.to} style={{ display: "inline-block", marginTop: "12px", fontFamily: UI, fontSize: "14px", fontWeight: 800, color: navy }}>
-                {entry.link}
+            {entry.links.map(([label, to]) => (
+              <Link key={to} to={to} style={{ display: "inline-block", margin: "12px 16px 0 0", fontFamily: UI, fontSize: "14px", fontWeight: 800, color: navy }}>
+                {label}
               </Link>
-            )}
+            ))}
           </StaticCard>
         ))}
       </div>

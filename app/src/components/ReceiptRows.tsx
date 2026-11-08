@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
+import { Link } from "react-router";
 import { CheckCircle2, ChevronDown, ChevronRight, ExternalLink, Flag, Wrench } from "lucide-react";
 import { useTheme } from "../ThemeContext";
 import { BODY, DISPLAY, MONO, P, RADIUS, UI } from "../theme";
@@ -8,6 +9,9 @@ import { matchSource } from "../links";
 import { useChapter } from "../useContent";
 import type { LinkEntry, Receipt, ReceiptStatus } from "../types";
 import { tr } from "../i18n";
+import { langPath, useLanguage } from "../LanguageContext";
+import { RECEIPT_NOTES } from "../receiptNotes";
+import { sectionHref } from "../sectionLinks";
 
 const STATUS_META: Record<ReceiptStatus, { label: string; icon: typeof CheckCircle2; pair: [string, string] }> = {
   resolved: { label: "Resolved", icon: CheckCircle2, pair: ["#2d5a27", "#74b85e"] },
@@ -44,18 +48,30 @@ function StatusBadge({ status }: { status: ReceiptStatus }) {
   );
 }
 
-export function ReceiptRow({ receipt }: { receipt: Receipt }) {
+export function ReceiptRow({ id, receipt, targeted }: { id: string; receipt: Receipt; targeted: boolean }) {
   const { c } = useTheme();
-  const [open, setOpen] = useState(false);
+  const { lang } = useLanguage();
+  const [open, setOpen] = useState(targeted);
+  const row = useRef<HTMLDivElement>(null);
+  const entry = RECEIPT_NOTES[receipt.id];
+  const note = entry?.[lang];
+  const passage = entry?.passage;
+  const otherLang = lang === "en" ? "fr" : "en";
+  const links = note ? [[note.sourceLabel, note.url], ...receipt.links] : receipt.links;
   const border = c(...P.borderSoft);
   const muted = c(...P.muted);
   const body = c(...P.body);
   const green = c(...P.green);
 
+  useLayoutEffect(() => {
+    if (targeted) row.current?.scrollIntoView({ block: "start" });
+  }, [targeted]);
+
   return (
-    <div style={{ background: c(...P.cardBg), border: `1px solid ${border}`, borderRadius: RADIUS, marginBottom: "8px", overflow: "hidden", transition: "background 0.3s" }}>
+    <div id={id} ref={row} style={{ background: c(...P.cardBg), border: `1px solid ${border}`, borderRadius: RADIUS, marginBottom: "8px", scrollMarginTop: "12px", overflow: "hidden", transition: "background 0.3s" }}>
       <button
         onClick={() => setOpen((v) => !v)}
+        aria-expanded={open}
         style={{ display: "flex", alignItems: "center", gap: "12px", width: "100%", padding: "11px 14px", background: "transparent", border: "none", cursor: "pointer", textAlign: "left" }}
       >
         {open ? <ChevronDown size={13} color={muted} style={{ flexShrink: 0 }} /> : <ChevronRight size={13} color={muted} style={{ flexShrink: 0 }} />}
@@ -66,11 +82,12 @@ export function ReceiptRow({ receipt }: { receipt: Receipt }) {
       {open && (
         <div style={{ padding: "2px 14px 13px 39px", borderTop: `1px solid ${border}` }}>
           <div style={{ paddingTop: "10px" }}>
+            {note && <Markdown markdown={note.detail} />}
             <Markdown markdown={receipt.detail} />
           </div>
-          {receipt.links.length > 0 && (
+          {links.length > 0 && (
             <div style={{ display: "flex", flexWrap: "wrap", gap: "8px", marginTop: "4px" }}>
-              {receipt.links.map(([label, url], i) => (
+              {links.map(([label, url], i) => (
                 <a
                   key={i}
                   href={url}
@@ -96,6 +113,17 @@ export function ReceiptRow({ receipt }: { receipt: Receipt }) {
               ))}
             </div>
           )}
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "12px", marginTop: "10px", fontFamily: UI, fontSize: "12px" }}>
+            {passage && (
+              <Link to={langPath(sectionHref(passage.chapter, passage.section), lang)} style={{ color: green }}>
+                {lang === "fr" ? "Lire le passage du guide" : "Read the passage in the guide"}
+              </Link>
+            )}
+            <Link to={`#${id}`} style={{ color: green }}>{lang === "fr" ? "Lien vers ce reçu" : "Link to this receipt"}</Link>
+            <Link to={`${langPath("/receipts", otherLang)}#${id}`} lang={otherLang} hrefLang={otherLang} style={{ color: green }}>
+              {lang === "fr" ? "English" : "Français"}
+            </Link>
+          </div>
         </div>
       )}
     </div>

@@ -4,6 +4,7 @@ const path = require("path");
 const { chromium } = require("playwright");
 const searchQuestions = require("./search-questions.json");
 const searchHoldoutQuestions = require("./search-holdout-questions.json");
+const latestUpdate = require("../src/latestUpdate.json");
 
 const appDir = path.resolve(__dirname, "..");
 const distDir = path.join(appDir, "dist");
@@ -864,10 +865,19 @@ async function runClaimReceiptSmoke(browser, baseUrl) {
       const [paper] = await Promise.all([page.waitForEvent("popup"), study.tap()]);
       await paper.waitForURL(sourceUrl);
       await paper.close();
+      await popup.getByRole("link", { name: french ? /Voir ce reçu dans le registre/ : /View this receipt in the ledger/ }).tap();
+      await page.waitForURL(`${baseUrl}${fixture.prefix}/receipts#receipt-32`);
+      const receipt = page.locator("#receipt-32");
+      await receipt.locator(`a[href="${sourceUrl}"]`).waitFor();
+      const passage = `${fixture.prefix}/chapter/13#the-working-test`;
+      await receipt.locator(`a[href="${passage}"]`).tap();
+      await page.waitForURL(baseUrl + passage);
+      await page.getByRole("heading", { name: fixture.heading, exact: true }).waitFor();
+      await marker.waitFor();
       await page.getByRole("button", { name: french ? "Page suivante" : "Next page", exact: true }).tap();
       await popup.waitFor({ state: "hidden" });
       await page.locator("figcaption").filter({ hasText: fixture.figure }).waitFor();
-      console.log(`Mobile search to source ${french ? "fr" : "en"}: passage, receipt, focus, paper link and caption passed.`);
+      console.log(`Mobile search to source ${french ? "fr" : "en"}: passage, receipt, focus, paper link, ledger round trip and caption passed.`);
     }, { hasTouch: true });
   }
 }
@@ -955,6 +965,11 @@ async function runStaticSectionLinksSmoke(browser, baseUrl) {
         await page.getByRole("navigation", { name: outline, exact: true }).getByRole("link", { name: title, exact: true }).click();
         await page.waitForURL(chapter + fragment);
         assert(await target.textContent() === title, "Static outline link did not target its heading.");
+        const otherPrefix = prefix ? "" : "/fr";
+        const otherTitle = prefix ? "The working test" : "Le test pratique";
+        await page.locator(`a[href="${otherPrefix}/chapter/13${fragment}"]`).click();
+        await page.waitForURL(`${baseUrl}${otherPrefix}/chapter/13${fragment}`);
+        assert(await target.textContent() === otherTitle, "Static language link did not keep the same passage.");
       }, { javaScriptEnabled: false });
       console.log(`PASS static section links: ${viewport.name} ${prefix || "en"}`);
     }
@@ -1003,6 +1018,87 @@ async function runChapter13LawSmoke(browser, baseUrl) {
   }
 }
 
+async function runReceiptPermalinkSmoke(browser, baseUrl) {
+  const hash = "#receipt-32";
+  const sourceUrl = "https://arxiv.org/html/2512.13915v1#S4";
+  const editions = {
+    en: { path: "/receipts", claim: /2025 election deepfake study/i, note: "0.12%", switchTo: "Français" },
+    fr: { path: "/fr/receipts", claim: /hypertrucages/i, note: "0,12 %", switchTo: "English" },
+  };
+  for (const viewport of VIEWPORTS.filter(({ name }) => name !== "tablet")) {
+    for (const javaScriptEnabled of [true, false]) {
+      await withAppPage(browser, baseUrl, viewport, async (page) => {
+        const receipt = page.locator(hash);
+        const idsByEdition = new Map();
+        const checkReceipt = async (lang) => {
+          const edition = editions[lang];
+          await page.waitForURL(baseUrl + edition.path + hash);
+          const claim = receipt.getByText(edition.claim).first();
+          await claim.waitFor();
+          await page.waitForFunction(({ id, interactive }) => {
+            const row = document.querySelector(id);
+            const heading = row?.querySelector(interactive ? "button[aria-expanded=true]" : "p");
+            if (!heading) return false;
+            const bounds = heading.getBoundingClientRect();
+            const top = interactive ? document.querySelector("main").getBoundingClientRect().top : 0;
+            return bounds.top >= top && bounds.bottom <= window.innerHeight;
+          }, { id: hash, interactive: javaScriptEnabled }, { polling: 100, timeout: 5000 }).catch(async () => {
+            const bounds = await receipt.evaluate((row) => ({
+              heading: row.firstElementChild.getBoundingClientRect().toJSON(),
+              scrollY: window.scrollY,
+              height: window.innerHeight,
+            }));
+            throw new Error(`Receipt heading was outside the viewport on ${page.url()}: ${JSON.stringify(bounds)}`);
+          });
+          await receipt.getByText(edition.note, { exact: false }).first().waitFor();
+          await receipt.locator(`a[href="${sourceUrl}"]`).waitFor();
+          assert(await receipt.locator(`a[href$="${hash}"]`).count() === 2, "Receipt should have its own permalink and alternate edition link.");
+          if (!idsByEdition.has(lang)) {
+            const ids = await page.locator("[id^=receipt-]").evaluateAll((rows) => rows.map((row) => row.id));
+            const ledger = require(path.join(distDir, "content", ...(lang === "fr" ? ["fr"] : []), "receipts.json"));
+            assert(ids.length === ledger.length && new Set(ids).size === ledger.length, `${lang} receipt IDs are missing or duplicated.`);
+            idsByEdition.set(lang, ids.sort().join(","));
+          }
+        };
+        for (const [lang, otherLang] of [["en", "fr"], ["fr", "en"]]) {
+          await page.goto(baseUrl + editions[lang].path + hash);
+          await checkReceipt(lang);
+          const prefix = lang === "fr" ? "/fr" : "";
+          await receipt.locator(`a[href="${prefix}/chapter/13#the-working-test"]`).click();
+          await page.waitForURL(`${baseUrl}${prefix}/chapter/13#the-working-test`);
+          await page.getByRole("heading", { name: lang === "fr" ? "Le test pratique" : "The working test", exact: true }).waitFor();
+          if (!javaScriptEnabled) {
+            await page.locator(`a[href="${editions[lang].path}${hash}"]`).click();
+          } else {
+            await page.goBack();
+          }
+          await checkReceipt(lang);
+          await receipt.getByRole("link", { name: editions[lang].switchTo, exact: true }).click();
+          await checkReceipt(otherLang);
+        }
+        if (javaScriptEnabled) {
+          if (viewport.name === "mobile") await page.getByRole("button", { name: "Open menu", exact: true }).click();
+          const controls = viewport.name === "mobile" ? page.getByRole("dialog", { name: "Menu" }) : page.getByRole("group", { name: "Language", exact: true });
+          await controls.getByRole("button", { name: "Lire en français (traduction automatique)" }).click();
+          await checkReceipt("fr");
+          await page.getByRole("button", { name: "Sources", exact: true }).click();
+          await page.waitForURL(baseUrl + editions.fr.path);
+          await receipt.waitFor({ state: "detached" });
+        }
+        assert(idsByEdition.get("en") === idsByEdition.get("fr"), "Receipt IDs differ across editions.");
+        await page.goto(baseUrl + editions.en.path + "#receipt-51-2");
+        await page.locator("#receipt-51").getByText("Canadian CPTC", { exact: false }).first().waitFor();
+        const duplicate = page.locator("#receipt-51-2");
+        await duplicate.getByText("Website Updates page vs. living-document promise", { exact: false }).first().waitFor();
+        await duplicate.getByRole("link", { name: "Français", exact: true }).click();
+        await page.waitForURL(baseUrl + editions.fr.path + "#receipt-51-2");
+        await duplicate.getByText(/promesse de document vivant/i).first().waitFor();
+      }, { javaScriptEnabled, hasTouch: viewport.name === "mobile" });
+      console.log(`PASS receipt permalink: ${viewport.name}, JavaScript ${javaScriptEnabled ? "on" : "off"}, both editions and language directions`);
+    }
+  }
+}
+
 async function main() {
   assert(fs.existsSync(path.join(distDir, "index.html")), "dist/index.html not found. Run npm run build first.");
   const server = createServer();
@@ -1012,6 +1108,8 @@ async function main() {
   const browser = await chromium.launch();
 
   try {
+    await runLatestUpdateSmoke(browser, baseUrl);
+    await runReceiptPermalinkSmoke(browser, baseUrl);
     await runChapter13LawSmoke(browser, baseUrl);
     await runStaticSectionLinksSmoke(browser, baseUrl);
     await runChapterOutlineSmoke(browser, baseUrl);
@@ -1037,6 +1135,26 @@ async function main() {
   } finally {
     await browser.close().catch(() => {});
     await new Promise((resolve) => server.close(resolve));
+  }
+}
+
+async function runLatestUpdateSmoke(browser, baseUrl) {
+  for (const [lang, prefix] of [["en", ""], ["fr", "/fr"]]) {
+    const update = latestUpdate[lang];
+    for (const javaScriptEnabled of [true, false]) {
+      await withAppPage(browser, baseUrl, VIEWPORTS[2], async (page) => {
+        await page.goto(baseUrl + prefix + "/updates");
+        const heading = page.getByRole("heading", { name: update.title, exact: true });
+        await heading.waitFor();
+        for (const item of update.items) await page.getByText(item, { exact: true }).waitFor();
+        const passage = page.getByRole("link", { name: update.passageLabel, exact: true });
+        assert(await passage.getAttribute("href") === prefix + "/chapter/13#the-working-test", "Updates links to the wrong passage.");
+        await page.getByRole("link", { name: update.receiptLabel, exact: true }).click();
+        await page.waitForURL(baseUrl + prefix + "/receipts#receipt-32");
+        await page.locator('#receipt-32 a[href*="2512.13915v1#S4"]').waitFor();
+      }, { javaScriptEnabled, hasTouch: true });
+      console.log(`PASS latest update: ${lang}, JavaScript ${javaScriptEnabled ? "on" : "off"}`);
+    }
   }
 }
 
