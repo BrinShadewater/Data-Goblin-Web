@@ -129,7 +129,17 @@
     {
       "id": "the-human-labour-layer",
       "en": "The human labour layer",
-      "fr": "La couche du travail humain"
+      "fr": "La couche du travail humain",
+      "source": {
+        "en": {
+          "label": "Fairwork field study of data labelling workers at Sama",
+          "url": "https://link.springer.com/article/10.1007/s00146-023-01824-9"
+        },
+        "fr": {
+          "label": "Étude de terrain de Fairwork sur le personnel d’annotation chez Sama (en anglais)",
+          "url": "https://link.springer.com/article/10.1007/s00146-023-01824-9"
+        }
+      }
     },
     {
       "id": "whaanga-s-framing-ai-as-a-new-colonizer",
@@ -171,7 +181,17 @@
     {
       "id": "four-cooling-water-and-the-heat-problem",
       "en": "Four: Cooling, water, and the heat problem",
-      "fr": "Quatre : refroidissement, eau et problème de chaleur"
+      "fr": "Quatre : refroidissement, eau et problème de chaleur",
+      "source": {
+        "en": {
+          "label": "U.S. Department of Energy guide to data centre cooling water",
+          "url": "https://www.energy.gov/cmei/femp/cooling-water-efficiency-opportunities-federal-data-centers"
+        },
+        "fr": {
+          "label": "Guide du département de l’Énergie des États-Unis sur l’eau de refroidissement (en anglais)",
+          "url": "https://www.energy.gov/cmei/femp/cooling-water-efficiency-opportunities-federal-data-centers"
+        }
+      }
     },
     {
       "id": "five-suzanne-kite-s-protocol-what-hardware-ethics-looks-like-when-it-s-specific",
@@ -260,7 +280,17 @@
     {
       "id": "the-transparency-gap-in-operational-terms",
       "en": "The transparency gap, in operational terms",
-      "fr": "L'écart de transparence, en termes opérationnels"
+      "fr": "L'écart de transparence, en termes opérationnels",
+      "source": {
+        "en": {
+          "label": "Natural Resources Canada’s data centre guide",
+          "url": "https://publications.gc.ca/site/eng/9.948912/publication.html"
+        },
+        "fr": {
+          "label": "Guide de Ressources naturelles Canada sur les centres de données",
+          "url": "https://publications.gc.ca/site/fra/9.948913/publication.html"
+        }
+      }
     },
     {
       "id": "the-infrastructure-totalled",
@@ -314,7 +344,17 @@
     {
       "id": "training-versus-inference-the-most-important-environmental-distinction",
       "en": "Training versus inference — the most important environmental distinction",
-      "fr": "La formation par rapport à l'inférence — la distinction environnementale la plus importante"
+      "fr": "La formation par rapport à l'inférence — la distinction environnementale la plus importante",
+      "source": {
+        "en": {
+          "label": "BLOOM study measuring energy use in training and inference",
+          "url": "https://www.jmlr.org/papers/v24/23-0069.html"
+        },
+        "fr": {
+          "label": "Étude sur la consommation d’énergie de BLOOM à l’entraînement et à l’inférence (en anglais)",
+          "url": "https://www.jmlr.org/papers/v24/23-0069.html"
+        }
+      }
     },
     {
       "id": "jevons-paradox-properly-understood",
@@ -361,7 +401,17 @@
     {
       "id": "national-sovereignty-the-cloud-act-problem",
       "en": "National sovereignty — the CLOUD Act problem",
-      "fr": "La souveraineté nationale — le problème de la loi CLOUD"
+      "fr": "La souveraineté nationale — le problème de la loi CLOUD",
+      "source": {
+        "en": {
+          "label": "U.S. Code, section 2713 (CLOUD Act)",
+          "url": "https://uscode.house.gov/us/usc/119-120/t18/s2713/"
+        },
+        "fr": {
+          "label": "Code des États-Unis, article 2713 (CLOUD Act, en anglais)",
+          "url": "https://uscode.house.gov/us/usc/119-120/t18/s2713/"
+        }
+      }
     },
     {
       "id": "personal-sovereignty-the-consent-and-likeness-layer",
@@ -371,7 +421,17 @@
     {
       "id": "indigenous-data-sovereignty-the-deeper-layer",
       "en": "Indigenous data sovereignty — the deeper layer",
-      "fr": "La souveraineté des données autochtones — la couche plus profonde"
+      "fr": "La souveraineté des données autochtones — la couche plus profonde",
+      "source": {
+        "en": {
+          "label": "First Nations Information Governance Centre’s OCAP® principles",
+          "url": "https://fnigc.ca/ocap-training/"
+        },
+        "fr": {
+          "label": "Les principes de PCAP® des Premières Nations",
+          "url": "https://fnigc.ca/fr/les-principes-de-pcap-des-premieres-nations/"
+        }
+      }
     },
     {
       "id": "how-the-three-frameworks-interact-and-what-they-all-share",
@@ -428,7 +488,17 @@
     {
       "id": "workplace-ai-surveillance-the-cupe-primary-documentation",
       "en": "Workplace AI surveillance — the CUPE primary documentation",
-      "fr": "Surveillance de l'IA sur le lieu de travail — la documentation primaire du CUPE"
+      "fr": "Surveillance de l'IA sur le lieu de travail — la documentation primaire du CUPE",
+      "source": {
+        "en": {
+          "label": "CUPE’s March 2026 Senate brief on AI and workers (PDF)",
+          "url": "https://sencanada.ca/Content/Sen/Committee/451/SOCI/briefs/2026-03-05_SOCI_SS-2_Brief_CUPE_e.pdf"
+        },
+        "fr": {
+          "label": "Mémoire du SCFP au Sénat de mars 2026 sur l’IA et le travail (PDF)",
+          "url": "https://sencanada.ca/Content/Sen/Committee/451/SOCI/briefs/2026-03-05_SOCI_SS-2_Brief_CUPE_f.pdf"
+        }
+      }
     },
     {
       "id": "quebec-law-25-as-the-federal-government-of-last-resort",
@@ -438,7 +508,17 @@
     {
       "id": "the-biometric-and-facial-recognition-layer",
       "en": "The biometric and facial recognition layer",
-      "fr": "La couche de reconnaissance biométrique et faciale"
+      "fr": "La couche de reconnaissance biométrique et faciale",
+      "source": {
+        "en": {
+          "label": "Privacy Commissioner’s report on police facial recognition and Clearview AI",
+          "url": "https://www.priv.gc.ca/en/opc-actions-and-decisions/ar_index/202021/sr_rcmp/"
+        },
+        "fr": {
+          "label": "Rapport du Commissariat sur la reconnaissance faciale par la police et Clearview AI",
+          "url": "https://www.priv.gc.ca/fr/mesures-et-decisions-prises-par-le-commissariat/ar_index/202021/sr_grc/"
+        }
+      }
     },
     {
       "id": "ai-companions-the-surveillance-you-confide-in",
@@ -465,7 +545,17 @@
     {
       "id": "the-canadian-newspapers-v-openai-case",
       "en": "The Canadian newspapers v. OpenAI case",
-      "fr": "L'affaire des journaux canadiens c. OpenAI"
+      "fr": "L'affaire des journaux canadiens c. OpenAI",
+      "source": {
+        "en": {
+          "label": "Ontario court’s 2025 jurisdiction ruling and summary of the allegations (PDF)",
+          "url": "https://litigate.com/assets/uploads/20251126-143435-3326-Toronto-Star-Newspapers-et-al-v.-OpenAI-et-al-CV-24-00732231-00CL.Endorsement.September.10.2025.Jurisdiction.Motion.FINAL.2.pdf"
+        },
+        "fr": {
+          "label": "Décision ontarienne de 2025 sur la compétence et résumé des allégations (PDF en anglais)",
+          "url": "https://litigate.com/assets/uploads/20251126-143435-3326-Toronto-Star-Newspapers-et-al-v.-OpenAI-et-al-CV-24-00732231-00CL.Endorsement.September.10.2025.Jurisdiction.Motion.FINAL.2.pdf"
+        }
+      }
     },
     {
       "id": "the-twuc-and-actra-positions",
@@ -584,7 +674,17 @@
     {
       "id": "the-2025-canadian-election-empirical-study",
       "en": "The 2025 Canadian election empirical study",
-      "fr": "Étude empirique sur les élections canadiennes de 2025"
+      "fr": "Étude empirique sur les élections canadiennes de 2025",
+      "source": {
+        "en": {
+          "label": "Results of the 2025 Canadian election deepfake study",
+          "url": "https://arxiv.org/html/2512.13915v1#S4"
+        },
+        "fr": {
+          "label": "Résultats de l’étude sur les hypertrucages lors des élections canadiennes de 2025 (en anglais)",
+          "url": "https://arxiv.org/html/2512.13915v1#S4"
+        }
+      }
     },
     {
       "id": "the-political-deepfake-regulatory-gap",
@@ -799,7 +899,17 @@
     {
       "id": "the-stanford-fmti-the-empirical-baseline-for-industry-transparency",
       "en": "The Stanford FMTI — the empirical baseline for industry transparency",
-      "fr": "L'IMF de Stanford — la base empirique pour la transparence de l'industrie"
+      "fr": "L'IMF de Stanford — la base empirique pour la transparence de l'industrie",
+      "source": {
+        "en": {
+          "label": "Stanford’s December 2025 Foundation Model Transparency Index",
+          "url": "https://crfm.stanford.edu/fmti/December-2025/index.html"
+        },
+        "fr": {
+          "label": "Indice de transparence des modèles de fondation de Stanford, décembre 2025 (en anglais)",
+          "url": "https://crfm.stanford.edu/fmti/December-2025/index.html"
+        }
+      }
     },
     {
       "id": "the-corporate-selective-disclosure-pattern",

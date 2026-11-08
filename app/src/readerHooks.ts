@@ -17,13 +17,9 @@ import {
 import { useReader } from "./reader";
 import { FIRST_DOC, LAST_DOC, panelSnippet } from "./readerUtils";
 import { chapterPath, fetchJson, useArtMap, useChapter, useTraps } from "./useContent";
-import { useLanguage, type Lang } from "./LanguageContext";
+import { useLanguage } from "./LanguageContext";
 import type { Chapter } from "./types";
 import type { SectionLink } from "./sectionLinks";
-import sectionSources from "./section-sources.json";
-
-type Source = { label: string; url: string };
-const sourcesByChapter: Partial<Record<number, Record<string, Record<Lang, Source>>>> = sectionSources;
 
 function isEditableTarget(target: EventTarget | null): boolean {
   const el = target as HTMLElement | null;
@@ -75,12 +71,11 @@ export function usePaginatedChapter(num: number, sections: SectionLink[]) {
     [mode, dyslexic, heightScale, widthScale]
   );
   const linkedChapter = useMemo(() => {
-    const sources = sourcesByChapter[num];
-    if (!chapter || !sources || !sections.length) return chapter;
+    if (!chapter || chapter.number !== num || !sections.some((section) => section.source)) return chapter;
     return {
       ...chapter,
       sections: chapter.sections.map((section, index) => {
-        const source = sources[sections[index]?.id]?.[lang];
+        const source = sections[index]?.source?.[lang];
         if (!source) return section;
         const label = lang === "fr" ? "Source :" : "Source:";
         return { ...section, markdown: `**${label}** [${source.label}](${source.url})\n\n${section.markdown}` };

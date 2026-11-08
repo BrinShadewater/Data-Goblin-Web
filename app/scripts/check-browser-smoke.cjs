@@ -750,11 +750,8 @@ async function runSearchQuestionsSmoke(browser, baseUrl) {
         await dialog.locator(`a[href="${resultPath}"]`).tap();
         await page.waitForURL(baseUrl + resultPath);
         await page.locator("[data-section-heading]:focus").waitFor();
-        if (!fixture.source) {
-          console.log(`PASS search question ${lang} #${rank}: ${question} → passage`);
-          continue;
-        }
-        const sourceUrl = typeof fixture.source === "string" ? fixture.source : fixture.source[lang];
+        const sourceUrl = typeof fixture.source === "string" ? fixture.source : fixture.source?.[lang];
+        assert(sourceUrl, `${lang} “${question}” has no expected source URL.`);
         const source = page.locator(`a[href="${sourceUrl}"]`).first();
         for (let turn = 0; turn < 10 && !(await source.isVisible()); turn++) {
           await page.getByRole("button", { name: nextLabel, exact: true }).last().tap();

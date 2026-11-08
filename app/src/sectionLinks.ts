@@ -1,6 +1,11 @@
 import type { Lang } from "./LanguageContext";
 
-export type SectionLink = { id: string; en: string; fr: string };
+export type SectionLink = {
+  id: string;
+  en: string;
+  fr: string;
+  source?: Record<Lang, { label: string; url: string }>;
+};
 export type SectionLinks = Record<string, SectionLink[]>;
 
 const SECTION_ID = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
