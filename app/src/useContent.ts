@@ -65,32 +65,22 @@ export function useJson<T>(relPath: string | null): { data: T | null; error: str
   const { lang: ctxLang } = useLanguage();
   const lang = relPath && LANG_NEUTRAL.has(relPath) ? "en" : ctxLang;
   const key = relPath ? `${lang}:${relPath}` : null;
-  const [data, setData] = useState<T | null>(
-    key && cache.has(key) ? (cache.get(key) as T) : null
-  );
-  const [error, setError] = useState<string | null>(null);
+  const [result, setResult] = useState<{ key: string; data: T | null; error: string | null } | null>(null);
   useEffect(() => {
-    if (!relPath || !key) {
-      setData(null);
-      setError(null);
-      return;
-    }
+    if (!relPath || !key) return;
     let live = true;
-    if (cache.has(key)) {
-      setData(cache.get(key) as T);
-      setError(null);
-      return;
-    }
-    setData(null);
-    setError(null);
+    setResult(null);
+    if (cache.has(key)) return;
     fetchJson<T>(relPath, lang)
-      .then((d) => live && setData(d))
-      .catch((e) => live && setError(String(e)));
+      .then((data) => live && setResult({ key, data, error: null }))
+      .catch((error) => live && setResult({ key, data: null, error: String(error) }));
     return () => {
       live = false;
     };
   }, [relPath, lang, key]);
-  return { data, error };
+  if (key && cache.has(key)) return { data: cache.get(key) as T, error: null };
+  if (result?.key === key) return result;
+  return { data: null, error: null };
 }
 
 export const chapterPath = (num: number) => `chapters/ch${String(num).padStart(2, "0")}.json`;

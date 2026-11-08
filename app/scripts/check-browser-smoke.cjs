@@ -902,7 +902,8 @@ async function runChapterOutlineSmoke(browser, baseUrl) {
       const outline = await openOutline("en");
       const section = outline.getByRole("link", { name: headings.en, exact: true });
       assert(await section.getAttribute("href") === link("en"), "Outline link should use the stable ID.");
-      await page.context().grantPermissions(["clipboard-read", "clipboard-write"], { origin: baseUrl });
+      const clipboardPermissions = browser.browserType().name() === "webkit" ? ["clipboard-read"] : ["clipboard-read", "clipboard-write"];
+      await page.context().grantPermissions(clipboardPermissions, { origin: baseUrl });
       await outline.getByRole("button", { name: `Copy link · ${headings.en}`, exact: true }).click();
       await outline.getByText("Section link copied.", { exact: true }).waitFor();
       assert(await page.evaluate(() => navigator.clipboard.readText()) === baseUrl + link("en"), "Copied URL differs from the outline link.");
@@ -1060,8 +1061,8 @@ async function runReceiptPermalinkSmoke(browser, baseUrl) {
             idsByEdition.set(lang, ids.sort().join(","));
           }
         };
+        await page.goto(baseUrl + editions.en.path + hash);
         for (const [lang, otherLang] of [["en", "fr"], ["fr", "en"]]) {
-          await page.goto(baseUrl + editions[lang].path + hash);
           await checkReceipt(lang);
           const prefix = lang === "fr" ? "/fr" : "";
           await receipt.locator(`a[href="${prefix}/chapter/13#the-working-test"]`).click();
@@ -1099,6 +1100,34 @@ async function runReceiptPermalinkSmoke(browser, baseUrl) {
   }
 }
 
+async function runReceiptLocaleLoadingSmoke(browser, baseUrl) {
+  await withAppPage(browser, baseUrl, VIEWPORTS[0], async (page) => {
+    let release;
+    const frenchResponse = new Promise((resolve) => { release = resolve; });
+    await page.route("**/content/fr/receipts.json", async (route) => {
+      await frenchResponse;
+      await route.continue();
+    });
+
+    await page.goto(baseUrl + "/receipts#receipt-32");
+    const receipt = page.locator("#receipt-32");
+    const englishClaim = receipt.getByText("2025 election deepfake study", { exact: true });
+    await englishClaim.waitFor();
+    try {
+      await Promise.all([
+        page.waitForRequest("**/content/fr/receipts.json"),
+        receipt.getByRole("link", { name: "Français", exact: true }).click(),
+      ]);
+      await page.waitForURL(baseUrl + "/fr/receipts#receipt-32");
+      assert(!(await englishClaim.isVisible()), "French receipt URL displayed the old English claim while loading.");
+    } finally {
+      release();
+    }
+    await receipt.getByText(/hypertrucages/i).first().waitFor();
+  });
+  console.log("PASS receipt language loading: the previous claim stays hidden until the French ledger arrives.");
+}
+
 async function main() {
   assert(fs.existsSync(path.join(distDir, "index.html")), "dist/index.html not found. Run npm run build first.");
   const server = createServer();
@@ -1108,6 +1137,7 @@ async function main() {
   const browser = await chromium.launch();
 
   try {
+    await runReceiptLocaleLoadingSmoke(browser, baseUrl);
     await runLatestUpdateSmoke(browser, baseUrl);
     await runReceiptPermalinkSmoke(browser, baseUrl);
     await runChapter13LawSmoke(browser, baseUrl);
