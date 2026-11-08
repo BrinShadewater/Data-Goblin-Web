@@ -161,6 +161,8 @@ function readChapter(lang, number) {
   catch { return null; }
 }
 
+const sectionLinks = JSON.parse(fs.readFileSync(path.join(DIST, "content", "section-links.json"), "utf8"));
+
 // Build the inlined body for a /chapter/N route in the given language.
 function chapterBodyHtml(route, lang) {
   const m = route.match(/^\/chapter\/(\d+)$/);
@@ -168,10 +170,18 @@ function chapterBodyHtml(route, lang) {
   const ch = readChapter(lang, Number(m[1]));
   if (!ch) return "";
   const fr = lang === "fr";
+  const links = sectionLinks[ch.number] ?? [];
+  const sections = ch.sections ?? [];
+  const outlineLabel = fr ? "Dans ce chapitre" : "In this chapter";
   let b = "";
   if (ch.startHere) b += `<p>${inlineMd(ch.startHere)}</p>`;
-  for (const s of ch.sections || []) {
-    if (s && s.heading) b += `<h2>${esc(s.heading)}</h2>`;
+  if (links.length) {
+    const items = links.map(({ id, [lang]: heading }) => `<li><a href="#${esc(id)}">${esc(heading)}</a></li>`);
+    b += `<nav aria-label="${outlineLabel}"><h2>${outlineLabel}</h2><ol>${items.join("")}</ol></nav>`;
+  }
+  for (const [index, s] of sections.entries()) {
+    const link = links[index];
+    if (s && s.heading) b += `<h2${link ? ` id="${esc(link.id)}"` : ""}>${esc(s.heading)}</h2>`;
     if (s && s.markdown) b += mdToHtml(s.markdown);
   }
   for (const g of ch.goblinChecks || []) { if (g && g.markdown) b += mdToHtml(g.markdown); }

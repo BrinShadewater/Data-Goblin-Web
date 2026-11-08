@@ -17,7 +17,7 @@ import { useLanguage } from "../LanguageContext";
 import { folio, backMatterNumber, isBackMatter } from "../readerUtils";
 import { SIDEBAR_NARROW_VW, SINGLE_MAX_PX, SPREAD_MAX_PX } from "../reader";
 import { tr, trf } from "../i18n";
-import { resolveSection, sectionHref, type SectionLink } from "../sectionLinks";
+import { resolveSection, sectionHref, sectionLinkValue, type SectionLink } from "../sectionLinks";
 import {
   useChapterRoute,
   usePageNavigation,
@@ -59,7 +59,7 @@ export function FieldGuidePage() {
   const { data: sectionLinks } = useSectionLinks();
   const sections = sectionLinks?.[num] ?? NO_SECTIONS;
   const location = useLocation();
-  const sectionValue = new URLSearchParams(location.search).get("section");
+  const sectionValue = sectionLinkValue(location.search, location.hash);
   const requestedSection = resolveSection(sections, sectionValue, lang);
   const requestedHeading = requestedSection?.[lang] ?? sectionValue;
   const { aligned, page, pageCount, step, goNext, goPrev, sectionPanel } = usePageNavigation({
@@ -77,7 +77,7 @@ export function FieldGuidePage() {
   const toolsTrapRef = useFocusTrap<HTMLDivElement>(toolsOpen, () => setToolsOpen(false));
   const readingAreaRef = useRef<HTMLElement>(null);
   const focusedEntry = useRef<string | null>(null);
-  const focusedSection = useRef<string | null>(null);
+  const focusedSection = useRef<{ key: string; heading: HTMLElement } | null>(null);
   const navigationType = useNavigationType();
   const focusReader = location.state?.focusReader === true;
   const chapterReady = chapter?.number === num && !!panels;
@@ -108,11 +108,14 @@ export function FieldGuidePage() {
       .find((element) => element.dataset.sectionHeading === requestedHeading);
     if (!target) return;
     target.scrollIntoView({ block: "nearest" });
-    if (focusSection && focusedSection.current !== location.key) {
-      focusedSection.current = location.key;
+    const previous = focusedSection.current;
+    const replacedFocusedHeading = previous && previous.heading !== target && !previous.heading.isConnected &&
+      document.activeElement === document.body;
+    if (focusSection && (previous?.key !== location.key || replacedFocusedHeading)) {
       target.focus({ preventScroll: true });
+      if (document.activeElement === target) focusedSection.current = { key: location.key, heading: target };
     }
-  }, [aligned, focusSection, location.key, requestedHeading, sectionPanel]);
+  }, [aligned, focusSection, location.key, panels, requestedHeading, sectionPanel]);
 
   useEffect(() => {
     if (!focusReader || navigationType !== "PUSH" || !chapterReady || focusedEntry.current === location.key) return;

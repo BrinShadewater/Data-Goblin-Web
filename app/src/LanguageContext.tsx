@@ -1,6 +1,7 @@
 import { createContext, useCallback, useContext, useEffect, useReducer, useRef, ReactNode } from "react";
 import { useLocation, useNavigate } from "react-router";
 import { setUiLang, onI18nReady } from "./i18n";
+import { sectionLinkValue } from "./sectionLinks";
 
 export type Lang = "en" | "fr";
 
@@ -34,7 +35,7 @@ export function langPath(pathname: string, lang: Lang): string {
  * between the two; the choice is also remembered in localStorage.
  */
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const { pathname, search, key } = useLocation();
+  const { pathname, search, hash, key } = useLocation();
   const navigate = useNavigate();
   const readerDestination = useRef<{ key: string; href: string } | null>(null);
   const setReaderDestination = useCallback((entryKey: string, href: string | null) => {
@@ -60,9 +61,9 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
       navigate(langPath(saved.href, l));
       return;
     }
-    const section = new URLSearchParams(search).get("section");
+    const section = sectionLinkValue(search, hash);
     const pendingSection = section && /^\/(?:guide|chapter\/\d+)\/?$/.test(basePath(pathname))
-      ? `?${new URLSearchParams({ section })}` : "";
+      ? (section === hash.slice(1) ? hash : `?${new URLSearchParams({ section })}`) : "";
     navigate(langPath(pathname, l) + pendingSection);
   };
   const toggle = () => setLang(lang === "en" ? "fr" : "en");

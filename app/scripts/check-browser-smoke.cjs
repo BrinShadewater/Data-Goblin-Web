@@ -689,18 +689,19 @@ async function runMobileSearchSmoke(browser, baseUrl) {
         fs.mkdirSync(process.env.SEARCH_SCREENSHOTS, { recursive: true });
         await page.screenshot({ path: path.join(process.env.SEARCH_SCREENSHOTS, `search-${fixture.lang}.png`) });
       }
-      await result.click();
-      const heading = page.getByRole("heading", { name: fixture.heading, exact: true });
-      await heading.waitFor();
-      assert(await heading.evaluate((element) => document.activeElement === element),
-        "Search selection did not move keyboard focus to the passage.");
-      const url = new URL(page.url());
-      assert(url.pathname === `${fixture.lang === "fr" ? "/fr" : ""}/chapter/13` &&
-        url.searchParams.get("section") === "the-working-test", "Search did not produce the stable section URL.");
       await page.route("**/content/art-map.json", async (route) => {
         await new Promise((resolve) => setTimeout(resolve, 600));
         await route.continue();
       });
+      await result.click();
+      const heading = page.getByRole("heading", { name: fixture.heading, exact: true });
+      await heading.waitFor();
+      await page.waitForLoadState("networkidle");
+      assert(await heading.evaluate((element) => document.activeElement === element),
+        "Search selection did not retain keyboard focus after the passage finished loading.");
+      const url = new URL(page.url());
+      assert(url.pathname === `${fixture.lang === "fr" ? "/fr" : ""}/chapter/13` &&
+        url.hash === "#the-working-test", "Search did not produce the stable section URL.");
       await page.reload();
       await heading.waitFor();
       await page.waitForLoadState("networkidle");
@@ -738,7 +739,7 @@ async function runClaimReceiptSmoke(browser, baseUrl) {
       const search = page.getByRole("dialog", { name: searchLabel, exact: true });
       await search.getByRole("searchbox").fill(french ? "test hypertrucage" : "deepfake test");
       await search.getByRole("link", { name: new RegExp(fixture.heading, "i") }).tap();
-      await page.waitForURL(`${baseUrl}${fixture.prefix}/chapter/13?section=the-working-test`);
+      await page.waitForURL(`${baseUrl}${fixture.prefix}/chapter/13#the-working-test`);
       await page.getByRole("heading", { name: fixture.heading, exact: true }).waitFor();
       const marker = page.getByRole("button", { name: french ? /0,12\s*% des vues sur X/ : /0\.12%-of-views \(on X\)/ });
       await marker.tap();
@@ -777,7 +778,7 @@ async function runChapterOutlineSmoke(browser, baseUrl) {
       const headings = { en: "The working test", fr: "Le test pratique" };
       const outlineNames = { en: "In this chapter", fr: "Dans ce chapitre" };
       const chapter = (lang) => `${lang === "fr" ? "/fr" : ""}/chapter/13`;
-      const link = (lang) => `${chapter(lang)}?section=${id}`;
+      const link = (lang) => `${chapter(lang)}#${id}`;
       const heading = (lang) => page.getByRole("main").getByRole("heading", { name: headings[lang], exact: true });
 
       async function openOutline(lang) {
@@ -823,10 +824,38 @@ async function runChapterOutlineSmoke(browser, baseUrl) {
         await translatedOutline.waitFor({ state: "hidden" });
       }
 
-      await page.goto(baseUrl + chapter("fr") + "?section=The+working+test");
-      await heading("fr").waitFor();
-      console.log(`PASS chapter outline: ${viewport.name} · copy, reload, English ↔ French, and legacy heading link`);
+      for (const legacy of [id, "The+working+test"]) {
+        await page.goto(baseUrl + chapter("fr") + "?section=" + legacy);
+        await heading("fr").waitFor();
+      }
+      console.log(`PASS chapter outline: ${viewport.name} · copy, reload, English ↔ French, and legacy links`);
     });
+  }
+}
+
+async function runStaticSectionLinksSmoke(browser, baseUrl) {
+  for (const viewport of [VIEWPORTS[0], VIEWPORTS[2]]) {
+    for (const { prefix, outline, title } of [
+      { prefix: "", outline: "In this chapter", title: "The working test" },
+      { prefix: "/fr", outline: "Dans ce chapitre", title: "Le test pratique" },
+    ]) {
+      await withAppPage(browser, baseUrl, viewport, async (page) => {
+        const chapter = `${baseUrl}${prefix}/chapter/13`;
+        const fragment = "#the-working-test";
+        await page.goto(chapter + fragment);
+        const target = page.locator("h2:target");
+        assert(await target.textContent() === title, "Shared fragment did not target the localized static heading.");
+        assert(await target.evaluate((element) => {
+          const bounds = element.getBoundingClientRect();
+          return bounds.top >= -1 && bounds.bottom <= window.innerHeight + 1;
+        }), "Shared fragment did not scroll the static heading into view.");
+        await page.goto(chapter);
+        await page.getByRole("navigation", { name: outline, exact: true }).getByRole("link", { name: title, exact: true }).click();
+        await page.waitForURL(chapter + fragment);
+        assert(await target.textContent() === title, "Static outline link did not target its heading.");
+      }, { javaScriptEnabled: false });
+      console.log(`PASS static section links: ${viewport.name} ${prefix || "en"}`);
+    }
   }
 }
 
@@ -882,6 +911,7 @@ async function main() {
 
   try {
     await runChapter13LawSmoke(browser, baseUrl);
+    await runStaticSectionLinksSmoke(browser, baseUrl);
     await runChapterOutlineSmoke(browser, baseUrl);
     await runClaimReceiptSmoke(browser, baseUrl);
     await runMobileSearchSmoke(browser, baseUrl);
