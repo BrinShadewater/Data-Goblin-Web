@@ -186,7 +186,7 @@ function chapterBodyHtml(route, lang) {
     const link = links[index];
     if (s && s.heading) b += `<h2${link ? ` id="${esc(link.id)}"` : ""}>${esc(s.heading)}</h2>`;
     if (s?.heading && link) {
-      const otherLang = fr ? "en" : "fr";
+      const otherLang = fr ? "en-CA" : "fr-CA";
       const otherPath = fr ? route : `/fr${route}`;
       const label = fr ? "Read this section in English" : "Lire cette section en français";
       b += `<p><a href="${otherPath}#${esc(link.id)}" lang="${otherLang}" hreflang="${otherLang}">${label}</a></p>`;
@@ -249,7 +249,7 @@ function glossaryBodyHtml(lang) {
 // /receipts — the source ledger. Each row's claim + detail (detail markdown carries
 // the real source links), grouped under its section heading.
 function receiptsBodyHtml(lang) {
-  const otherLang = lang === "fr" ? "en" : "fr";
+  const otherLang = lang === "fr" ? "en-CA" : "fr-CA";
   const otherPath = lang === "fr" ? "/receipts" : "/fr/receipts";
   const otherLabel = lang === "fr" ? "English" : "Français";
   const permalinkLabel = lang === "fr" ? "Lien vers ce reçu" : "Link to this receipt";

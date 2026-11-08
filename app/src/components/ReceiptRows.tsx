@@ -57,6 +57,7 @@ export function ReceiptRow({ id, receipt, targeted }: { id: string; receipt: Rec
   const note = entry?.[lang];
   const passage = entry?.passage;
   const otherLang = lang === "en" ? "fr" : "en";
+  const otherLocale = `${otherLang}-CA`;
   const links = note ? [[note.sourceLabel, note.url], ...receipt.links] : receipt.links;
   const border = c(...P.borderSoft);
   const muted = c(...P.muted);
@@ -120,7 +121,7 @@ export function ReceiptRow({ id, receipt, targeted }: { id: string; receipt: Rec
               </Link>
             )}
             <Link to={`#${id}`} style={{ color: green }}>{lang === "fr" ? "Lien vers ce reçu" : "Link to this receipt"}</Link>
-            <Link to={`${langPath("/receipts", otherLang)}#${id}`} lang={otherLang} hrefLang={otherLang} style={{ color: green }}>
+            <Link to={`${langPath("/receipts", otherLang)}#${id}`} lang={otherLocale} hrefLang={otherLocale} style={{ color: green }}>
               {lang === "fr" ? "English" : "Français"}
             </Link>
           </div>
