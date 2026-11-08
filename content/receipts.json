@@ -508,8 +508,12 @@
   "section": "Fresh live re-verification — June 15, 2026 (full fact-check pass)",
   "claim": "Bill C-16 \"does not establish… a takedown mechanism\" (Ch 13)",
   "status": "fixed",
-  "detail": "⚠️ **Now FALSE.** May 11 2026 committee amendment added a **48-hour platform takedown duty** (+ \"nearly nude\" coverage). | Strike \"a takedown mechanism\"; add a sentence on the May 2026 amendment; re-check the international-comparison section. | [CFJC/CP](https://cfjctoday.com/2026/05/11/mps-amend-bill-criminalizing-sexual-deepfakes-to-include-nearly-nude-images/) · [Nat'l Observer](https://www.nationalobserver.com/2026/05/11/news/mps-amend-bill-criminalizing-sexual-deepfakes-include-nearly-nude-images)",
+  "detail": "Criminal Code subsection 164.1(5.1) requires deletion of a qualifying intimate image within 48 hours after the court makes its order. A platform report does not start the deadline. | Chapter 13 distinguishes the court order from a report to a platform. | [Criminal Code, section 164.1](https://laws-lois.justice.gc.ca/eng/acts/C-46/section-164.1.html) · [CFJC/CP](https://cfjctoday.com/2026/05/11/mps-amend-bill-criminalizing-sexual-deepfakes-to-include-nearly-nude-images/) · [Nat'l Observer](https://www.nationalobserver.com/2026/05/11/news/mps-amend-bill-criminalizing-sexual-deepfakes-include-nearly-nude-images)",
   "links": [
+   [
+    "Criminal Code, section 164.1",
+    "https://laws-lois.justice.gc.ca/eng/acts/C-46/section-164.1.html"
+   ],
    [
     "CFJC/CP",
     "https://cfjctoday.com/2026/05/11/mps-amend-bill-criminalizing-sexual-deepfakes-to-include-nearly-nude-images/"
@@ -525,8 +529,12 @@
   "section": "Fresh live re-verification — June 15, 2026 (full fact-check pass)",
   "claim": "Bill C-16 status \"tabled… Dec 9 2025\" (Ch 5/9/10/13, appendix)",
   "status": "fixed",
-  "detail": "⏰ **Stale.** As of June 2026 C-16 **passed 3rd reading in the House and is before the Senate.** | Update status verb throughout; re-pull at publication (switch to \"enacted\" if Royal Assent occurs). | parl.ca LEGISinfo C-16 · [Globe](https://www.theglobeandmail.com/canada/article-federal-move-to-criminalize-non-consensual-sexual-deepfakes-is-long/)",
+  "detail": "Bill C-16 received Royal Assent on June 18, 2026. The intimate-image amendments discussed in Chapter 13 came into force on July 18, 2026. | Chapter 13 and its source appendix now cite the enacted law. | [Protecting Victims Act](https://laws-lois.justice.gc.ca/eng/AnnualStatutes/2026_19/FullText.html) · [Globe](https://www.theglobeandmail.com/canada/article-federal-move-to-criminalize-non-consensual-sexual-deepfakes-is-long/)",
   "links": [
+   [
+    "Protecting Victims Act",
+    "https://laws-lois.justice.gc.ca/eng/AnnualStatutes/2026_19/FullText.html"
+   ],
    [
     "Globe",
     "https://www.theglobeandmail.com/canada/article-federal-move-to-criminalize-non-consensual-sexual-deepfakes-is-long/"

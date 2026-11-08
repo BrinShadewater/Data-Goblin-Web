@@ -24,8 +24,8 @@
   "url": "https://ised-isde.canada.ca"
  },
  {
-  "name": "Bill C-16 (Protecting Victims Act, December 2025)",
-  "url": "https://www.parl.ca"
+  "name": "Protecting Victims Act",
+  "url": "https://laws-lois.justice.gc.ca/eng/AnnualStatutes/2026_19/FullText.html"
  },
  {
   "name": "Bill C-27 / AIDA (2022-2025, died on prorogation)",
@@ -574,6 +574,10 @@
  {
   "name": "PDF",
   "url": "https://oee.nrcan.gc.ca/corporate/statistics/neud/dpa/data_e/downloads/dc/pdf/2024/2024-best-practice-guide-for-canadian-data-centres.pdf"
+ },
+ {
+  "name": "Criminal Code, section 164.1",
+  "url": "https://laws-lois.justice.gc.ca/eng/acts/C-46/section-164.1.html"
  },
  {
   "name": "CFJC/CP",

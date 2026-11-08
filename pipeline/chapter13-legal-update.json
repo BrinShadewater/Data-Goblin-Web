@@ -1,0 +1,364 @@
+{
+  "fr/chapters/ch13.json": [
+    {
+      "path": [
+        "startHere"
+      ],
+      "before": "En janvier 2026, des reportages canadiens et internationaux ont documenté une vague d'images non consensuelles de femmes identifiables générées par l'IA de Grok et, comme Global News l'a signalé en couvrant le même scandale, des documents sur les violences sexuelles commises par des enfants sur la plateforme. Le commissaire à la protection de la vie privée du Canada a ouvert, puis élargi, une enquête sur X au sujet des images. La réponse du ministre Solomon a été d'indiquer le projet de loi C-16, la Loi sur la protection des victimes présentée par le ministre de la Justice Sean Fraser le 9 décembre 2025 et modifiée en mai 2026 (qui prévoit un programme de 48 heures pour la mise à l'arrêt), qui fait maintenant avancer le Parlement, qui étend le droit criminel canadien à des crimes sexuels commis pour la première fois. Le cas illustre à la fois ce que la réglementation canadienne sur les faux-sangs atteint aujourd'hui et ce qu'elle ne fait pas.",
+      "after": "En janvier 2026, des médias canadiens et étrangers ont rapporté la diffusion d’hypertrucages sexualisés visant des femmes identifiables, générés sans leur consentement avec Grok, l’outil d’IA de X. Global News a aussi signalé la présence sur la plateforme de matériel d’abus et d’exploitation sexuels d’enfants généré par IA. Le commissaire à la protection de la vie privée du Canada a ouvert, puis élargi, une enquête sur X. Le ministre Solomon a alors évoqué le projet de loi C-16, encore à l’étude. Le texte a reçu la sanction royale le 18 juin 2026 sous le titre de Loi visant à protéger les victimes. Les modifications au Code criminel présentées ici sont entrées en vigueur le 18 juillet 2026."
+    },
+    {
+      "path": [
+        "startHere"
+      ],
+      "before": "En avril et mai 2025, le Canada a tenu des élections fédérales. Des chercheurs de plusieurs institutions ont analysé le contenu politique circulant pendant la campagne à travers X, Bluesky et Reddit : 187 778 postes au total. **Environ 5,9 % des images liées aux élections étaient des images de fond.** Les comptes de relevé de droite ont affiché des failles profondes à peu près deux fois le taux des comptes de prélèvement de gauche. La plupart des fakes profonds étaient bénins ou apolitiques. Les nuisibles, diffamatoires ou conspirateurs, ont attiré une portée limitée, ne représentant que 0,12 % du total des vues sur X. **Le Canada n'a pas de loi visant spécifiquement les grands fléaux politiques.** Le projet de loi C-16 ne vise que les rapaces sexuels.",
+      "after": "Pendant la campagne qui a précédé les élections fédérales du 28 avril 2025, une équipe de recherche a analysé 187 778 publications sur X, Bluesky et Reddit. **Environ 5,9 % des images liées aux élections étaient des hypertrucages.** Les comptes de droite en publiaient à peu près deux fois plus souvent que les comptes de gauche. La plupart étaient inoffensifs ou sans lien avec la politique. Les hypertrucages nuisibles ne représentaient que 0,12 % de toutes les vues sur X. **Les nouvelles dispositions sur les images intimes ne créent pas d’infraction propre aux hypertrucages politiques.** D’autres lois peuvent toutefois s’appliquer selon l’usage."
+    },
+    {
+      "path": [
+        "sections",
+        0,
+        "markdown"
+      ],
+      "before": "La Loi sur la protection des victimes (projet de loi C-16) a été présentée à la Chambre des communes le 9 décembre 2025 par le ministre de la Justice, Sean Fraser; après des modifications apportées en mai 2026 (qui ajoutaient une période de 48 heures de service, une couverture « quasi nue » et des peines plus lourdes pour les crimes d'agression), elle a reçu la sanction royale le 18 juin 2026, la plupart des dispositions entrant en vigueur le 18 juillet 2026. Le projet de loi compte 158 pages. Les dispositions de faux-sens ne sont pas l'ensemble du projet de loi. Il traite également de la classification des féminicides (création d'une catégorie distincte de meurtres au premier degré pour les féminides), du contrôle coercitif dans les relations avec des partenaires intimes et de la révision de plusieurs autres dispositions du Code criminel. Les dispositions spécifiques à la fauconnerie profonde sont concentrées dans les modifications apportées au **Article 162.1 du Code pénal** (distribution non consensuelle d'images intimes, initialement ajoutée au Code criminel en 2014).",
+      "after": "Le projet de loi C-16 est devenu la **Loi visant à protéger les victimes** le 18 juin 2026. Les modifications sur les images intimes présentées ici sont entrées en vigueur le 18 juillet 2026. La loi aborde aussi d’autres sujets, dont le contrôle coercitif et les circonstances où un meurtre est qualifié de meurtre au premier degré. Les dispositions les plus pertinentes pour les hypertrucages se trouvent aux articles **162.1** et **164.1** du Code criminel."
+    },
+    {
+      "path": [
+        "sections",
+        0,
+        "markdown"
+      ],
+      "before": "Les modifications spécifiques que le projet de loi C-16 apporte :",
+      "after": "Voici ce que change la loi adoptée :"
+    },
+    {
+      "path": [
+        "sections",
+        0,
+        "markdown"
+      ],
+      "before": "**Couverture explicite des rapaces profonds.** La section 162.1 a été initialement rédigée pour couvrir la distribution non consensuelle d'images intimes réelles - des photographies ou des vidéos qui avaient été prises et étaient distribuées sans le consentement de la personne représentée. Les modifications apportées en 2025 étendent l'article à **images intimes synthétiques** qui représente une personne identifiable, même lorsqu'il n'y a jamais eu d'image intime originale de cette personne. Il s'agit de l'extension opérationnelle essentielle : criminaliser les images sexualisées d'individus identifiables générées par l'IA.",
+      "after": "**Quelles images de synthèse sont visées.** L’article 162.1 couvre certaines représentations produites par des moyens électroniques ou mécaniques, dont l’IA. Elles doivent montrer une personne identifiable et pouvoir être prises pour un enregistrement de cette personne. L’infraction vise notamment le fait de sciemment diffuser, vendre ou rendre accessible une image intime, ou d’en faire la publicité, en sachant que la personne n’y a pas consenti ou sans se soucier de son consentement. La seule création de l’image n’est pas visée par cet article."
+    },
+    {
+      "path": [
+        "sections",
+        0,
+        "markdown"
+      ],
+      "before": "**Inclusion « presque nue ».** Les modifications étendent la définition de l'infraction aux images représentant une personne identifiable dans un état « quasi nu », plus large que le seuil de nudité ou d'activité sexuelle explicite établi par la loi antérieure. Le seuil plus large porte sur la pratique documentée consistant à produire des faucons profonds partiellement déshabillés qui ne répondaient pas aux normes de nudité antérieures, mais qui ont causé des dommages semblables.",
+      "after": "**La quasi-nudité est incluse.** Un enregistrement réel ou une représentation de synthèse peut être visé si la personne y est nue, presque nue, expose ses organes sexuels ou se livre à une activité sexuelle explicite. Dans le cas d’un enregistrement réel, il doit y avoir une attente raisonnable de vie privée au moment de l’enregistrement et au moment de l’infraction. Pour une représentation de synthèse, il faut que la personne soit identifiable et que l’image puisse passer pour un enregistrement réel."
+    },
+    {
+      "path": [
+        "sections",
+        0,
+        "markdown"
+      ],
+      "before": "**Pénalité maximale prolongée.** La peine maximale pour l'infraction est passée de 5 ans à **10 ans d ' emprisonnement** . Il s'agit là d'un signal législatif important, qui est de plus en plus sérieux.",
+      "after": "**Peines maximales.** En cas de poursuite par mise en accusation, le maximum ordinaire pour la diffusion sans consentement passe de cinq à **10 ans**. Il atteint **14 ans** si la personne accusée savait ou aurait dû savoir que, lors de la création de l’image, la personne représentée subissait ou venait de subir une agression sexuelle grave. Ce maximum ne s’applique pas à toutes les images de synthèse. Les infractions de diffusion et de menace peuvent aussi faire l’objet d’une poursuite par procédure sommaire."
+    },
+    {
+      "path": [
+        "sections",
+        0,
+        "markdown"
+      ],
+      "before": "**Nouvelle infraction pour menace de divulgation.** Une nouvelle infraction distincte criminalise la menace de divulguer des images intimes (qu'elles soient réelles ou synthétiques) sans le consentement : la disposition sur la \"sextortion\". Cela concerne les cas où la menace elle-même, plutôt que la distribution réelle, est le préjudice.",
+      "after": "**Menace de diffuser une image intime.** La nouvelle infraction peut s’appliquer même si aucune image n’est diffusée. La personne doit proférer la menace sciemment pour intimider ou pour être prise au sérieux, en sachant que la personne représentée ne consentirait pas à l’acte annoncé ou sans se soucier de son consentement. Le maximum est de 10 ans en cas de mise en accusation. L’extorsion est une infraction distincte."
+    },
+    {
+      "path": [
+        "sections",
+        0,
+        "markdown"
+      ],
+      "before": "**Participation des jeunes.** Une nouvelle infraction interdit de faire participer des jeunes (de moins de 18 ans) à la commission de l'une quelconque de ces infractions, et des peines distinctes s'appliquent lorsque le délinquant est un adulte et que le jeune participe à la production ou à la distribution.",
+      "after": "**Recrutement d’une personne mineure.** L’article 169.1 crée une infraction distincte, de portée plus large. Il peut s’appliquer lorsqu’une personne en situation de confiance, de pouvoir ou d’autorité recrute ou encourage une personne de moins de 18 ans à participer à une infraction au Code criminel ou à la Loi réglementant certaines drogues et autres substances, et que celle-ci participe ensuite à cette infraction ou à une infraction connexe. La personne qui recrute doit connaître l’âge de la personne mineure ou ne pas s’en soucier. Pour l’application de cet article, une personne adulte est réputée se trouver dans une telle situation."
+    },
+    {
+      "path": [
+        "sections",
+        0,
+        "markdown"
+      ],
+      "before": "**Comment ça se fait appliquer.** Le fondement du projet de loi est le droit criminel : la Couronne peut poursuivre les contrevenants, la loi s'applique partout au Canada et le mécanisme d'application de la loi constitue le pipeline standard de poursuites et de poursuites. Mais à compter des amendements du comité de mai 2026, le projet de loi n'est plus seulement pénal. Elle ajoute maintenant une fonction de retrait de plate-forme (les services doivent retirer les images intimes non consensuelles, y compris les représentations générées par l'IA et « presque nues », dans les 48 heures), qui déplace le Canada sur le même pied d'égalité que la loi américaine Take IT DOWN, l'UE et l'Australie sur le retrait rapide. Ce que le projet de loi ne crée pas encore, c'est un régime plus large de résolution civile (les dommages-intérêts légaux qu'une victime peut intenter directement, la façon dont le régime québécois le permet) ou un organisme de réglementation autonome doté d'un pouvoir spécifique aux «fausses» profondes. Donc l'image est mélangée plutôt que sombre : **la voie pénale dépend toujours de la déclaration des victimes à la police, l'enquête policière, les poursuites judiciaires et les tribunaux (lents et initiés par la victime), mais un mécanisme d'éloignement rapide est maintenant en place à côté.** C'est un réel rétrécissement de l'écart des premiers brouillons marqués ici, avec une mise en garde : un devoir de 48 heures n'est qu'aussi bon que son application, et la prise d'une image n'était pas le même remède que punir la personne qui l'a faite.",
+      "after": "**Quand commence le délai de 48 heures.** Selon le paragraphe 164.1(5.1), si le tribunal conclut, selon la prépondérance des probabilités, que le matériel est une image intime à l’égard de laquelle une infraction à l’article 162.1 a été commise, il doit ordonner au gardien de l’ordinateur de l’effacer **dans les 48 heures suivant le prononcé de l’ordonnance**. Un signalement à une plateforme ne déclenche pas ce délai. L’article 164.1 vise le matériel rendu accessible par un ordinateur qui relève de la compétence du tribunal. Le paragraphe 164.1(9) précise aussi que les ordonnances rendues en vertu des paragraphes (5) à (7) ne prennent effet qu’après l’expiration du délai d’appel final. L’ordonnance et la poursuite pénale ont des objectifs différents, et ces modifications ne créent pas de recours civil autonome en dommages-intérêts."
+    },
+    {
+      "path": [
+        "sections",
+        0,
+        "markdown"
+      ],
+      "before": "**Ce que le projet de loi C-16 ne couvre pas.** Le projet de loi est explicitement limité aux rapaces profonds sexualisés. Il couvre **pas** :",
+      "after": "**Ce qui échappe aux dispositions sur les images intimes.** La définition dépend de ce que montre l’image et, pour une image de synthèse, de sa capacité à passer pour un enregistrement réel. Ces dispositions ne créent pas de recours propre aux usages suivants lorsqu’ils ne répondent pas à cette définition :"
+    },
+    {
+      "path": [
+        "sections",
+        0,
+        "markdown"
+      ],
+      "before": "- Des diffusions politiques (images fausses des politiciens, contenu de l'ingérence électorale)\n- Defamatory deepfakes qui ne sont pas sexualisés (de fausses citations, de faux discours, de fausses actions)\n- Faucons commerciaux (utilisation commerciale non autorisée de la ressemblance, faux endossements)\n- Fraude d'identité (escroqueries assistées par deepfake ciblant des individus)\n- Les spakes profonds génériques non consensuels qui ne relèvent pas du champ d'application spécifique de la section 162.1",
+      "after": "- Hypertrucages politiques, comme de fausses images de responsables politiques ou de faux contenus électoraux\n- Hypertrucages diffamatoires non sexualisés, comme de faux discours ou de fausses citations\n- Usages commerciaux, comme de fausses publicités ou recommandations\n- Fraude à l’identité et escroqueries qui utilisent une image de synthèse\n- Autres hypertrucages non consensuels hors du champ de l’article 162.1"
+    },
+    {
+      "path": [
+        "sections",
+        0,
+        "markdown"
+      ],
+      "before": "Ces lacunes sont délibérées. Le projet de loi est conçu comme une extension étroite d'une disposition pénale existante, et non comme une réglementation exhaustive et fallacieuse. **Le cadre étroit est lui-même un choix politique.** Une législation complète sur les faux-semblants exigerait soit des dispositions pénales plus larges, soit une réglementation civile que le Canada n'a pas promulguée. L'étroitesse du projet de loi C-16 reflète le choix du gouvernement Carney d'étendre la législation existante de manière à s'attaquer à la catégorie de préjudice la plus documentée (les « faucons profonds » sexualisés, où les femmes et les enfants sont victimes de façon disproportionnée) sans prendre en considération la réglementation politique et commerciale plus vaste qu'exigerait une législation plus complète.",
+      "after": "La loi élargit une disposition pénale existante et la procédure de retrait qui s’y rattache. Pour les autres usages des médias de synthèse, il faut voir quelles autres lois peuvent s’appliquer. Les exemples politiques, commerciaux et frauduleux ci-dessous montrent pourquoi il faut d’abord déterminer la nature du préjudice."
+    },
+    {
+      "path": [
+        "sections",
+        0,
+        "markdown"
+      ],
+      "before": "**L'histoire morte de la loi sur les dommages en ligne.** Worth nommage parce qu'il façonne comment les lecteurs devraient comprendre le projet de loi C-16. Le *Loi sur les dommages en ligne* du gouvernement Trudeau a tenté une réglementation complète sur les dommages en ligne : un organisme de réglementation, la mise à l'eau obligatoire des plateformes, des catégories plus larges de contenu réglementé. La loi est morte à l'étage de la Chambre en 2025 aux côtés de l'AIDA. Le projet de loi C-16 est le successeur plus étroit et plus axé sur le droit criminel du gouvernement Carney (avec une obligation de mise à l'arrêt de la plate-forme ajoutée par modification en mai 2026, mais aucune des catégories générales d'organismes de réglementation ou de contenu des dommages en ligne visées par la Loi sur les morts). **Le message politique : Le Canada a tenté un cadre complet de lutte contre les méfaits en ligne, a échoué et s'est replié sur une approche plus étroite du droit criminel spécifique aux faux-semblants.** Ce retraitement façonne tout le reste du paysage réglementaire canadien actuel sur des failles profondes en particulier et sur la réglementation du contenu des plateformes en général.",
+      "after": "**Le précédent de la Loi sur les préjudices en ligne.** Le projet de loi C-63, déposé durant la législature précédente, n’est pas devenu loi. L’organisme de réglementation et les obligations des plateformes qu’il proposait avaient une portée plus large. La Loi visant à protéger les victimes adopte une approche plus ciblée pour les images intimes : le Code criminel et l’effacement ordonné par un tribunal.\n\n**Textes officiels :** [Loi visant à protéger les victimes](https://laws-lois.justice.gc.ca/fra/LoisAnnuelles/2026_19/TexteComplet.html) · [Code criminel, article 162.1](https://laws-lois.justice.gc.ca/fra/lois/C-46/section-162.1.html) · [Code criminel, article 164.1](https://laws-lois.justice.gc.ca/fra/lois/C-46/section-164.1.html)"
+    },
+    {
+      "path": [
+        "sections",
+        2,
+        "markdown"
+      ],
+      "before": "Mettre ensemble les articles 1 et 2 produit une conclusion qui mérite d'être mise à l'avant : le projet de loi C-16 **Le Canada dispose d'une législation pénale qui couvre les rapaces sexuels et, pour l'essentiel, n'a pas de loi spécifique qui vise les rapaques politiques.** porte sur une catégorie; l'autre catégorie produit en vertu du droit existant qui n'a pas été conçu pour la technologie.",
+      "after": "La Loi visant à protéger les victimes élargit les dispositions du Code criminel sur les images intimes. Elle ne crée pas d’infraction visant précisément les fausses images ou vidéos électorales. Les recours éventuels dépendent des faits et d’autres lois, notamment en matière électorale, de diffamation ou de fraude."
+    },
+    {
+      "path": [
+        "sections",
+        2,
+        "markdown"
+      ],
+      "before": "> **EXAMPLE — le détecteur de fumée a filé dans une pièce.** Le projet de loi C-16 couvre la cuisine, où la plupart des incendies commencent : les rapaces sexuels, le dommage le plus documenté. Les faux politiques, les faux endossements et les vidéos d'escroquerie portant un visage de confiance sont le reste de la maison, laissé à la diffamation et la loi électorale qui n'ont jamais été construits pour les médias synthétiques. Une vraie protection où les preuves disent que c'est nécessaire, et le câblage nu partout ailleurs.",
+      "after": "> **EXAMPLE — le détecteur de fumée dans une seule pièce.** Les nouvelles règles sur les images intimes protègent la cuisine. Un faux discours de campagne, une fausse publicité ou une vidéo d’escroquerie relève d’une autre pièce. Demandez-vous à quoi sert la vidéo : tromper des électeurs, nuire à une réputation ou soutirer de l’argent? La réponse aide à déterminer quelles autres lois pourraient s’appliquer."
+    },
+    {
+      "path": [
+        "sections",
+        3,
+        "markdown"
+      ],
+      "before": "Le modèle est plus large. Les résidents du Québec **Pour les Canadiens à l'extérieur du Québec, le paysage réglementaire des faux-sangs est principalement constitué par le projet de loi C-16 (droit criminel, fédéral) et par les recours juridiques généraux qui pourraient s'appliquer.** disposent de mécanismes civils supplémentaires, avec des dispositions précises sur le contexte profond, des procédures plus rapides et des pénalités financières importantes pour non-conformité. Cette couverture de 23 % de la population constitue le point de référence pour ce à quoi peut ressembler la réglementation canadienne des faux-sangs profonds. Le niveau fédéral a choisi de ne pas le faire correspondre.",
+      "after": "Le Québec dispose d’une procédure civile distincte pour les images intimes. Les dispositions fédérales du Code criminel s’appliquent partout au Canada, y compris au Québec. Elles ne remplacent pas cette procédure provinciale et ne l’étendent pas au reste du pays. Le délai fédéral d’effacement commence avec une ordonnance du tribunal."
+    },
+    {
+      "path": [
+        "sections",
+        3,
+        "markdown"
+      ],
+      "before": "La question de savoir si le niveau fédéral *devrait* correspond à celui-ci est contestée : les considérations fédéralistes, les arguments relatifs au fardeau réglementaire et la question plus générale de savoir s'il faut adopter une législation complète sur les dommages en ligne ou s'en tenir à l'approche plus étroite du projet de loi C-16. **Le fait que le Québec mène ici, et que l'écart compte pour les Canadiens à l'extérieur du Québec, est une question record. La question de savoir si le gouvernement fédéral devrait fermer un tel choix est contestée, et le guide le présente sans le résoudre.**",
+      "after": "L’adoption d’une procédure civile comparable ailleurs relève d’un choix de politique publique. C’est une question distincte de ce que prévoient maintenant les modifications au Code criminel."
+    },
+    {
+      "path": [
+        "sections",
+        4,
+        "markdown"
+      ],
+      "before": "Le projet de loi C-16 sur le **Canada.** couvre les crimes sexuels commis en vertu du droit criminel et, à compter des amendements de mai 2026, il ajoute un service de retrait d'une plate-forme de 48 heures; il est fédéral. Le Québec ajoute un régime civil pour les images intimes, mais seulement à l'intérieur du Québec. **Il s'agit encore de l'un des cadres les plus étroits du groupe de pairs étudiés ici (États-Unis, Royaume-Uni, Australie, UE, Singapour, Corée du Sud, Japon).** Canada n'a pas de législation complète sur les dommages en ligne (la Loi sur les méfaits en ligne est décédée), ni de dispositions politiques précises sur les faux-semblants, ni de divulgation obligatoire du contenu d'IA, et, en attendant la confirmation de l'application de la nouvelle obligation de retrait, il n'existe aucun régime de pénalisation civile à la plate-forme mature comparable à celui de ses pairs.",
+      "after": "**Canada.** La Loi visant à protéger les victimes étend le droit criminel fédéral à certaines images intimes de synthèse qui peuvent passer pour de vrais enregistrements. Elle exige leur effacement dans les 48 heures suivant une ordonnance rendue dans les conditions prévues par le Code criminel. Aux États-Unis, le délai court plutôt à compter de la réception d’une demande valide par une plateforme visée. Le Québec dispose aussi d’une procédure civile distincte. Les modifications fédérales ne créent ni infraction propre aux hypertrucages politiques, ni obligation générale de signaler les contenus générés par IA, ni organisme de réglementation des plateformes."
+    },
+    {
+      "path": [
+        "sections",
+        5,
+        "markdown"
+      ],
+      "before": "**Pour des rapaces de fond sexualisés.** Les dispositions pénales du projet de loi C-16 prévoient un seul recours. Un cadre de protection des droits à la ressemblance civile permettrait d'obtenir un recours supplémentaire, plus rapide et dirigé par la victime - la victime n'aurait pas besoin d'attendre des poursuites pénales, pourrait engager une action civile directement et pourrait poursuivre des dommages-intérêts légaux sans avoir à prouver un préjudice économique spécifique. **Cela permet de combler l'écart de procédure existant dans la législation canadienne actuelle en ce qui concerne les rapaces de fond sexualisés.**",
+      "after": "**Pour les hypertrucages sexualisés.** Les modifications fédérales prévoient des infractions et une procédure d’effacement judiciaire pour les images intimes visées. Le régime proposé de droits à l’image offrirait une autre option : une action civile intentée par la personne représentée, avec la possibilité d’obtenir des dommages-intérêts prévus par la loi. Cette proposition est distincte des recours instaurés par la Loi visant à protéger les victimes."
+    },
+    {
+      "path": [
+        "recap",
+        0
+      ],
+      "before": "Les dispositions détaillées du projet de loi C-16 — les modifications apportées à l'article 162.1, l'élargissement « presque nu », le maximum de 10 ans, la nouvelle infraction de menace à disclosion, la disposition relative à la participation des jeunes et l'obligation de 48 heures de mise à pied ajoutée en mai 2026. Et la portée étroite délibérée du projet de loi — les infidélités sexuelles seulement, un noyau criminel plus un devoir de mise en place de plate-forme, mais aucun régime général de dommages civils.",
+      "after": "La Loi visant à protéger les victimes telle qu’elle a été adoptée : quelles images intimes sont visées, ce que la loi prévoit pour la diffusion et les menaces, les maximums de 10 et de 14 ans en cas de mise en accusation et pourquoi le délai de 48 heures commence avec une ordonnance judiciaire. Le recrutement d’une personne mineure fait l’objet d’une infraction distincte. Les dispositions sur les images intimes ne créent pas d’infraction propre aux hypertrucages politiques."
+    },
+    {
+      "path": [
+        "sections",
+        7,
+        "markdown"
+      ],
+      "before": "> - Les dispositions détaillées du projet de loi C-16 — les modifications apportées à l'article 162.1, l'élargissement « presque nu », le maximum de 10 ans, la nouvelle infraction de menace à disclosion, la disposition relative à la participation des jeunes et l'obligation de 48 heures de mise à pied ajoutée en mai 2026. Et la portée étroite délibérée du projet de loi — les infidélités sexuelles seulement, un noyau criminel plus un devoir de mise en place de plate-forme, mais aucun régime général de dommages civils.",
+      "after": "> - La Loi visant à protéger les victimes telle qu’elle a été adoptée : quelles images intimes sont visées, ce que la loi prévoit pour la diffusion et les menaces, les maximums de 10 et de 14 ans en cas de mise en accusation et pourquoi le délai de 48 heures commence avec une ordonnance judiciaire. Le recrutement d’une personne mineure fait l’objet d’une infraction distincte. Les dispositions sur les images intimes ne créent pas d’infraction propre aux hypertrucages politiques."
+    },
+    {
+      "path": [
+        "sections",
+        1,
+        "markdown"
+      ],
+      "before": "**La découverte qualitative mérite d'être mise à l'avant plan.** Le Réseau canadien de recherche sur les médias numériques (RCMRDM), établi en partenariat avec le Laboratoire de recherche médico-légale numérique du Conseil de l'Atlantique, a été identifié. **sept speedfakes spécifiques de Mark Carney** pendant la campagne — des vidéos imitant les formats d'entrevue de nouvelles de CBC ou de CTV, avec Synthétique-Carney envoyant les téléspectateurs vers des sites Web frauduleux. Ce ne sont pas des failles profondes d'ingérence politique au sens conventionnel (elles n'ont pas pour but d'influencer le choix du vote); elles étaient **financier-scam deepfakes en utilisant la célébrité politique comme vecteur de crédibilité** . La catégorie est importante parce qu'elle se situe dans l'écart entre le projet de loi C-16 (qui couvre les rapaces sexuels), la loi relative à l'intégrité électorale conventionnelle (qui englobe l'ingérence électorale explicite) et la loi sur la protection des consommateurs (qui concerne la fraude financière). L'escroquerie de Carney tombe en dehors de la portée ciblée des trois.",
+      "after": "**Ce que montrent les cas recensés.** Le Réseau canadien de recherche sur les médias numériques et le Digital Forensic Research Lab (DFRLab) de l’Atlantic Council ont relevé **sept hypertrucages de Mark Carney** durant la campagne. Les vidéos imitaient des entrevues de CBC ou de CTV et renvoyaient vers des sites frauduleux. Ces vidéos se servaient de la notoriété d’un responsable politique pour donner de la crédibilité à une escroquerie. Elles ne sont pas visées par les modifications sur les images intimes, mais les règles sur la fraude peuvent s’appliquer."
+    },
+    {
+      "path": [
+        "sections",
+        4,
+        "markdown"
+      ],
+      "before": "**États-Unis.** Les **TENIR LA LOI** (Les outils pour contrer l'exploitation connue en activant la loi sur les sites Web et les réseaux, signée en mai 2025) exigent que les plateformes suppriment les images intimes non consensuelles, y compris celles générées par l'IA, dans les 48 heures suivant la notification. Sanctions civiles et pénales en cas de non-respect. Plusieurs lois au niveau de l'État, y compris la Californie AB 2839 (2024; interdictions politiques de tromperie autour des élections, successeur du coucher du soleil AB 730 — bien que l'AB 2839 ait été provisoirement enjointe pour les motifs du premier amendement dans *Kohls c. Bonta* (2024), de sorte que sa force exécutoire est contestée), Texas SB 751 (dispositions relatives à la fraude de faux-fils), Tennessee ELVIS Act (protection contre la ressemblance). Les cadres de l'État varient considérablement; la couverture fédérale est partielle et croissante.",
+      "after": "**États-Unis.** En vertu du **TAKE IT DOWN Act**, les plateformes visées doivent offrir un moyen de demander le retrait d’images intimes diffusées sans consentement, y compris certaines images générées par IA, et donner suite à une demande valide dans un délai de 48 heures. La Federal Trade Commission veille à l’application de cette procédure. Au Canada, c’est une ordonnance du tribunal qui déclenche le délai. Les lois des États varient et peuvent viser d’autres usages des hypertrucages."
+    },
+    {
+      "path": [
+        "sections",
+        2,
+        "markdown"
+      ],
+      "before": "- **Une couche civile plus large.** L'amendement du projet de loi C-16 de mai 2026 a ajouté le droit d'éloignement de la plate-forme lui-même, ce qui a permis au Canada de se conformer à la loi américaine TAC IT DOWN, aux obligations de l'UE en matière d'avis et d'action (la loi sur l'IA et la loi sur les services numériques) et à l'Australie sur ce point précis. Ce qui manque encore au Canada, c'est le mécanisme civil plus large (les dommages-intérêts prévus par la loi à l'initiative des victimes et un organisme de réglementation permanent) qui permet à quelqu'un d'agir sans attendre une accusation criminelle ou la conformité d'une plateforme.",
+      "after": "- **Retrait et recours civils.** Au Canada, les 48 heures courent à compter d’une ordonnance du tribunal. Aux États-Unis, elles courent à compter d’une demande valide reçue par une plateforme visée par le TAKE IT DOWN Act. Les modifications canadiennes n’instaurent pas un régime civil fédéral distinct de dommages-intérêts."
+    },
+    {
+      "path": [
+        "sections",
+        6,
+        "markdown"
+      ],
+      "before": "le projet de loi C-16 pour les contenus sexuels",
+      "after": "le Code criminel pour les images intimes visées"
+    },
+    {
+      "path": [
+        "sections",
+        7,
+        "markdown"
+      ],
+      "before": "*Principales sources citées ou invoquées dans ce chapitre : le projet de loi C-16, la Loi sur la protection des victimes (introduit le 9 décembre 2025, ministre de la Justice Sean Fraser; modifié en mai 2026, faisant avancer le Parlement à compter de juin 2026); Global News et CBC font état du scandale de Grok en 2026 et de l'enquête du Commissariat à la protection de la vie privée sur X (2026); l'article 162.1 du Code criminel canadien (tel que modifié); « Deepfakes in the 2025 Canadian Election: Prevalence, Partisanship, and Platform Dynamics » (Conférence Web de la MAC 2026 / arxiv:2512.13915); Livernoche et al. (2025) Documentation sur les ensembles de données OpenFake; Réseau canadien de recherche sur les médias numériques et analyses des laboratoires de recherche en médecine légale numérique de l'élection fédérale de 2025; Témoignage public du Groupe de travail SITE (Nathalie Drouin, David Morrison); Loi du Québec concernant le partage non consensuel d'images intimes (2024); Centre for International Governance Innovation analysis « Le Canada doit faire davantage pour protéger les femmes et les filles contre les effets nocifs des faucilles profondes » (décembre 2025); Suzie Dunn (Université Dalhousie) travaux universitaires sur les images intimes synthétiques non consensuelles; US TAC IT DOWN Act (2025); UK Online Safety Act (2023, en vigueur en 2023-2026); Australian eSafety Commissioner framework; European Union IA Act (en vigueur en août 2024); EU Digital Services Act (entrée en vigueur le 2024; modification apportée par la loi danoise sur les droits d'auteur sur les similarités (introduite en 2025). Citations détaillées dans l'annexe Sources.*",
+      "after": "*Principales sources citées ou invoquées dans ce chapitre : Loi visant à protéger les victimes (L.C. 2026, ch. 19, sanctionnée le 18 juin 2026); Global News et CBC font état du scandale de Grok en 2026 et de l'enquête du Commissariat à la protection de la vie privée sur X (2026); articles 162.1 et 164.1 du Code criminel; « Deepfakes in the 2025 Canadian Election: Prevalence, Partisanship, and Platform Dynamics » (Conférence Web de la MAC 2026 / arxiv:2512.13915); Livernoche et al. (2025) Documentation sur les ensembles de données OpenFake; Réseau canadien de recherche sur les médias numériques et analyses des laboratoires de recherche en médecine légale numérique de l'élection fédérale de 2025; Témoignage public du Groupe de travail SITE (Nathalie Drouin, David Morrison); Loi du Québec concernant le partage non consensuel d'images intimes (2024); Centre for International Governance Innovation analysis « Le Canada doit faire davantage pour protéger les femmes et les filles contre les effets nocifs des faucilles profondes » (décembre 2025); Suzie Dunn (Université Dalhousie) travaux universitaires sur les images intimes synthétiques non consensuelles; US TAC IT DOWN Act (2025); UK Online Safety Act (2023, en vigueur en 2023-2026); Australian eSafety Commissioner framework; European Union IA Act (en vigueur en août 2024); EU Digital Services Act (entrée en vigueur le 2024; modification apportée par la loi danoise sur les droits d'auteur sur les similarités (introduite en 2025). Citations détaillées dans l'annexe Sources.*"
+    },
+    {
+      "path": [
+        "sources"
+      ],
+      "before": [
+        "Bill C-16, the Protecting Victims Act (introduced December 9, 2025, Justice Minister Sean Fraser",
+        "amended May 2026, advancing through Parliament as of June 2026)",
+        "Global News and CBC reporting on the January 2026 Grok deepfake scandal and the Office of the Privacy Commissioner's investigation of X (2026)",
+        "Canadian Criminal Code Section 162.1 (as amended)"
+      ],
+      "after": [
+        "Loi visant à protéger les victimes (L.C. 2026, ch. 19)",
+        "Global News and CBC reporting on the January 2026 Grok deepfake scandal and the Office of the Privacy Commissioner's investigation of X (2026)",
+        "Code criminel, articles 162.1 et 164.1"
+      ]
+    }
+  ],
+  "fr/receipts.json": [
+    {
+      "path": [
+        48,
+        "detail"
+      ],
+      "before": "⚠️  **Maintenant FAUX.** 11 mai 2026 L'amendement de la commission a ajouté une **Déploiement de la plate-forme 48 heures** (+ couverture « quasi nue »). «Frappe un mécanisme de retrait»; ajouter une phrase sur l'amendement de mai 2026; revérifier la section de comparaison internationale. |  [CJFC/CP](https://cfjctoday.com/2026/05/11/mps-amend-bill-criminalizing-sexual-deepfakes-to-include-nearly-nude-images/)  ·  [Observateur de Nat'l](https://www.nationalobserver.com/2026/05/11/news/mps-amend-bill-criminalizing-sexual-deepfakes-include-nearly-nude-images)",
+      "after": "Le paragraphe 164.1(5.1) du Code criminel impose l’effacement de l’image intime visée dans les 48 heures suivant le prononcé de l’ordonnance. Un signalement à la plateforme ne déclenche pas ce délai."
+    },
+    {
+      "path": [
+        48,
+        "links"
+      ],
+      "before": [
+        [
+          "CFJC/CP",
+          "https://cfjctoday.com/2026/05/11/mps-amend-bill-criminalizing-sexual-deepfakes-to-include-nearly-nude-images/"
+        ],
+        [
+          "Nat'l Observer",
+          "https://www.nationalobserver.com/2026/05/11/news/mps-amend-bill-criminalizing-sexual-deepfakes-include-nearly-nude-images"
+        ]
+      ],
+      "after": [
+        [
+          "Code criminel, article 164.1",
+          "https://laws-lois.justice.gc.ca/fra/lois/C-46/section-164.1.html"
+        ],
+        [
+          "CFJC/CP",
+          "https://cfjctoday.com/2026/05/11/mps-amend-bill-criminalizing-sexual-deepfakes-to-include-nearly-nude-images/"
+        ],
+        [
+          "Nat'l Observer",
+          "https://www.nationalobserver.com/2026/05/11/news/mps-amend-bill-criminalizing-sexual-deepfakes-include-nearly-nude-images"
+        ]
+      ]
+    },
+    {
+      "path": [
+        49,
+        "detail"
+      ],
+      "before": "⏰  **Étal.** En juin 2026 C-16 **adopté la troisième lecture à la Chambre et est devant le Sénat.** Actualiser le verbe de statut tout au long de la publication (en changer pour « entériner » si la sanction royale survient). Legisinfo C-16 · [Globe](https://www.theglobeandmail.com/canada/article-federal-move-to-criminalize-non-consensual-sexual-deepfakes-is-long/)",
+      "after": "Le projet de loi C-16 a reçu la sanction royale le 18 juin 2026. Les modifications sur les images intimes présentées au chapitre 13 sont entrées en vigueur le 18 juillet 2026."
+    },
+    {
+      "path": [
+        49,
+        "links"
+      ],
+      "before": [
+        [
+          "Globe",
+          "https://www.theglobeandmail.com/canada/article-federal-move-to-criminalize-non-consensual-sexual-deepfakes-is-long/"
+        ]
+      ],
+      "after": [
+        [
+          "Loi visant à protéger les victimes",
+          "https://laws-lois.justice.gc.ca/fra/LoisAnnuelles/2026_19/TexteComplet.html"
+        ],
+        [
+          "Globe",
+          "https://www.theglobeandmail.com/canada/article-federal-move-to-criminalize-non-consensual-sexual-deepfakes-is-long/"
+        ]
+      ]
+    }
+  ],
+  "fr/book.json": [
+    {
+      "path": [
+        "appendixMarkdown"
+      ],
+      "before": "**Projet de loi C-16 — Loi modifiant le Code criminel et d'autres lois (Loi sur la protection des victimes).** Présenté à la Chambre des communes par le ministre de la Justice, Sean Fraser, le 9 décembre 2025, et modifié en mai 2026 (en plus d'une plate-forme de 48 heures de service); a reçu la sanction royale le 18 juin 2026, la plupart des dispositions étant en vigueur le 18 juillet 2026. 158 pages. Disponible sur parl.ca. S'attaque à la classification des féminicides, au contrôle coercitif et aux images intimes synthétiques, y compris les infarctus de l'IA, par le biais des modifications apportées à l'article 162.1 du Code criminel.",
+      "after": "**[Loi visant à protéger les victimes](https://laws-lois.justice.gc.ca/fra/LoisAnnuelles/2026_19/TexteComplet.html).** L.C. 2026, ch. 19 (projet de loi C-16). Sanction royale le 18 juin 2026. Les modifications sur les images intimes sont entrées en vigueur le 18 juillet 2026. Voir les articles 162.1 et 164.1 du Code criminel, notamment le délai de 48 heures suivant le prononcé de l’ordonnance d’effacement."
+    },
+    {
+      "path": [
+        "appendixMarkdown"
+      ],
+      "before": "- Projet de loi C-16 (Loi sur la protection des victimes, décembre 2025) — https://www.parl.ca via LEGISinfo",
+      "after": "- Loi visant à protéger les victimes — https://laws-lois.justice.gc.ca/fra/LoisAnnuelles/2026_19/TexteComplet.html"
+    }
+  ],
+  "fr/chapters/ch22.json": [
+    {
+      "path": [
+        "sections",
+        0,
+        "markdown"
+      ],
+      "before": "**Projet de loi C-16 — Loi modifiant le Code criminel et d'autres lois (Loi sur la protection des victimes).** Présenté à la Chambre des communes par le ministre de la Justice, Sean Fraser, le 9 décembre 2025, et modifié en mai 2026 (en plus d'une plate-forme de 48 heures de service); a reçu la sanction royale le 18 juin 2026, la plupart des dispositions étant en vigueur le 18 juillet 2026. 158 pages. Disponible sur parl.ca. S'attaque à la classification des féminicides, au contrôle coercitif et aux images intimes synthétiques, y compris les infarctus de l'IA, par le biais des modifications apportées à l'article 162.1 du Code criminel.",
+      "after": "**[Loi visant à protéger les victimes](https://laws-lois.justice.gc.ca/fra/LoisAnnuelles/2026_19/TexteComplet.html).** L.C. 2026, ch. 19 (projet de loi C-16). Sanction royale le 18 juin 2026. Les modifications sur les images intimes sont entrées en vigueur le 18 juillet 2026. Voir les articles 162.1 et 164.1 du Code criminel, notamment le délai de 48 heures suivant le prononcé de l’ordonnance d’effacement."
+    },
+    {
+      "path": [
+        "sections",
+        11,
+        "markdown"
+      ],
+      "before": "- Projet de loi C-16 (Loi sur la protection des victimes, décembre 2025) — https://www.parl.ca via LEGISinfo",
+      "after": "- Loi visant à protéger les victimes — https://laws-lois.justice.gc.ca/fra/LoisAnnuelles/2026_19/TexteComplet.html"
+    }
+  ]
+}

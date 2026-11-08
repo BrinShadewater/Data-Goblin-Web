@@ -52,13 +52,19 @@ export function useChapterRoute(): number {
 
 export function usePaginatedChapter(num: number) {
   const { mode, dyslexic, heightScale, widthScale } = useReader();
+  const { lang } = useLanguage();
   const { data: chapter, error } = useChapter(num);
   const { data: traps } = useTraps();
   const { data: artMap } = useArtMap();
 
   const trap = traps?.[String(num)] ?? null;
   const accents = useMemo(() => artMap?.docs?.[String(num)]?.accents ?? [], [artMap, num]);
-  const artPanels = useMemo(() => artMap?.docs?.[String(num)]?.panels ?? [], [artMap, num]);
+  const artPanels = useMemo(() => {
+    const figures = artMap?.docs?.[String(num)]?.panels ?? [];
+    return lang === "fr"
+      ? figures.map((figure) => figure.captionFr ? { ...figure, caption: figure.captionFr } : figure)
+      : figures;
+  }, [artMap, num, lang]);
   const budgets = useMemo(
     () => budgetsFor(mode, dyslexic, heightScale, widthScale),
     [mode, dyslexic, heightScale, widthScale]

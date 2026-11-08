@@ -347,7 +347,8 @@
         },
         {
           "src": "figures/fig-13.3-deepfake-laws.webp",
-          "caption": "Several jurisdictions now criminalize sexualized deepfakes, and Canada's Bill C-16 joins them. The gap is political deepfakes: Canada has no law aimed at them specifically, even after the 2025 election showed they are real, if limited."
+          "caption": "This figure compares approaches to sexualized and political deepfakes. Canada’s Protecting Victims Act received royal assent on June 18, 2026. It extends the offence of sharing intimate images without consent to cover certain realistic fabricated images.",
+          "captionFr": "Cette figure compare les réponses aux hypertrucages à caractère sexuel et politique. Au Canada, la Loi visant à protéger les victimes a reçu la sanction royale le 18 juin 2026. Elle étend l’infraction de diffusion non consensuelle d’images intimes à certaines images fabriquées qui paraissent authentiques."
         }
       ]
     },

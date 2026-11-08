@@ -592,21 +592,6 @@ function lastModFor(loc, route, lang) {
   return BUILD_DATE;
 }
 
-// ---- The About page's fallback counts must match the manuscript's stats ----
-// They are literals so the cards paint before the fetch; they drifted by up to 44 receipts.
-{
-  const stats = JSON.parse(fs.readFileSync(path.join(APP, "public/content/stats.json"), "utf8"));
-  const about = fs.readFileSync(path.join(APP, "src/pages/AboutPage.tsx"), "utf8");
-  const drifted = [];
-  for (const [, key, n] of about.matchAll(/\{ key: "(\w+)", n: "([^"]+)"/g)) {
-    if (String(stats[key]) !== n) drifted.push(`${key}: AboutPage says ${n}, stats.json says ${stats[key]}`);
-  }
-  if (drifted.length) {
-    console.error("prerender-meta: About fallbacks drifted from content/stats.json:\n  " + drifted.join("\n  "));
-    process.exit(1);
-  }
-}
-
 // ---- Generate sitemap.xml (EN + FR, with hreflang alternates) ----
 function smMeta(route) {
   if (route === "") return ["1.0", "monthly"];

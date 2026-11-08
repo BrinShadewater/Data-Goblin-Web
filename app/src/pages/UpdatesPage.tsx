@@ -13,6 +13,14 @@ interface UpdateEntry {
 
 const UPDATES: UpdateEntry[] = [
   {
+    date: "November 7, 2026",
+    tag: "Corrections",
+    title: "Chapter 13 follows the enacted Protecting Victims Act",
+    items: [
+      "The English and French editions now explain which intimate images are covered, when the higher penalties apply, and why the 48-hour deletion deadline starts with a court order.",
+    ],
+  },
+  {
     date: "September 5, 2026",
     tag: "Reader",
     title: "Faster first paint on phones, and a skip link that lands",
@@ -118,7 +126,7 @@ const UPDATES: UpdateEntry[] = [
     title: "Corrections — Wonder Valley reversal, and a fresh fact-check pass",
     items: [
       "Wonder Valley / Sturgeon Lake Cree Nation, corrected in public: an earlier draft described the Nation as an equity participant in the Wonder Valley data-centre project. The documented record is the opposite: the Nation says it was not consulted, demanded a halt (Chief Sunshine's open letter, January 13, 2025), and is in court over the Crown's duty to consult as of June 2026. Chapters 6 and 9 were rewritten to the record; the correction note stays in the book.",
-      "Bill C-16: a May 2026 committee amendment added a 48-hour platform takedown duty (and 'nearly nude' coverage); the bill is advancing through Parliament as of June 2026. The Chapter 13 line that said it created no takedown mechanism was corrected.",
+      "Bill C-16: the May 2026 committee amendments added a 48-hour deadline tied to a court deletion order and expanded coverage to near nudity. The bill was still before Parliament at the time. See the November update for the enacted law.",
       "The Toronto Star v. OpenAI jurisdiction ruling is dated November 7, 2025 (not the 27th), and OpenAI has appealed. The book now says so.",
       "The 2025 election-deepfake figures in the Source Library were aligned to the published paper (8.66% right / 4.42% left / 0.12% harmful reach), matching the chapter body.",
       "The $100M Venture Scientist Fund is a private Mila–Inovia venture fund, not a federal program. Corrected in Chapters 5 and 7.",
