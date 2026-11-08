@@ -7,6 +7,7 @@ export type SearchHit =
   | { type: "glossary"; term: string; def: string; letter: string };
 
 const indexes: Partial<Record<Lang, Promise<SearchHit[]>>> = {};
+const SEARCH_INDEX_TIMEOUT_MS = 15_000;
 
 function isSearchHit(value: unknown): value is SearchHit {
   if (typeof value !== "object" || value === null) return false;
@@ -31,7 +32,12 @@ function isSearchHit(value: unknown): value is SearchHit {
 }
 
 export function loadSearchIndex(lang: Lang): Promise<SearchHit[]> {
-  return indexes[lang] ??= fetch(`${import.meta.env.BASE_URL}search/${lang}.json`)
+  const cached = indexes[lang];
+  if (cached) return cached;
+
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), SEARCH_INDEX_TIMEOUT_MS);
+  return indexes[lang] = fetch(`${import.meta.env.BASE_URL}search/${lang}.json`, { signal: controller.signal })
     .then((response) => {
       if (!response.ok) throw new Error(`Search index unavailable: ${response.status}`);
       return response.json();
@@ -43,7 +49,8 @@ export function loadSearchIndex(lang: Lang): Promise<SearchHit[]> {
     .catch((error) => {
       delete indexes[lang];
       throw error;
-    });
+    })
+    .finally(() => clearTimeout(timeout));
 }
 
 function normalize(value: string) {

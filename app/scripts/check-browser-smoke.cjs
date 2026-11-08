@@ -728,14 +728,15 @@ async function runMobileSearchSmoke(browser, baseUrl) {
 }
 
 async function runMobileSearchRecoverySmoke(browser, baseUrl) {
-  for (const fixture of [
+  const fixtures = [
     { lang: "en", home: "/", label: "Search the guide", loading: "Loading search…", retry: "Retry search",
       empty: "Try a shorter phrase or different words.", query: "deepfake test", heading: "The working test",
       failure: { status: 503, body: "Unavailable" } },
     { lang: "fr", home: "/fr", label: "Rechercher dans le guide", loading: "Chargement de la recherche…", retry: "Réessayer la recherche",
       empty: "Essayez une recherche plus courte ou d’autres mots.", query: "test hypertrucage", heading: "Le test pratique",
       failure: { json: [{ type: "section", heading: null }] } },
-  ]) {
+  ];
+  for (const fixture of [...fixtures, { ...fixtures[0], stalled: true }]) {
     await withAppPage(browser, baseUrl, VIEWPORTS[2], async (page) => {
       let requests = 0;
       let releaseFailure;
@@ -747,16 +748,24 @@ async function runMobileSearchRecoverySmoke(browser, baseUrl) {
       });
       const dialog = page.getByRole("dialog", { name: fixture.label, exact: true });
       const input = dialog.getByRole("searchbox");
+      const retry = dialog.getByRole("button", { name: fixture.retry, exact: true });
       try {
+        if (fixture.stalled) await page.clock.install();
         await page.goto(baseUrl + fixture.home);
         await page.getByRole("button", { name: fixture.label, exact: true }).tap();
-        await input.fill(fixture.query);
+        await Promise.all([
+          page.waitForRequest(`**/search/${fixture.lang}.json`),
+          input.fill(fixture.query),
+        ]);
         await dialog.getByRole("status").filter({ hasText: fixture.loading }).waitFor();
         assert(await dialog.getByRole("link").count() === 0, "Search displayed results while its index was pending.");
+        if (fixture.stalled) {
+          await page.clock.fastForward(16_000);
+          await retry.waitFor({ timeout: 5_000 });
+        }
       } finally {
         releaseFailure();
       }
-      const retry = dialog.getByRole("button", { name: fixture.retry, exact: true });
       await retry.tap();
       const result = dialog.getByRole("link", { name: new RegExp(fixture.heading, "i") });
       await result.waitFor();
@@ -769,7 +778,7 @@ async function runMobileSearchRecoverySmoke(browser, baseUrl) {
       await input.fill(fixture.query);
       await result.waitFor();
       assert(requests === 2, "Editing the query should reuse the recovered index.");
-      console.log(`PASS mobile search recovery ${fixture.lang}: loading, retry with query and focus, no results, cached recovery.`);
+      console.log(`PASS mobile search recovery ${fixture.lang}${fixture.stalled ? " after timeout" : ""}: loading, retry with query and focus, no results, cached recovery.`);
     }, { hasTouch: true });
   }
 }
