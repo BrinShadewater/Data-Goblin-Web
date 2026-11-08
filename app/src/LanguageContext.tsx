@@ -1,6 +1,6 @@
-import { createContext, useCallback, useContext, useEffect, useReducer, useRef, ReactNode } from "react";
+import { createContext, useCallback, useContext, useEffect, useRef, useSyncExternalStore, ReactNode } from "react";
 import { useLocation, useNavigate } from "react-router";
-import { setUiLang, onI18nReady } from "./i18n";
+import { setUiLang, onI18nReady, isI18nReady } from "./i18n";
 import { sectionLinkValue } from "./sectionLinks";
 
 export type Lang = "en" | "fr";
@@ -44,9 +44,8 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   }, []);
   const lang: Lang = pathname === "/fr" || pathname.startsWith("/fr/") ? "fr" : "en";
 
-  // Re-render once the lazy-loaded French dictionary arrives.
-  const [, forceUpdate] = useReducer((n) => n + 1, 0);
-  useEffect(() => onI18nReady(forceUpdate), []);
+  // A cached dictionary can finish before React attaches the subscription.
+  useSyncExternalStore(onI18nReady, isI18nReady);
   // Keep tr() in sync synchronously, before children render.
   setUiLang(lang);
   useEffect(() => {
