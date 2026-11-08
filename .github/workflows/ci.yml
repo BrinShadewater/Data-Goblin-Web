@@ -24,7 +24,7 @@ jobs:
       # `py -3` fallback that only exists on Windows. Without this the first check would fail
       # on the runner for a reason that has nothing to do with the code.
       - name: Setup Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7.1.0
         with:
           python-version: '3.12'
       - name: Install dependencies
