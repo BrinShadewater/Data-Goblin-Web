@@ -22,7 +22,8 @@ const path = require("path");
 const CONTENT = path.join(__dirname, "..", "public", "content");
 
 /**
- * chapter -> ledger id -> French phrase.
+ * chapter -> ledger id -> French phrase, or a map by English phrase when
+ * the same receipt is linked from more than one claim.
  * Keep the phrase as short as it can be while still unique in its paragraph:
  * the marker underlines it in the reading flow.
  */
@@ -61,6 +62,11 @@ const FR = {
     19: "Principes du PACO",
     43: "28 000",
   },
+  10: {
+    77: "C'est un outil basé sur Microsoft Excel",
+    78: "Des bots à la porte",
+    82: "Clearview indiquaient 521 requêtes de recherche",
+  },
   11: { 29: "n'a ni signé ni adhéré" },
   12: { 49: "projet de loi C-16" },
   // Added after reanchor-chapter-drift.cjs moved these to the chapters their
@@ -69,7 +75,7 @@ const FR = {
   13: {
     12: "cas aggravés",
     4: "Danemark",
-    32: "0,12\u00a0% des vues sur X",
+    32: { "0.12%-of-views (on X)": "0,12\u00a0% des vues sur X" },
     // The French edition does not name the Act in the takedown-duty paragraph
     // the English anchors to; its only mention is "US TAKE IT DOWN" in the
     // chapter's international-comparison sentence. Same statute, slightly
@@ -131,17 +137,19 @@ for (const [num, list] of Object.entries(en)) {
     }
     if (UNTRANSLATABLE.some((u) => String(u.chapter) === String(num) && u.id === a.id)) continue;
 
-    let anchor = null;
-    if (frText.includes(a.anchor)) {
-      anchor = a.anchor; // survives translation unchanged
-      carried++;
-    } else if (FR[num] && FR[num][a.id]) {
-      anchor = FR[num][a.id];
+    const translation = FR[num]?.[a.id];
+    const curated = typeof translation === "string" ? translation : translation?.[a.anchor];
+    let anchor;
+    if (curated) {
+      anchor = curated;
       translated++;
       if (!frText.includes(anchor)) {
         problems.push(`ch${num} #${a.id}: ${JSON.stringify(anchor)} is not in the French prose`);
         continue;
       }
+    } else if (frText.includes(a.anchor)) {
+      anchor = a.anchor; // survives translation unchanged
+      carried++;
     } else {
       problems.push(`ch${num} #${a.id}: no French phrase for ${JSON.stringify(a.anchor)}`);
       continue;

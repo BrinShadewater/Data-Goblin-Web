@@ -190,7 +190,7 @@ async function runCookieSmoke(browser, baseUrl) {
 async function runInteractionSmoke(browser, baseUrl) {
   await withAppPage(browser, baseUrl, VIEWPORTS[0], async (page) => {
     await page.goto(`${baseUrl}/`, { waitUntil: "networkidle" });
-    await page.getByRole("link", { name: /Open the guide/i }).click();
+    await page.getByRole("link", { name: /Open the field guide/i }).click();
     await page.waitForURL(/\/guide/);
 
     // waitForURL only proves the URL changed, not that the reader route has
@@ -946,6 +946,107 @@ async function runChapterOutlineSmoke(browser, baseUrl) {
   }
 }
 
+async function runReaderEntrySmoke(browser, baseUrl) {
+  for (const viewport of [VIEWPORTS[0], VIEWPORTS[2]]) {
+    for (const fixture of [
+      { prefix: "", intro: "Read the introduction", introHeading: "About this manual",
+        guide: "How to use the guide and its icons", guideHeading: "How to use this manual",
+        legend: /the icon legend/i, next: "Next page" },
+      { prefix: "/fr", intro: "Lire l’introduction", introHeading: "À propos de ce manuel",
+        guide: "Comment utiliser le guide et ses icônes", guideHeading: "Comment utiliser ce manuel",
+        legend: /la légende de l'icône/i, next: "Page suivante" },
+    ]) {
+      const home = `${baseUrl}${fixture.prefix || "/"}`;
+      const frontMatter = `${baseUrl}${fixture.prefix}/chapter/0`;
+      for (const javaScriptEnabled of [true, false]) {
+        await withAppPage(browser, baseUrl, viewport, async (page) => {
+          await page.goto(home, { waitUntil: "networkidle" });
+          await page.getByRole("link", { name: fixture.intro, exact: true }).click();
+          await page.waitForURL(frontMatter + "#about-this-manual");
+          const intro = javaScriptEnabled
+            ? page.getByRole("heading", { name: fixture.introHeading, exact: true })
+            : page.locator("h2:target").filter({ hasText: fixture.introHeading });
+          await intro.waitFor();
+          if (javaScriptEnabled) {
+            assert(await intro.evaluate((heading) => heading === document.activeElement),
+              "The introduction link did not move focus to the heading.");
+          }
+
+          await page.goto(home, { waitUntil: "networkidle" });
+          await page.getByRole("link", { name: fixture.guide, exact: true }).click();
+          await page.waitForURL(frontMatter + "#how-to-use-this-manual");
+          const guide = javaScriptEnabled
+            ? page.getByRole("heading", { name: fixture.guideHeading, exact: true })
+            : page.locator("h2:target").filter({ hasText: fixture.guideHeading });
+          await guide.waitFor();
+          if (javaScriptEnabled) {
+            assert(await guide.evaluate((heading) => heading === document.activeElement),
+              "The guide link did not move focus to the heading.");
+          }
+          const legend = page.getByText(fixture.legend).first();
+          if (javaScriptEnabled) {
+            for (let spread = 0; spread < 8 && !(await legend.isVisible()); spread++) {
+              await page.getByRole("button", { name: fixture.next, exact: true }).last().click();
+            }
+          }
+          await legend.waitFor();
+
+          if (javaScriptEnabled && viewport.name === "desktop") {
+            for (const [label, fragment, heading] of [
+              [fixture.intro, "#about-this-manual", fixture.introHeading],
+              [fixture.guide, "#how-to-use-this-manual", fixture.guideHeading],
+            ]) {
+              await page.goto(`${baseUrl}${fixture.prefix}/chapter/1`);
+              const link = page.getByRole("link", { name: label, exact: true });
+              await link.focus();
+              await link.press("Enter");
+              await page.waitForURL(frontMatter + fragment);
+              const target = page.getByRole("heading", { name: heading, exact: true });
+              assert(await target.evaluate((element) => element === document.activeElement),
+                `Reader sidebar link ${label} did not focus the localized heading.`);
+            }
+          }
+        }, { javaScriptEnabled });
+        console.log(`PASS reader entry: ${viewport.name} ${fixture.prefix || "en"} JavaScript ${javaScriptEnabled ? "on" : "off"}`);
+      }
+    }
+  }
+}
+
+async function runChapter10ReceiptSmoke(browser, baseUrl) {
+  const notes = require("../src/receiptNotes.json");
+  const sections = require("../public/content/section-links.json")[10];
+  for (const viewport of [VIEWPORTS[0], VIEWPORTS[2]]) {
+    for (const lang of ["en", "fr"]) {
+      const prefix = lang === "fr" ? "/fr" : "";
+      const anchors = require(`../public/content${prefix}/claim-anchors.json`)[10];
+      await withAppPage(browser, baseUrl, viewport, async (page) => {
+        for (const id of [77, 78, 82]) {
+          const { section } = notes[id].passage;
+          const passage = `${baseUrl}${prefix}/chapter/10#${section}`;
+          const heading = page.getByRole("heading", { name: sections.find((entry) => entry.id === section)[lang], exact: true });
+          await page.goto(passage, { waitUntil: "networkidle" });
+          await heading.waitFor();
+          const marker = page.getByRole("button", { name: anchors.find((entry) => entry.id === id).anchor });
+          for (let turn = 0; turn < 8 && !(await marker.isVisible()); turn++) {
+            await page.getByRole("button", { name: lang === "fr" ? "Page suivante" : "Next page", exact: true }).last().click();
+          }
+          await marker.click();
+          const popup = page.getByRole("dialog", { name: lang === "fr" ? /Reçu/i : /Receipt/i });
+          await popup.locator(`a[href="${notes[id][lang].url}"]`).first().waitFor();
+          await popup.locator(`a[href="${prefix}/receipts#receipt-${id}"]`).click();
+          await page.waitForURL(`${baseUrl}${prefix}/receipts#receipt-${id}`);
+          await page.locator(`#receipt-${id} a[href="${prefix}/chapter/10#${section}"]`).click();
+          await page.waitForURL(passage);
+          assert(await heading.evaluate((element) => element === document.activeElement),
+            `Receipt ${id} did not return focus to its section in ${lang}.`);
+        }
+      });
+      console.log(`PASS Chapter 10 receipts: ${viewport.name} ${lang}`);
+    }
+  }
+}
+
 async function runStaticSectionLinksSmoke(browser, baseUrl) {
   for (const viewport of [VIEWPORTS[0], VIEWPORTS[2]]) {
     for (const { prefix, outline, title } of [
@@ -1140,6 +1241,7 @@ async function main() {
     await runReceiptLocaleLoadingSmoke(browser, baseUrl);
     await runLatestUpdateSmoke(browser, baseUrl);
     await runReceiptPermalinkSmoke(browser, baseUrl);
+    await runChapter10ReceiptSmoke(browser, baseUrl);
     await runChapter13LawSmoke(browser, baseUrl);
     await runStaticSectionLinksSmoke(browser, baseUrl);
     await runChapterOutlineSmoke(browser, baseUrl);
@@ -1160,6 +1262,7 @@ async function main() {
     await runRouteSmoke(browser, baseUrl);
     await runCookieSmoke(browser, baseUrl);
     await runInteractionSmoke(browser, baseUrl);
+    await runReaderEntrySmoke(browser, baseUrl);
     await runTimingSmoke(browser, baseUrl);
     console.log("Browser smoke checks passed.");
   } finally {

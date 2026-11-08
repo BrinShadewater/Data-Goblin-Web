@@ -17,6 +17,54 @@
   ],
   "corrections": [
     {
+      "file": "chapters/ch10.json",
+      "find": "*Des bots à la porte* , signalant que l'automatisation des décisions dans un système discrétionnaire à fort taux d'intérêt construit pour les personnes ayant les protections juridiques les plus faibles risquait d'endiguer la discrimination, et appelant à un gel jusqu'à ce que des normes contraignantes et une surveillance indépendante soient en place.",
+      "replace": "*Des bots à la porte*. Le rapport avertissait que l’automatisation des décisions dans un système discrétionnaire aux enjeux majeurs risquait d’enraciner la discrimination envers des personnes qui disposent de peu de protections juridiques. Il recommandait de suspendre l’acquisition, le développement et l’adoption de nouveaux systèmes jusqu’à ce que les systèmes existants respectent des règles contraignantes à l’échelle du gouvernement. Il recommandait aussi une surveillance indépendante.",
+      "why": "The French translation reversed the discrimination warning and mistranslated high stakes. Preserve the scope of the proposed freeze in receipt 78."
+    },
+    {
+      "file": "receipts.json",
+      "find": "appel à un gel + normes contraignantes + supervision indépendante",
+      "replace": "recommande de suspendre l’acquisition, le développement et l’adoption de nouveaux systèmes jusqu’à ce que les systèmes existants respectent des règles contraignantes à l’échelle du gouvernement. Le rapport recommande aussi une surveillance indépendante",
+      "why": "Clarify which systems the proposed freeze in receipt 78 applied to."
+    },
+    {
+      "file": "chapters/ch10.json",
+      "find": "des notes de refus de plaque de chaudière",
+      "replace": "des notes de refus à partir de modèles",
+      "why": "The French translation read boilerplate literally. Chinook generates refusal-note templates."
+    },
+    {
+      "file": "chapters/ch10.json",
+      "find": "ce qui, selon elle, est traité environ 87 pour cent plus rapidement",
+      "replace": "dont l’admissibilité peut, selon IRCC, être évaluée 87 % plus rapidement",
+      "why": "IRCC's figure applies to eligibility assessment for routine files, not overall visa processing time."
+    },
+    {
+      "file": "chapters/ch10.json",
+      "find": "la GRC a d'abord signalé 78 perquisitions, puis les dossiers du vendeur ont montré 521",
+      "replace": "la GRC a d’abord déclaré 78 utilisations, et les registres de Clearview indiquaient 521 requêtes de recherche",
+      "why": "The Privacy Commissioner distinguishes uses from search queries. Neither count refers to physical searches."
+    },
+    {
+      "file": "receipts.json",
+      "find": "des notes de refus plaque de chaudière",
+      "replace": "des notes de refus à partir de modèles",
+      "why": "Match the documented meaning of refusal-note boilerplate in receipt 77."
+    },
+    {
+      "file": "receipts.json",
+      "find": "(~87 % plus rapidement)",
+      "replace": "(évaluation de l’admissibilité 87 % plus rapide, selon IRCC)",
+      "why": "Match the eligibility-only scope of the figure in receipt 77."
+    },
+    {
+      "file": "receipts.json",
+      "find": "la GRC a signalé 78 perquisitions, les dossiers des fournisseurs ont montré 521",
+      "replace": "la GRC a d’abord déclaré 78 utilisations, et Clearview a enregistré 521 requêtes de recherche",
+      "why": "Match the Privacy Commissioner's distinction in receipt 82."
+    },
+    {
       "file": "chapters/ch06.json",
       "find": "environ un dixième de l'intensité",
       "replace": "environ un quinzième de l'intensité",

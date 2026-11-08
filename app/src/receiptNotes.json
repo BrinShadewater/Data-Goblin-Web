@@ -11,5 +11,44 @@
       "sourceLabel": "Lire les résultats de l’étude (en anglais)",
       "url": "https://arxiv.org/html/2512.13915v1#S4"
     }
+  },
+  "77": {
+    "passage": { "chapter": 10, "section": "the-marquee-case-ai-in-immigration-and-at-the-border" },
+    "en": {
+      "detail": "IRCC describes Chinook as an Excel tool that displays case information for officers. The department uses a separate system to sort temporary resident visa files and assess eligibility on some routine applications. An officer makes every final decision.",
+      "sourceLabel": "Read IRCC’s explanation of Chinook",
+      "url": "https://www.canada.ca/en/immigration-refugees-citizenship/corporate/transparency/committees/cimm-feb-15-17-2022/chinook-development-implementation-decision-making.html"
+    },
+    "fr": {
+      "detail": "Selon IRCC, Chinook est un outil Excel qui présente les renseignements du dossier aux agents. Le ministère utilise un système distinct pour trier les demandes de visa de résident temporaire et évaluer l’admissibilité dans certains dossiers courants. Un agent prend chaque décision finale.",
+      "sourceLabel": "Lire les explications d’IRCC sur Chinook",
+      "url": "https://www.canada.ca/fr/immigration-refugies-citoyennete/organisation/transparence/comites/cimm-15-17-fev-2022/developpement-mise-oeuvre-chinook-processus-decisionnel.html"
+    }
+  },
+  "78": {
+    "passage": { "chapter": 10, "section": "the-marquee-case-ai-in-immigration-and-at-the-border" },
+    "en": {
+      "detail": "The 2018 report by Petra Molnar and Lex Gill examines how automated decisions in Canada’s immigration and refugee system can amplify discrimination. It calls for a freeze on new systems until existing ones comply with binding government-wide rules, and recommends independent oversight.",
+      "sourceLabel": "Read the Citizen Lab report",
+      "url": "https://citizenlab.ca/research/bots-at-the-gate-human-rights-analysis-automated-decision-making-in-canadas-immigration-refugee-system/"
+    },
+    "fr": {
+      "detail": "Le rapport de 2018 de Petra Molnar et Lex Gill examine comment les décisions automatisées peuvent amplifier la discrimination dans le système canadien d’immigration et de protection des réfugiés. Il recommande de suspendre l’adoption de nouveaux systèmes jusqu’à ce que les systèmes existants respectent des règles contraignantes à l’échelle du gouvernement, et de prévoir une surveillance indépendante.",
+      "sourceLabel": "Lire le rapport du Citizen Lab (en anglais)",
+      "url": "https://citizenlab.ca/research/bots-at-the-gate-human-rights-analysis-automated-decision-making-in-canadas-immigration-refugee-system/"
+    }
+  },
+  "82": {
+    "passage": { "chapter": 10, "section": "the-same-pattern-past-the-border-welfare-policing-and-the-courts" },
+    "en": {
+      "detail": "The federal Privacy Commissioner found that the RCMP’s use of Clearview AI violated the Privacy Act. The RCMP initially reported 78 uses. Clearview’s records showed 521 search queries from RCMP accounts, and one use could involve multiple queries.",
+      "sourceLabel": "Read the Privacy Commissioner’s findings",
+      "url": "https://www.priv.gc.ca/en/opc-actions-and-decisions/ar_index/202021/sr_rcmp/"
+    },
+    "fr": {
+      "detail": "Le Commissariat à la protection de la vie privée a conclu que l’utilisation de Clearview AI par la GRC contrevenait à la Loi sur la protection des renseignements personnels. La GRC a d’abord déclaré 78 utilisations. Clearview a enregistré 521 requêtes provenant de comptes de la GRC, et une utilisation pouvait comprendre plusieurs requêtes.",
+      "sourceLabel": "Lire les conclusions du Commissariat",
+      "url": "https://www.priv.gc.ca/fr/mesures-et-decisions-prises-par-le-commissariat/ar_index/202021/sr_grc/"
+    }
   }
 }

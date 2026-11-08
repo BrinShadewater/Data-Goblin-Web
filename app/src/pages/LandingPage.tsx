@@ -1,10 +1,8 @@
 import type { PointerEvent } from "react";
 import { useEffect, useRef } from "react";
-import { useNavigate } from "../i18nNav";
 import { useTheme } from "../ThemeContext";
 import { P, UI } from "../theme";
 import { LandingHero, LandingQuickLinks, LandingWisps, LandingWispStyles } from "../components/LandingSections";
-import { savePanel } from "../pagination";
 import { preloadReaderRoute } from "../lazyRoutes";
 import { useBook } from "../useContent";
 import { CONTACT_EMAIL } from "../contribute";
@@ -12,7 +10,6 @@ import { tr } from "../i18n";
 
 export function LandingPage() {
   const { c } = useTheme();
-  const navigate = useNavigate();
   const { data: book } = useBook();
   const wispFrame = useRef<number | null>(null);
   const wispPoint = useRef<{ x: number; y: number } | null>(null);
@@ -24,12 +21,6 @@ export function LandingPage() {
       }
     };
   }, []);
-
-  const begin = () => {
-    preloadReaderRoute();
-    savePanel(1, 0);
-    navigate("/chapter/1");
-  };
 
   const moveWisps = (e: PointerEvent<HTMLElement>) => {
     if (e.pointerType !== "mouse") return;
@@ -82,7 +73,6 @@ export function LandingPage() {
         title={book?.title ?? "Data Goblin"}
         subtitle={book?.subtitle ?? "A Field Guide to AI, Power, and Data in Canada"}
         asOf={book?.asOf ?? "June 2026"}
-        begin={begin}
         preloadGuide={preloadReaderRoute}
       />
       <LandingQuickLinks preloadGuide={preloadReaderRoute} />
