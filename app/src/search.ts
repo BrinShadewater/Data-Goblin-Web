@@ -3,16 +3,42 @@ import type { Lang } from "./LanguageContext";
 export type SearchHit =
   | { type: "topic"; slug: string; title: string; snippet: string }
   | { type: "chapter"; num: number; title: string; snippet: string }
-  | { type: "section"; num: number; chapterTitle: string; heading: string; snippet: string; sectionId: string; terms?: string; keywords?: string }
+  | { type: "section"; num: number; chapterTitle: string; heading: string; snippet: string; sectionId?: string; terms?: string; keywords?: string }
   | { type: "glossary"; term: string; def: string; letter: string };
 
 const indexes: Partial<Record<Lang, Promise<SearchHit[]>>> = {};
+
+function isSearchHit(value: unknown): value is SearchHit {
+  if (typeof value !== "object" || value === null) return false;
+  const hit = value as Record<string, unknown>;
+  if (hit.type === "glossary") {
+    return typeof hit.term === "string" && typeof hit.def === "string" && typeof hit.letter === "string";
+  }
+  if (typeof hit.snippet !== "string") return false;
+  switch (hit.type) {
+    case "topic":
+      return typeof hit.slug === "string" && typeof hit.title === "string";
+    case "chapter":
+      return Number.isInteger(hit.num) && typeof hit.title === "string";
+    case "section":
+      return Number.isInteger(hit.num) && typeof hit.heading === "string" && typeof hit.chapterTitle === "string" &&
+        (hit.sectionId === undefined || typeof hit.sectionId === "string") &&
+        (hit.terms === undefined || typeof hit.terms === "string") &&
+        (hit.keywords === undefined || typeof hit.keywords === "string");
+    default:
+      return false;
+  }
+}
 
 export function loadSearchIndex(lang: Lang): Promise<SearchHit[]> {
   return indexes[lang] ??= fetch(`${import.meta.env.BASE_URL}search/${lang}.json`)
     .then((response) => {
       if (!response.ok) throw new Error(`Search index unavailable: ${response.status}`);
-      return response.json() as Promise<SearchHit[]>;
+      return response.json();
+    })
+    .then((data: unknown) => {
+      if (!Array.isArray(data) || !data.every(isSearchHit)) throw new Error("Invalid search index");
+      return data;
     })
     .catch((error) => {
       delete indexes[lang];

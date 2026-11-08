@@ -727,6 +727,53 @@ async function runMobileSearchSmoke(browser, baseUrl) {
   }
 }
 
+async function runMobileSearchRecoverySmoke(browser, baseUrl) {
+  for (const fixture of [
+    { lang: "en", home: "/", label: "Search the guide", loading: "Loading search…", retry: "Retry search",
+      empty: "Try a shorter phrase or different words.", query: "deepfake test", heading: "The working test",
+      failure: { status: 503, body: "Unavailable" } },
+    { lang: "fr", home: "/fr", label: "Rechercher dans le guide", loading: "Chargement de la recherche…", retry: "Réessayer la recherche",
+      empty: "Essayez une recherche plus courte ou d’autres mots.", query: "test hypertrucage", heading: "Le test pratique",
+      failure: { json: [{ type: "section", heading: null }] } },
+  ]) {
+    await withAppPage(browser, baseUrl, VIEWPORTS[2], async (page) => {
+      let requests = 0;
+      let releaseFailure;
+      const failureGate = new Promise((resolve) => { releaseFailure = resolve; });
+      await page.route(`**/search/${fixture.lang}.json`, async (route) => {
+        if (++requests > 1) return route.continue();
+        await failureGate;
+        await route.fulfill(fixture.failure);
+      });
+      const dialog = page.getByRole("dialog", { name: fixture.label, exact: true });
+      const input = dialog.getByRole("searchbox");
+      try {
+        await page.goto(baseUrl + fixture.home);
+        await page.getByRole("button", { name: fixture.label, exact: true }).tap();
+        await input.fill(fixture.query);
+        await dialog.getByRole("status").filter({ hasText: fixture.loading }).waitFor();
+        assert(await dialog.getByRole("link").count() === 0, "Search displayed results while its index was pending.");
+      } finally {
+        releaseFailure();
+      }
+      const retry = dialog.getByRole("button", { name: fixture.retry, exact: true });
+      await retry.tap();
+      const result = dialog.getByRole("link", { name: new RegExp(fixture.heading, "i") });
+      await result.waitFor();
+      assert(await input.inputValue() === fixture.query, "Retry lost the query.");
+      assert(await input.evaluate((element) => element === document.activeElement), "Retry did not restore focus to the query.");
+      assert(requests === 2, "Retry must make one new request for the current language.");
+      await input.fill("qzxwvvkz");
+      await dialog.getByRole("status").getByText(fixture.empty, { exact: true }).waitFor();
+      assert(await dialog.getByRole("link").count() === 0, "No-results search retained stale links.");
+      await input.fill(fixture.query);
+      await result.waitFor();
+      assert(requests === 2, "Editing the query should reuse the recovered index.");
+      console.log(`PASS mobile search recovery ${fixture.lang}: loading, retry with query and focus, no results, cached recovery.`);
+    }, { hasTouch: true });
+  }
+}
+
 async function runSearchQuestionsSmoke(browser, baseUrl) {
   for (const { lang, prefix, searchLabel, nextLabel } of [
     { lang: "en", prefix: "", searchLabel: "Search the guide", nextLabel: "Next page" },
@@ -961,6 +1008,7 @@ async function main() {
     await runChapterOutlineSmoke(browser, baseUrl);
     await runClaimReceiptSmoke(browser, baseUrl);
     await runMobileSearchSmoke(browser, baseUrl);
+    await runMobileSearchRecoverySmoke(browser, baseUrl);
     await runSearchQuestionsSmoke(browser, baseUrl);
     await runHeroImageRequestsSmoke(browser, baseUrl);
     await runChapterCoverImageSmoke(browser, baseUrl);

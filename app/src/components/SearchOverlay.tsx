@@ -13,7 +13,9 @@ const COPY = {
     close: "Close",
     prompt: "Enter at least two characters.",
     loading: "Loading search…",
-    unavailable: "Search is unavailable. Close and reopen search to try again.",
+    unavailable: "Search couldn’t load.",
+    retry: "Retry search",
+    noResultsHint: "Try a shorter phrase or different words.",
     resultCount: (count: number, query: string) =>
       count === 0 ? `No results for “${query}”` : `${count} ${count === 1 ? "result" : "results"} for “${query}”`,
   },
@@ -22,7 +24,9 @@ const COPY = {
     close: "Fermer",
     prompt: "Saisissez au moins deux caractères.",
     loading: "Chargement de la recherche…",
-    unavailable: "La recherche est indisponible. Fermez-la et rouvrez-la pour réessayer.",
+    unavailable: "Impossible de charger la recherche.",
+    retry: "Réessayer la recherche",
+    noResultsHint: "Essayez une recherche plus courte ou d’autres mots.",
     resultCount: (count: number, query: string) =>
       count === 0 ? `Aucun résultat pour « ${query} »` : `${count} ${count === 1 ? "résultat" : "résultats"} pour « ${query} »`,
   },
@@ -55,6 +59,7 @@ export function SearchOverlay({ query, onClose, onSearch, mobile }: {
   const { lang } = useLanguage();
   const copy = COPY[lang];
   const [index, setIndex] = useState<{ lang: typeof lang; hits: SearchHit[] | null }>();
+  const [attempt, setAttempt] = useState(0);
   const dialogRef = useRef<HTMLDialogElement>(null);
   const q = query.trim();
   const searching = q.length >= 2;
@@ -67,7 +72,7 @@ export function SearchOverlay({ query, onClose, onSearch, mobile }: {
       () => { if (!cancelled) setIndex({ lang, hits: null }); }
     );
     return () => { cancelled = true; };
-  }, [lang, searching]);
+  }, [lang, searching, attempt]);
 
   useEffect(() => {
     const dialog = dialogRef.current;
@@ -94,6 +99,14 @@ export function SearchOverlay({ query, onClose, onSearch, mobile }: {
   };
   const hits = index?.lang === lang ? index.hits : undefined;
   const results = querySearchIndex(hits ?? [], q, lang);
+  const failed = searching && hits === null;
+  const noResults = searching && Array.isArray(hits) && results.length === 0;
+  const retry = () => {
+    const input = mobile ? dialogRef.current?.querySelector("input") : document.querySelector('header input[type="search"]');
+    if (input instanceof HTMLElement) input.focus();
+    setIndex(undefined);
+    setAttempt((count) => count + 1);
+  };
   let status = copy.prompt;
   if (searching) {
     if (hits === undefined) status = copy.loading;
@@ -126,7 +139,14 @@ export function SearchOverlay({ query, onClose, onSearch, mobile }: {
       )}
       <div role="status" style={{ padding: "10px 16px", borderBottom: `1px solid ${border}`, fontFamily: UI, fontSize: 12, color: muted }}>
         {status}
+        {noResults && <p style={{ margin: "4px 0 0" }}>{copy.noResultsHint}</p>}
       </div>
+      {failed && (
+        <button type="button" onClick={retry}
+          style={{ ...controlStyle, alignSelf: "flex-start", minHeight: 44, margin: 12, padding: "0 10px" }}>
+          {copy.retry}
+        </button>
+      )}
       {results.length > 0 && (
         <ul className="dg-search-results" style={{ margin: 0, padding: 0, listStyle: "none", overflowY: "auto" }}>
           {results.map((hit, position) => {
