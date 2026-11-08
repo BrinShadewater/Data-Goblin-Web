@@ -17,6 +17,10 @@ export function onI18nReady(cb: () => void): () => void {
   return () => listeners.delete(cb);
 }
 
+export function isI18nReady(): boolean {
+  return FR !== null;
+}
+
 export function setUiLang(lang: Lang) {
   currentLang = lang;
   if (lang === "fr" && !FR && !loading) {

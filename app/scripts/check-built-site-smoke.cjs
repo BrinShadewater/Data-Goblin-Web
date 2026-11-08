@@ -147,6 +147,28 @@ async function main() {
       "chapter/1 shell lost its prerendered prose — chapters must ship real text, not just a hero.",
     );
 
+    for (const { route, deadline, appeal, penalty, source } of [
+      {
+        route: "chapter/13/index.html",
+        deadline: "A report to a platform does not start that clock.",
+        appeal: "after the time for final appeal has expired",
+        penalty: "aggravated sexual assault",
+        source: "/eng/acts/C-46/section-164.1.html",
+      },
+      {
+        route: "fr/chapter/13/index.html",
+        deadline: "Un signalement à une plateforme ne déclenche pas ce délai.",
+        appeal: "l’expiration du délai d’appel final",
+        penalty: "agression sexuelle grave",
+        source: "/fra/lois/C-46/section-164.1.html",
+      },
+    ]) {
+      const html = fs.readFileSync(path.join(distDir, route), "utf8");
+      const text = crawlerVisibleText(html);
+      assert(text.includes(deadline) && text.includes(appeal) && text.includes(penalty) && html.includes(source),
+        `${route} is missing the reviewed Chapter 13 deadline, appeal caveat, penalty condition, or statute link.`);
+    }
+
     console.log(`Built site smoke checks passed (${shells.length} prerendered route shells verified).`);
   } finally {
     await new Promise((resolve) => server.close(resolve));

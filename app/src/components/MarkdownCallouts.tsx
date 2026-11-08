@@ -1,4 +1,4 @@
-import { useRef, useState, type ReactNode } from "react";
+import { useEffect, useId, useRef, useState, type ReactNode } from "react";
 import { Link } from "../i18nNav";
 import { Check, Share2 } from "lucide-react";
 import { useTheme } from "../ThemeContext";
@@ -9,6 +9,8 @@ import { NavIcon } from "./GoblinMascot";
 import { tr } from "../i18n";
 import { downloadCheckCard } from "../shareCard";
 import { AnchoredPopover } from "./AnchoredPopover";
+import { useLanguage } from "../LanguageContext";
+import { RECEIPT_NOTES } from "../receiptNotes";
 
 export interface HastNode {
   type?: string;
@@ -137,15 +139,41 @@ export function GoblinCheckCard({ children }: { children: ReactNode }) {
 
 export function ReceiptMarker({ receipt, children }: { receipt: Receipt; children: ReactNode }) {
   const { c } = useTheme();
+  const { lang } = useLanguage();
   const [open, setOpen] = useState(false);
-  const anchorRef = useRef<HTMLSpanElement>(null);
+  const anchorRef = useRef<HTMLButtonElement>(null);
+  const id = useId();
+  useEffect(() => {
+    if (!open) return;
+    const popup = document.getElementById(id);
+    const dismissOutside = (event: Event) => {
+      if (!(event.target instanceof Node)) return;
+      if (!popup?.contains(event.target) && !anchorRef.current?.contains(event.target)) setOpen(false);
+    };
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key !== "Escape") return;
+      event.preventDefault();
+      setOpen(false);
+      anchorRef.current?.focus({ preventScroll: true });
+    };
+    document.addEventListener("pointerdown", dismissOutside);
+    document.addEventListener("focusin", dismissOutside);
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.removeEventListener("pointerdown", dismissOutside);
+      document.removeEventListener("focusin", dismissOutside);
+      document.removeEventListener("keydown", onKeyDown);
+    };
+  }, [id, open]);
   const tone = receipt.status === "open" ? c(...P.amber) : c(...P.greenDeep);
   // Translated because these markers now appear in the French edition too —
   // before fr/claim-anchors.json they matched nothing there, so nobody had
   // seen this string in French.
   const label =
     receipt.status === "open" ? tr("Still checking") : receipt.status === "fixed" ? tr("Corrected") : tr("Verified");
-  const detail = (receipt.detail || "")
+  const entry = RECEIPT_NOTES[receipt.id];
+  const note = entry?.[lang];
+  const detail = note?.detail ?? (receipt.detail || "")
     .replace(/\[([^\]]+)\]\([^)]*\)/g, "$1")
     .replace(/[*_]{1,3}([^*_]+)[*_]{1,3}/g, "$1")
     .replace(/`([^`]+)`/g, "$1")
@@ -153,29 +181,24 @@ export function ReceiptMarker({ receipt, children }: { receipt: Receipt; childre
     .replace(/\s*\|.*$/, "")
     .replace(/^(LARGELY RESOLVED|RESOLVED WITH CORRECTIONS|MOSTLY VERIFIED|CLAIM REVERSED|VERIFIED|RESOLVED|CORRECTED|FIXED|PARTIAL)\b[\s\u2014\u2013:-]*/i, "")
     .trim();
+  const links = note ? [[note.sourceLabel, note.url], ...receipt.links.filter(([, url]) => url !== note.url)] : receipt.links;
+  const triggerLabel = `${tr("Receipt")} — ${label}`;
   return (
     <span style={{ position: "relative", display: "inline" }}>
-      <span
-        role="button"
-        tabIndex={0}
+      <button
+        type="button"
         ref={anchorRef}
-        aria-label={`${tr("Receipt")} — ${label}`}
+        aria-haspopup="dialog"
+        aria-controls={open ? id : undefined}
         aria-expanded={open}
-        onMouseEnter={() => setOpen(true)}
-        onMouseLeave={() => setOpen(false)}
-        onFocus={() => setOpen(true)}
-        onBlur={() => setOpen(false)}
-        onClick={(e) => { e.preventDefault(); setOpen((o) => !o); }}
-        onKeyDown={(e) => {
-          if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setOpen((o) => !o); }
-          if (e.key === "Escape") setOpen(false);
-        }}
-        style={{ borderBottom: `1px dotted ${tone}`, cursor: "pointer", color: "inherit" }}
+        onClick={() => setOpen((value) => !value)}
+        style={{ background: "none", border: "none", borderBottom: `1px dotted ${tone}`, padding: 0,
+          cursor: "pointer", color: "inherit", font: "inherit" }}
       >
         {children}
-        <sup style={{ fontSize: "0.66em", color: tone, fontWeight: 800, marginLeft: "1.5px" }}>&#10003;</sup>
-      </span>
-      <AnchoredPopover anchorRef={anchorRef} open={open} width={320}>
+        <sup aria-label={triggerLabel} style={{ fontSize: "0.66em", color: tone, fontWeight: 800, marginLeft: "1.5px" }}>&#10003;</sup>
+      </button>
+      <AnchoredPopover anchorRef={anchorRef} open={open} width={320} id={id} label={triggerLabel} focusFirstLink>
         <span
           style={{
             display: "block", width: "100%",
@@ -192,9 +215,9 @@ export function ReceiptMarker({ receipt, children }: { receipt: Receipt; childre
           <span style={{ display: "block", fontFamily: BODY, fontSize: "13px", lineHeight: 1.5, color: c(...P.body) }}>
             {detail}
           </span>
-          {receipt.links && receipt.links.length > 0 && (
+          {links.length > 0 && (
             <span style={{ display: "block", marginTop: "8px" }}>
-              {receipt.links.map(([lab, url], i) => (
+              {links.map(([lab, url], i) => (
                 <a key={i} href={url} target="_blank" rel="noopener noreferrer"
                   style={{ fontFamily: UI, fontSize: "12px", fontWeight: 700, color: c(...P.navy), marginRight: "10px" }}>
                   {lab} &#8599;
@@ -203,8 +226,10 @@ export function ReceiptMarker({ receipt, children }: { receipt: Receipt; childre
             </span>
           )}
           <span style={{ display: "block", marginTop: "8px" }}>
-            <Link to="/receipts" style={{ fontFamily: UI, fontSize: "12px", fontWeight: 700, color: c(...P.muted) }}>
-              See the full ledger &#8594;
+            <Link to={entry?.passage ? `/receipts#receipt-${receipt.id}` : "/receipts"} style={{ fontFamily: UI, fontSize: "12px", fontWeight: 700, color: c(...P.muted) }}>
+              {entry?.passage
+                ? (lang === "fr" ? "Voir ce reçu dans le registre" : "View this receipt in the ledger")
+                : (lang === "fr" ? "Voir le registre complet" : "See the full ledger")} &#8594;
             </Link>
           </span>
         </span>

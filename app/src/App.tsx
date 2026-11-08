@@ -59,18 +59,23 @@ function Shell() {
   const { mode } = useReader();
   const { lang } = useLanguage();
   const [searchQuery, setSearchQuery] = useState("");
+  const [mobileSearchOpen, setMobileSearchOpen] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const location = useLocation();
 
   // Close the search overlay and the drawer when navigating.
   useEffect(() => {
     setSearchQuery("");
+    setMobileSearchOpen(false);
     setDrawerOpen(false);
   }, [location.pathname]);
 
   // The drawer only exists on phone/tablet — drop it when resizing up.
   useEffect(() => {
-    if (mode === "desktop") setDrawerOpen(false);
+    if (mode === "desktop") {
+      setDrawerOpen(false);
+      setMobileSearchOpen(false);
+    }
   }, [mode]);
 
   // Keep the browser tab title in sync on client-side navigation (full-page
@@ -116,7 +121,12 @@ function Shell() {
       >
         {tr("Skip to content")}
       </a>
-      <TopNav searchQuery={searchQuery} onSearch={setSearchQuery} onMenu={() => setDrawerOpen(true)} />
+      <TopNav
+        searchQuery={searchQuery}
+        onSearch={setSearchQuery}
+        onOpenSearch={() => setMobileSearchOpen(true)}
+        onMenu={() => setDrawerOpen(true)}
+      />
       {lang === "fr" && (
         <div
           role="status"
@@ -156,11 +166,17 @@ function Shell() {
       </Suspense>
       <CookieNotice />
       <AnalyticsConsentGate />
-      {/* Mounted only while a query is active: the search chunk (and its
-          whole-book index fetch) loads on first real search, not on app load. */}
-      {searchQuery.trim().length >= 2 && (
+      {(mobileSearchOpen || searchQuery.trim().length >= 2) && (
         <Suspense fallback={null}>
-          <SearchOverlay query={searchQuery} onClose={() => setSearchQuery("")} />
+          <SearchOverlay
+            query={searchQuery}
+            onSearch={setSearchQuery}
+            mobile={mobileSearchOpen}
+            onClose={() => {
+              setSearchQuery("");
+              setMobileSearchOpen(false);
+            }}
+          />
         </Suspense>
       )}
       {mode !== "desktop" && <MobileDrawer open={drawerOpen} onClose={() => setDrawerOpen(false)} />}

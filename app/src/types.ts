@@ -93,6 +93,7 @@ export interface LinkEntry {
 export interface ArtPanel {
   src: string;
   caption?: string | null;
+  captionFr?: string;
   /** When true, this figure is pinned to render immediately after the previous
    *  figure (shares its section anchor) instead of being spread to its own. */
   withPrev?: boolean;

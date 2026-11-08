@@ -10,6 +10,7 @@ import {
   ReaderBookmarkButton,
 } from "./ReaderChrome";
 import type { Book } from "../types";
+import type { ReactNode } from "react";
 
 export function BottomBar({
   book,
@@ -20,6 +21,7 @@ export function BottomBar({
   onNext,
   bookmarked,
   onToggleBookmark,
+  outline,
 }: {
   book: Book | null;
   activeChapter: number;
@@ -30,6 +32,7 @@ export function BottomBar({
   onNext: () => void;
   bookmarked: boolean;
   onToggleBookmark: () => void;
+  outline?: ReactNode;
 }) {
   const { c } = useTheme();
   const { mode } = useReader();
@@ -85,6 +88,7 @@ export function BottomBar({
       >
         <CompactPageTurnButton direction="prev" enabled={canPrev} onTurn={onPrev} />
         <CompactPageProgress page={page} pageCount={pageCount} progress={frac} />
+        {outline}
         <ReaderBookmarkButton bookmarked={bookmarked} onToggle={onToggleBookmark} size={44} />
         <CompactPageTurnButton direction="next" enabled={canNext} onTurn={onNext} />
       </div>
@@ -147,6 +151,7 @@ export function BottomBar({
       />
 
       <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
+        {outline}
         <ReaderBookmarkButton bookmarked={bookmarked} onToggle={onToggleBookmark} size={36} />
         <ChapterTurnButton direction="next" enabled={canNext} label={nextLabel} subtitle={nextSub} onTurn={onNext} />
       </div>

@@ -1,0 +1,26 @@
+{
+  "en": {
+    "date": "November 7, 2026",
+    "tag": "Reader",
+    "title": "Find and share passages and receipts",
+    "items": [
+      "Search from the mobile header in English or French to find topics, glossary terms and passages. If search stalls, you can retry without retyping your question.",
+      "Use “In this chapter” to jump to a section or share a link. Switching languages keeps you on the same passage.",
+      "In Chapter 13’s practical test, select the percentage to see how the researchers counted views. Open receipt #32 for the study’s results, or follow the link back to the passage. We also clarified the six checks in French."
+    ],
+    "passageLabel": "Open the Chapter 13 practical test",
+    "receiptLabel": "Open receipt #32"
+  },
+  "fr": {
+    "date": "7 novembre 2026",
+    "tag": "Lecture",
+    "title": "Trouver et partager des passages et des reçus",
+    "items": [
+      "Lancez une recherche depuis l’en-tête sur mobile, en français ou en anglais, pour trouver des sujets, des termes du glossaire et des passages. Si la recherche se bloque, vous pouvez réessayer sans retaper votre question.",
+      "Utilisez « Dans ce chapitre » pour accéder à une section ou partager un lien. Quand vous changez de langue, vous restez au même passage.",
+      "Dans le test pratique du chapitre 13, sélectionnez le pourcentage pour voir comment l’équipe de recherche a compté les vues. Ouvrez le reçu nº 32 pour consulter les résultats de l’étude ou revenir au passage. Nous avons aussi clarifié les six points à vérifier en français."
+    ],
+    "passageLabel": "Ouvrir le test pratique du chapitre 13",
+    "receiptLabel": "Ouvrir le reçu nº 32"
+  }
+}

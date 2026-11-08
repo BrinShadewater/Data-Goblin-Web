@@ -1,4 +1,5 @@
 import { ReactNode, useState } from "react";
+import { useLocation, useNavigate } from "react-router";
 import { BookOpen, ScrollText } from "lucide-react";
 import { useTheme } from "../ThemeContext";
 import { BODY, DISPLAY, MONO, P, RADIUS, UI } from "../theme";
@@ -20,7 +21,11 @@ type Tab = "sources" | "log";
 
 export function ReceiptsPage() {
   const { c } = useTheme();
-  const [tab, setTab] = useState<Tab>("sources");
+  const { pathname, search, hash, key } = useLocation();
+  const navigate = useNavigate();
+  const [activeTab, setActiveTab] = useState<Tab>("sources");
+  const receiptHash = /^#receipt-\d+(?:-\d+)?$/.test(hash) ? hash : "";
+  const tab = receiptHash ? "log" : activeTab;
   const { data: receipts, error } = useReceipts();
   const { data: book } = useBook();
   const { data: links } = useLinks();
@@ -33,6 +38,14 @@ export function ReceiptsPage() {
   const border = c(...P.borderSoft);
 
   const sections = receipts ? [...new Set(receipts.map((r) => r.section))] : [];
+  // Some historical ledger rows reuse a number. Match the static HTML's order and suffixes.
+  const occurrences = new Map<number, number>();
+  const ledger = receipts?.map((receipt) => {
+    const occurrence = (occurrences.get(receipt.id) ?? 0) + 1;
+    occurrences.set(receipt.id, occurrence);
+    const id = occurrence === 1 ? `receipt-${receipt.id}` : `receipt-${receipt.id}-${occurrence}`;
+    return { receipt, id };
+  }) ?? [];
   const chapterRefs = book ? book.parts.flatMap((p) => p.chapters) : [];
   const totalChapters = chapterRefs.length || 19;
 
@@ -40,7 +53,10 @@ export function ReceiptsPage() {
     const active = tab === key;
     return (
       <button
-        onClick={() => setTab(key)}
+        onClick={() => {
+          setActiveTab(key);
+          if (key === "sources" && receiptHash) navigate(pathname + search);
+        }}
         aria-pressed={active}
         style={{
           display: "inline-flex",
@@ -161,7 +177,7 @@ export function ReceiptsPage() {
             {!receipts && !error && <p style={{ fontFamily: BODY, fontStyle: "italic", color: muted }}>{tr("Pulling receipts from the hoard…")}</p>}
 
             {sections.map((section) => {
-              const items = receipts!.filter((r) => r.section === section);
+              const items = ledger.filter(({ receipt }) => receipt.section === section);
               return (
                 <div key={section} style={{ marginBottom: "26px" }}>
                   <div style={{ display: "flex", alignItems: "baseline", gap: "10px", marginBottom: "10px" }}>
@@ -170,9 +186,10 @@ export function ReceiptsPage() {
                       {items.length} {tr("item")}{items.length !== 1 ? "s" : ""}
                     </span>
                   </div>
-                  {items.map((r) => (
-                    <ReceiptRow key={r.id} receipt={r} />
-                  ))}
+                  {items.map(({ receipt, id }) => {
+                    const targeted = receiptHash === `#${id}`;
+                    return <ReceiptRow key={targeted ? `${id}-${key}` : id} id={id} receipt={receipt} targeted={targeted} />;
+                  })}
                 </div>
               );
             })}

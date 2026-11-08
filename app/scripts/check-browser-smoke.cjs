@@ -2,6 +2,9 @@ const fs = require("fs");
 const http = require("http");
 const path = require("path");
 const { chromium } = require("playwright");
+const searchQuestions = require("./search-questions.json");
+const searchHoldoutQuestions = require("./search-holdout-questions.json");
+const latestUpdate = require("../src/latestUpdate.json");
 
 const appDir = path.resolve(__dirname, "..");
 const distDir = path.join(appDir, "dist");
@@ -69,12 +72,13 @@ function createServer() {
   });
 }
 
-async function withAppPage(browser, baseUrl, viewport, fn, { javaScriptEnabled = true } = {}) {
+async function withAppPage(browser, baseUrl, viewport, fn, { javaScriptEnabled = true, hasTouch = false } = {}) {
   const context = await browser.newContext({
     viewport: { width: viewport.width, height: viewport.height },
     colorScheme: "light",
     reducedMotion: "reduce",
     javaScriptEnabled,
+    hasTouch,
   });
   if (javaScriptEnabled) {
     await context.addInitScript((consent) => {
@@ -199,7 +203,8 @@ async function runInteractionSmoke(browser, baseUrl) {
 
     await page.getByPlaceholder("Search the guide…").fill("privacy");
     await page.getByText(/result.*privacy|results.*privacy/i).waitFor({ state: "visible" });
-    await page.keyboard.press("Escape").catch(() => {});
+    await page.getByRole("link", { name: /AI, Privacy & Surveillance/ }).click();
+    await page.waitForURL(`${baseUrl}/topic/privacy`);
   });
 
   await withAppPage(browser, baseUrl, VIEWPORTS[0], async (page) => {
@@ -370,7 +375,7 @@ async function runMapToReaderKeyboardSmoke(browser, baseUrl) {
             "Tab must reach the stable reader scroll area, including when it does not overflow.");
           if (viewport.delayedReceipts) {
             releaseReceipts();
-            await reader.locator('[role="button"][tabindex="0"]').first().waitFor();
+            await reader.locator('button[aria-haspopup="dialog"]').first().waitFor();
             assert(await scroller.evaluate((el) => el === document.activeElement),
               "Loading inline receipt links must not remove focus from the reader scroll area.");
           }
@@ -652,6 +657,477 @@ async function runHeroImageRequestsSmoke(browser, baseUrl) {
   }
 }
 
+async function runMobileSearchSmoke(browser, baseUrl) {
+  for (const fixture of [
+    { lang: "en", home: "/", label: "Search the guide", query: "deepfake", specificQuery: "deepfake test", heading: "The working test",
+      topicQuery: "water use", topicLabel: /Data-centre water use/, topic: "/topic/data-centres" },
+    { lang: "fr", home: "/fr", label: "Rechercher dans le guide", query: "hypertrucage", specificQuery: "test hypertrucage", heading: "Le test pratique",
+      topicQuery: "souverainete numerique", topicLabel: /Souveraineté numérique/, topic: "/fr/topic/sovereignty" },
+  ]) {
+    await withAppPage(browser, baseUrl, VIEWPORTS[2], async (page) => {
+      const requests = [];
+      page.on("request", (request) => requests.push(new URL(request.url()).pathname));
+      await page.goto(baseUrl + fixture.home, { waitUntil: "networkidle" });
+      const trigger = page.getByRole("button", { name: fixture.label, exact: true });
+      const dialog = page.getByRole("dialog", { name: fixture.label, exact: true });
+      const input = dialog.getByRole("searchbox");
+      await trigger.click();
+      await input.waitFor();
+      assert(await input.evaluate((element) => element === document.activeElement), "Mobile search did not focus its input.");
+      assert(!requests.some((url) => url.startsWith("/search/")), "Opening search fetched an index before typing.");
+      await page.keyboard.press("Escape");
+      await dialog.waitFor({ state: "hidden" });
+      assert(await trigger.evaluate((element) => element === document.activeElement), "Search dismissal did not restore focus.");
+      await trigger.click();
+      await input.fill(fixture.query);
+      const result = dialog.getByRole("link", { name: new RegExp(fixture.heading, "i") });
+      await result.waitFor();
+      assert(requests.filter((url) => url.startsWith("/search/")).join() === `/search/${fixture.lang}.json`,
+        "Search must request one index for the current language.");
+      assert(!requests.some((url) => /\/content\/(?:fr\/)?chapters\//.test(url)), "Search downloaded chapter content before selection.");
+      await input.fill(fixture.specificQuery);
+      assert((await dialog.getByRole("link").first().textContent()).includes(fixture.heading),
+        "A search for the practical test should put its section first.");
+      if (process.env.SEARCH_SCREENSHOTS) {
+        fs.mkdirSync(process.env.SEARCH_SCREENSHOTS, { recursive: true });
+        await page.screenshot({ path: path.join(process.env.SEARCH_SCREENSHOTS, `search-${fixture.lang}.png`) });
+      }
+      await page.route("**/content/art-map.json", async (route) => {
+        await new Promise((resolve) => setTimeout(resolve, 600));
+        await route.continue();
+      });
+      await result.click();
+      const heading = page.getByRole("heading", { name: fixture.heading, exact: true });
+      await heading.waitFor();
+      await page.waitForLoadState("networkidle");
+      assert(await heading.evaluate((element) => document.activeElement === element),
+        "Search selection did not retain keyboard focus after the passage finished loading.");
+      const url = new URL(page.url());
+      assert(url.pathname === `${fixture.lang === "fr" ? "/fr" : ""}/chapter/13` &&
+        url.hash === "#the-working-test", "Search did not produce the stable section URL.");
+      await page.reload();
+      await heading.waitFor();
+      await page.waitForLoadState("networkidle");
+      assert(await heading.isVisible(), "Reader lost the section after chapter artwork arrived.");
+      if (process.env.SEARCH_SCREENSHOTS) {
+        await page.screenshot({ path: path.join(process.env.SEARCH_SCREENSHOTS, `section-${fixture.lang}.png`) });
+      }
+      await trigger.click();
+      const close = dialog.getByRole("button", { name: fixture.lang === "fr" ? "Fermer" : "Close", exact: true });
+      await close.press("ArrowRight");
+      await close.click();
+      assert(await heading.isVisible(), "Arrow navigation inside mobile search turned the reader page.");
+      await page.getByRole("button", { name: fixture.lang === "fr" ? "Page suivante" : "Next page", exact: true }).click();
+      await heading.waitFor({ state: "hidden" });
+      await trigger.click();
+      await input.fill(fixture.topicQuery);
+      await dialog.getByRole("link", { name: fixture.topicLabel }).click();
+      await page.waitForURL(baseUrl + fixture.topic);
+      console.log(`Mobile search ${fixture.lang}: topic, section, reload, page turn, focus return, and lazy index passed.`);
+    });
+  }
+}
+
+async function runMobileSearchRecoverySmoke(browser, baseUrl) {
+  const fixtures = [
+    { lang: "en", home: "/", label: "Search the guide", loading: "Loading search…", retry: "Retry search",
+      empty: "Try a shorter phrase or different words.", query: "deepfake test", heading: "The working test",
+      failure: { status: 503, body: "Unavailable" } },
+    { lang: "fr", home: "/fr", label: "Rechercher dans le guide", loading: "Chargement de la recherche…", retry: "Réessayer la recherche",
+      empty: "Essayez une recherche plus courte ou d’autres mots.", query: "test hypertrucage", heading: "Le test pratique",
+      failure: { json: [{ type: "section", heading: null }] } },
+  ];
+  for (const fixture of [...fixtures, { ...fixtures[0], stalled: true }]) {
+    await withAppPage(browser, baseUrl, VIEWPORTS[2], async (page) => {
+      let requests = 0;
+      let releaseFailure;
+      const failureGate = new Promise((resolve) => { releaseFailure = resolve; });
+      await page.route(`**/search/${fixture.lang}.json`, async (route) => {
+        if (++requests > 1) return route.continue();
+        await failureGate;
+        await route.fulfill(fixture.failure);
+      });
+      const dialog = page.getByRole("dialog", { name: fixture.label, exact: true });
+      const input = dialog.getByRole("searchbox");
+      const retry = dialog.getByRole("button", { name: fixture.retry, exact: true });
+      try {
+        if (fixture.stalled) await page.clock.install();
+        await page.goto(baseUrl + fixture.home);
+        await page.getByRole("button", { name: fixture.label, exact: true }).tap();
+        await Promise.all([
+          page.waitForRequest(`**/search/${fixture.lang}.json`),
+          input.fill(fixture.query),
+        ]);
+        await dialog.getByRole("status").filter({ hasText: fixture.loading }).waitFor();
+        assert(await dialog.getByRole("link").count() === 0, "Search displayed results while its index was pending.");
+        if (fixture.stalled) {
+          await page.clock.fastForward(16_000);
+          await retry.waitFor({ timeout: 5_000 });
+        }
+      } finally {
+        releaseFailure();
+      }
+      await retry.tap();
+      const result = dialog.getByRole("link", { name: new RegExp(fixture.heading, "i") });
+      await result.waitFor();
+      assert(await input.inputValue() === fixture.query, "Retry lost the query.");
+      assert(await input.evaluate((element) => element === document.activeElement), "Retry did not restore focus to the query.");
+      assert(requests === 2, "Retry must make one new request for the current language.");
+      await input.fill("qzxwvvkz");
+      await dialog.getByRole("status").getByText(fixture.empty, { exact: true }).waitFor();
+      assert(await dialog.getByRole("link").count() === 0, "No-results search retained stale links.");
+      await input.fill(fixture.query);
+      await result.waitFor();
+      assert(requests === 2, "Editing the query should reuse the recovered index.");
+      console.log(`PASS mobile search recovery ${fixture.lang}${fixture.stalled ? " after timeout" : ""}: loading, retry with query and focus, no results, cached recovery.`);
+    }, { hasTouch: true });
+  }
+}
+
+async function runSearchQuestionsSmoke(browser, baseUrl) {
+  for (const { lang, prefix, searchLabel, nextLabel } of [
+    { lang: "en", prefix: "", searchLabel: "Search the guide", nextLabel: "Next page" },
+    { lang: "fr", prefix: "/fr", searchLabel: "Rechercher dans le guide", nextLabel: "Page suivante" },
+  ]) {
+    await withAppPage(browser, baseUrl, VIEWPORTS[2], async (page) => {
+      await page.context().route((url) => url.origin !== baseUrl, (route) =>
+        route.fulfill({ contentType: "text/html", body: "<main>Source destination</main>" }));
+      for (const fixture of [...searchQuestions, ...searchHoldoutQuestions]) {
+        await page.goto(baseUrl + (prefix || "/"));
+        await page.getByRole("button", { name: searchLabel, exact: true }).tap();
+        const dialog = page.getByRole("dialog", { name: searchLabel, exact: true });
+        const question = fixture[lang];
+        await dialog.getByRole("searchbox").fill(question);
+        await dialog.getByRole("status").filter({ hasText: question }).waitFor();
+        const resultPath = `${prefix}/chapter/${fixture.chapter}#${fixture.section}`;
+        const top = await dialog.getByRole("link").evaluateAll((links) =>
+          links.slice(0, 3).map((link) => link.getAttribute("href")));
+        const rank = top.indexOf(resultPath) + 1;
+        assert(rank > 0, `${lang} “${question}” did not return the expected passage in its first three results: ${top.join(", ")}`);
+        await dialog.locator(`a[href="${resultPath}"]`).tap();
+        await page.waitForURL(baseUrl + resultPath);
+        await page.locator("[data-section-heading]:focus").waitFor();
+        const sourceUrl = typeof fixture.source === "string" ? fixture.source : fixture.source?.[lang];
+        assert(sourceUrl, `${lang} “${question}” has no expected source URL.`);
+        const source = page.locator(`a[href="${sourceUrl}"]`).first();
+        for (let turn = 0; turn < 10 && !(await source.isVisible()); turn++) {
+          await page.getByRole("button", { name: nextLabel, exact: true }).last().tap();
+        }
+        assert(await source.isVisible(), `${lang} “${question}” led to the passage but its source was not reachable.`);
+        if (await source.getAttribute("target") === "_blank") {
+          const [destination] = await Promise.all([page.waitForEvent("popup"), source.tap()]);
+          await destination.waitForURL(sourceUrl);
+          await destination.close();
+        } else {
+          await source.tap();
+          await page.waitForURL(sourceUrl);
+        }
+        console.log(`PASS search question ${lang} #${rank}: ${question} → source`);
+      }
+    }, { hasTouch: true });
+  }
+}
+
+async function runClaimReceiptSmoke(browser, baseUrl) {
+  const sourceUrl = "https://arxiv.org/html/2512.13915v1#S4";
+  for (const fixture of [
+    { prefix: "", heading: "The working test", figure: /Canada’s Protecting Victims Act received royal assent/ },
+    { prefix: "/fr", heading: "Le test pratique", figure: /la Loi visant à protéger les victimes a reçu la sanction royale/ },
+  ]) {
+    const french = fixture.prefix === "/fr";
+    await withAppPage(browser, baseUrl, VIEWPORTS[2], async (page) => {
+      const searchLabel = french ? "Rechercher dans le guide" : "Search the guide";
+      await page.goto(`${baseUrl}${fixture.prefix || "/"}`);
+      await page.getByRole("button", { name: searchLabel, exact: true }).tap();
+      const search = page.getByRole("dialog", { name: searchLabel, exact: true });
+      await search.getByRole("searchbox").fill(french ? "test hypertrucage" : "deepfake test");
+      await search.getByRole("link", { name: new RegExp(fixture.heading, "i") }).tap();
+      await page.waitForURL(`${baseUrl}${fixture.prefix}/chapter/13#the-working-test`);
+      await page.getByRole("heading", { name: fixture.heading, exact: true }).waitFor();
+      const marker = page.getByRole("button", { name: french ? /0,12\s*% des vues sur X/ : /0\.12%-of-views \(on X\)/ });
+      await marker.tap();
+      const popup = page.getByRole("dialog", { name: french ? /Reçu/i : /Receipt/i });
+      await popup.waitFor();
+      assert((await popup.innerText()).includes(french ? "six mois" : "six months"), "Receipt did not explain how views were measured.");
+      const study = popup.getByRole("link", { name: french ? /Lire les résultats/ : /Read the study/ });
+      assert(await study.getAttribute("href") === sourceUrl, "Receipt did not link to the paper’s results.");
+      assert(await study.evaluate((element) => element === document.activeElement), "Opening the receipt did not focus the study link.");
+      if (process.env.SEARCH_SCREENSHOTS) {
+        fs.mkdirSync(process.env.SEARCH_SCREENSHOTS, { recursive: true });
+        await page.screenshot({ path: path.join(process.env.SEARCH_SCREENSHOTS, `claim-receipt-${french ? "fr" : "en"}.png`) });
+      }
+      await page.keyboard.press("Escape");
+      await popup.waitFor({ state: "hidden" });
+      assert(await marker.evaluate((element) => element === document.activeElement), "Closing the receipt did not return focus.");
+      await page.keyboard.press("Enter");
+      await popup.waitFor();
+      await page.context().route("https://arxiv.org/**", (route) => route.fulfill({ body: '<main id="S4">Results</main>', contentType: "text/html" }));
+      const [paper] = await Promise.all([page.waitForEvent("popup"), study.tap()]);
+      await paper.waitForURL(sourceUrl);
+      await paper.close();
+      await popup.getByRole("link", { name: french ? /Voir ce reçu dans le registre/ : /View this receipt in the ledger/ }).tap();
+      await page.waitForURL(`${baseUrl}${fixture.prefix}/receipts#receipt-32`);
+      const receipt = page.locator("#receipt-32");
+      await receipt.locator(`a[href="${sourceUrl}"]`).waitFor();
+      const passage = `${fixture.prefix}/chapter/13#the-working-test`;
+      await receipt.locator(`a[href="${passage}"]`).tap();
+      await page.waitForURL(baseUrl + passage);
+      await page.getByRole("heading", { name: fixture.heading, exact: true }).waitFor();
+      await marker.waitFor();
+      await page.getByRole("button", { name: french ? "Page suivante" : "Next page", exact: true }).tap();
+      await popup.waitFor({ state: "hidden" });
+      await page.locator("figcaption").filter({ hasText: fixture.figure }).waitFor();
+      console.log(`Mobile search to source ${french ? "fr" : "en"}: passage, receipt, focus, paper link, ledger round trip and caption passed.`);
+    }, { hasTouch: true });
+  }
+}
+
+async function runChapterOutlineSmoke(browser, baseUrl) {
+  for (const viewport of [VIEWPORTS[2], VIEWPORTS[0], { name: "desktop spread", width: 1920, height: 900 }]) {
+    await withAppPage(browser, baseUrl, viewport, async (page) => {
+      const mobile = viewport.name === "mobile";
+      const id = "the-working-test";
+      const headings = { en: "The working test", fr: "Le test pratique" };
+      const outlineNames = { en: "In this chapter", fr: "Dans ce chapitre" };
+      const chapter = (lang) => `${lang === "fr" ? "/fr" : ""}/chapter/13`;
+      const link = (lang) => `${chapter(lang)}#${id}`;
+      const heading = (lang) => page.getByRole("main").getByRole("heading", { name: headings[lang], exact: true });
+
+      async function openOutline(lang) {
+        await page.getByRole("button", { name: outlineNames[lang], exact: true }).click();
+        return page.getByRole("dialog", { name: outlineNames[lang], exact: true });
+      }
+
+      await page.goto(baseUrl + chapter("en"));
+      const outline = await openOutline("en");
+      const section = outline.getByRole("link", { name: headings.en, exact: true });
+      assert(await section.getAttribute("href") === link("en"), "Outline link should use the stable ID.");
+      const clipboardPermissions = browser.browserType().name() === "webkit" ? ["clipboard-read"] : ["clipboard-read", "clipboard-write"];
+      await page.context().grantPermissions(clipboardPermissions, { origin: baseUrl });
+      await outline.getByRole("button", { name: `Copy link · ${headings.en}`, exact: true }).click();
+      await outline.getByText("Section link copied.", { exact: true }).waitFor();
+      assert(await page.evaluate(() => navigator.clipboard.readText()) === baseUrl + link("en"), "Copied URL differs from the outline link.");
+      if (process.env.SEARCH_SCREENSHOTS) {
+        fs.mkdirSync(process.env.SEARCH_SCREENSHOTS, { recursive: true });
+        await page.screenshot({ path: path.join(process.env.SEARCH_SCREENSHOTS, `chapter-outline-${viewport.width}.png`) });
+      }
+      await section.click();
+      await page.waitForURL(baseUrl + link("en"));
+      await heading("en").waitFor();
+      assert(await heading("en").evaluate((element) => element === document.activeElement), "Section selection did not focus its heading.");
+      assert(await heading("en").evaluate((element) => {
+        const bounds = element.getBoundingClientRect();
+        const pane = element.closest("[data-reader-scroll]").getBoundingClientRect();
+        return bounds.top >= pane.top - 1 && bounds.bottom <= pane.bottom + 1;
+      }), "Linked heading was outside the visible reading pane.");
+      await page.reload();
+      await heading("en").waitFor();
+
+      for (const lang of ["fr", "en"]) {
+        if (mobile) await page.getByRole("button", { name: lang === "fr" ? "Open menu" : "Ouvrir le menu", exact: true }).click();
+        const controls = mobile ? page.getByRole("dialog", { name: "Menu" }) : page.getByRole("group", { name: "Language", exact: true });
+        await controls.getByRole("button", { name: lang === "fr" ? "Lire en français (traduction automatique)" : "Read in English", exact: true }).click();
+        await page.waitForURL(baseUrl + link(lang));
+        await heading(lang).waitFor();
+        const translatedOutline = await openOutline(lang);
+        const current = translatedOutline.getByRole("link", { name: headings[lang], exact: true });
+        assert(await current.getAttribute("aria-current") === "location", "Outline did not mark the translated section as current.");
+        assert(await current.getAttribute("href") === link(lang), "The localized outline changed the section ID.");
+        await page.keyboard.press("Escape");
+        await translatedOutline.waitFor({ state: "hidden" });
+      }
+
+      for (const legacy of [id, "The+working+test"]) {
+        await page.goto(baseUrl + chapter("fr") + "?section=" + legacy);
+        await heading("fr").waitFor();
+      }
+      console.log(`PASS chapter outline: ${viewport.name} · copy, reload, English ↔ French, and legacy links`);
+    });
+  }
+}
+
+async function runStaticSectionLinksSmoke(browser, baseUrl) {
+  for (const viewport of [VIEWPORTS[0], VIEWPORTS[2]]) {
+    for (const { prefix, outline, title } of [
+      { prefix: "", outline: "In this chapter", title: "The working test" },
+      { prefix: "/fr", outline: "Dans ce chapitre", title: "Le test pratique" },
+    ]) {
+      await withAppPage(browser, baseUrl, viewport, async (page) => {
+        const chapter = `${baseUrl}${prefix}/chapter/13`;
+        const fragment = "#the-working-test";
+        await page.goto(chapter + fragment);
+        const target = page.locator("h2:target");
+        assert(await target.textContent() === title, "Shared fragment did not target the localized static heading.");
+        assert(await target.evaluate((element) => {
+          const bounds = element.getBoundingClientRect();
+          return bounds.top >= -1 && bounds.bottom <= window.innerHeight + 1;
+        }), "Shared fragment did not scroll the static heading into view.");
+        await page.goto(chapter);
+        await page.getByRole("navigation", { name: outline, exact: true }).getByRole("link", { name: title, exact: true }).click();
+        await page.waitForURL(chapter + fragment);
+        assert(await target.textContent() === title, "Static outline link did not target its heading.");
+        const otherPrefix = prefix ? "" : "/fr";
+        const otherTitle = prefix ? "The working test" : "Le test pratique";
+        await page.locator(`a[href="${otherPrefix}/chapter/13${fragment}"]`).click();
+        await page.waitForURL(`${baseUrl}${otherPrefix}/chapter/13${fragment}`);
+        assert(await target.textContent() === otherTitle, "Static language link did not keep the same passage.");
+      }, { javaScriptEnabled: false });
+      console.log(`PASS static section links: ${viewport.name} ${prefix || "en"}`);
+    }
+  }
+}
+
+async function runChapter13LawSmoke(browser, baseUrl) {
+  for (const viewport of VIEWPORTS.filter(({ name }) => name !== "tablet")) {
+    for (const fixture of [
+      {
+        prefix: "", heading: "Bill C-16 — what it covers", next: "Next page",
+        deadline: "within 48 hours after the order is made",
+        report: "A report to a platform does not start that clock.",
+        penalty: "14-year maximum", condition: "aggravated sexual assault",
+        source: "https://laws-lois.justice.gc.ca/eng/acts/C-46/section-164.1.html",
+      },
+      {
+        prefix: "/fr", heading: "Le projet de loi C-16 — ce qu'il couvre", next: "Page suivante",
+        deadline: "dans les 48 heures suivant le prononcé de l’ordonnance",
+        report: "Un signalement à une plateforme ne déclenche pas ce délai.",
+        penalty: "14 ans", condition: "agression sexuelle grave",
+        source: "https://laws-lois.justice.gc.ca/fra/lois/C-46/section-164.1.html",
+      },
+    ]) {
+      const url = `${baseUrl}${fixture.prefix}/chapter/13?section=bill-c-16-what-it-covers`;
+      await withAppPage(browser, baseUrl, viewport, async (page) => {
+        await page.goto(url);
+        await page.getByRole("heading", { name: fixture.heading, exact: true }).waitFor();
+        let checkedPenalty = false;
+        let checkedDeadline = false;
+        let checkedSource = false;
+        for (let spread = 0; spread < 12; spread++) {
+          const main = page.locator("#dg-main");
+          const copy = await main.innerText();
+          checkedPenalty ||= copy.includes(fixture.penalty) && copy.includes(fixture.condition);
+          checkedDeadline ||= copy.includes(fixture.deadline) && copy.includes(fixture.report);
+          checkedSource ||= await main.locator(`a[href="${fixture.source}"]`).first().isVisible();
+          if (checkedPenalty && checkedDeadline && checkedSource) break;
+          await page.getByRole("button", { name: fixture.next, exact: true }).last().click();
+        }
+        assert(checkedPenalty && checkedDeadline && checkedSource,
+          `Chapter 13 ${fixture.prefix || "en"} (${viewport.name}): penalty=${checkedPenalty}, deadline=${checkedDeadline}, source=${checkedSource}`);
+      });
+      console.log(`PASS Chapter 13 final law: ${viewport.name} ${fixture.prefix || "en"}`);
+    }
+  }
+}
+
+async function runReceiptPermalinkSmoke(browser, baseUrl) {
+  const hash = "#receipt-32";
+  const sourceUrl = "https://arxiv.org/html/2512.13915v1#S4";
+  const editions = {
+    en: { path: "/receipts", claim: /2025 election deepfake study/i, note: "0.12%", switchTo: "Français" },
+    fr: { path: "/fr/receipts", claim: /hypertrucages/i, note: "0,12 %", switchTo: "English" },
+  };
+  for (const viewport of VIEWPORTS.filter(({ name }) => name !== "tablet")) {
+    for (const javaScriptEnabled of [true, false]) {
+      await withAppPage(browser, baseUrl, viewport, async (page) => {
+        const receipt = page.locator(hash);
+        const idsByEdition = new Map();
+        const checkReceipt = async (lang) => {
+          const edition = editions[lang];
+          await page.waitForURL(baseUrl + edition.path + hash);
+          const claim = receipt.getByText(edition.claim).first();
+          await claim.waitFor();
+          await page.waitForFunction(({ id, interactive }) => {
+            const row = document.querySelector(id);
+            const heading = row?.querySelector(interactive ? "button[aria-expanded=true]" : "p");
+            if (!heading) return false;
+            const bounds = heading.getBoundingClientRect();
+            const top = interactive ? document.querySelector("main").getBoundingClientRect().top : 0;
+            return bounds.top >= top && bounds.bottom <= window.innerHeight;
+          }, { id: hash, interactive: javaScriptEnabled }, { polling: 100, timeout: 5000 }).catch(async () => {
+            const bounds = await receipt.evaluate((row) => ({
+              heading: row.firstElementChild.getBoundingClientRect().toJSON(),
+              scrollY: window.scrollY,
+              height: window.innerHeight,
+            }));
+            throw new Error(`Receipt heading was outside the viewport on ${page.url()}: ${JSON.stringify(bounds)}`);
+          });
+          await receipt.getByText(edition.note, { exact: false }).first().waitFor();
+          await receipt.locator(`a[href="${sourceUrl}"]`).waitFor();
+          assert(await receipt.locator(`a[href$="${hash}"]`).count() === 2, "Receipt should have its own permalink and alternate edition link.");
+          if (!idsByEdition.has(lang)) {
+            const ids = await page.locator("[id^=receipt-]").evaluateAll((rows) => rows.map((row) => row.id));
+            const ledger = require(path.join(distDir, "content", ...(lang === "fr" ? ["fr"] : []), "receipts.json"));
+            assert(ids.length === ledger.length && new Set(ids).size === ledger.length, `${lang} receipt IDs are missing or duplicated.`);
+            idsByEdition.set(lang, ids.sort().join(","));
+          }
+        };
+        await page.goto(baseUrl + editions.en.path + hash);
+        for (const [lang, otherLang] of [["en", "fr"], ["fr", "en"]]) {
+          await checkReceipt(lang);
+          const prefix = lang === "fr" ? "/fr" : "";
+          await receipt.locator(`a[href="${prefix}/chapter/13#the-working-test"]`).click();
+          await page.waitForURL(`${baseUrl}${prefix}/chapter/13#the-working-test`);
+          await page.getByRole("heading", { name: lang === "fr" ? "Le test pratique" : "The working test", exact: true }).waitFor();
+          if (!javaScriptEnabled) {
+            await page.locator(`a[href="${editions[lang].path}${hash}"]`).click();
+          } else {
+            await page.goBack();
+          }
+          await checkReceipt(lang);
+          await receipt.getByRole("link", { name: editions[lang].switchTo, exact: true }).click();
+          await checkReceipt(otherLang);
+        }
+        if (javaScriptEnabled) {
+          if (viewport.name === "mobile") await page.getByRole("button", { name: "Open menu", exact: true }).click();
+          const controls = viewport.name === "mobile" ? page.getByRole("dialog", { name: "Menu" }) : page.getByRole("group", { name: "Language", exact: true });
+          await controls.getByRole("button", { name: "Lire en français (traduction automatique)" }).click();
+          await checkReceipt("fr");
+          await page.getByRole("button", { name: "Sources", exact: true }).click();
+          await page.waitForURL(baseUrl + editions.fr.path);
+          await receipt.waitFor({ state: "detached" });
+        }
+        assert(idsByEdition.get("en") === idsByEdition.get("fr"), "Receipt IDs differ across editions.");
+        await page.goto(baseUrl + editions.en.path + "#receipt-51-2");
+        await page.locator("#receipt-51").getByText("Canadian CPTC", { exact: false }).first().waitFor();
+        const duplicate = page.locator("#receipt-51-2");
+        await duplicate.getByText("Website Updates page vs. living-document promise", { exact: false }).first().waitFor();
+        await duplicate.getByRole("link", { name: "Français", exact: true }).click();
+        await page.waitForURL(baseUrl + editions.fr.path + "#receipt-51-2");
+        await duplicate.getByText(/promesse de document vivant/i).first().waitFor();
+      }, { javaScriptEnabled, hasTouch: viewport.name === "mobile" });
+      console.log(`PASS receipt permalink: ${viewport.name}, JavaScript ${javaScriptEnabled ? "on" : "off"}, both editions and language directions`);
+    }
+  }
+}
+
+async function runReceiptLocaleLoadingSmoke(browser, baseUrl) {
+  await withAppPage(browser, baseUrl, VIEWPORTS[0], async (page) => {
+    let release;
+    const frenchResponse = new Promise((resolve) => { release = resolve; });
+    await page.route("**/content/fr/receipts.json", async (route) => {
+      await frenchResponse;
+      await route.continue();
+    });
+
+    await page.goto(baseUrl + "/receipts#receipt-32");
+    const receipt = page.locator("#receipt-32");
+    const englishClaim = receipt.getByText("2025 election deepfake study", { exact: true });
+    await englishClaim.waitFor();
+    try {
+      await Promise.all([
+        page.waitForRequest("**/content/fr/receipts.json"),
+        receipt.getByRole("link", { name: "Français", exact: true }).click(),
+      ]);
+      await page.waitForURL(baseUrl + "/fr/receipts#receipt-32");
+      assert(!(await englishClaim.isVisible()), "French receipt URL displayed the old English claim while loading.");
+    } finally {
+      release();
+    }
+    await receipt.getByText(/hypertrucages/i).first().waitFor();
+  });
+  console.log("PASS receipt language loading: the previous claim stays hidden until the French ledger arrives.");
+}
+
 async function main() {
   assert(fs.existsSync(path.join(distDir, "index.html")), "dist/index.html not found. Run npm run build first.");
   const server = createServer();
@@ -661,6 +1137,16 @@ async function main() {
   const browser = await chromium.launch();
 
   try {
+    await runReceiptLocaleLoadingSmoke(browser, baseUrl);
+    await runLatestUpdateSmoke(browser, baseUrl);
+    await runReceiptPermalinkSmoke(browser, baseUrl);
+    await runChapter13LawSmoke(browser, baseUrl);
+    await runStaticSectionLinksSmoke(browser, baseUrl);
+    await runChapterOutlineSmoke(browser, baseUrl);
+    await runClaimReceiptSmoke(browser, baseUrl);
+    await runMobileSearchSmoke(browser, baseUrl);
+    await runMobileSearchRecoverySmoke(browser, baseUrl);
+    await runSearchQuestionsSmoke(browser, baseUrl);
     await runHeroImageRequestsSmoke(browser, baseUrl);
     await runChapterCoverImageSmoke(browser, baseUrl);
     await runMobileDrawerImageSmoke(browser, baseUrl);
@@ -679,6 +1165,26 @@ async function main() {
   } finally {
     await browser.close().catch(() => {});
     await new Promise((resolve) => server.close(resolve));
+  }
+}
+
+async function runLatestUpdateSmoke(browser, baseUrl) {
+  for (const [lang, prefix] of [["en", ""], ["fr", "/fr"]]) {
+    const update = latestUpdate[lang];
+    for (const javaScriptEnabled of [true, false]) {
+      await withAppPage(browser, baseUrl, VIEWPORTS[2], async (page) => {
+        await page.goto(baseUrl + prefix + "/updates");
+        const heading = page.getByRole("heading", { name: update.title, exact: true });
+        await heading.waitFor();
+        for (const item of update.items) await page.getByText(item, { exact: true }).waitFor();
+        const passage = page.getByRole("link", { name: update.passageLabel, exact: true });
+        assert(await passage.getAttribute("href") === prefix + "/chapter/13#the-working-test", "Updates links to the wrong passage.");
+        await page.getByRole("link", { name: update.receiptLabel, exact: true }).click();
+        await page.waitForURL(baseUrl + prefix + "/receipts#receipt-32");
+        await page.locator('#receipt-32 a[href*="2512.13915v1#S4"]').waitFor();
+      }, { javaScriptEnabled, hasTouch: true });
+      console.log(`PASS latest update: ${lang}, JavaScript ${javaScriptEnabled ? "on" : "off"}`);
+    }
   }
 }
 

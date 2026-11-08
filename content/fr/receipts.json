@@ -508,8 +508,12 @@
   "section": "Fresh live re-verification — June 15, 2026 (full fact-check pass)",
   "claim": "Le projet de loi C-16 « n'établit pas... un mécanisme de retrait » (Ch 13)",
   "status": "fixed",
-  "detail": "⚠️  **Maintenant FAUX.** 11 mai 2026 L'amendement de la commission a ajouté une **Déploiement de la plate-forme 48 heures** (+ couverture « quasi nue »). «Frappe un mécanisme de retrait»; ajouter une phrase sur l'amendement de mai 2026; revérifier la section de comparaison internationale. |  [CJFC/CP](https://cfjctoday.com/2026/05/11/mps-amend-bill-criminalizing-sexual-deepfakes-to-include-nearly-nude-images/)  ·  [Observateur de Nat'l](https://www.nationalobserver.com/2026/05/11/news/mps-amend-bill-criminalizing-sexual-deepfakes-include-nearly-nude-images)",
+  "detail": "Le paragraphe 164.1(5.1) du Code criminel impose l’effacement de l’image intime visée dans les 48 heures suivant le prononcé de l’ordonnance. Un signalement à la plateforme ne déclenche pas ce délai.",
   "links": [
+   [
+    "Code criminel, article 164.1",
+    "https://laws-lois.justice.gc.ca/fra/lois/C-46/section-164.1.html"
+   ],
    [
     "CFJC/CP",
     "https://cfjctoday.com/2026/05/11/mps-amend-bill-criminalizing-sexual-deepfakes-to-include-nearly-nude-images/"
@@ -525,8 +529,12 @@
   "section": "Fresh live re-verification — June 15, 2026 (full fact-check pass)",
   "claim": "Statut du projet de loi C-16 «déposé... déc. 9 2025» (Ch 5/9/10/13, annexe)",
   "status": "fixed",
-  "detail": "⏰  **Étal.** En juin 2026 C-16 **adopté la troisième lecture à la Chambre et est devant le Sénat.** Actualiser le verbe de statut tout au long de la publication (en changer pour « entériner » si la sanction royale survient). Legisinfo C-16 · [Globe](https://www.theglobeandmail.com/canada/article-federal-move-to-criminalize-non-consensual-sexual-deepfakes-is-long/)",
+  "detail": "Le projet de loi C-16 a reçu la sanction royale le 18 juin 2026. Les modifications sur les images intimes présentées au chapitre 13 sont entrées en vigueur le 18 juillet 2026.",
   "links": [
+   [
+    "Loi visant à protéger les victimes",
+    "https://laws-lois.justice.gc.ca/fra/LoisAnnuelles/2026_19/TexteComplet.html"
+   ],
    [
     "Globe",
     "https://www.theglobeandmail.com/canada/article-federal-move-to-criminalize-non-consensual-sexual-deepfakes-is-long/"

@@ -19,6 +19,8 @@ export function SectionHeading({ heading, first, accent }: { heading: string; fi
   const margin = first ? "0 0 8px" : "16px 0 8px";
   const h2 = (
     <h2
+      data-section-heading={heading}
+      tabIndex={-1}
       style={{
         fontFamily: DISPLAY,
         fontSize: `${t.section * 1.08}px`,

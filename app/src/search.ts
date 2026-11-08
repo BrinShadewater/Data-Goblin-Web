@@ -1,82 +1,124 @@
-import type { Book, Chapter, GlossaryEntry } from "./types";
 import type { Lang } from "./LanguageContext";
-import { chapterPath, fetchJson } from "./useContent";
 
 export type SearchHit =
+  | { type: "topic"; slug: string; title: string; snippet: string }
   | { type: "chapter"; num: number; title: string; snippet: string }
-  | { type: "section"; num: number; chapterTitle: string; heading: string }
+  | { type: "section"; num: number; chapterTitle: string; heading: string; snippet: string; sectionId?: string; terms?: string; keywords?: string }
   | { type: "glossary"; term: string; def: string; letter: string };
 
-// One index per edition. The FR reader must search FR titles, headings and glossary
-// definitions; a shared cache would hand French readers English hits (or none).
-const searchIndex: Partial<Record<Lang, SearchHit[]>> = {};
-const searchIndexPromise: Partial<Record<Lang, Promise<SearchHit[]>>> = {};
+const indexes: Partial<Record<Lang, Promise<SearchHit[]>>> = {};
+const SEARCH_INDEX_TIMEOUT_MS = 15_000;
 
-export function hasCachedSearchIndex(lang: Lang = "en") {
-  return searchIndex[lang] !== undefined;
-}
-
-export function getCachedSearchIndex(lang: Lang = "en") {
-  return searchIndex[lang] ?? [];
-}
-
-export function buildSearchIndex(lang: Lang = "en"): Promise<SearchHit[]> {
-  const cached = searchIndex[lang];
-  if (cached) return Promise.resolve(cached);
-  const pending = searchIndexPromise[lang];
-  if (pending) return pending;
-  const promise = (async () => {
-    const hits: SearchHit[] = [];
-    const book = await fetchJson<Book>("book.json", lang);
-    const chapterRefs = book.parts.flatMap((p) => p.chapters);
-    const chapters = await Promise.all(
-      chapterRefs.map((ref) => fetchJson<Chapter>(chapterPath(ref.number), lang).catch(() => null))
-    );
-    for (const ch of chapters) {
-      if (!ch) continue;
-      hits.push({
-        type: "chapter",
-        num: ch.number,
-        title: ch.title,
-        snippet: ch.startHere.replace(/[*_>#`]/g, "").slice(0, 160),
-      });
-      for (const s of ch.sections) {
-        hits.push({ type: "section", num: ch.number, chapterTitle: ch.title.split(" — ")[0], heading: s.heading });
-      }
-    }
-    const glossary = await fetchJson<GlossaryEntry[]>("glossary.json", lang);
-    for (const g of glossary) {
-      hits.push({ type: "glossary", term: g.term, def: g.def, letter: g.letter });
-    }
-    searchIndex[lang] = hits;
-    return hits;
-  })();
-  searchIndexPromise[lang] = promise;
-  return promise;
-}
-
-function scoreSearchHit(hit: SearchHit, q: string): number {
-  const lq = q.toLowerCase();
-  if (hit.type === "chapter") {
-    if (hit.title.toLowerCase().includes(lq)) return 3;
-    if (hit.snippet.toLowerCase().includes(lq)) return 1;
-    return 0;
+function isSearchHit(value: unknown): value is SearchHit {
+  if (typeof value !== "object" || value === null) return false;
+  const hit = value as Record<string, unknown>;
+  if (hit.type === "glossary") {
+    return typeof hit.term === "string" && typeof hit.def === "string" && typeof hit.letter === "string";
   }
-  if (hit.type === "section") {
-    return hit.heading.toLowerCase().includes(lq) ? 2 : 0;
+  if (typeof hit.snippet !== "string") return false;
+  switch (hit.type) {
+    case "topic":
+      return typeof hit.slug === "string" && typeof hit.title === "string";
+    case "chapter":
+      return Number.isInteger(hit.num) && typeof hit.title === "string";
+    case "section":
+      return Number.isInteger(hit.num) && typeof hit.heading === "string" && typeof hit.chapterTitle === "string" &&
+        (hit.sectionId === undefined || typeof hit.sectionId === "string") &&
+        (hit.terms === undefined || typeof hit.terms === "string") &&
+        (hit.keywords === undefined || typeof hit.keywords === "string");
+    default:
+      return false;
   }
-  if (hit.term.toLowerCase().includes(lq)) return 3;
-  if (hit.def.toLowerCase().includes(lq)) return 1;
-  return 0;
 }
 
-export function querySearchIndex(index: SearchHit[], query: string, limit = 14): SearchHit[] {
-  const q = query.trim();
+export function loadSearchIndex(lang: Lang): Promise<SearchHit[]> {
+  const cached = indexes[lang];
+  if (cached) return cached;
+
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), SEARCH_INDEX_TIMEOUT_MS);
+  return indexes[lang] = fetch(`${import.meta.env.BASE_URL}search/${lang}.json`, { signal: controller.signal })
+    .then((response) => {
+      if (!response.ok) throw new Error(`Search index unavailable: ${response.status}`);
+      return response.json();
+    })
+    .then((data: unknown) => {
+      if (!Array.isArray(data) || !data.every(isSearchHit)) throw new Error("Invalid search index");
+      return data;
+    })
+    .catch((error) => {
+      delete indexes[lang];
+      throw error;
+    })
+    .finally(() => clearTimeout(timeout));
+}
+
+function normalize(value: string) {
+  return value.normalize("NFD").replace(/\p{M}/gu, "").toLowerCase().replace(/[^\p{L}\p{N}]+/gu, " ").trim();
+}
+
+const stopWords: Record<Lang, Set<string>> = {
+  en: new Set("a an and are as at be by can could did do does for from had has have how i in is it many much of on or should the their they to was were what when where which who why will with would".split(" ")),
+  fr: new Set("a au aux avec ce ces cet cette combien comme dans de des du elle elles en est et il ils je l la le les leur ne ou par pas peut peuvent pour quand que quel quelle qui s se sont sur un une y".split(" ")),
+};
+
+function searchWords(text: string, lang: Lang) {
+  return normalize(text).split(" ").filter((word) => word.length > 1 && !stopWords[lang].has(word))
+    .map((word) => {
+      if (lang === "fr" && /ien(?:ne|nes|s)$/.test(word)) return word.replace(/ien(?:ne|nes|s)$/, "ien");
+      return word.length > 3 ? word.replace(lang === "fr" ? /[sx]$/ : /s$/, "") : word;
+    });
+}
+
+export function sectionSearchTerms(text: string, lang: Lang) {
+  return [...new Set(searchWords(text, lang))].sort().join(" ");
+}
+
+export function sectionBodyTerms(text: string, lang: Lang) {
+  const counts = new Map<string, number>();
+  for (const word of searchWords(text, lang)) counts.set(word, (counts.get(word) ?? 0) + 1);
+  return [...counts]
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 75)
+    .map(([word]) => word)
+    .sort()
+    .join(" ");
+}
+
+function scoreSearchHit(hit: SearchHit, query: string, words: string[], lang: Lang): number {
+  const title = hit.type === "section" ? hit.heading : hit.type === "glossary" ? hit.term : hit.title;
+  const titleWords = searchWords(title, lang);
+  const snippetWords = new Set(searchWords(hit.type === "glossary" ? hit.def : hit.snippet, lang));
+  const contextWords = new Set(hit.type === "section" ? searchWords(hit.chapterTitle, lang) : []);
+  const bodyWords = new Set(hit.type === "section" ? hit.terms?.split(" ") : []);
+  const keywords = new Set(hit.type === "section" ? hit.keywords?.split(" ") : []);
+  let matches = 0;
+  let score = 0;
+  for (const word of words) {
+    const inTitle = titleWords.some((term) => term.startsWith(word));
+    const inKeywords = keywords.has(word);
+    const inSnippet = snippetWords.has(word);
+    const inBody = bodyWords.has(word);
+    const inContext = contextWords.has(word);
+    if (inTitle || inKeywords || inSnippet || inBody || inContext) {
+      matches++;
+      score += inTitle || inKeywords ? 5 : inSnippet ? 3 : inBody ? 2 : 1;
+    }
+  }
+  if (matches < Math.ceil(words.length * 0.6)) return 0;
+  const exact = normalize(title) === query;
+  return score + matches * 5 + (exact ? 30 : 0);
+}
+
+export function querySearchIndex(index: SearchHit[], query: string, lang: Lang, limit = 14): SearchHit[] {
+  const q = normalize(query);
   if (q.length < 2) return [];
+  const words = [...new Set(searchWords(q, lang))];
+  if (!words.length) return [];
   return index
-    .map((hit) => ({ hit, s: scoreSearchHit(hit, q) }))
-    .filter((x) => x.s > 0)
-    .sort((a, b) => b.s - a.s)
+    .map((hit) => ({ hit, score: scoreSearchHit(hit, q, words, lang) }))
+    .filter(({ score }) => score > 0)
+    .sort((a, b) => b.score - a.score)
     .slice(0, limit)
-    .map((x) => x.hit);
+    .map(({ hit }) => hit);
 }

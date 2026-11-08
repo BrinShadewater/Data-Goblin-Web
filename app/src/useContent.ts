@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { RESPONSIVE_ART } from "./imageRegistry";
 import type { ArtMap, Book, Chapter, GlossaryEntry, LinkEntry, Receipt, Traps } from "./types";
 import { useLanguage, type Lang } from "./LanguageContext";
+import type { SectionLinks } from "./sectionLinks";
 
 // Runtime JSON loader with a module-level cache so each file is fetched once
 // per session. Content lives in public/content/ and is produced by the
@@ -23,7 +24,7 @@ const contentUrl = (relPath: string, lang: Lang) =>
 // prose phrases, so the French edition needs French ones (fr/claim-anchors.json,
 // built by scripts/build-fr-anchors.cjs). fetchJson falls back to the English
 // file if the French one is missing.
-const LANG_NEUTRAL = new Set(["art-map.json", "links.json"]);
+const LANG_NEUTRAL = new Set(["art-map.json", "links.json", "section-links.json"]);
 
 /**
  * Load a content JSON. In French, fetch the machine-translated copy under
@@ -64,32 +65,22 @@ export function useJson<T>(relPath: string | null): { data: T | null; error: str
   const { lang: ctxLang } = useLanguage();
   const lang = relPath && LANG_NEUTRAL.has(relPath) ? "en" : ctxLang;
   const key = relPath ? `${lang}:${relPath}` : null;
-  const [data, setData] = useState<T | null>(
-    key && cache.has(key) ? (cache.get(key) as T) : null
-  );
-  const [error, setError] = useState<string | null>(null);
+  const [result, setResult] = useState<{ key: string; data: T | null; error: string | null } | null>(null);
   useEffect(() => {
-    if (!relPath || !key) {
-      setData(null);
-      setError(null);
-      return;
-    }
+    if (!relPath || !key) return;
     let live = true;
-    if (cache.has(key)) {
-      setData(cache.get(key) as T);
-      setError(null);
-      return;
-    }
-    setData(null);
-    setError(null);
+    setResult(null);
+    if (cache.has(key)) return;
     fetchJson<T>(relPath, lang)
-      .then((d) => live && setData(d))
-      .catch((e) => live && setError(String(e)));
+      .then((data) => live && setResult({ key, data, error: null }))
+      .catch((error) => live && setResult({ key, data: null, error: String(error) }));
     return () => {
       live = false;
     };
   }, [relPath, lang, key]);
-  return { data, error };
+  if (key && cache.has(key)) return { data: cache.get(key) as T, error: null };
+  if (result?.key === key) return result;
+  return { data: null, error: null };
 }
 
 export const chapterPath = (num: number) => `chapters/ch${String(num).padStart(2, "0")}.json`;
@@ -102,6 +93,7 @@ export const useReceipts = () => useJson<Receipt[]>("receipts.json");
 export const useGlossary = () => useJson<GlossaryEntry[]>("glossary.json");
 export const useLinks = () => useJson<LinkEntry[]>("links.json");
 export const useArtMap = () => useJson<ArtMap>("art-map.json");
+export const useSectionLinks = () => useJson<SectionLinks>("section-links.json");
 export const useClaimAnchors = () => useJson<Record<string, { anchor: string; id: number; status: string }[]>>("claim-anchors.json");
 
 /** URL of an art asset; `rel` is an art-map path like "small/water.png". */

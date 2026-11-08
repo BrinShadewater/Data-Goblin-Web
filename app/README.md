@@ -39,6 +39,11 @@ Either runs `pipeline/build_content.py`, copies `content/` into `app/public/cont
 checks the two stayed in sync, and prints which JSON files changed. Then reload the dev
 server or rebuild.
 
+Section permalinks are maintained in `../content/section-links.json`. Keep each
+published ID when a heading changes, and update the English or French label to
+match the chapter. Keep entries in chapter order and sync the public copy. The
+build checks both editions against the registry.
+
 ## Verify before shipping
 
 ```bash
@@ -112,3 +117,13 @@ app/
 - The French edition is machine-translated by the pipeline and then corrected; UI chrome
   comes from `ui-fr.ts`, never from the translation pass.
 - Analytics load only behind the consent gate (`components/AnalyticsConsentGate.tsx`).
+
+## Chapter 13 legal text
+
+The English C-16 wording comes from `DataGoblin-Complete.md` and `Receipts-Ledger.md`
+in the private manuscript repo. The reviewed French wording remains in
+`pipeline/chapter13-legal-update.json`, relative to the site root. The normal Windows
+refresh expects the site checkout under the manuscript root and applies the French
+edits before syncing into the app. Run `python pipeline/apply_chapter13_legal_update.py
+--check` from the site root to verify both generated French copies. If a new
+translation changes the text, reconcile the affected edits before copying.

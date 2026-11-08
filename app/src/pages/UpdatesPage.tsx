@@ -3,6 +3,9 @@ import { useTheme } from "../ThemeContext";
 import { BODY, MONO, P, UI } from "../theme";
 import { Kicker, PageHeading, StaticCard, StaticPageShell } from "../components/StaticPage";
 import { tr } from "../i18n";
+import { useLanguage } from "../LanguageContext";
+import { sectionHref } from "../sectionLinks";
+import latestUpdate from "../latestUpdate.json";
 
 interface UpdateEntry {
   date: string;
@@ -12,6 +15,14 @@ interface UpdateEntry {
 }
 
 const UPDATES: UpdateEntry[] = [
+  {
+    date: "November 7, 2026",
+    tag: "Corrections",
+    title: "Chapter 13 follows the enacted Protecting Victims Act",
+    items: [
+      "The English and French editions now explain which intimate images are covered, when the higher penalties apply, and why the 48-hour deletion deadline starts with a court order.",
+    ],
+  },
   {
     date: "September 5, 2026",
     tag: "Reader",
@@ -118,7 +129,7 @@ const UPDATES: UpdateEntry[] = [
     title: "Corrections — Wonder Valley reversal, and a fresh fact-check pass",
     items: [
       "Wonder Valley / Sturgeon Lake Cree Nation, corrected in public: an earlier draft described the Nation as an equity participant in the Wonder Valley data-centre project. The documented record is the opposite: the Nation says it was not consulted, demanded a halt (Chief Sunshine's open letter, January 13, 2025), and is in court over the Crown's duty to consult as of June 2026. Chapters 6 and 9 were rewritten to the record; the correction note stays in the book.",
-      "Bill C-16: a May 2026 committee amendment added a 48-hour platform takedown duty (and 'nearly nude' coverage); the bill is advancing through Parliament as of June 2026. The Chapter 13 line that said it created no takedown mechanism was corrected.",
+      "Bill C-16: the May 2026 committee amendments added a 48-hour deadline tied to a court deletion order and expanded coverage to near nudity. The bill was still before Parliament at the time. See the November update for the enacted law.",
       "The Toronto Star v. OpenAI jurisdiction ruling is dated November 7, 2025 (not the 27th), and OpenAI has appealed. The book now says so.",
       "The 2025 election-deepfake figures in the Source Library were aligned to the published paper (8.66% right / 4.42% left / 0.12% harmful reach), matching the chapter body.",
       "The $100M Venture Scientist Fund is a private Mila–Inovia venture fund, not a federal program. Corrected in Chapters 5 and 7.",
@@ -227,6 +238,15 @@ const PENDING: string[] = [
 
 export function UpdatesPage() {
   const { c } = useTheme();
+  const { lang } = useLanguage();
+  const latest = latestUpdate[lang];
+  const updates = [
+    { ...latest, links: [[latest.passageLabel, sectionHref(13, "the-working-test")], [latest.receiptLabel, "/receipts#receipt-32"]] },
+    ...UPDATES.map((entry) => ({
+      date: tr(entry.date), tag: tr(entry.tag), title: tr(entry.title), items: entry.items.map(tr),
+      links: [],
+    })),
+  ];
   const body = c(...P.body);
   const muted = c(...P.muted);
   const navy = c(...P.navy);
@@ -249,26 +269,31 @@ export function UpdatesPage() {
       />
 
       <div style={{ display: "grid", gap: "12px" }}>
-        {UPDATES.map((entry) => (
+        {updates.map((entry) => (
           <StaticCard key={entry.date + entry.title} padding="20px 22px">
             <div style={{ display: "flex", alignItems: "baseline", gap: "12px", flexWrap: "wrap", marginBottom: "10px" }}>
               <span style={{ fontFamily: MONO, fontSize: "12px", fontWeight: 700, letterSpacing: "0.08em", color: muted }}>
-                {tr(entry.date)}
+                {entry.date}
               </span>
               <span style={{ fontFamily: MONO, fontSize: "9.5px", fontWeight: 800, letterSpacing: "0.18em", textTransform: "uppercase", color: green }}>
-                {tr(entry.tag)}
+                {entry.tag}
               </span>
             </div>
             <h2 style={{ fontFamily: UI, fontSize: "18px", fontWeight: 900, color: navy, margin: "0 0 10px" }}>
-              {tr(entry.title)}
+              {entry.title}
             </h2>
             <ul style={{ margin: 0, paddingLeft: "20px", display: "grid", gap: "7px" }}>
               {entry.items.map((it, i) => (
                 <li key={i} style={{ fontFamily: BODY, fontSize: "15px", color: body, lineHeight: 1.6 }}>
-                  {tr(it)}
+                  {it}
                 </li>
               ))}
             </ul>
+            {entry.links.map(([label, to]) => (
+              <Link key={to} to={to} style={{ display: "inline-block", margin: "12px 16px 0 0", fontFamily: UI, fontSize: "14px", fontWeight: 800, color: navy }}>
+                {label}
+              </Link>
+            ))}
           </StaticCard>
         ))}
       </div>

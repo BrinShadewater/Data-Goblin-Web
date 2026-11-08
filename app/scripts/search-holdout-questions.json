@@ -1,0 +1,50 @@
+[
+  {
+    "chapter": 3,
+    "section": "the-human-labour-layer",
+    "en": "Who labels the data used to train AI?",
+    "fr": "Qui étiquette les données utilisées pour entraîner une IA ?",
+    "source": "https://link.springer.com/article/10.1007/s00146-023-01824-9"
+  },
+  {
+    "chapter": 8,
+    "section": "training-versus-inference-the-most-important-environmental-distinction",
+    "en": "Does running an AI model use more energy than training it?",
+    "fr": "L’utilisation d’un modèle d’IA consomme-t-elle plus d’énergie que son entraînement ?",
+    "source": "https://www.jmlr.org/papers/v24/23-0069.html"
+  },
+  {
+    "chapter": 10,
+    "section": "the-biometric-and-facial-recognition-layer",
+    "en": "Can police use facial recognition in Canada?",
+    "fr": "La police peut-elle utiliser la reconnaissance faciale au Canada ?",
+    "source": {
+      "en": "https://www.priv.gc.ca/en/opc-actions-and-decisions/ar_index/202021/sr_rcmp/",
+      "fr": "https://www.priv.gc.ca/fr/mesures-et-decisions-prises-par-le-commissariat/ar_index/202021/sr_grc/"
+    }
+  },
+  {
+    "chapter": 10,
+    "section": "workplace-ai-surveillance-the-cupe-primary-documentation",
+    "en": "How do employers use AI to monitor workers?",
+    "fr": "Comment les employeurs utilisent-ils l’IA pour surveiller les employés ?",
+    "source": {
+      "en": "https://sencanada.ca/Content/Sen/Committee/451/SOCI/briefs/2026-03-05_SOCI_SS-2_Brief_CUPE_e.pdf",
+      "fr": "https://sencanada.ca/Content/Sen/Committee/451/SOCI/briefs/2026-03-05_SOCI_SS-2_Brief_CUPE_f.pdf"
+    }
+  },
+  {
+    "chapter": 11,
+    "section": "the-canadian-newspapers-v-openai-case",
+    "en": "Why did Canadian newspapers sue OpenAI?",
+    "fr": "Pourquoi des journaux canadiens poursuivent-ils OpenAI ?",
+    "source": "https://litigate.com/assets/uploads/20251126-143435-3326-Toronto-Star-Newspapers-et-al-v.-OpenAI-et-al-CV-24-00732231-00CL.Endorsement.September.10.2025.Jurisdiction.Motion.FINAL.2.pdf"
+  },
+  {
+    "chapter": 18,
+    "section": "the-stanford-fmti-the-empirical-baseline-for-industry-transparency",
+    "en": "How transparent are companies about their foundation models?",
+    "fr": "Comment mesure-t-on la transparence des entreprises qui développent des modèles de fondation ?",
+    "source": "https://crfm.stanford.edu/fmti/December-2025/index.html"
+  }
+]

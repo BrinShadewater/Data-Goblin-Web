@@ -11,11 +11,17 @@ export function AnchoredPopover({
   anchorRef,
   open,
   width,
+  id,
+  label,
+  focusFirstLink = false,
   children,
 }: {
   anchorRef: RefObject<HTMLElement | null>;
   open: boolean;
   width: number;
+  id?: string;
+  label?: string;
+  focusFirstLink?: boolean;
   children: ReactNode;
 }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -43,11 +49,19 @@ export function AnchoredPopover({
     setPos({ left, top });
   }, [open, width, anchorRef]);
 
+  useLayoutEffect(() => {
+    if (open && pos && focusFirstLink) {
+      ref.current?.querySelector("a")?.focus({ preventScroll: true });
+    }
+  }, [open, pos, focusFirstLink]);
+
   if (!open) return null;
   return createPortal(
     <div
       ref={ref}
-      role="tooltip"
+      id={id}
+      role={label ? "dialog" : "tooltip"}
+      aria-label={label}
       style={{
         position: "fixed",
         left: pos ? pos.left : -9999,

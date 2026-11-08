@@ -1,160 +1,198 @@
-import type { CSSProperties, MouseEvent } from "react";
-import { useEffect, useState } from "react";
-import { useNavigate } from "../i18nNav";
+import { useEffect, useRef, useState } from "react";
+import { Link } from "../i18nNav";
 import { useTheme } from "../ThemeContext";
 import { useLanguage } from "../LanguageContext";
 import { BODY, P, RADIUS, UI } from "../theme";
-import { buildSearchIndex, getCachedSearchIndex, hasCachedSearchIndex, querySearchIndex } from "../search";
-import type { SearchHit } from "../search";
+import { loadSearchIndex, querySearchIndex, type SearchHit } from "../search";
 import { tr } from "../i18n";
+import { sectionHref } from "../sectionLinks";
 
-export function SearchOverlay({ query, onClose }: { query: string; onClose: () => void }) {
+const COPY = {
+  en: {
+    topics: "Topics",
+    close: "Close",
+    prompt: "Enter at least two characters.",
+    loading: "Loading search…",
+    unavailable: "Search couldn’t load.",
+    retry: "Retry search",
+    noResultsHint: "Try a shorter phrase or different words.",
+    resultCount: (count: number, query: string) =>
+      count === 0 ? `No results for “${query}”` : `${count} ${count === 1 ? "result" : "results"} for “${query}”`,
+  },
+  fr: {
+    topics: "Sujets",
+    close: "Fermer",
+    prompt: "Saisissez au moins deux caractères.",
+    loading: "Chargement de la recherche…",
+    unavailable: "Impossible de charger la recherche.",
+    retry: "Réessayer la recherche",
+    noResultsHint: "Essayez une recherche plus courte ou d’autres mots.",
+    resultCount: (count: number, query: string) =>
+      count === 0 ? `Aucun résultat pour « ${query} »` : `${count} ${count === 1 ? "résultat" : "résultats"} pour « ${query} »`,
+  },
+};
+
+function describeHit(hit: SearchHit, topicsLabel: string) {
+  switch (hit.type) {
+    case "topic":
+      return { to: `/topic/${hit.slug}`, title: hit.title, detail: hit.snippet, label: topicsLabel };
+    case "chapter":
+      return { to: `/chapter/${hit.num}`, title: hit.title, detail: hit.snippet, label: `${tr("Ch.")} ${hit.num}` };
+    case "section":
+      return {
+        to: sectionHref(hit.num, hit.sectionId || hit.heading),
+        state: { focusSection: true },
+        title: hit.heading, detail: hit.snippet, label: `${tr("Ch.")} ${hit.num} · ${hit.chapterTitle}`,
+      };
+    case "glossary":
+      return { to: "/loot", state: { term: hit.term }, title: hit.term, detail: hit.def, label: tr("Glossary") };
+  }
+}
+
+export function SearchOverlay({ query, onClose, onSearch, mobile }: {
+  query: string;
+  onClose: () => void;
+  onSearch: (query: string) => void;
+  mobile: boolean;
+}) {
   const { c } = useTheme();
   const { lang } = useLanguage();
-  const navigate = useNavigate();
-  const [index, setIndex] = useState<SearchHit[]>(() => getCachedSearchIndex(lang));
+  const copy = COPY[lang];
+  const [index, setIndex] = useState<{ lang: typeof lang; hits: SearchHit[] | null }>();
+  const [attempt, setAttempt] = useState(0);
+  const dialogRef = useRef<HTMLDialogElement>(null);
+  const q = query.trim();
+  const searching = q.length >= 2;
 
   useEffect(() => {
+    if (!searching) return;
     let cancelled = false;
-    setIndex(getCachedSearchIndex(lang));
-    buildSearchIndex(lang)
-      .then((hits) => {
-        if (!cancelled) setIndex(hits);
-      })
-      .catch(() => {
-        if (!cancelled) setIndex([]);
-      });
-    return () => {
-      cancelled = true;
-    };
-  }, [lang]);
+    loadSearchIndex(lang).then(
+      (hits) => { if (!cancelled) setIndex({ lang, hits }); },
+      () => { if (!cancelled) setIndex({ lang, hits: null }); }
+    );
+    return () => { cancelled = true; };
+  }, [lang, searching, attempt]);
 
   useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
+    const dialog = dialogRef.current;
+    if (!mobile || !dialog) return;
+    dialog.showModal();
+    return () => dialog.close();
+  }, [mobile]);
+
+  useEffect(() => {
+    if (mobile) return;
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
         onClose();
-        (document.querySelector('input[type="search"]') as HTMLElement | null)?.focus?.();
+        document.querySelector<HTMLElement>('header input[type="search"]')?.focus();
       }
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [onClose]);
+  }, [mobile, onClose]);
+
+  const close = () => {
+    dialogRef.current?.close();
+    onClose();
+  };
+  const hits = index?.lang === lang ? index.hits : undefined;
+  const results = querySearchIndex(hits ?? [], q, lang);
+  const failed = searching && hits === null;
+  const noResults = searching && Array.isArray(hits) && results.length === 0;
+  const retry = () => {
+    const input = mobile ? dialogRef.current?.querySelector("input") : document.querySelector('header input[type="search"]');
+    if (input instanceof HTMLElement) input.focus();
+    setIndex(undefined);
+    setAttempt((count) => count + 1);
+  };
+  let status = copy.prompt;
+  if (searching) {
+    if (hits === undefined) status = copy.loading;
+    else if (hits === null) status = copy.unavailable;
+    else status = copy.resultCount(results.length, q);
+  }
 
   const bg = c(...P.cardBg);
   const border = c(...P.borderSoft);
-  const overlay = c("rgba(35,33,26,0.35)", "rgba(0,0,0,0.65)");
-  const green = c(...P.green);
-  const navy = c(...P.navy);
+  const ink = c(...P.body);
   const muted = c(...P.muted);
-  const bodyText = c(...P.body);
-  const red = c(...P.red);
-  const hoverBg = c("#f3eee2", "#1c2230");
+  const controlStyle = { color: ink, background: c(...P.inputBg), border: `1px solid ${border}`, borderRadius: RADIUS };
 
-  const q = query.trim();
-  if (q.length < 2) return null;
-
-  const results = querySearchIndex(index, q);
-
-  const chapters = results.filter((r): r is Extract<SearchHit, { type: "chapter" }> => r.type === "chapter");
-  const sections = results.filter((r): r is Extract<SearchHit, { type: "section" }> => r.type === "section");
-  const glossary = results.filter((r): r is Extract<SearchHit, { type: "glossary" }> => r.type === "glossary");
-
-  const rowStyle: CSSProperties = {
-    display: "block",
-    width: "100%",
-    textAlign: "left",
-    padding: "9px 16px",
-    background: "transparent",
-    border: "none",
-    cursor: "pointer",
-    transition: "background 0.12s",
-  };
-  const hover = {
-    onMouseEnter: (e: MouseEvent<HTMLButtonElement>) => (e.currentTarget.style.background = hoverBg),
-    onMouseLeave: (e: MouseEvent<HTMLButtonElement>) => (e.currentTarget.style.background = "transparent"),
-  };
-  const groupLabel = (color: string, label: string) => (
-    <div style={{ padding: "8px 16px 4px", fontFamily: UI, fontSize: "7.5px", fontWeight: 800, letterSpacing: "0.2em", textTransform: "uppercase", color }}>
-      {label}
+  const content = (
+    <div style={{ display: "flex", flexDirection: "column", maxHeight: mobile ? "min(70dvh, 32rem)" : "62vh" }}>
+      {mobile && (
+        <div style={{ display: "flex", gap: 8, padding: 12 }}>
+          <input
+            type="search"
+            aria-label={tr("Search the guide")}
+            placeholder={tr("Search the guide…")}
+            value={query}
+            onChange={(event) => onSearch(event.target.value)}
+            style={{ ...controlStyle, minWidth: 0, flex: 1, fontFamily: UI, fontSize: 16, padding: 8 }}
+          />
+          <button type="button" onClick={close} style={{ ...controlStyle, minHeight: 44, padding: "0 10px" }}>
+            {copy.close}
+          </button>
+        </div>
+      )}
+      <div role="status" style={{ padding: "10px 16px", borderBottom: `1px solid ${border}`, fontFamily: UI, fontSize: 12, color: muted }}>
+        {status}
+        {noResults && <p style={{ margin: "4px 0 0" }}>{copy.noResultsHint}</p>}
+      </div>
+      {failed && (
+        <button type="button" onClick={retry}
+          style={{ ...controlStyle, alignSelf: "flex-start", minHeight: 44, margin: 12, padding: "0 10px" }}>
+          {copy.retry}
+        </button>
+      )}
+      {results.length > 0 && (
+        <ul className="dg-search-results" style={{ margin: 0, padding: 0, listStyle: "none", overflowY: "auto" }}>
+          {results.map((hit, position) => {
+            const { to, state, title, detail, label } = describeHit(hit, copy.topics);
+            return (
+              <li key={`${to}:${title}:${position}`}>
+                <Link to={to} state={state} onClick={close}
+                  style={{ display: "block", padding: "9px 16px", textDecoration: "none", color: ink, borderBottom: `1px solid ${border}` }}>
+                  <div style={{ fontFamily: UI, fontSize: 11, color: muted }}>{label}</div>
+                  <div style={{ fontFamily: UI, fontSize: 14, fontWeight: 700 }}>{title}</div>
+                  <div style={{ fontFamily: BODY, fontSize: 12, lineHeight: 1.45, color: muted }}>
+                    {detail.length > 145 ? detail.slice(0, 145) + "…" : detail}
+                  </div>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      )}
+      <style>{`.dg-search-results a:hover, .dg-search-results a:focus-visible { background: ${c("#f3eee2", "#1c2230")}; }`}</style>
     </div>
   );
 
+  const surfaceStyle = {
+    width: "min(600px, 90vw)",
+    background: bg,
+    border: `1px solid ${border}`,
+    borderRadius: RADIUS,
+    boxShadow: c("0 8px 32px rgba(35,33,26,0.18)", "0 8px 32px rgba(0,0,0,0.6)"),
+    padding: 0,
+    overflow: "hidden",
+  };
+  if (mobile) {
+    return (
+      <dialog ref={dialogRef} aria-label={tr("Search the guide")}
+        onCancel={(event) => { event.preventDefault(); close(); }}
+        style={{ ...surfaceStyle, position: "fixed", inset: "12px 0 auto", margin: "0 auto" }}>
+        {content}
+      </dialog>
+    );
+  }
   return (
     <>
-      <div onClick={onClose} style={{ position: "fixed", inset: 0, background: overlay, zIndex: 100 }} />
-      <div
-        style={{
-          position: "fixed",
-          top: "64px",
-          left: "50%",
-          transform: "translateX(-50%)",
-          width: "min(600px, 90vw)",
-          background: bg,
-          border: `1px solid ${border}`,
-          borderRadius: RADIUS,
-          boxShadow: c("0 8px 32px rgba(0,0,0,0.18)", "0 8px 32px rgba(0,0,0,0.6)"),
-          zIndex: 101,
-          maxHeight: "62vh",
-          overflow: "hidden",
-          display: "flex",
-          flexDirection: "column",
-        }}
-      >
-        <div style={{ padding: "10px 16px", borderBottom: `1px solid ${border}`, fontFamily: UI, fontSize: "8px", fontWeight: 800, letterSpacing: "0.2em", textTransform: "uppercase", color: muted }}>
-          {!hasCachedSearchIndex(lang) && index.length === 0
-            ? "Building index…"
-            : results.length === 0
-              ? `No results for "${q}"`
-              : `${results.length} result${results.length !== 1 ? "s" : ""} for "${q}"`}
-        </div>
-        <div style={{ overflowY: "auto", flex: 1 }}>
-          {results.length === 0 && (
-            <div style={{ padding: "24px 16px", fontFamily: BODY, fontSize: "13px", fontStyle: "italic", color: muted }}>
-              {tr("Try a chapter topic, section heading, or glossary term.")}
-            </div>
-          )}
-
-          {chapters.length > 0 && groupLabel(red, tr("Chapters"))}
-          {chapters.map((r, i) => (
-            <button key={`c${i}`} onClick={() => { navigate(`/chapter/${r.num}`); onClose(); }} style={rowStyle} {...hover}>
-              <div style={{ display: "flex", gap: "10px", alignItems: "flex-start" }}>
-                <div style={{ width: "20px", height: "20px", borderRadius: "50%", background: navy, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                  {/* Theme pair, not hard white: P.navy flips light in dark mode. */}
-                  <span style={{ fontFamily: UI, fontSize: "8px", fontWeight: 800, color: c("#f4f0e0", "#0d1018") }}>{r.num}</span>
-                </div>
-                <div>
-                  <div style={{ fontFamily: UI, fontSize: "11px", fontWeight: 700, color: navy, marginBottom: "2px" }}>{r.title}</div>
-                  <div style={{ fontFamily: BODY, fontSize: "11px", color: muted, lineHeight: 1.45 }}>{r.snippet.slice(0, 110)}…</div>
-                </div>
-              </div>
-            </button>
-          ))}
-
-          {sections.length > 0 && groupLabel(navy, tr("Sections"))}
-          {sections.map((r, i) => (
-            <button key={`s${i}`} onClick={() => { navigate(`/chapter/${r.num}`); onClose(); }} style={rowStyle} {...hover}>
-              <div style={{ fontFamily: UI, fontSize: "11px", fontWeight: 600, color: bodyText, marginBottom: "2px" }}>{r.heading}</div>
-              <div style={{ fontFamily: UI, fontSize: "9.5px", color: muted }}>
-                {tr("Ch.")} {r.num} · {r.chapterTitle}
-              </div>
-            </button>
-          ))}
-
-          {glossary.length > 0 && groupLabel(green, tr("Glossary"))}
-          {glossary.map((r, i) => (
-            <button key={`g${i}`} onClick={() => { navigate("/loot", { state: { term: r.term } }); onClose(); }} style={rowStyle} {...hover}>
-              <div style={{ display: "flex", gap: "8px", alignItems: "flex-start" }}>
-                <div style={{ width: "20px", height: "20px", borderRadius: RADIUS, background: c(...P.greenBg), border: `1px solid ${green}40`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                  <span style={{ fontFamily: UI, fontSize: "8px", fontWeight: 800, color: green }}>{r.letter}</span>
-                </div>
-                <div>
-                  <div style={{ fontFamily: UI, fontSize: "11px", fontWeight: 700, color: bodyText, marginBottom: "2px" }}>{r.term}</div>
-                  <div style={{ fontFamily: BODY, fontSize: "11px", color: muted, lineHeight: 1.45 }}>{r.def.slice(0, 100)}…</div>
-                </div>
-              </div>
-            </button>
-          ))}
-        </div>
+      <div onClick={close} style={{ position: "fixed", inset: 0, background: c("rgba(35,33,26,0.35)", "rgba(0,0,0,0.65)"), zIndex: 100 }} />
+      <div style={{ ...surfaceStyle, position: "fixed", top: 64, left: "50%", transform: "translateX(-50%)", zIndex: 101 }}>
+        {content}
       </div>
     </>
   );

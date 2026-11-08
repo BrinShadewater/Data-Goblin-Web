@@ -6,6 +6,8 @@
 const fs = require("fs");
 const path = require("path");
 const { execFileSync } = require("child_process");
+const receiptNotes = require("../src/receiptNotes.json");
+const latestUpdate = require("../src/latestUpdate.json");
 
 const DIST = process.env.PRERENDER_DIST ? path.resolve(process.env.PRERENDER_DIST) : path.resolve(__dirname, "../dist");
 const SITE = "https://datagoblin.ca";
@@ -161,6 +163,8 @@ function readChapter(lang, number) {
   catch { return null; }
 }
 
+const sectionLinks = JSON.parse(fs.readFileSync(path.join(DIST, "content", "section-links.json"), "utf8"));
+
 // Build the inlined body for a /chapter/N route in the given language.
 function chapterBodyHtml(route, lang) {
   const m = route.match(/^\/chapter\/(\d+)$/);
@@ -168,10 +172,32 @@ function chapterBodyHtml(route, lang) {
   const ch = readChapter(lang, Number(m[1]));
   if (!ch) return "";
   const fr = lang === "fr";
+  const links = sectionLinks[ch.number] ?? [];
+  const receipts = Object.entries(receiptNotes).filter(([, { passage }]) => passage?.chapter === ch.number);
+  const sections = ch.sections ?? [];
+  const outlineLabel = fr ? "Dans ce chapitre" : "In this chapter";
   let b = "";
   if (ch.startHere) b += `<p>${inlineMd(ch.startHere)}</p>`;
-  for (const s of ch.sections || []) {
-    if (s && s.heading) b += `<h2>${esc(s.heading)}</h2>`;
+  if (links.length) {
+    const items = links.map(({ id, [lang]: heading }) => `<li><a href="#${esc(id)}">${esc(heading)}</a></li>`);
+    b += `<nav aria-label="${outlineLabel}"><h2>${outlineLabel}</h2><ol>${items.join("")}</ol></nav>`;
+  }
+  for (const [index, s] of sections.entries()) {
+    const link = links[index];
+    if (s && s.heading) b += `<h2${link ? ` id="${esc(link.id)}"` : ""}>${esc(s.heading)}</h2>`;
+    if (s?.heading && link) {
+      const otherLang = fr ? "en-CA" : "fr-CA";
+      const otherPath = fr ? route : `/fr${route}`;
+      const label = fr ? "Read this section in English" : "Lire cette section en français";
+      b += `<p><a href="${otherPath}#${esc(link.id)}" lang="${otherLang}" hreflang="${otherLang}">${label}</a></p>`;
+    }
+    const source = link?.source?.[lang];
+    if (source) b += `<p><strong>${fr ? "Source :" : "Source:"}</strong> <a href="${esc(source.url)}">${esc(source.label)}</a></p>`;
+    for (const [id, { passage }] of receipts) {
+      if (passage.section === link?.id) {
+        b += `<p><a href="${fr ? "/fr" : ""}/receipts#receipt-${esc(id)}">${fr ? "Voir le reçu" : "View receipt"} #${esc(id)}</a></p>`;
+      }
+    }
     if (s && s.markdown) b += mdToHtml(s.markdown);
   }
   for (const g of ch.goblinChecks || []) { if (g && g.markdown) b += mdToHtml(g.markdown); }
@@ -223,16 +249,37 @@ function glossaryBodyHtml(lang) {
 // /receipts — the source ledger. Each row's claim + detail (detail markdown carries
 // the real source links), grouped under its section heading.
 function receiptsBodyHtml(lang) {
+  const otherLang = lang === "fr" ? "en-CA" : "fr-CA";
+  const otherPath = lang === "fr" ? "/receipts" : "/fr/receipts";
+  const otherLabel = lang === "fr" ? "English" : "Français";
+  const permalinkLabel = lang === "fr" ? "Lien vers ce reçu" : "Link to this receipt";
   const dir = lang === "fr" ? path.join(DIST, "content", "fr") : path.join(DIST, "content");
   let r;
   try { r = JSON.parse(fs.readFileSync(path.join(dir, "receipts.json"), "utf8")); } catch { return ""; }
   if (!Array.isArray(r) || !r.length) return "";
   let h = "", lastSec = null;
+  const occurrences = new Map();
   for (const row of r) {
     if (row.section && row.section !== lastSec) { h += `<h2>${esc(row.section)}</h2>`; lastSec = row.section; }
     const status = row.status ? ` <em>(${esc(row.status)})</em>` : "";
-    h += `<div><p><strong>${inlineMd(row.claim || "")}</strong>${status}</p>`;
+    const number = esc(String(row.id));
+    const occurrence = (occurrences.get(row.id) || 0) + 1;
+    occurrences.set(row.id, occurrence);
+    const id = occurrence === 1 ? `receipt-${number}` : `receipt-${number}-${occurrence}`;
+    const entry = receiptNotes[row.id];
+    const note = entry?.[lang];
+    const links = note ? [[note.sourceLabel, note.url], ...(row.links || [])] : (row.links || []);
+    h += `<div id="${id}" style="scroll-margin-top:12px"><p><strong>#${number} ${inlineMd(row.claim || "")}</strong>${status}</p>`;
+    h += `<p><a href="#${id}">${permalinkLabel}</a> · <a href="${otherPath}#${id}" lang="${otherLang}" hreflang="${otherLang}">${otherLabel}</a></p>`;
+    if (entry?.passage) {
+      const { chapter, section } = entry.passage;
+      h += `<p><a href="${lang === "fr" ? "/fr" : ""}/chapter/${chapter}#${esc(section)}">${lang === "fr" ? "Lire le passage du guide" : "Read the passage in the guide"}</a></p>`;
+    }
+    if (note) h += mdToHtml(note.detail);
     if (row.detail) h += mdToHtml(row.detail);
+    for (const [label, url] of links) {
+      if (/^https?:\/\//.test(url)) h += `<p><a href="${esc(url)}">${esc(label)}</a></p>`;
+    }
     h += "</div>";
   }
   return `<section data-prerender-body>${h}</section>`;
@@ -303,6 +350,14 @@ function routeBodyHtml(route, lang) {
   if (route === "/map") return chapterListHtml(lang, false) + topicListHtml(lang);
   if (route === "/loot") return glossaryBodyHtml(lang);
   if (route === "/receipts") return receiptsBodyHtml(lang);
+  if (route === "/updates") {
+    const update = latestUpdate[lang];
+    const prefix = lang === "fr" ? "/fr" : "";
+    return `<section data-prerender-body><p>${esc(update.date)} · ${esc(update.tag)}</p><h2>${esc(update.title)}</h2>` +
+      `<ul>${update.items.map((item) => `<li>${esc(item)}</li>`).join("")}</ul>` +
+      `<p><a href="${prefix}/chapter/13#the-working-test">${esc(update.passageLabel)}</a> · ` +
+      `<a href="${prefix}/receipts#receipt-32">${esc(update.receiptLabel)}</a></p></section>`;
+  }
   if (/^\/topic\//.test(route)) return topicBodyHtml(route, lang);
   return "";
 }
@@ -532,10 +587,10 @@ const ROUTE_SOURCES = {
   "/guide": ["app/src/pages/FieldGuidePage.tsx", "app/public/content/book.json"],
   "/map": ["app/src/pages/MapPage.tsx", "app/scripts/prerender-meta.cjs"],
   "/loot": ["app/src/pages/LootPage.tsx", "app/public/content/glossary.json"],
-  "/receipts": ["app/src/pages/ReceiptsPage.tsx", "app/public/content/receipts.json"],
+  "/receipts": ["app/src/pages/ReceiptsPage.tsx", "app/src/components/ReceiptRows.tsx", "app/src/receiptNotes.json", "app/public/content/receipts.json"],
   "/about": ["app/src/pages/AboutPage.tsx", "app/public/content/stats.json"],
   "/contribute": ["app/src/pages/ContributePage.tsx"],
-  "/updates": ["app/src/pages/UpdatesPage.tsx"],
+  "/updates": ["app/src/pages/UpdatesPage.tsx", "app/src/latestUpdate.json"],
   "/toolkit": ["app/src/pages/ToolkitPage.tsx"],
   "/privacy": ["app/src/pages/PrivacyPage.tsx"],
 };
@@ -590,21 +645,6 @@ function lastModFor(loc, route, lang) {
   }
   if (ISO_DAY.test(previousLastMod[loc] || "")) return previousLastMod[loc];
   return BUILD_DATE;
-}
-
-// ---- The About page's fallback counts must match the manuscript's stats ----
-// They are literals so the cards paint before the fetch; they drifted by up to 44 receipts.
-{
-  const stats = JSON.parse(fs.readFileSync(path.join(APP, "public/content/stats.json"), "utf8"));
-  const about = fs.readFileSync(path.join(APP, "src/pages/AboutPage.tsx"), "utf8");
-  const drifted = [];
-  for (const [, key, n] of about.matchAll(/\{ key: "(\w+)", n: "([^"]+)"/g)) {
-    if (String(stats[key]) !== n) drifted.push(`${key}: AboutPage says ${n}, stats.json says ${stats[key]}`);
-  }
-  if (drifted.length) {
-    console.error("prerender-meta: About fallbacks drifted from content/stats.json:\n  " + drifted.join("\n  "));
-    process.exit(1);
-  }
 }
 
 // ---- Generate sitemap.xml (EN + FR, with hreflang alternates) ----

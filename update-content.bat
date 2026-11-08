@@ -20,6 +20,12 @@ if errorlevel 1 (
   set "PY_CMD=py -3"
 )
 
+%PY_CMD% "%SITE_DIR%pipeline\apply_chapter13_legal_update.py" "%CONTENT_DIR%"
+if errorlevel 1 (
+  echo Reviewed French Chapter 13 text needs to be reconciled before copying.
+  exit /b 1
+)
+
 echo [2/4] Copying site\content -^> site\app\public\content
 robocopy "%CONTENT_DIR%" "%APP_CONTENT_DIR%" /E /NFL /NDL /NJH /NJS /NP >nul
 if errorlevel 8 (
