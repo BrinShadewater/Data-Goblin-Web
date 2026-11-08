@@ -116,7 +116,7 @@ export function ReceiptRow({ id, receipt, targeted }: { id: string; receipt: Rec
           )}
           <div style={{ display: "flex", flexWrap: "wrap", gap: "12px", marginTop: "10px", fontFamily: UI, fontSize: "12px" }}>
             {passage && (
-              <Link to={langPath(sectionHref(passage.chapter, passage.section), lang)} style={{ color: green }}>
+              <Link to={langPath(sectionHref(passage.chapter, passage.section), lang)} state={{ focusSection: true }} style={{ color: green }}>
                 {lang === "fr" ? "Lire le passage du guide" : "Read the passage in the guide"}
               </Link>
             )}

@@ -1,8 +1,9 @@
-import { useNavigate } from "../i18nNav";
+import { Link } from "../i18nNav";
 import { useTheme } from "../ThemeContext";
 import { MONO, P, TOKENS, UI } from "../theme";
 import { NavIcon } from "./GoblinMascot";
-import { savePanel } from "../pagination";
+import { useLanguage } from "../LanguageContext";
+import readerEntry from "../readerEntry.json";
 import type { Book } from "../types";
 import { TocList } from "./TableOfContents";
 import { tr } from "../i18n";
@@ -10,7 +11,7 @@ import { tr } from "../i18n";
 /** Desktop table-of-contents sidebar, grouped by region. */
 export function LeftSidebar({ book, activeChapter }: { book: Book | null; activeChapter: number }) {
   const { c } = useTheme();
-  const navigate = useNavigate();
+  const { lang } = useLanguage();
   const bg = c(...P.panelBgAlt);
   const border = c(...P.borderSoft);
   const navy = c(...P.navy);
@@ -65,15 +66,13 @@ export function LeftSidebar({ book, activeChapter }: { book: Book | null; active
         </div>
         <p style={{ fontFamily: UI, fontSize: "13px", color: text, lineHeight: 1.45, margin: "0 auto 8px", maxWidth: "170px" }}>
           {tr("New to the guide?")}{" "}
-          <button
-            onClick={() => {
-              savePanel(1, 0);
-              navigate("/chapter/1");
-            }}
-            style={{ background: "none", border: "none", color: green, fontFamily: UI, fontSize: "13px", fontWeight: 800, cursor: "pointer", padding: 0, textDecoration: "underline" }}
-          >
-            {tr("Begin with Chapter 1.")}
-          </button>
+          <Link to={readerEntry.introduction.href} state={{ focusSection: true }} style={{ color: green, fontWeight: 800 }}>
+            {readerEntry.introduction[lang]}
+          </Link>
+          <br />
+          <Link to={readerEntry.guide.href} state={{ focusSection: true }} style={{ color: green, fontWeight: 800 }}>
+            {readerEntry.guide[lang]}
+          </Link>
         </p>
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "4px", marginTop: "10px" }}>
           <NavIcon name="canadian-icon" size={TOKENS.icon.tocCanadian} alt={tr("Data Goblin — a field guide to AI, data and power in Canada")} />

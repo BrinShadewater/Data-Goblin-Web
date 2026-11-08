@@ -6,6 +6,7 @@ import { artAspectRatio, artDimensions, artSrcSet, artUrl } from "../useContent"
 import { NavIcon } from "./GoblinMascot";
 import { tr } from "../i18n";
 import { useLanguage } from "../LanguageContext";
+import readerEntry from "../readerEntry.json";
 
 const HERO_ART = "panels/hero-panel.webp";
 
@@ -16,13 +17,11 @@ export function LandingHero({
   title,
   subtitle,
   asOf,
-  begin,
   preloadGuide,
 }: {
   title: string;
   subtitle: string;
   asOf: string;
-  begin: () => void;
   preloadGuide: () => void;
 }) {
   const { c, dark } = useTheme();
@@ -90,8 +89,9 @@ export function LandingHero({
             : "Read Data Goblin, a free, interactive guide to AI, data centres, and digital sovereignty in Canada. Follow the sources behind each claim."}
         </p>
         <div style={{ display: "flex", flexWrap: "wrap", gap: "12px", alignItems: "center" }}>
-          <button
-            onClick={begin}
+          <Link
+            to={readerEntry.introduction.href}
+            state={{ focusSection: true }}
             onMouseEnter={preloadGuide}
             onFocus={preloadGuide}
             style={{
@@ -107,13 +107,15 @@ export function LandingHero({
               fontSize: "15px",
               fontWeight: 800,
               padding: "14px 18px",
+              textDecoration: "none",
             }}
           >
-            {tr("Begin with Chapter 1")}
+            {readerEntry.introduction[lang]}
             <ArrowRight size={41} />
-          </button>
+          </Link>
           <Link
-            to="/guide"
+            to={readerEntry.guide.href}
+            state={{ focusSection: true }}
             onMouseEnter={preloadGuide}
             onFocus={preloadGuide}
             style={{
@@ -133,7 +135,7 @@ export function LandingHero({
             }}
           >
             <NavIcon name="guidebook-nav" size={TOKENS.icon.landingPrimary} />
-            {tr("Open the guide")}
+            {readerEntry.guide[lang]}
           </Link>
         </div>
       </div>

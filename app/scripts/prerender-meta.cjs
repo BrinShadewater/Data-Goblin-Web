@@ -8,6 +8,7 @@ const path = require("path");
 const { execFileSync } = require("child_process");
 const receiptNotes = require("../src/receiptNotes.json");
 const latestUpdate = require("../src/latestUpdate.json");
+const readerEntry = require("../src/readerEntry.json");
 
 const DIST = process.env.PRERENDER_DIST ? path.resolve(process.env.PRERENDER_DIST) : path.resolve(__dirname, "../dist");
 const SITE = "https://datagoblin.ca";
@@ -118,8 +119,8 @@ const esc = (s) => s.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g
 
 // Primary navigation rendered into the crawlable shell. This is the internal-link
 // surface non-JS crawlers (and AI engines) see; React replaces #root on mount.
-const NAV_EN = [["/", "Home"], ["/guide", "The Field Guide"], ["/chapter/1", "Start reading"], ["/map", "Map"], ["/loot", "Glossary"], ["/receipts", "Receipts"], ["/toolkit", "Toolkit"], ["/about", "About"], ["/contribute", "Contribute"], ["/privacy", "Privacy"], ["/updates", "Updates"]];
-const NAV_FR = [["/fr", "Accueil"], ["/fr/guide", "Le guide de terrain"], ["/fr/chapter/1", "Commencer la lecture"], ["/fr/map", "Carte"], ["/fr/loot", "Glossaire"], ["/fr/receipts", "Reçus"], ["/fr/toolkit", "Boîte à outils"], ["/fr/about", "À propos"], ["/fr/contribute", "Contribuer"], ["/fr/privacy", "Confidentialité"], ["/fr/updates", "Mises à jour"]];
+const NAV_EN = [["/", "Home"], ["/guide", "The Field Guide"], [readerEntry.introduction.href, "Start reading"], ["/map", "Map"], ["/loot", "Glossary"], ["/receipts", "Receipts"], ["/toolkit", "Toolkit"], ["/about", "About"], ["/contribute", "Contribute"], ["/privacy", "Privacy"], ["/updates", "Updates"]];
+const NAV_FR = [["/fr", "Accueil"], ["/fr/guide", "Le guide de terrain"], ["/fr" + readerEntry.introduction.href, readerEntry.introduction.fr], ["/fr" + readerEntry.guide.href, readerEntry.guide.fr], ["/fr/map", "Carte"], ["/fr/loot", "Glossaire"], ["/fr/receipts", "Reçus"], ["/fr/toolkit", "Boîte à outils"], ["/fr/about", "À propos"], ["/fr/contribute", "Contribuer"], ["/fr/privacy", "Confidentialité"], ["/fr/updates", "Mises à jour"]];
 
 // ---- Chapter body inliner ----
 // Render the full chapter text into the crawlable shell so non-JS crawlers and AI
@@ -388,8 +389,8 @@ function homeHeroHtml() {
         `<p class="dg-hero-subtitle">A Field Guide to AI, Power, and Data in Canada</p>` +
         `<p class="dg-hero-body">${esc(HOME_DESC_EN)}</p>` +
         `<div class="dg-hero-cta">` +
-          `<a class="dg-hero-btn dg-hero-btn-primary" href="/chapter/1">Begin with Chapter 1</a>` +
-          `<a class="dg-hero-btn dg-hero-btn-secondary" href="/guide">Open the guide</a>` +
+          `<a class="dg-hero-btn dg-hero-btn-primary" href="${readerEntry.introduction.href}">${esc(readerEntry.introduction.en)}</a>` +
+          `<a class="dg-hero-btn dg-hero-btn-secondary" href="${readerEntry.guide.href}">${esc(readerEntry.guide.en)}</a>` +
         `</div>` +
       `</div>` +
       `<div class="dg-hero-card">` +
