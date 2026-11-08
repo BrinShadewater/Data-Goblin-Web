@@ -3,7 +3,7 @@ import { resolve } from "node:path";
 import type { Plugin } from "vite";
 import type { Book, Chapter, GlossaryEntry } from "../src/types.ts";
 import type { Lang } from "../src/LanguageContext.tsx";
-import type { SearchHit } from "../src/search.ts";
+import { sectionBodyTerms, sectionSearchTerms, type SearchHit } from "../src/search.ts";
 import type { SectionLinks } from "../src/sectionLinks.ts";
 import { TOPIC_LIST } from "../src/topics.ts";
 import fr from "../src/ui-fr.ts";
@@ -12,6 +12,25 @@ const topicSearchLabels: Record<string, Record<Lang, string>> = {
   "data-centres": { en: "Data-centre water use", fr: "Eau et centres de données" },
   sovereignty: { en: "Digital sovereignty", fr: "Souveraineté numérique" },
   deepfakes: { en: "Deepfakes", fr: "Hypertrucages" },
+};
+
+const sectionKeywords: Record<string, Record<Lang, string>> = {
+  "6/the-transparency-gap-in-operational-terms": {
+    en: "Canadian data centre water use reporting report disclosure WUE",
+    fr: "centres données canadiens déclarent consommation eau déclaration WUE",
+  },
+  "9/national-sovereignty-the-cloud-act-problem": {
+    en: "US authorities access data stored in Canada CLOUD Act",
+    fr: "autorités américaines accès accéder données stockées Canada loi CLOUD",
+  },
+  "9/indigenous-data-sovereignty-the-deeper-layer": {
+    en: "OCAP principles Indigenous data governance ownership control access possession",
+    fr: "PCAP principes données autochtones propriété contrôle accès possession",
+  },
+  "13/bill-c-16-what-it-covers": {
+    en: "deepfake removal removing takedown 48 hour deadline start court order",
+    fr: "hypertrucage retrait retirer 48 heures délai commence ordonnance tribunal",
+  },
 };
 
 const plain = (value: string, length: number) => value
@@ -47,9 +66,13 @@ function buildIndex(root: string, lang: Lang) {
     const title = chapter.title.split(" — ")[0];
     hits.push({ type: "chapter", num: number, title: chapter.title, snippet: plain(chapter.startHere, 160) });
     for (const [index, section] of chapter.sections.entries()) {
+      const sectionId = links[index].id;
+      const keywords = sectionKeywords[`${number}/${sectionId}`]?.[lang];
       hits.push({
         type: "section", num: number, chapterTitle: title, heading: section.heading,
-        snippet: plain(section.markdown, 220), sectionId: links[index].id,
+        snippet: plain(section.markdown, 220), sectionId,
+        terms: sectionBodyTerms(plain(section.markdown, Infinity), lang),
+        ...(keywords && { keywords: sectionSearchTerms(keywords, lang) }),
       });
     }
   }

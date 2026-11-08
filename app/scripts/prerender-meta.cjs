@@ -162,6 +162,7 @@ function readChapter(lang, number) {
 }
 
 const sectionLinks = JSON.parse(fs.readFileSync(path.join(DIST, "content", "section-links.json"), "utf8"));
+const sectionSources = require("../src/section-sources.json");
 
 // Build the inlined body for a /chapter/N route in the given language.
 function chapterBodyHtml(route, lang) {
@@ -182,6 +183,8 @@ function chapterBodyHtml(route, lang) {
   for (const [index, s] of sections.entries()) {
     const link = links[index];
     if (s && s.heading) b += `<h2${link ? ` id="${esc(link.id)}"` : ""}>${esc(s.heading)}</h2>`;
+    const source = sectionSources[ch.number]?.[link?.id]?.[lang];
+    if (source) b += `<p><strong>${fr ? "Source :" : "Source:"}</strong> <a href="${esc(source.url)}">${esc(source.label)}</a></p>`;
     if (s && s.markdown) b += mdToHtml(s.markdown);
   }
   for (const g of ch.goblinChecks || []) { if (g && g.markdown) b += mdToHtml(g.markdown); }

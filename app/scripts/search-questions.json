@@ -1,0 +1,53 @@
+[
+  {
+    "chapter": 4,
+    "section": "four-cooling-water-and-the-heat-problem",
+    "en": "How much water does a data centre use for cooling?",
+    "fr": "Combien d’eau un centre de données consomme-t-il pour le refroidissement ?",
+    "source": "https://www.energy.gov/cmei/femp/cooling-water-efficiency-opportunities-federal-data-centers"
+  },
+  {
+    "chapter": 6,
+    "section": "the-transparency-gap-in-operational-terms",
+    "en": "Do Canadian data centres report water use?",
+    "fr": "Les centres de données canadiens déclarent-ils leur consommation d’eau ?",
+    "source": {
+      "en": "https://publications.gc.ca/site/eng/9.948912/publication.html",
+      "fr": "https://publications.gc.ca/site/fra/9.948913/publication.html"
+    }
+  },
+  {
+    "chapter": 9,
+    "section": "national-sovereignty-the-cloud-act-problem",
+    "en": "Can US authorities access data stored in Canada?",
+    "fr": "Les autorités américaines peuvent-elles accéder aux données stockées au Canada ?",
+    "source": "https://uscode.house.gov/us/usc/119-120/t18/s2713/"
+  },
+  {
+    "chapter": 9,
+    "section": "indigenous-data-sovereignty-the-deeper-layer",
+    "en": "What do the OCAP principles mean for Indigenous data?",
+    "fr": "Que veulent dire les principes de PCAP pour les données autochtones ?",
+    "source": {
+      "en": "https://fnigc.ca/ocap-training/",
+      "fr": "https://fnigc.ca/fr/les-principes-de-pcap-des-premieres-nations/"
+    }
+  },
+  {
+    "chapter": 13,
+    "section": "bill-c-16-what-it-covers",
+    "en": "When does the 48-hour deadline for removing deepfakes start?",
+    "fr": "Quand commence le délai de 48 heures pour retirer un hypertrucage ?",
+    "source": {
+      "en": "https://laws-lois.justice.gc.ca/eng/acts/C-46/section-164.1.html",
+      "fr": "https://laws-lois.justice.gc.ca/fra/lois/C-46/section-164.1.html"
+    }
+  },
+  {
+    "chapter": 13,
+    "section": "the-2025-canadian-election-empirical-study",
+    "en": "How common were deepfakes in the 2025 Canadian election?",
+    "fr": "Quelle était la fréquence des hypertrucages pendant les élections canadiennes de 2025 ?",
+    "source": "https://arxiv.org/html/2512.13915v1#S4"
+  }
+]

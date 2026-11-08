@@ -17,8 +17,13 @@ import {
 import { useReader } from "./reader";
 import { FIRST_DOC, LAST_DOC, panelSnippet } from "./readerUtils";
 import { chapterPath, fetchJson, useArtMap, useChapter, useTraps } from "./useContent";
-import { useLanguage } from "./LanguageContext";
+import { useLanguage, type Lang } from "./LanguageContext";
 import type { Chapter } from "./types";
+import type { SectionLink } from "./sectionLinks";
+import sectionSources from "./section-sources.json";
+
+type Source = { label: string; url: string };
+const sourcesByChapter: Partial<Record<number, Record<string, Record<Lang, Source>>>> = sectionSources;
 
 function isEditableTarget(target: EventTarget | null): boolean {
   const el = target as HTMLElement | null;
@@ -50,7 +55,7 @@ export function useChapterRoute(): number {
   return num;
 }
 
-export function usePaginatedChapter(num: number) {
+export function usePaginatedChapter(num: number, sections: SectionLink[]) {
   const { mode, dyslexic, heightScale, widthScale } = useReader();
   const { lang } = useLanguage();
   const { data: chapter, error } = useChapter(num);
@@ -69,9 +74,22 @@ export function usePaginatedChapter(num: number) {
     () => budgetsFor(mode, dyslexic, heightScale, widthScale),
     [mode, dyslexic, heightScale, widthScale]
   );
+  const linkedChapter = useMemo(() => {
+    const sources = sourcesByChapter[num];
+    if (!chapter || !sources || !sections.length) return chapter;
+    return {
+      ...chapter,
+      sections: chapter.sections.map((section, index) => {
+        const source = sources[sections[index]?.id]?.[lang];
+        if (!source) return section;
+        const label = lang === "fr" ? "Source :" : "Source:";
+        return { ...section, markdown: `**${label}** [${source.label}](${source.url})\n\n${section.markdown}` };
+      }),
+    };
+  }, [chapter, lang, num, sections]);
   const panels = useMemo(
-    () => (chapter ? paginatePanelsCached(chapter, trap, budgets, accents, artPanels) : null),
-    [chapter, trap, budgets, accents, artPanels]
+    () => (linkedChapter ? paginatePanelsCached(linkedChapter, trap, budgets, accents, artPanels) : null),
+    [linkedChapter, trap, budgets, accents, artPanels]
   );
 
   return { chapter, error, panels };

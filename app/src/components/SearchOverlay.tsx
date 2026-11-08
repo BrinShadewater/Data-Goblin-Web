@@ -93,7 +93,7 @@ export function SearchOverlay({ query, onClose, onSearch, mobile }: {
     onClose();
   };
   const hits = index?.lang === lang ? index.hits : undefined;
-  const results = querySearchIndex(hits ?? [], q);
+  const results = querySearchIndex(hits ?? [], q, lang);
   let status = copy.prompt;
   if (searching) {
     if (hits === undefined) status = copy.loading;

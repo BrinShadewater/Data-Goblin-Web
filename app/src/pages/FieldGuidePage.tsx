@@ -55,9 +55,9 @@ export function FieldGuidePage() {
   const num = useChapterRoute();
   const { lang, setReaderDestination } = useLanguage();
   const { data: book } = useBook();
-  const { chapter, error, panels } = usePaginatedChapter(num);
   const { data: sectionLinks } = useSectionLinks();
   const sections = sectionLinks?.[num] ?? NO_SECTIONS;
+  const { chapter, error, panels } = usePaginatedChapter(num, sections);
   const location = useLocation();
   const sectionValue = sectionLinkValue(location.search, location.hash);
   const requestedSection = resolveSection(sections, sectionValue, lang);

@@ -2,6 +2,7 @@ const fs = require("fs");
 const http = require("http");
 const path = require("path");
 const { chromium } = require("playwright");
+const searchQuestions = require("./search-questions.json");
 
 const appDir = path.resolve(__dirname, "..");
 const distDir = path.join(appDir, "dist");
@@ -725,6 +726,49 @@ async function runMobileSearchSmoke(browser, baseUrl) {
   }
 }
 
+async function runSearchQuestionsSmoke(browser, baseUrl) {
+  for (const { lang, prefix, searchLabel, nextLabel } of [
+    { lang: "en", prefix: "", searchLabel: "Search the guide", nextLabel: "Next page" },
+    { lang: "fr", prefix: "/fr", searchLabel: "Rechercher dans le guide", nextLabel: "Page suivante" },
+  ]) {
+    await withAppPage(browser, baseUrl, VIEWPORTS[2], async (page) => {
+      await page.context().route((url) => url.origin !== baseUrl, (route) =>
+        route.fulfill({ contentType: "text/html", body: "<main>Source destination</main>" }));
+      for (const fixture of searchQuestions) {
+        await page.goto(baseUrl + (prefix || "/"));
+        await page.getByRole("button", { name: searchLabel, exact: true }).tap();
+        const dialog = page.getByRole("dialog", { name: searchLabel, exact: true });
+        const question = fixture[lang];
+        await dialog.getByRole("searchbox").fill(question);
+        await dialog.getByRole("status").filter({ hasText: question }).waitFor();
+        const resultPath = `${prefix}/chapter/${fixture.chapter}#${fixture.section}`;
+        const top = await dialog.getByRole("link").evaluateAll((links) =>
+          links.slice(0, 3).map((link) => link.getAttribute("href")));
+        const rank = top.indexOf(resultPath) + 1;
+        assert(rank > 0, `${lang} “${question}” did not return the expected passage in its first three results: ${top.join(", ")}`);
+        await dialog.locator(`a[href="${resultPath}"]`).tap();
+        await page.waitForURL(baseUrl + resultPath);
+        await page.locator("[data-section-heading]:focus").waitFor();
+        const sourceUrl = typeof fixture.source === "string" ? fixture.source : fixture.source[lang];
+        const source = page.locator(`a[href="${sourceUrl}"]`).first();
+        for (let turn = 0; turn < 10 && !(await source.isVisible()); turn++) {
+          await page.getByRole("button", { name: nextLabel, exact: true }).last().tap();
+        }
+        assert(await source.isVisible(), `${lang} “${question}” led to the passage but its source was not reachable.`);
+        if (await source.getAttribute("target") === "_blank") {
+          const [destination] = await Promise.all([page.waitForEvent("popup"), source.tap()]);
+          await destination.waitForURL(sourceUrl);
+          await destination.close();
+        } else {
+          await source.tap();
+          await page.waitForURL(sourceUrl);
+        }
+        console.log(`PASS search question ${lang} #${rank}: ${question} → source`);
+      }
+    }, { hasTouch: true });
+  }
+}
+
 async function runClaimReceiptSmoke(browser, baseUrl) {
   const sourceUrl = "https://arxiv.org/html/2512.13915v1#S4";
   for (const fixture of [
@@ -915,6 +959,7 @@ async function main() {
     await runChapterOutlineSmoke(browser, baseUrl);
     await runClaimReceiptSmoke(browser, baseUrl);
     await runMobileSearchSmoke(browser, baseUrl);
+    await runSearchQuestionsSmoke(browser, baseUrl);
     await runHeroImageRequestsSmoke(browser, baseUrl);
     await runChapterCoverImageSmoke(browser, baseUrl);
     await runMobileDrawerImageSmoke(browser, baseUrl);
