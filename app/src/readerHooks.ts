@@ -82,6 +82,8 @@ export function usePageNavigation({
   panels,
   single,
   panelsReady,
+  section,
+  entryKey,
 }: {
   num: number;
   panels: Block[][] | null;
@@ -93,15 +95,26 @@ export function usePageNavigation({
    * chapter — every bookmark opened on page one.
    */
   panelsReady: boolean;
+  section: string | null;
+  entryKey: string;
 }) {
   const navigate = useNavigate();
   const { lang } = useLanguage();
   const step = single ? 1 : 2;
 
   const [panelIdx, setPanelIdx] = useState(() => getSavedPanel(num));
+  const [turnedFromSectionEntry, setTurnedFromSectionEntry] = useState<string | null>(null);
   useEffect(() => {
     setPanelIdx(getSavedPanel(num));
   }, [num]);
+  // Resolve the heading against every layout until the reader turns a page.
+  // Artwork and other chapter data can arrive after the first set of panels.
+  const sectionPanel = useMemo(() => {
+    if (!section || !panelsReady || !panels || turnedFromSectionEntry === entryKey) return -1;
+    return panels.findIndex((panel) =>
+      panel.some((block) => block.kind === "heading" && block.heading === section)
+    );
+  }, [section, panelsReady, panels, turnedFromSectionEntry, entryKey]);
 
   // Hold position by CONTENT across re-pagination.
   //
@@ -123,6 +136,12 @@ export function usePageNavigation({
     if (!panels || !panelsReady) return;
     const previous = lastPanelsRef.current;
     lastPanelsRef.current = panels;
+
+    if (sectionPanel !== -1) {
+      pendingChapterRef.current = num;
+      setPanelIdx(sectionPanel);
+      return;
+    }
 
     // Arriving in a chapter: honour a bookmark's anchor if one was handed over.
     if (pendingChapterRef.current !== num) {
@@ -146,10 +165,10 @@ export function usePageNavigation({
     // null means the anchor is gone (chapter text changed) — keep the clamped
     // index rather than silently throwing the reader back to page one.
     if (found != null) setPanelIdx(found);
-  }, [panels, num, panelsReady]);
+  }, [panels, num, panelsReady, sectionPanel]);
 
   const panelCount = panels ? panels.length : 1;
-  const clamped = Math.max(0, Math.min(panelIdx, panelCount - 1));
+  const clamped = Math.max(0, Math.min(sectionPanel === -1 ? panelIdx : sectionPanel, panelCount - 1));
   const aligned = single ? clamped : clamped - (clamped % 2);
   const pageCount = Math.max(1, Math.ceil(panelCount / step));
   const page = Math.floor(aligned / step);
@@ -182,26 +201,28 @@ export function usePageNavigation({
   const goNext = useCallback(() => {
     if (!panels) return;
     if (page < pageCount - 1) {
+      if (sectionPanel !== -1) setTurnedFromSectionEntry(entryKey);
       setPanelIdx(aligned + step);
     } else if (num < LAST_DOC) {
       savePanel(num + 1, 0);
       navigate(`/chapter/${num + 1}`);
     }
-  }, [panels, page, pageCount, aligned, step, num, navigate]);
+  }, [panels, page, pageCount, aligned, step, num, navigate, sectionPanel, entryKey]);
 
   const goPrev = useCallback(() => {
     if (!panels) return;
     if (page > 0) {
+      if (sectionPanel !== -1) setTurnedFromSectionEntry(entryKey);
       setPanelIdx(aligned - step);
     } else if (num > FIRST_DOC) {
       savePanel(num - 1, LAST_PANEL);
       navigate(`/chapter/${num - 1}`);
     }
-  }, [panels, page, aligned, step, num, navigate]);
+  }, [panels, page, aligned, step, num, navigate, sectionPanel, entryKey]);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (isEditableTarget(e.target)) return;
+      if (isEditableTarget(e.target) || (e.target instanceof Element && e.target.closest("dialog[open], [role=dialog]"))) return;
       if (e.key === "ArrowRight") {
         e.preventDefault();
         goNext();
@@ -214,7 +235,7 @@ export function usePageNavigation({
     return () => window.removeEventListener("keydown", onKey);
   }, [goNext, goPrev]);
 
-  return { aligned, page, pageCount, step, goNext, goPrev };
+  return { aligned, page, pageCount, step, goNext, goPrev, sectionPanel };
 }
 
 export function useReaderBookmark({

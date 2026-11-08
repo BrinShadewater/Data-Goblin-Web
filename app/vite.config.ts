@@ -1,9 +1,10 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
+import { searchIndexPlugin } from "./scripts/search-index.ts";
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), searchIndexPlugin()],
   build: {
     // Never inline an asset into a JS chunk. Vite's 4096-byte default was inlining exactly one
     // file, goblin-head-icon-128.webp at 4042 bytes -- 54 bytes under the line -- and it cost

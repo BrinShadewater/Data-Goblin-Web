@@ -3,6 +3,8 @@ import { useTheme } from "../ThemeContext";
 import { BODY, MONO, P, UI } from "../theme";
 import { Kicker, PageHeading, StaticCard, StaticPageShell } from "../components/StaticPage";
 import { tr } from "../i18n";
+import { useLanguage } from "../LanguageContext";
+import { sectionHref } from "../sectionLinks";
 
 interface UpdateEntry {
   date: string;
@@ -10,6 +12,31 @@ interface UpdateEntry {
   title: string;
   items: string[];
 }
+
+const CHAPTER_13_UPDATE = {
+  en: {
+    date: "November 7, 2026",
+    tag: "Reader",
+    title: "Mobile search and clearer evidence in Chapter 13",
+    items: [
+      "The mobile header now has Search. In English and French, you can open a topic, find a glossary term, or jump straight to a section of the guide.",
+      "We rewrote the French version of Chapter 13’s practical test for evaluating deepfake claims. It restores the study’s 0.12% figure and clarifies each of the six checks.",
+      "Select the percentage in either edition to see what the researchers counted and open the original study. The adjacent figure caption is available in both languages and reflects the enacted scope of Canada’s Protecting Victims Act.",
+    ],
+    link: "Open the Chapter 13 practical test",
+  },
+  fr: {
+    date: "7 novembre 2026",
+    tag: "Lecture",
+    title: "Recherche sur mobile et sources plus claires au chapitre 13",
+    items: [
+      "Le bouton de recherche est maintenant accessible dans l’en-tête sur mobile. En français et en anglais, vous pouvez ouvrir une page thématique, consulter le glossaire ou accéder directement à une section du guide.",
+      "Nous avons réécrit « Le test pratique » du chapitre 13, qui aide à évaluer les affirmations sur les hypertrucages. Le texte rétablit le chiffre de 0,12 % de l’étude et clarifie les six points à vérifier.",
+      "Sélectionnez le pourcentage pour voir ce que l’équipe de recherche a mesuré et consulter l’étude originale. La légende de la figure voisine est disponible dans les deux langues et précise la portée de la Loi visant à protéger les victimes.",
+    ],
+    link: "Ouvrir le test pratique du chapitre 13",
+  },
+};
 
 const UPDATES: UpdateEntry[] = [
   {
@@ -235,6 +262,15 @@ const PENDING: string[] = [
 
 export function UpdatesPage() {
   const { c } = useTheme();
+  const { lang } = useLanguage();
+  const latest = CHAPTER_13_UPDATE[lang];
+  const updates = [
+    { ...latest, to: sectionHref(13, "the-working-test") },
+    ...UPDATES.map((entry) => ({
+      date: tr(entry.date), tag: tr(entry.tag), title: tr(entry.title), items: entry.items.map(tr),
+      link: undefined, to: undefined,
+    })),
+  ];
   const body = c(...P.body);
   const muted = c(...P.muted);
   const navy = c(...P.navy);
@@ -257,26 +293,31 @@ export function UpdatesPage() {
       />
 
       <div style={{ display: "grid", gap: "12px" }}>
-        {UPDATES.map((entry) => (
+        {updates.map((entry) => (
           <StaticCard key={entry.date + entry.title} padding="20px 22px">
             <div style={{ display: "flex", alignItems: "baseline", gap: "12px", flexWrap: "wrap", marginBottom: "10px" }}>
               <span style={{ fontFamily: MONO, fontSize: "12px", fontWeight: 700, letterSpacing: "0.08em", color: muted }}>
-                {tr(entry.date)}
+                {entry.date}
               </span>
               <span style={{ fontFamily: MONO, fontSize: "9.5px", fontWeight: 800, letterSpacing: "0.18em", textTransform: "uppercase", color: green }}>
-                {tr(entry.tag)}
+                {entry.tag}
               </span>
             </div>
             <h2 style={{ fontFamily: UI, fontSize: "18px", fontWeight: 900, color: navy, margin: "0 0 10px" }}>
-              {tr(entry.title)}
+              {entry.title}
             </h2>
             <ul style={{ margin: 0, paddingLeft: "20px", display: "grid", gap: "7px" }}>
               {entry.items.map((it, i) => (
                 <li key={i} style={{ fontFamily: BODY, fontSize: "15px", color: body, lineHeight: 1.6 }}>
-                  {tr(it)}
+                  {it}
                 </li>
               ))}
             </ul>
+            {entry.to && (
+              <Link to={entry.to} style={{ display: "inline-block", marginTop: "12px", fontFamily: UI, fontSize: "14px", fontWeight: 800, color: navy }}>
+                {entry.link}
+              </Link>
+            )}
           </StaticCard>
         ))}
       </div>

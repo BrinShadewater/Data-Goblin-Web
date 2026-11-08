@@ -39,6 +39,11 @@ Either runs `pipeline/build_content.py`, copies `content/` into `app/public/cont
 checks the two stayed in sync, and prints which JSON files changed. Then reload the dev
 server or rebuild.
 
+Section permalinks are maintained in `../content/section-links.json`. Keep each
+published ID when a heading changes, and update the English or French label to
+match the chapter. Keep entries in chapter order and sync the public copy. The
+build checks both editions against the registry.
+
 ## Verify before shipping
 
 ```bash

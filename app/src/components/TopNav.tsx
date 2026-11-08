@@ -1,6 +1,6 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import { ChevronDown, Menu, Moon, Sun } from "lucide-react";
+import { ChevronDown, Menu, Moon, Search, Sun } from "lucide-react";
 import { useLocation } from "react-router";
 import { NavLink, useNavigate } from "../i18nNav";
 import { useTheme } from "../ThemeContext";
@@ -335,10 +335,12 @@ function DesktopNavItems({
 export function TopNav({
   searchQuery,
   onSearch,
+  onOpenSearch,
   onMenu,
 }: {
   searchQuery: string;
   onSearch: (q: string) => void;
+  onOpenSearch: () => void;
   onMenu: () => void;
 }) {
   const { c, dark, toggle } = useTheme();
@@ -384,8 +386,19 @@ export function TopNav({
     </button>
   );
 
-  // ---- Phone / tablet portrait: logo + hamburger, ≥44px touch target.
+  // ---- Phone / tablet portrait: logo, search and menu.
   if (compact) {
+    const actionStyle = {
+      display: "grid",
+      placeItems: "center",
+      width: "44px",
+      height: "44px",
+      background: "none",
+      border: "none",
+      cursor: "pointer",
+      color: ink,
+      flexShrink: 0,
+    };
     return (
       <header
         style={{
@@ -404,25 +417,24 @@ export function TopNav({
         }}
       >
         {logo}
-        <button
-          onClick={onMenu}
-          aria-label={tr("Open menu")}
-          title={tr("Open menu")}
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            width: "44px",
-            height: "44px",
-            background: "none",
-            border: "none",
-            cursor: "pointer",
-            color: ink,
-            flexShrink: 0,
-          }}
-        >
-          <Menu size={26} />
-        </button>
+        <div style={{ display: "flex", flexShrink: 0 }}>
+          <button
+            type="button"
+            onClick={(event) => {
+              event.currentTarget.focus();
+              onOpenSearch();
+            }}
+            aria-label={tr("Search the guide")}
+            title={tr("Search the guide")}
+            aria-haspopup="dialog"
+            style={actionStyle}
+          >
+            <Search size={23} aria-hidden="true" />
+          </button>
+          <button type="button" onClick={onMenu} aria-label={tr("Open menu")} title={tr("Open menu")} style={actionStyle}>
+            <Menu size={26} aria-hidden="true" />
+          </button>
+        </div>
       </header>
     );
   }

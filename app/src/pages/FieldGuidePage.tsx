@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef } from "react";
 import { X } from "lucide-react";
 import { useLocation, useNavigationType } from "react-router";
 import { useTheme } from "../ThemeContext";
@@ -7,15 +7,17 @@ import { BODY, MONO, P, RADIUS } from "../theme";
 import { LeftSidebar } from "../components/LeftSidebar";
 import { GoblinTools, RightSidebar } from "../components/RightSidebar";
 import { BottomBar } from "../components/BottomBar";
+import { ChapterOutline } from "../components/ChapterOutline";
 import { EdgeNav } from "../components/EdgeNav";
 import { useFocusTrap } from "../focusTrap";
 import { PagePanel } from "../components/PagePanel";
 import { NavIcon } from "../components/GoblinMascot";
-import { useBook } from "../useContent";
+import { useBook, useSectionLinks } from "../useContent";
 import { useLanguage } from "../LanguageContext";
 import { folio, backMatterNumber, isBackMatter } from "../readerUtils";
 import { SIDEBAR_NARROW_VW, SINGLE_MAX_PX, SPREAD_MAX_PX } from "../reader";
 import { tr, trf } from "../i18n";
+import { resolveSection, sectionHref, type SectionLink } from "../sectionLinks";
 import {
   useChapterRoute,
   usePageNavigation,
@@ -24,6 +26,8 @@ import {
   useSwipePaging,
   useToolsSheet,
 } from "../readerHooks";
+
+const NO_SECTIONS: SectionLink[] = [];
 
 /**
  * The Field Guide reader. Desktop (>1024px): TOC sidebar / book / tools
@@ -49,10 +53,20 @@ export function FieldGuidePage() {
   const single = !spread;
 
   const num = useChapterRoute();
-  const { lang } = useLanguage();
+  const { lang, setReaderDestination } = useLanguage();
   const { data: book } = useBook();
   const { chapter, error, panels } = usePaginatedChapter(num);
-  const { aligned, page, pageCount, step, goNext, goPrev } = usePageNavigation({ num, panels, single, panelsReady: chapter?.number === num });
+  const { data: sectionLinks } = useSectionLinks();
+  const sections = sectionLinks?.[num] ?? NO_SECTIONS;
+  const location = useLocation();
+  const sectionValue = new URLSearchParams(location.search).get("section");
+  const requestedSection = resolveSection(sections, sectionValue, lang);
+  const requestedHeading = requestedSection?.[lang] ?? sectionValue;
+  const { aligned, page, pageCount, step, goNext, goPrev, sectionPanel } = usePageNavigation({
+    num, panels, single, panelsReady: chapter?.number === num,
+    section: requestedHeading,
+    entryKey: location.key,
+  });
   const firstDoc = book?.frontMatter?.number ?? 0;
   const lastDoc = backMatterNumber(book);
   const canPrev = !(num <= firstDoc && page === 0);
@@ -63,10 +77,42 @@ export function FieldGuidePage() {
   const toolsTrapRef = useFocusTrap<HTMLDivElement>(toolsOpen, () => setToolsOpen(false));
   const readingAreaRef = useRef<HTMLElement>(null);
   const focusedEntry = useRef<string | null>(null);
-  const location = useLocation();
+  const focusedSection = useRef<string | null>(null);
   const navigationType = useNavigationType();
   const focusReader = location.state?.focusReader === true;
   const chapterReady = chapter?.number === num && !!panels;
+  let activeSection = sectionPanel !== -1 ? requestedSection : undefined;
+  if (!activeSection && chapterReady && panels) {
+    for (let panel = aligned; panel >= 0 && !activeSection; panel--) {
+      const blocks = panels[panel] ?? [];
+      // On the visible page, prefer its first heading. On preceding pages,
+      // the last heading identifies the section whose prose carries over.
+      const heading = panel === aligned ? blocks.find((block) => block.kind === "heading")
+        : blocks.filter((block) => block.kind === "heading").pop();
+      if (heading?.kind === "heading") activeSection = sections.find((section) => section[lang] === heading.heading);
+    }
+  }
+  const activeId = activeSection?.id;
+  const focusSection = location.state?.focusSection === true;
+
+  useLayoutEffect(() => {
+    if (!chapterReady || !sectionLinks) return;
+    const href = activeId ? sectionHref(num, activeId) : `/chapter/${num}`;
+    setReaderDestination(location.key, href);
+    return () => setReaderDestination(location.key, null);
+  }, [activeId, chapterReady, location.key, num, sectionLinks, setReaderDestination]);
+
+  useLayoutEffect(() => {
+    if (sectionPanel < 0 || !requestedHeading) return;
+    const target = Array.from(readingAreaRef.current?.querySelectorAll<HTMLElement>("[data-section-heading]") ?? [])
+      .find((element) => element.dataset.sectionHeading === requestedHeading);
+    if (!target) return;
+    target.scrollIntoView({ block: "nearest" });
+    if (focusSection && focusedSection.current !== location.key) {
+      focusedSection.current = location.key;
+      target.focus({ preventScroll: true });
+    }
+  }, [aligned, focusSection, location.key, requestedHeading, sectionPanel]);
 
   useEffect(() => {
     if (!focusReader || navigationType !== "PUSH" || !chapterReady || focusedEntry.current === location.key) return;
@@ -137,6 +183,9 @@ export function FieldGuidePage() {
       onNext={goNext}
       bookmarked={bookmarked}
       onToggleBookmark={onToggleBookmark}
+      outline={sections.length > 0 && chapterReady
+        ? <ChapterOutline key={location.key} number={num} sections={sections} activeId={activeId} />
+        : undefined}
     />
   );
 

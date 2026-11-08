@@ -69,12 +69,13 @@ function createServer() {
   });
 }
 
-async function withAppPage(browser, baseUrl, viewport, fn, { javaScriptEnabled = true } = {}) {
+async function withAppPage(browser, baseUrl, viewport, fn, { javaScriptEnabled = true, hasTouch = false } = {}) {
   const context = await browser.newContext({
     viewport: { width: viewport.width, height: viewport.height },
     colorScheme: "light",
     reducedMotion: "reduce",
     javaScriptEnabled,
+    hasTouch,
   });
   if (javaScriptEnabled) {
     await context.addInitScript((consent) => {
@@ -199,7 +200,8 @@ async function runInteractionSmoke(browser, baseUrl) {
 
     await page.getByPlaceholder("Search the guide…").fill("privacy");
     await page.getByText(/result.*privacy|results.*privacy/i).waitFor({ state: "visible" });
-    await page.keyboard.press("Escape").catch(() => {});
+    await page.getByRole("link", { name: /AI, Privacy & Surveillance/ }).click();
+    await page.waitForURL(`${baseUrl}/topic/privacy`);
   });
 
   await withAppPage(browser, baseUrl, VIEWPORTS[0], async (page) => {
@@ -370,7 +372,7 @@ async function runMapToReaderKeyboardSmoke(browser, baseUrl) {
             "Tab must reach the stable reader scroll area, including when it does not overflow.");
           if (viewport.delayedReceipts) {
             releaseReceipts();
-            await reader.locator('[role="button"][tabindex="0"]').first().waitFor();
+            await reader.locator('button[aria-haspopup="dialog"]').first().waitFor();
             assert(await scroller.evaluate((el) => el === document.activeElement),
               "Loading inline receipt links must not remove focus from the reader scroll area.");
           }
@@ -652,6 +654,224 @@ async function runHeroImageRequestsSmoke(browser, baseUrl) {
   }
 }
 
+async function runMobileSearchSmoke(browser, baseUrl) {
+  for (const fixture of [
+    { lang: "en", home: "/", label: "Search the guide", query: "deepfake", specificQuery: "deepfake test", heading: "The working test",
+      topicQuery: "water use", topicLabel: /Data-centre water use/, topic: "/topic/data-centres" },
+    { lang: "fr", home: "/fr", label: "Rechercher dans le guide", query: "hypertrucage", specificQuery: "test hypertrucage", heading: "Le test pratique",
+      topicQuery: "souverainete numerique", topicLabel: /Souveraineté numérique/, topic: "/fr/topic/sovereignty" },
+  ]) {
+    await withAppPage(browser, baseUrl, VIEWPORTS[2], async (page) => {
+      const requests = [];
+      page.on("request", (request) => requests.push(new URL(request.url()).pathname));
+      await page.goto(baseUrl + fixture.home, { waitUntil: "networkidle" });
+      const trigger = page.getByRole("button", { name: fixture.label, exact: true });
+      const dialog = page.getByRole("dialog", { name: fixture.label, exact: true });
+      const input = dialog.getByRole("searchbox");
+      await trigger.click();
+      await input.waitFor();
+      assert(await input.evaluate((element) => element === document.activeElement), "Mobile search did not focus its input.");
+      assert(!requests.some((url) => url.startsWith("/search/")), "Opening search fetched an index before typing.");
+      await page.keyboard.press("Escape");
+      await dialog.waitFor({ state: "hidden" });
+      assert(await trigger.evaluate((element) => element === document.activeElement), "Search dismissal did not restore focus.");
+      await trigger.click();
+      await input.fill(fixture.query);
+      const result = dialog.getByRole("link", { name: new RegExp(fixture.heading, "i") });
+      await result.waitFor();
+      assert(requests.filter((url) => url.startsWith("/search/")).join() === `/search/${fixture.lang}.json`,
+        "Search must request one index for the current language.");
+      assert(!requests.some((url) => /\/content\/(?:fr\/)?chapters\//.test(url)), "Search downloaded chapter content before selection.");
+      await input.fill(fixture.specificQuery);
+      assert((await dialog.getByRole("link").first().textContent()).includes(fixture.heading),
+        "A search for the practical test should put its section first.");
+      if (process.env.SEARCH_SCREENSHOTS) {
+        fs.mkdirSync(process.env.SEARCH_SCREENSHOTS, { recursive: true });
+        await page.screenshot({ path: path.join(process.env.SEARCH_SCREENSHOTS, `search-${fixture.lang}.png`) });
+      }
+      await result.click();
+      const heading = page.getByRole("heading", { name: fixture.heading, exact: true });
+      await heading.waitFor();
+      assert(await heading.evaluate((element) => document.activeElement === element),
+        "Search selection did not move keyboard focus to the passage.");
+      const url = new URL(page.url());
+      assert(url.pathname === `${fixture.lang === "fr" ? "/fr" : ""}/chapter/13` &&
+        url.searchParams.get("section") === "the-working-test", "Search did not produce the stable section URL.");
+      await page.route("**/content/art-map.json", async (route) => {
+        await new Promise((resolve) => setTimeout(resolve, 600));
+        await route.continue();
+      });
+      await page.reload();
+      await heading.waitFor();
+      await page.waitForLoadState("networkidle");
+      assert(await heading.isVisible(), "Reader lost the section after chapter artwork arrived.");
+      if (process.env.SEARCH_SCREENSHOTS) {
+        await page.screenshot({ path: path.join(process.env.SEARCH_SCREENSHOTS, `section-${fixture.lang}.png`) });
+      }
+      await trigger.click();
+      const close = dialog.getByRole("button", { name: fixture.lang === "fr" ? "Fermer" : "Close", exact: true });
+      await close.press("ArrowRight");
+      await close.click();
+      assert(await heading.isVisible(), "Arrow navigation inside mobile search turned the reader page.");
+      await page.getByRole("button", { name: fixture.lang === "fr" ? "Page suivante" : "Next page", exact: true }).click();
+      await heading.waitFor({ state: "hidden" });
+      await trigger.click();
+      await input.fill(fixture.topicQuery);
+      await dialog.getByRole("link", { name: fixture.topicLabel }).click();
+      await page.waitForURL(baseUrl + fixture.topic);
+      console.log(`Mobile search ${fixture.lang}: topic, section, reload, page turn, focus return, and lazy index passed.`);
+    });
+  }
+}
+
+async function runClaimReceiptSmoke(browser, baseUrl) {
+  const sourceUrl = "https://arxiv.org/html/2512.13915v1#S4";
+  for (const fixture of [
+    { prefix: "", heading: "The working test", figure: /Canada’s Protecting Victims Act received royal assent/ },
+    { prefix: "/fr", heading: "Le test pratique", figure: /la Loi visant à protéger les victimes a reçu la sanction royale/ },
+  ]) {
+    const french = fixture.prefix === "/fr";
+    await withAppPage(browser, baseUrl, VIEWPORTS[2], async (page) => {
+      const searchLabel = french ? "Rechercher dans le guide" : "Search the guide";
+      await page.goto(`${baseUrl}${fixture.prefix || "/"}`);
+      await page.getByRole("button", { name: searchLabel, exact: true }).tap();
+      const search = page.getByRole("dialog", { name: searchLabel, exact: true });
+      await search.getByRole("searchbox").fill(french ? "test hypertrucage" : "deepfake test");
+      await search.getByRole("link", { name: new RegExp(fixture.heading, "i") }).tap();
+      await page.waitForURL(`${baseUrl}${fixture.prefix}/chapter/13?section=the-working-test`);
+      await page.getByRole("heading", { name: fixture.heading, exact: true }).waitFor();
+      const marker = page.getByRole("button", { name: french ? /0,12\s*% des vues sur X/ : /0\.12%-of-views \(on X\)/ });
+      await marker.tap();
+      const popup = page.getByRole("dialog", { name: french ? /Reçu/i : /Receipt/i });
+      await popup.waitFor();
+      assert((await popup.innerText()).includes(french ? "six mois" : "six months"), "Receipt did not explain how views were measured.");
+      const study = popup.getByRole("link", { name: french ? /Lire les résultats/ : /Read the study/ });
+      assert(await study.getAttribute("href") === sourceUrl, "Receipt did not link to the paper’s results.");
+      assert(await study.evaluate((element) => element === document.activeElement), "Opening the receipt did not focus the study link.");
+      if (process.env.SEARCH_SCREENSHOTS) {
+        fs.mkdirSync(process.env.SEARCH_SCREENSHOTS, { recursive: true });
+        await page.screenshot({ path: path.join(process.env.SEARCH_SCREENSHOTS, `claim-receipt-${french ? "fr" : "en"}.png`) });
+      }
+      await page.keyboard.press("Escape");
+      await popup.waitFor({ state: "hidden" });
+      assert(await marker.evaluate((element) => element === document.activeElement), "Closing the receipt did not return focus.");
+      await page.keyboard.press("Enter");
+      await popup.waitFor();
+      await page.context().route("https://arxiv.org/**", (route) => route.fulfill({ body: '<main id="S4">Results</main>', contentType: "text/html" }));
+      const [paper] = await Promise.all([page.waitForEvent("popup"), study.tap()]);
+      await paper.waitForURL(sourceUrl);
+      await paper.close();
+      await page.getByRole("button", { name: french ? "Page suivante" : "Next page", exact: true }).tap();
+      await popup.waitFor({ state: "hidden" });
+      await page.locator("figcaption").filter({ hasText: fixture.figure }).waitFor();
+      console.log(`Mobile search to source ${french ? "fr" : "en"}: passage, receipt, focus, paper link and caption passed.`);
+    }, { hasTouch: true });
+  }
+}
+
+async function runChapterOutlineSmoke(browser, baseUrl) {
+  for (const viewport of [VIEWPORTS[2], VIEWPORTS[0], { name: "desktop spread", width: 1920, height: 900 }]) {
+    await withAppPage(browser, baseUrl, viewport, async (page) => {
+      const mobile = viewport.name === "mobile";
+      const id = "the-working-test";
+      const headings = { en: "The working test", fr: "Le test pratique" };
+      const outlineNames = { en: "In this chapter", fr: "Dans ce chapitre" };
+      const chapter = (lang) => `${lang === "fr" ? "/fr" : ""}/chapter/13`;
+      const link = (lang) => `${chapter(lang)}?section=${id}`;
+      const heading = (lang) => page.getByRole("main").getByRole("heading", { name: headings[lang], exact: true });
+
+      async function openOutline(lang) {
+        await page.getByRole("button", { name: outlineNames[lang], exact: true }).click();
+        return page.getByRole("dialog", { name: outlineNames[lang], exact: true });
+      }
+
+      await page.goto(baseUrl + chapter("en"));
+      const outline = await openOutline("en");
+      const section = outline.getByRole("link", { name: headings.en, exact: true });
+      assert(await section.getAttribute("href") === link("en"), "Outline link should use the stable ID.");
+      await page.context().grantPermissions(["clipboard-read", "clipboard-write"], { origin: baseUrl });
+      await outline.getByRole("button", { name: `Copy link · ${headings.en}`, exact: true }).click();
+      await outline.getByText("Section link copied.", { exact: true }).waitFor();
+      assert(await page.evaluate(() => navigator.clipboard.readText()) === baseUrl + link("en"), "Copied URL differs from the outline link.");
+      if (process.env.SEARCH_SCREENSHOTS) {
+        fs.mkdirSync(process.env.SEARCH_SCREENSHOTS, { recursive: true });
+        await page.screenshot({ path: path.join(process.env.SEARCH_SCREENSHOTS, `chapter-outline-${viewport.width}.png`) });
+      }
+      await section.click();
+      await page.waitForURL(baseUrl + link("en"));
+      await heading("en").waitFor();
+      assert(await heading("en").evaluate((element) => element === document.activeElement), "Section selection did not focus its heading.");
+      assert(await heading("en").evaluate((element) => {
+        const bounds = element.getBoundingClientRect();
+        const pane = element.closest("[data-reader-scroll]").getBoundingClientRect();
+        return bounds.top >= pane.top - 1 && bounds.bottom <= pane.bottom + 1;
+      }), "Linked heading was outside the visible reading pane.");
+      await page.reload();
+      await heading("en").waitFor();
+
+      for (const lang of ["fr", "en"]) {
+        if (mobile) await page.getByRole("button", { name: lang === "fr" ? "Open menu" : "Ouvrir le menu", exact: true }).click();
+        const controls = mobile ? page.getByRole("dialog", { name: "Menu" }) : page.getByRole("group", { name: "Language", exact: true });
+        await controls.getByRole("button", { name: lang === "fr" ? "Lire en français (traduction automatique)" : "Read in English", exact: true }).click();
+        await page.waitForURL(baseUrl + link(lang));
+        await heading(lang).waitFor();
+        const translatedOutline = await openOutline(lang);
+        const current = translatedOutline.getByRole("link", { name: headings[lang], exact: true });
+        assert(await current.getAttribute("aria-current") === "location", "Outline did not mark the translated section as current.");
+        assert(await current.getAttribute("href") === link(lang), "The localized outline changed the section ID.");
+        await page.keyboard.press("Escape");
+        await translatedOutline.waitFor({ state: "hidden" });
+      }
+
+      await page.goto(baseUrl + chapter("fr") + "?section=The+working+test");
+      await heading("fr").waitFor();
+      console.log(`PASS chapter outline: ${viewport.name} · copy, reload, English ↔ French, and legacy heading link`);
+    });
+  }
+}
+
+async function runChapter13LawSmoke(browser, baseUrl) {
+  for (const viewport of VIEWPORTS.filter(({ name }) => name !== "tablet")) {
+    for (const fixture of [
+      {
+        prefix: "", heading: "Bill C-16 — what it covers", next: "Next page",
+        deadline: "within 48 hours after the order is made",
+        report: "A report to a platform does not start that clock.",
+        penalty: "14-year maximum", condition: "aggravated sexual assault",
+        source: "https://laws-lois.justice.gc.ca/eng/acts/C-46/section-164.1.html",
+      },
+      {
+        prefix: "/fr", heading: "Le projet de loi C-16 — ce qu'il couvre", next: "Page suivante",
+        deadline: "dans les 48 heures suivant le prononcé de l’ordonnance",
+        report: "Un signalement à une plateforme ne déclenche pas ce délai.",
+        penalty: "14 ans", condition: "agression sexuelle grave",
+        source: "https://laws-lois.justice.gc.ca/fra/lois/C-46/section-164.1.html",
+      },
+    ]) {
+      const url = `${baseUrl}${fixture.prefix}/chapter/13?section=bill-c-16-what-it-covers`;
+      await withAppPage(browser, baseUrl, viewport, async (page) => {
+        await page.goto(url);
+        await page.getByRole("heading", { name: fixture.heading, exact: true }).waitFor();
+        let checkedPenalty = false;
+        let checkedDeadline = false;
+        let checkedSource = false;
+        for (let spread = 0; spread < 12; spread++) {
+          const main = page.locator("#dg-main");
+          const copy = await main.innerText();
+          checkedPenalty ||= copy.includes(fixture.penalty) && copy.includes(fixture.condition);
+          checkedDeadline ||= copy.includes(fixture.deadline) && copy.includes(fixture.report);
+          checkedSource ||= await main.locator(`a[href="${fixture.source}"]`).first().isVisible();
+          if (checkedPenalty && checkedDeadline && checkedSource) break;
+          await page.getByRole("button", { name: fixture.next, exact: true }).last().click();
+        }
+        assert(checkedPenalty && checkedDeadline && checkedSource,
+          `Chapter 13 ${fixture.prefix || "en"} (${viewport.name}): penalty=${checkedPenalty}, deadline=${checkedDeadline}, source=${checkedSource}`);
+      });
+      console.log(`PASS Chapter 13 final law: ${viewport.name} ${fixture.prefix || "en"}`);
+    }
+  }
+}
+
 async function main() {
   assert(fs.existsSync(path.join(distDir, "index.html")), "dist/index.html not found. Run npm run build first.");
   const server = createServer();
@@ -661,6 +881,10 @@ async function main() {
   const browser = await chromium.launch();
 
   try {
+    await runChapter13LawSmoke(browser, baseUrl);
+    await runChapterOutlineSmoke(browser, baseUrl);
+    await runClaimReceiptSmoke(browser, baseUrl);
+    await runMobileSearchSmoke(browser, baseUrl);
     await runHeroImageRequestsSmoke(browser, baseUrl);
     await runChapterCoverImageSmoke(browser, baseUrl);
     await runMobileDrawerImageSmoke(browser, baseUrl);

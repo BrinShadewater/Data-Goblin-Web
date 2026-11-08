@@ -1,0 +1,1023 @@
+{
+  "0": [
+    {
+      "id": "about-this-manual",
+      "en": "About this manual",
+      "fr": "À propos de ce manuel"
+    },
+    {
+      "id": "how-to-use-this-manual",
+      "en": "How to use this manual",
+      "fr": "Comment utiliser ce manuel"
+    },
+    {
+      "id": "a-note-on-positionality-and-lean",
+      "en": "A note on positionality and lean",
+      "fr": "Une note sur la positionnalité et le biais"
+    },
+    {
+      "id": "a-note-on-indigenous-led-frameworks",
+      "en": "A note on Indigenous-led frameworks",
+      "fr": "Note sur les cadres dirigés par les autochtones"
+    },
+    {
+      "id": "a-note-on-the-illustrations-and-marks",
+      "en": "A note on the illustrations and marks",
+      "fr": "Une note sur les illustrations et les marques"
+    },
+    {
+      "id": "acknowledgments",
+      "en": "Acknowledgments",
+      "fr": "Remerciements"
+    },
+    {
+      "id": "about-the-author",
+      "en": "About the Author",
+      "fr": "À propos de l'auteur"
+    },
+    {
+      "id": "personal-acknowledgments",
+      "en": "Personal Acknowledgments",
+      "fr": "Remerciements personnels"
+    }
+  ],
+  "1": [
+    {
+      "id": "ai-is-older-than-the-news-cycle-suggests",
+      "en": "AI is older than the news cycle suggests",
+      "fr": "L'IA est plus vieille que le cycle médiatique le laisse croire"
+    },
+    {
+      "id": "a-short-tour-of-what-s-actually-happening-inside",
+      "en": "A short tour of what's actually happening inside",
+      "fr": "Une courte visite de ce qui se passe à l'intérieur"
+    },
+    {
+      "id": "the-contested-word",
+      "en": "The contested word",
+      "fr": "Le mot contesté"
+    },
+    {
+      "id": "how-to-read-this-guide",
+      "en": "How to read this guide",
+      "fr": "Comment lire ce guide"
+    },
+    {
+      "id": "three-concepts-that-organize-what-follows",
+      "en": "Three concepts that organize what follows",
+      "fr": "Trois concepts qui organisent ce qui suit"
+    },
+    {
+      "id": "what-you-ve-got-now",
+      "en": "What you've got now",
+      "fr": "Ce que vous avez maintenant"
+    }
+  ],
+  "2": [
+    {
+      "id": "what-learning-actually-means",
+      "en": "What \"learning\" actually means",
+      "fr": "Ce que « apprentissage » veut vraiment dire"
+    },
+    {
+      "id": "the-data-is-the-model",
+      "en": "The data is the model",
+      "fr": "Les données sont le modèle"
+    },
+    {
+      "id": "the-transformer-what-s-actually-inside-chatgpt-claude-gemini-cohere",
+      "en": "The transformer — what's actually inside ChatGPT, Claude, Gemini, Cohere",
+      "fr": "Le transformateur — ce qui est réellement à l'intérieur de ChatGPT, Claude, Gemini, Cohere"
+    },
+    {
+      "id": "training-fine-tuning-alignment-three-distinct-stages",
+      "en": "Training, fine-tuning, alignment — three distinct stages",
+      "fr": "Formation, réglage fin, alignement — trois étapes distinctes"
+    },
+    {
+      "id": "what-these-systems-can-t-do-and-won-t-be-able-to-do-soon",
+      "en": "What these systems can't do — and won't be able to do soon",
+      "fr": "Ce que ces systèmes ne peuvent pas faire — et ne pourront pas faire bientôt"
+    },
+    {
+      "id": "a-note-on-artificial-general-intelligence",
+      "en": "A note on artificial general intelligence",
+      "fr": "Une note sur l'intelligence artificielle générale"
+    },
+    {
+      "id": "when-prediction-starts-acting-ai-agents",
+      "en": "When prediction starts acting — AI agents",
+      "fr": "Lorsque la prédiction commence à agir — agents d'IA"
+    },
+    {
+      "id": "what-to-hold-onto",
+      "en": "What to hold onto",
+      "fr": "Ce qu'il faut retenir"
+    }
+  ],
+  "3": [
+    {
+      "id": "where-the-training-data-actually-comes-from",
+      "en": "Where the training data actually comes from",
+      "fr": "D'où proviennent les données de formation"
+    },
+    {
+      "id": "the-distinction-public-discussion-collapses-open-versus-freely-scraped",
+      "en": "The distinction public discussion collapses — \"open\" versus \"freely scraped\"",
+      "fr": "La distinction que le débat public escamote — « ouvert » contre « librement aspiré »"
+    },
+    {
+      "id": "the-human-labour-layer",
+      "en": "The human labour layer",
+      "fr": "La couche du travail humain"
+    },
+    {
+      "id": "whaanga-s-framing-ai-as-a-new-colonizer",
+      "en": "Whaanga's framing — AI as a new colonizer",
+      "fr": "Cadrage de Whaanga — L'IA comme nouveau colonisateur"
+    },
+    {
+      "id": "the-cost-layer-what-training-data-extracts-and-what-it-returns",
+      "en": "The cost layer — what training data extracts and what it returns",
+      "fr": "La couche de coût — ce que les données de formation extrait et ce qu'il retourne"
+    },
+    {
+      "id": "the-working-test-for-evaluating-training-data-claims",
+      "en": "The working test for evaluating training data claims",
+      "fr": "Le test pratique pour évaluer les affirmations sur les données de formation"
+    },
+    {
+      "id": "the-receipt-on-the-raw-material",
+      "en": "The receipt on the raw material",
+      "fr": "Le reçu sur la matière première"
+    }
+  ],
+  "4": [
+    {
+      "id": "one-from-the-data-centre-working-inward",
+      "en": "One: From the data centre, working inward",
+      "fr": "Un : depuis le centre de données, vers l'intérieur"
+    },
+    {
+      "id": "two-the-chip-supply-chain",
+      "en": "Two: The chip supply chain",
+      "fr": "Deux : La chaîne d'approvisionnement en puces"
+    },
+    {
+      "id": "three-the-materials-where-they-come-from",
+      "en": "Three: The materials, where they come from",
+      "fr": "Trois: Les matériaux, d'où ils viennent"
+    },
+    {
+      "id": "four-cooling-water-and-the-heat-problem",
+      "en": "Four: Cooling, water, and the heat problem",
+      "fr": "Quatre : refroidissement, eau et problème de chaleur"
+    },
+    {
+      "id": "five-suzanne-kite-s-protocol-what-hardware-ethics-looks-like-when-it-s-specific",
+      "en": "Five: Suzanne Kite's protocol — what hardware ethics looks like when it's specific",
+      "fr": "Cinq : le protocole de Suzanne Kite — à quoi ressemble l'éthique matérielle quand elle est spécifique"
+    },
+    {
+      "id": "six-the-e-waste-end-of-the-cycle",
+      "en": "Six: The e-waste end of the cycle",
+      "fr": "Six: Fin du cycle des déchets électroniques"
+    },
+    {
+      "id": "adding-up-the-physical-layer",
+      "en": "Adding up the physical layer",
+      "fr": "Le bilan de la couche physique"
+    }
+  ],
+  "5": [
+    {
+      "id": "the-strategy-in-plain-terms",
+      "en": "The strategy in plain terms",
+      "fr": "La stratégie en termes clairs"
+    },
+    {
+      "id": "the-longer-story-canada-didn-t-start-in-2026",
+      "en": "The longer story — Canada didn't start in 2026",
+      "fr": "La longue histoire — Le Canada n'a pas commencé en 2026"
+    },
+    {
+      "id": "the-leaked-draft-and-what-it-tells-us",
+      "en": "The leaked draft, and what it tells us",
+      "fr": "La fuite de l'ébauche, et ce qu'elle nous dit"
+    },
+    {
+      "id": "the-civil-society-response",
+      "en": "The civil society response",
+      "fr": "Réponse de la société civile"
+    },
+    {
+      "id": "the-press-critique",
+      "en": "The press critique",
+      "fr": "La critique de presse"
+    },
+    {
+      "id": "the-two-cabinet-voices-to-track",
+      "en": "The two cabinet voices to track",
+      "fr": "Les deux voix de cabinet à suivre"
+    },
+    {
+      "id": "the-honest-assessment",
+      "en": "The honest assessment",
+      "fr": "L'évaluation honnête"
+    },
+    {
+      "id": "where-the-story-stands",
+      "en": "Where the story stands",
+      "fr": "Où se trouve l'histoire"
+    }
+  ],
+  "6": [
+    {
+      "id": "what-s-actually-in-there",
+      "en": "What's actually in there",
+      "fr": "Qu'y a-t-il là-dedans ?"
+    },
+    {
+      "id": "the-hyperscaler-footprint-in-canada-mapped",
+      "en": "The hyperscaler footprint in Canada, mapped",
+      "fr": "L'empreinte hyperscale au Canada, cartographiée"
+    },
+    {
+      "id": "the-wonder-valley-case-study",
+      "en": "The Wonder Valley case study",
+      "fr": "L'étude de cas Wonder Valley"
+    },
+    {
+      "id": "the-siting-backlash-spreads",
+      "en": "The siting backlash spreads",
+      "fr": "Le contre-coup de l'emplacement s'étend"
+    },
+    {
+      "id": "the-grid-question",
+      "en": "The grid question",
+      "fr": "La question du réseau électrique"
+    },
+    {
+      "id": "the-transparency-gap-in-operational-terms",
+      "en": "The transparency gap, in operational terms",
+      "fr": "L'écart de transparence, en termes opérationnels"
+    },
+    {
+      "id": "the-infrastructure-totalled",
+      "en": "The infrastructure, totalled",
+      "fr": "L'infrastructure, totalisée"
+    }
+  ],
+  "7": [
+    {
+      "id": "the-four-categories",
+      "en": "The four categories",
+      "fr": "Les quatre catégories"
+    },
+    {
+      "id": "the-cohere-case-study",
+      "en": "The Cohere case study",
+      "fr": "L'étude de cas Cohere"
+    },
+    {
+      "id": "the-telecom-incumbents-bell-telus-rogers",
+      "en": "The telecom incumbents — Bell, Telus, Rogers",
+      "fr": "Les opérateurs télécoms établis — Bell, Telus, Rogers"
+    },
+    {
+      "id": "the-commissioned-research-firm-pattern",
+      "en": "The commissioned-research firm pattern",
+      "fr": "Le schéma des firmes de recherche commandée"
+    },
+    {
+      "id": "the-proxy-lobbying-mechanism",
+      "en": "The proxy-lobbying mechanism",
+      "fr": "Le mécanisme de lobbyage par procuration"
+    },
+    {
+      "id": "the-actor-map-who-s-in-a-position-to-actually-shape-canadian-ai",
+      "en": "The actor map — who's in a position to actually shape Canadian AI",
+      "fr": "La carte des acteurs — qui peut réellement façonner l'IA canadienne"
+    },
+    {
+      "id": "the-competition-question-is-ai-concentrating-power-or-spreading-it",
+      "en": "The competition question: is AI concentrating power, or spreading it?",
+      "fr": "La question de la concurrence : l'IA se concentre-t-elle sur le pouvoir ou la diffuse-t'elle ?"
+    },
+    {
+      "id": "who-s-holding-what",
+      "en": "Who's holding what",
+      "fr": "Qui tient quoi ?"
+    }
+  ],
+  "8": [
+    {
+      "id": "training-versus-inference-the-most-important-environmental-distinction",
+      "en": "Training versus inference — the most important environmental distinction",
+      "fr": "La formation par rapport à l'inférence — la distinction environnementale la plus importante"
+    },
+    {
+      "id": "jevons-paradox-properly-understood",
+      "en": "Jevons' paradox, properly understood",
+      "fr": "Paradoxe de Jevons, bien compris"
+    },
+    {
+      "id": "what-google-s-august-2025-paper-actually-shows",
+      "en": "What Google's August 2025 paper actually shows",
+      "fr": "Ce que montre vraiment l'étude d'août 2025 de Google"
+    },
+    {
+      "id": "the-growth-side-of-the-ledger-what-the-aggregate-numbers-actually-show",
+      "en": "The growth side of the ledger — what the aggregate numbers actually show",
+      "fr": "Le côté croissance du grand livre — ce que les chiffres agrégés montrent en réalité"
+    },
+    {
+      "id": "the-canadian-specific-carbon-arithmetic",
+      "en": "The Canadian-specific carbon arithmetic",
+      "fr": "L'arithmétique carbone spécifique au Canada"
+    },
+    {
+      "id": "the-contrarian-finding-tomlinson-et-al-2024",
+      "en": "The contrarian finding — Tomlinson et al. (2024)",
+      "fr": "La conclusion à contre-courant — Tomlinson et al. (2024)"
+    },
+    {
+      "id": "the-other-side-of-the-ledger-ai-for-the-climate",
+      "en": "The other side of the ledger: AI *for* the climate",
+      "fr": "L'autre côté du grand livre: IA *pour* le climat"
+    },
+    {
+      "id": "the-structural-finding-extraction-geography",
+      "en": "The structural finding — extraction geography",
+      "fr": "La constatation structurelle — géographie de l'extraction"
+    },
+    {
+      "id": "the-ledger-both-sides",
+      "en": "The ledger, both sides",
+      "fr": "Le grand livre, les deux côtés"
+    }
+  ],
+  "9": [
+    {
+      "id": "national-sovereignty-the-cloud-act-problem",
+      "en": "National sovereignty — the CLOUD Act problem",
+      "fr": "La souveraineté nationale — le problème de la loi CLOUD"
+    },
+    {
+      "id": "personal-sovereignty-the-consent-and-likeness-layer",
+      "en": "Personal sovereignty — the consent and likeness layer",
+      "fr": "La souveraineté personnelle — la couche du consentement et de la ressemblance"
+    },
+    {
+      "id": "indigenous-data-sovereignty-the-deeper-layer",
+      "en": "Indigenous data sovereignty — the deeper layer",
+      "fr": "La souveraineté des données autochtones — la couche plus profonde"
+    },
+    {
+      "id": "how-the-three-frameworks-interact-and-what-they-all-share",
+      "en": "How the three frameworks interact — and what they all share",
+      "fr": "Comment les trois cadres interagissent — et ce qu'ils partagent tous"
+    },
+    {
+      "id": "the-wonder-valley-case-study-revisited",
+      "en": "The Wonder Valley case study, revisited",
+      "fr": "L'étude de cas Wonder Valley, revisitée"
+    },
+    {
+      "id": "the-owen-et-al-extraction-geography-doing-sovereignty-work",
+      "en": "The Owen et al. extraction geography, doing sovereignty work",
+      "fr": "La géographie de l'extraction d'Owen et al., au service de la souveraineté"
+    },
+    {
+      "id": "what-sovereign-ai-claims-actually-deliver-a-working-test",
+      "en": "What \"sovereign AI\" claims actually deliver — a working test",
+      "fr": "Ce que les promesses d'« IA souveraine » livrent vraiment — un test pratique"
+    },
+    {
+      "id": "open-weight-models-a-partial-sovereignty-lever",
+      "en": "Open-weight models — a partial sovereignty lever",
+      "fr": "Modèles à poids ouvert — un levier de souveraineté partiel"
+    },
+    {
+      "id": "which-sovereignty-you-can-actually-claim",
+      "en": "Which sovereignty you can actually claim",
+      "fr": "Quelle souveraineté vous pouvez réellement revendiquer"
+    }
+  ],
+  "10": [
+    {
+      "id": "what-ai-systems-actually-collect-and-what-they-infer",
+      "en": "What AI systems actually collect — and what they infer",
+      "fr": "Ce que les systèmes d'IA recueillent réellement — et ce qu'ils en déduisent"
+    },
+    {
+      "id": "the-federal-ai-register-what-it-discloses-and-what-it-doesn-t",
+      "en": "The federal AI Register — what it discloses and what it doesn't",
+      "fr": "Le Registre fédéral de l'IA — ce qu'il divulgue et ce qu'il tait"
+    },
+    {
+      "id": "the-marquee-case-ai-in-immigration-and-at-the-border",
+      "en": "The marquee case: AI in immigration and at the border",
+      "fr": "L'affaire Marquee: IA en immigration et à la frontière"
+    },
+    {
+      "id": "the-same-pattern-past-the-border-welfare-policing-and-the-courts",
+      "en": "The same pattern, past the border: welfare, policing, and the courts",
+      "fr": "Le même schéma, au-delà de la frontière : bien-être, police et tribunaux"
+    },
+    {
+      "id": "workplace-ai-surveillance-the-cupe-primary-documentation",
+      "en": "Workplace AI surveillance — the CUPE primary documentation",
+      "fr": "Surveillance de l'IA sur le lieu de travail — la documentation primaire du CUPE"
+    },
+    {
+      "id": "quebec-law-25-as-the-federal-government-of-last-resort",
+      "en": "Quebec Law 25 as the federal-government-of-last-resort",
+      "fr": "La Loi 25 du Québec, le régulateur de dernier recours"
+    },
+    {
+      "id": "the-biometric-and-facial-recognition-layer",
+      "en": "The biometric and facial recognition layer",
+      "fr": "La couche de reconnaissance biométrique et faciale"
+    },
+    {
+      "id": "ai-companions-the-surveillance-you-confide-in",
+      "en": "AI companions — the surveillance you confide in",
+      "fr": "Les compagnons IA — la surveillance à laquelle vous vous confiez"
+    },
+    {
+      "id": "the-post-aida-regulatory-gap",
+      "en": "The post-AIDA regulatory gap",
+      "fr": "L'écart réglementaire après l'AIDA"
+    },
+    {
+      "id": "the-working-test",
+      "en": "The working test",
+      "fr": "Le test pratique"
+    },
+    {
+      "id": "where-the-privacy-gap-sits",
+      "en": "Where the privacy gap sits",
+      "fr": "Où se trouve le vide de la vie privée"
+    }
+  ],
+  "11": [
+    {
+      "id": "the-canadian-newspapers-v-openai-case",
+      "en": "The Canadian newspapers v. OpenAI case",
+      "fr": "L'affaire des journaux canadiens c. OpenAI"
+    },
+    {
+      "id": "the-twuc-and-actra-positions",
+      "en": "The TWUC and ACTRA positions",
+      "fr": "Les positions de la TWUC et d'ACTRA"
+    },
+    {
+      "id": "the-geist-and-craig-academic-positions-and-why-they-matter",
+      "en": "The Geist and Craig academic positions — and why they matter",
+      "fr": "Les positions universitaires de Geist et Craig — et pourquoi elles comptent"
+    },
+    {
+      "id": "the-structural-weakening-of-canadian-copyright",
+      "en": "The structural weakening of Canadian copyright",
+      "fr": "L'affaiblissement structurel du droit d'auteur canadien"
+    },
+    {
+      "id": "the-bridge-nil-rights-deepfakes-and-the-convergence-question",
+      "en": "The bridge — NIL Rights, deepfakes, and the convergence question",
+      "fr": "La passerelle — droits NIL, hypertrucages et la question de la convergence"
+    },
+    {
+      "id": "the-working-test",
+      "en": "The working test",
+      "fr": "Le test pratique"
+    },
+    {
+      "id": "the-contest-left-honest",
+      "en": "The contest, left honest",
+      "fr": "Le débat, présenté honnêtement"
+    }
+  ],
+  "12": [
+    {
+      "id": "canada-as-production-infrastructure",
+      "en": "Canada as production infrastructure",
+      "fr": "Le Canada en tant qu'infrastructure de production"
+    },
+    {
+      "id": "canadian-content-canadian-ownership",
+      "en": "Canadian content, Canadian ownership",
+      "fr": "Contenu canadien, propriété canadienne"
+    },
+    {
+      "id": "the-certification-question",
+      "en": "The certification question",
+      "fr": "La question de la certification"
+    },
+    {
+      "id": "the-pile-up-before-ai",
+      "en": "The pile-up before AI",
+      "fr": "Les problèmes qui précèdent l'IA"
+    },
+    {
+      "id": "indie-producers-and-the-broken-middle",
+      "en": "Indie producers and the broken middle",
+      "fr": "Producteurs indépendants et le milieu brisé"
+    },
+    {
+      "id": "the-strange-harvest-lesson",
+      "en": "The Strange Harvest lesson",
+      "fr": "La leçon de Strange Harvest"
+    },
+    {
+      "id": "the-soft-violence-of-ai-art-discourse",
+      "en": "The soft violence of AI art discourse",
+      "fr": "La violence douce du discours artistique de l'IA"
+    },
+    {
+      "id": "where-ai-enters-the-workflow",
+      "en": "Where AI enters the workflow",
+      "fr": "Où l'IA entre dans le flux de travail"
+    },
+    {
+      "id": "the-sub-sectors-animation-vfx-and-games",
+      "en": "The sub-sectors: animation, VFX, and games",
+      "fr": "Les sous-secteurs : animation, VFX et jeux"
+    },
+    {
+      "id": "augmentation-versus-substitution",
+      "en": "Augmentation versus substitution",
+      "fr": "Augmentation par rapport à la substitution"
+    },
+    {
+      "id": "performers-likeness-and-consent",
+      "en": "Performers, likeness, and consent",
+      "fr": "Interprètes, ressemblance et consentement"
+    },
+    {
+      "id": "the-labour-bargain",
+      "en": "The labour bargain",
+      "fr": "L'entente sur le travail"
+    },
+    {
+      "id": "provenance-detection-and-audience-trust",
+      "en": "Provenance, detection, and audience trust",
+      "fr": "Provenance, détection et confiance du public"
+    },
+    {
+      "id": "the-working-test",
+      "en": "The working test",
+      "fr": "Le test pratique"
+    },
+    {
+      "id": "what-the-set-teaches",
+      "en": "What the set teaches",
+      "fr": "Ce que le plateau enseigne"
+    }
+  ],
+  "13": [
+    {
+      "id": "bill-c-16-what-it-covers",
+      "en": "Bill C-16 — what it covers",
+      "fr": "Le projet de loi C-16 — ce qu'il couvre"
+    },
+    {
+      "id": "the-2025-canadian-election-empirical-study",
+      "en": "The 2025 Canadian election empirical study",
+      "fr": "Étude empirique sur les élections canadiennes de 2025"
+    },
+    {
+      "id": "the-political-deepfake-regulatory-gap",
+      "en": "The political deepfake regulatory gap",
+      "fr": "Le vide réglementaire sur les hypertrucages politiques"
+    },
+    {
+      "id": "quebec-leadership-returning",
+      "en": "Quebec leadership returning",
+      "fr": "Le leadership québécois revient"
+    },
+    {
+      "id": "the-international-comparison-framework",
+      "en": "The international comparison framework",
+      "fr": "Le cadre de comparaison internationale"
+    },
+    {
+      "id": "the-convergent-likeness-rights-mechanism",
+      "en": "The convergent likeness rights mechanism",
+      "fr": "Le mécanisme convergent des droits de ressemblance"
+    },
+    {
+      "id": "the-working-test",
+      "en": "The working test",
+      "fr": "Le test pratique"
+    },
+    {
+      "id": "what-the-evidence-actually-licenses",
+      "en": "What the evidence actually licenses",
+      "fr": "Ce que la preuve permet vraiment de conclure"
+    }
+  ],
+  "14": [
+    {
+      "id": "the-floor-was-already-gone",
+      "en": "The floor was already gone",
+      "fr": "Le plancher était déjà parti."
+    },
+    {
+      "id": "ai-in-the-newsroom-less-than-the-hype-more-than-nothing",
+      "en": "AI in the newsroom: less than the hype, more than nothing",
+      "fr": "IA dans la salle de presse: moins que le hype, plus que rien"
+    },
+    {
+      "id": "the-training-data-fight",
+      "en": "The training-data fight",
+      "fr": "La lutte contre la formation et les données"
+    },
+    {
+      "id": "the-flood",
+      "en": "The flood",
+      "fr": "L'inondation"
+    },
+    {
+      "id": "the-ladder",
+      "en": "The ladder",
+      "fr": "L'échelle"
+    },
+    {
+      "id": "the-working-test",
+      "en": "The working test",
+      "fr": "Le test pratique"
+    }
+  ],
+  "15": [
+    {
+      "id": "what-bias-actually-means-in-ai-systems",
+      "en": "What \"bias\" actually means in AI systems",
+      "fr": "Qu'est-ce que le « biais » dans les systèmes d'IA"
+    },
+    {
+      "id": "documented-canadian-cases",
+      "en": "Documented Canadian cases",
+      "fr": "Cas canadiens documentés"
+    },
+    {
+      "id": "the-algorithmic-fairness-literature-what-it-offers-and-what-it-doesn-t",
+      "en": "The algorithmic fairness literature — what it offers and what it doesn't",
+      "fr": "La littérature sur l'équité algorithmique — ce qu'elle offre et ce qu'elle ne fait pas"
+    },
+    {
+      "id": "disability-the-dimension-the-fairness-debate-keeps-missing",
+      "en": "Disability — the dimension the fairness debate keeps missing",
+      "fr": "Le handicap — la dimension du débat sur l'équité continue de manquer"
+    },
+    {
+      "id": "the-epistemology-layer",
+      "en": "The epistemology layer",
+      "fr": "La couche épistémologique"
+    },
+    {
+      "id": "ai-in-the-classroom-the-fairness-test-canadians-meet-first",
+      "en": "AI in the classroom: the fairness test Canadians meet first",
+      "fr": "L'IA en classe : le test d'équité Les Canadiens se rencontrent en premier"
+    },
+    {
+      "id": "the-corporate-ethics-washing-pattern",
+      "en": "The corporate ethics-washing pattern",
+      "fr": "Le modèle de lavage de l'éthique d'entreprise"
+    },
+    {
+      "id": "the-abundant-intelligences-constructive-program",
+      "en": "The Abundant Intelligences constructive program",
+      "fr": "Le programme constructif Abondant Intelligences"
+    },
+    {
+      "id": "the-working-test",
+      "en": "The working test",
+      "fr": "Le test pratique"
+    },
+    {
+      "id": "past-just-clean-the-data",
+      "en": "Past 'just clean the data'",
+      "fr": "Passé 'il suffit de nettoyer les données'"
+    }
+  ],
+  "16": [
+    {
+      "id": "the-canadian-empirical-baseline",
+      "en": "The Canadian empirical baseline",
+      "fr": "La base empirique canadienne"
+    },
+    {
+      "id": "the-acemoglu-vs-autor-academic-disagreement",
+      "en": "The Acemoglu vs Autor academic disagreement",
+      "fr": "Le désaccord académique Acemoglu vs Autor"
+    },
+    {
+      "id": "the-cupe-senate-brief-labour-s-primary-documentation",
+      "en": "The CUPE Senate brief — labour's primary documentation",
+      "fr": "Le mémoire du Sénat de la CUPE — la documentation principale du travail"
+    },
+    {
+      "id": "the-structural-finding-ai-creates-labour-at-lower-wages-while-displacing-higher-wage-work",
+      "en": "The structural finding — AI creates labour at lower wages while displacing higher-wage work",
+      "fr": "La constatation structurelle — L'IA crée du travail à des salaires inférieurs tout en déplaçant le travail à plus haut salaire"
+    },
+    {
+      "id": "the-federal-ai-for-all-labour-commitments-evaluated",
+      "en": "The federal *AI for All* labour commitments, evaluated",
+      "fr": "Les engagements fédéraux en matière de main-d'oeuvre *IA pour tous*, évalués"
+    },
+    {
+      "id": "where-the-ai-adoption-actually-is-mines-farms-and-forests",
+      "en": "Where the AI adoption actually is: mines, farms, and forests",
+      "fr": "Là où l'adoption de l'IA est en fait: mines, fermes et forêts"
+    },
+    {
+      "id": "the-working-test",
+      "en": "The working test",
+      "fr": "L'essai de fonctionnement"
+    },
+    {
+      "id": "what-the-work-shifts-toward",
+      "en": "What the work shifts toward",
+      "fr": "Ce que le travail change vers"
+    }
+  ],
+  "17": [
+    {
+      "id": "the-federalist-constraint",
+      "en": "The federalist constraint",
+      "fr": "La contrainte fédéraliste"
+    },
+    {
+      "id": "the-federal-institutional-landscape",
+      "en": "The federal institutional landscape",
+      "fr": "Le paysage institutionnel fédéral"
+    },
+    {
+      "id": "aida-and-the-post-aida-regulatory-gap",
+      "en": "AIDA and the post-AIDA regulatory gap",
+      "fr": "L'AIDA et l'écart réglementaire après l'AIDA"
+    },
+    {
+      "id": "international-frameworks-canada-has-signed-and-has-not",
+      "en": "International frameworks Canada has signed (and has not)",
+      "fr": "Cadres internationaux Le Canada a signé (et n'a pas signé)"
+    },
+    {
+      "id": "the-comparative-international-landscape",
+      "en": "The comparative international landscape",
+      "fr": "Le paysage international comparé"
+    },
+    {
+      "id": "governance-via-sectoral-regulators-canada-s-de-facto-pattern",
+      "en": "Governance via sectoral regulators — Canada's de facto pattern",
+      "fr": "Gouvernance par l'intermédiaire des organismes de réglementation sectoriels — Le modèle de fait du Canada"
+    },
+    {
+      "id": "ai-and-the-cyber-threat",
+      "en": "AI and the cyber threat",
+      "fr": "L'IA et la cybermenace"
+    },
+    {
+      "id": "what-institutional-pathways-exist-for-closing-gaps",
+      "en": "What institutional pathways exist for closing gaps",
+      "fr": "Quelles sont les voies institutionnelles pour combler les lacunes?"
+    },
+    {
+      "id": "the-architecture-mapped",
+      "en": "The architecture, mapped",
+      "fr": "L'architecture, cartographiée"
+    }
+  ],
+  "18": [
+    {
+      "id": "why-transparency-matters-in-practice",
+      "en": "Why transparency matters in practice",
+      "fr": "Pourquoi la transparence est importante dans la pratique"
+    },
+    {
+      "id": "the-stanford-fmti-the-empirical-baseline-for-industry-transparency",
+      "en": "The Stanford FMTI — the empirical baseline for industry transparency",
+      "fr": "L'IMF de Stanford — la base empirique pour la transparence de l'industrie"
+    },
+    {
+      "id": "the-corporate-selective-disclosure-pattern",
+      "en": "The corporate selective-disclosure pattern",
+      "fr": "Le modèle de divulgation sélective des entreprises"
+    },
+    {
+      "id": "canadian-ai-transparency-layer-by-layer",
+      "en": "Canadian AI transparency, layer by layer",
+      "fr": "Transparence canadienne de l'IA, couche par couche"
+    },
+    {
+      "id": "the-eu-comparator-and-what-it-would-mean-for-canada",
+      "en": "The EU comparator and what it would mean for Canada",
+      "fr": "Le comparateur de l'UE et ce que cela signifierait pour le Canada"
+    },
+    {
+      "id": "the-institutional-resources-canada-has",
+      "en": "The institutional resources Canada has",
+      "fr": "Les ressources institutionnelles du Canada"
+    },
+    {
+      "id": "the-convergent-finding-transparency-is-the-precondition",
+      "en": "The convergent finding — transparency is the precondition",
+      "fr": "La conclusion convergente — la transparence est la condition préalable"
+    },
+    {
+      "id": "the-working-test",
+      "en": "The working test",
+      "fr": "L'essai de fonctionnement"
+    },
+    {
+      "id": "why-this-one-comes-first",
+      "en": "Why this one comes first",
+      "fr": "Pourquoi celui-ci vient en premier"
+    }
+  ],
+  "19": [
+    {
+      "id": "one-the-bias-mapping-methodology-the-foundation-tool",
+      "en": "One: The bias-mapping methodology — the foundation tool",
+      "fr": "Premièrement, la méthodologie de cartographie des biais — l'outil de base"
+    },
+    {
+      "id": "two-the-working-tests-consolidated",
+      "en": "Two: The working tests, consolidated",
+      "fr": "Deux : Les essais de travail, consolidés"
+    },
+    {
+      "id": "three-through-line-analytical-moves-the-deeper-toolkit",
+      "en": "Three: Through-line analytical moves — the deeper toolkit",
+      "fr": "Trois: Les mouvements analytiques par ligne — la boîte à outils plus profonde"
+    },
+    {
+      "id": "four-worked-examples-the-toolkit-in-action",
+      "en": "Four: Worked examples — the toolkit in action",
+      "fr": "Quatre: Exemples concrets — la boîte à outils en action"
+    },
+    {
+      "id": "five-limits-of-the-toolkit",
+      "en": "Five: Limits of the toolkit",
+      "fr": "Cinq : Limites de la boîte à outils"
+    },
+    {
+      "id": "carrying-the-toolkit-out",
+      "en": "Carrying the toolkit out",
+      "fr": "Réalisation de la boîte à outils"
+    }
+  ],
+  "20": [
+    {
+      "id": "the-convergent-high-leverage-mechanisms",
+      "en": "The convergent high-leverage mechanisms",
+      "fr": "Les mécanismes convergents à haut levier"
+    },
+    {
+      "id": "federal-legislative-mechanisms-what-comprehensive-ai-law-could-include",
+      "en": "Federal legislative mechanisms — what comprehensive AI law could include",
+      "fr": "Mécanismes législatifs fédéraux — Quelles dispositions législatives détaillées pourraient comprendre l'IA"
+    },
+    {
+      "id": "the-federal-provincial-coordination-pathway",
+      "en": "The federal-provincial coordination pathway",
+      "fr": "La voie de coordination fédérale-provinciale"
+    },
+    {
+      "id": "sectoral-regulator-empowerment",
+      "en": "Sectoral regulator empowerment",
+      "fr": "Autonomisation des régulateurs sectoriels"
+    },
+    {
+      "id": "international-engagement",
+      "en": "International engagement",
+      "fr": "Engagement international"
+    },
+    {
+      "id": "judicial-pathways-and-what-they-can-and-cannot-deliver",
+      "en": "Judicial pathways and what they can and cannot deliver",
+      "fr": "Les voies judiciaires et ce qu'elles peuvent et ne peuvent pas offrir"
+    },
+    {
+      "id": "the-political-economy-conditions",
+      "en": "The political-economy conditions",
+      "fr": "Les conditions politiques et économiques"
+    },
+    {
+      "id": "what-this-chapter-does-not-commit-to",
+      "en": "What this chapter does not commit to",
+      "fr": "Ce que le présent chapitre ne s'engage pas à"
+    },
+    {
+      "id": "what-s-actually-on-the-table",
+      "en": "What's actually on the table",
+      "fr": "Ce qui est sur la table"
+    }
+  ],
+  "21": [
+    {
+      "id": "the-conversation-you-will-encounter",
+      "en": "The conversation you will encounter",
+      "fr": "La conversation que vous rencontrerez"
+    },
+    {
+      "id": "what-to-do-when-you-encounter-a-specific-ai-claim",
+      "en": "What to do when you encounter a specific AI claim",
+      "fr": "Que faire lorsque vous rencontrez une demande d'IA spécifique"
+    },
+    {
+      "id": "the-conversations-specific-to-your-context",
+      "en": "The conversations specific to your context",
+      "fr": "Les conversations spécifiques à votre contexte"
+    },
+    {
+      "id": "the-guide-s-limits-what-you-cannot-expect-from-it",
+      "en": "The guide's limits — what you cannot expect from it",
+      "fr": "Les limites du guide — ce que vous ne pouvez pas attendre de lui"
+    },
+    {
+      "id": "what-the-guide-has-tried-to-do",
+      "en": "What the guide has tried to do",
+      "fr": "Ce que le guide a essayé de faire"
+    },
+    {
+      "id": "the-benefit-side-kept-calibrated",
+      "en": "The benefit side, kept calibrated",
+      "fr": "Le côté avantage, maintenu étalonné"
+    },
+    {
+      "id": "what-you-carry-forward",
+      "en": "What you carry forward",
+      "fr": "Ce que vous reportez"
+    },
+    {
+      "id": "closing",
+      "en": "Closing",
+      "fr": "Clôture"
+    }
+  ],
+  "22": [
+    {
+      "id": "a-canadian-government-strategy-policy-and-operational-documents",
+      "en": "A. Canadian Government — Strategy, Policy, and Operational Documents",
+      "fr": "A. Gouvernement canadien — Stratégie, politiques et documents opérationnels"
+    },
+    {
+      "id": "b-canadian-legislation-and-provincial-frameworks",
+      "en": "B. Canadian Legislation and Provincial Frameworks",
+      "fr": "B. Législation canadienne et cadres provinciaux"
+    },
+    {
+      "id": "c-provincial-grid-operators-and-utility-frameworks",
+      "en": "C. Provincial Grid Operators and Utility Frameworks",
+      "fr": "C. Opérateurs de réseau provinciaux et cadres d'utilité"
+    },
+    {
+      "id": "d-canadian-civil-society-labour-and-advocacy",
+      "en": "D. Canadian Civil Society, Labour, and Advocacy",
+      "fr": "D. Société civile canadienne, travail et défense des intérêts"
+    },
+    {
+      "id": "e-indigenous-led-frameworks-and-research",
+      "en": "E. Indigenous-led Frameworks and Research",
+      "fr": "E. Cadres et recherche dirigés par les Autochtones"
+    },
+    {
+      "id": "f-academic-and-peer-reviewed-research",
+      "en": "F. Academic and Peer-Reviewed Research",
+      "fr": "F. Recherche universitaire et par les pairs"
+    },
+    {
+      "id": "g-industry-corporate-self-disclosure",
+      "en": "G. Industry / Corporate Self-Disclosure",
+      "fr": "G. Industrie / Auto-divulgation des entreprises"
+    },
+    {
+      "id": "h-international-frameworks-and-foreign-legislation",
+      "en": "H. International Frameworks and Foreign Legislation",
+      "fr": "H. Cadres internationaux et législation étrangère"
+    },
+    {
+      "id": "i-litigation-and-legal-cases",
+      "en": "I. Litigation and Legal Cases",
+      "fr": "C'est moi. Litiges et affaires juridiques"
+    },
+    {
+      "id": "j-investigative-journalism-and-mainstream-press",
+      "en": "J. Investigative Journalism and Mainstream Press",
+      "fr": "J. Journalisme d'investigation et presse principale"
+    },
+    {
+      "id": "what-s-not-in-this-appendix",
+      "en": "What's not in this appendix",
+      "fr": "Ce qui n'est pas dans cet appendice"
+    },
+    {
+      "id": "links-and-url-references",
+      "en": "Links and URL References",
+      "fr": "Liens et références d'URL"
+    }
+  ]
+}

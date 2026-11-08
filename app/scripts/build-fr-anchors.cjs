@@ -69,6 +69,7 @@ const FR = {
   13: {
     12: "cas aggravés",
     4: "Danemark",
+    32: "0,12\u00a0% des vues sur X",
     // The French edition does not name the Act in the takedown-duty paragraph
     // the English anchors to; its only mention is "US TAKE IT DOWN" in the
     // chapter's international-comparison sentence. Same statute, slightly
