@@ -1800,5 +1800,39 @@
     "https://www.parl.ca/documentviewer/en/45-1/bill/C-25/royal-assent"
    ]
   ]
+ },
+ {
+  "id": 115,
+  "section": "Canadian compute access and construction (November 9, 2026)",
+  "claim": "Federal 500 MW compute access objective (Ch 5–7)",
+  "status": "resolved",
+  "detail": "✅ Budget 2026 announced an objective to enable Canadian AI companies to access 500 MW of sovereign AI compute using financial tools such as backstops and capacity purchase agreements. The announcement does not establish delivered capacity or identify Sherwood as part of the measure. Bell’s May 2025 plan for upwards of 500 MW across six B.C. facilities is a separate announcement. | [Budget 2026, Chapter 5](https://budget.canada.ca/2026/report-rapport/chap5-en.html) · [Bell AI Fabric launch, May 2025](https://www.bce.ca/Bell-Canada-Increases-Sovereign-AI-Capacity-with-Bell-AI-Fabric)",
+  "links": [
+   [
+    "Budget 2026, Chapter 5",
+    "https://budget.canada.ca/2026/report-rapport/chap5-en.html"
+   ],
+   [
+    "Bell AI Fabric launch, May 2025",
+    "https://www.bce.ca/Bell-Canada-Increases-Sovereign-AI-Capacity-with-Bell-AI-Fabric"
+   ]
+  ]
+ },
+ {
+  "id": 116,
+  "section": "Canadian compute access and construction (November 9, 2026)",
+  "claim": "Bell Sherwood initial 300 MW build (Ch 6–7)",
+  "status": "resolved",
+  "detail": "✅ Saskatchewan reported construction on all four buildings in Bell’s initial 300 MW Sherwood build on October 1, 2026. BCE’s third-quarter report lists about $475 million in capital expenditures and associated cash outflows as of September 30. BCE expects the first data hall to come online in the first half of 2027. Up to 900 MW of additional capacity is the subject of a non-binding memorandum. | [Saskatchewan construction update, October 1](https://www.saskatchewan.ca/government/news-and-media/2026/october/01/bell-ai-fabric) · [BCE third-quarter shareholder report](https://www.sec.gov/Archives/edgar/data/718940/000071894026000014/a2026-q3xmda.htm)",
+  "links": [
+   [
+    "Saskatchewan construction update, October 1",
+    "https://www.saskatchewan.ca/government/news-and-media/2026/october/01/bell-ai-fabric"
+   ],
+   [
+    "BCE third-quarter shareholder report",
+    "https://www.sec.gov/Archives/edgar/data/718940/000071894026000014/a2026-q3xmda.htm"
+   ]
+  ]
  }
 ]

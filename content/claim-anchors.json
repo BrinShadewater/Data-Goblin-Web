@@ -63,6 +63,11 @@
    "anchor": "tabled Bill C-16 in December 2025",
    "id": 42,
    "status": "open"
+  },
+  {
+   "anchor": "federal 500 MW compute access objective",
+   "id": 115,
+   "status": "resolved"
   }
  ],
  "6": [
@@ -90,6 +95,11 @@
    "anchor": "1,200 MW",
    "id": 41,
    "status": "open"
+  },
+  {
+   "anchor": "initial 300 MW build at Sherwood",
+   "id": 116,
+   "status": "resolved"
   }
  ],
  "7": [

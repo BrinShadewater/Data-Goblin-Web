@@ -35,6 +35,7 @@ const FR = {
     25: "800 000",
   },
   5: {
+    115: "objectif fédéral d’accès à 500 MW de capacité de calcul",
     42: "a déposé le projet de loi C-16 en décembre 2025",
     3: "Code de conduite volontaire",
     22: "Fonds d'accès informatique IA",
@@ -42,6 +43,7 @@ const FR = {
     23: "19,2 %",
   },
   6: {
+    116: "Sherwood, près de Regina",
     13: "règlement délégué",
     14: "GPU de centres de données",
     41: "1 200 MW",
