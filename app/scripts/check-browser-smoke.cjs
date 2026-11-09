@@ -1249,6 +1249,7 @@ async function main() {
     await runReceiptPermalinkSmoke(browser, baseUrl);
     await runChapterReceiptSmoke(browser, baseUrl, 5, [115]);
     await runChapterReceiptSmoke(browser, baseUrl, 6, [116]);
+    await runChapterReceiptSmoke(browser, baseUrl, 8, [117]);
     await runChapterReceiptSmoke(browser, baseUrl, 10, [77, 78, 82]);
     await runChapterReceiptSmoke(browser, baseUrl, 12, [108, 109, 110, 112]);
     await runChapterReceiptSmoke(browser, baseUrl, 13, [114]);

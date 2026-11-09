@@ -1830,5 +1830,26 @@
     "https://www.bce.ca/cs-assets/2026-t3-rapport-actionnaires.pdf-blt4e7119aab2c3a59d"
    ]
   ]
+ },
+ {
+  "id": 117,
+  "section": "Répartition de l’électricité pour les centres de données en C.-B. (9 novembre 2026)",
+  "claim": "Capacité électrique demandée et plafond en C.-B.",
+  "status": "resolved",
+  "detail": "BC Hydro a reçu 15 demandes représentant près de 800 MW pour les centres de données d’IA et les centres classiques dans son appel de 2026. L’article 3 du règlement de la C.-B. 8/2026 limite la nouvelle capacité, pour les deux années à compter du 1er février 2026, à 100 MW pour les centres classiques et à 300 MW pour les centres d’IA, plus la part inutilisée de l’enveloppe des centres classiques. Le plafond est de 400 MW pour les deux catégories réunies. Le 9 novembre, BC Hydro examinait encore les demandes et prévoyait d’annoncer les résultats après la transition gouvernementale. Les chiffres de l’appel mesurent la puissance demandée. Le processus de sélection détermine la capacité qui pourra être offerte.",
+  "links": [
+   [
+    "BC Hydro, demandes et état de l’appel de 2026 (en anglais)",
+    "https://app.bchydro.com/accounts-billing/electrical-connections/large-load/emerging-industries-connections.html"
+   ],
+   [
+    "Règlement de la C.-B. 8/2026, articles 1, 3 et 4 (en anglais)",
+    "https://www.bclaws.gov.bc.ca/civix/document/id/lc/statreg/8_2026"
+   ],
+   [
+    "Gouvernement de la C.-B., répartition des deux premières années (en anglais)",
+    "https://news.gov.bc.ca/releases/2026ECS0005-000095"
+   ]
+  ]
  }
 ]

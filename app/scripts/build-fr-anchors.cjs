@@ -53,6 +53,7 @@ const FR = {
     24: "un quinzième",
   },
   8: {
+    117: "15 demandes totalisant près de 800 MW",
     27: "54 % des projets énergétiques-transition-minéraux du monde",
     39: "22 % des installations canadiennes",
     21: "comté de Loudoun",
