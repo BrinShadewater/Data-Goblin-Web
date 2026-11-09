@@ -1855,5 +1855,22 @@
     "https://news.gov.bc.ca/releases/2026ECS0005-000095"
    ]
   ]
+ },
+ {
+  "id": 118,
+  "section": "Federal equity commitment in Cohere (October 29, 2026)",
+  "claim": "Ottawa's planned equity stake in Cohere (Ch 5 and 7)",
+  "status": "resolved",
+  "detail": "✅ On October 29, 2026, Ottawa announced a staged equity commitment of up to C$1.6 billion in Cohere alongside private investors. The federal release lists commitments from Cohere to create at least 1,000 new Canadian technical jobs and commit at least C$1.7 billion to additional computing infrastructure in Canada by 2030, and to remain incorporated and headquartered in Canada. On October 30, Cohere described a broader programme of more than C$4 billion in Canadian R&D and AI infrastructure investment through 2031, including work begun in 2024. The figures describe commitments and expectations across different periods. The earlier Cambridge project and the budget's 500 MW compute access objective are separate federal measures. | [Prime Minister of Canada, Cohere equity announcement (October 29)](https://www.pm.gc.ca/en/news/news-releases/2026/10/29/canada-announces-landmark-investment-cohere-scale-secure-sovereign-ai) · [Cohere, Canadian investment update (October 30)](https://cohere.com/blog/cohere-canada-commitment)",
+  "links": [
+   [
+    "Prime Minister of Canada, Cohere equity announcement (October 29)",
+    "https://www.pm.gc.ca/en/news/news-releases/2026/10/29/canada-announces-landmark-investment-cohere-scale-secure-sovereign-ai"
+   ],
+   [
+    "Cohere, Canadian investment update (October 30)",
+    "https://cohere.com/blog/cohere-canada-commitment"
+   ]
+  ]
  }
 ]

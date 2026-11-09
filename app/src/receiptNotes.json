@@ -136,5 +136,12 @@
       "chapter": 8,
       "section": "the-canadian-specific-carbon-arithmetic"
     }
+  },
+  "118": {
+    "passage": {
+      "chapter": 7,
+      "section": "the-cohere-case-study"
+    },
+    "references": [{ "chapter": 5, "section": "where-the-story-stands" }]
   }
 }

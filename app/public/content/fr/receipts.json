@@ -1851,5 +1851,26 @@
     "https://news.gov.bc.ca/releases/2026ECS0005-000095"
    ]
   ]
+ },
+ {
+  "id": 118,
+  "section": "Prise de participation fédérale dans Cohere (29 octobre 2026)",
+  "claim": "L’engagement d’Ottawa à prendre une participation dans Cohere",
+  "status": "resolved",
+  "detail": "Le 29 octobre 2026, Ottawa s’est engagé à investir par étapes jusqu’à 1,6 milliard de dollars canadiens dans Cohere, aux côtés d’investisseurs privés. Selon le communiqué fédéral, Cohere s’engage à créer au moins 1 000 nouveaux emplois techniques au Canada et à consacrer au moins 1,7 milliard de dollars canadiens à de nouvelles infrastructures de calcul au pays d’ici 2030. L’entreprise s’engage aussi à rester constituée en société au Canada et à y conserver son siège social. Le 30 octobre, Cohere a décrit un programme plus large de plus de 4 milliards de dollars canadiens en recherche et développement et en infrastructures d’IA au Canada d’ici 2031, qui englobe des travaux amorcés en 2024. Ces chiffres décrivent des engagements et des prévisions sur des périodes différentes. Le projet antérieur de Cambridge et l’objectif budgétaire d’accès à 500 MW de capacité de calcul relèvent de mesures fédérales distinctes.",
+  "links": [
+   [
+    "Premier ministre du Canada, annonce du 29 octobre (communiqué en anglais)",
+    "https://www.pm.gc.ca/en/news/news-releases/2026/10/29/canada-announces-landmark-investment-cohere-scale-secure-sovereign-ai"
+   ],
+   [
+    "Premier ministre du Canada, discours du 29 octobre",
+    "https://www.pm.gc.ca/fr/nouvelles/discours/2026/10/29/premier-ministre-carney-annonce-investissement-historique-cohere"
+   ],
+   [
+    "Cohere, mise à jour sur ses investissements au Canada (en anglais)",
+    "https://cohere.com/blog/cohere-canada-commitment"
+   ]
+  ]
  }
 ]

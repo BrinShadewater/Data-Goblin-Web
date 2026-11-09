@@ -174,7 +174,8 @@ function chapterBodyHtml(route, lang) {
   if (!ch) return "";
   const fr = lang === "fr";
   const links = sectionLinks[ch.number] ?? [];
-  const receipts = Object.entries(receiptNotes).filter(([, { passage }]) => passage?.chapter === ch.number);
+  const receipts = Object.entries(receiptNotes).flatMap(([id, { passage, references = [] }]) =>
+    [passage, ...references].filter((location) => location?.chapter === ch.number).map(({ section }) => ({ id, section })));
   const sections = ch.sections ?? [];
   const outlineLabel = fr ? "Dans ce chapitre" : "In this chapter";
   let b = "";
@@ -194,8 +195,8 @@ function chapterBodyHtml(route, lang) {
     }
     const source = link?.source?.[lang];
     if (source) b += `<p><strong>${fr ? "Source :" : "Source:"}</strong> <a href="${esc(source.url)}">${esc(source.label)}</a></p>`;
-    for (const [id, { passage }] of receipts) {
-      if (passage.section === link?.id) {
+    for (const { id, section } of receipts) {
+      if (section === link?.id) {
         b += `<p><a href="${fr ? "/fr" : ""}/receipts#receipt-${esc(id)}">${fr ? "Voir le reçu" : "View receipt"} #${esc(id)}</a></p>`;
       }
     }
