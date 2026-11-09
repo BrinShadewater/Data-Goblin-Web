@@ -189,6 +189,96 @@
       "find": "Même test debout, édition fauchée – en bref, parce que vous avez lancé cette perceuse cinq chapitres de suite. Pour toute revendication de faux-sœurs, demandez: **Catégorie** (sexuée, politique, commerciale, identitaire, satirique — la catégorie détermine à la fois l'analyse du préjudice et, le cas échéant, quel recours existe); **champ d'application** (étude empirique, anecdote à forte visibilité ou projection spéculative?); **portée** (Les conclusions de l'étude de 2025 sur X concernant le sous-ensemble dommageable sont le nombre à exiger avant d'accepter une réclamation pour préjudice); **recours** (Projet de loi C-16 pour le contenu sexuel; diffamation si vous avez des années et de l'argent; régime civil du Québec si vous y vivez; droits de ressemblance si le Parlement les édicte); **vérification** (qui a financé la recherche et quelle était la méthodologie?); **politique** (l'alarme et le licenciement ont tous deux des bénéficiaires — l'asymétrie partisane approximativement-2× est la constatation rare qui résiste à la capture par les deux côtés).",
       "replace": "On reprend la même grille d’analyse, cette fois pour les hypertrucages. Allons à l’essentiel : vous l’appliquez depuis cinq chapitres. Devant toute affirmation au sujet d’un hypertrucage, posez-vous les questions suivantes. **Catégorie** : s’agit-il de contenu sexuel, politique ou commercial, d’usurpation d’identité ou de satire ? La catégorie détermine comment évaluer le préjudice et quel recours est possible, s’il y en a un. **Nature des éléments de preuve** : s’agit-il d’une étude empirique, d’une anecdote très médiatisée ou d’une projection spéculative ? **Portée** : selon l’étude de 2025, le sous-ensemble des hypertrucages préjudiciables représentait 0,12 % des vues sur X. C’est le genre de chiffre à demander avant de conclure à un préjudice. **Recours** : le projet de loi C-16 pour les contenus sexuels, une poursuite en diffamation si vous avez des années devant vous et les moyens de la financer, le régime de droit civil du Québec si vous y habitez, ou des droits liés à l’utilisation de l’image d’une personne si le Parlement les inscrit un jour dans la loi. **Vérification** : qui a financé la recherche et quelle méthode a été employée ? **Enjeux politiques** : l’alarmisme comme la minimisation profitent à certains. L’asymétrie d’environ deux pour un entre les camps partisans fait partie des rares constats que ni l’un ni l’autre ne peut facilement récupérer.",
       "why": "MT mistranslated deepfakes, omitted the 0.12% of views on X, and confused dismissal of harm with dismissal from employment. Restore all six parts of the English test, including the qualified remedies and the roughly two-to-one partisan asymmetry."
+    },
+    {
+      "file": "chapters/ch13.json",
+      "find": "**La Loi électorale du Canada.** La Loi comprend des dispositions interdisant de faire de fausses déclarations au sujet de candidats qui ont une incidence sur les résultats du vote (article 91), mais ces dispositions sont très longues à poursuivre et visent la désinformation traditionnelle plutôt que les médias synthétiques en particulier. Élections Canada a publié des lignes directrices sur le contenu généré par l'IA, mais n'a pas de pouvoir d'application de la loi en profondeur.",
+      "replace": "**La Loi électorale du Canada.** L’article 480.1 tient compte de la personne représentée, du geste posé et de l’intention de tromper. Si une fausse déclaration d’appui met en scène une personne absente de la liste, il faut examiner séparément les autres lois qui peuvent s’appliquer.",
+      "why": "Align the French edition with Bill C-25 and the amended Canada Elections Act."
+    },
+    {
+      "file": "chapters/ch13.json",
+      "find": "- **Dispositions électorales spécifiques.** Plusieurs États américains ont adopté des lois politiques fallacieuses visant spécifiquement le contexte électoral (AB 2839 (2024) de California, successeur du coucher du soleil AB 730 — bien que l'AB 28 39 ait été provisoirement enjoint comme inconstitutionnel dans *Kohls c. Bonta* (2024), de sorte que sa force exécutoire est contestée; Texas SB 751; autres). Le Canada n'a pas d'équivalent.",
+      "replace": "- **Divulgation électorale.** Certains États américains prévoient des restrictions ou des obligations de divulgation propres aux élections, dont la mesure contestée AB 2839 en Californie. L’article 480.1 du Canada vise certains actes d’usurpation de qualité et des contenus trompeurs impliquant les personnes désignées. Il n’impose aucune obligation générale d’étiqueter les contenus de campagne synthétiques.",
+      "why": "Align the French edition with Bill C-25 and the amended Canada Elections Act."
+    },
+    {
+      "file": "chapters/ch13.json",
+      "find": "**L'image structurelle.** La réglementation canadienne sur les faux-sangs est **parmi les juridictions les plus étroites de ces pays** : couvrant le contenu sexualisé par le droit pénal et laissant essentiellement tout le reste aux mécanismes juridiques généraux existants qui ne sont pas conçus pour la technologie. Il s'agit du cadre réglementaire que la stratégie d'IA pour tous accepte implicitement, puisque la stratégie ne s'engage pas à adopter une législation plus large sur les faux-semblants.",
+      "replace": "**Le portrait d’ensemble.** Le droit fédéral prévoit des règles ciblées pour certaines images intimes et certains actes d’usurpation de qualité électorale. Dans les autres cas, les recours dépendent des faits et de la loi applicable.",
+      "why": "Align the French edition with Bill C-25 and the amended Canada Elections Act."
+    },
+    {
+      "file": "chapters/ch13.json",
+      "find": "**Canada.** La Loi visant à protéger les victimes étend le droit criminel fédéral à certaines images intimes de synthèse qui peuvent passer pour de vrais enregistrements. Elle exige leur effacement dans les 48 heures suivant une ordonnance rendue dans les conditions prévues par le Code criminel. Aux États-Unis, le délai court plutôt à compter de la réception d’une demande valide par une plateforme visée. Le Québec dispose aussi d’une procédure civile distincte. Les modifications fédérales ne créent ni infraction propre aux hypertrucages politiques, ni obligation générale de signaler les contenus générés par IA, ni organisme de réglementation des plateformes.\n\n",
+      "replace": "**Canada.** La Loi visant à protéger les victimes étend le droit criminel fédéral à certaines images intimes de synthèse qui peuvent passer pour de vrais enregistrements. Elle exige leur effacement dans les 48 heures suivant une ordonnance rendue dans les conditions prévues par le Code criminel. Aux États-Unis, le délai court plutôt à compter de la réception d’une demande valide par une plateforme visée. Le Québec dispose aussi d’une procédure civile distincte. Les modifications fédérales ne créent ni infraction propre aux hypertrucages politiques, ni obligation générale de signaler les contenus générés par IA, ni organisme de réglementation des plateformes. Séparément, l’article 480.1 de la Loi électorale du Canada vise certaines images et certains enregistrements trompeurs impliquant les personnes désignées.\n\n",
+      "why": "Align the French edition with Bill C-25 and the amended Canada Elections Act."
+    },
+    {
+      "file": "chapters/ch13.json",
+      "find": "La comparaison n'est pas un argument selon lequel le Canada devrait adopter un cadre particulier pour les pays pairs. Chaque cadre reflète des contextes politiques spécifiques et des compromis. **La comparaison est une cartographie honnête de l'endroit où se trouve le Canada dans la comparaison internationale entre pairs : beaucoup de retard sur l'étendue de la couverture, l'écart étant concentré sur la réglementation politique et profonde, sur les mesures d'application civile du volet plate-forme et sur la divulgation du contenu d'IA.** La question de savoir si cette lacune doit être comblée et par quel mécanisme est contestée. Qu'il existe n'est pas.",
+      "replace": "La comparaison montre les différences entre les outils. Le Canada prévoit des infractions ciblées en matière électorale et d’images intimes. Les obligations plus larges des plateformes, les recours civils et la divulgation des contenus générés par l’IA restent des questions distinctes.",
+      "why": "Align the French edition with Bill C-25 and the amended Canada Elections Act."
+    },
+    {
+      "file": "chapters/ch13.json",
+      "find": "**Pour les fous politiques.** Le cadre canadien actuel n'a essentiellement aucun remède spécifique pour les infidèles politiques non sexualisés (une vidéo fausse d'un politicien disant quelque chose qu'ils n'ont pas dit, par exemple). Un cadre de droits de ressemblance offrirait un recours : le politicien (ou toute personne représentée) aurait une réclamation contre l'utilisation commerciale non autorisée de leur ressemblance, quel que soit le contenu spécifique. **Cela permet de combler directement le fossé politique profond qui existe en matière de réglementation.**",
+      "replace": "**Pour les hypertrucages politiques.** L’article 480.1 prévoit une infraction fédérale lorsque les conditions prévues par la loi sont remplies. Le régime proposé de droits à l’image aurait une autre fonction. Il permettrait aux personnes d’intenter une action civile pour certains usages non autorisés de leur image, y compris des usages hors du champ de cette infraction électorale.",
+      "why": "Align the French edition with Bill C-25 and the amended Canada Elections Act."
+    },
+    {
+      "file": "chapters/ch13.json",
+      "find": "> - L'écart de réglementation entre les partis politiques et le peuple a été établi honnêtement — diffamation, Loi électorale du Canada, loi sur la protection des renseignements personnels, dispositions pénales, responsabilité délictuelle en common law, tous disponibles, mais aucun conçu pour la technologie, aucun ne fournissant la réparation opérationnelle complète que les juridictions de pairs ont établie.",
+      "replace": "> - Les règles sur l’usurpation de qualité électorale issues du projet de loi C-25, dont les personnes et les actes visés, l’intention de tromper et l’exception pour la parodie ou la satire manifeste.",
+      "why": "Align the French edition with Bill C-25 and the amended Canada Elections Act."
+    },
+    {
+      "file": "chapters/ch13.json",
+      "find": "> - Le cadre de comparaison international — le Canada est l'un des cadres réglementaires les plus étroits du groupe de pairs étudiés, avec des lacunes spécifiques dans la couverture politique, l'application civile côté plate-forme et la divulgation du contenu IA par rapport aux États-Unis, au Royaume-Uni, à l'Australie, à la UE, à Singapour, àla Corée du Sud et au Japon.",
+      "replace": "> - La comparaison internationale, dont les différences en matière de couverture électorale, d’obligations des plateformes, de recours civils et de divulgation des contenus générés par l’IA.",
+      "why": "Align the French edition with Bill C-25 and the amended Canada Elections Act."
+    },
+    {
+      "file": "chapters/ch13.json",
+      "find": "Vous pouvez maintenant lire n'importe quelle revendication canadienne liée à des fauconneries profondes avec la base empirique pour reconnaître ce que le paysage documenté ressemble réellement: réel mais limité, structurellement genre d'une certaine manière et partisan-asymétrique d'autres, et réglementé par l'un des cadres les plus étroits parmi les démocraties comparables. La conversation profonde dans le discours public canadien oscille entre l'alarme et le licenciement. Les données empiriques se trouvent au milieu, avec des constatations précises que les politiques peuvent susciter et des lacunes spécifiques que ces politiques pourraient combler.",
+      "replace": "L’étude de l’élection de 2025 mesure la fréquence et la portée des hypertrucages. Les modifications de 2026 changent la loi. Les deux permettent de distinguer les préjudices documentés des actes effectivement visés par le texte.",
+      "why": "Align the French edition with Bill C-25 and the amended Canada Elections Act."
+    },
+    {
+      "file": "chapters/ch17.json",
+      "find": "*Des démêlés politiques.* Le projet de loi C-16 porte sur les crimes sexuels; les crimes politiques sont régis par la diffamation générale, la loi électorale et le délit délictueux, dont aucun n'a été conçu pour les médias synthétiques.\n\n",
+      "replace": "",
+      "why": "Align the French edition with Bill C-25 and the amended Canada Elections Act."
+    },
+    {
+      "file": "chapters/ch17.json",
+      "find": "**Canada.** Projet de loi C-16 (défauts sexuels seulement), Registre d'IA du Conseil du Trésor et Stratégie d'IA de la fonction publique fédérale (usage interne seulement), LPRPDE (loi sur la protection des renseignements personnels de 2000 avec directives sur l'IA du CPVP), Loi québécoise 25 (couvrant 23 % de la population, dont la portée est solide), Loi sur le travail pour les travailleurs de l'Ontario (divulgation d'une IA seulement), divers documents d'orientation sectoriels du CPPO, CRTC, BSIF. **Aucune loi fédérale complète sur l'IA. Aucun organisme fédéral désigné de réglementation de l'IA n'a d'autorité transversale. Aucun cadre contraignant de classification des risques d'IA.**",
+      "replace": "**Canada.** La Loi visant à protéger les victimes couvre certaines images intimes, et l’article 480.1 de la Loi électorale du Canada vise certains actes d’usurpation de qualité électorale. Parmi les autres mesures figurent la stratégie d’IA de la fonction publique fédérale, le registre de l’IA du Conseil du Trésor, le droit fédéral de la vie privée et des mesures provinciales comme la loi 25 du Québec. Le Canada n’a pas de loi fédérale générale sur l’IA.",
+      "why": "Align the French edition with Bill C-25 and the amended Canada Elections Act."
+    },
+    {
+      "file": "chapters/ch20.json",
+      "find": "- Couverture des conflits politiques que la législation canadienne actuelle ne traite pas",
+      "replace": "- Un recours civil possible pour des usages non autorisés de l’image hors du champ de l’infraction d’usurpation de qualité électorale prévue à l’article 480.1",
+      "why": "Align the French edition with Bill C-25 and the amended Canada Elections Act."
+    },
+    {
+      "file": "chapters/ch20.json",
+      "find": "**Le moment politique canadien actuel.** Le gouvernement Carney a pris ses fonctions en 2025 et s'est engagé à *IA pour tous* en tant que stratégie fédérale d'IA, axée sur l'investissement plutôt que sur la réglementation. Elle n'a pas pris l'engagement de relancer l'AIDA ni d'une réforme globale de la protection de la vie privée — et le même blanc traverse les lacunes documentées du reste du guide : aucun engagement à élargir le Registre IA du Conseil du Trésor, à intégrer la souveraineté des données autochtones, à divulguer l'environnement de l'IA, à adopter une législation politique fallacieuse, à assurer la coordination fédérale-provinciale ou à ratifier la Convention-cadre du Conseil de l ' Europe qu'elle a signée en février 2025. **Le choix du gouvernement actuel est de s'attaquer à l'IA principalement par le biais d'une stratégie industrielle plutôt que par la réglementation.** Il s'agit d'un choix; d'autres choix sont disponibles.",
+      "replace": "**Le contexte politique canadien.** Le gouvernement Carney a mis l’accent sur l’investissement dans *IA pour tous*. Le projet de loi C-25 montre aussi que des règles ciblées peuvent passer par des lois existantes. Les autres propositions de ce chapitre exigeraient leurs propres décisions législatives ou politiques.",
+      "why": "Align the French edition with Bill C-25 and the amended Canada Elections Act."
+    },
+    {
+      "file": "chapters/ch13.json",
+      "find": "- **Sanctions financières importantes en cas de non-respect** qui créent de véritables incitations côté plate-forme. La loi britannique sur la sécurité en ligne autorise des amendes allant jusqu'à 18 millions de livres sterling ou 10 % des recettes annuelles mondiales. Le cadre australien prévoit des sanctions civiles pouvant atteindre 782 500 dollars des États-Unis par infraction. Le Canada n'a pas d'équivalent pour les rapaces profonds non sexuels.",
+      "replace": "- **Sanctions financières importantes en cas de non-respect** qui créent de véritables incitations côté plate-forme. La loi britannique sur la sécurité en ligne autorise des amendes allant jusqu'à 18 millions de livres sterling ou 10 % des recettes annuelles mondiales. Le cadre australien prévoit des sanctions civiles pouvant atteindre 782 500 dollars des États-Unis par infraction. L’article 480.1 crée une infraction d’usurpation de qualité et ne fixe aucune obligation générale de conformité pour les plateformes.",
+      "why": "Distinguish electoral impersonation from broader AI or platform obligations."
+    },
+    {
+      "file": "chapters/ch17.json",
+      "find": "**La réalité institutionnelle post-AIDA.** Canada n'a pas de loi fédérale exhaustive spécifique à l'IA en vigueur. Des mesures fédérales spécifiques ont été prises en matière d'IA (projet de loi C-16, registre de l'IA, diverses orientations sectorielles des régulateurs), mais elles n'ont pas été équivalentes à la loi sur l'IA, à la Loi britannique sur la sécurité en ligne, au cadre du commissaire australien à la sécurité électronique, à l'approche PDPA-plus-IA-Governance-Framework de Singapour ou aux divers cadres étatiques américains. Le Commissariat à la protection de la vie privée fonctionne en vertu d'une loi de 2000 sur la protection des renseignements personnels. La politique d'IA du Conseil du Trésor sur les services fédéraux et publics fait face à l'interne du gouvernement. La réglementation provinciale varie considérablement — la loi 25 du Québec couvre certaines questions d'IA au Québec; la plupart des provinces en ont beaucoup moins.",
+      "replace": "**La réalité institutionnelle post-AIDA.** Canada n'a pas de loi fédérale exhaustive spécifique à l'IA en vigueur. Des mesures fédérales spécifiques ont été prises en matière d'IA (la Loi visant à protéger les victimes, les modifications sur l’usurpation de qualité électorale issues du projet de loi C-25, registre de l'IA, diverses orientations sectorielles des régulateurs), mais elles n'ont pas été équivalentes à la loi sur l'IA, à la Loi britannique sur la sécurité en ligne, au cadre du commissaire australien à la sécurité électronique, à l'approche PDPA-plus-IA-Governance-Framework de Singapour ou aux divers cadres étatiques américains. Le Commissariat à la protection de la vie privée fonctionne en vertu d'une loi de 2000 sur la protection des renseignements personnels. La politique d'IA du Conseil du Trésor sur les services fédéraux et publics fait face à l'interne du gouvernement. La réglementation provinciale varie considérablement — la loi 25 du Québec couvre certaines questions d'IA au Québec; la plupart des provinces en ont beaucoup moins.",
+      "why": "Distinguish electoral impersonation from broader AI or platform obligations."
     }
   ]
 }

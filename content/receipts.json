@@ -1783,5 +1783,22 @@
     "https://www150.statcan.gc.ca/n1/daily-quotidien/261009/dq261009d-eng.htm?indgeo=0&indid=4209-1"
    ]
   ]
+ },
+ {
+  "id": 114,
+  "section": "Federal electoral impersonation (November 8, 2026)",
+  "claim": "Bill C-25 and electoral impersonation (Ch 13, 17, 20)",
+  "status": "resolved",
+  "detail": "✅ Bill C-25 received royal assent on June 18, 2026. Section 48 expanded the federal electoral impersonation offence. The amended section 480.1 covers the creation and sharing of specified deceptive images, voice imitations and false recordings of listed people when done with intent to mislead. The listed people include candidates, certain party leaders and election officials. Manifest parody or satire is excepted where established by the person. Section 87 makes this amendment applicable even to federal elections called within six months after royal assent. The amendment postdates the April 2025 federal election. | [Canada Elections Act, section 480.1](https://laws-lois.justice.gc.ca/eng/acts/E-2.01/section-480.1.html) · [Bill C-25 at royal assent, sections 48 and 87](https://www.parl.ca/documentviewer/en/45-1/bill/C-25/royal-assent)",
+  "links": [
+   [
+    "Canada Elections Act, section 480.1",
+    "https://laws-lois.justice.gc.ca/eng/acts/E-2.01/section-480.1.html"
+   ],
+   [
+    "Bill C-25 at royal assent, sections 48 and 87",
+    "https://www.parl.ca/documentviewer/en/45-1/bill/C-25/royal-assent"
+   ]
+  ]
  }
 ]

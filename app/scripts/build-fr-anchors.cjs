@@ -79,6 +79,7 @@ const FR = {
   // phrases actually live in; they had been dead in English, so they had never
   // needed a French phrase before.
   13: {
+    114: "a élargi l’infraction fédérale d’usurpation de qualité électorale",
     12: "cas aggravés",
     4: "Danemark",
     32: { "0.12%-of-views (on X)": "0,12\u00a0% des vues sur X" },
