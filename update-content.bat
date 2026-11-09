@@ -27,6 +27,13 @@ if errorlevel 1 (
 )
 
 echo [2/4] Copying site\content -^> site\app\public\content
+if exist "%SITE_DIR%..\French-Receipts.json" (
+  %PY_CMD% "%SITE_DIR%pipeline\authored_fr.py" "%SITE_DIR%.." --content "%SITE_DIR%content"
+  if errorlevel 1 (
+    echo Reviewed French receipts need to be reconciled before copying.
+    exit /b 1
+  )
+)
 robocopy "%CONTENT_DIR%" "%APP_CONTENT_DIR%" /E /NFL /NDL /NJH /NJS /NP >nul
 if errorlevel 8 (
   echo Copy failed.

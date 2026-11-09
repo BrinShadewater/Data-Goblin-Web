@@ -16,10 +16,14 @@ Toolchain (see FRENCH-EDITION-HANDOFF.md):
   Argos en_fr model unpacked at $DG_MT_MODEL (model/ + sentencepiece.model)
 """
 import os, re, sys, json, glob, time, hashlib
+from pathlib import Path
+
+from authored_fr import load_authored, localize_passage
 
 MODEL_DIR = os.environ.get("DG_MT_MODEL", "/tmp/en_fr_pkg/translate-en_fr-1_9")
 SRC = os.environ.get("DG_CONTENT_SRC", "app/public/content")
 OUT = os.environ.get("DG_CONTENT_OUT", "app/public/content/fr")
+AUTHORED = load_authored(os.environ.get("DG_MANUSCRIPT_ROOT", Path(__file__).resolve().parents[2]))
 
 import ctranslate2, sentencepiece as spm
 
@@ -251,12 +255,18 @@ def translate_book(b):
 
 def translate_chapter(d):
     d = json.loads(json.dumps(d))
+    reviewed = AUTHORED["passages"].get(str(d.get("number")), {})
     for f in ("title", "part", "region", "startHere", "biasLabel"):
         if isinstance(d.get(f), str):
             d[f] = tr_text(d[f])
     for sec in d.get("sections", []):
+        passages = reviewed.get(sec.get("heading"))
         if "heading" in sec: sec["heading"] = tr_text(sec["heading"])
-        if "markdown" in sec: sec["markdown"] = tr_text(sec["markdown"])
+        if "markdown" in sec:
+            sec["markdown"] = (localize_passage(sec["markdown"], passages, tr_text)
+                               if passages else tr_text(sec["markdown"]))
+            if passages:
+                sec["authoredParagraphs"] = len(passages)
     for g in d.get("goblinChecks", []):
         if "markdown" in g: g["markdown"] = tr_text(g["markdown"])
     if isinstance(d.get("recap"), list):
@@ -274,6 +284,10 @@ def translate_glossary(arr):
 def translate_receipts(arr):
     arr = json.loads(json.dumps(arr))
     for e in arr:
+        reviewed = AUTHORED["receipts"].get(str(e["id"]))
+        if reviewed:
+            e.update(reviewed)
+            continue
         if "claim" in e:  e["claim"] = tr_text(e["claim"])
         if "detail" in e: e["detail"] = tr_text(e["detail"])
     return arr
@@ -339,13 +353,18 @@ def _write(path, data):
 # changed since the last run, recorded in fr/.translation-manifest.json.
 MANIFEST = f"{OUT}/.translation-manifest.json"
 
-def _src_fingerprint(path):
+def _src_fingerprint(path, name):
     """SHA-256 of the EN source file's bytes. Missing file -> None."""
     try:
         h = hashlib.sha256()
         with open(path, "rb") as f:
             for chunk in iter(lambda: f.read(65536), b""):
                 h.update(chunk)
+        reviewed = AUTHORED["receipts"] if name == "receipts" else (
+            AUTHORED["passages"].get(str(int(name[2:]))) if name.startswith("ch") else None
+        )
+        if reviewed:
+            h.update(json.dumps(reviewed, sort_keys=True).encode("utf-8"))
         return h.hexdigest()
     except FileNotFoundError:
         return None
@@ -391,7 +410,7 @@ def main(argv):
 
     manifest = _load_manifest()
     units = _units()
-    selected = [(n, g, s, fn, o, _src_fingerprint(s)) for (n, g, s, fn, o) in units if want(n, g)]
+    selected = [(n, g, s, fn, o, _src_fingerprint(s, n)) for (n, g, s, fn, o) in units if want(n, g)]
     # Under --changed, keep only docs whose fingerprint differs from the manifest
     # (or that were never translated). A None fingerprint means the source is gone.
     stale = [t for t in selected if t[5] is not None and manifest.get(t[0]) != t[5]]

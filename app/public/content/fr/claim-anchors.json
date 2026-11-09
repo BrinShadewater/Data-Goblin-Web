@@ -197,6 +197,26 @@
    "anchor": "projet de loi C-16",
    "id": 49,
    "status": "resolved"
+  },
+  {
+   "anchor": "a changé les profils recherchés",
+   "id": 108,
+   "status": "resolved"
+  },
+  {
+   "anchor": "animer du matériel d’archives",
+   "id": 109,
+   "status": "resolved"
+  },
+  {
+   "anchor": "plusieurs centaines de personnes",
+   "id": 110,
+   "status": "resolved"
+  },
+  {
+   "anchor": "refusé de laisser un producteur modéliser leur voix",
+   "id": 112,
+   "status": "resolved"
   }
  ],
  "13": [
@@ -231,6 +251,18 @@
    "status": "resolved"
   }
  ],
+ "14": [
+  {
+   "anchor": "Loi sur les nouvelles en ligne",
+   "id": 98,
+   "status": "resolved"
+  },
+  {
+   "anchor": "640 médias locaux",
+   "id": 99,
+   "status": "resolved"
+  }
+ ],
  "15": [
   {
    "anchor": "retour en arrière du GPT-4o",
@@ -258,6 +290,16 @@
    "anchor": "CWA Canada",
    "id": 9,
    "status": "fixed"
+  },
+  {
+   "anchor": "19 % des 446",
+   "id": 111,
+   "status": "resolved"
+  },
+  {
+   "anchor": "26 % moins d’emplois salariés",
+   "id": 113,
+   "status": "resolved"
   }
  ],
  "17": [

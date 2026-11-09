@@ -1571,17 +1571,17 @@
  {
   "id": 98,
   "section": "Citation-precision pass — June 18, 2026",
-  "claim": "Online News Act (C-18), Meta bloc, Google deal (Ch 14)",
+  "claim": "Loi sur les nouvelles en ligne, blocage de Meta et entente de Google (chap. 14)",
   "status": "resolved",
-  "detail": "• CONFIRMED 2026-06-20 (primaire). Loi sur les nouvelles en ligne (projet de loi C-18) sanction royale le 22 juin 2023; règlement final publié le 15 décembre 2023 (en vigueur le 19 décembre; Gazette du Canada Partie II, 3 janvier 2024). Meta a bloqué les nouvelles canadiennes sur Facebook/Instagram à partir d'août 2023, toujours en vigueur (CRTC 3 déc. 2025 lettre : aucune mesure réglementaire prévue, « continuera de surveiller la situation »). Marché de Google : ~100 M$/an indexés à l'inflation en un seul collectif (Collective du journalisme canadien) en échange d'une exemption de 5 ans de la négociation obligatoire (annonce du 29 novembre 2023). **LEAN : primaire gouvernement/régulateur (statut, Patrimoine, CRTC); les choix opposés des plateformes (blocs Meta, Google-pay) sont auto-intéressés.**  |  [LÉGISinfo C-18](https://www.parl.ca/legisinfo/en/bill/44-1/c-18)  ·  [Heritage final regs + Google deal](https://www.canada.ca/en/canadian-heritage/news/2023/12/minister-st-onge-releases-final-regulations-for-the-online-news-act.html)  ·  [Métalettre du CRTC (déc. 2025)](https://crtc.gc.ca/eng/archive/2025/lb251203.htm)",
+  "detail": "✅ Vérifié le 8 novembre 2026. Sanction royale le 22 juin 2023 et entrée en vigueur du règlement le 19 décembre 2023. Meta a commencé à bloquer les nouvelles sur Facebook et Instagram pour les personnes au Canada en août 2023. Le personnel du CRTC a annoncé en décembre 2025 qu’il poursuivrait sa surveillance. Le CRTC a accordé au moteur de recherche Google une exemption de cinq ans de la négociation obligatoire à compter du 28 octobre 2024, sous réserve du maintien de l’accord. La contribution annuelle au Collectif canadien de journalisme est de 100 millions de dollars, ajustée selon l’inflation. | [Annonce de Meta (en anglais)](https://about.fb.com/news/2023/06/changes-to-news-availability-on-our-platforms-in-canada/amp/)",
   "links": [
    [
     "LEGISinfo C-18",
     "https://www.parl.ca/legisinfo/en/bill/44-1/c-18"
    ],
    [
-    "Heritage final regs + Google deal",
-    "https://www.canada.ca/en/canadian-heritage/news/2023/12/minister-st-onge-releases-final-regulations-for-the-online-news-act.html"
+    "Ordonnance d’exemption du CRTC",
+    "https://crtc.gc.ca/fra/archive/2024/2024-262.htm"
    ],
    [
     "CRTC Meta letter (Dec 2025)",
@@ -1592,17 +1592,17 @@
  {
   "id": 99,
   "section": "Citation-precision pass — June 18, 2026",
-  "claim": "effondrement des revenus des nouvelles + fermetures locales (Ch 14)",
+  "claim": "Recul des revenus des journaux et fermetures de médias locaux (chap. 14)",
   "status": "resolved",
-  "detail": "• CONFIRMED 2026-06-20 (primaire). StatCan « Éditeurs de journaux, 2024 » (Le Quotidien, 10 novembre 2025) : total des revenus d'exploitation 1,6 milliard de dollars, en baisse de 17,9% par rapport à 2022; les ventes publicitaires ont chuté de 26,1% à 722,8 millions de dollars (annonce imprimée −34,3%; publicité numérique −11,9%). Fermetures locales: Projet de recherche TMU Local News / Local News Map — 603 agences de presse locales ont fermé leurs portes dans 388 communautés entre 2008 et le 1er octobre 2025 (une fraction seulement a relancé et survécu); \"news désert\" cadrage. **C'est le plancher pré-IA — le déclin est la migration de publicité, PAS l'IA générative.**   **LEAN: gouvernement (StatCan) + académique/sans but lucratif (TMU / April Lindgren).**  |  [StatCan journaux 2024](https://www150.statcan.gc.ca/n1/daily-quotidien/251110/dq251110a-eng.htm)  ·  [Projet de recherche sur les nouvelles locales (octobre 2025)](https://localnewsresearchproject.ca/2025/10/31/the-rise-of-news-deserts-local-journalism-in-crisis/)",
+  "detail": "✅ Vérifié le 8 novembre 2026. En 2024, les revenus d’exploitation des éditeurs de journaux s’élevaient à 1,6 milliard de dollars, en baisse de 17,9 % par rapport à 2022. Les ventes publicitaires ont diminué de 26,1 % pour s’établir à 722,8 millions de dollars. Au 1er octobre 2026, la carte recensait 640 médias locaux fermés dans 407 collectivités depuis 2008 et 286 médias lancés au cours de la même période et encore en activité. L’équipe vérifie les contributions du public et ajoute des événements antérieurs à mesure qu’elle les découvre.",
   "links": [
    [
-    "StatCan newspapers 2024",
-    "https://www150.statcan.gc.ca/n1/daily-quotidien/251110/dq251110a-eng.htm"
+    "Statistique Canada, Éditeurs de journaux, 2024",
+    "https://www150.statcan.gc.ca/n1/daily-quotidien/251110/dq251110a-fra.htm"
    ],
    [
-    "Local News Research Project (Oct 2025)",
-    "https://localnewsresearchproject.ca/2025/10/31/the-rise-of-news-deserts-local-journalism-in-crisis/"
+    "Rapport de la Local News Map, 1er octobre 2026 (PDF en anglais)",
+    "https://s35582.pcdn.co/wp-content/uploads/2026/10/LocalNewsMapDataOctober2026.pdf"
    ]
   ]
  },
@@ -1683,6 +1683,100 @@
    [
     "DFRLab — AI news channels",
     "https://dfrlab.org/2025/07/17/ai-generated-news-channels-spread-election-fraud-and-separatist-narratives-in-canada/"
+   ]
+  ]
+ },
+ {
+  "id": 108,
+  "section": "Cinéma, art et travail créatif au Canada (8 novembre 2026)",
+  "claim": "Rebelles et le travail derrière les images",
+  "status": "resolved",
+  "detail": "La série d’animation franco-ontarienne *Rebelles* a eu recours à l’IA pour recréer des éléments historiques. La productrice Renée de Sousa explique que cette méthode a changé les profils recherchés. Une même personne pouvait assumer plusieurs fonctions que l’équipe aurait normalement traitées séparément. La productrice s’attendait à gagner du temps et dit que ce gain ne s’est pas concrétisé. Il a fallu près de deux ans pour réaliser la série. Son témoignage décrit une nouvelle organisation du travail, sans chiffrer les contrats ni les journées rémunérées gagnés ou perdus.",
+  "links": [
+   [
+    "Communiqué de TFO",
+    "https://apropos.tfo.org/nouvelles/2026/09/14/00/00/rebelles-une-production-originale-tfo-remporte-un-prix-gemeaux"
+   ],
+   [
+    "Entretien avec Renée de Sousa",
+    "https://larotonde.ca/rebelles-la-serie-danimation-franco-ontarienne-couronnee-aux-prix-gemeaux/"
+   ]
+  ]
+ },
+ {
+  "id": 109,
+  "section": "Cinéma, art et travail créatif au Canada (8 novembre 2026)",
+  "claim": "Crimes du Nord et l’animation des archives",
+  "status": "resolved",
+  "detail": "Casadel Films a produit *Crimes du Nord* pour Historia, qui a diffusé les trois épisodes en mars 2026. Selon le Fonds des médias du Canada, l’équipe a utilisé l’IA pour animer du matériel d’archives. Le document d’origine et le mouvement qu’on y a ajouté ont des provenances distinctes. La fiche de Casadel nomme des membres de l’équipe, dont les monteurs. Les sources publiques consultées ne donnent ni les cotes d’écoute canadiennes par épisode ni le détail des journées de travail rémunérées.",
+  "links": [
+   [
+    "Reportage du Fonds des médias du Canada",
+    "https://cmf-fmc.ca/fr/futur-et-medias/articles/le-virage-de-lia-samorce-chez-les-producteurs-dici/"
+   ],
+   [
+    "Fiche de production et générique de Casadel",
+    "https://casadelfilms.com/projets/crimes-du-nord/"
+   ]
+  ]
+ },
+ {
+  "id": 110,
+  "section": "Cinéma, art et travail créatif au Canada (8 novembre 2026)",
+  "claim": "Fréquentation et opposition à une exposition sur l’IA à Toronto",
+  "status": "resolved",
+  "detail": "À Toronto, l’exposition *AiRTIFICIAL Visions* a accueilli plusieurs centaines de personnes en 2026, selon l’ICFF, son organisateur. Des artistes de la région ont annoncé une contre-exposition d’œuvres réalisées par des personnes, à présenter dans des camions près du lieu de l’événement. Le chiffre publié concerne l’exposition sur l’IA. Il ne renseigne ni sur l’opinion des personnes qui l’ont visitée ni sur la fréquentation de la contre-exposition.",
+  "links": [
+   [
+    "Bilan de fréquentation de l’ICFF",
+    "https://icff.ca/icff-closes-15th-anniversary-edition/"
+   ],
+   [
+    "Couverture locale de la contre-exposition",
+    "https://www.villagereport.ca/village-picks/toronto-protest-ai-art-exhibition-human-made-show-12463382"
+   ]
+  ]
+ },
+ {
+  "id": 111,
+  "section": "Cinéma, art et travail créatif au Canada (8 novembre 2026)",
+  "claim": "Possibilités de travail rémunéré dans le secteur culturel ontarien",
+  "status": "resolved",
+  "detail": "En 2025, 446 personnes travaillant dans le secteur culturel en Ontario ont répondu à une question sur l’IA. Parmi elles, 19 % estimaient que l’IA avait réduit les possibilités de travail rémunéré dans leur domaine. La participation au sondage était volontaire. Le résultat décrit la situation telle que ces personnes la percevaient. Il ne permet pas de compter celles qui ont elles-mêmes perdu un emploi ou un contrat.",
+  "links": [
+   [
+    "Nordicity et Work in Culture, Making It Work 2026, figure 32 et méthodologie",
+    "https://www.ontariocreates.ca/uploads/Making-It-Work-2026_Pathways-to-Sustainable-Cultural-Careers.pdf"
+   ]
+  ]
+ },
+ {
+  "id": 112,
+  "section": "Cinéma, art et travail créatif au Canada (8 novembre 2026)",
+  "claim": "Modélisation de la voix et perte de contrats",
+  "status": "resolved",
+  "detail": "En novembre 2025, Tania Kontoyanni, qui représentait l’Union des artistes, a expliqué le choix auquel certaines personnes interprètes étaient confrontées. Des producteurs voulaient ajouter aux contrats une autorisation de modéliser leur voix. En cas de refus, les producteurs pouvaient confier le travail à un autre artiste. Devant un comité de la Chambre des communes, Mme Kontoyanni a indiqué que des artistes avaient perdu des contrats de cette façon. Son témoignage décrit le mécanisme, sans préciser le nombre de contrats en cause.",
+  "links": [
+   [
+    "Témoignage à la Chambre des communes, 5 novembre 2025",
+    "https://www.ourcommons.ca/documentviewer/fr/45-1/CHPC/reunion-12/temoignages"
+   ]
+  ]
+ },
+ {
+  "id": 113,
+  "section": "Cinéma, art et travail créatif au Canada (8 novembre 2026)",
+  "claim": "Emplois salariés du film et rémunération en postproduction",
+  "status": "resolved",
+  "detail": "Selon les données de Statistique Canada sur l’emploi salarié, les industries du film et de la vidéo comptaient 26 % moins d’emplois en novembre 2025 qu’en novembre 2022. Dans une autre enquête, les entreprises de postproduction ont déclaré avoir consacré 14,4 % de moins aux salaires, aux traitements et aux avantages sociaux en 2025 qu’en 2023. Le premier chiffre porte sur le nombre d’emplois salariés. Le second porte sur les dépenses totales de rémunération en postproduction. Les deux indiquent un recul, sans permettre d’en attribuer une part précise à l’IA.",
+  "links": [
+   [
+    "Analyse de Statistique Canada sur l’emploi salarié, graphique 2",
+    "https://www150.statcan.gc.ca/n1/pub/36-28-0001/2026003/article/00003-fra.htm"
+   ],
+   [
+    "Enquête de Statistique Canada sur la postproduction",
+    "https://www150.statcan.gc.ca/n1/daily-quotidien/261009/dq261009d-fra.htm?indgeo=0&indid=4209-1"
    ]
   ]
  }
