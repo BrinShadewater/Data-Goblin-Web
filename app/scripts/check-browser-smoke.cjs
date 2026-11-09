@@ -1247,6 +1247,8 @@ async function main() {
     await runReceiptLocaleLoadingSmoke(browser, baseUrl);
     await runLatestUpdateSmoke(browser, baseUrl);
     await runReceiptPermalinkSmoke(browser, baseUrl);
+    await runChapterReceiptSmoke(browser, baseUrl, 5, [115]);
+    await runChapterReceiptSmoke(browser, baseUrl, 6, [116]);
     await runChapterReceiptSmoke(browser, baseUrl, 10, [77, 78, 82]);
     await runChapterReceiptSmoke(browser, baseUrl, 12, [108, 109, 110, 112]);
     await runChapterReceiptSmoke(browser, baseUrl, 13, [114]);

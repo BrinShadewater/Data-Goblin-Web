@@ -63,6 +63,11 @@
    "anchor": "a déposé le projet de loi C-16 en décembre 2025",
    "id": 42,
    "status": "open"
+  },
+  {
+   "anchor": "objectif fédéral d’accès à 500 MW de capacité de calcul",
+   "id": 115,
+   "status": "resolved"
   }
  ],
  "6": [
@@ -90,6 +95,11 @@
    "anchor": "1 200 MW",
    "id": 41,
    "status": "open"
+  },
+  {
+   "anchor": "Sherwood, près de Regina",
+   "id": 116,
+   "status": "resolved"
   }
  ],
  "7": [

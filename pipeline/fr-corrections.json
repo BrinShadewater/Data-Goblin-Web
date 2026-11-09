@@ -279,6 +279,30 @@
       "find": "**La réalité institutionnelle post-AIDA.** Canada n'a pas de loi fédérale exhaustive spécifique à l'IA en vigueur. Des mesures fédérales spécifiques ont été prises en matière d'IA (projet de loi C-16, registre de l'IA, diverses orientations sectorielles des régulateurs), mais elles n'ont pas été équivalentes à la loi sur l'IA, à la Loi britannique sur la sécurité en ligne, au cadre du commissaire australien à la sécurité électronique, à l'approche PDPA-plus-IA-Governance-Framework de Singapour ou aux divers cadres étatiques américains. Le Commissariat à la protection de la vie privée fonctionne en vertu d'une loi de 2000 sur la protection des renseignements personnels. La politique d'IA du Conseil du Trésor sur les services fédéraux et publics fait face à l'interne du gouvernement. La réglementation provinciale varie considérablement — la loi 25 du Québec couvre certaines questions d'IA au Québec; la plupart des provinces en ont beaucoup moins.",
       "replace": "**La réalité institutionnelle post-AIDA.** Canada n'a pas de loi fédérale exhaustive spécifique à l'IA en vigueur. Des mesures fédérales spécifiques ont été prises en matière d'IA (la Loi visant à protéger les victimes, les modifications sur l’usurpation de qualité électorale issues du projet de loi C-25, registre de l'IA, diverses orientations sectorielles des régulateurs), mais elles n'ont pas été équivalentes à la loi sur l'IA, à la Loi britannique sur la sécurité en ligne, au cadre du commissaire australien à la sécurité électronique, à l'approche PDPA-plus-IA-Governance-Framework de Singapour ou aux divers cadres étatiques américains. Le Commissariat à la protection de la vie privée fonctionne en vertu d'une loi de 2000 sur la protection des renseignements personnels. La politique d'IA du Conseil du Trésor sur les services fédéraux et publics fait face à l'interne du gouvernement. La réglementation provinciale varie considérablement — la loi 25 du Québec couvre certaines questions d'IA au Québec; la plupart des provinces en ont beaucoup moins.",
       "why": "Distinguish electoral impersonation from broader AI or platform obligations."
+    },
+    {
+      "file": "chapters/ch05.json",
+      "find": "Le projet distinct de Bell sur les tissus d'IA est une construction d'environ 500 MW annoncée en mai 2025; Bell et Cohere s'y sont associés en juillet.",
+      "replace": "En mai 2025, Bell a annoncé Bell IA Fabric, un réseau national dont le point de départ était un projet visant plus de 500 MW répartis entre six installations en Colombie-Britannique. Bell et Cohere ont annoncé un partenariat en juillet.",
+      "why": "Distinguish the federal access objective from Bell’s B.C. network plan and the Sherwood build."
+    },
+    {
+      "file": "chapters/ch06.json",
+      "find": "une construction visant environ 500 MW qui vise à être un substrat de calcul d'IA contrôlé par le Canada.En juillet",
+      "replace": "un réseau national dont le point de départ était un projet visant plus de 500 MW répartis entre six installations en Colombie-Britannique. En juillet",
+      "why": "Distinguish the federal access objective from Bell’s B.C. network plan and the Sherwood build."
+    },
+    {
+      "file": "chapters/ch06.json",
+      "find": "La poussée souveraine – la construction de 500 MW de tissu IA de Bell et l'engagement fédéral Cohere de 240 millions de dollars – et le projet Wonder Valley contesté comme les deux affaires les plus regardées au Canada – une affaire phare de souveraineté, l'autre un différend de consultation qui se déroule devant les tribunaux.",
+      "replace": "L’objectif fédéral d’accès à 500 MW de capacité de calcul, le chantier initial de 300 MW de Bell à Sherwood et l’engagement antérieur de 240 millions de dollars envers Cohere pour Cambridge. Le différend sur la consultation à Wonder Valley est un dossier distinct.",
+      "why": "Distinguish the federal access objective from Bell’s B.C. network plan and the Sherwood build."
+    },
+    {
+      "file": "chapters/ch07.json",
+      "find": "L'engagement de 240 M$ CA en décembre 2024 pour l'élaboration du calcul de Cohere et le tissu d'IA distinct de 500 MW prévu par Bell (avec Coheré signé comme partenaire modèle depuis juillet 2025) sont les investissements d'infrastructure d'IA les plus importants au Canada.",
+      "replace": "L’engagement fédéral de 240 millions de dollars de décembre 2024 envers le projet de calcul de Cohere à Cambridge était une mesure distincte. En mai 2025, Bell avait annoncé un projet visant plus de 500 MW répartis entre six sites en Colombie-Britannique. Bell et Cohere ont annoncé un partenariat en juillet.",
+      "why": "Distinguish the federal access objective from Bell’s B.C. network plan and the Sherwood build."
     }
   ]
 }

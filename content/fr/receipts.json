@@ -1796,5 +1796,39 @@
     "https://www.parl.ca/documentviewer/fr/45-1/projet-loi/C-25/sanction-royal"
    ]
   ]
+ },
+ {
+  "id": 115,
+  "section": "Accès à la capacité de calcul et construction au Canada (9 novembre 2026)",
+  "claim": "Objectif fédéral d’accès à 500 MW de capacité de calcul",
+  "status": "resolved",
+  "detail": "Le budget de 2026 annonce un objectif d’accès à 500 MW de capacité de calcul souveraine pour les entreprises canadiennes d’IA, au moyen d’outils comme des garanties financières et des ententes d’achat de capacité. L’annonce ne confirme pas la mise à disposition de cette capacité et ne désigne pas Sherwood comme projet visé. Le projet de Bell de mai 2025, qui visait plus de 500 MW répartis entre six installations en Colombie-Britannique, a fait l’objet d’une annonce distincte.",
+  "links": [
+   [
+    "Budget de 2026, chapitre 5",
+    "https://budget.canada.ca/2026/report-rapport/chap5-fr.html"
+   ],
+   [
+    "Lancement du réseau de Bell, mai 2025 (en anglais)",
+    "https://www.bce.ca/Bell-Canada-Increases-Sovereign-AI-Capacity-with-Bell-AI-Fabric"
+   ]
+  ]
+ },
+ {
+  "id": 116,
+  "section": "Accès à la capacité de calcul et construction au Canada (9 novembre 2026)",
+  "claim": "Chantier initial de 300 MW de Bell à Sherwood",
+  "status": "resolved",
+  "detail": "Le 1er octobre 2026, la Saskatchewan a signalé que les quatre bâtiments du chantier initial de 300 MW de Bell à Sherwood étaient en construction. Dans son rapport du troisième trimestre, BCE fait état d’environ 475 millions de dollars en dépenses d’investissement et sorties de trésorerie connexes au 30 septembre. BCE prévoit la mise en service de la première salle informatique au premier semestre de 2027. Un protocole d’entente non contraignant porte sur une capacité supplémentaire pouvant atteindre 900 MW.",
+  "links": [
+   [
+    "Mise à jour de la Saskatchewan, 1er octobre (en anglais)",
+    "https://www.saskatchewan.ca/government/news-and-media/2026/october/01/bell-ai-fabric"
+   ],
+   [
+    "Rapport aux actionnaires de BCE, troisième trimestre",
+    "https://www.bce.ca/cs-assets/2026-t3-rapport-actionnaires.pdf-blt4e7119aab2c3a59d"
+   ]
+  ]
  }
 ]
