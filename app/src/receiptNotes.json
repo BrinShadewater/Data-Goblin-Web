@@ -50,5 +50,67 @@
       "sourceLabel": "Lire les conclusions du Commissariat",
       "url": "https://www.priv.gc.ca/fr/mesures-et-decisions-prises-par-le-commissariat/ar_index/202021/sr_grc/"
     }
+  },
+  "98": {
+    "passage": { "chapter": 14, "section": "the-floor-was-already-gone" },
+    "en": {
+      "detail": "The Online News Act received royal assent on June 22, 2023. The CRTC’s conditional exemption from mandatory bargaining for Google Search began October 28, 2024. The funding agreement provides $100 million a year, adjusted for inflation.",
+      "sourceLabel": "Read the CRTC’s exemption order",
+      "url": "https://crtc.gc.ca/eng/archive/2024/2024-262.htm"
+    },
+    "fr": {
+      "detail": "La Loi sur les nouvelles en ligne a reçu la sanction royale le 22 juin 2023. L’exemption conditionnelle de la négociation obligatoire accordée par le CRTC au moteur de recherche Google a pris effet le 28 octobre 2024. L’accord prévoit une contribution annuelle de 100 millions de dollars, ajustée selon l’inflation.",
+      "sourceLabel": "Lire l’ordonnance d’exemption du CRTC",
+      "url": "https://crtc.gc.ca/fra/archive/2024/2024-262.htm"
+    }
+  },
+  "99": {
+    "passage": { "chapter": 14, "section": "the-floor-was-already-gone" },
+    "en": {
+      "detail": "The October 1, 2026 snapshot records 640 closures in 407 communities since 2008. The 286 outlets still operating are outlets that launched during that period. The map can add earlier closures as researchers learn about them.",
+      "sourceLabel": "Read the October 2026 Local News Map report (PDF)",
+      "url": "https://s35582.pcdn.co/wp-content/uploads/2026/10/LocalNewsMapDataOctober2026.pdf"
+    },
+    "fr": {
+      "detail": "Au 1er octobre 2026, la carte recensait 640 fermetures dans 407 collectivités depuis 2008. Les 286 médias encore en activité ont été lancés pendant cette période. L’équipe peut ajouter des fermetures antérieures à mesure qu’elle les découvre.",
+      "sourceLabel": "Lire le rapport d’octobre 2026 de la Local News Map (PDF en anglais)",
+      "url": "https://s35582.pcdn.co/wp-content/uploads/2026/10/LocalNewsMapDataOctober2026.pdf"
+    }
+  },
+  "108": {
+    "passage": {
+      "chapter": 12,
+      "section": "where-ai-enters-the-workflow"
+    }
+  },
+  "109": {
+    "passage": {
+      "chapter": 12,
+      "section": "where-ai-enters-the-workflow"
+    }
+  },
+  "110": {
+    "passage": {
+      "chapter": 12,
+      "section": "the-soft-violence-of-ai-art-discourse"
+    }
+  },
+  "111": {
+    "passage": {
+      "chapter": 16,
+      "section": "the-canadian-empirical-baseline"
+    }
+  },
+  "112": {
+    "passage": {
+      "chapter": 12,
+      "section": "performers-likeness-and-consent"
+    }
+  },
+  "113": {
+    "passage": {
+      "chapter": 16,
+      "section": "the-canadian-empirical-baseline"
+    }
   }
 }

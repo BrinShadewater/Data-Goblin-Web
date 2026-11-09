@@ -1164,20 +1164,24 @@
   "url": "https://www.parl.ca/legisinfo/en/bill/44-1/c-18"
  },
  {
-  "name": "Heritage final regs + Google deal",
-  "url": "https://www.canada.ca/en/canadian-heritage/news/2023/12/minister-st-onge-releases-final-regulations-for-the-online-news-act.html"
+  "name": "CRTC exemption order",
+  "url": "https://crtc.gc.ca/eng/archive/2024/2024-262.htm"
  },
  {
-  "name": "CRTC Meta letter (Dec 2025)",
+  "name": "Meta’s announcement",
+  "url": "https://about.fb.com/news/2023/06/changes-to-news-availability-on-our-platforms-in-canada/amp/"
+ },
+ {
+  "name": "CRTC staff letter on Meta",
   "url": "https://crtc.gc.ca/eng/archive/2025/lb251203.htm"
  },
  {
-  "name": "StatCan newspapers 2024",
+  "name": "Statistics Canada, Newspaper publishers, 2024",
   "url": "https://www150.statcan.gc.ca/n1/daily-quotidien/251110/dq251110a-eng.htm"
  },
  {
-  "name": "Local News Research Project (Oct 2025)",
-  "url": "https://localnewsresearchproject.ca/2025/10/31/the-rise-of-news-deserts-local-journalism-in-crisis/"
+  "name": "Local News Map report, October 1, 2026",
+  "url": "https://s35582.pcdn.co/wp-content/uploads/2026/10/LocalNewsMapDataOctober2026.pdf"
  },
  {
   "name": "CBC AI guidelines",
@@ -1222,5 +1226,45 @@
  {
   "name": "DFRLab — AI news channels",
   "url": "https://dfrlab.org/2025/07/17/ai-generated-news-channels-spread-election-fraud-and-separatist-narratives-in-canada/"
+ },
+ {
+  "name": "TFO’s production announcement",
+  "url": "https://apropos.tfo.org/nouvelles/2026/09/14/00/00/rebelles-une-production-originale-tfo-remporte-un-prix-gemeaux"
+ },
+ {
+  "name": "Interview with Renée de Sousa",
+  "url": "https://larotonde.ca/rebelles-la-serie-danimation-franco-ontarienne-couronnee-aux-prix-gemeaux/"
+ },
+ {
+  "name": "Canada Media Fund production reporting",
+  "url": "https://cmf-fmc.ca/now-next/articles/canadian-producers-are-starting-to-embrace-ai/"
+ },
+ {
+  "name": "Casadel production page and credits",
+  "url": "https://casadelfilms.com/projets/crimes-du-nord/"
+ },
+ {
+  "name": "ICFF attendance report",
+  "url": "https://icff.ca/icff-closes-15th-anniversary-edition/"
+ },
+ {
+  "name": "Local coverage of the counter-exhibition",
+  "url": "https://www.villagereport.ca/village-picks/toronto-protest-ai-art-exhibition-human-made-show-12463382"
+ },
+ {
+  "name": "Nordicity and Work in Culture, Making It Work 2026, Figure 32 and survey methods",
+  "url": "https://www.ontariocreates.ca/uploads/Making-It-Work-2026_Pathways-to-Sustainable-Cultural-Careers.pdf"
+ },
+ {
+  "name": "House of Commons testimony, November 5, 2025",
+  "url": "https://www.ourcommons.ca/DocumentViewer/en/45-1/CHPC/meeting-12/evidence"
+ },
+ {
+  "name": "Statistics Canada payroll analysis, Chart 2",
+  "url": "https://www150.statcan.gc.ca/n1/pub/36-28-0001/2026003/article/00003-eng.htm"
+ },
+ {
+  "name": "Statistics Canada post-production survey",
+  "url": "https://www150.statcan.gc.ca/n1/daily-quotidien/261009/dq261009d-eng.htm?indgeo=0&indid=4209-1"
  }
 ]

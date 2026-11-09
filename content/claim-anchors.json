@@ -197,6 +197,26 @@
    "anchor": "Bill C-16",
    "id": 49,
    "status": "resolved"
+  },
+  {
+   "anchor": "changed whom the team looked for",
+   "id": 108,
+   "status": "resolved"
+  },
+  {
+   "anchor": "animate archival material",
+   "id": 109,
+   "status": "resolved"
+  },
+  {
+   "anchor": "hundreds of attendees",
+   "id": 110,
+   "status": "resolved"
+  },
+  {
+   "anchor": "refusing to let a producer model their voice",
+   "id": 112,
+   "status": "resolved"
   }
  ],
  "13": [
@@ -231,6 +251,18 @@
    "status": "resolved"
   }
  ],
+ "14": [
+  {
+   "anchor": "Bill C-18, the Online News Act",
+   "id": 98,
+   "status": "resolved"
+  },
+  {
+   "anchor": "640 local news outlets",
+   "id": 99,
+   "status": "resolved"
+  }
+ ],
  "15": [
   {
    "anchor": "GPT-4o rollback",
@@ -258,6 +290,16 @@
    "anchor": "CWA Canada",
    "id": 9,
    "status": "fixed"
+  },
+  {
+   "anchor": "19% of 446",
+   "id": 111,
+   "status": "resolved"
+  },
+  {
+   "anchor": "26% fewer payroll jobs",
+   "id": 113,
+   "status": "resolved"
   }
  ],
  "17": [

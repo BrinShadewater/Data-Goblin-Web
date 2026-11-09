@@ -68,7 +68,13 @@ const FR = {
     82: "Clearview indiquaient 521 requêtes de recherche",
   },
   11: { 29: "n'a ni signé ni adhéré" },
-  12: { 49: "projet de loi C-16" },
+  12: {
+    49: "projet de loi C-16",
+    108: "a changé les profils recherchés",
+    109: "animer du matériel d’archives",
+    110: "plusieurs centaines de personnes",
+    112: "refusé de laisser un producteur modéliser leur voix",
+  },
   // Added after reanchor-chapter-drift.cjs moved these to the chapters their
   // phrases actually live in; they had been dead in English, so they had never
   // needed a French phrase before.
@@ -82,12 +88,20 @@ const FR = {
     // different sentence — noted so nobody thinks it drifted.
     11: "TAKE IT DOWN",
   },
+  14: {
+    98: "Loi sur les nouvelles en ligne",
+    99: "640 médias locaux",
+  },
   15: {
     15: "retour en arrière du GPT-4o",
     7: "Ewert c. Canada",
     34: "Commissariat à la protection de la vie privée de 2024-25",
   },
-  16: { 35: "Les employeurs canadiens dépensent environ" },
+  16: {
+    35: "Les employeurs canadiens dépensent environ",
+    111: "19 % des 446",
+    113: "26 % moins d’emplois salariés",
+  },
   17: {
     10: "35 millions d'euros",
     2: "Convention-cadre du Conseil de l'Europe sur l'IA",

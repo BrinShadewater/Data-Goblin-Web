@@ -17,6 +17,120 @@
   ],
   "corrections": [
     {
+      "file": "chapters/ch14.json",
+      "find": "Communiqués de Patrimoine canadien sur la Loi sur les actualités en ligne et l'exemption de Google; Déclaration du CRTC sur le bloc de nouvelles Meta, décembre 2025; Projet de recherche sur les Nouvelles locales de l'Université métropolitaine de Toronto / Données de fermeture des cartes de nouvelles locales (octobre 2025);",
+      "replace": "Communiqués de Patrimoine canadien sur la Loi sur les nouvelles en ligne; décision CRTC 2024-262 sur l’exemption accordée au moteur de recherche Google et lettre du personnel du CRTC sur la politique de Meta (décembre 2025); données sur les fermetures de la Local News Map, Université métropolitaine de Toronto et Université de la Colombie-Britannique (1er octobre 2026);",
+      "why": "Match the source list printed in the reader to the verified evidence."
+    },
+    {
+      "file": "chapters/ch14.json",
+      "find": "La comptabilité de Statistique Canada est franche. Dans sa publication sur les éditeurs de journaux couvrant 2024, le total des revenus d'exploitation s'est élevé à 1,6 milliard de dollars, soit une baisse de 17,9 % par rapport à 2022. Les ventes de publicité ont chuté de 26,1 % à 722,8 millions de dollars en deux ans, la publicité imprimée ayant diminué de plus d'un tiers. Il s'agit de la base financière d'un grand nombre de rapports canadiens, et elle diminue rapidement. Aucun de ces déclins n'est générateur d'IA. C'est la longue migration de la publicité vers des plateformes qui ne produisent pas de journalisme, jouant sur un bilan canadien.",
+      "replace": "Statistique Canada chiffre le recul. En 2024, les revenus d’exploitation des éditeurs de journaux ont atteint 1,6 milliard de dollars, en baisse de 17,9 % par rapport à 2022. Les ventes publicitaires ont diminué de 26,1 % pour s’établir à 722,8 millions de dollars, et la publicité imprimée a reculé de plus du tiers. Ces chiffres donnent la mesure du déclin. Le déplacement de la publicité vers les plateformes en ligne fragilisait déjà les journaux depuis des années avant l’arrivée de l’IA générative dans les salles de rédaction.",
+      "why": "Preserve the verified revenue figures and distinguish the survey from causal attribution."
+    },
+    {
+      "file": "chapters/ch14.json",
+      "find": "Puis vint une torsion spécifiquement canadienne que le reste du monde regardait avec intérêt. En 2023, le Parlement a adopté le projet de loi C-18, la Loi sur les nouvelles en ligne, qui a reçu la sanction royale le 22 juin 2023. La logique de la loi était que les grandes plateformes bénéficiant de liens d'information devraient payer les points de vente qui produisent l'actualité. La réponse de Meta était d'arrêter de diffuser entièrement les nouvelles canadiennes. Depuis août 2023, les liens vers les nouvelles canadiennes sont bloqués sur Facebook et Instagram, et à la fin de 2025, l'organisme de réglementation a confirmé que le bloc était toujours en place sans qu'aucune mesure d'application ne soit prévue. Le Canada est le pays où une plate-forme a examiné une loi sur les paiements et a choisi de supprimer les nouvelles plutôt que de les payer. C'est un point de données distinct à l'échelle mondiale, et c'est le nôtre.",
+      "replace": "Puis est venu un tournant canadien que le reste du monde a suivi de près. La Loi sur les nouvelles en ligne, issue du projet de loi C-18, a reçu la sanction royale le 22 juin 2023. Son règlement est entré en vigueur le 19 décembre. La loi établit un cadre de négociation entre les plateformes visées qui rendent les nouvelles accessibles et les entreprises de nouvelles admissibles. En août 2023, Meta a commencé à bloquer les nouvelles sur Facebook et Instagram pour les personnes au Canada. En décembre 2025, le personnel du CRTC a dit avoir examiné la mise en œuvre de la politique de Meta et indiqué qu’il poursuivrait sa surveillance. C’est un cas révélateur : une plateforme a choisi de retirer les nouvelles en réponse à une loi qui visait à faire rémunérer leur mise à disposition.",
+      "why": "Use the statutory bargaining scope, the geographic scope of Meta’s rollout, and what the December staff letter says."
+    },
+    {
+      "file": "chapters/ch14.json",
+      "find": "Google a fait l'autre choix. Plutôt que de bloquer les nouvelles, elle a négocié une exemption : environ 100 millions de dollars par année, indexés à l'inflation, versés dans un seul collectif (le Canadian Journalism Collective) qui distribue l'argent aux points de vente, en échange d'un laissez-passer de cinq ans de la négociation obligatoire de la Loi. Que ce soit un juste prix pour la valeur du journalisme canadien, ou une somme modeste qui achète une grande entreprise sur une plus grande obligation, est exactement le genre de question que ce livre veut vous tenir ouvert plutôt que de répondre par réflexe.",
+      "replace": "Google a fait un autre choix. L’entreprise s’est engagée à verser 100 millions de dollars par année, indexés à l’inflation, au Collectif canadien de journalisme, qui distribue les fonds aux entreprises de nouvelles admissibles. Le CRTC a exempté le moteur de recherche Google de la négociation obligatoire pour cinq ans à compter du 28 octobre 2024, à condition que l’accord reste en vigueur. La somme reflète-t-elle la valeur du journalisme canadien ou permet-elle à une grande entreprise de se libérer à bon compte d’une obligation plus lourde? La question mérite de rester ouverte.",
+      "why": "Distinguish Google Search’s conditional 2024 exemption order from the funding agreement."
+    },
+    {
+      "file": "chapters/ch14.json",
+      "find": "Sous la plate-forme se bat, la carte locale continue de sombrer. Le Projet de recherche sur les nouvelles locales, qui suit la fermeture des points de vente canadiens depuis 2008, comptait 603 opérations d'information locales fermées dans 388 collectivités à la fin de 2025, contre seulement une fraction relancée et survivante. Le « désert de nouvelles » est le terme d'une communauté sans couverture locale dédiée, et les déserts se répandent. Cela compte pour l'IA en particulier, car une presse locale éclaircie est un aplatissement des faits locaux vérifiés dont dépend tout en aval, y compris les systèmes d'intelligence artificielle formés sur le web.",
+      "replace": "Derrière ces affrontements entre plateformes, les médias locaux continuent de disparaître. Au 1er octobre 2026, la carte des médias locaux (Local News Map) recensait 640 médias locaux qui avaient fermé dans 407 collectivités canadiennes depuis 2008. Elle recensait aussi 286 médias lancés pendant la même période et encore en activité. L’équipe de recherche ajoute des événements d’années antérieures à mesure qu’elle les découvre. Un « désert médiatique » est une collectivité sans couverture journalistique locale qui lui est consacrée. Quand la presse locale s’amenuise, les faits vérifiés sur ces collectivités se font plus rares, y compris sur le web où puisent les systèmes d’IA.",
+      "why": "Use the October 2026 snapshot and distinguish new outlets still operating from reopenings."
+    },
+    {
+      "file": "chapters/ch14.json",
+      "find": "Le plancher financier a cartographié : une entreprise de nouvelles déjà en chute libre (revenus de StatCan en baisse de 17,9%, ventes publicitaires en baisse 26,1% sur deux ans) avant l'arrivée de l'IA générative.",
+      "replace": "Le recul financier : de 2022 à 2024, les revenus d’exploitation des éditeurs de journaux ont baissé de 17,9 % et les ventes publicitaires de 26,1 %. Le secteur subissait déjà des pressions avant la diffusion de l’IA générative.",
+      "why": "Date the measured decline separately from the earlier financial pressures."
+    },
+    {
+      "file": "chapters/ch14.json",
+      "find": "L'histoire de la plateforme canadienne : le projet de loi C-18, le bloc de nouvelles toujours en place de Meta depuis 2023, et l'accord d'exemption de 100 millions de dollars par année de Google — avec 603 points de vente locaux fermés depuis 2008 comme toile de fond.",
+      "replace": "Le cas canadien : la loi issue du projet de loi C-18, le blocage des nouvelles par Meta au Canada en 2023, et la contribution annuelle de 100 millions de dollars de Google, assortie d’une exemption conditionnelle de la négociation obligatoire. Au 1er octobre 2026, la carte recensait 640 fermetures de médias locaux depuis 2008.",
+      "why": "Keep the recap aligned with the dated closure figures and the conditional exemption."
+    },
+    {
+      "file": "chapters/ch14.json",
+      "find": "the CRTC's December 2025 statement on the Meta news block",
+      "replace": "Décision CRTC 2024-262 sur l’exemption accordée au moteur de recherche Google et lettre du personnel du CRTC sur la politique de Meta (décembre 2025)",
+      "why": "List the decisions used in the updated passage."
+    },
+    {
+      "file": "chapters/ch14.json",
+      "find": "the Toronto Metropolitan University Local News Research Project / Local News Map closure data (October 2025)",
+      "replace": "Données sur les fermetures de la Local News Map, Université métropolitaine de Toronto et Université de la Colombie-Britannique (1er octobre 2026)",
+      "why": "Match the data snapshot cited in the passage."
+    },
+    {
+      "file": "receipts.json",
+      "find": "Online News Act (C-18), Meta bloc, Google deal (Ch 14)",
+      "replace": "Loi sur les nouvelles en ligne, blocage de Meta et entente de Google (chap. 14)",
+      "why": "Use an accurate French ledger title."
+    },
+    {
+      "file": "receipts.json",
+      "find": "• CONFIRMED 2026-06-20 (primaire). Loi sur les nouvelles en ligne (projet de loi C-18) sanction royale le 22 juin 2023; règlement final publié le 15 décembre 2023 (en vigueur le 19 décembre; Gazette du Canada Partie II, 3 janvier 2024). Meta a bloqué les nouvelles canadiennes sur Facebook/Instagram à partir d'août 2023, toujours en vigueur (CRTC 3 déc. 2025 lettre : aucune mesure réglementaire prévue, « continuera de surveiller la situation »). Marché de Google : ~100 M$/an indexés à l'inflation en un seul collectif (Collective du journalisme canadien) en échange d'une exemption de 5 ans de la négociation obligatoire (annonce du 29 novembre 2023). **LEAN : primaire gouvernement/régulateur (statut, Patrimoine, CRTC); les choix opposés des plateformes (blocs Meta, Google-pay) sont auto-intéressés.**  |  [LÉGISinfo C-18](https://www.parl.ca/legisinfo/en/bill/44-1/c-18)  ·  [Heritage final regs + Google deal](https://www.canada.ca/en/canadian-heritage/news/2023/12/minister-st-onge-releases-final-regulations-for-the-online-news-act.html)  ·  [Métalettre du CRTC (déc. 2025)](https://crtc.gc.ca/eng/archive/2025/lb251203.htm)",
+      "replace": "✅ Vérifié le 8 novembre 2026. Sanction royale le 22 juin 2023 et entrée en vigueur du règlement le 19 décembre 2023. Meta a commencé à bloquer les nouvelles sur Facebook et Instagram pour les personnes au Canada en août 2023. Le personnel du CRTC a annoncé en décembre 2025 qu’il poursuivrait sa surveillance. Le CRTC a accordé au moteur de recherche Google une exemption de cinq ans de la négociation obligatoire à compter du 28 octobre 2024, sous réserve du maintien de l’accord. La contribution annuelle au Collectif canadien de journalisme est de 100 millions de dollars, ajustée selon l’inflation. | [Annonce de Meta (en anglais)](https://about.fb.com/news/2023/06/changes-to-news-availability-on-our-platforms-in-canada/amp/)",
+      "why": "Match the verified Chapter 14 evidence and qualify the figures."
+    },
+    {
+      "file": "receipts.json",
+      "find": "effondrement des revenus des nouvelles + fermetures locales (Ch 14)",
+      "replace": "Recul des revenus des journaux et fermetures de médias locaux (chap. 14)",
+      "why": "Use an accurate French ledger title."
+    },
+    {
+      "file": "receipts.json",
+      "find": "• CONFIRMED 2026-06-20 (primaire). StatCan « Éditeurs de journaux, 2024 » (Le Quotidien, 10 novembre 2025) : total des revenus d'exploitation 1,6 milliard de dollars, en baisse de 17,9% par rapport à 2022; les ventes publicitaires ont chuté de 26,1% à 722,8 millions de dollars (annonce imprimée −34,3%; publicité numérique −11,9%). Fermetures locales: Projet de recherche TMU Local News / Local News Map — 603 agences de presse locales ont fermé leurs portes dans 388 communautés entre 2008 et le 1er octobre 2025 (une fraction seulement a relancé et survécu); \"news désert\" cadrage. **C'est le plancher pré-IA — le déclin est la migration de publicité, PAS l'IA générative.**   **LEAN: gouvernement (StatCan) + académique/sans but lucratif (TMU / April Lindgren).**  |  [StatCan journaux 2024](https://www150.statcan.gc.ca/n1/daily-quotidien/251110/dq251110a-eng.htm)  ·  [Projet de recherche sur les nouvelles locales (octobre 2025)](https://localnewsresearchproject.ca/2025/10/31/the-rise-of-news-deserts-local-journalism-in-crisis/)",
+      "replace": "✅ Vérifié le 8 novembre 2026. En 2024, les revenus d’exploitation des éditeurs de journaux s’élevaient à 1,6 milliard de dollars, en baisse de 17,9 % par rapport à 2022. Les ventes publicitaires ont diminué de 26,1 % pour s’établir à 722,8 millions de dollars. Au 1er octobre 2026, la carte recensait 640 médias locaux fermés dans 407 collectivités depuis 2008 et 286 médias lancés au cours de la même période et encore en activité. L’équipe vérifie les contributions du public et ajoute des événements antérieurs à mesure qu’elle les découvre.",
+      "why": "Match the verified Chapter 14 evidence and qualify the figures."
+    },
+    {
+      "file": "receipts.json",
+      "find": "Heritage final regs + Google deal",
+      "replace": "Ordonnance d’exemption du CRTC",
+      "why": "Link to the source used for the revised claim."
+    },
+    {
+      "file": "receipts.json",
+      "find": "https://www.canada.ca/en/canadian-heritage/news/2023/12/minister-st-onge-releases-final-regulations-for-the-online-news-act.html",
+      "replace": "https://crtc.gc.ca/fra/archive/2024/2024-262.htm",
+      "why": "Link to the source used for the revised claim."
+    },
+    {
+      "file": "receipts.json",
+      "find": "StatCan newspapers 2024",
+      "replace": "Statistique Canada, Éditeurs de journaux, 2024",
+      "why": "Link to the source used for the revised claim."
+    },
+    {
+      "file": "receipts.json",
+      "find": "https://www150.statcan.gc.ca/n1/daily-quotidien/251110/dq251110a-eng.htm",
+      "replace": "https://www150.statcan.gc.ca/n1/daily-quotidien/251110/dq251110a-fra.htm",
+      "why": "Link to the source used for the revised claim."
+    },
+    {
+      "file": "receipts.json",
+      "find": "Local News Research Project (Oct 2025)",
+      "replace": "Rapport de la Local News Map, 1er octobre 2026 (PDF en anglais)",
+      "why": "Link to the source used for the revised claim."
+    },
+    {
+      "file": "receipts.json",
+      "find": "https://localnewsresearchproject.ca/2025/10/31/the-rise-of-news-deserts-local-journalism-in-crisis/",
+      "replace": "https://s35582.pcdn.co/wp-content/uploads/2026/10/LocalNewsMapDataOctober2026.pdf",
+      "why": "Link to the source used for the revised claim."
+    },
+    {
       "file": "chapters/ch10.json",
       "find": "*Des bots à la porte* , signalant que l'automatisation des décisions dans un système discrétionnaire à fort taux d'intérêt construit pour les personnes ayant les protections juridiques les plus faibles risquait d'endiguer la discrimination, et appelant à un gel jusqu'à ce que des normes contraignantes et une surveillance indépendante soient en place.",
       "replace": "*Des bots à la porte*. Le rapport avertissait que l’automatisation des décisions dans un système discrétionnaire aux enjeux majeurs risquait d’enraciner la discrimination envers des personnes qui disposent de peu de protections juridiques. Il recommandait de suspendre l’acquisition, le développement et l’adoption de nouveaux systèmes jusqu’à ce que les systèmes existants respectent des règles contraignantes à l’échelle du gouvernement. Il recommandait aussi une surveillance indépendante.",
