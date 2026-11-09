@@ -68,6 +68,11 @@
    "anchor": "objectif fédéral d’accès à 500 MW de capacité de calcul",
    "id": 115,
    "status": "resolved"
+  },
+  {
+   "anchor": "Ottawa s’est engagé à investir par étapes jusqu’à 1,6 milliard",
+   "id": 118,
+   "status": "resolved"
   }
  ],
  "6": [
@@ -111,6 +116,11 @@
   {
    "anchor": "Glenda Crisp",
    "id": 37,
+   "status": "resolved"
+  },
+  {
+   "anchor": "La prise de participation prévue par Ottawa s’accompagne d’engagements de Cohere",
+   "id": 118,
    "status": "resolved"
   }
  ],
