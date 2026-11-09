@@ -1872,5 +1872,39 @@
     "https://cohere.com/blog/cohere-canada-commitment"
    ]
   ]
+ },
+ {
+  "id": 119,
+  "section": "Federal cyber-readiness direction (October 1, 2026)",
+  "claim": "Federal cyber readiness in the frontier AI era (Ch 17)",
+  "status": "resolved",
+  "detail": "✅ The policy implementation notice took effect October 1, 2026 and applies to organizations listed in section 6 of the Policy on Government Security. Its controls include identifying critical services and assets, accelerating patching based on risk, preparing containment actions and regularly testing backup restoration for systems that support critical services. Separately, Bill C-8 received royal assent on June 15, 2026. Section 16 provides for Part 2, which enacts the Critical Cyber Systems Protection Act, to come into force on a date fixed by order. | [Treasury Board of Canada Secretariat, cyber-readiness direction](https://www.canada.ca/en/government/system/digital-government/policies-standards/spin/direction-government-canada-cyber-security-readiness-frontier-artificial-intelligence-era.html) · [Parliament of Canada, Bill C-8 as assented to](https://www.parl.ca/DocumentViewer/en/45-1/bill/C-8/royal-assent)",
+  "links": [
+   [
+    "Treasury Board of Canada Secretariat, cyber-readiness direction",
+    "https://www.canada.ca/en/government/system/digital-government/policies-standards/spin/direction-government-canada-cyber-security-readiness-frontier-artificial-intelligence-era.html"
+   ],
+   [
+    "Parliament of Canada, Bill C-8 as assented to",
+    "https://www.parl.ca/DocumentViewer/en/45-1/bill/C-8/royal-assent"
+   ]
+  ]
+ },
+ {
+  "id": 120,
+  "section": "AI-assisted vulnerability discovery and shipped fixes (November 2026)",
+  "claim": "Linux test results and Firefox 159 fixes (Ch 18)",
+  "status": "resolved",
+  "detail": "✅ OpenAI reported on November 4 that a controlled mid-October Linux run reproduced 1,724 vulnerabilities and produced 948 working local privilege-escalation exploits. It reported about $1.2 million in API credits and produced candidate patches for maintainer review. The experiment counts exploits in its test environment. Mozilla’s October 27 advisory records fixes shipped in Firefox 159 and credits OpenAI Codex Security as the reporter for some of the vulnerabilities, including CVE-2026-117931. | [OpenAI, controlled Linux vulnerability study](https://openai.com/index/a-thousand-fewer-paths-to-root/) · [Mozilla, security advisory 2026-118 for Firefox 159](https://www.mozilla.org/en-US/security/advisories/mfsa2026-118/)",
+  "links": [
+   [
+    "OpenAI, controlled Linux vulnerability study",
+    "https://openai.com/index/a-thousand-fewer-paths-to-root/"
+   ],
+   [
+    "Mozilla, security advisory 2026-118 for Firefox 159",
+    "https://www.mozilla.org/en-US/security/advisories/mfsa2026-118/"
+   ]
+  ]
  }
 ]

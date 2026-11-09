@@ -1310,5 +1310,21 @@
  {
   "name": "Cohere, Canadian investment update (October 30)",
   "url": "https://cohere.com/blog/cohere-canada-commitment"
+ },
+ {
+  "name": "Treasury Board of Canada Secretariat, cyber-readiness direction",
+  "url": "https://www.canada.ca/en/government/system/digital-government/policies-standards/spin/direction-government-canada-cyber-security-readiness-frontier-artificial-intelligence-era.html"
+ },
+ {
+  "name": "Parliament of Canada, Bill C-8 as assented to",
+  "url": "https://www.parl.ca/DocumentViewer/en/45-1/bill/C-8/royal-assent"
+ },
+ {
+  "name": "OpenAI, controlled Linux vulnerability study",
+  "url": "https://openai.com/index/a-thousand-fewer-paths-to-root/"
+ },
+ {
+  "name": "Mozilla, security advisory 2026-118 for Firefox 159",
+  "url": "https://www.mozilla.org/en-US/security/advisories/mfsa2026-118/"
  }
 ]
