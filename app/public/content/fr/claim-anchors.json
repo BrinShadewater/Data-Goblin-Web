@@ -352,6 +352,11 @@
    "anchor": "35 millions d'euros",
    "id": 10,
    "status": "fixed"
+  },
+  {
+   "anchor": "L’orientation fédérale sur la préparation en matière de cybersécurité est entrée en vigueur le 1er octobre 2026",
+   "id": 119,
+   "status": "resolved"
   }
  ],
  "18": [
@@ -364,6 +369,11 @@
    "anchor": "loi générale sur la protection des renseignements personnels du secteur privé",
    "id": 8,
    "status": "fixed"
+  },
+  {
+   "anchor": "948 méthodes fonctionnelles d’exploitation permettant une élévation locale de privilèges",
+   "id": 120,
+   "status": "resolved"
   }
  ]
 }

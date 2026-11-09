@@ -352,6 +352,11 @@
    "anchor": "€35",
    "id": 10,
    "status": "fixed"
+  },
+  {
+   "anchor": "Ottawa’s federal cyber-readiness direction took effect on October 1, 2026",
+   "id": 119,
+   "status": "resolved"
   }
  ],
  "18": [
@@ -364,6 +369,11 @@
    "anchor": "private-sector privacy law",
    "id": 8,
    "status": "fixed"
+  },
+  {
+   "anchor": "948 working local privilege-escalation exploits",
+   "id": 120,
+   "status": "resolved"
   }
  ]
 }

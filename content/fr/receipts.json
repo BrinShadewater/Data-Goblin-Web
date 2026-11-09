@@ -1872,5 +1872,39 @@
     "https://cohere.com/blog/cohere-canada-commitment"
    ]
   ]
+ },
+ {
+  "id": 119,
+  "section": "Orientation fédérale en matière de cybersécurité (1er octobre 2026)",
+  "claim": "Préparation fédérale en matière de cybersécurité à l’ère de l’IA de pointe",
+  "status": "resolved",
+  "detail": "L’avis de mise en œuvre est entré en vigueur le 1er octobre 2026 et s’applique aux organisations visées par l’article 6 de la Politique sur la sécurité du gouvernement. Il prévoit notamment de recenser les services et les actifs essentiels, d’accélérer l’application des correctifs selon le risque, de préparer des mesures de confinement et de tester régulièrement la restauration des sauvegardes des systèmes qui soutiennent les services essentiels. Par ailleurs, le projet de loi C-8 a reçu la sanction royale le 15 juin 2026. L’article 16 prévoit que la partie 2, qui édicte la Loi sur la protection des cybersystèmes essentiels, entre en vigueur à la date fixée par décret.",
+  "links": [
+   [
+    "Secrétariat du Conseil du Trésor du Canada, orientation en matière de cybersécurité",
+    "https://www.canada.ca/fr/gouvernement/systeme/gouvernement-numerique/politiques-normes/amops/orientation-sur-etat-preparation-gouvernement-canada-matiere-cybersecurite-ere-intelligence-artificielle-pointe.html"
+   ],
+   [
+    "Parlement du Canada, projet de loi C-8 sanctionné",
+    "https://www.parl.ca/documentviewer/fr/45-1/projet-loi/C-8/sanction-royal?col=2"
+   ]
+  ]
+ },
+ {
+  "id": 120,
+  "section": "Recherche de vulnérabilités assistée par l’IA et correctifs publiés (novembre 2026)",
+  "claim": "Résultats de l’essai sur Linux et correctifs dans Firefox 159",
+  "status": "resolved",
+  "detail": "Le 4 novembre, OpenAI a annoncé qu’un essai contrôlé mené sur Linux à la mi-octobre avait reproduit 1 724 vulnérabilités et produit 948 méthodes fonctionnelles d’exploitation permettant une élévation locale de privilèges. L’entreprise a déclaré environ 1,2 million de dollars en crédits d’API et a préparé des propositions de correctifs pour examen par les responsables du noyau. L’essai dénombre des méthodes d’exploitation dans son environnement de test. L’avis de Mozilla du 27 octobre recense les correctifs publiés dans Firefox 159 et attribue à OpenAI Codex Security le signalement de certaines vulnérabilités, dont CVE-2026-117931.",
+  "links": [
+   [
+    "OpenAI, étude contrôlée des vulnérabilités sous Linux (en anglais)",
+    "https://openai.com/index/a-thousand-fewer-paths-to-root/"
+   ],
+   [
+    "Mozilla, avis de sécurité 2026-118 pour Firefox 159 (en anglais)",
+    "https://www.mozilla.org/en-US/security/advisories/mfsa2026-118/"
+   ]
+  ]
  }
 ]

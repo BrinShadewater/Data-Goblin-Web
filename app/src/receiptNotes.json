@@ -143,5 +143,17 @@
       "section": "the-cohere-case-study"
     },
     "references": [{ "chapter": 5, "section": "where-the-story-stands" }]
+  },
+  "119": {
+    "passage": {
+      "chapter": 17,
+      "section": "ai-and-the-cyber-threat"
+    }
+  },
+  "120": {
+    "passage": {
+      "chapter": 18,
+      "section": "why-transparency-matters-in-practice"
+    }
   }
 }
