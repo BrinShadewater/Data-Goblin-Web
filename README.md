@@ -54,6 +54,20 @@ npm run verify
 `npm run verify` checks that generated content matches the deployed public
 copy, runs pagination sanity checks, and then runs the production build.
 
+Before opening a manuscript release PR, run the read-only source comparison
+from the website checkout. Pass the private manuscript checkout and repeat
+`--chapter` or `--receipt` for the items in the release.
+
+```powershell
+python -X utf8 pipeline/check_manuscript_release.py ../datagoblin-private-manuscript --chapter 12 --receipt 108
+```
+
+The comparison rebuilds the selected English content in memory and verifies it
+against both website copies. It also checks the reviewed French passages and
+receipts in the manuscript's `French-Receipts.json`. The rest of the French
+translation remains outside the comparison. Use `--website` to check a
+disposable copy of the website.
+
 ## 📦 What It Produces
 
 | File | Contents |

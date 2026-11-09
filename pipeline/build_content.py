@@ -15,7 +15,6 @@ MS   = os.path.join(ROOT, "DataGoblin-Complete.md")
 LEDG = os.path.join(ROOT, "Receipts-Ledger.md")
 GLOS = os.path.join(ROOT, "Glossary-Draft.md")
 OUT  = os.path.normpath(os.path.join(HERE, "..", "content"))
-os.makedirs(os.path.join(OUT, "chapters"), exist_ok=True)
 
 # Part / region mapping (region names from the mockup TOC — editable)
 PARTS = [
@@ -322,7 +321,13 @@ def parse_traps(text):
         }
     return traps
 
+def chapter_output(chapter):
+    # Freshness markers belong in book.json, which the TOC reads.
+    return {key: value for key, value in chapter.items() if key not in ("status", "statusDate")}
+
+
 def main():
+    os.makedirs(os.path.join(OUT, "chapters"), exist_ok=True)
     text = open(MS, encoding="utf-8").read()
     front, raw_chapters, appendix = split_chapters(text)
 
@@ -335,12 +340,9 @@ def main():
     appendix_doc = parse_appendix(appendix) if appendix else None
     extra_docs = [front_doc] + ([appendix_doc] if appendix_doc else [])
 
-    # The freshness marker only needs to ride along in book.json (the TOC reads
-    # it there). Keep it out of the per-chapter docs so those files don't churn.
     for ch in chapters + extra_docs:
-        out_ch = {k: v for k, v in ch.items() if k not in ("status", "statusDate")}
         with open(os.path.join(OUT, "chapters", f"ch{ch['number']:02d}.json"), "w", encoding="utf-8") as f:
-            json.dump(out_ch, f, ensure_ascii=False, indent=1)
+            json.dump(chapter_output(ch), f, ensure_ascii=False, indent=1)
 
     book = {
         "title": "Data Goblin",
