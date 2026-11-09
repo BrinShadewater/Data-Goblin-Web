@@ -1779,5 +1779,22 @@
     "https://www150.statcan.gc.ca/n1/daily-quotidien/261009/dq261009d-fra.htm?indgeo=0&indid=4209-1"
    ]
   ]
+ },
+ {
+  "id": 114,
+  "section": "Usurpation de qualité électorale au fédéral (8 novembre 2026)",
+  "claim": "Projet de loi C-25 et usurpation de qualité électorale",
+  "status": "resolved",
+  "detail": "Le projet de loi C-25 a reçu la sanction royale le 18 juin 2026. Son article 48 a élargi l’infraction fédérale d’usurpation de qualité électorale. L’article 480.1 modifié vise la création et la diffusion de certaines images trompeuses, imitations de voix et faux enregistrements de personnes désignées lorsqu’il y a intention de tromper. La liste comprend notamment les candidats, certains chefs de parti et les fonctionnaires électoraux. La personne peut établir que le contenu relevait manifestement de la parodie ou de la satire. L’article 87 rend la modification applicable même aux élections fédérales déclenchées dans les six mois suivant la sanction royale. La modification est postérieure à l’élection fédérale d’avril 2025.",
+  "links": [
+   [
+    "Loi électorale du Canada, article 480.1",
+    "https://laws-lois.justice.gc.ca/fra/lois/E-2.01/section-480.1.html"
+   ],
+   [
+    "Projet de loi C-25 à la sanction royale, articles 48 et 87",
+    "https://www.parl.ca/documentviewer/fr/45-1/projet-loi/C-25/sanction-royal"
+   ]
+  ]
  }
 ]
