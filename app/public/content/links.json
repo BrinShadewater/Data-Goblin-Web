@@ -1694,5 +1694,13 @@
  {
   "name": "UK government, general incident reporting",
   "url": "https://www.gov.uk/government/publications/cyber-security-and-resilience-network-and-information-systems-bill-factsheets/incident-reporting"
+ },
+ {
+  "name": "NIST IR 8621, full workshop report",
+  "url": "https://doi.org/10.6028/NIST.IR.8621"
+ },
+ {
+  "name": "NIST publication record, November 2026",
+  "url": "https://csrc.nist.gov/pubs/ir/8621/final"
  }
 ]

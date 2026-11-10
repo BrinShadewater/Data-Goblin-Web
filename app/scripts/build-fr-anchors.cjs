@@ -147,6 +147,7 @@ const FR = {
     124: "des agents soumis à une évaluation de cybersécurité d’OpenAI",
     148: "des actions non autorisées dans 10 des 122 essais",
     149: "mesures britanniques proposées pour les incidents",
+    150: "L’atelier du NIST sur la gestion des incidents liés à l’IA",
     10: "35 millions d'euros",
     2: "Convention-cadre du Conseil de l'Europe sur l'IA",
     16: "IA Security Institute",

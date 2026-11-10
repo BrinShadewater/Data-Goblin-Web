@@ -2577,5 +2577,22 @@
     "https://www.gov.uk/government/publications/cyber-security-and-resilience-network-and-information-systems-bill-factsheets/incident-reporting"
    ]
   ]
+ },
+ {
+  "id": 150,
+  "section": "NIST workshop on AI incident management (November 10, 2026)",
+  "claim": "NIST workshop on AI incident management (Ch 17)",
+  "status": "resolved",
+  "detail": "✅ NIST published this workshop summary on November 2, 2026, to inform future guidance. Sections 4.1 and 4.3 describe proposals to log tool calls, authorization decisions and model versions, test how quickly credentials and permissions can be revoked, and decide who can authorize containment. Section 5.2 distinguishes voluntary sharing among organisations to help prevent incidents, formal reporting of qualifying incidents to an oversight body, and the operational work of containment and recovery. | [NIST IR 8621, full workshop report](https://doi.org/10.6028/NIST.IR.8621) · [NIST publication record, November 2026](https://csrc.nist.gov/pubs/ir/8621/final)",
+  "links": [
+   [
+    "NIST IR 8621, full workshop report",
+    "https://doi.org/10.6028/NIST.IR.8621"
+   ],
+   [
+    "NIST publication record, November 2026",
+    "https://csrc.nist.gov/pubs/ir/8621/final"
+   ]
+  ]
  }
 ]
