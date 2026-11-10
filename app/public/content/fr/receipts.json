@@ -2577,5 +2577,22 @@
     "https://www.gov.uk/government/publications/cyber-security-and-resilience-network-and-information-systems-bill-factsheets/incident-reporting"
    ]
   ]
+ },
+ {
+  "id": 150,
+  "section": "NIST workshop on AI incident management (November 10, 2026)",
+  "claim": "Atelier du NIST sur la gestion des incidents liés à l’IA (ch. 17)",
+  "status": "resolved",
+  "detail": "✅ Le NIST a publié cette synthèse d’atelier le 2 novembre 2026 pour préparer de futures lignes directrices. Les sections 4.1 et 4.3 présentent des propositions pour consigner les appels aux outils, les décisions d’autorisation et les versions des modèles, mesurer le délai de révocation des identifiants et des permissions, et déterminer qui peut autoriser les mesures de confinement. La section 5.2 distingue le partage volontaire entre organisations pour prévenir les incidents, la déclaration officielle des incidents visés à un organisme de surveillance, et les interventions de confinement et de rétablissement.",
+  "links": [
+   [
+    "NIST IR 8621, rapport intégral de l’atelier",
+    "https://doi.org/10.6028/NIST.IR.8621"
+   ],
+   [
+    "Notice de publication du NIST, novembre 2026",
+    "https://csrc.nist.gov/pubs/ir/8621/final"
+   ]
+  ]
  }
 ]
