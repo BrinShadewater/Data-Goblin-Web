@@ -5,7 +5,7 @@
 // turns into a tappable receipt seal + popover (status, detail, sources).
 //
 // Receipts run BEFORE reference-autolinks and glossary tooltips so a
-// load-bearing claim always wins its line.
+// load-bearing claim gets the first chance to link.
 import type { Block } from "./pagination";
 
 export const RECEIPT_TITLE = "goblin-receipt";
@@ -18,6 +18,12 @@ function lineEligible(line: string): boolean {
   return !(t.startsWith("#") || t.startsWith(">") || t.startsWith("|") || line.includes("](") || line.includes("`"));
 }
 
+interface ReceiptEdit {
+  start: number;
+  end: number;
+  markdown: string;
+}
+
 export function receiptLinkBlocks(blocks: Block[], anchors: ClaimAnchor[] | undefined): Block[] {
   if (!anchors || anchors.length === 0) return blocks;
   const texts = blocks.map((b) => (b.kind === "md" ? b.text : null));
@@ -26,6 +32,9 @@ export function receiptLinkBlocks(blocks: Block[], anchors: ClaimAnchor[] | unde
   const present = anchors.filter((a) => joined.includes(a.anchor));
   if (present.length === 0) return blocks;
 
+  // Check eligibility against the original Markdown. Inserting one marker
+  // must not make a different claim on the same line look like a source link.
+  const edits = texts.map((): ReceiptEdit[] => []);
   for (const a of present) {
     outer: for (let i = 0; i < texts.length; i++) {
       const text = texts[i];
@@ -35,15 +44,23 @@ export function receiptLinkBlocks(blocks: Block[], anchors: ClaimAnchor[] | unde
       for (const line of lines) {
         const at = line.indexOf(a.anchor);
         if (at >= 0 && lineEligible(line)) {
-          const pos = offset + at;
-          texts[i] = text.slice(0, pos) + `[${a.anchor}](#receipt-${a.id} "${RECEIPT_TITLE}")` + text.slice(pos + a.anchor.length);
-          break outer;
+          const start = offset + at;
+          const end = start + a.anchor.length;
+          if (!edits[i].some((edit) => start < edit.end && end > edit.start)) {
+            edits[i].push({ start, end, markdown: `[${a.anchor}](#receipt-${a.id} "${RECEIPT_TITLE}")` });
+            break outer;
+          }
         }
         offset += line.length + 1;
       }
     }
   }
-  return blocks.map((b, i) =>
-    b.kind === "md" && texts[i] !== null && texts[i] !== b.text ? { ...b, text: texts[i] as string } : b
-  );
+  return blocks.map((block, i) => {
+    if (block.kind !== "md" || edits[i].length === 0) return block;
+    const text = edits[i].sort((a, b) => b.start - a.start).reduce(
+      (text, { start, end, markdown }) => text.slice(0, start) + markdown + text.slice(end),
+      block.text,
+    );
+    return { ...block, text };
+  });
 }

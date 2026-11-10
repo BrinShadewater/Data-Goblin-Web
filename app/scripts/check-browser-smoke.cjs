@@ -1018,6 +1018,37 @@ async function runReaderEntrySmoke(browser, baseUrl) {
   }
 }
 
+async function runChapter5OpeningReceiptsSmoke(browser, baseUrl) {
+  for (const viewport of [VIEWPORTS[0], VIEWPORTS[2]]) {
+    for (const lang of ["en", "fr"]) {
+      const prefix = lang === "fr" ? "/fr" : "";
+      const anchors = require(`../public/content${prefix}/claim-anchors.json`)[5];
+      const ledger = require(`../public/content${prefix}/receipts.json`);
+      const baseline = anchors.find((entry) => entry.id === 23).anchor;
+      await withAppPage(browser, baseUrl, viewport, async (page) => {
+        await page.goto(`${baseUrl}${prefix}/chapter/5`);
+        const opening = page.locator("[data-reader-scroll] p").filter({
+          has: page.getByRole("button", { name: baseline }),
+        });
+        const popup = page.getByRole("dialog", { name: lang === "fr" ? /Reçu/i : /Receipt/i });
+        for (const id of [23, 33]) {
+          const marker = opening.getByRole("button", { name: anchors.find((entry) => entry.id === id).anchor });
+          await marker.click({ timeout: 8000 });
+          const receipt = ledger.find((row) => row.id === id);
+          const detail = receipt.detail.replace(/^✅\s*/, "").split("|")[0].trim();
+          await popup.getByText(detail, { exact: true }).waitFor();
+          for (const [, url] of receipt.links) {
+            await popup.locator(`a[href="${url}"]`).waitFor();
+          }
+          await page.keyboard.press("Escape");
+          await popup.waitFor({ state: "hidden" });
+        }
+      }, { hasTouch: viewport.name === "mobile" });
+      console.log(`PASS Chapter 5 opening receipts #23 and #33: ${viewport.name} ${lang}`);
+    }
+  }
+}
+
 async function runChapterReceiptSmoke(browser, baseUrl, chapter, ids) {
   const notes = require("../src/receiptNotes.json");
   const sections = require("../public/content/section-links.json")[chapter];
@@ -1262,6 +1293,7 @@ async function main() {
     await runReceiptLocaleLoadingSmoke(browser, baseUrl);
     await runLatestUpdateSmoke(browser, baseUrl);
     await runReceiptPermalinkSmoke(browser, baseUrl);
+    await runChapter5OpeningReceiptsSmoke(browser, baseUrl);
     await runChapterReceiptSmoke(browser, baseUrl, 5, [115]);
     await runChapterReceiptSmoke(browser, baseUrl, 6, [116]);
     await runChapterReceiptSmoke(browser, baseUrl, 8, [117]);
