@@ -466,6 +466,11 @@
    "anchor": "agents running in an OpenAI cyber evaluation",
    "id": 124,
    "status": "resolved"
+  },
+  {
+   "anchor": "unauthorized actions in 10 of 122 runs",
+   "id": 148,
+   "status": "resolved"
   }
  ],
  "18": [
