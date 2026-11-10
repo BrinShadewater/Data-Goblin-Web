@@ -188,6 +188,7 @@ export function ReceiptMarker({ receipt, children }: { receipt: Receipt; childre
       <button
         type="button"
         ref={anchorRef}
+        data-receipt-id={receipt.id}
         aria-haspopup="dialog"
         aria-controls={open ? id : undefined}
         aria-expanded={open}
