@@ -2594,5 +2594,22 @@
     "https://csrc.nist.gov/pubs/ir/8621/final"
    ]
   ]
+ },
+ {
+  "id": 151,
+  "section": "Japan’s Emergency Cybersecurity Measures Package (November 10, 2026)",
+  "claim": "Japan’s Emergency Cybersecurity Measures Package (Ch 17)",
+  "status": "resolved",
+  "detail": "✅ Japan’s ministerial meeting on cybersecurity adopted the package on November 6, 2026. Section 1(4) calls for moving up AI-assisted checks where feasible on central government systems and supporting checks by local governments. Section 2 assigns the National Cybersecurity Office a coordinating role in gathering and analysing attack information from government and industry, then using it for alerts and assistance. Section 4 expands and coordinates advice and reporting channels and begins work on a nationwide mechanism to deploy specialists. The decision sets out measures to carry out, with some earlier steps already in place. | [Emergency Cybersecurity Measures Package, full decision in Japanese](https://www.mhlw.go.jp/content/001767068.pdf) · [Emergency Cybersecurity Measures Package, official summary in Japanese](https://www.mhlw.go.jp/content/001767066.pdf)",
+  "links": [
+   [
+    "Emergency Cybersecurity Measures Package, full decision in Japanese",
+    "https://www.mhlw.go.jp/content/001767068.pdf"
+   ],
+   [
+    "Emergency Cybersecurity Measures Package, official summary in Japanese",
+    "https://www.mhlw.go.jp/content/001767066.pdf"
+   ]
+  ]
  }
 ]

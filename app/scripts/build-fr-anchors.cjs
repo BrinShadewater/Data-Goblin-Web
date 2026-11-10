@@ -148,6 +148,7 @@ const FR = {
     148: "des actions non autorisées dans 10 des 122 essais",
     149: "mesures britanniques proposées pour les incidents",
     150: "L’atelier du NIST sur la gestion des incidents liés à l’IA",
+    151: "plan d’urgence du Japon en matière de cybersécurité",
     10: "35 millions d'euros",
     2: "Convention-cadre du Conseil de l'Europe sur l'IA",
     16: "IA Security Institute",
