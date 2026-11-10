@@ -1130,7 +1130,7 @@ async function runChapter5OpeningReceiptsSmoke(browser, baseUrl) {
   }
 }
 
-async function runChapterReceiptSmoke(browser, baseUrl, chapter, ids) {
+async function runChapterReceiptSmoke(browser, baseUrl, chapter, ids, { exactReturn = false } = {}) {
   const notes = require("../src/receiptNotes.json");
   const sections = require("../public/content/section-links.json")[chapter];
   for (const viewport of [VIEWPORTS[0], VIEWPORTS[2]]) {
@@ -1159,6 +1159,8 @@ async function runChapterReceiptSmoke(browser, baseUrl, chapter, ids) {
           for (let turn = 0; turn < 8 && !(await marker.isVisible()); turn++) {
             await page.getByRole("button", { name: lang === "fr" ? "Page suivante" : "Next page", exact: true }).last().click();
           }
+          const position = page.locator('[aria-live="polite"][aria-atomic="true"]');
+          const originalPage = exactReturn ? await position.textContent() : null;
           await marker.click();
           const popup = page.getByRole("dialog", { name: lang === "fr" ? /Reçu/i : /Receipt/i });
           const urls = ledger.find((row) => row.id === id).links.map(([, url]) => url);
@@ -1168,10 +1170,26 @@ async function runChapterReceiptSmoke(browser, baseUrl, chapter, ids) {
           }
           await popup.locator(`a[href="${prefix}/receipts#receipt-${id}"]`).click();
           await page.waitForURL(`${baseUrl}${prefix}/receipts#receipt-${id}`);
-          await page.locator(`#receipt-${id} a[href="${chapterPath}"]`).click();
-          await page.waitForURL(passage);
-          assert(await heading.evaluate((element) => element === document.activeElement),
-            `Receipt ${id} did not return focus to its section in ${lang}.`);
+          const row = page.locator(`#receipt-${id}`);
+          if (exactReturn) {
+            await row.getByRole("link", { name: lang === "fr" ? "Lire le passage du guide" : "Read the passage in the guide" }).click();
+            await page.waitForURL((url) => url.pathname + url.hash === chapterPath);
+            await page.locator(`button[data-receipt-id="${id}"]:focus`).waitFor({ timeout: 4000 });
+            assert(await position.textContent() === originalPage,
+              `Receipt ${id} did not restore the original reader page in ${lang}.`);
+            assert(await marker.evaluate((element) => {
+              const panel = element.closest("[data-reader-scroll]");
+              if (!panel) return false;
+              const buttonRect = element.getBoundingClientRect();
+              const panelRect = panel.getBoundingClientRect();
+              return buttonRect.top >= panelRect.top && buttonRect.bottom <= panelRect.bottom;
+            }), `Receipt ${id} is outside the visible reading area in ${lang}.`);
+          } else {
+            await row.locator(`a[href="${chapterPath}"]`).click();
+            await page.waitForURL(passage);
+            assert(await heading.evaluate((element) => element === document.activeElement),
+              `Receipt ${id} did not return focus to its section in ${lang}.`);
+          }
         }
       });
       console.log(`PASS Chapter ${chapter} receipts: ${viewport.name} ${lang}`);
@@ -1384,6 +1402,7 @@ async function main() {
     await runChapterReceiptSmoke(browser, baseUrl, 13, [114]);
     await runChapterReceiptSmoke(browser, baseUrl, 14, [98, 99]);
     await runChapterReceiptSmoke(browser, baseUrl, 16, [111, 113]);
+    await runChapterReceiptSmoke(browser, baseUrl, 17, [148], { exactReturn: true });
     await runChapter13LawSmoke(browser, baseUrl);
     await runStaticSectionLinksSmoke(browser, baseUrl);
     await runChapterOutlineSmoke(browser, baseUrl);

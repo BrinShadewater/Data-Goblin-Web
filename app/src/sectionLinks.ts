@@ -10,10 +10,13 @@ export type SectionLinks = Record<string, SectionLink[]>;
 
 const SECTION_ID = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 
-export function sectionHref(chapter: number, id: string) {
-  return SECTION_ID.test(id)
-    ? `/chapter/${chapter}#${id}`
-    : `/chapter/${chapter}?${new URLSearchParams({ section: id })}`;
+export function sectionHref(chapter: number, id: string, receipt?: number) {
+  const stableId = SECTION_ID.test(id);
+  const params = new URLSearchParams();
+  if (!stableId) params.set("section", id);
+  if (receipt !== undefined) params.set("receipt", String(receipt));
+  const query = params.size ? `?${params}` : "";
+  return `/chapter/${chapter}${query}${stableId ? `#${id}` : ""}`;
 }
 
 export function sectionLinkValue(search: string, hash: string) {

@@ -96,6 +96,7 @@ export function usePageNavigation({
   single,
   panelsReady,
   section,
+  receiptPanel,
   entryKey,
 }: {
   num: number;
@@ -109,6 +110,7 @@ export function usePageNavigation({
    */
   panelsReady: boolean;
   section: string | null;
+  receiptPanel: number;
   entryKey: string;
 }) {
   const navigate = useNavigate();
@@ -120,14 +122,16 @@ export function usePageNavigation({
   useEffect(() => {
     setPanelIdx(getSavedPanel(num));
   }, [num]);
-  // Resolve the heading against every layout until the reader turns a page.
+  // Resolve the link against every layout until the reader turns a page.
   // Artwork and other chapter data can arrive after the first set of panels.
   const sectionPanel = useMemo(() => {
-    if (!section || !panelsReady || !panels || turnedFromSectionEntry === entryKey) return -1;
+    if (!panelsReady || !panels || turnedFromSectionEntry === entryKey) return -1;
+    if (receiptPanel >= 0) return receiptPanel;
+    if (!section) return -1;
     return panels.findIndex((panel) =>
       panel.some((block) => block.kind === "heading" && block.heading === section)
     );
-  }, [section, panelsReady, panels, turnedFromSectionEntry, entryKey]);
+  }, [section, receiptPanel, panelsReady, panels, turnedFromSectionEntry, entryKey]);
 
   // Hold position by CONTENT across re-pagination.
   //

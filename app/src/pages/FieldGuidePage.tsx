@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useMemo, useRef } from "react";
 import { X } from "lucide-react";
 import { useLocation, useNavigationType } from "react-router";
 import { useTheme } from "../ThemeContext";
@@ -12,7 +12,8 @@ import { EdgeNav } from "../components/EdgeNav";
 import { useFocusTrap } from "../focusTrap";
 import { PagePanel } from "../components/PagePanel";
 import { NavIcon } from "../components/GoblinMascot";
-import { useBook, useSectionLinks } from "../useContent";
+import { useBook, useClaimAnchors, useReceipts, useSectionLinks } from "../useContent";
+import { RECEIPT_TITLE, receiptLinkBlocks } from "../receiptLinks";
 import { useLanguage } from "../LanguageContext";
 import { folio, backMatterNumber, isBackMatter } from "../readerUtils";
 import { SIDEBAR_NARROW_VW, SINGLE_MAX_PX, SPREAD_MAX_PX } from "../reader";
@@ -62,9 +63,21 @@ export function FieldGuidePage() {
   const sectionValue = sectionLinkValue(location.search, location.hash);
   const requestedSection = resolveSection(sections, sectionValue, lang);
   const requestedHeading = requestedSection?.[lang] ?? sectionValue;
+  const receiptId = Number(new URLSearchParams(location.search).get("receipt"));
+  const { data: claimAnchors } = useClaimAnchors();
+  const { data: receipts } = useReceipts();
+  const receiptPanel = useMemo(() => {
+    const anchors = claimAnchors?.[num];
+    if (!panels || !anchors?.some(({ id }) => id === receiptId) || !receipts?.some(({ id }) => id === receiptId)) return -1;
+    const marker = `](#receipt-${receiptId} "${RECEIPT_TITLE}")`;
+    return panels.findIndex((panel) =>
+      receiptLinkBlocks(panel, anchors).some((block) => block.kind === "md" && block.text.includes(marker))
+    );
+  }, [claimAnchors, num, panels, receiptId, receipts]);
   const { aligned, page, pageCount, step, goNext, goPrev, sectionPanel } = usePageNavigation({
     num, panels, single, panelsReady: chapter?.number === num,
     section: requestedHeading,
+    receiptPanel,
     entryKey: location.key,
   });
   const firstDoc = book?.frontMatter?.number ?? 0;
@@ -77,7 +90,7 @@ export function FieldGuidePage() {
   const toolsTrapRef = useFocusTrap<HTMLDivElement>(toolsOpen, () => setToolsOpen(false));
   const readingAreaRef = useRef<HTMLElement>(null);
   const focusedEntry = useRef<string | null>(null);
-  const focusedSection = useRef<{ key: string; heading: HTMLElement } | null>(null);
+  const focusedPassage = useRef<{ key: string; element: HTMLElement } | null>(null);
   const navigationType = useNavigationType();
   const focusReader = location.state?.focusReader === true;
   const chapterReady = chapter?.number === num && !!panels;
@@ -103,19 +116,24 @@ export function FieldGuidePage() {
   }, [activeId, chapterReady, location.key, num, sectionLinks, setReaderDestination]);
 
   useLayoutEffect(() => {
-    if (sectionPanel < 0 || !requestedHeading) return;
-    const target = Array.from(readingAreaRef.current?.querySelectorAll<HTMLElement>("[data-section-heading]") ?? [])
-      .find((element) => element.dataset.sectionHeading === requestedHeading);
+    if (sectionPanel < 0) return;
+    const exact = receiptPanel >= 0;
+    const readingArea = readingAreaRef.current;
+    const target = exact
+      ? readingArea?.querySelector<HTMLElement>(`button[data-receipt-id="${receiptId}"]`)
+      : Array.from(readingArea?.querySelectorAll<HTMLElement>("[data-section-heading]") ?? [])
+        .find((element) => element.dataset.sectionHeading === requestedHeading);
     if (!target) return;
-    target.scrollIntoView({ block: "nearest" });
-    const previous = focusedSection.current;
-    const replacedFocusedHeading = previous && previous.heading !== target && !previous.heading.isConnected &&
-      document.activeElement === document.body;
-    if (focusSection && (previous?.key !== location.key || replacedFocusedHeading)) {
+    target.scrollIntoView(exact ? { block: "center", behavior: "instant" } : { block: "nearest" });
+    const previous = focusedPassage.current;
+    const active = document.activeElement;
+    const replacedTarget = previous && previous.element !== target && !previous.element.isConnected && active === document.body;
+    const upgradedToReceipt = exact && previous?.element === active && active.hasAttribute("data-section-heading");
+    if ((focusSection || exact) && (previous?.key !== location.key || replacedTarget || upgradedToReceipt)) {
       target.focus({ preventScroll: true });
-      if (document.activeElement === target) focusedSection.current = { key: location.key, heading: target };
+      if (document.activeElement === target) focusedPassage.current = { key: location.key, element: target };
     }
-  }, [aligned, focusSection, location.key, panels, requestedHeading, sectionPanel]);
+  }, [aligned, focusSection, location.key, panels, receiptId, receiptPanel, requestedHeading, sectionPanel]);
 
   useEffect(() => {
     if (!focusReader || navigationType !== "PUSH" || !chapterReady || focusedEntry.current === location.key) return;
