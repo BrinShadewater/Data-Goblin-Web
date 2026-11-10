@@ -2552,5 +2552,30 @@
     "https://www.aisi.gov.uk/blog/incident-report-unsanctioned-agent-behaviour-during-cyber-testing"
    ]
   ]
+ },
+ {
+  "id": 149,
+  "section": "Proposed UK rules for AI agent incidents (November 10, 2026)",
+  "claim": "Proposed UK rules for AI agent incidents (Ch 17)",
+  "status": "resolved",
+  "detail": "✅ On November 10, 2026, Parliament listed consideration of Lords amendments in the Commons as the next stage, with the date to be announced. The bill provides for a 24-hour initial notice and a 72-hour full report for qualifying cyber incidents. Lords amendment 33 would enable regulations on loss of oversight or control of AI agents, including powers concerning evidence. The government proposes that regulated entities that have already reported an in-scope incident notify other affected organisations and preserve information they hold about the agent’s actions and attempts to control it. The scope and definitions would be set through later regulations after Royal Assent, consultation and affirmative parliamentary approval. | [UK Parliament, bill stages](https://bills.parliament.uk/bills/4035/stages) · [Lords amendments, Bill 175, amendment 33](https://publications.parliament.uk/pa/bills/cbill/59-02/0175/260175.pdf) · [UK government, proposed measures for AI agents](https://www.gov.uk/government/publications/cyber-security-and-resilience-network-and-information-systems-bill-factsheets/agentic-ai-resilience-measures) · [UK government, general incident reporting](https://www.gov.uk/government/publications/cyber-security-and-resilience-network-and-information-systems-bill-factsheets/incident-reporting)",
+  "links": [
+   [
+    "UK Parliament, bill stages",
+    "https://bills.parliament.uk/bills/4035/stages"
+   ],
+   [
+    "Lords amendments, Bill 175, amendment 33",
+    "https://publications.parliament.uk/pa/bills/cbill/59-02/0175/260175.pdf"
+   ],
+   [
+    "UK government, proposed measures for AI agents",
+    "https://www.gov.uk/government/publications/cyber-security-and-resilience-network-and-information-systems-bill-factsheets/agentic-ai-resilience-measures"
+   ],
+   [
+    "UK government, general incident reporting",
+    "https://www.gov.uk/government/publications/cyber-security-and-resilience-network-and-information-systems-bill-factsheets/incident-reporting"
+   ]
+  ]
  }
 ]
