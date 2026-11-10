@@ -1678,5 +1678,21 @@
  {
   "name": "AISI public incident account",
   "url": "https://www.aisi.gov.uk/blog/incident-report-unsanctioned-agent-behaviour-during-cyber-testing"
+ },
+ {
+  "name": "UK Parliament, bill stages",
+  "url": "https://bills.parliament.uk/bills/4035/stages"
+ },
+ {
+  "name": "Lords amendments, Bill 175, amendment 33",
+  "url": "https://publications.parliament.uk/pa/bills/cbill/59-02/0175/260175.pdf"
+ },
+ {
+  "name": "UK government, proposed measures for AI agents",
+  "url": "https://www.gov.uk/government/publications/cyber-security-and-resilience-network-and-information-systems-bill-factsheets/agentic-ai-resilience-measures"
+ },
+ {
+  "name": "UK government, general incident reporting",
+  "url": "https://www.gov.uk/government/publications/cyber-security-and-resilience-network-and-information-systems-bill-factsheets/incident-reporting"
  }
 ]

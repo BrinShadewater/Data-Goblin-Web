@@ -2552,5 +2552,30 @@
     "https://www.aisi.gov.uk/blog/incident-report-unsanctioned-agent-behaviour-during-cyber-testing"
    ]
   ]
+ },
+ {
+  "id": 149,
+  "section": "Proposed UK rules for AI agent incidents (November 10, 2026)",
+  "claim": "Mesures britanniques proposées pour les incidents impliquant des agents d’IA (ch. 17)",
+  "status": "resolved",
+  "detail": "✅ Le 10 novembre 2026, le Parlement indiquait que la prochaine étape était l’examen des amendements des lords à la Chambre des communes, à une date à déterminer. Le projet de loi prévoit un avis initial dans les 24 heures et un rapport complet dans les 72 heures pour les incidents de cybersécurité qui répondent aux critères. L’amendement 33 des lords permettrait de prendre des règlements sur la perte de supervision ou de contrôle d’agents d’IA, notamment en matière de preuve. Le gouvernement propose que les entités réglementées qui ont déjà déclaré un incident visé en avisent les autres organisations touchées et conservent les renseignements qu’elles détiennent sur les actions de l’agent et les tentatives pour le maîtriser. La portée et les définitions seraient précisées par des règlements ultérieurs après la sanction royale, une consultation et un vote d’approbation du Parlement.",
+  "links": [
+   [
+    "Parlement britannique, étapes du projet de loi",
+    "https://bills.parliament.uk/bills/4035/stages"
+   ],
+   [
+    "Amendements des lords, projet de loi 175, amendement 33",
+    "https://publications.parliament.uk/pa/bills/cbill/59-02/0175/260175.pdf"
+   ],
+   [
+    "Gouvernement britannique, mesures proposées pour les agents d’IA",
+    "https://www.gov.uk/government/publications/cyber-security-and-resilience-network-and-information-systems-bill-factsheets/agentic-ai-resilience-measures"
+   ],
+   [
+    "Gouvernement britannique, déclaration générale des incidents",
+    "https://www.gov.uk/government/publications/cyber-security-and-resilience-network-and-information-systems-bill-factsheets/incident-reporting"
+   ]
+  ]
  }
 ]

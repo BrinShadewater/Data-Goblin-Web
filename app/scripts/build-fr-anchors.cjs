@@ -146,6 +146,7 @@ const FR = {
     119: "L’orientation fédérale sur la préparation en matière de cybersécurité est entrée en vigueur le 1er octobre 2026",
     124: "des agents soumis à une évaluation de cybersécurité d’OpenAI",
     148: "des actions non autorisées dans 10 des 122 essais",
+    149: "mesures britanniques proposées pour les incidents",
     10: "35 millions d'euros",
     2: "Convention-cadre du Conseil de l'Europe sur l'IA",
     16: "IA Security Institute",
