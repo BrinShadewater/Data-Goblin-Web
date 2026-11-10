@@ -2468,5 +2468,72 @@
     "https://www.ipc.on.ca/en/about-us/role-and-mandate/what-we-do-vs-what-we-dont-do"
    ]
   ]
+ },
+ {
+  "id": 145,
+  "section": "Alberta and New Brunswick electricity and siting (November 10, 2026)",
+  "claim": "Prélèvement albertain sur le matériel informatique des centres de données (ch. 8)",
+  "status": "resolved",
+  "detail": "✅ En vigueur depuis le 1er janvier 2026, le prélèvement vise les installations dont la capacité électrique atteint au moins 75 MW, dont certaines installations de colocation ou liées entre elles. La modification de 2026 fonde le calcul sur l’électricité réellement consommée. La formule applique un taux de 2 % à l’électricité du réseau ordinaire, de 1 % à l’électricité admissible provenant de nouvelles sources et livrée par le réseau, et de zéro à l’électricité consommée sans être puisée dans le réseau public. Le prélèvement est versé à la province et calculé sur la valeur du matériel informatique. L’article 25.06 prévoit un crédit sur l’impôt albertain sur le revenu des sociétés à payer.",
+  "links": [
+   [
+    "Aperçu des taxes et prélèvements de l’Alberta",
+    "https://www.alberta.ca/taxes-levies-overview"
+   ],
+   [
+    "Projet de loi 12 de l’Alberta, prélèvement et crédit",
+    "https://docs.assembly.ab.ca/LADDAR_files/docs/bills/bill/legislature_31/session_2/20251023_bill-012.pdf"
+   ],
+   [
+    "Projet de loi 17 de l’Alberta, formule révisée",
+    "https://docs.assembly.ab.ca/LADDAR_files/docs/bills/bill/legislature_31/session_2/20251023_bill-017.pdf"
+   ],
+   [
+    "Mise en œuvre du budget 2026 de l’Alberta",
+    "https://www.alberta.ca/implementing-budget-2026"
+   ]
+  ]
+ },
+ {
+  "id": 146,
+  "section": "Alberta and New Brunswick electricity and siting (November 10, 2026)",
+  "claim": "Raccordement des grands centres de données au réseau albertain (ch. 8)",
+  "status": "resolved",
+  "detail": "✅ Le règlement albertain 117/2026 s’applique généralement à partir d’une demande maximale de 75 MW directement au réseau de transport. Il permet à l’AESO d’abaisser ce seuil pour protéger la fiabilité du réseau. L’évaluation des demandes d’accès donne la priorité aux projets jumelés à des moyens admissibles de production ou de stockage dédiés. Par ailleurs, l’AESO indique que deux contrats ont été signés pour la phase 1, soit GLDC Load (970 MW) et Keephills Data Centre Phase I (230 MW). Les deux projets poursuivent le processus de raccordement. Ces chiffres correspondent à des capacités attribuées par contrat.",
+  "links": [
+   [
+    "Règlement albertain sur les centres de données, 117/2026",
+    "https://kings-printer.alberta.ca/1266.cfm?isbncln=9780779862924&leg_type=Regs&page=2026_117.cfm"
+   ],
+   [
+    "Politique de l’Alberta sur le réseau",
+    "https://www.alberta.ca/datacentres/grid"
+   ],
+   [
+    "Liste des projets à forte demande de l’AESO",
+    "https://www.aeso.ca/grid/connecting-to-the-grid/large-load-projects/"
+   ]
+  ]
+ },
+ {
+  "id": 147,
+  "section": "Alberta and New Brunswick electricity and siting (November 10, 2026)",
+  "claim": "Agrandissement du parc de Spruce Lake et examen du centre de données (ch. 8)",
+  "status": "resolved",
+  "detail": "✅ La décision du Nouveau-Brunswick du 20 août 2025, au dossier 1635, permet l’agrandissement du parc industriel sous réserve de conditions et d’autres autorisations. Le dossier 1663 porte sur un projet distinct de Beacon New Brunswick et de VoltaGrid. Le centre de données proposé aurait une puissance de 390 MW, dont 190 MW provenant d’une centrale au gaz sur place et 200 MW du réseau d’Énergie NB. Vérification effectuée le 10 novembre 2026. Le dossier provincial était toujours à l’étude. Selon la mise à jour du 23 octobre au registre fédéral, l’agence étudiait les demandes avant de formuler une recommandation sur la désignation.",
+  "links": [
+   [
+    "Décision et conditions du Nouveau-Brunswick, dossier 1635",
+    "https://www.gnb.ca/content/dam/GNB3/t/enr-ern/eia/docs/registrations-enregistrements/1623-1641/1635-conditions.pdf"
+   ],
+   [
+    "Registre des évaluations environnementales du Nouveau-Brunswick, dossier 1663",
+    "https://www.gnb.ca/en/topic/environment-resources/environmental-assessment/registrations-determinations/1657-most-recent.html"
+   ],
+   [
+    "Registre fédéral des évaluations d’impact, dossier 90762",
+    "https://iaac-aeic.gc.ca/050/evaluations/proj/90762"
+   ]
+  ]
  }
 ]

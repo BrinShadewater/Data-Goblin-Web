@@ -2468,5 +2468,72 @@
     "https://www.ipc.on.ca/en/about-us/role-and-mandate/what-we-do-vs-what-we-dont-do"
    ]
   ]
+ },
+ {
+  "id": 145,
+  "section": "Alberta and New Brunswick electricity and siting (November 10, 2026)",
+  "claim": "Alberta’s data-centre equipment levy (Ch 8)",
+  "status": "resolved",
+  "detail": "✅ The levy took effect January 1, 2026, and applies to covered facilities with electricity capacity of at least 75 MW, including certain co-location and related facilities. The 2026 amendment bases the rate on actual electricity use. The formula weights other grid electricity at 2%, qualifying new electricity delivered through the grid at 1%, and power used without drawing it from the public grid at zero. The levy is payable to the province on computing equipment value. Section 25.06 provides a credit against Alberta corporate income tax payable. | [Alberta tax overview](https://www.alberta.ca/taxes-levies-overview) · [Alberta Bill 12, levy and credit](https://docs.assembly.ab.ca/LADDAR_files/docs/bills/bill/legislature_31/session_2/20251023_bill-012.pdf) · [Alberta Bill 17, amended formula](https://docs.assembly.ab.ca/LADDAR_files/docs/bills/bill/legislature_31/session_2/20251023_bill-017.pdf) · [Alberta Budget 2026 implementation](https://www.alberta.ca/implementing-budget-2026)",
+  "links": [
+   [
+    "Alberta tax overview",
+    "https://www.alberta.ca/taxes-levies-overview"
+   ],
+   [
+    "Alberta Bill 12, levy and credit",
+    "https://docs.assembly.ab.ca/LADDAR_files/docs/bills/bill/legislature_31/session_2/20251023_bill-012.pdf"
+   ],
+   [
+    "Alberta Bill 17, amended formula",
+    "https://docs.assembly.ab.ca/LADDAR_files/docs/bills/bill/legislature_31/session_2/20251023_bill-017.pdf"
+   ],
+   [
+    "Alberta Budget 2026 implementation",
+    "https://www.alberta.ca/implementing-budget-2026"
+   ]
+  ]
+ },
+ {
+  "id": 146,
+  "section": "Alberta and New Brunswick electricity and siting (November 10, 2026)",
+  "claim": "Alberta’s grid connection rules for large data centres (Ch 8)",
+  "status": "resolved",
+  "detail": "✅ Alberta Regulation 117/2026 generally applies from 75 MW of maximum demand directly from transmission and lets AESO set a lower threshold for reliability. It gives priority in assessing access requests to projects paired with qualifying dedicated generation or storage. Separately, AESO lists signed Phase 1 load contracts for GLDC Load (970 MW) and Keephills Data Centre Phase I (230 MW). Both proceed through the connection process. The figures are contracted allocations. | [Alberta Data Centre Regulation, AR 117/2026](https://kings-printer.alberta.ca/1266.cfm?isbncln=9780779862924&leg_type=Regs&page=2026_117.cfm) · [Alberta grid policy](https://www.alberta.ca/datacentres/grid) · [AESO large-load project list](https://www.aeso.ca/grid/connecting-to-the-grid/large-load-projects/)",
+  "links": [
+   [
+    "Alberta Data Centre Regulation, AR 117/2026",
+    "https://kings-printer.alberta.ca/1266.cfm?isbncln=9780779862924&leg_type=Regs&page=2026_117.cfm"
+   ],
+   [
+    "Alberta grid policy",
+    "https://www.alberta.ca/datacentres/grid"
+   ],
+   [
+    "AESO large-load project list",
+    "https://www.aeso.ca/grid/connecting-to-the-grid/large-load-projects/"
+   ]
+  ]
+ },
+ {
+  "id": 147,
+  "section": "Alberta and New Brunswick electricity and siting (November 10, 2026)",
+  "claim": "Spruce Lake park expansion and data-centre review (Ch 8)",
+  "status": "resolved",
+  "detail": "✅ New Brunswick’s August 20, 2025 determination for file 1635 allows the industrial park expansion to proceed subject to conditions and other approvals. File 1663 is a separate project by Beacon New Brunswick and VoltaGrid for a proposed 390 MW data centre, with 190 MW of on-site gas generation and 200 MW from the NB Power grid. Checked November 10, 2026. The provincial file remained under review. The federal registry’s October 23 update says the agency was examining the requests before making a recommendation on designation. | [New Brunswick determination and conditions, file 1635](https://www.gnb.ca/content/dam/GNB3/t/enr-ern/eia/docs/registrations-enregistrements/1623-1641/1635-conditions.pdf) · [New Brunswick environmental assessment register, file 1663](https://www.gnb.ca/en/topic/environment-resources/environmental-assessment/registrations-determinations/1657-most-recent.html) · [Federal impact assessment registry, file 90762](https://iaac-aeic.gc.ca/050/evaluations/proj/90762)",
+  "links": [
+   [
+    "New Brunswick determination and conditions, file 1635",
+    "https://www.gnb.ca/content/dam/GNB3/t/enr-ern/eia/docs/registrations-enregistrements/1623-1641/1635-conditions.pdf"
+   ],
+   [
+    "New Brunswick environmental assessment register, file 1663",
+    "https://www.gnb.ca/en/topic/environment-resources/environmental-assessment/registrations-determinations/1657-most-recent.html"
+   ],
+   [
+    "Federal impact assessment registry, file 90762",
+    "https://iaac-aeic.gc.ca/050/evaluations/proj/90762"
+   ]
+  ]
  }
 ]
