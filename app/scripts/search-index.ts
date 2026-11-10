@@ -35,6 +35,10 @@ const sectionKeywords: Record<string, Record<Lang, string>> = {
     en: "OCAP principles Indigenous data governance ownership control access possession",
     fr: "PCAP principes données autochtones propriété contrôle accès possession",
   },
+  "10/the-biometric-and-facial-recognition-layer": {
+    en: "Canadian Canada police use facial recognition biometric Clearview RCMP",
+    fr: "Canada police utiliser reconnaissance faciale biométrie Clearview GRC",
+  },
   "13/bill-c-16-what-it-covers": {
     en: "deepfake removal removing takedown 48 hour deadline start court order",
     fr: "hypertrucage retrait retirer 48 heures délai commence ordonnance tribunal",

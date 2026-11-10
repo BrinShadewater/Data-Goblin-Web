@@ -31,48 +31,75 @@ const FR = {
   1: {
     28: "soixante-dix définitions de l'intelligence",
     38: "université Massey",
-    48: "Registre de l'IA du Conseil du Trésor",
+    138: "Registre de l'IA du Conseil du Trésor",
     25: "800 000",
   },
+  2: { 131: "Des chercheurs ont extrait de GPT-2 des centaines de passages" },
+  3: {
+    132: "Meta a déclaré avoir utilisé le Projet Gutenberg et Books3 pour le premier LLaMA",
+    133: "LAION-5B indexait environ 5,85 milliards de paires",
+  },
+  4: {
+    105: "10 à 50 réponses de longueur moyenne",
+    135: "1,2 à 5,0 millions de tonnes",
+  },
   5: {
+    118: "Ottawa s’est engagé à investir par étapes jusqu’à 1,6 milliard",
+    138: "plus de 400 systèmes provenant de 42 institutions",
     115: "objectif fédéral d’accès à 500 MW de capacité de calcul",
     42: "a déposé le projet de loi C-16 en décembre 2025",
     3: "Code de conduite volontaire",
     22: "Fonds d'accès informatique IA",
     26: "Bell IA Fabric",
     23: "19,2 %",
+    33: "à l’Hôpital général de Toronto",
   },
   6: {
+    39: "environ 22 % des centres déclaraient leur PUE",
     116: "Sherwood, près de Regina",
     13: "règlement délégué",
     14: "GPU de centres de données",
-    41: "1 200 MW",
+    141: "1 200 MW",
     // Anchorable again as of 2026-08-01: the French said "un dixième" (one
     // tenth) for one-fifteenth, so this was held back rather than let a receipt
     // vouch for a wrong number. pipeline/fr-corrections.json fixes the text.
     24: "un quinzième",
   },
+  7: { 118: "La prise de participation prévue par Ottawa s’accompagne d’engagements de Cohere" },
   8: {
+    121: "En Irlande, les compteurs des centres de données",
+    128: "Le Manitoba a adopté une loi",
+    129: "Hydro-Québec propose un tarif CD",
+    130: "L’Ontario propose une catégorie distincte",
     117: "15 demandes totalisant près de 800 MW",
-    27: "54 % des projets énergétiques-transition-minéraux du monde",
-    39: "22 % des installations canadiennes",
+    27: "54 % se situaient sur les terres de peuples autochtones ou à proximité",
+    39: "22 % de RNCan concerne la déclaration du PUE",
     21: "comté de Loudoun",
-    44: "36 milliards de dollars américains",
+    106: "36 milliards de dollars américains",
   },
   9: {
     30: "projets miniers de transition énergétique",
-    50: "Abondant Intelligences",
+    143: "Abondant Intelligences",
     19: "Principes du PACO",
-    43: "28 000",
+    107: "a interrogé ses membres en 2023",
   },
   10: {
+    70: "Le projet de loi C-22 sur l’accès légal",
+    136: "un membre du personnel en mesure de réviser la décision",
     77: "C'est un outil basé sur Microsoft Excel",
     78: "Des bots à la porte",
     82: "Clearview indiquaient 521 requêtes de recherche",
   },
-  11: { 29: "n'a ni signé ni adhéré" },
+  11: {
+    29: "n'a ni signé ni adhéré",
+    134: {
+      "Ontario Superior Court": "Cour supérieure de justice de l’Ontario",
+      "The plaintiffs allege that OpenAI copied works they own or license": "Les demandeurs allèguent qu’OpenAI a copié sans autorisation",
+    },
+  },
   12: {
-    49: "projet de loi C-16",
+    139: "son cadre modernisé de certification des émissions canadiennes",
+    42: "Loi visant à protéger les victimes",
     108: "a changé les profils recherchés",
     109: "animer du matériel d’archives",
     110: "plusieurs centaines de personnes",
@@ -85,7 +112,10 @@ const FR = {
     114: "a élargi l’infraction fédérale d’usurpation de qualité électorale",
     12: "cas aggravés",
     4: "Danemark",
-    32: { "0.12%-of-views (on X)": "0,12\u00a0% des vues sur X" },
+    32: {
+      "9.24%": "9,24 %",
+      "0.12% of the sampled X post views": "0,12 % des vues des publications échantillonnées sur X",
+    },
     // The French edition does not name the Act in the takedown-duty paragraph
     // the English anchors to; its only mention is "US TAKE IT DOWN" in the
     // chapter's international-comparison sentence. Same statute, slightly
@@ -93,6 +123,7 @@ const FR = {
     11: "TAKE IT DOWN",
   },
   14: {
+    122: "Deezer a indiqué que les titres",
     98: "Loi sur les nouvelles en ligne",
     99: "640 médias locaux",
   },
@@ -102,17 +133,29 @@ const FR = {
     34: "Commissariat à la protection de la vie privée de 2024-25",
   },
   16: {
+    59: "31 % des salariés de 18 à 64 ans",
+    123: "les embauches chez les 15 à 29 ans ont ralenti",
     35: "Les employeurs canadiens dépensent environ",
     111: "19 % des 446",
     113: "26 % moins d’emplois salariés",
   },
   17: {
+    119: "L’orientation fédérale sur la préparation en matière de cybersécurité est entrée en vigueur le 1er octobre 2026",
+    124: "des agents soumis à une évaluation de cybersécurité d’OpenAI",
     10: "35 millions d'euros",
     2: "Convention-cadre du Conseil de l'Europe sur l'IA",
     16: "IA Security Institute",
     17: "plan d'action en juillet 2025",
   },
-  18: { 8: "loi générale sur la protection des renseignements personnels du secteur privé" },
+  18: {
+    120: "948 méthodes fonctionnelles d’exploitation permettant une élévation locale de privilèges",
+    125: "Le Commissariat à la protection de la vie privée a recommandé",
+    126: "En septembre 2026, OpenAI a présenté",
+    144: "loi générale sur la protection des renseignements personnels du secteur privé",
+    31: "40,69 sur 100",
+    137: "14 des 19 développeurs sollicités",
+  },
+  21: { 127: "un essai randomisé mené dans 16 cliniques de soins primaires au Kenya" },
 };
 
 /**

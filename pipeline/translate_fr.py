@@ -18,7 +18,7 @@ Toolchain (see FRENCH-EDITION-HANDOFF.md):
 import os, re, sys, json, glob, time, hashlib
 from pathlib import Path
 
-from authored_fr import load_authored, localize_passage
+from authored_fr import load_authored, localize_blocks, localize_chapter_blocks, localize_front_chapter, localize_passage, sync_recap
 
 MODEL_DIR = os.environ.get("DG_MT_MODEL", "/tmp/en_fr_pkg/translate-en_fr-1_9")
 SRC = os.environ.get("DG_CONTENT_SRC", "app/public/content")
@@ -236,6 +236,8 @@ def tr_text(s):
     return _post_fr(translate_markdown(s)) if isinstance(s, str) else s
 
 def translate_book(b):
+    english_front = b.get("frontmatterMarkdown", "")
+    english_appendix = b.get("appendixMarkdown", "")
     b = json.loads(json.dumps(b))  # deep copy
     b["subtitle"] = tr_text(b.get("subtitle", ""))   # title kept (masthead brand)
     b["asOf"] = tr_text(b.get("asOf", ""))
@@ -251,9 +253,19 @@ def translate_book(b):
             if "title" in ch: ch["title"] = tr_text(ch["title"])
     for f in ("frontmatterMarkdown", "appendixMarkdown"):
         if f in b: b[f] = tr_text(b[f])
+    if english_front:
+        b["frontmatterMarkdown"] = localize_blocks(
+            english_front, b["frontmatterMarkdown"], AUTHORED.get("frontMatter", {})
+        )
+    if english_appendix:
+        b["appendixMarkdown"] = localize_blocks(
+            english_appendix, b["appendixMarkdown"],
+            {**AUTHORED.get("chapterBlocks", {}).get("22", {}), **AUTHORED.get("appendixBookBlocks", {})},
+        )
     return b
 
 def translate_chapter(d):
+    english = d
     d = json.loads(json.dumps(d))
     reviewed = AUTHORED["passages"].get(str(d.get("number")), {})
     for f in ("title", "part", "region", "startHere", "biasLabel"):
@@ -272,6 +284,13 @@ def translate_chapter(d):
     if isinstance(d.get("recap"), list):
         d["recap"] = [tr_text(x) if isinstance(x, str) else x for x in d["recap"]]
     # sources[] left in original language (citations / proper nouns)
+    if d.get("number") == 0:
+        localize_front_chapter(english, d, AUTHORED.get("frontMatter", {}))
+    blocks = AUTHORED.get("chapterBlocks", {}).get(str(d["number"]), {})
+    if blocks:
+        localize_chapter_blocks(english, d, blocks)
+    else:
+        sync_recap(d)
     return d
 
 def translate_glossary(arr):

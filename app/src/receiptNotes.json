@@ -1,19 +1,25 @@
 {
   "32": {
-    "passage": { "chapter": 13, "section": "the-working-test" },
+    "passage": {
+      "chapter": 13,
+      "section": "the-working-test"
+    },
     "en": {
-      "detail": "In the study’s sample of posts about the 2025 Canadian federal election, politically harmful deepfakes accounted for 0.12% of all views on X. The authors compared view counts six months after posting. In a separate comparison of images, the study flagged 8.66% from right-leaning accounts and 4.42% from left-leaning accounts as deepfakes.",
+      "detail": "The study’s 0.12% is a share of sampled X post views, measured six months after posting. Repeat views can count. Table 1 and the preprint abstract disagree on the partisan percentages. The ledger shows both.",
       "sourceLabel": "Read the study’s results",
       "url": "https://arxiv.org/html/2512.13915v1#S4"
     },
     "fr": {
-      "detail": "Dans l’échantillon de publications sur les élections fédérales canadiennes de 2025, les hypertrucages politiquement préjudiciables représentaient 0,12 % de toutes les vues sur X. L’équipe a comparé les nombres de vues six mois après la publication. Dans une analyse distincte des images, elle a détecté des hypertrucages dans 8,66 % des images des comptes de droite et dans 4,42 % de celles des comptes de gauche.",
+      "detail": "Le 0,12 % concerne les vues des publications échantillonnées sur X, relevées six mois après leur mise en ligne. Les vues répétées peuvent compter. Le tableau 1 et le résumé donnent des taux partisans différents. Le registre présente les deux.",
       "sourceLabel": "Lire les résultats de l’étude (en anglais)",
       "url": "https://arxiv.org/html/2512.13915v1#S4"
     }
   },
   "77": {
-    "passage": { "chapter": 10, "section": "the-marquee-case-ai-in-immigration-and-at-the-border" },
+    "passage": {
+      "chapter": 10,
+      "section": "the-marquee-case-ai-in-immigration-and-at-the-border"
+    },
     "en": {
       "detail": "IRCC describes Chinook as an Excel tool that displays case information for officers. The department uses a separate system to sort temporary resident visa files and assess eligibility on some routine applications. An officer makes every final decision.",
       "sourceLabel": "Read IRCC’s explanation of Chinook",
@@ -26,7 +32,10 @@
     }
   },
   "78": {
-    "passage": { "chapter": 10, "section": "the-marquee-case-ai-in-immigration-and-at-the-border" },
+    "passage": {
+      "chapter": 10,
+      "section": "the-marquee-case-ai-in-immigration-and-at-the-border"
+    },
     "en": {
       "detail": "The 2018 report by Petra Molnar and Lex Gill examines how automated decisions in Canada’s immigration and refugee system can amplify discrimination. It calls for a freeze on new systems until existing ones comply with binding government-wide rules, and recommends independent oversight.",
       "sourceLabel": "Read the Citizen Lab report",
@@ -39,7 +48,10 @@
     }
   },
   "82": {
-    "passage": { "chapter": 10, "section": "the-same-pattern-past-the-border-welfare-policing-and-the-courts" },
+    "passage": {
+      "chapter": 10,
+      "section": "the-same-pattern-past-the-border-welfare-policing-and-the-courts"
+    },
     "en": {
       "detail": "The federal Privacy Commissioner found that the RCMP’s use of Clearview AI violated the Privacy Act. The RCMP initially reported 78 uses. Clearview’s records showed 521 search queries from RCMP accounts, and one use could involve multiple queries.",
       "sourceLabel": "Read the Privacy Commissioner’s findings",
@@ -52,7 +64,10 @@
     }
   },
   "98": {
-    "passage": { "chapter": 14, "section": "the-floor-was-already-gone" },
+    "passage": {
+      "chapter": 14,
+      "section": "the-floor-was-already-gone"
+    },
     "en": {
       "detail": "The Online News Act received royal assent on June 22, 2023. The CRTC’s conditional exemption from mandatory bargaining for Google Search began October 28, 2024. The funding agreement provides $100 million a year, adjusted for inflation.",
       "sourceLabel": "Read the CRTC’s exemption order",
@@ -65,7 +80,10 @@
     }
   },
   "99": {
-    "passage": { "chapter": 14, "section": "the-floor-was-already-gone" },
+    "passage": {
+      "chapter": 14,
+      "section": "the-floor-was-already-gone"
+    },
     "en": {
       "detail": "The October 1, 2026 snapshot records 640 closures in 407 communities since 2008. The 286 outlets still operating are outlets that launched during that period. The map can add earlier closures as researchers learn about them.",
       "sourceLabel": "Read the October 2026 Local News Map report (PDF)",
@@ -142,7 +160,12 @@
       "chapter": 7,
       "section": "the-cohere-case-study"
     },
-    "references": [{ "chapter": 5, "section": "where-the-story-stands" }]
+    "references": [
+      {
+        "chapter": 5,
+        "section": "where-the-story-stands"
+      }
+    ]
   },
   "119": {
     "passage": {
@@ -154,6 +177,128 @@
     "passage": {
       "chapter": 18,
       "section": "why-transparency-matters-in-practice"
+    }
+  },
+  "121": {
+    "passage": {
+      "chapter": 8,
+      "section": "the-canadian-specific-carbon-arithmetic"
+    }
+  },
+  "122": {
+    "passage": {
+      "chapter": 14,
+      "section": "the-flood"
+    }
+  },
+  "123": {
+    "passage": {
+      "chapter": 16,
+      "section": "the-canadian-empirical-baseline"
+    }
+  },
+  "124": {
+    "passage": {
+      "chapter": 17,
+      "section": "ai-and-the-cyber-threat"
+    }
+  },
+  "125": {
+    "passage": {
+      "chapter": 18,
+      "section": "canadian-ai-transparency-layer-by-layer"
+    }
+  },
+  "126": {
+    "passage": {
+      "chapter": 18,
+      "section": "why-transparency-matters-in-practice"
+    }
+  },
+  "127": {
+    "passage": {
+      "chapter": 21,
+      "section": "the-benefit-side-kept-calibrated"
+    }
+  },
+  "128": {
+    "passage": {
+      "chapter": 8,
+      "section": "the-canadian-specific-carbon-arithmetic"
+    }
+  },
+  "129": {
+    "passage": {
+      "chapter": 8,
+      "section": "the-canadian-specific-carbon-arithmetic"
+    }
+  },
+  "130": {
+    "passage": {
+      "chapter": 8,
+      "section": "the-canadian-specific-carbon-arithmetic"
+    }
+  },
+  "70": {
+    "passage": {
+      "chapter": 10,
+      "section": "the-biometric-and-facial-recognition-layer"
+    }
+  },
+  "131": {
+    "passage": {
+      "chapter": 2,
+      "section": "the-data-is-the-model"
+    }
+  },
+  "132": {
+    "passage": {
+      "chapter": 3,
+      "section": "where-the-training-data-actually-comes-from"
+    }
+  },
+  "133": {
+    "passage": {
+      "chapter": 3,
+      "section": "where-the-training-data-actually-comes-from"
+    }
+  },
+  "134": {
+    "passage": {
+      "chapter": 11,
+      "section": "the-canadian-newspapers-v-openai-case"
+    }
+  },
+  "59": {
+    "passage": {
+      "chapter": 16,
+      "section": "the-canadian-empirical-baseline"
+    },
+    "en": {
+      "detail": "In May 2021, an estimated 31% of Canadian employees aged 18–64 were in occupations with high potential AI exposure and relatively low complementarity. The study did not track job loss, re-employment, or pay in a worker’s next job.",
+      "sourceLabel": "Read the Statistics Canada estimate",
+      "url": "https://www150.statcan.gc.ca/n1/pub/36-28-0001/2024009/article/00004-eng.htm"
+    },
+    "fr": {
+      "detail": "En mai 2021, environ 31 % des salariés de 18 à 64 ans au Canada occupaient un emploi potentiellement très exposé à l’IA et relativement peu complémentaire. L’étude ne suivait ni les pertes d’emplois, ni le retour à l’emploi, ni le salaire dans l’emploi suivant.",
+      "sourceLabel": "Lire l’estimation de Statistique Canada",
+      "url": "https://www150.statcan.gc.ca/n1/pub/36-28-0001/2024009/article/00004-fra.htm"
+    }
+  },
+  "39": {
+    "passage": {
+      "chapter": 6,
+      "section": "what-s-actually-in-there"
+    },
+    "en": {
+      "detail": "NRCan’s 22% came from a Canadian market assessment. Uptime’s 71% came from a corporate sustainability survey question. EU operators report facility data, and the public database shows aggregates.",
+      "sourceLabel": "Read the NRCan guide",
+      "url": "https://publications.gc.ca/collections/collection_2025/rncan-nrcan/M4-262-2025-eng.pdf"
+    },
+    "fr": {
+      "detail": "Le 22 % de RNCan vient d’une évaluation du marché canadien. Le 71 % d’Uptime vient d’une enquête sur la durabilité des entreprises. Les exploitants européens déclarent des données par installation, et la base publique présente des agrégats.",
+      "sourceLabel": "Lire le guide de RNCan",
+      "url": "https://publications.gc.ca/collections/collection_2025/rncan-nrcan/M4-262-2025-fra.pdf"
     }
   }
 }

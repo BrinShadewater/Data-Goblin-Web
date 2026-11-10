@@ -7,7 +7,7 @@
   },
   {
    "anchor": "Treasury Board AI Register",
-   "id": 48,
+   "id": 138,
    "status": "resolved"
   },
   {
@@ -17,7 +17,7 @@
   },
   {
    "anchor": "Olana Kaipo Ai",
-   "id": 45,
+   "id": 140,
    "status": "resolved"
   },
   {
@@ -26,11 +26,40 @@
    "status": "resolved"
   }
  ],
+ "2": [
+  {
+   "anchor": "Researchers extracted hundreds of verbatim training passages from GPT-2",
+   "id": 131,
+   "status": "resolved"
+  }
+ ],
+ "3": [
+  {
+   "anchor": "Meta disclosed that the original LLaMA used Project Gutenberg and Books3",
+   "id": 132,
+   "status": "resolved"
+  },
+  {
+   "anchor": "LAION-5B indexed about 5.85 billion pairs",
+   "id": 133,
+   "status": "resolved"
+  }
+ ],
  "4": [
   {
    "anchor": "CHIPS and Science Act",
    "id": 5,
    "status": "fixed"
+  },
+  {
+   "anchor": "10–50 medium-length responses",
+   "id": 105,
+   "status": "resolved"
+  },
+  {
+   "anchor": "1.2–5.0 million tonnes of generative-AI e-waste accumulated over 2020–2030",
+   "id": 135,
+   "status": "resolved"
   }
  ],
  "5": [
@@ -55,7 +84,7 @@
    "status": "fixed"
   },
   {
-   "anchor": "USTR",
+   "anchor": "at Toronto General Hospital",
    "id": 33,
    "status": "resolved"
   },
@@ -73,11 +102,16 @@
    "anchor": "announced a commitment to invest up to C$1.6 billion in Cohere",
    "id": 118,
    "status": "resolved"
+  },
+  {
+   "anchor": "more than 400 systems from 42 institutions",
+   "id": 138,
+   "status": "resolved"
   }
  ],
  "6": [
   {
-   "anchor": "delegated regulation",
+   "anchor": "Delegated Regulation",
    "id": 13,
    "status": "fixed"
   },
@@ -98,12 +132,17 @@
   },
   {
    "anchor": "1,200 MW",
-   "id": 41,
-   "status": "open"
+   "id": 141,
+   "status": "resolved"
   },
   {
    "anchor": "initial 300 MW build at Sherwood",
    "id": 116,
+   "status": "resolved"
+  },
+  {
+   "anchor": "put PUE reporting at about 22%",
+   "id": 39,
    "status": "resolved"
   }
  ],
@@ -126,12 +165,12 @@
  ],
  "8": [
   {
-   "anchor": "54% of the world's energy-transition-mineral",
+   "anchor": "54% were on or near Indigenous peoples' lands",
    "id": 27,
-   "status": "fixed"
+   "status": "resolved"
   },
   {
-   "anchor": "22% of Canadian facilities",
+   "anchor": "22% estimate concerns PUE reporting",
    "id": 39,
    "status": "resolved"
   },
@@ -142,12 +181,32 @@
   },
   {
    "anchor": "US$36",
-   "id": 44,
+   "id": 106,
    "status": "resolved"
   },
   {
    "anchor": "15 applications requesting close to 800 MW",
    "id": 117,
+   "status": "resolved"
+  },
+  {
+   "anchor": "Ireland’s metered data centres used",
+   "id": 121,
+   "status": "resolved"
+  },
+  {
+   "anchor": "Manitoba has passed a law",
+   "id": 128,
+   "status": "resolved"
+  },
+  {
+   "anchor": "Hydro-Québec has proposed a dedicated Rate CD",
+   "id": 129,
+   "status": "resolved"
+  },
+  {
+   "anchor": "Ontario’s proposed separate class",
+   "id": 130,
    "status": "resolved"
   }
  ],
@@ -159,12 +218,12 @@
   },
   {
    "anchor": "Abundant Intelligences",
-   "id": 50,
-   "status": "open"
+   "id": 143,
+   "status": "resolved"
   },
   {
    "anchor": "CARE Directs Us Home",
-   "id": 47,
+   "id": 142,
    "status": "resolved"
   },
   {
@@ -173,8 +232,8 @@
    "status": "fixed"
   },
   {
-   "anchor": "28,000",
-   "id": 43,
+   "anchor": "surveyed its members in 2023",
+   "id": 107,
    "status": "resolved"
   }
  ],
@@ -193,6 +252,16 @@
    "anchor": "Clearview’s records showed 521 search queries",
    "id": 82,
    "status": "resolved"
+  },
+  {
+   "anchor": "Bill C-22, the Lawful Access Act",
+   "id": 70,
+   "status": "resolved"
+  },
+  {
+   "anchor": "someone at the enterprise who can review the decision",
+   "id": 136,
+   "status": "resolved"
   }
  ],
  "11": [
@@ -203,7 +272,7 @@
   },
   {
    "anchor": "Ontario Superior Court",
-   "id": 46,
+   "id": 134,
    "status": "resolved"
   },
   {
@@ -215,12 +284,17 @@
    "anchor": "Dave Forget",
    "id": 6,
    "status": "fixed"
+  },
+  {
+   "anchor": "The plaintiffs allege that OpenAI copied works they own or license",
+   "id": 134,
+   "status": "resolved"
   }
  ],
  "12": [
   {
-   "anchor": "Bill C-16",
-   "id": 49,
+   "anchor": "Protecting Victims Act",
+   "id": 42,
    "status": "resolved"
   },
   {
@@ -242,6 +316,11 @@
    "anchor": "refusing to let a producer model their voice",
    "id": 112,
    "status": "resolved"
+  },
+  {
+   "anchor": "its modernized Canadian-program framework",
+   "id": 139,
+   "status": "resolved"
   }
  ],
  "13": [
@@ -252,11 +331,11 @@
   },
   {
    "anchor": "AB 2839",
-   "id": 18,
-   "status": "fixed"
+   "id": 49,
+   "status": "resolved"
   },
   {
-   "anchor": "8.66%",
+   "anchor": "9.24%",
    "id": 32,
    "status": "resolved"
   },
@@ -271,7 +350,7 @@
    "status": "resolved"
   },
   {
-   "anchor": "0.12%-of-views (on X)",
+   "anchor": "0.12% of the sampled X post views",
    "id": 32,
    "status": "resolved"
   },
@@ -290,6 +369,11 @@
   {
    "anchor": "640 local news outlets",
    "id": 99,
+   "status": "resolved"
+  },
+  {
+   "anchor": "Deezer reported that tracks it identified",
+   "id": 122,
    "status": "resolved"
   }
  ],
@@ -317,11 +401,6 @@
    "status": "resolved"
   },
   {
-   "anchor": "CWA Canada",
-   "id": 9,
-   "status": "fixed"
-  },
-  {
    "anchor": "19% of 446",
    "id": 111,
    "status": "resolved"
@@ -329,6 +408,16 @@
   {
    "anchor": "26% fewer payroll jobs",
    "id": 113,
+   "status": "resolved"
+  },
+  {
+   "anchor": "hiring among 15- to 29-year-olds slowed",
+   "id": 123,
+   "status": "resolved"
+  },
+  {
+   "anchor": "31% of employees aged 18–64",
+   "id": 59,
    "status": "resolved"
   }
  ],
@@ -357,22 +446,49 @@
    "anchor": "Ottawa’s federal cyber-readiness direction took effect on October 1, 2026",
    "id": 119,
    "status": "resolved"
+  },
+  {
+   "anchor": "agents running in an OpenAI cyber evaluation",
+   "id": 124,
+   "status": "resolved"
   }
  ],
  "18": [
   {
-   "anchor": "40.7",
+   "anchor": "40.69 out of 100",
    "id": 31,
    "status": "resolved"
   },
   {
    "anchor": "private-sector privacy law",
-   "id": 8,
-   "status": "fixed"
+   "id": 144,
+   "status": "resolved"
   },
   {
    "anchor": "948 working local privilege-escalation exploits",
    "id": 120,
+   "status": "resolved"
+  },
+  {
+   "anchor": "Canada’s privacy commissioner told the federal AI transparency consultation",
+   "id": 125,
+   "status": "resolved"
+  },
+  {
+   "anchor": "OpenAI’s September 2026 Navier–Stokes announcement",
+   "id": 126,
+   "status": "resolved"
+  },
+  {
+   "anchor": "14 of 19 invited developers submitted a report",
+   "id": 137,
+   "status": "resolved"
+  }
+ ],
+ "21": [
+  {
+   "anchor": "a randomized trial across 16 Kenyan primary care clinics",
+   "id": 127,
    "status": "resolved"
   }
  ]

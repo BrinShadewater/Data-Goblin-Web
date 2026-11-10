@@ -40,8 +40,8 @@
   "url": "https://www150.statcan.gc.ca"
  },
  {
-  "name": "Bank of Canada Monetary Policy Report (December 2025)",
-  "url": "https://www.bankofcanada.ca/publications/mpr/"
+  "name": "Bank of Canada, Michelle Alexopoulos on AI, jobs and productivity (May 2026)",
+  "url": "https://www.bankofcanada.ca/2026/05/ai-is-knocking-canadas-next-productivity-story/"
  },
  {
   "name": "Office of the Privacy Commissioner",
@@ -556,16 +556,68 @@
   "url": "https://news.mit.edu/2018/study-finds-gender-skin-type-bias-artificial-intelligence-systems-0212"
  },
  {
+  "name": "Paper",
+  "url": "https://doi.org/10.1038/s41893-022-00994-6"
+ },
+ {
   "name": "WIPO",
   "url": "https://www.wipo.int/en/web/beijing-treaty"
  },
  {
-  "name": "Paper",
-  "url": "https://www.nature.com/articles/s41893-022-00994-6"
+  "name": "Owen et al., published paper",
+  "url": "https://doi.org/10.1038/s41893-022-00994-6"
  },
  {
-  "name": "announcement",
+  "name": "December 2025 edition",
+  "url": "https://crfm.stanford.edu/fmti/December-2025/paper.pdf"
+ },
+ {
+  "name": "Livernoche et al., public preprint v1, Results and Table 1",
+  "url": "https://arxiv.org/html/2512.13915v1#S4"
+ },
+ {
+  "name": "ACM Web Conference 2026, proceedings record",
+  "url": "https://doi.org/10.1145/3774904.3792948"
+ },
+ {
+  "name": "X Help Center, how post views are counted",
+  "url": "https://help.x.com/en/using-x/view-counts"
+ },
+ {
+  "name": "PMO launch release",
+  "url": "https://www.pm.gc.ca/en/news/news-releases/2026/06/04/prime-minister-carney-launches-ai-all-canadas-new-national-artificial"
+ },
+ {
+  "name": "Vector Institute appointment",
   "url": "https://vectorinstitute.ai/vector-institute-announces-the-appointment-of-glenda-crisp-as-president-and-ceo/"
+ },
+ {
+  "name": "Abundant Intelligences",
+  "url": "https://abundant-intelligences.net/"
+ },
+ {
+  "name": "NRCan, 2024 Best Practice Guide, PUE section (p. 12)",
+  "url": "https://publications.gc.ca/collections/collection_2025/rncan-nrcan/M4-262-2025-eng.pdf"
+ },
+ {
+  "name": "Uptime Institute, 2023 survey, Figure 6",
+  "url": "https://uptimeinstitute.com/uptime_assets/74fd7ed906aad2b6df2a96dfeb803dde83d52ee3dffdd8ae41a50fab4e23182f-uptime-institute_global-data-center-survey-2023_executive-summary.pdf"
+ },
+ {
+  "name": "Uptime Institute, 2025 survey, historical PUE series in Figure 2",
+  "url": "https://datacenter.uptimeinstitute.com/rs/711-RIA-145/images/2025.Annual.Survey.Report.pdf?version=0"
+ },
+ {
+  "name": "EU Delegated Regulation 2024/1364, Articles 1, 3 and 5 and Annexes II–IV",
+  "url": "https://eur-lex.europa.eu/eli/reg_del/2024/1364/2024-05-17/eng"
+ },
+ {
+  "name": "ISED, Canada’s Responsible Data Centre Development Principles",
+  "url": "https://www.ised-isde.canada.ca/site/ised/en/data-centres-powering-canadas-digital-future-responsibly/canadas-responsible-data-centre-development-principles"
+ },
+ {
+  "name": "EU Energy Efficiency Directive, Article 12 and Annex VII",
+  "url": "https://eur-lex.europa.eu/eli/dir/2023/1791"
  },
  {
   "name": "NRCan Best Practice Guide for Canadian Data Centres (2024)",
@@ -604,8 +656,8 @@
   "url": "https://barrysookman.com/2025/12/10/openai-toronto-star-jurisdiction-decision/"
  },
  {
-  "name": "arXiv 2512.13915",
-  "url": "https://arxiv.org/html/2512.13915"
+  "name": "arXiv preprint v1, Results",
+  "url": "https://arxiv.org/html/2512.13915v1#S4"
  },
  {
   "name": "The Logic",
@@ -632,20 +684,40 @@
   "url": "https://www.authorsalliance.org/2026/05/14/bartz-v-anthropic-fairness-hearing-observations-and-takeaways/"
  },
  {
-  "name": "Eric Goldman",
-  "url": "https://blog.ericgoldman.org/archives/2024/10/court-enjoins-californias-anti-political-deepfakes-law-ab-2839-because-its-unconstitutional-censorship-kohls-v-bonta.htm"
+  "name": "Federal district court opinion",
+  "url": "https://www.govinfo.gov/content/pkg/USCOURTS-caed-2_24-cv-02527/pdf/USCOURTS-caed-2_24-cv-02527-26.pdf"
+ },
+ {
+  "name": "Challengers’ litigation docket",
+  "url": "https://hlli.org/kohls-v-bonta/"
  },
  {
   "name": "ISED Code",
   "url": "https://ised-isde.canada.ca/site/ised/en/voluntary-code-conduct-responsible-development-and-management-advanced-generative-ai-systems"
  },
  {
-  "name": "StatCan Experimental estimates",
+  "name": "StatCan, experimental occupational exposure estimates",
   "url": "https://www150.statcan.gc.ca/n1/pub/36-28-0001/2024009/article/00004-eng.htm"
  },
  {
-  "name": "The Daily 2024-09-03",
-  "url": "https://www150.statcan.gc.ca/n1/daily-quotidien/240903/dq240903b-eng.htm"
+  "name": "StatCan, full study and Appendix Table A.2",
+  "url": "https://www150.statcan.gc.ca/n1/pub/11f0019m/11f0019m2024005-eng.htm"
+ },
+ {
+  "name": "CUPE, March 2026 submission to the Senate",
+  "url": "https://sencanada.ca/Content/Sen/Committee/451/SOCI/briefs/2026-03-05_SOCI_SS-2_Brief_CUPE_e.pdf"
+ },
+ {
+  "name": "StatCan, hiring and job separations in the era of generative AI",
+  "url": "https://www150.statcan.gc.ca/n1/pub/36-28-0001/2026010/article/00003-eng.htm"
+ },
+ {
+  "name": "StatCan, historical Canadian layoffs and earnings",
+  "url": "https://www150.statcan.gc.ca/n1/daily-quotidien/200623/dq200623a-eng.htm"
+ },
+ {
+  "name": "Humlum and Vestergaard, linked Danish worker data",
+  "url": "https://www.nber.org/papers/w33777"
  },
  {
   "name": "Alberta GHG performance",
@@ -760,20 +832,36 @@
   "url": "https://news.gov.bc.ca/releases/2026TACS0027-000625"
  },
  {
-  "name": "OpenMedia",
-  "url": "https://openmedia.org/press/item/government-prematurely-ends-debate-on-bill-c-22-without-dealing-with-dangerous-surveillance-powers"
+  "name": "C-22 at first reading (March 12, 2026)",
+  "url": "https://www.parl.ca/documentviewer/en/45-1/bill/C-22/first-reading"
  },
  {
-  "name": "EFF",
-  "url": "https://www.eff.org/deeplinks/2026/06/canada-forging-ahead-its-dangerous-surveillance-bill"
+  "name": "C-22 as passed by the House (June 18, 2026)",
+  "url": "https://www.parl.ca/documentviewer/en/45-1/bill/C-22/third-reading"
  },
  {
-  "name": "OPC statement",
+  "name": "Senate referral to committee (October 22, 2026)",
+  "url": "https://sencanada.ca/en/content/sen/chamber/451/debates/095db_2026-10-22-e"
+ },
+ {
+  "name": "Senate committee meeting (November 2, 2026)",
+  "url": "https://sencanada.ca/en/committees/SECD/noticeofmeeting/706938/45-1"
+ },
+ {
+  "name": "Privacy Commissioner’s May 26 advice",
   "url": "https://www.priv.gc.ca/en/opc-actions-and-decisions/advice-to-parliament/2026/parl_260526/"
  },
  {
-  "name": "Petition e-7416",
-  "url": "https://www.ourcommons.ca/petitions/en/Petition/Details?Petition=e-7416"
+  "name": "OpenMedia’s June response",
+  "url": "https://openmedia.org/press/item/government-prematurely-ends-debate-on-bill-c-22-without-dealing-with-dangerous-surveillance-powers"
+ },
+ {
+  "name": "Electronic Frontier Foundation’s June response",
+  "url": "https://www.eff.org/deeplinks/2026/06/canada-forging-ahead-its-dangerous-surveillance-bill"
+ },
+ {
+  "name": "Electronic Frontier Foundation’s October 22 follow-up",
+  "url": "https://www.eff.org/deeplinks/2026/10/canadians-are-running-out-time-oppose-dangerous-c-22-surveillance-bill"
  },
  {
   "name": "Amodei essay",
@@ -1228,6 +1316,34 @@
   "url": "https://dfrlab.org/2025/07/17/ai-generated-news-channels-spread-election-fraud-and-separatist-narratives-in-canada/"
  },
  {
+  "name": "TIME investigation",
+  "url": "https://time.com/6247678/openai-chatgpt-kenya-workers/"
+ },
+ {
+  "name": "Published 2025 article",
+  "url": "https://doi.org/10.1145/3724499"
+ },
+ {
+  "name": "University-hosted full text",
+  "url": "https://crystal.uta.edu/~mislam/pdfs/2025_CACM.pdf"
+ },
+ {
+  "name": "Earlier preprint",
+  "url": "https://arxiv.org/abs/2304.03271"
+ },
+ {
+  "name": "FAccT proceedings",
+  "url": "https://doi.org/10.1145/3715275.3732007"
+ },
+ {
+  "name": "ACTRA survey results (English)",
+  "url": "https://www.actra.ca/wp-content/uploads/2023/12/TOPLINE-STATS-ONLY-3-1.jpg"
+ },
+ {
+  "name": "ACTRA survey results (French)",
+  "url": "https://www.actra.ca/wp-content/uploads/2023/12/AI-STATS-FR.png"
+ },
+ {
   "name": "TFO’s production announcement",
   "url": "https://apropos.tfo.org/nouvelles/2026/09/14/00/00/rebelles-une-production-originale-tfo-remporte-un-prix-gemeaux"
  },
@@ -1326,5 +1442,193 @@
  {
   "name": "Mozilla, security advisory 2026-118 for Firefox 159",
   "url": "https://www.mozilla.org/en-US/security/advisories/mfsa2026-118/"
+ },
+ {
+  "name": "Central Statistics Office, Ireland's 2025 metered data-centre electricity",
+  "url": "https://www.cso.ie/en/releasesandpublications/ep/p-dcmec/datacentresmeteredelectricityconsumption2025/keyfindings/"
+ },
+ {
+  "name": "Deezer, July 2026 upload and streaming figures",
+  "url": "https://newsroom-deezer.com/2026/07/ai-music-exceeds-50-percent-daily-uploads-deezer/"
+ },
+ {
+  "name": "Statistics Canada, Labour Force Survey analysis and Chart 1",
+  "url": "https://www150.statcan.gc.ca/n1/pub/36-28-0001/2026010/article/00003-eng.htm"
+ },
+ {
+  "name": "Hugging Face, incident timeline",
+  "url": "https://huggingface.co/blog/agent-intrusion-technical-timeline"
+ },
+ {
+  "name": "OpenAI, evaluation incident disclosure",
+  "url": "https://openai.com/index/hugging-face-model-evaluation-security-incident/"
+ },
+ {
+  "name": "METR and Redwood Research, independent review of agent behaviour",
+  "url": "https://metr.org/blog/2026-08-26-openai-hugging-face-incident-investigation/"
+ },
+ {
+  "name": "Office of the Privacy Commissioner of Canada, transparency submission",
+  "url": "https://www.priv.gc.ca/en/opc-actions-and-decisions/submissions-to-consultations/sub_ised_20260923/"
+ },
+ {
+  "name": "OpenAI, September 8 Navier–Stokes paper and Lean formalization",
+  "url": "https://openai.com/index/navier-stokes-solution/"
+ },
+ {
+  "name": "Clay Mathematics Institute, September 11 statement",
+  "url": "https://www.claymath.org/news/navier-stokes-announcement/"
+ },
+ {
+  "name": "Clay Mathematics Institute, prize rules",
+  "url": "https://www.claymath.org/millennium-problems/rules/"
+ },
+ {
+  "name": "Agweyu et al., randomized clinical trial in Nature Medicine",
+  "url": "https://doi.org/10.1038/s41591-026-04503-6"
+ },
+ {
+  "name": "Manitoba, 2026 c. 32, intensive-use levy",
+  "url": "https://web2.gov.mb.ca/laws/statutes/2026/c03226.php"
+ },
+ {
+  "name": "Manitoba, 2026 c. 53, residential bills",
+  "url": "https://web2.gov.mb.ca/laws/statutes/2026/c05326.php?lang=en"
+ },
+ {
+  "name": "Manitoba Laws, proclamation register",
+  "url": "https://web2.gov.mb.ca/laws/statutes/index_procs.php"
+ },
+ {
+  "name": "Manitoba Hydro, commercial rates",
+  "url": "https://www.hydro.mb.ca/account/rates/commercial/"
+ },
+ {
+  "name": "Hydro-Québec, revised proposed Rate CD",
+  "url": "https://www.regie-energie.qc.ca/fr/participants/dossiers/R-4333-2026/doc/R-4333-2026-B-0076-Dem-PieceRev-2026_08_04.pdf"
+ },
+ {
+  "name": "Régie de l’énergie, proceeding R-4333-2026 (French)",
+  "url": "https://www.regie-energie.qc.ca/fr/participants/dossiers/r-4333-2026"
+ },
+ {
+  "name": "Hydro-Québec, published rates and conditions of service",
+  "url": "https://www.hydroquebec.com/documents-data/official-publications/electricity-rates-conditions-electricity-service.html"
+ },
+ {
+  "name": "Environmental Registry of Ontario, proposal 026-0853",
+  "url": "https://ero.ontario.ca/notice/026-0853"
+ },
+ {
+  "name": "Ontario, 2026 Fall Statement, chapter 1B",
+  "url": "https://budget.ontario.ca/2026/fallstatement/chapter-1b-plan.html"
+ },
+ {
+  "name": "Ontario Energy Board, Transmission System Code, sections 6.3 and 6.5",
+  "url": "https://www.oeb.ca/sites/default/files/uploads/documents/regulatorycodes/2025-04/Transmission_System_Code_20250331.pdf"
+ },
+ {
+  "name": "Carlini et al., USENIX Security 2021",
+  "url": "https://www.usenix.org/system/files/sec21-carlini-extracting.pdf"
+ },
+ {
+  "name": "Nasr et al., extraction study",
+  "url": "https://arxiv.org/abs/2311.17035"
+ },
+ {
+  "name": "OpenAI, GPT-4 Technical Report, section 2",
+  "url": "https://cdn.openai.com/papers/gpt-4.pdf"
+ },
+ {
+  "name": "Touvron et al., original LLaMA, section 2.1",
+  "url": "https://arxiv.org/abs/2302.13971"
+ },
+ {
+  "name": "Bartz v. Anthropic, June 23, 2025 order",
+  "url": "https://docs.justia.com/cases/federal/district-courts/california/candce/3%3A2024cv05417/434709/231"
+ },
+ {
+  "name": "LAION-5B, original paper",
+  "url": "https://arxiv.org/abs/2210.08402"
+ },
+ {
+  "name": "CompVis, Stable Diffusion v1.4 model card",
+  "url": "https://huggingface.co/CompVis/stable-diffusion-v1-4"
+ },
+ {
+  "name": "David Thiel, Stanford Internet Observatory report",
+  "url": "https://docs.house.gov/meetings/JU/JU08/20240306/116913/HHRG-118-JU08-20240306-SD005-U5.pdf"
+ },
+ {
+  "name": "LAION, August 2024 revision",
+  "url": "https://laion.ai/blog/relaion-5b/"
+ },
+ {
+  "name": "Canadian news publishers, statement of claim",
+  "url": "https://www.gilbertslaw.ca/wp-content/uploads/2025/02/Canadian-News-Media-Companies-v-OpenAI.pdf"
+ },
+ {
+  "name": "Ontario Superior Court, 2025 ONSC 6217",
+  "url": "https://litigate.com/assets/uploads/20251126-143435-3326-Toronto-Star-Newspapers-et-al-v.-OpenAI-et-al-CV-24-00732231-00CL.Endorsement.September.10.2025.Jurisdiction.Motion.FINAL.2.pdf"
+ },
+ {
+  "name": "OpenAI’s public US fair-use position",
+  "url": "https://openai.com/index/openai-and-journalism/"
+ },
+ {
+  "name": "Wang et al.",
+  "url": "https://doi.org/10.1038/s43588-024-00712-6"
+ },
+ {
+  "name": "Global E-waste Monitor, Annex 2",
+  "url": "https://api.globalewaste.org/publications/file/297/Global-E-waste-Monitor-2024.pdf"
+ },
+ {
+  "name": "Québec private-sector privacy act, ss. 3.5 and 12.1",
+  "url": "https://www.legisquebec.gouv.qc.ca/en/document/cs/P-39.1"
+ },
+ {
+  "name": "May 2024 edition",
+  "url": "https://crfm.stanford.edu/fmti/May-2024/paper.pdf"
+ },
+ {
+  "name": "Treasury Board launch",
+  "url": "https://www.canada.ca/en/treasury-board-secretariat/news/2025/11/canada-launches-first-register-of-ai-uses-in-federal-government.html"
+ },
+ {
+  "name": "CRTC decision, paragraph 195",
+  "url": "https://crtc.gc.ca/eng/archive/2025/2025-299.htm"
+ },
+ {
+  "name": "CAVCO tax-credit guidelines",
+  "url": "https://www.canada.ca/en/canadian-heritage/services/funding/cavco-tax-credits/canadian-film-video-production/application-guidelines.html"
+ },
+ {
+  "name": "Working group position paper",
+  "url": "https://www.indigenous-ai.net/position-paper/"
+ },
+ {
+  "name": "AESO interim announcement",
+  "url": "https://www.aeso.ca/aeso/newsroom/aeso-announces-interim-approach-to-large-load-connections/"
+ },
+ {
+  "name": "AESO large-load projects",
+  "url": "https://www.aeso.ca/grid/connecting-to-the-grid/large-load-projects/"
+ },
+ {
+  "name": "GIDA communiqué, archived version",
+  "url": "https://doi.org/10.6084/m9.figshare.29294120.v1"
+ },
+ {
+  "name": "Published article in AI & Society",
+  "url": "https://doi.org/10.1007/s00146-024-02099-4"
+ },
+ {
+  "name": "Ontario IPC mandate",
+  "url": "https://www.ipc.on.ca/en/about-us/role-and-mandate"
+ },
+ {
+  "name": "Ontario IPC jurisdiction and limits",
+  "url": "https://www.ipc.on.ca/en/about-us/role-and-mandate/what-we-do-vs-what-we-dont-do"
  }
 ]

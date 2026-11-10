@@ -6,6 +6,8 @@ import { tr } from "../i18n";
 import { useLanguage } from "../LanguageContext";
 import { sectionHref } from "../sectionLinks";
 import latestUpdate from "../latestUpdate.json";
+import sourceChangeUpdate from "../sourceChangeUpdate.json";
+import editorialCorrectionUpdate from "../editorialCorrectionUpdate.json";
 
 interface UpdateEntry {
   date: string;
@@ -131,7 +133,7 @@ const UPDATES: UpdateEntry[] = [
       "Wonder Valley / Sturgeon Lake Cree Nation, corrected in public: an earlier draft described the Nation as an equity participant in the Wonder Valley data-centre project. The documented record is the opposite: the Nation says it was not consulted, demanded a halt (Chief Sunshine's open letter, January 13, 2025), and is in court over the Crown's duty to consult as of June 2026. Chapters 6 and 9 were rewritten to the record; the correction note stays in the book.",
       "Bill C-16: the May 2026 committee amendments added a 48-hour deadline tied to a court deletion order and expanded coverage to near nudity. The bill was still before Parliament at the time. See the November update for the enacted law.",
       "The Toronto Star v. OpenAI jurisdiction ruling is dated November 7, 2025 (not the 27th), and OpenAI has appealed. The book now says so.",
-      "The 2025 election-deepfake figures in the Source Library were aligned to the published paper (8.66% right / 4.42% left / 0.12% harmful reach), matching the chapter body.",
+      "This June 2026 edit used the partisan figures in the election study’s preprint abstract. On November 9 we found that Table 1 gives a different pair, and clarified that 0.12% is a share of sampled X post views. Chapter 13 and receipt #32 now document the discrepancy.",
       "The $100M Venture Scientist Fund is a private Mila–Inovia venture fund, not a federal program. Corrected in Chapters 5 and 7.",
       "The point at which global data-centre electricity overtakes Canada's total power use was moved from 2026 to the late 2020s, matching the IEA trajectory.",
     ],
@@ -240,7 +242,11 @@ export function UpdatesPage() {
   const { c } = useTheme();
   const { lang } = useLanguage();
   const latest = latestUpdate[lang];
+  const sourceChange = sourceChangeUpdate[lang];
+  const editorial = editorialCorrectionUpdate[lang];
   const updates = [
+    { ...editorial, links: editorialCorrectionUpdate.receiptIds.map((id, index) => [editorial.receiptLabels[index], `/receipts#receipt-${id}`]) },
+    { ...sourceChange, links: [[sourceChange.passageLabel, sectionHref(10, "the-biometric-and-facial-recognition-layer")], [sourceChange.receiptLabel, "/receipts#receipt-70"]] },
     { ...latest, links: [[latest.passageLabel, sectionHref(13, "the-working-test")], [latest.receiptLabel, "/receipts#receipt-32"]] },
     ...UPDATES.map((entry) => ({
       date: tr(entry.date), tag: tr(entry.tag), title: tr(entry.title), items: entry.items.map(tr),
@@ -262,7 +268,7 @@ export function UpdatesPage() {
         eyebrowMarginBottom="9px"
         titleSize="clamp(38px, 5vw, 58px)"
         titleLineHeight={1}
-        description={tr("Every fact in this guide carries an invisible “as of June 2026” tag. When the world moves past the page (a bill passes, a case settles, a number is corrected), the change is logged here, in the open. Receipts, not quiet edits.")}
+        description={sourceChange.description}
         descriptionSize="17px"
         descriptionLineHeight={1.7}
         descriptionMaxWidth="760px"

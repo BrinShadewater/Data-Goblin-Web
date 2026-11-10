@@ -8,6 +8,8 @@ const path = require("path");
 const { execFileSync } = require("child_process");
 const receiptNotes = require("../src/receiptNotes.json");
 const latestUpdate = require("../src/latestUpdate.json");
+const sourceChangeUpdate = require("../src/sourceChangeUpdate.json");
+const editorialCorrectionUpdate = require("../src/editorialCorrectionUpdate.json");
 const readerEntry = require("../src/readerEntry.json");
 
 const DIST = process.env.PRERENDER_DIST ? path.resolve(process.env.PRERENDER_DIST) : path.resolve(__dirname, "../dist");
@@ -353,12 +355,19 @@ function routeBodyHtml(route, lang) {
   if (route === "/loot") return glossaryBodyHtml(lang);
   if (route === "/receipts") return receiptsBodyHtml(lang);
   if (route === "/updates") {
-    const update = latestUpdate[lang];
     const prefix = lang === "fr" ? "/fr" : "";
-    return `<section data-prerender-body><p>${esc(update.date)} · ${esc(update.tag)}</p><h2>${esc(update.title)}</h2>` +
+    const sourceChange = sourceChangeUpdate[lang];
+    const editorial = editorialCorrectionUpdate[lang];
+    const entries = [
+      [editorial, editorialCorrectionUpdate.receiptIds.map((id, index) => [editorial.receiptLabels[index], `/receipts#receipt-${id}`])],
+      [sourceChange, [[sourceChange.passageLabel, "/chapter/10#the-biometric-and-facial-recognition-layer"], [sourceChange.receiptLabel, "/receipts#receipt-70"]]],
+      [latestUpdate[lang], [[latestUpdate[lang].passageLabel, "/chapter/13#the-working-test"], [latestUpdate[lang].receiptLabel, "/receipts#receipt-32"]]],
+    ];
+    return `<p>${esc(sourceChange.description)}</p>` + entries.map(([update, links]) =>
+      `<section data-prerender-body><p>${esc(update.date)} · ${esc(update.tag)}</p><h2>${esc(update.title)}</h2>` +
       `<ul>${update.items.map((item) => `<li>${esc(item)}</li>`).join("")}</ul>` +
-      `<p><a href="${prefix}/chapter/13#the-working-test">${esc(update.passageLabel)}</a> · ` +
-      `<a href="${prefix}/receipts#receipt-32">${esc(update.receiptLabel)}</a></p></section>`;
+      `<p>${links.map(([label, href]) => `<a href="${prefix}${href}">${esc(label)}</a>`).join(" · ")}</p></section>`
+    ).join("");
   }
   if (/^\/topic\//.test(route)) return topicBodyHtml(route, lang);
   return "";
@@ -592,7 +601,7 @@ const ROUTE_SOURCES = {
   "/receipts": ["app/src/pages/ReceiptsPage.tsx", "app/src/components/ReceiptRows.tsx", "app/src/receiptNotes.json", "app/public/content/receipts.json"],
   "/about": ["app/src/pages/AboutPage.tsx", "app/public/content/stats.json"],
   "/contribute": ["app/src/pages/ContributePage.tsx"],
-  "/updates": ["app/src/pages/UpdatesPage.tsx", "app/src/latestUpdate.json"],
+  "/updates": ["app/src/pages/UpdatesPage.tsx", "app/src/latestUpdate.json", "app/src/sourceChangeUpdate.json", "app/src/editorialCorrectionUpdate.json"],
   "/toolkit": ["app/src/pages/ToolkitPage.tsx"],
   "/privacy": ["app/src/pages/PrivacyPage.tsx"],
 };

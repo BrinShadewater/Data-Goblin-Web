@@ -370,10 +370,15 @@
  {
   "id": 27,
   "section": "B. Fixed from known record (spot-check recommended)",
-  "claim": "**Owen et al. through-line** (the big one)",
-  "status": "fixed",
-  "detail": "All ~13 instances reworded: **54% of energy-transition-mineral *projects* on/near Indigenous & peasant lands** — projects not materials, energy transition not computing; the AI extension is now explicitly flagged as the manual's move | Chs. 1, 4, 5, 6, 8, 9, appendix",
-  "links": []
+  "claim": "Owen et al. through-line",
+  "status": "resolved",
+  "detail": "✅ Use the distinct 54% Indigenous and 69% combined Indigenous or peasant land figures throughout. The sample comprises 5,097 energy-transition-mineral projects. The guide draws its own link to AI hardware through overlapping materials. | [Paper](https://doi.org/10.1038/s41893-022-00994-6)",
+  "links": [
+   [
+    "Paper",
+    "https://doi.org/10.1038/s41893-022-00994-6"
+   ]
+  ]
  },
  {
   "id": 28,
@@ -399,39 +404,62 @@
  {
   "id": 30,
   "section": "C. Open — needs primary source before publication",
-  "claim": "Owen et al. exact figures",
+  "claim": "Owen et al. project counts and water risk",
   "status": "resolved",
-  "detail": "✅ RESOLVED from the paper: of 5,097 ETM projects, **54%** on/near Indigenous peoples' lands, **33%** peasant lands, **69%** combined, and **62%** of those in high-water-risk locations (vs 53% globally). Manuscript updated to exact figures. [Paper](https://www.nature.com/articles/s41893-022-00994-6)",
+  "detail": "✅ Rechecked November 9, 2026. Of 5,097 energy-transition-mineral projects, 54% were on or near Indigenous peoples' lands and 69% were on or near Indigenous peoples' or peasant lands. Of the combined category, 62% were in high-water-risk locations, versus 53% overall. Earlier front matter and appendix conflated the two land categories and the appendix misidentified authors. The published study was unchanged. | [Owen et al., published paper](https://doi.org/10.1038/s41893-022-00994-6)",
   "links": [
    [
-    "Paper",
-    "https://www.nature.com/articles/s41893-022-00994-6"
+    "Owen et al., published paper",
+    "https://doi.org/10.1038/s41893-022-00994-6"
    ]
   ]
  },
  {
   "id": 31,
   "section": "C. Open — needs primary source before publication",
-  "claim": "Stanford FMTI Dec 2025 edition",
+  "claim": "December 2025 Stanford FMTI edition",
   "status": "resolved",
-  "detail": "✅ RESOLVED: edition exists (Dec 9, 2025; 13 developers). Verified: IBM 95, OpenAI 35, Meta 31, engagement 74%→30%. **Corrected:** mean is 40.7 (not 41); Mistral 55→18, a 37-pt drop (draft's 57→20 was wrong on both ends; PDF receipt now in evidence pack). → Sources/stanford-fmti-december-2025-2026-06.md",
-  "links": []
+  "detail": "✅ Rechecked November 9, 2026. The December 2025 mean was 40.69 across 13 scored developers. Seven of 23 invited developers submitted their own reports. See #137 for how to compare the two editions and their submission counts. | [December 2025 edition](https://crfm.stanford.edu/fmti/December-2025/paper.pdf)",
+  "links": [
+   [
+    "December 2025 edition",
+    "https://crfm.stanford.edu/fmti/December-2025/paper.pdf"
+   ]
+  ]
  },
  {
   "id": 32,
   "section": "C. Open — needs primary source before publication",
   "claim": "2025 election deepfake study",
   "status": "resolved",
-  "detail": "✅ RESOLVED: paper exists (Livernoche et al., arXiv 2512.13915; OpenFake = arXiv 2509.09495). 5.86% rate ✓. **Corrected:** partisan split is 8.66% vs 4.42% (≈2×, not 9.24/3.9/2.4×); harmful reach 0.12% of X views. → Sources/arxiv-2512-13915-canadian-election-deepfakes-2026-06.md",
-  "links": []
+  "detail": "✅ Rechecked November 9, 2026. The proceedings citation is verified. The final ACM full text was not accessible for comparison, so the figures here are attributed to the authors’ public preprint v1. Table 1 sums to 11,005 of 187,778 flagged posts (5.86%). Its pooled right/left rates are 5,075/54,901 (9.24%) and 2,488/64,271 (3.87%), matching the Results section. The abstract instead gives 8.66% and 4.42%. The earlier guide repeated the abstract pair as settled. The preprint’s Results put benign and non-political cases together at 49.41%. For X, the authors compared post counters six months after posting and report 0.52% of sampled views for detected deepfakes and 0.12% for the politically harmful subset. Repeat views and authors’ own views can count. These data do not measure unique viewers, Canadian voters reached, vote changes or the effect of platform filtering. | [Livernoche et al., public preprint v1, Results and Table 1](https://arxiv.org/html/2512.13915v1#S4) · [ACM Web Conference 2026, proceedings record](https://doi.org/10.1145/3774904.3792948) · [X Help Center, how post views are counted](https://help.x.com/en/using-x/view-counts)",
+  "links": [
+   [
+    "Livernoche et al., public preprint v1, Results and Table 1",
+    "https://arxiv.org/html/2512.13915v1#S4"
+   ],
+   [
+    "ACM Web Conference 2026, proceedings record",
+    "https://doi.org/10.1145/3774904.3792948"
+   ],
+   [
+    "X Help Center, how post views are counted",
+    "https://help.x.com/en/using-x/view-counts"
+   ]
+  ]
  },
  {
   "id": 33,
   "section": "C. Open — needs primary source before publication",
-  "claim": "June 2026 launch-week specifics",
+  "claim": "June 2026 AI strategy launch and reporting",
   "status": "resolved",
-  "detail": "✅ LARGELY RESOLVED: evidence pack holds source-captures for PMO (June 4), Solomon/CPAC + ISED (June 5), $66M release (May 12), BC + AI post, USTR NTE Canada excerpt, leaked-draft coverage (CBC direct capture blocked — URL + BetaKit backup included). BC + AI post verified from live page 2026-06-10: maple-leaf quote VERBATIM ✓, 19.2% citation ✓; crosswalk + pillar names corrected in Ch. 5; $66M/44 companies/$16.8M BC verified from ISED capture ✓; USTR sovereign-cloud flag ✓. Leaked draft verified BY AUTHOR against the CBC article 2026-06-10: 50%+/2030 ✓, \"no affordable domestic option\" ✓ verbatim, foreign-cloud/data/IP sentence ✓, KPMG–U Melbourne 47-country ranking ✓. **Superintelligence thread NOT in CBC text — withdrawn from manuscript with a public note.** CLOSED 2026-06-11: Carney quotes verified verbatim in the CBC launch article (Lopez Steven, June 4) — sentient-country line was a defence of the sovereignty pillar against US-trade questions; literacy-and-trust line confirmed. Compute fund corrected (+$700M at launch → $1B). Remaining slivers: \"Sovereign Technology Alliance\" name/12 members and the $100M Venture Scientist Fund still need receipts. See Sources/cbc-launch-article-verification-2026-06.md + cbc-leaked-draft-author-verification-2026-06.md. → Sources/evidence_pack_ledgers/Ledger_33_AI_for_All_launch_week/ + Sources/bc-ai-all-of-us-live-capture-2026-06.md",
-  "links": []
+  "detail": "✅ The June 4 launch release identifies the federal strategy and its announced commitments. CBC separately reported on the leaked draft and on the launch. These sources describe different versions and stages. See the dated launch release and Chapter 5 for the distinctions. | [PMO launch release](https://www.pm.gc.ca/en/news/news-releases/2026/06/04/prime-minister-carney-launches-ai-all-canadas-new-national-artificial)",
+  "links": [
+   [
+    "PMO launch release",
+    "https://www.pm.gc.ca/en/news/news-releases/2026/06/04/prime-minister-carney-launches-ai-all-canadas-new-national-artificial"
+   ]
+  ]
  },
  {
   "id": 34,
@@ -460,12 +488,12 @@
  {
   "id": 37,
   "section": "C. Open — needs primary source before publication",
-  "claim": "Institute CEOs",
+  "claim": "Institute leadership at the strategy launch",
   "status": "resolved",
-  "detail": "Vector ✅ RESOLVED: **Glenda Crisp**, President & CEO since April 21, 2025 — fixed in text ([announcement](https://vectorinstitute.ai/vector-institute-announces-the-appointment-of-glenda-crisp-as-president-and-ceo/)). Mila ✅ RESOLVED: Pisano confirmed current with on-record launch quotes in the CBC launch article (June 4, 2026)",
+  "detail": "✅ Vector Institute announced Glenda Crisp as president and CEO effective April 21, 2025. CBC's June 4, 2026 launch coverage quoted Valérie Pisano as Mila's leader. These identifications describe the launch period. | [Vector Institute appointment](https://vectorinstitute.ai/vector-institute-announces-the-appointment-of-glenda-crisp-as-president-and-ceo/)",
   "links": [
    [
-    "announcement",
+    "Vector Institute appointment",
     "https://vectorinstitute.ai/vector-institute-announces-the-appointment-of-glenda-crisp-as-president-and-ceo/"
    ]
   ]
@@ -473,18 +501,48 @@
  {
   "id": 38,
   "section": "C. Open — needs primary source before publication",
-  "claim": "Hēmi Whaanga affiliation",
+  "claim": "Hēmi Whaanga's institutional affiliation",
   "status": "resolved",
-  "detail": "✅ VERIFIED — Professor & Head of School, Te Pūtahi-a-Toi, Massey University (NZ); co-lead of Abundant Intelligences with Lewis (Concordia). No stray \"Waikato\" in the manuscript.",
-  "links": []
+  "detail": "✅ Hēmi Whaanga is affiliated with Massey University in Aotearoa New Zealand and co-leads Abundant Intelligences with Jason Edward Lewis at Concordia. | [Abundant Intelligences](https://abundant-intelligences.net/)",
+  "links": [
+   [
+    "Abundant Intelligences",
+    "https://abundant-intelligences.net/"
+   ]
+  ]
  },
  {
   "id": 39,
   "section": "C. Open — needs primary source before publication",
-  "claim": "NRCan 22% PUE + 71% global baseline",
+  "claim": "Data-centre PUE reporting and public disclosure (Ch 6, 8, 17, 18, 20)",
   "status": "resolved",
-  "detail": "✅ RESOLVED (correct as written) — NRCan Best Practice Guide (2024): ~22% Canadian vs 71% global PUE reporting. The appendix's \"Uptime 2024\" citation is right: 1.56 is the 2024 survey figure (2023 was 1.58). No change needed.",
-  "links": []
+  "detail": "✅ Rechecked November 9, 2026. NRCan’s 2024 guide, page 12, attributes about 22% PUE reporting to its Canadian market assessment. The passage does not identify the reporting audience or provide a reproducible denominator. In Figure 6 of Uptime’s 2023 survey, 71% of 716 respondents to a multi-select corporate sustainability question selected PUE. The 2024 figure of 1.56 is average PUE. PUE is an energy-efficiency metric. Covered EU operators at or above 500 kW of installed IT power demand submit facility data annually. Annex II specifies energy and water inputs and Annex III defines PUE and WUE. Article 5 and Annex IV make Member State and Union aggregates public. Individual submissions to the database are confidential. Article 12 of the directive separately calls for publication of Annex VII information, subject to protections for trade secrets and confidentiality. Article 12(2) exempts certain defence and civil protection centres from that publication duty. Canada’s September 2026 principles call for measurement and transparent reporting without establishing an equivalent annual database. The earlier guide used the two percentages to rank public disclosure and implied a Canadian water-reporting rate. Neither inference is supported. | [NRCan, 2024 Best Practice Guide, PUE section (p. 12)](https://publications.gc.ca/collections/collection_2025/rncan-nrcan/M4-262-2025-eng.pdf) · [Uptime Institute, 2023 survey, Figure 6](https://uptimeinstitute.com/uptime_assets/74fd7ed906aad2b6df2a96dfeb803dde83d52ee3dffdd8ae41a50fab4e23182f-uptime-institute_global-data-center-survey-2023_executive-summary.pdf) · [Uptime Institute, 2025 survey, historical PUE series in Figure 2](https://datacenter.uptimeinstitute.com/rs/711-RIA-145/images/2025.Annual.Survey.Report.pdf?version=0) · [EU Delegated Regulation 2024/1364, Articles 1, 3 and 5 and Annexes II–IV](https://eur-lex.europa.eu/eli/reg_del/2024/1364/2024-05-17/eng) · [ISED, Canada’s Responsible Data Centre Development Principles](https://www.ised-isde.canada.ca/site/ised/en/data-centres-powering-canadas-digital-future-responsibly/canadas-responsible-data-centre-development-principles) · [EU Energy Efficiency Directive, Article 12 and Annex VII](https://eur-lex.europa.eu/eli/dir/2023/1791)",
+  "links": [
+   [
+    "NRCan, 2024 Best Practice Guide, PUE section (p. 12)",
+    "https://publications.gc.ca/collections/collection_2025/rncan-nrcan/M4-262-2025-eng.pdf"
+   ],
+   [
+    "Uptime Institute, 2023 survey, Figure 6",
+    "https://uptimeinstitute.com/uptime_assets/74fd7ed906aad2b6df2a96dfeb803dde83d52ee3dffdd8ae41a50fab4e23182f-uptime-institute_global-data-center-survey-2023_executive-summary.pdf"
+   ],
+   [
+    "Uptime Institute, 2025 survey, historical PUE series in Figure 2",
+    "https://datacenter.uptimeinstitute.com/rs/711-RIA-145/images/2025.Annual.Survey.Report.pdf?version=0"
+   ],
+   [
+    "EU Delegated Regulation 2024/1364, Articles 1, 3 and 5 and Annexes II–IV",
+    "https://eur-lex.europa.eu/eli/reg_del/2024/1364/2024-05-17/eng"
+   ],
+   [
+    "ISED, Canada’s Responsible Data Centre Development Principles",
+    "https://www.ised-isde.canada.ca/site/ised/en/data-centres-powering-canadas-digital-future-responsibly/canadas-responsible-data-centre-development-principles"
+   ],
+   [
+    "EU Energy Efficiency Directive, Article 12 and Annex VII",
+    "https://eur-lex.europa.eu/eli/dir/2023/1791"
+   ]
+  ]
  },
  {
   "id": 40,
@@ -565,13 +623,13 @@
  {
   "id": 44,
   "section": "Fresh live re-verification — June 15, 2026 (full fact-check pass)",
-  "claim": "Appendix §F election-deepfake figures \"9.24% / 3.9% / 0.1%\"",
+  "claim": "Appendix election-deepfake figures, June 2026 review",
   "status": "fixed",
-  "detail": "⚠️ **Appendix never updated** — contradicts the corrected Ch 13 body. Live paper = **8.66% / 4.42% / 0.12%** (the same fix as ledger #32, body-only). | Correct the appendix figures to match the body. | [arXiv 2512.13915](https://arxiv.org/html/2512.13915)",
+  "detail": "Superseded November 9, 2026. The appendix now distinguishes the preprint abstract, the reproducible counts in Table 1 and the X view measure. See receipt #32. | [arXiv preprint v1, Results](https://arxiv.org/html/2512.13915v1#S4)",
   "links": [
    [
-    "arXiv 2512.13915",
-    "https://arxiv.org/html/2512.13915"
+    "arXiv preprint v1, Results",
+    "https://arxiv.org/html/2512.13915v1#S4"
    ]
   ]
  },
@@ -642,13 +700,17 @@
  {
   "id": 49,
   "section": "Fresh live re-verification — June 15, 2026 (full fact-check pass)",
-  "claim": "California AB 2839 cited as current (Ch 13, appendix)",
-  "status": "fixed",
-  "detail": "⚠️ **Add caveat.** Preliminarily **enjoined as unconstitutional** (*Kohls v. Bonta*, Oct 2024); enforceability contested. | Add a half-sentence on the First Amendment injunction. | [Eric Goldman](https://blog.ericgoldman.org/archives/2024/10/court-enjoins-californias-anti-political-deepfakes-law-ab-2839-because-its-unconstitutional-censorship-kohls-v-bonta.htm)",
+  "claim": "California AB 2839 and the court challenge",
+  "status": "resolved",
+  "detail": "✅ On August 29, 2025, the federal district court granted the challengers summary judgment on their First Amendment claim. California appealed. The challengers’ docket lists the state’s opening brief on January 12, 2026. | Updated to the dated district ruling and appeal. | [Federal district court opinion](https://www.govinfo.gov/content/pkg/USCOURTS-caed-2_24-cv-02527/pdf/USCOURTS-caed-2_24-cv-02527-26.pdf) · [Challengers’ litigation docket](https://hlli.org/kohls-v-bonta/)",
   "links": [
    [
-    "Eric Goldman",
-    "https://blog.ericgoldman.org/archives/2024/10/court-enjoins-californias-anti-political-deepfakes-law-ab-2839-because-its-unconstitutional-censorship-kohls-v-bonta.htm"
+    "Federal district court opinion",
+    "https://www.govinfo.gov/content/pkg/USCOURTS-caed-2_24-cv-02527/pdf/USCOURTS-caed-2_24-cv-02527-26.pdf"
+   ],
+   [
+    "Challengers’ litigation docket",
+    "https://hlli.org/kohls-v-bonta/"
    ]
   ]
  },
@@ -666,27 +728,39 @@
   ]
  },
  {
-  "id": 51,
-  "section": "Fresh live re-verification — June 15, 2026 (full fact-check pass)",
-  "claim": "Website Updates page vs. living-document promise",
-  "status": "fixed",
-  "detail": "⚠️ **Kept-promise gap.** The public Updates log omits the **Wonder Valley/SLCN correction** (the book's flagship \"logged in the open\" change) and states *Hell Grind* more flatly than the hedged book body. | Add a dated Wonder Valley correction entry; match the *Hell Grind* hedge. | site `UpdatesPage` · book L26 / L1210",
-  "links": []
- },
- {
   "id": 59,
   "section": "Citation-precision pass — June 18, 2026",
-  "claim": "StatCan 31%/29% AI occupational exposure",
+  "claim": "StatCan AI exposure estimates and what worker transitions require (Ch 16)",
   "status": "resolved",
-  "detail": "✅ CONFIRMED + 🔧 FIXED. Source: StatCan, \"Exposure to artificial intelligence in Canadian jobs: Experimental estimates\" (cat. 36-28-0001/2024009/00004). May 2021 data: **31%** of employees 18–64 in jobs **highly exposed to AI and relatively less complementary** with it; **29%** highly exposed **and** complementary; **40%** not highly exposed. \"Largely unchanged\" vs 2016 — a snapshot, **not a forecast**. Manuscript fixes: (a) Ch 5 recap conflation removed — the 60%-business-adoption target was wrongly presented as \"splitting into\" the 31%/29% exposure figures (two unrelated 60%s); (b) Ch 15 CUPE paragraph re-attributes \"dramatically change or disappear\" as the brief's gloss, not StatCan's wording (matching the precision notes already at the Ch 15 GOBLIN CHECK and empirical-baseline sections). | [StatCan Experimental estimates](https://www150.statcan.gc.ca/n1/pub/36-28-0001/2024009/article/00004-eng.htm) · [The Daily 2024-09-03](https://www150.statcan.gc.ca/n1/daily-quotidien/240903/dq240903b-eng.htm)",
+  "detail": "✅ Rechecked November 9, 2026. The 2024 Statistics Canada study classified May 2021 employees aged 18–64 in Canada. It estimated 31% in potentially highly exposed occupations with relatively low AI complementarity, 29% with high exposure and high complementarity, and 40% with lower exposure. Appendix Table A.2 reports 38% of Women+ and 23% of Men+ in the high-exposure, low-complementarity group. These are experimental exposure shares. The roughly 60% combined exposure share is separate from the federal business-adoption target. CUPE’s March 2026 brief interprets the 31% and reports job losses in specific roles. The Bank of Canada’s May 2026 speech assessed evidence of widespread displacement. The newer StatCan hiring and separation study counts separations, including quits. None of these sources tracks Canadian AI-displaced workers into lower-paid jobs or measures how many need retraining. Historical Canadian layoff data show that earnings losses can persist. The Danish study links records for chatbot adopters, a different population. The earlier guide inferred a downward move for the same workers from evidence about different groups. That inference has been removed. | [StatCan, experimental occupational exposure estimates](https://www150.statcan.gc.ca/n1/pub/36-28-0001/2024009/article/00004-eng.htm) · [StatCan, full study and Appendix Table A.2](https://www150.statcan.gc.ca/n1/pub/11f0019m/11f0019m2024005-eng.htm) · [CUPE, March 2026 submission to the Senate](https://sencanada.ca/Content/Sen/Committee/451/SOCI/briefs/2026-03-05_SOCI_SS-2_Brief_CUPE_e.pdf) · [Bank of Canada, Michelle Alexopoulos on AI, jobs and productivity (May 2026)](https://www.bankofcanada.ca/2026/05/ai-is-knocking-canadas-next-productivity-story/) · [StatCan, hiring and job separations in the era of generative AI](https://www150.statcan.gc.ca/n1/pub/36-28-0001/2026010/article/00003-eng.htm) · [StatCan, historical Canadian layoffs and earnings](https://www150.statcan.gc.ca/n1/daily-quotidien/200623/dq200623a-eng.htm) · [Humlum and Vestergaard, linked Danish worker data](https://www.nber.org/papers/w33777)",
   "links": [
    [
-    "StatCan Experimental estimates",
+    "StatCan, experimental occupational exposure estimates",
     "https://www150.statcan.gc.ca/n1/pub/36-28-0001/2024009/article/00004-eng.htm"
    ],
    [
-    "The Daily 2024-09-03",
-    "https://www150.statcan.gc.ca/n1/daily-quotidien/240903/dq240903b-eng.htm"
+    "StatCan, full study and Appendix Table A.2",
+    "https://www150.statcan.gc.ca/n1/pub/11f0019m/11f0019m2024005-eng.htm"
+   ],
+   [
+    "CUPE, March 2026 submission to the Senate",
+    "https://sencanada.ca/Content/Sen/Committee/451/SOCI/briefs/2026-03-05_SOCI_SS-2_Brief_CUPE_e.pdf"
+   ],
+   [
+    "Bank of Canada, Michelle Alexopoulos on AI, jobs and productivity (May 2026)",
+    "https://www.bankofcanada.ca/2026/05/ai-is-knocking-canadas-next-productivity-story/"
+   ],
+   [
+    "StatCan, hiring and job separations in the era of generative AI",
+    "https://www150.statcan.gc.ca/n1/pub/36-28-0001/2026010/article/00003-eng.htm"
+   ],
+   [
+    "StatCan, historical Canadian layoffs and earnings",
+    "https://www150.statcan.gc.ca/n1/daily-quotidien/200623/dq200623a-eng.htm"
+   ],
+   [
+    "Humlum and Vestergaard, linked Danish worker data",
+    "https://www.nber.org/papers/w33777"
    ]
   ]
  },
@@ -907,25 +981,41 @@
  {
   "id": 70,
   "section": "Citation-precision pass — June 18, 2026",
-  "claim": "Bill C-22 (Lawful Access Act, 2026) (Ch 10)",
+  "claim": "Bill C-22 as passed by the House (Ch 10)",
   "status": "resolved",
-  "detail": "✅ CONFIRMED 2026-06-19. Federal lawful-access bill (45th Parliament): up to 1-year metadata retention; Part 2 (Supporting Access to Authorized Information Act) lets the Minister of Public Safety issue secret orders compelling providers to build access / weaken encryption, with gag rules + limited judicial check; expanded foreign info-sharing. Government ended SECU committee debate June 16 2026 without addressing Part 2. **LEAN — name each:** advocacy (OpenMedia, EFF, CDT) demands withdrawal; the Privacy Commissioner (Dufresne, May 26 2026 statement) gave calibrated advice (welcomed some tailoring; urged necessity/proportionality + encryption \"systemic vulnerability\" protections); government bill. Petition e-7416. | [OpenMedia](https://openmedia.org/press/item/government-prematurely-ends-debate-on-bill-c-22-without-dealing-with-dangerous-surveillance-powers) · [EFF](https://www.eff.org/deeplinks/2026/06/canada-forging-ahead-its-dangerous-surveillance-bill) · [OPC statement](https://www.priv.gc.ca/en/opc-actions-and-decisions/advice-to-parliament/2026/parl_260526/) · [Petition e-7416](https://www.ourcommons.ca/petitions/en/Petition/Details?Petition=e-7416)",
+  "detail": "✅ Rechecked November 9, 2026. Source change: at first reading on March 12, Part 2, paragraph 5(2)(d) set a one-year ceiling. The House-passed text of June 18 lowered it to six months. It would authorize regulations requiring core providers to retain specified categories of metadata. Sections 2(4), 5(5) and 7(5) address decryption and systemic vulnerabilities. Sections 7–10 provide for capability orders, provider representations, Intelligence Commissioner approval and duration. Sections 14–17 set out confidentiality, disclosure exceptions and Federal Court judicial review after 15 days’ written notice. The Senate referred C-22 to committee on October 22 and the committee heard ministers on November 2. The House text was the latest version located on November 9. The Privacy Commissioner’s advice and the June advocacy pieces date to the House debate. On October 22, the Electronic Frontier Foundation added a note to its June article acknowledging House passage and linking its new appeal against the bill at the Senate stage. | [C-22 at first reading (March 12, 2026)](https://www.parl.ca/documentviewer/en/45-1/bill/C-22/first-reading) · [C-22 as passed by the House (June 18, 2026)](https://www.parl.ca/documentviewer/en/45-1/bill/C-22/third-reading) · [Senate referral to committee (October 22, 2026)](https://sencanada.ca/en/content/sen/chamber/451/debates/095db_2026-10-22-e) · [Senate committee meeting (November 2, 2026)](https://sencanada.ca/en/committees/SECD/noticeofmeeting/706938/45-1) · [Privacy Commissioner’s May 26 advice](https://www.priv.gc.ca/en/opc-actions-and-decisions/advice-to-parliament/2026/parl_260526/) · [OpenMedia’s June response](https://openmedia.org/press/item/government-prematurely-ends-debate-on-bill-c-22-without-dealing-with-dangerous-surveillance-powers) · [Electronic Frontier Foundation’s June response](https://www.eff.org/deeplinks/2026/06/canada-forging-ahead-its-dangerous-surveillance-bill) · [Electronic Frontier Foundation’s October 22 follow-up](https://www.eff.org/deeplinks/2026/10/canadians-are-running-out-time-oppose-dangerous-c-22-surveillance-bill)",
   "links": [
    [
-    "OpenMedia",
-    "https://openmedia.org/press/item/government-prematurely-ends-debate-on-bill-c-22-without-dealing-with-dangerous-surveillance-powers"
+    "C-22 at first reading (March 12, 2026)",
+    "https://www.parl.ca/documentviewer/en/45-1/bill/C-22/first-reading"
    ],
    [
-    "EFF",
-    "https://www.eff.org/deeplinks/2026/06/canada-forging-ahead-its-dangerous-surveillance-bill"
+    "C-22 as passed by the House (June 18, 2026)",
+    "https://www.parl.ca/documentviewer/en/45-1/bill/C-22/third-reading"
    ],
    [
-    "OPC statement",
+    "Senate referral to committee (October 22, 2026)",
+    "https://sencanada.ca/en/content/sen/chamber/451/debates/095db_2026-10-22-e"
+   ],
+   [
+    "Senate committee meeting (November 2, 2026)",
+    "https://sencanada.ca/en/committees/SECD/noticeofmeeting/706938/45-1"
+   ],
+   [
+    "Privacy Commissioner’s May 26 advice",
     "https://www.priv.gc.ca/en/opc-actions-and-decisions/advice-to-parliament/2026/parl_260526/"
    ],
    [
-    "Petition e-7416",
-    "https://www.ourcommons.ca/petitions/en/Petition/Details?Petition=e-7416"
+    "OpenMedia’s June response",
+    "https://openmedia.org/press/item/government-prematurely-ends-debate-on-bill-c-22-without-dealing-with-dangerous-surveillance-powers"
+   ],
+   [
+    "Electronic Frontier Foundation’s June response",
+    "https://www.eff.org/deeplinks/2026/06/canada-forging-ahead-its-dangerous-surveillance-bill"
+   ],
+   [
+    "Electronic Frontier Foundation’s October 22 follow-up",
+    "https://www.eff.org/deeplinks/2026/10/canadians-are-running-out-time-oppose-dangerous-c-22-surveillance-bill"
    ]
   ]
  },
@@ -1691,6 +1781,70 @@
   ]
  },
  {
+  "id": 104,
+  "section": "Citation-precision pass — June 18, 2026",
+  "claim": "Data-labelling work behind ChatGPT",
+  "status": "resolved",
+  "detail": "✅ TIME reported that Kenyan workers employed by OpenAI contractor Sama took home about US$1.32–US$2 per hour, depending on seniority and performance, for work that included labelling disturbing material. This is reporting on one operation. | [TIME investigation](https://time.com/6247678/openai-chatgpt-kenya-workers/)",
+  "links": [
+   [
+    "TIME investigation",
+    "https://time.com/6247678/openai-chatgpt-kenya-workers/"
+   ]
+  ]
+ },
+ {
+  "id": 105,
+  "section": "Citation-precision pass — June 18, 2026",
+  "claim": "Modelled GPT-3 inference water footprint",
+  "status": "resolved",
+  "detail": "✅ Rechecked November 9, 2026 against the published 2025 article. Li and colleagues model roughly half a litre per 10–50 medium-length GPT-3 responses depending on time and location. They distinguish site water from electricity-generation water. This replaces the preprint-only citation. The estimate does not establish current fleet-wide use. | [Published 2025 article](https://doi.org/10.1145/3724499) · [University-hosted full text](https://crystal.uta.edu/~mislam/pdfs/2025_CACM.pdf) · [Earlier preprint](https://arxiv.org/abs/2304.03271)",
+  "links": [
+   [
+    "Published 2025 article",
+    "https://doi.org/10.1145/3724499"
+   ],
+   [
+    "University-hosted full text",
+    "https://crystal.uta.edu/~mislam/pdfs/2025_CACM.pdf"
+   ],
+   [
+    "Earlier preprint",
+    "https://arxiv.org/abs/2304.03271"
+   ]
+  ]
+ },
+ {
+  "id": 106,
+  "section": "Citation-precision pass — June 18, 2026",
+  "claim": "Efficiency and rebound effects",
+  "status": "resolved",
+  "detail": "✅ Luccioni, Strubell and Crawford distinguish efficiency per task from total resource use. In their FAccT 2025 paper, they use AI in targeted advertising as an example of an induction effect and cite a secondary estimate of US$36 billion in 2024 revenues. The figure measures market revenue. | [FAccT proceedings](https://doi.org/10.1145/3715275.3732007)",
+  "links": [
+   [
+    "FAccT proceedings",
+    "https://doi.org/10.1145/3715275.3732007"
+   ]
+  ]
+ },
+ {
+  "id": 107,
+  "section": "Citation-precision pass — June 18, 2026",
+  "claim": "ACTRA member survey about AI",
+  "status": "resolved",
+  "detail": "✅ ACTRA published its 2023 member survey results on concerns about misuse of name, image or likeness and expectations that AI could replace performers in some roles. The survey measures the views of respondents. | [ACTRA survey results (English)](https://www.actra.ca/wp-content/uploads/2023/12/TOPLINE-STATS-ONLY-3-1.jpg) · [ACTRA survey results (French)](https://www.actra.ca/wp-content/uploads/2023/12/AI-STATS-FR.png)",
+  "links": [
+   [
+    "ACTRA survey results (English)",
+    "https://www.actra.ca/wp-content/uploads/2023/12/TOPLINE-STATS-ONLY-3-1.jpg"
+   ],
+   [
+    "ACTRA survey results (French)",
+    "https://www.actra.ca/wp-content/uploads/2023/12/AI-STATS-FR.png"
+   ]
+  ]
+ },
+ {
   "id": 108,
   "section": "Canadian screen, art and creative work (November 8, 2026)",
   "claim": "Rebelles and the work behind the images (Ch 12)",
@@ -1904,6 +2058,414 @@
    [
     "Mozilla, security advisory 2026-118 for Firefox 159",
     "https://www.mozilla.org/en-US/security/advisories/mfsa2026-118/"
+   ]
+  ]
+ },
+ {
+  "id": 121,
+  "section": "Research integration — outcomes, accountability and disclosure (November 2026)",
+  "claim": "Ireland’s metered data centres (Ch 8)",
+  "status": "resolved",
+  "detail": "✅ Ireland’s Central Statistics Office reports 7,663 GWh of metered data-centre electricity consumption in 2025, up from 6,973 GWh in 2024. The 2025 figure was 23% of total metered electricity. The data-centre series covers more than AI workloads. | [Central Statistics Office, Ireland's 2025 metered data-centre electricity](https://www.cso.ie/en/releasesandpublications/ep/p-dcmec/datacentresmeteredelectricityconsumption2025/keyfindings/)",
+  "links": [
+   [
+    "Central Statistics Office, Ireland's 2025 metered data-centre electricity",
+    "https://www.cso.ie/en/releasesandpublications/ep/p-dcmec/datacentresmeteredelectricityconsumption2025/keyfindings/"
+   ]
+  ]
+ },
+ {
+  "id": 122,
+  "section": "Research integration — outcomes, accountability and disclosure (November 2026)",
+  "claim": "Deezer uploads and streams (Ch 14)",
+  "status": "resolved",
+  "detail": "✅ Deezer’s July 21, 2026 release reports that tracks detected as fully AI-generated exceeded half of new daily uploads at the June peak and represented 1–3% of total streams. The company says it excludes detected tracks from algorithmic recommendations and editorial playlists. These are company figures for one service, with different denominators and a platform policy affecting exposure. | [Deezer, July 2026 upload and streaming figures](https://newsroom-deezer.com/2026/07/ai-music-exceeds-50-percent-daily-uploads-deezer/)",
+  "links": [
+   [
+    "Deezer, July 2026 upload and streaming figures",
+    "https://newsroom-deezer.com/2026/07/ai-music-exceeds-50-percent-daily-uploads-deezer/"
+   ]
+  ]
+ },
+ {
+  "id": 123,
+  "section": "Research integration — outcomes, accountability and disclosure (November 2026)",
+  "claim": "Canadian hiring and departures among workers aged 15–29 (Ch 16)",
+  "status": "resolved",
+  "detail": "✅ Statistics Canada’s October 28, 2026 analysis compares six-month averages for employees aged 15–29 in the ten provinces. Hiring rates fell from 4.0% to 3.3% for low-exposure jobs, from 2.9% to 2.5% for high-exposure jobs where AI is more likely to complement workers, and from 3.2% to 3.0% where it is less likely to do so. The coding-intensive subset fell from 2.5% to 1.9%, with a decline already underway in early 2022. The exposure index estimates potential exposure. The separation measure includes departures for any reason, including quits. | [Statistics Canada, Labour Force Survey analysis and Chart 1](https://www150.statcan.gc.ca/n1/pub/36-28-0001/2026010/article/00003-eng.htm)",
+  "links": [
+   [
+    "Statistics Canada, Labour Force Survey analysis and Chart 1",
+    "https://www150.statcan.gc.ca/n1/pub/36-28-0001/2026010/article/00003-eng.htm"
+   ]
+  ]
+ },
+ {
+  "id": 124,
+  "section": "Research integration — outcomes, accountability and disclosure (November 2026)",
+  "claim": "The July Hugging Face intrusion during a model evaluation (Ch 17)",
+  "status": "resolved",
+  "detail": "✅ OpenAI’s disclosure describes the evaluation escape. Hugging Face’s July 27 technical timeline documents access to parts of its production infrastructure. METR and Redwood Research examined agent behaviour and coordination using records available to their investigation. Their review had a narrower scope than the companies’ incident investigations. | [Hugging Face, incident timeline](https://huggingface.co/blog/agent-intrusion-technical-timeline) · [OpenAI, evaluation incident disclosure](https://openai.com/index/hugging-face-model-evaluation-security-incident/) · [METR and Redwood Research, independent review of agent behaviour](https://metr.org/blog/2026-08-26-openai-hugging-face-incident-investigation/)",
+  "links": [
+   [
+    "Hugging Face, incident timeline",
+    "https://huggingface.co/blog/agent-intrusion-technical-timeline"
+   ],
+   [
+    "OpenAI, evaluation incident disclosure",
+    "https://openai.com/index/hugging-face-model-evaluation-security-incident/"
+   ],
+   [
+    "METR and Redwood Research, independent review of agent behaviour",
+    "https://metr.org/blog/2026-08-26-openai-hugging-face-incident-investigation/"
+   ]
+  ]
+ },
+ {
+  "id": 125,
+  "section": "Research integration — outcomes, accountability and disclosure (November 2026)",
+  "claim": "Canada’s privacy commissioner on meaningful disclosure (Ch 18)",
+  "status": "resolved",
+  "detail": "✅ In its September 23, 2026 submission to ISED, the Office of the Privacy Commissioner discusses making AI disclosures understandable and available at a useful point, and avoiding disclosures that overwhelm people. It discusses significant-impact automated decisions as one way of focusing transparency. This is a consultation submission. | [Office of the Privacy Commissioner of Canada, transparency submission](https://www.priv.gc.ca/en/opc-actions-and-decisions/submissions-to-consultations/sub_ised_20260923/)",
+  "links": [
+   [
+    "Office of the Privacy Commissioner of Canada, transparency submission",
+    "https://www.priv.gc.ca/en/opc-actions-and-decisions/submissions-to-consultations/sub_ised_20260923/"
+   ]
+  ]
+ },
+ {
+  "id": 126,
+  "section": "Research integration — outcomes, accountability and disclosure (November 2026)",
+  "claim": "Navier–Stokes proof claim and prize review (Ch 18)",
+  "status": "resolved",
+  "detail": "✅ OpenAI published a paper and Lean formalization on September 8, 2026 for a claimed finite-time breakdown result in the three-dimensional Navier–Stokes problem. The Clay Mathematics Institute’s September 11 statement described the problem as apparently settled and pointed to its rules. Its prize process calls for qualifying publication, a waiting period and general acceptance by the mathematics community. | [OpenAI, September 8 Navier–Stokes paper and Lean formalization](https://openai.com/index/navier-stokes-solution/) · [Clay Mathematics Institute, September 11 statement](https://www.claymath.org/news/navier-stokes-announcement/) · [Clay Mathematics Institute, prize rules](https://www.claymath.org/millennium-problems/rules/)",
+  "links": [
+   [
+    "OpenAI, September 8 Navier–Stokes paper and Lean formalization",
+    "https://openai.com/index/navier-stokes-solution/"
+   ],
+   [
+    "Clay Mathematics Institute, September 11 statement",
+    "https://www.claymath.org/news/navier-stokes-announcement/"
+   ],
+   [
+    "Clay Mathematics Institute, prize rules",
+    "https://www.claymath.org/millennium-problems/rules/"
+   ]
+  ]
+ },
+ {
+  "id": 127,
+  "section": "Research integration — outcomes, accountability and disclosure (November 2026)",
+  "claim": "Patient outcomes in a Kenyan primary care AI trial (Ch 21)",
+  "status": "resolved",
+  "detail": "✅ Agweyu and colleagues published a cluster-randomized trial in Nature Medicine in 2026. It tested a language-model decision support tool in 16 Kenyan primary care facilities. The primary analysis found no statistically significant difference in treatment failure within 14 days. The reported adjusted odds ratio was 0.77 with a 95% confidence interval of 0.55–1.08. | [Agweyu et al., randomized clinical trial in Nature Medicine](https://doi.org/10.1038/s41591-026-04503-6)",
+  "links": [
+   [
+    "Agweyu et al., randomized clinical trial in Nature Medicine",
+    "https://doi.org/10.1038/s41591-026-04503-6"
+   ]
+  ]
+ },
+ {
+  "id": 128,
+  "section": "Data-centre electricity bills (November 9, 2026)",
+  "claim": "Manitoba’s intensive-use levy and residential bills (Ch 8)",
+  "status": "resolved",
+  "detail": "✅ Manitoba Hydro publishes General Service rates, including energy and demand charges for large commercial customers. S.M. 2026, c. 32, sections 7–8, provides that covered operators pay an additional levy collected by Manitoba Hydro once the Act is proclaimed. S.M. 2026, c. 53, sections 8–10 and 21(4), directs Manitoba Hydro to apply levy revenue to residential bills and ties commencement to the later of royal assent and the start of Part 2 of c. 32. The proclamation register showed no commencement for c. 32 as of November 9, 2026. | [Manitoba, 2026 c. 32, intensive-use levy](https://web2.gov.mb.ca/laws/statutes/2026/c03226.php) · [Manitoba, 2026 c. 53, residential bills](https://web2.gov.mb.ca/laws/statutes/2026/c05326.php?lang=en) · [Manitoba Laws, proclamation register](https://web2.gov.mb.ca/laws/statutes/index_procs.php) · [Manitoba Hydro, commercial rates](https://www.hydro.mb.ca/account/rates/commercial/)",
+  "links": [
+   [
+    "Manitoba, 2026 c. 32, intensive-use levy",
+    "https://web2.gov.mb.ca/laws/statutes/2026/c03226.php"
+   ],
+   [
+    "Manitoba, 2026 c. 53, residential bills",
+    "https://web2.gov.mb.ca/laws/statutes/2026/c05326.php?lang=en"
+   ],
+   [
+    "Manitoba Laws, proclamation register",
+    "https://web2.gov.mb.ca/laws/statutes/index_procs.php"
+   ],
+   [
+    "Manitoba Hydro, commercial rates",
+    "https://www.hydro.mb.ca/account/rates/commercial/"
+   ]
+  ]
+ },
+ {
+  "id": 129,
+  "section": "Data-centre electricity bills (November 9, 2026)",
+  "claim": "Québec’s proposed Rate CD for data centres (Ch 8)",
+  "status": "resolved",
+  "detail": "✅ Hydro-Québec’s revised filing of August 4, 2026 proposes Rate CD for qualifying annual service contracts with authorized demand of at least 5,000 kW. The proposed base charges are $32.704 per kW of monthly billing demand plus 8.710¢ per kWh, with a further charge in specified hours during ramp-up. The Régie listed R-4333-2026 as in progress on November 9, 2026. Existing customers are billed under the approved tariff applicable to their contract. | [Hydro-Québec, revised proposed Rate CD](https://www.regie-energie.qc.ca/fr/participants/dossiers/R-4333-2026/doc/R-4333-2026-B-0076-Dem-PieceRev-2026_08_04.pdf) · [Régie de l’énergie, proceeding R-4333-2026 (French)](https://www.regie-energie.qc.ca/fr/participants/dossiers/r-4333-2026) · [Hydro-Québec, published rates and conditions of service](https://www.hydroquebec.com/documents-data/official-publications/electricity-rates-conditions-electricity-service.html)",
+  "links": [
+   [
+    "Hydro-Québec, revised proposed Rate CD",
+    "https://www.regie-energie.qc.ca/fr/participants/dossiers/R-4333-2026/doc/R-4333-2026-B-0076-Dem-PieceRev-2026_08_04.pdf"
+   ],
+   [
+    "Régie de l’énergie, proceeding R-4333-2026 (French)",
+    "https://www.regie-energie.qc.ca/fr/participants/dossiers/r-4333-2026"
+   ],
+   [
+    "Hydro-Québec, published rates and conditions of service",
+    "https://www.hydroquebec.com/documents-data/official-publications/electricity-rates-conditions-electricity-service.html"
+   ]
+  ]
+ },
+ {
+  "id": 130,
+  "section": "Data-centre electricity bills (November 9, 2026)",
+  "claim": "Ontario’s Global Adjustment proposal and connection costs (Ch 8)",
+  "status": "resolved",
+  "detail": "✅ Ontario’s August consultation and fall statement describe a proposed class for the Global Adjustment on large new data centres. The consultation says data-centre accounts currently pay as Class A, based on their contribution at system peaks, or Class B, based on consumption. It describes the new class as distinct from connection approvals. Under sections 6.3.1–6.3.2 and 6.5 of the existing Transmission System Code, the load customer contributes to new or modified transmitter-owned connection facilities to the extent that connection rate revenues cannot recover those costs. | [Environmental Registry of Ontario, proposal 026-0853](https://ero.ontario.ca/notice/026-0853) · [Ontario, 2026 Fall Statement, chapter 1B](https://budget.ontario.ca/2026/fallstatement/chapter-1b-plan.html) · [Ontario Energy Board, Transmission System Code, sections 6.3 and 6.5](https://www.oeb.ca/sites/default/files/uploads/documents/regulatorycodes/2025-04/Transmission_System_Code_20250331.pdf)",
+  "links": [
+   [
+    "Environmental Registry of Ontario, proposal 026-0853",
+    "https://ero.ontario.ca/notice/026-0853"
+   ],
+   [
+    "Ontario, 2026 Fall Statement, chapter 1B",
+    "https://budget.ontario.ca/2026/fallstatement/chapter-1b-plan.html"
+   ],
+   [
+    "Ontario Energy Board, Transmission System Code, sections 6.3 and 6.5",
+    "https://www.oeb.ca/sites/default/files/uploads/documents/regulatorycodes/2025-04/Transmission_System_Code_20250331.pdf"
+   ]
+  ]
+ },
+ {
+  "id": 131,
+  "section": "Training-data evidence review (November 9, 2026)",
+  "claim": "Verbatim extraction from tested language models (Ch 2)",
+  "status": "resolved",
+  "detail": "✅ Carlini and colleagues extracted hundreds of verbatim training sequences by querying GPT-2. Nasr and colleagues documented extractable memorization in a tested version of ChatGPT. The studies show extraction under tested conditions. A similar answer alone cannot identify its source or distinguish training from retrieval or prompt context. | [Carlini et al., USENIX Security 2021](https://www.usenix.org/system/files/sec21-carlini-extracting.pdf) · [Nasr et al., extraction study](https://arxiv.org/abs/2311.17035)",
+  "links": [
+   [
+    "Carlini et al., USENIX Security 2021",
+    "https://www.usenix.org/system/files/sec21-carlini-extracting.pdf"
+   ],
+   [
+    "Nasr et al., extraction study",
+    "https://arxiv.org/abs/2311.17035"
+   ]
+  ]
+ },
+ {
+  "id": 132,
+  "section": "Training-data evidence review (November 9, 2026)",
+  "claim": "GPT-4 and original LLaMA training disclosures (Ch 3)",
+  "status": "resolved",
+  "detail": "✅ Section 2 of the GPT-4 report names public and licensed third-party data. It omits model size and dataset construction. Meta’s 2023 LLaMA paper, section 2.1 and Table 1, lists Common Crawl, C4, GitHub, Wikipedia, Project Gutenberg, Books3, arXiv and Stack Exchange. The June 2025 Bartz order distinguishes the training use it found fair on that US record from downloading pirated copies for a permanent library. | [OpenAI, GPT-4 Technical Report, section 2](https://cdn.openai.com/papers/gpt-4.pdf) · [Touvron et al., original LLaMA, section 2.1](https://arxiv.org/abs/2302.13971) · [Bartz v. Anthropic, June 23, 2025 order](https://docs.justia.com/cases/federal/district-courts/california/candce/3%3A2024cv05417/434709/231)",
+  "links": [
+   [
+    "OpenAI, GPT-4 Technical Report, section 2",
+    "https://cdn.openai.com/papers/gpt-4.pdf"
+   ],
+   [
+    "Touvron et al., original LLaMA, section 2.1",
+    "https://arxiv.org/abs/2302.13971"
+   ],
+   [
+    "Bartz v. Anthropic, June 23, 2025 order",
+    "https://docs.justia.com/cases/federal/district-courts/california/candce/3%3A2024cv05417/434709/231"
+   ]
+  ]
+ },
+ {
+  "id": 133,
+  "section": "Training-data evidence review (November 9, 2026)",
+  "claim": "LAION-5B links, model subsets and revised index (Ch 3)",
+  "status": "resolved",
+  "detail": "✅ LAION documented the 5.85-billion-pair index. The Stable Diffusion v1.4 model card names specific subsets. The Stanford Internet Observatory’s December 2023 investigation documented links to child sexual abuse material. LAION reported withdrawing the original index and in August 2024 publishing replacements that filtered samples known to partners as of July 2024. An index entry alone does not establish inclusion in a given training run. | [LAION-5B, original paper](https://arxiv.org/abs/2210.08402) · [CompVis, Stable Diffusion v1.4 model card](https://huggingface.co/CompVis/stable-diffusion-v1-4) · [David Thiel, Stanford Internet Observatory report](https://docs.house.gov/meetings/JU/JU08/20240306/116913/HHRG-118-JU08-20240306-SD005-U5.pdf) · [LAION, August 2024 revision](https://laion.ai/blog/relaion-5b/)",
+  "links": [
+   [
+    "LAION-5B, original paper",
+    "https://arxiv.org/abs/2210.08402"
+   ],
+   [
+    "CompVis, Stable Diffusion v1.4 model card",
+    "https://huggingface.co/CompVis/stable-diffusion-v1-4"
+   ],
+   [
+    "David Thiel, Stanford Internet Observatory report",
+    "https://docs.house.gov/meetings/JU/JU08/20240306/116913/HHRG-118-JU08-20240306-SD005-U5.pdf"
+   ],
+   [
+    "LAION, August 2024 revision",
+    "https://laion.ai/blog/relaion-5b/"
+   ]
+  ]
+ },
+ {
+  "id": 134,
+  "section": "Training-data evidence review (November 9, 2026)",
+  "claim": "Canadian publishers’ allegations and the jurisdiction ruling (Ch 11)",
+  "status": "resolved",
+  "detail": "✅ Rechecked November 9, 2026. The statement of claim electronically issued November 28, 2024 alleges unauthorized copying and use of works the plaintiffs own or license. The November 7, 2025 Ontario decision concerns jurisdiction. The earlier guide reported about 16.1 million articles and in places treated the figure as a count of works used in training. The public records reviewed do not substantiate that figure or establish which individual works were used. | [Canadian news publishers, statement of claim](https://www.gilbertslaw.ca/wp-content/uploads/2025/02/Canadian-News-Media-Companies-v-OpenAI.pdf) · [Ontario Superior Court, 2025 ONSC 6217](https://litigate.com/assets/uploads/20251126-143435-3326-Toronto-Star-Newspapers-et-al-v.-OpenAI-et-al-CV-24-00732231-00CL.Endorsement.September.10.2025.Jurisdiction.Motion.FINAL.2.pdf) · [OpenAI’s public US fair-use position](https://openai.com/index/openai-and-journalism/)",
+  "links": [
+   [
+    "Canadian news publishers, statement of claim",
+    "https://www.gilbertslaw.ca/wp-content/uploads/2025/02/Canadian-News-Media-Companies-v-OpenAI.pdf"
+   ],
+   [
+    "Ontario Superior Court, 2025 ONSC 6217",
+    "https://litigate.com/assets/uploads/20251126-143435-3326-Toronto-Star-Newspapers-et-al-v.-OpenAI-et-al-CV-24-00732231-00CL.Endorsement.September.10.2025.Jurisdiction.Motion.FINAL.2.pdf"
+   ],
+   [
+    "OpenAI’s public US fair-use position",
+    "https://openai.com/index/openai-and-journalism/"
+   ]
+  ]
+ },
+ {
+  "id": 135,
+  "section": "Adversarial review corrections (November 9, 2026)",
+  "claim": "E-waste totals, recycling and projection periods",
+  "status": "resolved",
+  "detail": "✅ November 9, 2026 editorial correction. Wang and colleagues model 1.2–5.0 million tonnes of generative-AI e-waste accumulated during 2020–2030. The previous guide called it annual. The Global E-waste Monitor reports 98,000 of 774,000 tonnes formally collected and recycled in Canada in 2022, about 13%. The 22.3% figure is global. The Canadian table does not trace the remaining tonnes. | [Wang et al.](https://doi.org/10.1038/s43588-024-00712-6) · [Global E-waste Monitor, Annex 2](https://api.globalewaste.org/publications/file/297/Global-E-waste-Monitor-2024.pdf)",
+  "links": [
+   [
+    "Wang et al.",
+    "https://doi.org/10.1038/s43588-024-00712-6"
+   ],
+   [
+    "Global E-waste Monitor, Annex 2",
+    "https://api.globalewaste.org/publications/file/297/Global-E-waste-Monitor-2024.pdf"
+   ]
+  ]
+ },
+ {
+  "id": 136,
+  "section": "Adversarial review corrections (November 9, 2026)",
+  "claim": "Québec automated decisions and confidentiality incidents",
+  "status": "resolved",
+  "detail": "✅ November 9, 2026 editorial correction. Private-sector section 12.1 applies to decisions based exclusively on automated processing of personal information. It provides notice, specified information on request and an opportunity to submit observations to staff able to review the decision. Section 3.5 requires notice where an incident presents a risk of serious injury, subject to the statutory exception for notice to affected people. Earlier wording omitted the review step and broadened the notice trigger. | [Québec private-sector privacy act, ss. 3.5 and 12.1](https://www.legisquebec.gouv.qc.ca/en/document/cs/P-39.1)",
+  "links": [
+   [
+    "Québec private-sector privacy act, ss. 3.5 and 12.1",
+    "https://www.legisquebec.gouv.qc.ca/en/document/cs/P-39.1"
+   ]
+  ]
+ },
+ {
+  "id": 137,
+  "section": "Adversarial review corrections (November 9, 2026)",
+  "claim": "Stanford transparency scores and developer submissions",
+  "status": "resolved",
+  "detail": "✅ November 9, 2026 editorial correction. The May 2024 and December 2025 means were 58 and 40.69 under different indicators and cohorts. The 74% and 30% figures refer to invited developers who submitted their own reports, 14 of 19 and 7 of 23. The earlier guide treated the means as a like-for-like disclosure trend and described the submissions as broader engagement. | [May 2024 edition](https://crfm.stanford.edu/fmti/May-2024/paper.pdf) · [December 2025 edition](https://crfm.stanford.edu/fmti/December-2025/paper.pdf)",
+  "links": [
+   [
+    "May 2024 edition",
+    "https://crfm.stanford.edu/fmti/May-2024/paper.pdf"
+   ],
+   [
+    "December 2025 edition",
+    "https://crfm.stanford.edu/fmti/December-2025/paper.pdf"
+   ]
+  ]
+ },
+ {
+  "id": 138,
+  "section": "Adversarial review corrections (November 9, 2026)",
+  "claim": "Federal AI Register launch inventory",
+  "status": "resolved",
+  "detail": "✅ November 9, 2026 editorial correction. Treasury Board's November 28, 2025 launch listed more than 400 systems from 42 institutions across research, development, implementation and deployment. The previous guide described the count as active use. The release dates the earliest federal use to 1994 and excludes AI embedded in low-risk commercial products. | [Treasury Board launch](https://www.canada.ca/en/treasury-board-secretariat/news/2025/11/canada-launches-first-register-of-ai-uses-in-federal-government.html)",
+  "links": [
+   [
+    "Treasury Board launch",
+    "https://www.canada.ca/en/treasury-board-secretariat/news/2025/11/canada-launches-first-register-of-ai-uses-in-federal-government.html"
+   ]
+  ]
+ },
+ {
+  "id": 139,
+  "section": "Adversarial review corrections (November 9, 2026)",
+  "claim": "CRTC Canadian-program certification and the federal film tax credit",
+  "status": "resolved",
+  "detail": "✅ November 9, 2026 editorial correction. CRTC 2025-299 addresses humans in key creative roles and AI as an assistive tool in its modernized Canadian-program framework. It sets out a transition tied to the new regulations. CAVCO's federal film tax credit is a separate program with its own qualified labour rules. The earlier recap treated certification as silent on AI. | [CRTC decision, paragraph 195](https://crtc.gc.ca/eng/archive/2025/2025-299.htm) · [CAVCO tax-credit guidelines](https://www.canada.ca/en/canadian-heritage/services/funding/cavco-tax-credits/canadian-film-video-production/application-guidelines.html)",
+  "links": [
+   [
+    "CRTC decision, paragraph 195",
+    "https://crtc.gc.ca/eng/archive/2025/2025-299.htm"
+   ],
+   [
+    "CAVCO tax-credit guidelines",
+    "https://www.canada.ca/en/canadian-heritage/services/funding/cavco-tax-credits/canadian-film-video-production/application-guidelines.html"
+   ]
+  ]
+ },
+ {
+  "id": 140,
+  "section": "Receipt alignment corrections (November 9, 2026)",
+  "claim": "Olana Kaipo Ai and the Indigenous Protocol and AI Position Paper (Ch 1)",
+  "status": "resolved",
+  "detail": "✅ The opening epigraph of the 2020 Indigenous Protocol and AI Position Paper attributes the formulation about aloha and intelligence to Olana Kaipo Ai. | [Working group position paper](https://www.indigenous-ai.net/position-paper/)",
+  "links": [
+   [
+    "Working group position paper",
+    "https://www.indigenous-ai.net/position-paper/"
+   ]
+  ]
+ },
+ {
+  "id": 141,
+  "section": "Receipt alignment corrections (November 9, 2026)",
+  "claim": "Alberta’s interim large-load connection limit (Ch 6)",
+  "status": "resolved",
+  "detail": "✅ On June 4, 2025, AESO reported 29 requests for more than 16,000 MW and announced a 1,200 MW interim connection limit. Its project page reports that the full amount has been allocated under signed contracts. This is a commitment to connect capacity. | [AESO interim announcement](https://www.aeso.ca/aeso/newsroom/aeso-announces-interim-approach-to-large-load-connections/) · [AESO large-load projects](https://www.aeso.ca/grid/connecting-to-the-grid/large-load-projects/)",
+  "links": [
+   [
+    "AESO interim announcement",
+    "https://www.aeso.ca/aeso/newsroom/aeso-announces-interim-approach-to-large-load-connections/"
+   ],
+   [
+    "AESO large-load projects",
+    "https://www.aeso.ca/grid/connecting-to-the-grid/large-load-projects/"
+   ]
+  ]
+ },
+ {
+  "id": 142,
+  "section": "Receipt alignment corrections (November 9, 2026)",
+  "claim": "GIDA’s CARE Directs Us Home communiqué (Ch 9)",
+  "status": "resolved",
+  "detail": "✅ The Global Indigenous Data Alliance asks people applying the CARE Principles to give priority to Indigenous Peoples’ own community standards and protocols. The communiqué’s suggested citation dates it to 2024. | [GIDA communiqué, archived version](https://doi.org/10.6084/m9.figshare.29294120.v1)",
+  "links": [
+   [
+    "GIDA communiqué, archived version",
+    "https://doi.org/10.6084/m9.figshare.29294120.v1"
+   ]
+  ]
+ },
+ {
+  "id": 143,
+  "section": "Receipt alignment corrections (November 9, 2026)",
+  "claim": "Abundant Intelligences and Indigenous knowledge frameworks (Ch 9)",
+  "status": "resolved",
+  "detail": "✅ Jason Edward Lewis, Hēmi Whaanga and Dilara Yolgörmez describe the research program and its grounding in Indigenous knowledge frameworks in their article in AI & Society, first published online in 2024. | [Published article in AI & Society](https://doi.org/10.1007/s00146-024-02099-4)",
+  "links": [
+   [
+    "Published article in AI & Society",
+    "https://doi.org/10.1007/s00146-024-02099-4"
+   ]
+  ]
+ },
+ {
+  "id": 144,
+  "section": "Receipt alignment corrections (November 9, 2026)",
+  "claim": "Ontario’s privacy commissioner and the private sector (Ch 18)",
+  "status": "resolved",
+  "detail": "✅ Ontario’s Information and Privacy Commissioner oversees provincial and municipal public-sector privacy and Ontario’s health-information privacy law. The office directs general private-sector privacy questions to the federal privacy commissioner. | [Ontario IPC mandate](https://www.ipc.on.ca/en/about-us/role-and-mandate) · [Ontario IPC jurisdiction and limits](https://www.ipc.on.ca/en/about-us/role-and-mandate/what-we-do-vs-what-we-dont-do)",
+  "links": [
+   [
+    "Ontario IPC mandate",
+    "https://www.ipc.on.ca/en/about-us/role-and-mandate"
+   ],
+   [
+    "Ontario IPC jurisdiction and limits",
+    "https://www.ipc.on.ca/en/about-us/role-and-mandate/what-we-do-vs-what-we-dont-do"
    ]
   ]
  }
