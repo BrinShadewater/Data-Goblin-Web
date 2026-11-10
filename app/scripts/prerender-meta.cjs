@@ -10,6 +10,7 @@ const receiptNotes = require("../src/receiptNotes.json");
 const latestUpdate = require("../src/latestUpdate.json");
 const sourceChangeUpdate = require("../src/sourceChangeUpdate.json");
 const editorialCorrectionUpdate = require("../src/editorialCorrectionUpdate.json");
+const readerCorrectionsUpdate = require("../src/readerCorrectionsUpdate.json");
 const readerEntry = require("../src/readerEntry.json");
 
 const DIST = process.env.PRERENDER_DIST ? path.resolve(process.env.PRERENDER_DIST) : path.resolve(__dirname, "../dist");
@@ -358,7 +359,9 @@ function routeBodyHtml(route, lang) {
     const prefix = lang === "fr" ? "/fr" : "";
     const sourceChange = sourceChangeUpdate[lang];
     const editorial = editorialCorrectionUpdate[lang];
+    const reader = readerCorrectionsUpdate[lang];
     const entries = [
+      [reader, [[reader.chapterLabel, readerCorrectionsUpdate.chapterPath]]],
       [editorial, editorialCorrectionUpdate.receiptIds.map((id, index) => [editorial.receiptLabels[index], `/receipts#receipt-${id}`])],
       [sourceChange, [[sourceChange.passageLabel, "/chapter/10#the-biometric-and-facial-recognition-layer"], [sourceChange.receiptLabel, "/receipts#receipt-70"]]],
       [latestUpdate[lang], [[latestUpdate[lang].passageLabel, "/chapter/13#the-working-test"], [latestUpdate[lang].receiptLabel, "/receipts#receipt-32"]]],
@@ -601,7 +604,7 @@ const ROUTE_SOURCES = {
   "/receipts": ["app/src/pages/ReceiptsPage.tsx", "app/src/components/ReceiptRows.tsx", "app/src/receiptNotes.json", "app/public/content/receipts.json"],
   "/about": ["app/src/pages/AboutPage.tsx", "app/public/content/stats.json"],
   "/contribute": ["app/src/pages/ContributePage.tsx"],
-  "/updates": ["app/src/pages/UpdatesPage.tsx", "app/src/latestUpdate.json", "app/src/sourceChangeUpdate.json", "app/src/editorialCorrectionUpdate.json"],
+  "/updates": ["app/src/pages/UpdatesPage.tsx", "app/src/latestUpdate.json", "app/src/sourceChangeUpdate.json", "app/src/editorialCorrectionUpdate.json", "app/src/readerCorrectionsUpdate.json"],
   "/toolkit": ["app/src/pages/ToolkitPage.tsx"],
   "/privacy": ["app/src/pages/PrivacyPage.tsx"],
 };

@@ -1,0 +1,21 @@
+{
+  "chapterPath": "/chapter/5",
+  "en": {
+    "date": "November 9, 2026",
+    "tag": "Reader corrections",
+    "title": "French recaps and receipt links",
+    "items": [
+      "The recaps in seven French chapters now reflect the revised text. In both editions, you can open receipts #23 and #33 from the same opening paragraph of Chapter 5."
+    ],
+    "chapterLabel": "Open Chapter 5"
+  },
+  "fr": {
+    "date": "9 novembre 2026",
+    "tag": "Corrections dans le guide",
+    "title": "Récapitulatifs en français et liens vers les reçus",
+    "items": [
+      "Les récapitulatifs de sept chapitres en français reflètent maintenant le texte révisé. Dans les deux éditions, on peut ouvrir les reçus nº 23 et nº 33 depuis le même paragraphe d’ouverture du chapitre 5."
+    ],
+    "chapterLabel": "Ouvrir le chapitre 5"
+  }
+}

@@ -6,6 +6,7 @@ const searchQuestions = require("./search-questions.json");
 const searchHoldoutQuestions = require("./search-holdout-questions.json");
 const latestUpdate = require("../src/latestUpdate.json");
 const editorialCorrectionUpdate = require("../src/editorialCorrectionUpdate.json");
+const readerCorrectionsUpdate = require("../src/readerCorrectionsUpdate.json");
 const receiptNotes = require("../src/receiptNotes.json");
 
 const appDir = path.resolve(__dirname, "..");
@@ -1414,6 +1415,24 @@ async function runLatestUpdateSmoke(browser, baseUrl) {
         await page.waitForURL(baseUrl + prefix + "/receipts#receipt-135");
         const wasteReceipt = page.locator("#receipt-135");
         await wasteReceipt.getByText(lang === "fr" ? /entre 2020 et 2030/ : /during 2020–2030/).waitFor();
+        await page.goto(baseUrl + prefix + "/updates");
+        if (javaScriptEnabled) {
+          await page.locator("[data-prerender-body]").first().waitFor({ state: "detached" });
+        }
+        const reader = readerCorrectionsUpdate[lang];
+        await page.getByRole("heading", { name: reader.title, exact: true }).waitFor();
+        for (const item of reader.items) await page.getByText(item, { exact: true }).waitFor();
+        const chapterPath = prefix + "/chapter/5";
+        const chapterLink = page.getByRole("link", { name: reader.chapterLabel, exact: true });
+        assert(await chapterLink.getAttribute("href") === chapterPath, "Reader corrections link to the wrong chapter.");
+        await chapterLink.click();
+        await page.waitForURL(baseUrl + chapterPath);
+        const hospital = lang === "fr" ? "à l’Hôpital général de Toronto" : "at Toronto General Hospital";
+        if (javaScriptEnabled) {
+          await page.locator('[data-reader-scroll] button[data-receipt-id="33"]').filter({ hasText: hospital }).first().waitFor();
+        } else {
+          await page.locator("#root").getByText(hospital).first().waitFor();
+        }
       }, { javaScriptEnabled, hasTouch: true });
       console.log(`PASS latest update: ${lang}, JavaScript ${javaScriptEnabled ? "on" : "off"}`);
     }
