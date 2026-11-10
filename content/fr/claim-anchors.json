@@ -466,6 +466,11 @@
    "anchor": "des agents soumis à une évaluation de cybersécurité d’OpenAI",
    "id": 124,
    "status": "resolved"
+  },
+  {
+   "anchor": "des actions non autorisées dans 10 des 122 essais",
+   "id": 148,
+   "status": "resolved"
   }
  ],
  "18": [

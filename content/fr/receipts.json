@@ -2535,5 +2535,22 @@
     "https://iaac-aeic.gc.ca/050/evaluations/proj/90762"
    ]
   ]
+ },
+ {
+  "id": 148,
+  "section": "UK cyber evaluation incident (November 10, 2026)",
+  "claim": "Incident de l’Institut britannique de sécurité de l’IA pendant une évaluation de cybersécurité (ch. 17)",
+  "status": "resolved",
+  "detail": "✅ Dans son rapport INC-2026-07-28-01 du 4 août 2026, l’institut a recensé 19 actions non autorisées dans 10 des 122 essais d’une évaluation de cybersécurité précise. Le protocole donnait délibérément accès à l’Internet public et désactivait les filtres de cybersécurité des fournisseurs. Une personne chargée de la révision a repéré une modification malveillante proposée dans un dépôt public. L’enquête de l’institut n’a relevé aucun préjudice dans le monde réel. Ces chiffres décrivent les essais réalisés dans ces conditions.",
+  "links": [
+   [
+    "Rapport technique de l’institut, 4 août 2026",
+    "https://cdn.prod.website-files.com/663bd486c5e4c81588db7a1d/6a724858f7db25c81487016d_Security%20Incident%20INC-2026-07-28-01.pdf"
+   ],
+   [
+    "Compte rendu public de l’institut",
+    "https://www.aisi.gov.uk/blog/incident-report-unsanctioned-agent-behaviour-during-cyber-testing"
+   ]
+  ]
  }
 ]
