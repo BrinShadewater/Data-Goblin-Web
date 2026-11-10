@@ -1018,6 +1018,61 @@ async function runReaderEntrySmoke(browser, baseUrl) {
   }
 }
 
+async function runRenderedClaimAnchorsSmoke(browser, baseUrl, viewport) {
+  const pageStatus = '[aria-live="polite"][aria-atomic="true"]';
+  const normalize = (phrase) => phrase.replace(/\s+/g, " ").trim();
+  const key = (id, phrase) => JSON.stringify([String(id), normalize(phrase)]);
+  const results = await Promise.allSettled(["en", "fr"].map(async (lang) => {
+    const prefix = lang === "fr" ? "/fr" : "";
+    const contentUrl = `${baseUrl}/content${prefix}`;
+    const anchors = require(`../public/content${prefix}/claim-anchors.json`);
+    const missing = [];
+    let total = 0;
+    await withAppPage(browser, baseUrl, viewport, async (page) => {
+      const next = page.getByRole("button", { name: lang === "fr" ? "Page suivante" : "Next page", exact: true }).last();
+      for (const [chapter, entries] of Object.entries(anchors)) {
+        await Promise.all([
+          page.waitForResponse((response) => response.url() === `${contentUrl}/claim-anchors.json` && response.ok()),
+          page.waitForResponse((response) => response.url() === `${contentUrl}/receipts.json` && response.ok()),
+          page.goto(`${baseUrl}${prefix}/chapter/${chapter}`, { waitUntil: "networkidle" }),
+        ]);
+        await page.locator("[data-reader-scroll]").first().waitFor();
+        const remaining = new Map(entries.map((entry) => [key(entry.id, entry.anchor), entry]));
+        while (remaining.size) {
+          const { status, markers } = await page.evaluate((selector) => ({
+            status: document.querySelector(selector)?.textContent,
+            markers: Array.from(document.querySelectorAll("[data-reader-scroll] button[data-receipt-id]"), (button) => [
+              button.dataset.receiptId,
+              Array.from(button.childNodes)
+                .filter((node) => node.nodeName !== "SUP")
+                .map((node) => node.textContent)
+                .join(""),
+            ]),
+          }), pageStatus);
+          for (const [id, phrase] of markers) remaining.delete(key(id, phrase));
+          const pagination = status?.match(/(\d+) (?:of|sur) (\d+)$/);
+          assert(pagination, `${lang} Chapter ${chapter}: cannot read the current page from ${JSON.stringify(status)}.`);
+          if (!remaining.size || pagination[1] === pagination[2]) break;
+          await next.evaluate((button) => button.click());
+          await page.waitForFunction(({ selector, previous }) => {
+            const current = document.querySelector(selector)?.textContent;
+            return current && current !== previous;
+          }, { selector: pageStatus, previous: status });
+        }
+        for (const { id, anchor } of remaining.values()) {
+          missing.push(`${lang} Chapter ${chapter} receipt #${id}: ${JSON.stringify(anchor)}`);
+        }
+        total += entries.length;
+      }
+    });
+    const label = `rendered claim anchors ${viewport.name} ${lang}: ${total - missing.length}/${total}`;
+    assert(!missing.length, `${label}\nMissing receipt markers:\n${missing.join("\n")}`);
+    console.log(`PASS ${label}`);
+  }));
+  const errors = results.filter((result) => result.status === "rejected").map((result) => result.reason.message);
+  assert(!errors.length, errors.join("\n"));
+}
+
 async function runChapter5OpeningReceiptsSmoke(browser, baseUrl) {
   for (const viewport of [VIEWPORTS[0], VIEWPORTS[2]]) {
     for (const lang of ["en", "fr"]) {
@@ -1294,6 +1349,7 @@ async function main() {
     await runLatestUpdateSmoke(browser, baseUrl);
     await runReceiptPermalinkSmoke(browser, baseUrl);
     await runChapter5OpeningReceiptsSmoke(browser, baseUrl);
+    await runRenderedClaimAnchorsSmoke(browser, baseUrl, VIEWPORTS[0]);
     await runChapterReceiptSmoke(browser, baseUrl, 5, [115]);
     await runChapterReceiptSmoke(browser, baseUrl, 6, [116]);
     await runChapterReceiptSmoke(browser, baseUrl, 8, [117]);
