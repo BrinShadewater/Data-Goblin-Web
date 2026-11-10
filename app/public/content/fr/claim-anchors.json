@@ -7,7 +7,7 @@
   },
   {
    "anchor": "Registre de l'IA du Conseil du Trésor",
-   "id": 48,
+   "id": 138,
    "status": "resolved"
   },
   {
@@ -17,7 +17,7 @@
   },
   {
    "anchor": "Olana Kaipo Ai",
-   "id": 45,
+   "id": 140,
    "status": "resolved"
   },
   {
@@ -26,11 +26,40 @@
    "status": "resolved"
   }
  ],
+ "2": [
+  {
+   "anchor": "Des chercheurs ont extrait de GPT-2 des centaines de passages",
+   "id": 131,
+   "status": "resolved"
+  }
+ ],
+ "3": [
+  {
+   "anchor": "Meta a déclaré avoir utilisé le Projet Gutenberg et Books3 pour le premier LLaMA",
+   "id": 132,
+   "status": "resolved"
+  },
+  {
+   "anchor": "LAION-5B indexait environ 5,85 milliards de paires",
+   "id": 133,
+   "status": "resolved"
+  }
+ ],
  "4": [
   {
    "anchor": "CHIPS and Science Act",
    "id": 5,
    "status": "fixed"
+  },
+  {
+   "anchor": "10 à 50 réponses de longueur moyenne",
+   "id": 105,
+   "status": "resolved"
+  },
+  {
+   "anchor": "1,2 à 5,0 millions de tonnes",
+   "id": 135,
+   "status": "resolved"
   }
  ],
  "5": [
@@ -55,7 +84,7 @@
    "status": "fixed"
   },
   {
-   "anchor": "USTR",
+   "anchor": "à l’Hôpital général de Toronto",
    "id": 33,
    "status": "resolved"
   },
@@ -72,6 +101,11 @@
   {
    "anchor": "Ottawa s’est engagé à investir par étapes jusqu’à 1,6 milliard",
    "id": 118,
+   "status": "resolved"
+  },
+  {
+   "anchor": "plus de 400 systèmes provenant de 42 institutions",
+   "id": 138,
    "status": "resolved"
   }
  ],
@@ -98,12 +132,17 @@
   },
   {
    "anchor": "1 200 MW",
-   "id": 41,
-   "status": "open"
+   "id": 141,
+   "status": "resolved"
   },
   {
    "anchor": "Sherwood, près de Regina",
    "id": 116,
+   "status": "resolved"
+  },
+  {
+   "anchor": "environ 22 % des centres déclaraient leur PUE",
+   "id": 39,
    "status": "resolved"
   }
  ],
@@ -126,12 +165,12 @@
  ],
  "8": [
   {
-   "anchor": "54 % des projets énergétiques-transition-minéraux du monde",
+   "anchor": "54 % se situaient sur les terres de peuples autochtones ou à proximité",
    "id": 27,
-   "status": "fixed"
+   "status": "resolved"
   },
   {
-   "anchor": "22 % des installations canadiennes",
+   "anchor": "22 % de RNCan concerne la déclaration du PUE",
    "id": 39,
    "status": "resolved"
   },
@@ -142,12 +181,32 @@
   },
   {
    "anchor": "36 milliards de dollars américains",
-   "id": 44,
+   "id": 106,
    "status": "resolved"
   },
   {
    "anchor": "15 demandes totalisant près de 800 MW",
    "id": 117,
+   "status": "resolved"
+  },
+  {
+   "anchor": "En Irlande, les compteurs des centres de données",
+   "id": 121,
+   "status": "resolved"
+  },
+  {
+   "anchor": "Le Manitoba a adopté une loi",
+   "id": 128,
+   "status": "resolved"
+  },
+  {
+   "anchor": "Hydro-Québec propose un tarif CD",
+   "id": 129,
+   "status": "resolved"
+  },
+  {
+   "anchor": "L’Ontario propose une catégorie distincte",
+   "id": 130,
    "status": "resolved"
   }
  ],
@@ -159,12 +218,12 @@
   },
   {
    "anchor": "Abondant Intelligences",
-   "id": 50,
-   "status": "open"
+   "id": 143,
+   "status": "resolved"
   },
   {
    "anchor": "CARE Directs Us Home",
-   "id": 47,
+   "id": 142,
    "status": "resolved"
   },
   {
@@ -173,8 +232,8 @@
    "status": "fixed"
   },
   {
-   "anchor": "28 000",
-   "id": 43,
+   "anchor": "a interrogé ses membres en 2023",
+   "id": 107,
    "status": "resolved"
   }
  ],
@@ -193,6 +252,16 @@
    "anchor": "Clearview indiquaient 521 requêtes de recherche",
    "id": 82,
    "status": "resolved"
+  },
+  {
+   "anchor": "Le projet de loi C-22 sur l’accès légal",
+   "id": 70,
+   "status": "resolved"
+  },
+  {
+   "anchor": "un membre du personnel en mesure de réviser la décision",
+   "id": 136,
+   "status": "resolved"
   }
  ],
  "11": [
@@ -202,8 +271,8 @@
    "status": "resolved"
   },
   {
-   "anchor": "Ontario Superior Court",
-   "id": 46,
+   "anchor": "Cour supérieure de justice de l’Ontario",
+   "id": 134,
    "status": "resolved"
   },
   {
@@ -215,12 +284,17 @@
    "anchor": "Dave Forget",
    "id": 6,
    "status": "fixed"
+  },
+  {
+   "anchor": "Les demandeurs allèguent qu’OpenAI a copié sans autorisation",
+   "id": 134,
+   "status": "resolved"
   }
  ],
  "12": [
   {
-   "anchor": "projet de loi C-16",
-   "id": 49,
+   "anchor": "Loi visant à protéger les victimes",
+   "id": 42,
    "status": "resolved"
   },
   {
@@ -242,6 +316,11 @@
    "anchor": "refusé de laisser un producteur modéliser leur voix",
    "id": 112,
    "status": "resolved"
+  },
+  {
+   "anchor": "son cadre modernisé de certification des émissions canadiennes",
+   "id": 139,
+   "status": "resolved"
   }
  ],
  "13": [
@@ -252,11 +331,11 @@
   },
   {
    "anchor": "AB 2839",
-   "id": 18,
-   "status": "fixed"
+   "id": 49,
+   "status": "resolved"
   },
   {
-   "anchor": "8.66%",
+   "anchor": "9,24 %",
    "id": 32,
    "status": "resolved"
   },
@@ -271,7 +350,7 @@
    "status": "resolved"
   },
   {
-   "anchor": "0,12 % des vues sur X",
+   "anchor": "0,12 % des vues des publications échantillonnées sur X",
    "id": 32,
    "status": "resolved"
   },
@@ -290,6 +369,11 @@
   {
    "anchor": "640 médias locaux",
    "id": 99,
+   "status": "resolved"
+  },
+  {
+   "anchor": "Deezer a indiqué que les titres",
+   "id": 122,
    "status": "resolved"
   }
  ],
@@ -317,11 +401,6 @@
    "status": "resolved"
   },
   {
-   "anchor": "CWA Canada",
-   "id": 9,
-   "status": "fixed"
-  },
-  {
    "anchor": "19 % des 446",
    "id": 111,
    "status": "resolved"
@@ -329,6 +408,16 @@
   {
    "anchor": "26 % moins d’emplois salariés",
    "id": 113,
+   "status": "resolved"
+  },
+  {
+   "anchor": "les embauches chez les 15 à 29 ans ont ralenti",
+   "id": 123,
+   "status": "resolved"
+  },
+  {
+   "anchor": "31 % des salariés de 18 à 64 ans",
+   "id": 59,
    "status": "resolved"
   }
  ],
@@ -357,22 +446,49 @@
    "anchor": "L’orientation fédérale sur la préparation en matière de cybersécurité est entrée en vigueur le 1er octobre 2026",
    "id": 119,
    "status": "resolved"
+  },
+  {
+   "anchor": "des agents soumis à une évaluation de cybersécurité d’OpenAI",
+   "id": 124,
+   "status": "resolved"
   }
  ],
  "18": [
   {
-   "anchor": "40.7",
+   "anchor": "40,69 sur 100",
    "id": 31,
    "status": "resolved"
   },
   {
    "anchor": "loi générale sur la protection des renseignements personnels du secteur privé",
-   "id": 8,
-   "status": "fixed"
+   "id": 144,
+   "status": "resolved"
   },
   {
    "anchor": "948 méthodes fonctionnelles d’exploitation permettant une élévation locale de privilèges",
    "id": 120,
+   "status": "resolved"
+  },
+  {
+   "anchor": "Le Commissariat à la protection de la vie privée a recommandé",
+   "id": 125,
+   "status": "resolved"
+  },
+  {
+   "anchor": "En septembre 2026, OpenAI a présenté",
+   "id": 126,
+   "status": "resolved"
+  },
+  {
+   "anchor": "14 des 19 développeurs sollicités",
+   "id": 137,
+   "status": "resolved"
+  }
+ ],
+ "21": [
+  {
+   "anchor": "un essai randomisé mené dans 16 cliniques de soins primaires au Kenya",
+   "id": 127,
    "status": "resolved"
   }
  ]

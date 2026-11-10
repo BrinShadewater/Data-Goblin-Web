@@ -13,6 +13,11 @@ def update(document, edits, file):
     for edit in edits:
         *parents, key = edit["path"]
         node = document
+        if "receiptId" in edit:
+            matches = [row for row in document if row["id"] == edit["receiptId"]]
+            if len(matches) != 1:
+                raise ValueError(f"{file}: expected one receipt #{edit['receiptId']}, found {len(matches)}")
+            node = matches[0]
         for parent in parents:
             node = node[parent]
         current = node[key]

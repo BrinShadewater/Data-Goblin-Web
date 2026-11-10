@@ -1,0 +1,26 @@
+{
+  "en": {
+    "date": "November 9, 2026",
+    "tag": "Source change",
+    "title": "Bill C-22 changed between first reading and the Senate",
+    "description": "When a source changes in a way that affects the guide, we date the change and link the versions we can find. For public promises, we keep the original terms and deadline, and record what the evidence shows was delivered.",
+    "items": [
+      "The March 12 bill proposed up to a year of metadata retention by regulation. The House text of June 18 reduced that ceiling to six months. Our earlier guide described the one-year version. Chapter 10 and receipt #70 now distinguish the two and explain the House text’s safeguards and review process.",
+      "The Senate sent the bill to committee on October 22. It was still under study when we checked on November 9. Receipt #70 links the dated texts and proceedings and records the October 22 note that the Electronic Frontier Foundation added to its June article."
+    ],
+    "passageLabel": "Open the Chapter 10 passage",
+    "receiptLabel": "Open receipt #70"
+  },
+  "fr": {
+    "date": "9 novembre 2026",
+    "tag": "Changement de source",
+    "title": "Le projet de loi C-22 a changé avant son renvoi au Sénat",
+    "description": "Quand une source change et que cela touche le guide, nous datons le changement et donnons les liens vers les versions disponibles. Pour les promesses publiques, nous conservons les termes d’origine et l’échéance, puis consignons ce qui a été réalisé d’après les preuves.",
+    "items": [
+      "Le texte du 12 mars proposait de permettre par règlement la conservation des métadonnées pendant au plus un an. Le texte adopté par la Chambre le 18 juin a ramené ce plafond à six mois. Le guide décrivait la version qui prévoyait un an. Le chapitre 10 et le reçu nº 70 distinguent maintenant les deux textes et expliquent les garanties et le processus de contrôle prévus dans celui de la Chambre.",
+      "Le Sénat a renvoyé le projet de loi en comité le 22 octobre. Il était toujours à l’étude lors de notre vérification du 9 novembre. Le reçu nº 70 donne les liens vers les textes datés et les travaux parlementaires et signale la note du 22 octobre que l’Electronic Frontier Foundation a ajoutée à son article de juin."
+    ],
+    "passageLabel": "Ouvrir le passage du chapitre 10",
+    "receiptLabel": "Ouvrir le reçu nº 70"
+  }
+}

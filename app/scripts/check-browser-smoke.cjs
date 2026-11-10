@@ -5,6 +5,8 @@ const { chromium } = require("playwright");
 const searchQuestions = require("./search-questions.json");
 const searchHoldoutQuestions = require("./search-holdout-questions.json");
 const latestUpdate = require("../src/latestUpdate.json");
+const editorialCorrectionUpdate = require("../src/editorialCorrectionUpdate.json");
+const receiptNotes = require("../src/receiptNotes.json");
 
 const appDir = path.resolve(__dirname, "..");
 const distDir = path.join(appDir, "dist");
@@ -680,13 +682,14 @@ async function runMobileSearchSmoke(browser, baseUrl) {
       assert(await trigger.evaluate((element) => element === document.activeElement), "Search dismissal did not restore focus.");
       await trigger.click();
       await input.fill(fixture.query);
-      const result = dialog.getByRole("link", { name: new RegExp(fixture.heading, "i") });
+      const resultPath = `${fixture.lang === "fr" ? "/fr" : ""}/chapter/13#the-working-test`;
+      const result = dialog.locator(`a[href="${resultPath}"]`);
       await result.waitFor();
       assert(requests.filter((url) => url.startsWith("/search/")).join() === `/search/${fixture.lang}.json`,
         "Search must request one index for the current language.");
       assert(!requests.some((url) => /\/content\/(?:fr\/)?chapters\//.test(url)), "Search downloaded chapter content before selection.");
       await input.fill(fixture.specificQuery);
-      assert((await dialog.getByRole("link").first().textContent()).includes(fixture.heading),
+      assert(await dialog.getByRole("link").first().getAttribute("href") === resultPath,
         "A search for the practical test should put its section first.");
       if (process.env.SEARCH_SCREENSHOTS) {
         fs.mkdirSync(process.env.SEARCH_SCREENSHOTS, { recursive: true });
@@ -731,10 +734,10 @@ async function runMobileSearchSmoke(browser, baseUrl) {
 async function runMobileSearchRecoverySmoke(browser, baseUrl) {
   const fixtures = [
     { lang: "en", home: "/", label: "Search the guide", loading: "Loading search…", retry: "Retry search",
-      empty: "Try a shorter phrase or different words.", query: "deepfake test", heading: "The working test",
+      empty: "Try a shorter phrase or different words.", query: "deepfake test",
       failure: { status: 503, body: "Unavailable" } },
     { lang: "fr", home: "/fr", label: "Rechercher dans le guide", loading: "Chargement de la recherche…", retry: "Réessayer la recherche",
-      empty: "Essayez une recherche plus courte ou d’autres mots.", query: "test hypertrucage", heading: "Le test pratique",
+      empty: "Essayez une recherche plus courte ou d’autres mots.", query: "test hypertrucage",
       failure: { json: [{ type: "section", heading: null }] } },
   ];
   for (const fixture of [...fixtures, { ...fixtures[0], stalled: true }]) {
@@ -768,7 +771,7 @@ async function runMobileSearchRecoverySmoke(browser, baseUrl) {
         releaseFailure();
       }
       await retry.tap();
-      const result = dialog.getByRole("link", { name: new RegExp(fixture.heading, "i") });
+      const result = dialog.locator(`a[href="${fixture.lang === "fr" ? "/fr" : ""}/chapter/13#the-working-test"]`);
       await result.waitFor();
       assert(await input.inputValue() === fixture.query, "Retry lost the query.");
       assert(await input.evaluate((element) => element === document.activeElement), "Retry did not restore focus to the query.");
@@ -831,8 +834,8 @@ async function runSearchQuestionsSmoke(browser, baseUrl) {
 async function runClaimReceiptSmoke(browser, baseUrl) {
   const sourceUrl = "https://arxiv.org/html/2512.13915v1#S4";
   for (const fixture of [
-    { prefix: "", heading: "The working test", figure: /Canada’s Protecting Victims Act received royal assent/ },
-    { prefix: "/fr", heading: "Le test pratique", figure: /la Loi visant à protéger les victimes a reçu la sanction royale/ },
+    { prefix: "", heading: "The working test" },
+    { prefix: "/fr", heading: "Le test pratique" },
   ]) {
     const french = fixture.prefix === "/fr";
     await withAppPage(browser, baseUrl, VIEWPORTS[2], async (page) => {
@@ -841,14 +844,16 @@ async function runClaimReceiptSmoke(browser, baseUrl) {
       await page.getByRole("button", { name: searchLabel, exact: true }).tap();
       const search = page.getByRole("dialog", { name: searchLabel, exact: true });
       await search.getByRole("searchbox").fill(french ? "test hypertrucage" : "deepfake test");
-      await search.getByRole("link", { name: new RegExp(fixture.heading, "i") }).tap();
+      await search.locator(`a[href="${fixture.prefix}/chapter/13#the-working-test"]`).tap();
       await page.waitForURL(`${baseUrl}${fixture.prefix}/chapter/13#the-working-test`);
       await page.getByRole("heading", { name: fixture.heading, exact: true }).waitFor();
-      const marker = page.getByRole("button", { name: french ? /0,12\s*% des vues sur X/ : /0\.12%-of-views \(on X\)/ });
+      const marker = page.getByRole("button", { name: french ? /0,12\s*% des vues des publications échantillonnées sur X/ : /0\.12% of the sampled X post views/ });
       await marker.tap();
       const popup = page.getByRole("dialog", { name: french ? /Reçu/i : /Receipt/i });
       await popup.waitFor();
-      assert((await popup.innerText()).includes(french ? "six mois" : "six months"), "Receipt did not explain how views were measured.");
+      const detail = await popup.innerText();
+      assert(detail.includes(french ? "six mois" : "six months"), "Receipt did not explain when views were measured.");
+      assert(detail.includes(french ? "vues répétées" : "Repeat views"), "Receipt did not distinguish post views from unique viewers.");
       const study = popup.getByRole("link", { name: french ? /Lire les résultats/ : /Read the study/ });
       assert(await study.getAttribute("href") === sourceUrl, "Receipt did not link to the paper’s results.");
       assert(await study.evaluate((element) => element === document.activeElement), "Opening the receipt did not focus the study link.");
@@ -868,7 +873,8 @@ async function runClaimReceiptSmoke(browser, baseUrl) {
       await popup.getByRole("link", { name: french ? /Voir ce reçu dans le registre/ : /View this receipt in the ledger/ }).tap();
       await page.waitForURL(`${baseUrl}${fixture.prefix}/receipts#receipt-32`);
       const receipt = page.locator("#receipt-32");
-      await receipt.locator(`a[href="${sourceUrl}"]`).waitFor();
+      await receipt.locator(`a[href="${sourceUrl}"]`).first().waitFor();
+      await receipt.locator('a[href="https://doi.org/10.1145/3774904.3792948"]').first().waitFor();
       const passage = `${fixture.prefix}/chapter/13#the-working-test`;
       await receipt.locator(`a[href="${passage}"]`).tap();
       await page.waitForURL(baseUrl + passage);
@@ -876,8 +882,7 @@ async function runClaimReceiptSmoke(browser, baseUrl) {
       await marker.waitFor();
       await page.getByRole("button", { name: french ? "Page suivante" : "Next page", exact: true }).tap();
       await popup.waitFor({ state: "hidden" });
-      await page.locator("figcaption").filter({ hasText: fixture.figure }).waitFor();
-      console.log(`Mobile search to source ${french ? "fr" : "en"}: passage, receipt, focus, paper link, ledger round trip and caption passed.`);
+      console.log(`Mobile search to source ${french ? "fr" : "en"}: passage, receipt, focus, paper link and ledger round trip passed.`);
     }, { hasTouch: true });
   }
 }
@@ -1026,8 +1031,17 @@ async function runChapterReceiptSmoke(browser, baseUrl, chapter, ids) {
           const { section } = notes[id].passage;
           const chapterPath = `${prefix}/chapter/${chapter}#${section}`;
           const passage = baseUrl + chapterPath;
-          const heading = page.getByRole("heading", { name: sections.find((entry) => entry.id === section)[lang], exact: true });
-          await page.goto(passage, { waitUntil: "networkidle" });
+          const heading = page.getByRole("heading", { name: sections.find((entry) => entry.id === section)[lang], exact: true })
+            .and(page.locator("[data-section-heading]"));
+          // The static heading can render before the reader and its claim markers.
+          if (new URL(page.url()).pathname !== new URL(passage).pathname) {
+            await Promise.all([
+              page.waitForResponse((response) => response.url() === `${baseUrl}/content${prefix}/claim-anchors.json` && response.ok()),
+              page.goto(passage, { waitUntil: "networkidle" }),
+            ]);
+          } else if (page.url() !== passage) {
+            await page.goto(passage);
+          }
           await heading.waitFor();
           const marker = page.getByRole("button", { name: anchors.find((entry) => entry.id === id).anchor });
           for (let turn = 0; turn < 8 && !(await marker.isVisible()); turn++) {
@@ -1159,7 +1173,7 @@ async function runReceiptPermalinkSmoke(browser, baseUrl) {
             throw new Error(`Receipt heading was outside the viewport on ${page.url()}: ${JSON.stringify(bounds)}`);
           });
           await receipt.getByText(edition.note, { exact: false }).first().waitFor();
-          await receipt.locator(`a[href="${sourceUrl}"]`).waitFor();
+          await receipt.locator(`a[href="${sourceUrl}"]`).first().waitFor();
           assert(await receipt.locator(`a[href$="${hash}"]`).count() === 2, "Receipt should have its own permalink and alternate edition link.");
           if (!idsByEdition.has(lang)) {
             const ids = await page.locator("[id^=receipt-]").evaluateAll((rows) => rows.map((row) => row.id));
@@ -1194,13 +1208,14 @@ async function runReceiptPermalinkSmoke(browser, baseUrl) {
           await receipt.waitFor({ state: "detached" });
         }
         assert(idsByEdition.get("en") === idsByEdition.get("fr"), "Receipt IDs differ across editions.");
-        await page.goto(baseUrl + editions.en.path + "#receipt-51-2");
-        await page.locator("#receipt-51").getByText("Canadian CPTC", { exact: false }).first().waitFor();
-        const duplicate = page.locator("#receipt-51-2");
-        await duplicate.getByText("Website Updates page vs. living-document promise", { exact: false }).first().waitFor();
-        await duplicate.getByRole("link", { name: "Français", exact: true }).click();
-        await page.waitForURL(baseUrl + editions.fr.path + "#receipt-51-2");
-        await duplicate.getByText(/promesse de document vivant/i).first().waitFor();
+        await page.goto(baseUrl + editions.en.path + "#receipt-51");
+        const filmCredit = page.locator("#receipt-51");
+        await filmCredit.getByText("Canadian CPTC", { exact: false }).first().waitFor();
+        assert(await page.locator("#receipt-51-2").count() === 0, "The internal audit row was published as a duplicate receipt.");
+        await filmCredit.getByRole("link", { name: "Français", exact: true }).click();
+        await page.waitForURL(baseUrl + editions.fr.path + "#receipt-51");
+        await filmCredit.getByRole("link", { name: "English", exact: true }).waitFor();
+        assert(await page.locator("#receipt-51-2").count() === 0, "The French reader contains a duplicate receipt.");
       }, { javaScriptEnabled, hasTouch: viewport.name === "mobile" });
       console.log(`PASS receipt permalink: ${viewport.name}, JavaScript ${javaScriptEnabled ? "on" : "off"}, both editions and language directions`);
     }
@@ -1297,7 +1312,20 @@ async function runLatestUpdateSmoke(browser, baseUrl) {
         assert(await passage.getAttribute("href") === prefix + "/chapter/13#the-working-test", "Updates links to the wrong passage.");
         await page.getByRole("link", { name: update.receiptLabel, exact: true }).click();
         await page.waitForURL(baseUrl + prefix + "/receipts#receipt-32");
-        await page.locator('#receipt-32 a[href*="2512.13915v1#S4"]').waitFor();
+        const study = page.locator("#receipt-32").getByRole("link", { name: receiptNotes[32][lang].sourceLabel, exact: true });
+        await study.waitFor();
+        assert(await study.getAttribute("href") === receiptNotes[32][lang].url, "Receipt links to the wrong results.");
+        await page.goto(baseUrl + prefix + "/updates");
+        const editorial = editorialCorrectionUpdate[lang];
+        await page.getByRole("heading", { name: editorial.title, exact: true }).waitFor();
+        for (const [index, id] of editorialCorrectionUpdate.receiptIds.entries()) {
+          const link = page.getByRole("link", { name: editorial.receiptLabels[index], exact: true });
+          assert(await link.getAttribute("href") === prefix + `/receipts#receipt-${id}`, "Editorial update links to the wrong receipt.");
+        }
+        await page.getByRole("link", { name: editorial.receiptLabels[0], exact: true }).click();
+        await page.waitForURL(baseUrl + prefix + "/receipts#receipt-135");
+        const wasteReceipt = page.locator("#receipt-135");
+        await wasteReceipt.getByText(lang === "fr" ? /entre 2020 et 2030/ : /during 2020–2030/).waitFor();
       }, { javaScriptEnabled, hasTouch: true });
       console.log(`PASS latest update: ${lang}, JavaScript ${javaScriptEnabled ? "on" : "off"}`);
     }

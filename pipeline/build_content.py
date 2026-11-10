@@ -239,13 +239,18 @@ def parse_appendix(appendix):
 
 def parse_ledger(text):
     rows, section = [], ""
+    seen = set()
     for l in text.split("\n"):
         if l.startswith("## "):
             section = l[3:].strip()
         m = re.match(r"^\|\s*(\d+)\s*\|(.+)\|$", l)
         if m:
             cells = [c.strip() for c in m.group(2).split("|")]
-            row = {"id": int(m.group(1)), "section": section, "claim": cells[0]}
+            receipt_id = int(m.group(1))
+            if receipt_id in seen:
+                raise ValueError(f"Duplicate manuscript receipt #{receipt_id}")
+            seen.add(receipt_id)
+            row = {"id": receipt_id, "section": section, "claim": cells[0]}
             rest = " | ".join(cells[1:])
             row["status"] = ("resolved" if "✅" in rest or "RESOLVED" in rest
                              else "open" if section.startswith("C.") else "fixed")

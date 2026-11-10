@@ -1,0 +1,27 @@
+{
+  "receiptIds": [135, 136, 137, 138, 139, 30],
+  "en": {
+    "date": "November 9, 2026",
+    "tag": "Editorial corrections",
+    "title": "Rechecking the figures and the rules behind them",
+    "items": [
+      "Chapter 4 previously gave a ten-year e-waste projection as an annual figure. It now gives the full period, 2020–2030, and separates Canada’s documented recycling share from the global figure. Chapters 6 and 8 now distinguish equipment load, whole-site draw, water consumption and withdrawals.",
+      "Chapters 9, 10, 13, 17 and 18 now give the conditions for the Québec and Ontario provisions, including the opportunity to submit observations to someone who can review a fully automated decision. The federal AI Register’s launch count includes projects from research through deployment.",
+      "The Stanford scores now identify each edition’s criteria and group, and the submission figures count only invited developers who sent their own report. The minerals finding distinguishes Indigenous lands from the combined land category. Chapter 12 separates CRTC certification from the federal film tax credit.",
+      "These are corrections to how the guide read its sources. The receipts show the earlier wording and the evidence used for the correction. The film tax credit keeps receipt #51, and four receipts that were missing from the reader are now available in both languages."
+    ],
+    "receiptLabels": ["E-waste", "Québec privacy", "Stanford index", "Federal AI Register", "Film certification", "Mineral projects"]
+  },
+  "fr": {
+    "date": "9 novembre 2026",
+    "tag": "Corrections éditoriales",
+    "title": "Vérifier les chiffres et les règles qui les sous-tendent",
+    "items": [
+      "Le chapitre 4 présentait comme annuelle une projection de déchets électroniques sur dix ans. Il indique maintenant la période complète, de 2020 à 2030, et distingue la part recyclée recensée au Canada du taux mondial. Les chapitres 6 et 8 distinguent aussi la charge informatique, la puissance appelée par le site, la consommation d’eau et les prélèvements.",
+      "Les chapitres 9, 10, 13, 17 et 18 précisent les conditions d’application des dispositions québécoises et ontariennes, dont la possibilité de présenter des observations à quelqu’un qui peut réviser une décision entièrement automatisée. Le total au lancement du Registre fédéral de l’IA couvre les projets de la recherche au déploiement.",
+      "Les scores de Stanford sont maintenant présentés avec les critères et le groupe de chaque édition. Les chiffres de remise de rapports portent sur les développeurs sollicités qui ont fourni leur propre rapport. L’étude sur les minéraux distingue les terres autochtones du groupe combiné. Le chapitre 12 sépare la certification du CRTC du crédit d’impôt fédéral pour la production.",
+      "Ces corrections portent sur la lecture des sources par le guide. Les fiches indiquent les affirmations précédentes et les éléments utilisés pour les corriger. Le crédit d’impôt conserve le reçu nº 51, et quatre fiches qui manquaient dans le lecteur sont maintenant accessibles dans les deux langues."
+    ],
+    "receiptLabels": ["Déchets électroniques", "Vie privée au Québec", "Indice de Stanford", "Registre fédéral de l’IA", "Certification des productions", "Projets miniers"]
+  }
+}

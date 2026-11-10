@@ -2,10 +2,11 @@
 
 import argparse
 import sys
+from copy import deepcopy
 from pathlib import Path
 
-from authored_fr import localize_passage, read_json
-from build_content import chapter_output, parse_chapter, parse_ledger, split_chapters
+from authored_fr import localize_blocks, localize_chapter_blocks, localize_front_chapter, localize_passage, read_json, sync_recap
+from build_content import VERIFY_RE, chapter_output, parse_appendix, parse_chapter, parse_front_matter, parse_ledger, split_chapters
 
 
 def receipt_row(rows, receipt_id):
@@ -15,13 +16,18 @@ def receipt_row(rows, receipt_id):
 
 def check(manuscript, website, chapter_numbers, receipt_ids):
     authored = read_json(manuscript / "French-Receipts.json")
-    _, chapters, _ = split_chapters((manuscript / "DataGoblin-Complete.md").read_text(encoding="utf-8"))
+    front, chapters, appendix = split_chapters((manuscript / "DataGoblin-Complete.md").read_text(encoding="utf-8"))
     chapter_bodies = dict(chapters)
     ledger = parse_ledger((manuscript / "Receipts-Ledger.md").read_text(encoding="utf-8"))
-    expected_chapters = {
-        number: chapter_output(parse_chapter(number, chapter_bodies[number]))
-        for number in chapter_numbers
-    }
+    expected_chapters = {}
+    for number in chapter_numbers:
+        if number == 0:
+            chapter = parse_front_matter(front)
+        elif number == 22:
+            chapter = parse_appendix(appendix)
+        else:
+            chapter = parse_chapter(number, chapter_bodies[number])
+        expected_chapters[number] = chapter_output(chapter)
     expected_receipts = {receipt_id: receipt_row(ledger, receipt_id) for receipt_id in receipt_ids}
     for receipt_id, row in expected_receipts.items():
         if row is None:
@@ -32,14 +38,51 @@ def check(manuscript, website, chapter_numbers, receipt_ids):
     errors = []
     for directory in ("content", "app/public/content"):
         root = website / directory
+        if 0 in expected_chapters:
+            english_front = VERIFY_RE.sub("", front)
+            if read_json(root / "book.json")["frontmatterMarkdown"] != english_front:
+                errors.append(f"{directory}/book.json: English front matter differs from the manuscript")
+            reviewed_front = authored.get("frontMatter", {})
+            if reviewed_front:
+                if not reviewed_front.keys() <= set(english_front.split("\n\n")):
+                    raise ValueError("Reviewed French front matter has a stale English source block")
+                french_front = read_json(root / "fr/book.json")["frontmatterMarkdown"]
+                if localize_blocks(english_front, french_front, reviewed_front) != french_front:
+                    errors.append(f"{directory}/fr/book.json: French front matter differs from the reviewed manuscript")
+                french_chapter = read_json(root / "fr/chapters/ch00.json")
+                expected_french = deepcopy(french_chapter)
+                localize_front_chapter(expected_chapters[0], expected_french, reviewed_front)
+                if expected_french != french_chapter:
+                    errors.append(f"{directory}/fr/chapters/ch00.json: French front matter differs from the reviewed manuscript")
         for number, expected in expected_chapters.items():
             relative = f"chapters/ch{number:02}.json"
             if read_json(root / relative) != expected:
                 errors.append(f"{directory}/{relative}: English Chapter {number} differs from the manuscript")
-            reviewed = authored["passages"].get(str(number), {})
-            if not reviewed:
-                continue
             french = read_json(root / "fr" / relative)
+            synced_french = deepcopy(french)
+            sync_recap(synced_french)
+            if synced_french != french:
+                errors.append(f"{directory}/fr/{relative}: inline French recap differs from the recap list")
+            reviewed = authored["passages"].get(str(number), {})
+            reviewed_blocks = authored.get("chapterBlocks", {}).get(str(number), {})
+            if number == 22:
+                english_appendix = VERIFY_RE.sub("", "# Source Library Appendix" + appendix)
+                if read_json(root / "book.json")["appendixMarkdown"] != english_appendix:
+                    errors.append(f"{directory}/book.json: English appendix differs from the manuscript")
+                reviewed_appendix = {**reviewed_blocks, **authored.get("appendixBookBlocks", {})}
+                if reviewed_appendix:
+                    if not authored.get("appendixBookBlocks", {}).keys() <= set(english_appendix.split("\n\n")):
+                        raise ValueError("Reviewed French appendix has a stale English source block")
+                    french_appendix = read_json(root / "fr/book.json")["appendixMarkdown"]
+                    if localize_blocks(english_appendix, french_appendix, reviewed_appendix) != french_appendix:
+                        errors.append(f"{directory}/fr/book.json: French appendix differs from the reviewed manuscript")
+            if not (reviewed or reviewed_blocks):
+                continue
+            if reviewed_blocks:
+                expected_french = deepcopy(french)
+                localize_chapter_blocks(expected, expected_french, reviewed_blocks)
+                if expected_french != french:
+                    errors.append(f"{directory}/fr/{relative}: French Chapter {number} differs from the reviewed manuscript")
             sections = french["sections"]
             if len(sections) != len(expected["sections"]):
                 errors.append(f"{directory}/fr/{relative}: French Chapter {number} section count differs")

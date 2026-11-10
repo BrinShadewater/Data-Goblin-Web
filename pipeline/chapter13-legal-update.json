@@ -9,13 +9,6 @@
     },
     {
       "path": [
-        "startHere"
-      ],
-      "before": "En avril et mai 2025, le Canada a tenu des élections fédérales. Des chercheurs de plusieurs institutions ont analysé le contenu politique circulant pendant la campagne à travers X, Bluesky et Reddit : 187 778 postes au total. **Environ 5,9 % des images liées aux élections étaient des images de fond.** Les comptes de relevé de droite ont affiché des failles profondes à peu près deux fois le taux des comptes de prélèvement de gauche. La plupart des fakes profonds étaient bénins ou apolitiques. Les nuisibles, diffamatoires ou conspirateurs, ont attiré une portée limitée, ne représentant que 0,12 % du total des vues sur X. **Le Canada n'a pas de loi visant spécifiquement les grands fléaux politiques.** Le projet de loi C-16 ne vise que les rapaces sexuels.",
-      "after": "Pendant la campagne qui a précédé les élections fédérales du 28 avril 2025, une équipe de recherche a analysé 187 778 publications sur X, Bluesky et Reddit. **Environ 5,9 % des images liées aux élections étaient des hypertrucages.** Les comptes de droite en publiaient à peu près deux fois plus souvent que les comptes de gauche. La plupart étaient inoffensifs ou sans lien avec la politique. Les hypertrucages nuisibles ne représentaient que 0,12 % de toutes les vues sur X. **Les nouvelles dispositions sur les images intimes ne créent pas d’infraction propre aux hypertrucages politiques.** D’autres lois peuvent toutefois s’appliquer selon l’usage."
-    },
-    {
-      "path": [
         "sections",
         0,
         "markdown"
@@ -223,15 +216,6 @@
     {
       "path": [
         "sections",
-        6,
-        "markdown"
-      ],
-      "before": "le projet de loi C-16 pour les contenus sexuels",
-      "after": "le Code criminel pour les images intimes visées"
-    },
-    {
-      "path": [
-        "sections",
         7,
         "markdown"
       ],
@@ -257,16 +241,16 @@
   ],
   "fr/receipts.json": [
     {
+      "receiptId": 41,
       "path": [
-        48,
         "detail"
       ],
       "before": "⚠️  **Maintenant FAUX.** 11 mai 2026 L'amendement de la commission a ajouté une **Déploiement de la plate-forme 48 heures** (+ couverture « quasi nue »). «Frappe un mécanisme de retrait»; ajouter une phrase sur l'amendement de mai 2026; revérifier la section de comparaison internationale. |  [CJFC/CP](https://cfjctoday.com/2026/05/11/mps-amend-bill-criminalizing-sexual-deepfakes-to-include-nearly-nude-images/)  ·  [Observateur de Nat'l](https://www.nationalobserver.com/2026/05/11/news/mps-amend-bill-criminalizing-sexual-deepfakes-include-nearly-nude-images)",
       "after": "Le paragraphe 164.1(5.1) du Code criminel impose l’effacement de l’image intime visée dans les 48 heures suivant le prononcé de l’ordonnance. Un signalement à la plateforme ne déclenche pas ce délai."
     },
     {
+      "receiptId": 41,
       "path": [
-        48,
         "links"
       ],
       "before": [
@@ -295,16 +279,16 @@
       ]
     },
     {
+      "receiptId": 42,
       "path": [
-        49,
         "detail"
       ],
       "before": "⏰  **Étal.** En juin 2026 C-16 **adopté la troisième lecture à la Chambre et est devant le Sénat.** Actualiser le verbe de statut tout au long de la publication (en changer pour « entériner » si la sanction royale survient). Legisinfo C-16 · [Globe](https://www.theglobeandmail.com/canada/article-federal-move-to-criminalize-non-consensual-sexual-deepfakes-is-long/)",
       "after": "Le projet de loi C-16 a reçu la sanction royale le 18 juin 2026. Les modifications sur les images intimes présentées au chapitre 13 sont entrées en vigueur le 18 juillet 2026."
     },
     {
+      "receiptId": 42,
       "path": [
-        49,
         "links"
       ],
       "before": [

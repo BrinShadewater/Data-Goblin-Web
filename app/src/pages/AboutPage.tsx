@@ -6,6 +6,7 @@ import { artAspectRatio, artDimensions, artSrcSet, artUrl, useBook } from "../us
 import { Kicker, LoadingMessage, StaticCard, StaticPageShell } from "../components/StaticPage";
 import { NavIcon } from "../components/GoblinMascot";
 import { tr } from "../i18n";
+import { useLanguage } from "../LanguageContext";
 import { CONTACT_EMAIL } from "../contribute";
 
 const ABOUT_ART = "panels/hero-panel.webp";
@@ -167,7 +168,9 @@ export function AboutPage() {
     stats?.[key] == null ? "—" : <CountUp value={String(stats[key])} />;
 
   const whyGoblin = book ? extractParagraph(book.frontmatterMarkdown, 'Why "Data Goblin"?') : null;
-  const noteOnTime = book ? extractParagraph(book.frontmatterMarkdown, "A note on time") : null;
+  const { lang } = useLanguage();
+  const timeMarker = lang === "fr" ? "Une note sur les dates" : "A note on time";
+  const noteOnTime = book ? extractParagraph(book.frontmatterMarkdown, timeMarker) : null;
 
   return (
     <StaticPageShell maxWidth="1120px">
@@ -253,7 +256,7 @@ export function AboutPage() {
         {/* A note on time — straight from the manuscript frontmatter */}
         <StaticCard background={c(...P.greenBg)} borderColor={c(...P.greenBorder)} borderLeft={`4px solid ${green}`} padding="18px 22px" marginBottom="26px">
           <Kicker color={green} fontSize="8.5px" letterSpacing="0.2em" marginBottom="10px">
-            {tr("From the manuscript — A note on time")}{book ? ` (as of ${book.asOf})` : ""}
+            {lang === "fr" ? "Du manuscrit · Une note sur les dates" : "From the manuscript · A note on time"}
           </Kicker>
           {noteOnTime ? (
             <Markdown markdown={noteOnTime} />
