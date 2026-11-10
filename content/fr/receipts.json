@@ -2594,5 +2594,22 @@
     "https://csrc.nist.gov/pubs/ir/8621/final"
    ]
   ]
+ },
+ {
+  "id": 151,
+  "section": "Japan’s Emergency Cybersecurity Measures Package (November 10, 2026)",
+  "claim": "Plan d’urgence du Japon en matière de cybersécurité (ch. 17)",
+  "status": "resolved",
+  "detail": "✅ La réunion ministérielle japonaise sur la cybersécurité a adopté le plan le 6 novembre 2026. La section 1(4) prévoit d’avancer les vérifications assistées par l’IA dans les systèmes de l’administration centrale lorsque c’est possible et de soutenir les vérifications des collectivités locales. La section 2 confie au Bureau national de la cybersécurité la coordination de la collecte et de l’analyse des informations sur les attaques provenant des administrations et des entreprises, pour ensuite diffuser des alertes et fournir de l’aide. La section 4 prévoit d’élargir et de coordonner les services de conseil et de signalement et d’amorcer la mise en place d’un mécanisme national de déploiement de spécialistes. La décision énonce les mesures à mettre en œuvre, dont certaines avaient déjà été amorcées.",
+  "links": [
+   [
+    "Plan d’urgence en matière de cybersécurité, décision intégrale en japonais",
+    "https://www.mhlw.go.jp/content/001767068.pdf"
+   ],
+   [
+    "Plan d’urgence en matière de cybersécurité, résumé officiel en japonais",
+    "https://www.mhlw.go.jp/content/001767066.pdf"
+   ]
+  ]
  }
 ]
