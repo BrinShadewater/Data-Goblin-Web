@@ -840,6 +840,14 @@ async function runClaimReceiptSmoke(browser, baseUrl) {
   ]) {
     const french = fixture.prefix === "/fr";
     await withAppPage(browser, baseUrl, VIEWPORTS[2], async (page) => {
+      const contentRequests = [];
+      const relevant = (url) => /\/content\/(?:fr\/)?(?:chapters\/ch13|claim-anchors|receipts|section-links|art-map)\.json$/.test(url);
+      page.on("response", (response) => {
+        if (relevant(response.url())) contentRequests.push([new URL(response.url()).pathname, response.status()]);
+      });
+      page.on("requestfailed", (request) => {
+        if (relevant(request.url())) contentRequests.push([new URL(request.url()).pathname, request.failure()?.errorText]);
+      });
       const searchLabel = french ? "Rechercher dans le guide" : "Search the guide";
       await page.goto(`${baseUrl}${fixture.prefix || "/"}`);
       await page.getByRole("button", { name: searchLabel, exact: true }).tap();
@@ -849,7 +857,24 @@ async function runClaimReceiptSmoke(browser, baseUrl) {
       await page.waitForURL(`${baseUrl}${fixture.prefix}/chapter/13#the-working-test`);
       await page.getByRole("heading", { name: fixture.heading, exact: true }).waitFor();
       const marker = page.getByRole("button", { name: french ? /0,12\s*% des vues des publications échantillonnées sur X/ : /0\.12% of the sampled X post views/ });
-      await marker.tap();
+      try {
+        await marker.tap();
+      } catch (error) {
+        const state = await page.evaluate(() => ({
+          url: location.href,
+          position: document.querySelector('[aria-live="polite"][aria-atomic="true"]')?.textContent,
+          headings: Array.from(document.querySelectorAll("[data-section-heading]"), (heading) => heading.textContent),
+          panels: Array.from(document.querySelectorAll("[data-reader-scroll]"), (panel) => panel.innerText.slice(0, 1400)),
+          markers: Array.from(document.querySelectorAll("button[data-receipt-id]"), (button) => ({
+            id: button.dataset.receiptId,
+            text: button.textContent,
+            expanded: button.getAttribute("aria-expanded"),
+          })),
+          dialogs: Array.from(document.querySelectorAll('[role="dialog"]'), (dialog) => dialog.getAttribute("aria-label")),
+        })).catch((failure) => ({ captureError: failure.message }));
+        console.error("Chapter 13 receipt timeout state:", JSON.stringify({ ...state, contentRequests }, null, 2));
+        throw error;
+      }
       const popup = page.getByRole("dialog", { name: french ? /Reçu/i : /Receipt/i });
       await popup.waitFor();
       const detail = await popup.innerText();
