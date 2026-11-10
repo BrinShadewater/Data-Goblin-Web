@@ -65,20 +65,22 @@ export function useJson<T>(relPath: string | null): { data: T | null; error: str
   const { lang: ctxLang } = useLanguage();
   const lang = relPath && LANG_NEUTRAL.has(relPath) ? "en" : ctxLang;
   const key = relPath ? `${lang}:${relPath}` : null;
+  const cached = key ? cache.get(key) as T | undefined : undefined;
   const [result, setResult] = useState<{ key: string; data: T | null; error: string | null } | null>(null);
   useEffect(() => {
-    if (!relPath || !key) return;
+    if (!relPath || !key || cached !== undefined) return;
     let live = true;
     setResult(null);
-    if (cache.has(key)) return;
+    // A request can finish between render and this effect. fetchJson still
+    // delivers that cached response to a component that rendered without it.
     fetchJson<T>(relPath, lang)
       .then((data) => live && setResult({ key, data, error: null }))
       .catch((error) => live && setResult({ key, data: null, error: String(error) }));
     return () => {
       live = false;
     };
-  }, [relPath, lang, key]);
-  if (key && cache.has(key)) return { data: cache.get(key) as T, error: null };
+  }, [relPath, lang, key, cached]);
+  if (cached !== undefined) return { data: cached, error: null };
   if (result?.key === key) return result;
   return { data: null, error: null };
 }
