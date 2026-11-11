@@ -1,0 +1,61 @@
+{
+  "reviewedOn": "2026-11-10",
+  "chapter": 16,
+  "section": "the-canadian-empirical-baseline",
+  "en": {
+    "title": "AI and early-career hiring: What did the studies measure?",
+    "description": "Compare what Statistics Canada, a U.S. Census working paper and Stanford–ADP measured about AI exposure, hiring and early-career employment.",
+    "reviewedLabel": "Evidence reviewed November 10, 2026",
+    "answer": "A hiring rate tells you how often people enter jobs. An employment count tells you how many jobs are filled. These three studies use different age groups and comparison groups, and they estimate how exposed jobs are to AI. Their results show where hiring slowed and employment fell behind. Determining how much AI contributed would require evidence about when and how employers used it.",
+    "comparisonTitle": "Three studies, three measures",
+    "studies": [
+      {
+        "name": "Statistics Canada: Hiring and departures",
+        "text": "The Labour Force Survey analysis compared six-month averages for employees aged 15 to 29 in Canada’s ten provinces. From the six months ending in November 2022 to those ending in August 2026, the hiring rate went from 4.0% to 3.3% in occupations with low potential AI exposure and from 2.5% to 1.9% in coding-intensive occupations. The coding decline began earlier in 2022. The study’s measure of departures includes quits and layoffs.",
+        "receipts": [123]
+      },
+      {
+        "name": "U.S. Census working paper: Adjusted employment",
+        "text": "The paper used U.S. administrative records to track employment, hires and departures for workers aged 22 to 24, grouped by industry and state. It reported a 12% decline in adjusted employment over the ten quarters after ChatGPT launched for the fifth of groups most exposed to AI. Fewer hires accounted for most of that decline. Some employment trends began during the pandemic, which makes it harder to isolate the role of generative AI.",
+        "receipts": [153]
+      },
+      {
+        "name": "Stanford–ADP: A gap relative to less-exposed peers",
+        "text": "The August 2026 revision used U.S. ADP payroll records through June 2026 and compared occupations for workers aged 22 to 25. Employment in the two most exposed fifths was 19% below where it would have been had it grown at the pace of the three less-exposed fifths. That gap mainly reflected fewer hires. The authors describe the estimate as descriptive. Earlier headlines of 13% and 16% used firm-adjusted estimates, so comparing them directly with 19% would mix methods.",
+        "receipts": [154]
+      }
+    ],
+    "passageLabel": "Read the Chapter 16 passage",
+    "receiptLabel": "Receipt",
+    "checkTitle": "How to read the next hiring headline",
+    "check": "Ask who was counted, what the researchers measured and what they used as a comparison. A drop in the hiring rate, a decline in adjusted employment and a gap relative to another group answer different questions."
+  },
+  "fr": {
+    "title": "IA et embauche en début de carrière : qu’ont mesuré les études?",
+    "description": "Comparez les mesures de Statistique Canada, du Bureau du recensement des États-Unis et de Stanford–ADP sur l’exposition à l’IA, l’embauche et l’emploi en début de carrière.",
+    "reviewedLabel": "Données examinées le 10 novembre 2026",
+    "answer": "Le taux d’embauche indique à quelle fréquence les gens entrent en poste. Le nombre d’emplois indique combien de postes sont occupés. Ces trois études portent sur des groupes d’âge et de comparaison différents et estiment l’exposition des emplois à l’IA. Elles montrent où les embauches ont ralenti et où l’emploi a pris du retard. Pour déterminer la part de l’IA, il faudrait savoir quand et comment les employeurs l’ont utilisée.",
+    "comparisonTitle": "Trois études, trois mesures",
+    "studies": [
+      {
+        "name": "Statistique Canada : embauches et départs",
+        "text": "L’analyse de l’Enquête sur la population active compare des moyennes sur six mois pour les salariés de 15 à 29 ans dans les dix provinces. Entre les périodes de six mois se terminant en novembre 2022 et en août 2026, le taux d’embauche est passé de 4,0 % à 3,3 % dans les professions peu exposées à l’IA et de 2,5 % à 1,9 % dans celles où la programmation occupe une place importante. Dans ce dernier groupe, le recul avait commencé plus tôt en 2022. Les départs comprennent les démissions et les mises à pied.",
+        "receipts": [123]
+      },
+      {
+        "name": "Document du Bureau du recensement des États-Unis : emploi ajusté",
+        "text": "Le document s’appuie sur des dossiers administratifs américains pour suivre l’emploi, les embauches et les départs chez les 22 à 24 ans, par secteur d’activité et par État. Il fait état d’un recul de l’emploi ajusté de 12 % sur les dix trimestres suivant le lancement de ChatGPT dans le cinquième des groupes les plus exposés à l’IA. La baisse des embauches explique l’essentiel du recul. Certaines tendances remontent à la pandémie, ce qui complique l’estimation du rôle de l’IA générative.",
+        "receipts": [153]
+      },
+      {
+        "name": "Stanford–ADP : un écart par rapport aux professions moins exposées",
+        "text": "La révision d’août 2026 utilise des données de paie américaines d’ADP jusqu’en juin 2026 et compare les professions chez les 22 à 25 ans. Dans les deux cinquièmes les plus exposés, l’emploi était inférieur de 19 % au niveau qu’il aurait atteint en progressant au rythme des trois cinquièmes moins exposés. L’écart tient surtout à la baisse des embauches. Les auteurs présentent une comparaison descriptive. Les chiffres de 13 % et de 16 % mis en avant auparavant étaient ajustés pour les variations propres aux entreprises. Les comparer directement au 19 % mélangerait les méthodes.",
+        "receipts": [154]
+      }
+    ],
+    "passageLabel": "Lire le passage du chapitre 16",
+    "receiptLabel": "Reçu",
+    "checkTitle": "Comment lire le prochain titre sur l’embauche",
+    "check": "Demandez qui a été compté, ce que les chercheurs ont mesuré et quel groupe a servi de comparaison. Une baisse du taux d’embauche, un recul de l’emploi ajusté et un écart par rapport à un autre groupe répondent à des questions différentes."
+  }
+}
