@@ -2645,5 +2645,26 @@
     "https://www150.statcan.gc.ca/n1/pub/36-28-0001/2026010/article/00003-eng.htm"
    ]
   ]
+ },
+ {
+  "id": 154,
+  "section": "Stanford–ADP employment study and source revision (November 10, 2026)",
+  "claim": "Stanford–ADP: early-career employment shortfall and revised measure (Ch 16)",
+  "status": "resolved",
+  "detail": "✅ Brynjolfsson, Chandar and Chen, working paper revised August 12, 2026, using ADP payroll data through June 2026. For ages 22 to 25, the 19% figure compares employment in the two most exposed occupational fifths with the level implied by growth among the three less-exposed fifths. It is a relative shortfall, not a firing rate or the Census paper’s adjusted estimate in #153. Fewer hires explain most of the divergence. Education controls reduce the gap; some trends predate generative AI, and the ADP sample shows larger gaps than national surveys. The authors do not establish causation or find widespread economy-wide displacement. Source history: checked November 10, 2026. Earlier headlines used firm-adjusted estimates of 13% and 16%; this revision emphasizes a descriptive comparison. Its same-measure shortfall was 15% using July 2025 data. Changes in data, method and headline must be tracked separately. This receipt identifies the linked August version; later paper or dashboard updates need a new comparison. | [Stanford working paper, August 2026 (pp. 1–3)](https://digitaleconomy.stanford.edu/app/uploads/2026/08/Canaries_August2026.pdf) · [Stanford publication and revision date](https://digitaleconomy.stanford.edu/publication/canaries-in-the-coal-mine-six-facts-about-the-recent-employment-effects-of-artificial-intelligence/) · [Authors’ revision notes, August 12, 2026](https://digitaleconomy.stanford.edu/news/canariesaug26/)",
+  "links": [
+   [
+    "Stanford working paper, August 2026 (pp. 1–3)",
+    "https://digitaleconomy.stanford.edu/app/uploads/2026/08/Canaries_August2026.pdf"
+   ],
+   [
+    "Stanford publication and revision date",
+    "https://digitaleconomy.stanford.edu/publication/canaries-in-the-coal-mine-six-facts-about-the-recent-employment-effects-of-artificial-intelligence/"
+   ],
+   [
+    "Authors’ revision notes, August 12, 2026",
+    "https://digitaleconomy.stanford.edu/news/canariesaug26/"
+   ]
+  ]
  }
 ]

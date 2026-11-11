@@ -1402,6 +1402,7 @@ async function main() {
     await runChapterReceiptSmoke(browser, baseUrl, 13, [114]);
     await runChapterReceiptSmoke(browser, baseUrl, 14, [98, 99]);
     await runChapterReceiptSmoke(browser, baseUrl, 16, [111, 113]);
+    await runChapterReceiptSmoke(browser, baseUrl, 16, [154], { exactReturn: true });
     await runChapterReceiptSmoke(browser, baseUrl, 17, [148], { exactReturn: true });
     await runChapter13LawSmoke(browser, baseUrl);
     await runStaticSectionLinksSmoke(browser, baseUrl);

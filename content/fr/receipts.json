@@ -2645,5 +2645,26 @@
     "https://www150.statcan.gc.ca/n1/pub/36-28-0001/2026010/article/00003-fra.htm"
    ]
   ]
+ },
+ {
+  "id": 154,
+  "section": "Stanford–ADP employment study and source revision (November 10, 2026)",
+  "claim": "Stanford–ADP : déficit d’emploi en début de carrière et mesure révisée (ch. 16)",
+  "status": "resolved",
+  "detail": "✅ Document de travail de Brynjolfsson, Chandar et Chen, révisé le 12 août 2026, avec des données de paie ADP jusqu’en juin 2026. Chez les 22 à 25 ans, le chiffre de 19 % compare l’emploi dans les deux cinquièmes des professions les plus exposées au niveau qu’impliquerait la croissance des trois cinquièmes moins exposés. Il s’agit d’un déficit relatif, sans mesurer les congédiements ni reprendre l’estimation ajustée du Bureau du recensement dans le reçu no 153. La baisse des embauches explique l’essentiel de l’écart. La prise en compte des études réduit l’écart; certaines tendances précèdent l’IA générative, et les écarts sont plus grands dans l’échantillon ADP que dans les enquêtes nationales. Les auteurs n’établissent pas de lien causal et ne constatent pas de suppressions d’emplois généralisées à l’échelle de l’économie. Historique de la source : vérifiée le 10 novembre 2026. Les chiffres auparavant mis en avant, 13 % et 16 %, étaient ajustés pour les variations propres aux entreprises. La révision privilégie une comparaison descriptive. Avec cette même mesure, le déficit était de 15 % dans les données de juillet 2025. Il faut suivre séparément les changements de données, de méthode et de chiffre mis en avant. Ce reçu identifie la version d’août liée ici; une révision du document ou du tableau de bord exige une nouvelle comparaison.",
+  "links": [
+   [
+    "Document de travail Stanford, août 2026, p. 1 à 3 (en anglais)",
+    "https://digitaleconomy.stanford.edu/app/uploads/2026/08/Canaries_August2026.pdf"
+   ],
+   [
+    "Publication Stanford et date de révision (en anglais)",
+    "https://digitaleconomy.stanford.edu/publication/canaries-in-the-coal-mine-six-facts-about-the-recent-employment-effects-of-artificial-intelligence/"
+   ],
+   [
+    "Notes des auteurs sur la révision, 12 août 2026 (en anglais)",
+    "https://digitaleconomy.stanford.edu/news/canariesaug26/"
+   ]
+  ]
  }
 ]
