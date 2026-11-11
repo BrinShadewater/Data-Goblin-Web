@@ -12,6 +12,7 @@ const sourceChangeUpdate = require("../src/sourceChangeUpdate.json");
 const editorialCorrectionUpdate = require("../src/editorialCorrectionUpdate.json");
 const readerCorrectionsUpdate = require("../src/readerCorrectionsUpdate.json");
 const readerEntry = require("../src/readerEntry.json");
+const dataCentrePower = require("../src/dataCentrePower.json");
 
 const DIST = process.env.PRERENDER_DIST ? path.resolve(process.env.PRERENDER_DIST) : path.resolve(__dirname, "../dist");
 const SITE = "https://datagoblin.ca";
@@ -107,7 +108,7 @@ try {
 // other or of the home page, and read as distinct results for non-branded queries.
 const TOPICS = [
   ["sovereignty", "AI Sovereignty in Canada", "Can Canada run its own AI? The chapters on compute, data, and dependence on foreign providers, and what digital sovereignty really means here.", "La souveraineté de l'IA au Canada", "Le Canada peut-il faire tourner sa propre IA ? Les chapitres sur le calcul, les données, la dépendance aux fournisseurs étrangers et le sens de la souveraineté."],
-  ["data-centres", "Canada's AI Data Centres", "Where Canada's AI data centres are being built, who funds them, and what they cost in power, water, and land. The chapters that follow the buildout.", "Les centres de données d'IA du Canada", "Où se construisent les centres de données d'IA au Canada, qui les finance, et ce qu'ils coûtent en énergie, en eau et en terrain."],
+  ["data-centres", dataCentrePower.en.title, dataCentrePower.en.description, dataCentrePower.fr.title, dataCentrePower.fr.description],
   ["environment", "AI's Environmental Footprint", "The energy, water, and emissions behind AI in Canada: what the numbers say, what is still contested, and where each figure comes from.", "L'empreinte environnementale de l'IA", "L'énergie, l'eau et les émissions derrière l'IA au Canada : ce que disent les chiffres, ce qui reste contesté, et d'où vient chaque donnée."],
   ["copyright", "AI, Copyright & Creators in Canada", "How AI training uses creators' work, what Canadian copyright law says, and the fights over consent and pay. The chapters for artists and writers.", "IA, droit d'auteur et créateurs au Canada", "Comment l'entraînement de l'IA utilise le travail des créateurs, ce que dit le droit d'auteur canadien, et les débats sur le consentement et la rémunération."],
   ["film-media", "AI, Film & Media in Canada", "AI in Canadian film, TV, and media: synthetic actors, dubbing, and the labour questions behind them. The chapters on screens and storytelling.", "IA, cinéma et médias au Canada", "L'IA dans le cinéma, la télévision et les médias canadiens : acteurs synthétiques, doublage et les questions de travail qui les accompagnent."],
@@ -313,6 +314,20 @@ function bookChapterTitles(lang) {
   } catch { /* empty map -> falls back to "Chapter N" */ }
   return map;
 }
+function dataCentrePowerHtml(lang, prefix) {
+  const copy = dataCentrePower[lang];
+  const { chapter, section, reviewedOn } = dataCentrePower;
+  const provinces = copy.provinces.map(({ name, text, receipts, source }) => {
+    const links = receipts.map((receipt) =>
+      `<li><a href="${prefix}/chapter/${chapter}?receipt=${receipt}#${esc(section)}">${esc(copy.passageLabel)} · ${esc(copy.receiptLabel.toLowerCase())} #${receipt}</a>` +
+      ` · <a href="${prefix}/receipts#receipt-${receipt}">${esc(copy.receiptLabel)} #${receipt}</a></li>`
+    );
+    if (source) links.push(`<li><a href="${esc(source.url)}">${esc(source.label)}</a></li>`);
+    return `<section><h3>${esc(name)}</h3><p>${esc(text)}</p><ul>${links.join("")}</ul></section>`;
+  }).join("");
+  return `<article data-prerender-body data-data-centre-power><p><time datetime="${esc(reviewedOn)}">${esc(copy.reviewedLabel)}</time></p>` +
+    `<p>${esc(copy.answer)}</p><h2>${esc(copy.comparisonTitle)}</h2>${provinces}<h2>${esc(copy.checkTitle)}</h2><p>${esc(copy.check)}</p></article>`;
+}
 function topicBodyHtml(route, lang) {
   const m = route.match(/^\/topic\/([a-z-]+)$/);
   if (!m) return "";
@@ -328,6 +343,7 @@ function topicBodyHtml(route, lang) {
     return `<li><a href="${pfx}/chapter/${n}">${esc(num)}: ${esc(t)}</a></li>`;
   }).join("");
   let summary = "";
+  if (m[1] === "data-centres") summary = dataCentrePowerHtml(lang, pfx);
   if (m[1] === "governance") {
     const startHere = readChapter(lang, chapters[0])?.startHere;
     if (typeof startHere !== "string" || !startHere.trim()) {
@@ -618,6 +634,7 @@ function routeSources(route, lang) {
     if (route === "/topic/governance") {
       sources.push(`app/public/${localizedChapterPath(lang, TOPIC_CHAPTERS.governance[0])}`);
     }
+    if (route === "/topic/data-centres") sources.push("app/src/dataCentrePower.json");
     return sources;
   }
   return ROUTE_SOURCES[route] || [];

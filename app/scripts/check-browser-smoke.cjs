@@ -1380,6 +1380,36 @@ async function runReceiptLocaleLoadingSmoke(browser, baseUrl) {
   console.log("PASS receipt language loading: the previous claim stays hidden until the French ledger arrives.");
 }
 
+async function runDataCentreReceiptFocusSmoke(browser, baseUrl) {
+  const section = "the-canadian-specific-carbon-arithmetic";
+  await withAppPage(browser, baseUrl, VIEWPORTS[2], async (page) => {
+    let releaseLinks;
+    const linksPending = new Promise((resolve) => { releaseLinks = resolve; });
+    await page.route("**/content/links.json", async (route) => {
+      await linksPending;
+      await route.continue();
+    });
+    try {
+      await page.goto(baseUrl + "/topic/data-centres");
+      const explainer = page.locator("[data-data-centre-power]:not([data-prerender-body])");
+      await explainer.locator(`a[href="/chapter/8?receipt=117#${section}"]`).click();
+      await page.waitForURL(baseUrl + `/chapter/8?receipt=117#${section}`);
+      const marker = page.locator('button[data-receipt-id="117"]');
+      await marker.and(page.locator(":focus")).waitFor();
+      const linksResponse = page.waitForResponse((response) =>
+        response.url() === baseUrl + "/content/links.json" && response.ok());
+      releaseLinks();
+      await linksResponse;
+      await marker.and(page.locator(":focus")).waitFor();
+      await page.keyboard.press("Enter");
+      await page.getByRole("dialog", { name: /Receipt/i }).waitFor();
+    } finally {
+      releaseLinks();
+    }
+  }, { hasTouch: true });
+  console.log("PASS mobile Data Centres B.C. receipt #117 receives keyboard focus with delayed reference links");
+}
+
 async function main() {
   assert(fs.existsSync(path.join(distDir, "index.html")), "dist/index.html not found. Run npm run build first.");
   const server = createServer();
@@ -1394,6 +1424,7 @@ async function main() {
     await runReceiptPermalinkSmoke(browser, baseUrl);
     await runChapter5OpeningReceiptsSmoke(browser, baseUrl);
     await runRenderedClaimAnchorsSmoke(browser, baseUrl, VIEWPORTS[0]);
+    await runDataCentreReceiptFocusSmoke(browser, baseUrl);
     await runChapterReceiptSmoke(browser, baseUrl, 5, [115]);
     await runChapterReceiptSmoke(browser, baseUrl, 6, [116]);
     await runChapterReceiptSmoke(browser, baseUrl, 8, [117]);
