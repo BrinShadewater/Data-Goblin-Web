@@ -991,29 +991,27 @@ async function runReaderEntrySmoke(browser, baseUrl) {
       const frontMatter = `${baseUrl}${fixture.prefix}/chapter/0`;
       for (const javaScriptEnabled of [true, false]) {
         await withAppPage(browser, baseUrl, viewport, async (page) => {
-          await page.goto(home, { waitUntil: "networkidle" });
+          const openHome = async () => {
+            await page.goto(home);
+            if (javaScriptEnabled) await page.locator("[data-prerender-hero]").waitFor({ state: "detached" });
+          };
+          await openHome();
           await page.getByRole("link", { name: fixture.intro, exact: true }).click();
           await page.waitForURL(frontMatter + "#about-this-manual");
           const intro = javaScriptEnabled
             ? page.getByRole("heading", { name: fixture.introHeading, exact: true })
+              .and(page.locator("[data-section-heading]:focus"))
             : page.locator("h2:target").filter({ hasText: fixture.introHeading });
           await intro.waitFor();
-          if (javaScriptEnabled) {
-            assert(await intro.evaluate((heading) => heading === document.activeElement),
-              "The introduction link did not move focus to the heading.");
-          }
 
-          await page.goto(home, { waitUntil: "networkidle" });
+          await openHome();
           await page.getByRole("link", { name: fixture.guide, exact: true }).click();
           await page.waitForURL(frontMatter + "#how-to-use-this-manual");
           const guide = javaScriptEnabled
             ? page.getByRole("heading", { name: fixture.guideHeading, exact: true })
+              .and(page.locator("[data-section-heading]:focus"))
             : page.locator("h2:target").filter({ hasText: fixture.guideHeading });
           await guide.waitFor();
-          if (javaScriptEnabled) {
-            assert(await guide.evaluate((heading) => heading === document.activeElement),
-              "The guide link did not move focus to the heading.");
-          }
           const legend = page.getByText(fixture.legend).first();
           if (javaScriptEnabled) {
             for (let spread = 0; spread < 8 && !(await legend.isVisible()); spread++) {
