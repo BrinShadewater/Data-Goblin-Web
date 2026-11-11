@@ -10,6 +10,7 @@ import sourceChangeUpdate from "../sourceChangeUpdate.json";
 import editorialCorrectionUpdate from "../editorialCorrectionUpdate.json";
 import readerCorrectionsUpdate from "../readerCorrectionsUpdate.json";
 import dataCentrePowerUpdate from "../dataCentrePowerUpdate.json";
+import labourHiringUpdate from "../labourHiringUpdate.json";
 
 interface UpdateEntry {
   date: string;
@@ -248,7 +249,9 @@ export function UpdatesPage() {
   const editorial = editorialCorrectionUpdate[lang];
   const reader = readerCorrectionsUpdate[lang];
   const dataCentres = dataCentrePowerUpdate[lang];
+  const labour = labourHiringUpdate[lang];
   const updates = [
+    { ...labour, links: [[labour.linkLabel, labourHiringUpdate.topicPath]] },
     { ...dataCentres, links: [[dataCentres.linkLabel, dataCentrePowerUpdate.topicPath]] },
     { ...reader, links: [[reader.chapterLabel, readerCorrectionsUpdate.chapterPath]] },
     { ...editorial, links: editorialCorrectionUpdate.receiptIds.map((id, index) => [editorial.receiptLabels[index], `/receipts#receipt-${id}`]) },

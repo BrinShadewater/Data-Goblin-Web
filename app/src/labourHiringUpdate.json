@@ -1,0 +1,21 @@
+{
+  "topicPath": "/topic/labour",
+  "en": {
+    "date": "November 10, 2026",
+    "tag": "New explainer",
+    "title": "What the AI hiring studies measured",
+    "items": [
+      "The Labour explainer compares the age groups, hiring measures and employment estimates in three Canadian and U.S. studies. Each comparison links to its Chapter 16 passage and receipt."
+    ],
+    "linkLabel": "Read what the AI hiring studies measured"
+  },
+  "fr": {
+    "date": "10 novembre 2026",
+    "tag": "Nouveau dossier",
+    "title": "Ce que mesurent les études sur l’IA et l’embauche",
+    "items": [
+      "Le dossier sur l’emploi compare les groupes d’âge, les mesures d’embauche et les estimations d’emploi de trois études canadiennes et américaines. Chaque comparaison renvoie au passage et au reçu correspondants du chapitre 16."
+    ],
+    "linkLabel": "Voir ce que mesurent les études sur l’IA et l’embauche"
+  }
+}
