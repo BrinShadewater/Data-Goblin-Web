@@ -2611,5 +2611,22 @@
     "https://www.mhlw.go.jp/content/001767066.pdf"
    ]
   ]
+ },
+ {
+  "id": 152,
+  "section": "METR and Redwood Research monitoring review (November 10, 2026)",
+  "claim": "METR and Redwood Research review of OpenAI’s agent monitoring (Ch 17)",
+  "status": "resolved",
+  "detail": "✅ The pilot ran from July 21 to August 11, 2026, and evaluated OpenAI’s internal agent monitoring as it existed on or before July 21. It was a separate exercise from the Hugging Face incident investigation. The public report appeared on October 22. Its October 29 update says OpenAI reported patching most of the issues, with one fix in progress. OpenAI also described later changes to intended monitoring coverage. The researchers did not evaluate those claims or establish the expanded system’s coverage. | [METR and Redwood Research, October 22 report and October 29 update](https://metr.org/blog/2026-10-22-red-teaming-openai-agent-monitoring/) · [OpenAI, description of its monitoring changes](https://openai.com/index/hugging-face-incident-and-the-road-ahead/)",
+  "links": [
+   [
+    "METR and Redwood Research, October 22 report and October 29 update",
+    "https://metr.org/blog/2026-10-22-red-teaming-openai-agent-monitoring/"
+   ],
+   [
+    "OpenAI, description of its monitoring changes",
+    "https://openai.com/index/hugging-face-incident-and-the-road-ahead/"
+   ]
+  ]
  }
 ]

@@ -2611,5 +2611,22 @@
     "https://www.mhlw.go.jp/content/001767066.pdf"
    ]
   ]
+ },
+ {
+  "id": 152,
+  "section": "METR and Redwood Research monitoring review (November 10, 2026)",
+  "claim": "Examen par METR et Redwood Research de la surveillance des agents d’OpenAI (ch. 17)",
+  "status": "resolved",
+  "detail": "✅ L’exercice pilote s’est déroulé du 21 juillet au 11 août 2026. Il portait sur le dispositif interne de surveillance des agents d’OpenAI tel qu’il existait au plus tard le 21 juillet. Cet exercice était distinct de l’enquête sur l’incident de Hugging Face. Le rapport public est paru le 22 octobre. La mise à jour du 29 octobre indique qu’OpenAI disait avoir corrigé la plupart des problèmes, avec un correctif en cours. OpenAI a aussi décrit des changements ultérieurs à la couverture prévue du dispositif. L’équipe n’a pas évalué ces affirmations ni établi la couverture du dispositif élargi.",
+  "links": [
+   [
+    "METR et Redwood Research, rapport du 22 octobre et mise à jour du 29 octobre",
+    "https://metr.org/blog/2026-10-22-red-teaming-openai-agent-monitoring/"
+   ],
+   [
+    "OpenAI, description des changements apportés à la surveillance",
+    "https://openai.com/index/hugging-face-incident-and-the-road-ahead/"
+   ]
+  ]
  }
 ]

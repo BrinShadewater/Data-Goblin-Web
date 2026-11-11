@@ -1710,5 +1710,13 @@
  {
   "name": "Emergency Cybersecurity Measures Package, official summary in Japanese",
   "url": "https://www.mhlw.go.jp/content/001767066.pdf"
+ },
+ {
+  "name": "METR and Redwood Research, October 22 report and October 29 update",
+  "url": "https://metr.org/blog/2026-10-22-red-teaming-openai-agent-monitoring/"
+ },
+ {
+  "name": "OpenAI, description of its monitoring changes",
+  "url": "https://openai.com/index/hugging-face-incident-and-the-road-ahead/"
  }
 ]
