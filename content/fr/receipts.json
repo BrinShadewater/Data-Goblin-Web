@@ -2628,5 +2628,22 @@
     "https://openai.com/index/hugging-face-incident-and-the-road-ahead/"
    ]
   ]
+ },
+ {
+  "id": 153,
+  "section": "Early-career hiring and AI exposure (November 10, 2026)",
+  "claim": "Embauche en début de carrière et exposition à l’IA au Canada et aux États-Unis (ch. 16)",
+  "status": "resolved",
+  "detail": "✅ Le document américain utilise les Quarterly Workforce Indicators pour suivre l’emploi, les embauches et les cessations d’emploi par secteur d’activité et par État. Son résumé fait état d’un recul de l’emploi de 12 % sur dix trimestres, après ajustement statistique, chez les 22 à 24 ans dans le cinquième des groupes les plus exposés. La baisse des embauches est le principal facteur de ce recul. Certaines tendances remontent au début de la pandémie, ce qui complique l’attribution du recul à l’IA générative. Statistique Canada utilise les données de l’Enquête sur la population active de janvier 2006 à août 2026 pour les salariés de 15 à 64 ans des dix provinces. Chez les 15 à 29 ans, les embauches ont ralenti même dans les professions à faible exposition potentielle. Les cessations d’emploi comprennent les départs pour tout motif, y compris les démissions. Les groupes d’âge, les mesures et les unités de comparaison diffèrent. Les deux études utilisent des indices d’exposition potentielle, sans mesurer l’adoption réelle.",
+  "links": [
+   [
+    "Document de travail CES-26-27 du Bureau du recensement des États-Unis (en anglais)",
+    "https://www2.census.gov/library/working-papers/2026/adrm/ces/CES-WP-26-27.pdf"
+   ],
+   [
+    "Analyse de Statistique Canada, graphiques 1 et 2",
+    "https://www150.statcan.gc.ca/n1/pub/36-28-0001/2026010/article/00003-fra.htm"
+   ]
+  ]
  }
 ]
