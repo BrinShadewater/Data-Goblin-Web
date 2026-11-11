@@ -20,6 +20,8 @@ import { chapterPath, fetchJson, useArtMap, useChapter, useTraps } from "./useCo
 import { useLanguage } from "./LanguageContext";
 import type { Chapter } from "./types";
 import type { SectionLink } from "./sectionLinks";
+import dataCentrePower from "./dataCentrePower.json";
+import dataCentrePowerUpdate from "./dataCentrePowerUpdate.json";
 
 function isEditableTarget(target: EventTarget | null): boolean {
   const el = target as HTMLElement | null;
@@ -71,11 +73,16 @@ export function usePaginatedChapter(num: number, sections: SectionLink[]) {
     [mode, dyslexic, heightScale, widthScale]
   );
   const linkedChapter = useMemo(() => {
-    if (!chapter || chapter.number !== num || !sections.some((section) => section.source)) return chapter;
+    if (!chapter || chapter.number !== num || (num !== dataCentrePower.chapter && !sections.some((section) => section.source))) return chapter;
     return {
       ...chapter,
       sections: chapter.sections.map((section, index) => {
-        const source = sections[index]?.source?.[lang];
+        const link = sections[index];
+        if (num === dataCentrePower.chapter && link?.id === dataCentrePower.section) {
+          const { linkLabel } = dataCentrePowerUpdate[lang];
+          return { ...section, markdown: `[${linkLabel}](${dataCentrePowerUpdate.topicPath})\n\n${section.markdown}` };
+        }
+        const source = link?.source?.[lang];
         if (!source) return section;
         const label = lang === "fr" ? "Source :" : "Source:";
         return { ...section, markdown: `**${label}** [${source.label}](${source.url})\n\n${section.markdown}` };

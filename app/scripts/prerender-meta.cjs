@@ -13,6 +13,7 @@ const editorialCorrectionUpdate = require("../src/editorialCorrectionUpdate.json
 const readerCorrectionsUpdate = require("../src/readerCorrectionsUpdate.json");
 const readerEntry = require("../src/readerEntry.json");
 const dataCentrePower = require("../src/dataCentrePower.json");
+const dataCentrePowerUpdate = require("../src/dataCentrePowerUpdate.json");
 
 const DIST = process.env.PRERENDER_DIST ? path.resolve(process.env.PRERENDER_DIST) : path.resolve(__dirname, "../dist");
 const SITE = "https://datagoblin.ca";
@@ -199,6 +200,10 @@ function chapterBodyHtml(route, lang) {
     }
     const source = link?.source?.[lang];
     if (source) b += `<p><strong>${fr ? "Source :" : "Source:"}</strong> <a href="${esc(source.url)}">${esc(source.label)}</a></p>`;
+    if (ch.number === dataCentrePower.chapter && link?.id === dataCentrePower.section) {
+      const href = (fr ? "/fr" : "") + dataCentrePowerUpdate.topicPath;
+      b += `<p><a href="${esc(href)}">${esc(dataCentrePowerUpdate[lang].linkLabel)}</a></p>`;
+    }
     for (const { id, section } of receipts) {
       if (section === link?.id) {
         b += `<p><a href="${fr ? "/fr" : ""}/receipts#receipt-${esc(id)}">${fr ? "Voir le reçu" : "View receipt"} #${esc(id)}</a></p>`;
@@ -376,7 +381,9 @@ function routeBodyHtml(route, lang) {
     const sourceChange = sourceChangeUpdate[lang];
     const editorial = editorialCorrectionUpdate[lang];
     const reader = readerCorrectionsUpdate[lang];
+    const dataCentres = dataCentrePowerUpdate[lang];
     const entries = [
+      [dataCentres, [[dataCentres.linkLabel, dataCentrePowerUpdate.topicPath]]],
       [reader, [[reader.chapterLabel, readerCorrectionsUpdate.chapterPath]]],
       [editorial, editorialCorrectionUpdate.receiptIds.map((id, index) => [editorial.receiptLabels[index], `/receipts#receipt-${id}`])],
       [sourceChange, [[sourceChange.passageLabel, "/chapter/10#the-biometric-and-facial-recognition-layer"], [sourceChange.receiptLabel, "/receipts#receipt-70"]]],
@@ -620,14 +627,16 @@ const ROUTE_SOURCES = {
   "/receipts": ["app/src/pages/ReceiptsPage.tsx", "app/src/components/ReceiptRows.tsx", "app/src/receiptNotes.json", "app/public/content/receipts.json"],
   "/about": ["app/src/pages/AboutPage.tsx", "app/public/content/stats.json"],
   "/contribute": ["app/src/pages/ContributePage.tsx"],
-  "/updates": ["app/src/pages/UpdatesPage.tsx", "app/src/latestUpdate.json", "app/src/sourceChangeUpdate.json", "app/src/editorialCorrectionUpdate.json", "app/src/readerCorrectionsUpdate.json"],
+  "/updates": ["app/src/pages/UpdatesPage.tsx", "app/src/latestUpdate.json", "app/src/sourceChangeUpdate.json", "app/src/editorialCorrectionUpdate.json", "app/src/readerCorrectionsUpdate.json", "app/src/dataCentrePowerUpdate.json"],
   "/toolkit": ["app/src/pages/ToolkitPage.tsx"],
   "/privacy": ["app/src/pages/PrivacyPage.tsx"],
 };
 function routeSources(route, lang) {
   const chapter = route.match(/^\/chapter\/(\d+)$/);
   if (chapter) {
-    return [`app/public/${localizedChapterPath(lang, chapter[1])}`];
+    const sources = [`app/public/${localizedChapterPath(lang, chapter[1])}`];
+    if (Number(chapter[1]) === dataCentrePower.chapter) sources.push("app/src/dataCentrePowerUpdate.json");
+    return sources;
   }
   if (route.startsWith("/topic/")) {
     const sources = ["app/src/pages/TopicPage.tsx", "app/scripts/prerender-meta.cjs", "app/public/content/book.json"];
