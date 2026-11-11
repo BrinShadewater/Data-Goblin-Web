@@ -149,6 +149,7 @@ const FR = {
     149: "mesures britanniques proposées pour les incidents",
     150: "L’atelier du NIST sur la gestion des incidents liés à l’IA",
     151: "plan d’urgence du Japon en matière de cybersécurité",
+    152: "L’examen du dispositif interne de surveillance des agents d’OpenAI",
     10: "35 millions d'euros",
     2: "Convention-cadre du Conseil de l'Europe sur l'IA",
     16: "IA Security Institute",
