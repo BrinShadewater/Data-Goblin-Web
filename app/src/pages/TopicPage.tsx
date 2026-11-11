@@ -10,32 +10,36 @@ import { tr } from "../i18n";
 import { useLanguage } from "../LanguageContext";
 import { sectionHref } from "../sectionLinks";
 import dataCentrePower from "../dataCentrePower.json";
+import labourHiring from "../labourHiring.json";
 
-function DataCentrePowerExplainer() {
+function TopicExplainer({ explainer }: { explainer: typeof dataCentrePower | typeof labourHiring }) {
   const { lang } = useLanguage();
   const { c } = useTheme();
-  const copy = dataCentrePower[lang];
+  const copy = explainer[lang];
+  const isPower = "provinces" in copy;
+  const entries: { name: string; text: string; receipts: number[]; source?: { label: string; url: string } }[] =
+    isPower ? copy.provinces : copy.studies;
   return (
     <StaticCard padding="22px 24px">
-      <article data-data-centre-power style={{ fontFamily: BODY, fontSize: "16px", lineHeight: 1.7 }}>
-        <p><time dateTime={dataCentrePower.reviewedOn}>{copy.reviewedLabel}</time></p>
+      <article data-data-centre-power={isPower ? "" : undefined} data-labour-hiring={isPower ? undefined : ""} style={{ fontFamily: BODY, fontSize: "16px", lineHeight: 1.7 }}>
+        <p><time dateTime={explainer.reviewedOn}>{copy.reviewedLabel}</time></p>
         <p>{copy.answer}</p>
         <h2 style={{ fontFamily: UI }}>{copy.comparisonTitle}</h2>
-        {copy.provinces.map((province) => (
-          <section key={province.name}>
-            <h3 style={{ fontFamily: UI }}>{province.name}</h3>
-            <p>{province.text}</p>
+        {entries.map((entry) => (
+          <section key={entry.name}>
+            <h3 style={{ fontFamily: UI }}>{entry.name}</h3>
+            <p>{entry.text}</p>
             <ul>
-              {province.receipts.map((receipt) => (
+              {entry.receipts.map((receipt) => (
                 <li key={receipt}>
-                  <Link className="gob-link" to={sectionHref(dataCentrePower.chapter, dataCentrePower.section, receipt)}>
+                  <Link className="gob-link" to={sectionHref(explainer.chapter, explainer.section, receipt)}>
                     {copy.passageLabel} · {copy.receiptLabel.toLowerCase()} #{receipt}
                   </Link>
                   {" · "}
                   <Link className="gob-link" to={`/receipts#receipt-${receipt}`}>{copy.receiptLabel} #{receipt}</Link>
                 </li>
               ))}
-              {province.source && <li><a className="gob-link" href={province.source.url}>{province.source.label}</a></li>}
+              {entry.source && <li><a className="gob-link" href={entry.source.url}>{entry.source.label}</a></li>}
             </ul>
           </section>
         ))}
@@ -50,7 +54,8 @@ export function TopicPage() {
   const { slug } = useParams<{ slug: string }>();
   const topic = slug ? TOPICS[slug] : undefined;
   const { lang } = useLanguage();
-  const power = slug === "data-centres" ? dataCentrePower[lang] : undefined;
+  const explainer = slug === "data-centres" ? dataCentrePower : slug === "labour" ? labourHiring : undefined;
+  const copy = explainer?.[lang];
   const { c } = useTheme();
   const muted = c(...P.muted);
   const navy = c(...P.navy);
@@ -83,18 +88,18 @@ export function TopicPage() {
     <StaticPageShell padding="36px clamp(16px, 5vw, 54px) 72px">
       <PageHeading
         eyebrow={tr("Topic")}
-        title={power?.title ?? tr(topic.title)}
+        title={copy?.title ?? tr(topic.title)}
         eyebrowSize="10px"
         eyebrowLetterSpacing="0.26em"
         titleSize="clamp(34px, 5vw, 54px)"
         titleLineHeight={1.02}
-        description={power?.description ?? tr(topic.blurb)}
+        description={copy?.description ?? tr(topic.blurb)}
         descriptionSize="17px"
         descriptionLineHeight={1.7}
         descriptionMaxWidth="760px"
       />
 
-      {power && <DataCentrePowerExplainer />}
+      {explainer && <TopicExplainer explainer={explainer} />}
 
       <StaticCard padding="22px 24px">
         <Kicker color={green} letterSpacing="0.18em">{tr("Start here")}</Kicker>

@@ -13,6 +13,7 @@ const editorialCorrectionUpdate = require("../src/editorialCorrectionUpdate.json
 const readerCorrectionsUpdate = require("../src/readerCorrectionsUpdate.json");
 const readerEntry = require("../src/readerEntry.json");
 const dataCentrePower = require("../src/dataCentrePower.json");
+const labourHiring = require("../src/labourHiring.json");
 const dataCentrePowerUpdate = require("../src/dataCentrePowerUpdate.json");
 
 const DIST = process.env.PRERENDER_DIST ? path.resolve(process.env.PRERENDER_DIST) : path.resolve(__dirname, "../dist");
@@ -115,7 +116,7 @@ const TOPICS = [
   ["film-media", "AI, Film & Media in Canada", "AI in Canadian film, TV, and media: synthetic actors, dubbing, and the labour questions behind them. The chapters on screens and storytelling.", "IA, cinéma et médias au Canada", "L'IA dans le cinéma, la télévision et les médias canadiens : acteurs synthétiques, doublage et les questions de travail qui les accompagnent."],
   ["deepfakes", "Deepfakes & Misinformation", "How deepfakes and synthetic media spread in Canada, how to spot them, and what the law can and cannot do. The chapters on trust and evidence.", "Hypertrucages et désinformation", "Comment les hypertrucages et les médias synthétiques se propagent au Canada, comment les repérer, et ce que la loi peut ou ne peut pas faire."],
   ["privacy", "AI, Privacy & Surveillance", "What AI systems collect, how surveillance works in Canada, and the privacy rights you actually have. The chapters on the data kept about you.", "IA, vie privée et surveillance", "Ce que collectent les systèmes d'IA, comment fonctionne la surveillance au Canada, et les droits à la vie privée que vous avez réellement."],
-  ["labour", "AI, Jobs & the Canadian Economy", "What AI is doing to Canadian jobs and wages, which claims hold up, and which are just hype. The chapters on work, automation, and who benefits.", "IA, emploi et économie canadienne", "Ce que l'IA fait aux emplois et aux salaires au Canada, quelles affirmations tiennent la route, et lesquelles ne sont que du battage."],
+  ["labour", labourHiring.en.title, labourHiring.en.description, labourHiring.fr.title, labourHiring.fr.description],
   ["governance", "How AI Is Governed in Canada", "The bills, agencies, and rules shaping AI in Canada, from Bill C-16 to the CRTC and the Privacy Commissioner. The chapters on who sets the guardrails.", "Comment l'IA est gouvernée au Canada", "Les projets de loi, les organismes et les règles qui encadrent l'IA au Canada, de C-16 au CRTC et au Commissariat à la vie privée."],
 ];
 for (const [slug, en, enDesc, fr, frDesc] of TOPICS) ROUTE_META.push([`/topic/${slug}`, en, enDesc, fr, frDesc]);
@@ -319,10 +320,11 @@ function bookChapterTitles(lang) {
   } catch { /* empty map -> falls back to "Chapter N" */ }
   return map;
 }
-function dataCentrePowerHtml(lang, prefix) {
-  const copy = dataCentrePower[lang];
-  const { chapter, section, reviewedOn } = dataCentrePower;
-  const provinces = copy.provinces.map(({ name, text, receipts, source }) => {
+function topicExplainerHtml(explainer, lang, prefix) {
+  const copy = explainer[lang];
+  const { chapter, section, reviewedOn } = explainer;
+  const marker = copy.provinces ? "data-data-centre-power" : "data-labour-hiring";
+  const entries = (copy.provinces ?? copy.studies).map(({ name, text, receipts, source }) => {
     const links = receipts.map((receipt) =>
       `<li><a href="${prefix}/chapter/${chapter}?receipt=${receipt}#${esc(section)}">${esc(copy.passageLabel)} · ${esc(copy.receiptLabel.toLowerCase())} #${receipt}</a>` +
       ` · <a href="${prefix}/receipts#receipt-${receipt}">${esc(copy.receiptLabel)} #${receipt}</a></li>`
@@ -330,8 +332,8 @@ function dataCentrePowerHtml(lang, prefix) {
     if (source) links.push(`<li><a href="${esc(source.url)}">${esc(source.label)}</a></li>`);
     return `<section><h3>${esc(name)}</h3><p>${esc(text)}</p><ul>${links.join("")}</ul></section>`;
   }).join("");
-  return `<article data-prerender-body data-data-centre-power><p><time datetime="${esc(reviewedOn)}">${esc(copy.reviewedLabel)}</time></p>` +
-    `<p>${esc(copy.answer)}</p><h2>${esc(copy.comparisonTitle)}</h2>${provinces}<h2>${esc(copy.checkTitle)}</h2><p>${esc(copy.check)}</p></article>`;
+  return `<article data-prerender-body ${marker}><p><time datetime="${esc(reviewedOn)}">${esc(copy.reviewedLabel)}</time></p>` +
+    `<p>${esc(copy.answer)}</p><h2>${esc(copy.comparisonTitle)}</h2>${entries}<h2>${esc(copy.checkTitle)}</h2><p>${esc(copy.check)}</p></article>`;
 }
 function topicBodyHtml(route, lang) {
   const m = route.match(/^\/topic\/([a-z-]+)$/);
@@ -348,7 +350,8 @@ function topicBodyHtml(route, lang) {
     return `<li><a href="${pfx}/chapter/${n}">${esc(num)}: ${esc(t)}</a></li>`;
   }).join("");
   let summary = "";
-  if (m[1] === "data-centres") summary = dataCentrePowerHtml(lang, pfx);
+  if (m[1] === "data-centres") summary = topicExplainerHtml(dataCentrePower, lang, pfx);
+  if (m[1] === "labour") summary = topicExplainerHtml(labourHiring, lang, pfx);
   if (m[1] === "governance") {
     const startHere = readChapter(lang, chapters[0])?.startHere;
     if (typeof startHere !== "string" || !startHere.trim()) {
@@ -644,6 +647,7 @@ function routeSources(route, lang) {
       sources.push(`app/public/${localizedChapterPath(lang, TOPIC_CHAPTERS.governance[0])}`);
     }
     if (route === "/topic/data-centres") sources.push("app/src/dataCentrePower.json");
+    if (route === "/topic/labour") sources.push("app/src/labourHiring.json");
     return sources;
   }
   return ROUTE_SOURCES[route] || [];
