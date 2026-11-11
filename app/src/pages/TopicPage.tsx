@@ -7,10 +7,50 @@ import { Markdown } from "../components/Markdown";
 import { useBook, useChapter } from "../useContent";
 import { TOPICS, TOPIC_LIST } from "../topics";
 import { tr } from "../i18n";
+import { useLanguage } from "../LanguageContext";
+import { sectionHref } from "../sectionLinks";
+import dataCentrePower from "../dataCentrePower.json";
+
+function DataCentrePowerExplainer() {
+  const { lang } = useLanguage();
+  const { c } = useTheme();
+  const copy = dataCentrePower[lang];
+  return (
+    <StaticCard padding="22px 24px">
+      <article data-data-centre-power style={{ fontFamily: BODY, fontSize: "16px", lineHeight: 1.7 }}>
+        <p><time dateTime={dataCentrePower.reviewedOn}>{copy.reviewedLabel}</time></p>
+        <p>{copy.answer}</p>
+        <h2 style={{ fontFamily: UI }}>{copy.comparisonTitle}</h2>
+        {copy.provinces.map((province) => (
+          <section key={province.name}>
+            <h3 style={{ fontFamily: UI }}>{province.name}</h3>
+            <p>{province.text}</p>
+            <ul>
+              {province.receipts.map((receipt) => (
+                <li key={receipt}>
+                  <Link className="gob-link" to={sectionHref(dataCentrePower.chapter, dataCentrePower.section, receipt)}>
+                    {copy.passageLabel} · {copy.receiptLabel.toLowerCase()} #{receipt}
+                  </Link>
+                  {" · "}
+                  <Link className="gob-link" to={`/receipts#receipt-${receipt}`}>{copy.receiptLabel} #{receipt}</Link>
+                </li>
+              ))}
+              {province.source && <li><a className="gob-link" href={province.source.url}>{province.source.label}</a></li>}
+            </ul>
+          </section>
+        ))}
+        <h2 style={{ fontFamily: UI, color: c(...P.navy) }}>{copy.checkTitle}</h2>
+        <p>{copy.check}</p>
+      </article>
+    </StaticCard>
+  );
+}
 
 export function TopicPage() {
   const { slug } = useParams<{ slug: string }>();
   const topic = slug ? TOPICS[slug] : undefined;
+  const { lang } = useLanguage();
+  const power = slug === "data-centres" ? dataCentrePower[lang] : undefined;
   const { c } = useTheme();
   const muted = c(...P.muted);
   const navy = c(...P.navy);
@@ -43,16 +83,18 @@ export function TopicPage() {
     <StaticPageShell padding="36px clamp(16px, 5vw, 54px) 72px">
       <PageHeading
         eyebrow={tr("Topic")}
-        title={tr(topic.title)}
+        title={power?.title ?? tr(topic.title)}
         eyebrowSize="10px"
         eyebrowLetterSpacing="0.26em"
         titleSize="clamp(34px, 5vw, 54px)"
         titleLineHeight={1.02}
-        description={tr(topic.blurb)}
+        description={power?.description ?? tr(topic.blurb)}
         descriptionSize="17px"
         descriptionLineHeight={1.7}
         descriptionMaxWidth="760px"
       />
+
+      {power && <DataCentrePowerExplainer />}
 
       <StaticCard padding="22px 24px">
         <Kicker color={green} letterSpacing="0.18em">{tr("Start here")}</Kicker>

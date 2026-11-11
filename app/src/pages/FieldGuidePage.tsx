@@ -119,20 +119,32 @@ export function FieldGuidePage() {
     if (sectionPanel < 0) return;
     const exact = receiptPanel >= 0;
     const readingArea = readingAreaRef.current;
-    const target = exact
-      ? readingArea?.querySelector<HTMLElement>(`button[data-receipt-id="${receiptId}"]`)
-      : Array.from(readingArea?.querySelectorAll<HTMLElement>("[data-section-heading]") ?? [])
-        .find((element) => element.dataset.sectionHeading === requestedHeading);
-    if (!target) return;
-    target.scrollIntoView(exact ? { block: "center", behavior: "instant" } : { block: "nearest" });
-    const previous = focusedPassage.current;
-    const active = document.activeElement;
-    const replacedTarget = previous && previous.element !== target && !previous.element.isConnected && active === document.body;
-    const upgradedToReceipt = exact && previous?.element === active && active.hasAttribute("data-section-heading");
-    if ((focusSection || exact) && (previous?.key !== location.key || replacedTarget || upgradedToReceipt)) {
-      target.focus({ preventScroll: true });
-      if (document.activeElement === target) focusedPassage.current = { key: location.key, element: target };
-    }
+    if (!readingArea) return;
+    let lastTarget: HTMLElement | undefined;
+    const alignPassage = (deferred = false) => {
+      const target = exact
+        ? readingArea.querySelector<HTMLElement>(`button[data-receipt-id="${receiptId}"]`)
+        : Array.from(readingArea.querySelectorAll<HTMLElement>("[data-section-heading]"))
+          .find((element) => element.dataset.sectionHeading === requestedHeading);
+      if (!target || target === lastTarget) return;
+      lastTarget = target;
+      const previous = focusedPassage.current;
+      const active = document.activeElement;
+      const replacedTarget = previous && previous.element !== target && !previous.element.isConnected && active === document.body;
+      const upgradedToReceipt = exact && previous?.element === active && active.hasAttribute("data-section-heading");
+      if (deferred && active !== document.body && !upgradedToReceipt) return;
+      target.scrollIntoView(exact ? { block: "center", behavior: "instant" } : { block: "nearest" });
+      if ((focusSection || exact) && (previous?.key !== location.key || replacedTarget || upgradedToReceipt)) {
+        target.focus({ preventScroll: true });
+        if (document.activeElement === target) focusedPassage.current = { key: location.key, element: target };
+      }
+    };
+    alignPassage();
+    if (!exact) return;
+    // The reader can select the page before its Markdown mounts the receipt button.
+    const observer = new MutationObserver(() => alignPassage(true));
+    observer.observe(readingArea, { childList: true, subtree: true });
+    return () => observer.disconnect();
   }, [aligned, focusSection, location.key, panels, receiptId, receiptPanel, requestedHeading, sectionPanel]);
 
   useEffect(() => {

@@ -1,0 +1,97 @@
+{
+  "reviewedOn": "2026-11-10",
+  "chapter": 8,
+  "section": "the-canadian-specific-carbon-arithmetic",
+  "en": {
+    "title": "Who pays for AI data-centre power in Canada?",
+    "description": "Compare who pays for electricity and grid connections for AI data centres in Ontario, Québec, Manitoba, Alberta and British Columbia.",
+    "reviewedLabel": "Sources checked November 10, 2026",
+    "answer": "The data-centre operator pays its electricity bill. Who pays to connect the site or reinforce the grid depends on the province, the utility tariff and the project’s connection terms. A special electricity rate or tax can change the operator’s bill without settling who pays for a new substation or transmission line.",
+    "comparisonTitle": "How five provinces handle the costs",
+    "provinces": [
+      {
+        "name": "Ontario",
+        "text": "Existing transmission rules require the customer to contribute to new or modified connection facilities where connection-rate revenue falls short of the recoverable cost. For work on the wider transmission network, the code generally bars a direct capital charge to the connecting customer and allows applications to the Ontario Energy Board for direction in exceptional circumstances. Ontario’s proposed Global Adjustment class for large new data centres concerns how the province recovers electricity-system costs through bills. The Environmental Registry still lists it as a proposal.",
+        "receipts": [130],
+        "source": {
+          "label": "Ontario Transmission System Code, sections 6.3 and 6.5",
+          "url": "https://www.oeb.ca/sites/default/files/uploads/documents/regulatorycodes/2025-04/Transmission_System_Code_20250331.pdf"
+        }
+      },
+      {
+        "name": "Québec",
+        "text": "Operators pay the approved Hydro-Québec tariff that applies to their contract. Hydro-Québec has proposed a new Rate CD for qualifying data centres with at least 5 MW of authorized demand. The proposed rate includes an energy charge and a charge for billing demand. The Régie de l’énergie was still reviewing the filing. Check the applicable service terms separately for a project’s connection costs.",
+        "receipts": [129]
+      },
+      {
+        "name": "Manitoba",
+        "text": "Manitoba Hydro bills large commercial customers for energy and demand under its General Service rates. Manitoba passed an additional levy on power for covered operators and provided for the revenue to go toward residential bills. The levy provisions still awaited proclamation. The levy and the costs of connecting a particular facility are separate questions.",
+        "receipts": [128]
+      },
+      {
+        "name": "Alberta",
+        "text": "The province’s equipment levy applies to covered large data centres. Its formula depends on how much electricity comes from the public grid and which supply qualifies for a lower rate. For a transmission connection, AESO’s tariff separately determines the customer’s construction contribution. Alberta’s grid access rules give priority in assessment to projects with qualifying dedicated generation or storage.",
+        "receipts": [145, 146],
+        "source": {
+          "label": "AESO tariff, section 4 on connection costs",
+          "url": "https://www.aeso.ca/rules-standards-and-tariff/tariff/section-4-classification-and-allocation-of-connection-projects-costs/"
+        }
+      },
+      {
+        "name": "British Columbia",
+        "text": "B.C. limits new grid capacity available to conventional and AI data centres to a combined 400 MW in the first two years of its allocation process. That rule answers how much power can be offered. To work out who pays for a specific connection or upgrade, look for the applicable tariff and the project’s connection terms.",
+        "receipts": [117]
+      }
+    ],
+    "passageLabel": "Read the Chapter 8 passage",
+    "receiptLabel": "Receipt",
+    "checkTitle": "What to ask about a specific project",
+    "check": "Ask for the electricity tariff, the agreement that assigns the cost of connecting the site, and any regulator decision about wider grid upgrades. Check whether a promise to cover costs is written into the agreement and which costs it covers."
+  },
+  "fr": {
+    "title": "Qui paie l’électricité des centres de données d’IA au Canada?",
+    "description": "Comparez qui paie l’électricité et le raccordement au réseau des centres de données d’IA en Ontario, au Québec, au Manitoba, en Alberta et en Colombie-Britannique.",
+    "reviewedLabel": "Sources vérifiées le 10 novembre 2026",
+    "answer": "L’exploitant du centre de données paie sa facture d’électricité. La répartition des coûts de raccordement ou de renforcement du réseau dépend de la province, du tarif du distributeur et des modalités de raccordement du projet. Un tarif spécial ou un prélèvement peut modifier la facture de l’exploitant. Il reste à déterminer qui paie le nouveau poste électrique ou la nouvelle ligne de transport.",
+    "comparisonTitle": "Comment cinq provinces répartissent les coûts",
+    "provinces": [
+      {
+        "name": "Ontario",
+        "text": "Les règles de transport en vigueur obligent le client à contribuer au coût des installations de raccordement nouvelles ou modifiées lorsque les recettes du tarif de raccordement ne suffisent pas à couvrir les coûts récupérables. Pour les travaux sur le réseau de transport dans son ensemble, le code interdit généralement de facturer une contribution directe au client qui se raccorde. Dans des circonstances exceptionnelles, il permet de demander des directives à la Commission de l’énergie de l’Ontario. La catégorie de rajustement global envisagée pour les grands centres de données neufs concerne le recouvrement des coûts du système électrique dans les factures. Le Registre environnemental la présente toujours comme une proposition.",
+        "receipts": [130],
+        "source": {
+          "label": "Code du réseau de transport de l’Ontario, sections 6.3 et 6.5 (en anglais)",
+          "url": "https://www.oeb.ca/sites/default/files/uploads/documents/regulatorycodes/2025-04/Transmission_System_Code_20250331.pdf"
+        }
+      },
+      {
+        "name": "Québec",
+        "text": "Les exploitants paient le tarif approuvé d’Hydro-Québec applicable à leur contrat. Hydro-Québec propose un tarif CD pour les centres de données admissibles dont la puissance autorisée atteint au moins 5 MW. Le tarif proposé comprend une composante liée à l’énergie et une autre liée à la puissance facturée. La Régie de l’énergie poursuivait l’examen du dossier. Pour connaître les frais de raccordement d’un projet, consultez les conditions de service applicables.",
+        "receipts": [129]
+      },
+      {
+        "name": "Manitoba",
+        "text": "Hydro-Manitoba facture l’énergie et la puissance aux grands clients commerciaux selon ses tarifs de service général. Le Manitoba a adopté un prélèvement supplémentaire sur l’électricité des exploitants visés et prévu d’affecter les recettes aux factures résidentielles. Les dispositions sur le prélèvement attendaient encore leur proclamation. Les frais de raccordement d’une installation relèvent de conditions distinctes.",
+        "receipts": [128]
+      },
+      {
+        "name": "Alberta",
+        "text": "Le prélèvement provincial sur l’équipement vise certains grands centres de données. Son calcul dépend de la part d’électricité tirée du réseau public et des sources admissibles à un taux réduit. Pour un raccordement au réseau de transport, le tarif de l’AESO détermine séparément la contribution du client aux coûts de construction. Les règles d’accès au réseau de l’Alberta donnent la priorité, lors de l’évaluation, aux projets dotés d’une capacité admissible de production ou de stockage dédiée.",
+        "receipts": [145, 146],
+        "source": {
+          "label": "Tarif de l’AESO, section 4 sur les coûts de raccordement (en anglais)",
+          "url": "https://www.aeso.ca/rules-standards-and-tariff/tariff/section-4-classification-and-allocation-of-connection-projects-costs/"
+        }
+      },
+      {
+        "name": "Colombie-Britannique",
+        "text": "La Colombie-Britannique plafonne à 400 MW au total la nouvelle capacité disponible pour les centres de données classiques et d’IA durant les deux premières années du processus d’attribution. Cette règle détermine la quantité de puissance qui peut être offerte. Pour savoir qui paie un raccordement ou un renforcement précis, consultez le tarif applicable et les modalités de raccordement du projet.",
+        "receipts": [117]
+      }
+    ],
+    "passageLabel": "Lire le passage du chapitre 8",
+    "receiptLabel": "Reçu",
+    "checkTitle": "Les documents à demander pour un projet précis",
+    "check": "Demandez le tarif d’électricité, l’entente qui répartit les coûts de raccordement du site et toute décision réglementaire concernant les travaux sur le réseau. Vérifiez si la promesse d’assumer les coûts figure dans l’entente et quels coûts elle couvre."
+  }
+}
