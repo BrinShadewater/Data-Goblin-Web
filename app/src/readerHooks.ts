@@ -22,6 +22,13 @@ import type { Chapter } from "./types";
 import type { SectionLink } from "./sectionLinks";
 import dataCentrePower from "./dataCentrePower.json";
 import dataCentrePowerUpdate from "./dataCentrePowerUpdate.json";
+import labourHiring from "./labourHiring.json";
+import labourHiringUpdate from "./labourHiringUpdate.json";
+
+const chapterExplainers = [
+  { chapter: dataCentrePower.chapter, section: dataCentrePower.section, update: dataCentrePowerUpdate },
+  { chapter: labourHiring.chapter, section: labourHiring.section, update: labourHiringUpdate },
+];
 
 function isEditableTarget(target: EventTarget | null): boolean {
   const el = target as HTMLElement | null;
@@ -73,19 +80,22 @@ export function usePaginatedChapter(num: number, sections: SectionLink[]) {
     [mode, dyslexic, heightScale, widthScale]
   );
   const linkedChapter = useMemo(() => {
-    if (!chapter || chapter.number !== num || (num !== dataCentrePower.chapter && !sections.some((section) => section.source))) return chapter;
+    if (!chapter || chapter.number !== num) return chapter;
+    const explainer = chapterExplainers.find((entry) => entry.chapter === num);
+    if (!explainer && !sections.some((section) => section.source)) return chapter;
     return {
       ...chapter,
       sections: chapter.sections.map((section, index) => {
         const link = sections[index];
-        if (num === dataCentrePower.chapter && link?.id === dataCentrePower.section) {
-          const { linkLabel } = dataCentrePowerUpdate[lang];
-          return { ...section, markdown: `[${linkLabel}](${dataCentrePowerUpdate.topicPath})\n\n${section.markdown}` };
-        }
         const source = link?.source?.[lang];
-        if (!source) return section;
+        const introduction = [];
         const label = lang === "fr" ? "Source :" : "Source:";
-        return { ...section, markdown: `**${label}** [${source.label}](${source.url})\n\n${section.markdown}` };
+        if (source) introduction.push(`**${label}** [${source.label}](${source.url})`);
+        if (explainer && link?.id === explainer.section) {
+          const { linkLabel } = explainer.update[lang];
+          introduction.push(`[${linkLabel}](${explainer.update.topicPath})`);
+        }
+        return introduction.length ? { ...section, markdown: [...introduction, section.markdown].join("\n\n") } : section;
       }),
     };
   }, [chapter, lang, num, sections]);
