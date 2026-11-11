@@ -1,0 +1,21 @@
+{
+  "topicPath": "/topic/data-centres",
+  "en": {
+    "date": "November 10, 2026",
+    "tag": "New explainer",
+    "title": "Who pays for AI data-centre power?",
+    "items": [
+      "The Data Centres explainer compares electricity bills, site connections and wider grid upgrades across five provinces, with links to the Chapter 8 passages and receipts."
+    ],
+    "linkLabel": "Read who pays for data-centre power and grid upgrades"
+  },
+  "fr": {
+    "date": "10 novembre 2026",
+    "tag": "Nouveau dossier",
+    "title": "Qui paie l’électricité des centres de données d’IA?",
+    "items": [
+      "Le dossier sur les centres de données compare les factures d’électricité, le raccordement des sites et les travaux sur le réseau dans cinq provinces. Il renvoie aux passages et aux reçus du chapitre 8."
+    ],
+    "linkLabel": "Voir qui paie l’électricité et les travaux sur le réseau"
+  }
+}

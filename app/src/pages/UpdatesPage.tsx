@@ -9,6 +9,7 @@ import latestUpdate from "../latestUpdate.json";
 import sourceChangeUpdate from "../sourceChangeUpdate.json";
 import editorialCorrectionUpdate from "../editorialCorrectionUpdate.json";
 import readerCorrectionsUpdate from "../readerCorrectionsUpdate.json";
+import dataCentrePowerUpdate from "../dataCentrePowerUpdate.json";
 
 interface UpdateEntry {
   date: string;
@@ -246,7 +247,9 @@ export function UpdatesPage() {
   const sourceChange = sourceChangeUpdate[lang];
   const editorial = editorialCorrectionUpdate[lang];
   const reader = readerCorrectionsUpdate[lang];
+  const dataCentres = dataCentrePowerUpdate[lang];
   const updates = [
+    { ...dataCentres, links: [[dataCentres.linkLabel, dataCentrePowerUpdate.topicPath]] },
     { ...reader, links: [[reader.chapterLabel, readerCorrectionsUpdate.chapterPath]] },
     { ...editorial, links: editorialCorrectionUpdate.receiptIds.map((id, index) => [editorial.receiptLabels[index], `/receipts#receipt-${id}`]) },
     { ...sourceChange, links: [[sourceChange.passageLabel, sectionHref(10, "the-biometric-and-facial-recognition-layer")], [sourceChange.receiptLabel, "/receipts#receipt-70"]] },

@@ -2,6 +2,7 @@ import { useMemo } from "react";
 import type { Components } from "react-markdown";
 import { useTheme } from "../ThemeContext";
 import { useReader } from "../reader";
+import { Link } from "../i18nNav";
 import { DISPLAY, MONO, P, RADIUS, TOKENS, UI } from "../theme";
 import { AUTOLINK_TITLE } from "../links";
 import { GLOSSARY_TITLE, glossaryPhraseMap } from "../glossaryLinks";
@@ -72,6 +73,9 @@ export function useMarkdownComponents(): Components {
             return <GlossaryTerm term={term} def={def} url={url} />;
           }
           return <>{children}</>;
+        }
+        if (href?.startsWith("/") && !href.startsWith("//")) {
+          return <Link to={href} className="gob-link" style={{ color: navy }}>{children}</Link>;
         }
         const auto = title === AUTOLINK_TITLE;
         return (
