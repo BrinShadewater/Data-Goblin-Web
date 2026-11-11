@@ -1718,5 +1718,13 @@
  {
   "name": "OpenAI, description of its monitoring changes",
   "url": "https://openai.com/index/hugging-face-incident-and-the-road-ahead/"
+ },
+ {
+  "name": "U.S. Census Bureau working paper CES-26-27",
+  "url": "https://www2.census.gov/library/working-papers/2026/adrm/ces/CES-WP-26-27.pdf"
+ },
+ {
+  "name": "Statistics Canada analysis, charts 1 and 2",
+  "url": "https://www150.statcan.gc.ca/n1/pub/36-28-0001/2026010/article/00003-eng.htm"
  }
 ]

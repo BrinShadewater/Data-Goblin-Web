@@ -2628,5 +2628,22 @@
     "https://openai.com/index/hugging-face-incident-and-the-road-ahead/"
    ]
   ]
+ },
+ {
+  "id": 153,
+  "section": "Early-career hiring and AI exposure (November 10, 2026)",
+  "claim": "Early-career hiring and AI exposure in Canada and the United States (Ch 16)",
+  "status": "resolved",
+  "detail": "✅ The U.S. working paper uses Quarterly Workforce Indicators to track employment, hires and separations by industry and state. Its abstract reports a 12% regression-adjusted employment decline over ten quarters for ages 22 to 24 in the most exposed fifth of those groups. Fewer hires were the main source of that decline. Some trends began around the pandemic, complicating attribution to generative AI. Statistics Canada uses Labour Force Survey data from January 2006 to August 2026 for employees aged 15 to 64 in the ten provinces. For ages 15 to 29, hiring slowed even in occupations with low potential exposure. Separations count departures for any reason, including quits. The studies use different age groups, measures and units of comparison, and both use potential exposure rather than observed adoption. | [U.S. Census Bureau working paper CES-26-27](https://www2.census.gov/library/working-papers/2026/adrm/ces/CES-WP-26-27.pdf) · [Statistics Canada analysis, charts 1 and 2](https://www150.statcan.gc.ca/n1/pub/36-28-0001/2026010/article/00003-eng.htm)",
+  "links": [
+   [
+    "U.S. Census Bureau working paper CES-26-27",
+    "https://www2.census.gov/library/working-papers/2026/adrm/ces/CES-WP-26-27.pdf"
+   ],
+   [
+    "Statistics Canada analysis, charts 1 and 2",
+    "https://www150.statcan.gc.ca/n1/pub/36-28-0001/2026010/article/00003-eng.htm"
+   ]
+  ]
  }
 ]
