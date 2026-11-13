@@ -235,6 +235,7 @@
           line-height: 1.6;
         }
         #root > [data-prerender-hero] { height: auto; min-height: 100dvh; }
+        [data-prerender-shell] .dg-home-questions { padding-inline: 0; }
         [data-prerender-hero] .dg-topbar { display: none; }
         [data-prerender-hero] .dg-srnav {
           position: static;
@@ -276,6 +277,13 @@
       html[data-theme="dark"] .dg-topbar { border-bottom-color: #1c2230; }
       .dg-heromain { flex: 1; overflow: hidden; background: #ece5d3; }
       html[data-theme="dark"] .dg-heromain { background: #10141c; }
+      .dg-home-questions { position: relative; z-index: 1; max-width: 1480px; margin: 0 auto; padding: 12px clamp(24px, 5vw, 64px) 24px; color: #1a2e4a; }
+      .dg-home-questions h2 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(22px, 3vw, 30px); line-height: 1.2; margin: 0 0 12px; }
+      .dg-home-questions ul { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 330px), 1fr)); gap: 12px; list-style: none; padding: 0; margin: 0; }
+      .dg-home-questions li { display: flex; }
+      .dg-home-questions a { display: flex; align-items: center; width: 100%; min-height: 44px; padding: 12px 16px; border: 1px solid #ddd5c0; border-radius: 6px; background: #faf8f0; color: inherit; font-family: 'Inter', sans-serif; font-weight: 700; line-height: 1.45; text-underline-offset: 0.18em; }
+      html[data-theme="dark"] .dg-home-questions { color: #7ab4e8; }
+      html[data-theme="dark"] .dg-home-questions a { background: #161a24; border-color: #303a4b; }
       .dg-hero { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); align-items: center; gap: clamp(22px, 4vw, 54px); padding: clamp(22px, 4vw, 48px) clamp(24px, 5vw, 64px) clamp(16px, 3vw, 34px); max-width: 1480px; margin: 0 auto; }
       .dg-hero-col { min-width: 0; }
       .dg-hero-eyebrow { font-family: 'JetBrains Mono', 'Courier New', monospace; font-size: 11px; font-weight: 800; letter-spacing: 0.28em; text-transform: uppercase; color: #a8321f; margin-bottom: 12px; }

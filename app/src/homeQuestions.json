@@ -1,0 +1,15 @@
+{
+  "heading": { "en": "Explore a question", "fr": "Explorer une question" },
+  "links": [
+    {
+      "href": "/topic/data-centres",
+      "en": "Who pays for AI data centres’ power and grid upgrades?",
+      "fr": "Qui paie l’électricité des centres de données d’IA et le renforcement du réseau?"
+    },
+    {
+      "href": "/topic/labour",
+      "en": "What do the studies actually say about AI and hiring?",
+      "fr": "Que disent vraiment les études sur l’IA et l’embauche?"
+    }
+  ]
+}
