@@ -55,10 +55,12 @@ export function ReceiptRow({ id, receipt, targeted }: { id: string; receipt: Rec
   const row = useRef<HTMLDivElement>(null);
   const entry = RECEIPT_NOTES[receipt.id];
   const note = entry?.[lang];
+  const review = entry?.review;
   const passage = entry?.passage;
   const otherLang = lang === "en" ? "fr" : "en";
   const otherLocale = `${otherLang}-CA`;
-  const links = note ? [[note.sourceLabel, note.url], ...receipt.links] : receipt.links;
+  const links = note ? [[note.sourceLabel, note.url], ...receipt.links.filter(([, url]) => url !== note.url)] : receipt.links;
+  const detail = review ? receipt.detail.replace(/\s+\|\s+\[[\s\S]*$/, "") : receipt.detail;
   const border = c(...P.borderSoft);
   const muted = c(...P.muted);
   const body = c(...P.body);
@@ -81,11 +83,18 @@ export function ReceiptRow({ id, receipt, targeted }: { id: string; receipt: Rec
         <StatusBadge status={receipt.status} />
       </button>
       {open && (
-        <div style={{ padding: "2px 14px 13px 39px", borderTop: `1px solid ${border}` }}>
+        <div style={{ padding: "2px 14px 13px", borderTop: `1px solid ${border}` }}>
           <div style={{ paddingTop: "10px" }}>
             {note && <Markdown markdown={note.detail} />}
-            <Markdown markdown={receipt.detail} />
+            <Markdown markdown={detail} />
           </div>
+          {review && (
+            <div data-receipt-review style={{ fontFamily: UI, fontSize: "13px", lineHeight: 1.5, color: body, marginBottom: "12px" }}>
+              <strong>{lang === "fr" ? "Historique de vérification" : "Review history"}</strong>
+              {" · "}<time dateTime={review.date}>{new Intl.DateTimeFormat(`${lang}-CA`, { dateStyle: "long", timeZone: "UTC" }).format(new Date(review.date))}</time>
+              <div>{review[lang]}</div>
+            </div>
+          )}
           {links.length > 0 && (
             <div style={{ display: "flex", flexWrap: "wrap", gap: "8px", marginTop: "4px" }}>
               {links.map(([label, url], i) => (
