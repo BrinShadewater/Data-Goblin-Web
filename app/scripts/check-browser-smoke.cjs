@@ -901,11 +901,10 @@ async function runClaimReceiptSmoke(browser, baseUrl) {
       const receipt = page.locator("#receipt-32");
       await receipt.locator(`a[href="${sourceUrl}"]`).first().waitFor();
       await receipt.locator('a[href="https://doi.org/10.1145/3774904.3792948"]').first().waitFor();
-      const passage = `${fixture.prefix}/chapter/13#the-working-test`;
+      const passage = `${fixture.prefix}/chapter/13?receipt=32#the-working-test`;
       await receipt.locator(`a[href="${passage}"]`).tap();
       await page.waitForURL(baseUrl + passage);
-      await page.getByRole("heading", { name: fixture.heading, exact: true }).waitFor();
-      await marker.waitFor();
+      await page.locator('button[data-receipt-id="32"]:focus').filter({ hasText: /0[.,]12/ }).waitFor();
       await page.getByRole("button", { name: french ? "Page suivante" : "Next page", exact: true }).tap();
       await popup.waitFor({ state: "hidden" });
       console.log(`Mobile search to source ${french ? "fr" : "en"}: passage, receipt, focus, paper link and ledger round trip passed.`);
@@ -1314,9 +1313,15 @@ async function runReceiptPermalinkSmoke(browser, baseUrl) {
         for (const [lang, otherLang] of [["en", "fr"], ["fr", "en"]]) {
           await checkReceipt(lang);
           const prefix = lang === "fr" ? "/fr" : "";
-          await receipt.locator(`a[href="${prefix}/chapter/13#the-working-test"]`).click();
-          await page.waitForURL(`${baseUrl}${prefix}/chapter/13#the-working-test`);
-          await page.getByRole("heading", { name: lang === "fr" ? "Le test pratique" : "The working test", exact: true }).waitFor();
+          const passage = javaScriptEnabled ? "?receipt=32#the-working-test" : "?section=the-working-test&receipt=32#receipt-passage-32";
+          await receipt.locator(`a[href="${prefix}/chapter/13${passage}"]`).click();
+          await page.waitForURL(`${baseUrl}${prefix}/chapter/13${passage}`);
+          if (javaScriptEnabled) {
+            await page.locator('button[data-receipt-id="32"]:focus').filter({ hasText: /0[.,]12/ }).waitFor();
+          } else {
+            const paragraph = await page.locator("#receipt-passage-32 + p").textContent();
+            assert(/0[.,]12/.test(paragraph), "Static passage did not land at the X post-views paragraph.");
+          }
           if (!javaScriptEnabled) {
             await page.locator(`a[href="${editions[lang].path}${hash}"]`).click();
           } else {
@@ -1425,13 +1430,13 @@ async function main() {
     await runDataCentreReceiptFocusSmoke(browser, baseUrl);
     await runChapterReceiptSmoke(browser, baseUrl, 5, [115]);
     await runChapterReceiptSmoke(browser, baseUrl, 6, [116]);
-    await runChapterReceiptSmoke(browser, baseUrl, 8, [117]);
+    await runChapterReceiptSmoke(browser, baseUrl, 8, [117], { exactReturn: true });
     await runChapterReceiptSmoke(browser, baseUrl, 10, [77, 78, 82]);
     await runChapterReceiptSmoke(browser, baseUrl, 12, [108, 109, 110, 112]);
     await runChapterReceiptSmoke(browser, baseUrl, 13, [114]);
     await runChapterReceiptSmoke(browser, baseUrl, 14, [98, 99]);
     await runChapterReceiptSmoke(browser, baseUrl, 16, [111, 113]);
-    await runChapterReceiptSmoke(browser, baseUrl, 16, [154], { exactReturn: true });
+    await runChapterReceiptSmoke(browser, baseUrl, 16, [153, 154], { exactReturn: true });
     await runChapterReceiptSmoke(browser, baseUrl, 17, [148], { exactReturn: true });
     await runChapter13LawSmoke(browser, baseUrl);
     await runStaticSectionLinksSmoke(browser, baseUrl);

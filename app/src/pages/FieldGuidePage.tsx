@@ -66,14 +66,21 @@ export function FieldGuidePage() {
   const receiptId = Number(new URLSearchParams(location.search).get("receipt"));
   const { data: claimAnchors } = useClaimAnchors();
   const { data: receipts } = useReceipts();
+  const targetAnchors = useMemo(() => {
+    const anchors = claimAnchors?.[num]?.filter(({ id }) => id === receiptId) ?? [];
+    if (anchors.length < 2 || !requestedHeading) return anchors;
+    const section = chapter?.sections.find(({ heading }) => heading === requestedHeading);
+    const matches = anchors.filter(({ anchor }) => section?.markdown.includes(anchor));
+    return matches.length ? matches : anchors;
+  }, [chapter, claimAnchors, num, receiptId, requestedHeading]);
   const receiptPanel = useMemo(() => {
     const anchors = claimAnchors?.[num];
     if (!panels || !anchors?.some(({ id }) => id === receiptId) || !receipts?.some(({ id }) => id === receiptId)) return -1;
-    const marker = `](#receipt-${receiptId} "${RECEIPT_TITLE}")`;
+    const markers = targetAnchors.map(({ anchor }) => `[${anchor}](#receipt-${receiptId} "${RECEIPT_TITLE}")`);
     return panels.findIndex((panel) =>
-      receiptLinkBlocks(panel, anchors).some((block) => block.kind === "md" && block.text.includes(marker))
+      receiptLinkBlocks(panel, anchors).some((block) => block.kind === "md" && markers.some((marker) => block.text.includes(marker)))
     );
-  }, [claimAnchors, num, panels, receiptId, receipts]);
+  }, [claimAnchors, num, panels, receiptId, receipts, targetAnchors]);
   const { aligned, page, pageCount, step, goNext, goPrev, sectionPanel } = usePageNavigation({
     num, panels, single, panelsReady: chapter?.number === num,
     section: requestedHeading,
@@ -123,7 +130,8 @@ export function FieldGuidePage() {
     let lastTarget: HTMLElement | undefined;
     const alignPassage = (deferred = false) => {
       const target = exact
-        ? readingArea.querySelector<HTMLElement>(`button[data-receipt-id="${receiptId}"]`)
+        ? Array.from(readingArea.querySelectorAll<HTMLElement>(`button[data-receipt-id="${receiptId}"]`))
+          .find((element) => targetAnchors.some(({ anchor }) => element.textContent?.startsWith(anchor)))
         : Array.from(readingArea.querySelectorAll<HTMLElement>("[data-section-heading]"))
           .find((element) => element.dataset.sectionHeading === requestedHeading);
       if (!target || target === lastTarget) return;
@@ -145,7 +153,7 @@ export function FieldGuidePage() {
     const observer = new MutationObserver(() => alignPassage(true));
     observer.observe(readingArea, { childList: true, subtree: true });
     return () => observer.disconnect();
-  }, [aligned, focusSection, location.key, panels, receiptId, receiptPanel, requestedHeading, sectionPanel]);
+  }, [aligned, focusSection, location.key, panels, receiptId, receiptPanel, requestedHeading, sectionPanel, targetAnchors]);
 
   useEffect(() => {
     if (!focusReader || navigationType !== "PUSH" || !chapterReady || focusedEntry.current === location.key) return;

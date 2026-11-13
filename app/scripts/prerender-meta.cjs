@@ -149,7 +149,7 @@ function inlineMd(s) {
     .replace(/(^|[^*])\*([^*\n]+)\*/g, "$1<em>$2</em>")
     .replace(/`([^`]+)`/g, "<code>$1</code>");
 }
-function mdToHtml(md) {
+function mdToHtml(md, passageIds = []) {
   const out = [];
   for (const block of String(md).split(/\n{2,}/)) {
     const t = block.trim();
@@ -162,6 +162,12 @@ function mdToHtml(md) {
       out.push(`<ul>${items}</ul>`); continue;
     }
     if (/^>\s?/.test(t)) { out.push(`<blockquote>${inlineMd(t.replace(/^>\s?/gm, ""))}</blockquote>`); continue; }
+    for (const passage of passageIds) {
+      if (passage.phrase && t.includes(passage.phrase)) {
+        out.push(`<span id="receipt-passage-${esc(passage.id)}"></span>`);
+        passage.phrase = "";
+      }
+    }
     out.push(`<p>${inlineMd(t.replace(/\n/g, " "))}</p>`);
   }
   return out.join("");
@@ -177,6 +183,7 @@ function readChapter(lang, number) {
 }
 
 const sectionLinks = JSON.parse(fs.readFileSync(path.join(DIST, "content", "section-links.json"), "utf8"));
+const directReceiptIds = new Set(Object.keys(receiptNotes).filter((id) => receiptNotes[id].review));
 
 // Build the inlined body for a /chapter/N route in the given language.
 function chapterBodyHtml(route, lang) {
@@ -217,7 +224,17 @@ function chapterBodyHtml(route, lang) {
         b += `<p><a href="${fr ? "/fr" : ""}/receipts#receipt-${esc(id)}">${fr ? "Voir le reçu" : "View receipt"} #${esc(id)}</a></p>`;
       }
     }
-    if (s && s.markdown) b += mdToHtml(s.markdown);
+    if (s?.markdown) {
+      const exactIds = receipts.filter(({ id, section }) => directReceiptIds.has(id) && section === link?.id);
+      const anchors = exactIds.length
+        ? JSON.parse(fs.readFileSync(path.join(DIST, fr ? "content/fr" : "content", "claim-anchors.json"), "utf8"))[ch.number] ?? []
+        : [];
+      const passages = exactIds.map(({ id }) => ({
+        id,
+        phrase: anchors.find((anchor) => String(anchor.id) === id && s.markdown.includes(anchor.anchor))?.anchor,
+      }));
+      b += mdToHtml(s.markdown, passages);
+    }
   }
   for (const g of ch.goblinChecks || []) { if (g && g.markdown) b += mdToHtml(g.markdown); }
   if (Array.isArray(ch.recap) && ch.recap.length)
@@ -287,15 +304,23 @@ function receiptsBodyHtml(lang) {
     const id = occurrence === 1 ? `receipt-${number}` : `receipt-${number}-${occurrence}`;
     const entry = receiptNotes[row.id];
     const note = entry?.[lang];
-    const links = note ? [[note.sourceLabel, note.url], ...(row.links || [])] : (row.links || []);
+    const review = entry?.review;
+    const links = note ? [[note.sourceLabel, note.url], ...(row.links || []).filter(([, url]) => url !== note.url)] : (row.links || []);
     h += `<div id="${id}" style="scroll-margin-top:12px"><p><strong>#${number} ${inlineMd(row.claim || "")}</strong>${status}</p>`;
     h += `<p><a href="#${id}">${permalinkLabel}</a> · <a href="${otherPath}#${id}" lang="${otherLang}" hreflang="${otherLang}">${otherLabel}</a></p>`;
     if (entry?.passage) {
       const { chapter, section } = entry.passage;
-      h += `<p><a href="${lang === "fr" ? "/fr" : ""}/chapter/${chapter}#${esc(section)}">${lang === "fr" ? "Lire le passage du guide" : "Read the passage in the guide"}</a></p>`;
+      const destination = review
+        ? `?section=${encodeURIComponent(section)}&amp;receipt=${number}#receipt-passage-${number}`
+        : `#${esc(section)}`;
+      h += `<p><a href="${lang === "fr" ? "/fr" : ""}/chapter/${chapter}${destination}">${lang === "fr" ? "Lire le passage du guide" : "Read the passage in the guide"}</a></p>`;
     }
     if (note) h += mdToHtml(note.detail);
-    if (row.detail) h += mdToHtml(row.detail);
+    if (row.detail) h += mdToHtml(review ? row.detail.replace(/\s+\|\s+\[[\s\S]*$/, "") : row.detail);
+    if (review) {
+      const date = new Intl.DateTimeFormat(`${lang}-CA`, { dateStyle: "long", timeZone: "UTC" }).format(new Date(review.date));
+      h += `<p data-receipt-review><strong>${lang === "fr" ? "Historique de vérification" : "Review history"}</strong> · <time datetime="${esc(review.date)}">${esc(date)}</time><br>${esc(review[lang])}</p>`;
+    }
     for (const [label, url] of links) {
       if (/^https?:\/\//.test(url)) h += `<p><a href="${esc(url)}">${esc(label)}</a></p>`;
     }

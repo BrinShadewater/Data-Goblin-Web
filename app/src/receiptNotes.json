@@ -1,8 +1,14 @@
 {
   "32": {
+    "review": {
+      "date": "2026-11-09",
+      "en": "The guide corrected its earlier use of the abstract’s partisan percentages. The figures here come from public preprint v1. The final ACM text was unavailable for comparison at that review.",
+      "fr": "Le guide a corrigé son utilisation des taux partisans du résumé. Les chiffres présentés ici proviennent de la prépublication publique v1. Le texte final de l’ACM n’était pas accessible pour comparaison lors de cette vérification."
+    },
     "passage": {
       "chapter": 13,
-      "section": "the-working-test"
+      "section": "the-working-test",
+      "exact": true
     },
     "en": {
       "detail": "The study’s 0.12% is a share of sampled X post views, measured six months after posting. Repeat views can count. Table 1 and the preprint abstract disagree on the partisan percentages. The ledger shows both.",
@@ -150,9 +156,15 @@
     }
   },
   "117": {
+    "review": {
+      "date": "2026-11-12",
+      "en": "The November 9 ledger entry recorded the intake and the two-year cap. On November 12, BC Hydro’s page still reported the same intake and said applicants advancing to the next stage had been notified. It still listed final notifications for after the government transition.",
+      "fr": "Le registre du 9 novembre consigne les demandes et le plafond de deux ans. Le 12 novembre, BC Hydro affichait les mêmes chiffres et indiquait avoir avisé les candidats retenus pour l’étape suivante. Les avis de décision finale étaient toujours prévus après la transition gouvernementale."
+    },
     "passage": {
       "chapter": 8,
-      "section": "the-canadian-specific-carbon-arithmetic"
+      "section": "the-canadian-specific-carbon-arithmetic",
+      "exact": true
     }
   },
   "118": {
@@ -355,6 +367,11 @@
     }
   },
   "153": {
+    "review": {
+      "date": "2026-11-10",
+      "en": "The ledger compared working paper CES-26-27 with Statistics Canada’s October 28 analysis. The studies estimate exposure to AI. The comparison cannot establish how much AI contributed to changes in hiring.",
+      "fr": "Le registre compare le document de travail CES-26-27 à l’analyse de Statistique Canada du 28 octobre. Les études estiment l’exposition à l’IA. Cette comparaison ne permet pas d’établir dans quelle mesure l’IA a contribué à l’évolution de l’embauche."
+    },
     "passage": {
       "chapter": 16,
       "section": "the-canadian-empirical-baseline",
