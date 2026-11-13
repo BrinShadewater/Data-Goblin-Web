@@ -17,6 +17,7 @@ const dataCentrePower = require("../src/dataCentrePower.json");
 const labourHiring = require("../src/labourHiring.json");
 const dataCentrePowerUpdate = require("../src/dataCentrePowerUpdate.json");
 const labourHiringUpdate = require("../src/labourHiringUpdate.json");
+const receiptReviewUpdate = require("../src/receiptReviewUpdate.json");
 const chapterExplainers = [
   { chapter: dataCentrePower.chapter, section: dataCentrePower.section, update: dataCentrePowerUpdate, file: "app/src/dataCentrePowerUpdate.json" },
   { chapter: labourHiring.chapter, section: labourHiring.section, update: labourHiringUpdate, file: "app/src/labourHiringUpdate.json" },
@@ -418,7 +419,9 @@ function routeBodyHtml(route, lang) {
     const reader = readerCorrectionsUpdate[lang];
     const dataCentres = dataCentrePowerUpdate[lang];
     const labour = labourHiringUpdate[lang];
+    const receiptReview = receiptReviewUpdate[lang];
     const entries = [
+      [receiptReview, receiptReview.links],
       [labour, [[labour.linkLabel, labourHiringUpdate.topicPath]]],
       [dataCentres, [[dataCentres.linkLabel, dataCentrePowerUpdate.topicPath]]],
       [reader, [[reader.chapterLabel, readerCorrectionsUpdate.chapterPath]]],
@@ -672,7 +675,7 @@ const ROUTE_SOURCES = {
   "/receipts": ["app/src/pages/ReceiptsPage.tsx", "app/src/components/ReceiptRows.tsx", "app/src/receiptNotes.json", "app/public/content/receipts.json"],
   "/about": ["app/src/pages/AboutPage.tsx", "app/public/content/stats.json"],
   "/contribute": ["app/src/pages/ContributePage.tsx"],
-  "/updates": ["app/src/pages/UpdatesPage.tsx", "app/src/latestUpdate.json", "app/src/sourceChangeUpdate.json", "app/src/editorialCorrectionUpdate.json", "app/src/readerCorrectionsUpdate.json", ...chapterExplainers.map(({ file }) => file)],
+  "/updates": ["app/src/pages/UpdatesPage.tsx", "app/src/latestUpdate.json", "app/src/sourceChangeUpdate.json", "app/src/editorialCorrectionUpdate.json", "app/src/readerCorrectionsUpdate.json", "app/src/receiptReviewUpdate.json", ...chapterExplainers.map(({ file }) => file)],
   "/toolkit": ["app/src/pages/ToolkitPage.tsx"],
   "/privacy": ["app/src/pages/PrivacyPage.tsx"],
 };

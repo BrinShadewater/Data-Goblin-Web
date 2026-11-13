@@ -1,0 +1,46 @@
+{
+  "en": {
+    "date": "November 12, 2026",
+    "tag": "Receipts",
+    "title": "Dated reviews and exact passage links",
+    "items": [
+      "Three receipts now show a dated review note explaining what was checked or corrected. Each links back to the exact claim in the guide."
+    ],
+    "links": [
+      [
+        "Receipt #117 · B.C. data-centre power",
+        "/receipts#receipt-117"
+      ],
+      [
+        "Receipt #153 · AI and hiring",
+        "/receipts#receipt-153"
+      ],
+      [
+        "Receipt #32 · Election deepfakes",
+        "/receipts#receipt-32"
+      ]
+    ]
+  },
+  "fr": {
+    "date": "12 novembre 2026",
+    "tag": "Reçus",
+    "title": "Vérifications datées et liens vers les passages exacts",
+    "items": [
+      "Trois reçus affichent maintenant une note datée qui précise ce qui a été vérifié ou corrigé. Chaque reçu renvoie au passage exact du guide où figure l’affirmation."
+    ],
+    "links": [
+      [
+        "Reçu nº 117 · Électricité des centres de données en C.-B.",
+        "/receipts#receipt-117"
+      ],
+      [
+        "Reçu nº 153 · IA et embauche",
+        "/receipts#receipt-153"
+      ],
+      [
+        "Reçu nº 32 · Hypertrucages électoraux",
+        "/receipts#receipt-32"
+      ]
+    ]
+  }
+}
