@@ -11,6 +11,7 @@ import editorialCorrectionUpdate from "../editorialCorrectionUpdate.json";
 import readerCorrectionsUpdate from "../readerCorrectionsUpdate.json";
 import dataCentrePowerUpdate from "../dataCentrePowerUpdate.json";
 import labourHiringUpdate from "../labourHiringUpdate.json";
+import receiptReviewUpdate from "../receiptReviewUpdate.json";
 
 interface UpdateEntry {
   date: string;
@@ -251,6 +252,7 @@ export function UpdatesPage() {
   const dataCentres = dataCentrePowerUpdate[lang];
   const labour = labourHiringUpdate[lang];
   const updates = [
+    receiptReviewUpdate[lang],
     { ...labour, links: [[labour.linkLabel, labourHiringUpdate.topicPath]] },
     { ...dataCentres, links: [[dataCentres.linkLabel, dataCentrePowerUpdate.topicPath]] },
     { ...reader, links: [[reader.chapterLabel, readerCorrectionsUpdate.chapterPath]] },
