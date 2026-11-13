@@ -7,9 +7,13 @@ import { preloadReaderRoute } from "../lazyRoutes";
 import { useBook } from "../useContent";
 import { CONTACT_EMAIL } from "../contribute";
 import { tr } from "../i18n";
+import { Link } from "../i18nNav";
+import { useLanguage } from "../LanguageContext";
+import homeQuestions from "../homeQuestions.json";
 
 export function LandingPage() {
   const { c } = useTheme();
+  const { lang } = useLanguage();
   const { data: book } = useBook();
   const wispFrame = useRef<number | null>(null);
   const wispPoint = useRef<{ x: number; y: number } | null>(null);
@@ -75,6 +79,16 @@ export function LandingPage() {
         asOf={book?.asOf ?? "June 2026"}
         preloadGuide={preloadReaderRoute}
       />
+      <section className="dg-home-questions" aria-labelledby="home-questions-heading">
+        <h2 id="home-questions-heading">{homeQuestions.heading[lang]}</h2>
+        <ul>
+          {homeQuestions.links.map((question) => (
+            <li key={question.href}>
+              <Link to={question.href}>{question[lang]}</Link>
+            </li>
+          ))}
+        </ul>
+      </section>
       <LandingQuickLinks preloadGuide={preloadReaderRoute} />
       <section style={{ maxWidth: "1480px", margin: "0 auto", padding: "0 clamp(20px, 5vw, 68px) 56px", textAlign: "center", position: "relative", zIndex: 1 }}>
         <p style={{ fontFamily: UI, fontSize: "14px", lineHeight: 1.6, color: c(...P.muted), margin: 0 }}>

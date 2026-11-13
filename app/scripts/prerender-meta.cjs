@@ -12,6 +12,7 @@ const sourceChangeUpdate = require("../src/sourceChangeUpdate.json");
 const editorialCorrectionUpdate = require("../src/editorialCorrectionUpdate.json");
 const readerCorrectionsUpdate = require("../src/readerCorrectionsUpdate.json");
 const readerEntry = require("../src/readerEntry.json");
+const homeQuestions = require("../src/homeQuestions.json");
 const dataCentrePower = require("../src/dataCentrePower.json");
 const labourHiring = require("../src/labourHiring.json");
 const dataCentrePowerUpdate = require("../src/dataCentrePowerUpdate.json");
@@ -419,6 +420,14 @@ function routeBodyHtml(route, lang) {
 // createRoot replaces it on mount with the matching LandingHero, so the swap is
 // near-invisible (same image URL, same layout). EN only; FR keeps the light
 // crawler shell. Styling lives in index.html critical CSS (.dg-* classes).
+function homeQuestionsHtml(lang) {
+  const prefix = lang === "fr" ? "/fr" : "";
+  const links = homeQuestions.links.map(({ href, [lang]: label }) =>
+    `<li><a href="${prefix}${esc(href)}">${esc(label)}</a></li>`
+  ).join("");
+  return `<section class="dg-home-questions" aria-labelledby="home-questions-heading"><h2 id="home-questions-heading">${esc(homeQuestions.heading[lang])}</h2><ul>${links}</ul></section>`;
+}
+
 function homeHeroHtml() {
   const nav = NAV_EN.map(([href, label]) => `<a href="${href}">${esc(label)}</a>`).join("") + `<a href="/fr" hreflang="fr-CA" lang="fr-CA">Édition française</a>`;
   const flagSet = "/art/panels/canada-flag-panel-400w.webp 400w, /art/panels/canada-flag-panel-640w.webp 640w, /art/panels/canada-flag-panel-960w.webp 960w, /art/panels/canada-flag-panel.webp 1024w";
@@ -443,7 +452,7 @@ function homeHeroHtml() {
       `<div class="dg-hero-card">` +
         `<img class="dg-hero-img" src="/art/panels/hero-panel-640w.webp" srcset="${heroSet}" sizes="(max-width: 720px) 92vw, (max-width: 1100px) 46vw, 650px" width="1024" height="1024" alt="Data Goblin inspecting a trail of receipts and glowing evidence crystals" fetchpriority="high" decoding="async" />` +
       `</div>` +
-    `</section></main>` +
+    `</section>${homeQuestionsHtml("en")}</main>` +
   `</div>`;
 }
 
@@ -454,7 +463,7 @@ function seoShell(route, h1, desc, lang) {
   const altLabel = lang === "fr" ? "English edition" : "Édition française";
   const altLanguage = lang === "fr" ? "en-CA" : "fr-CA";
   const navLabel = lang === "fr" ? "Navigation principale" : "Primary navigation";
-  const body = routeBodyHtml(route, lang);
+  const body = route === "" ? homeQuestionsHtml(lang) : routeBodyHtml(route, lang);
   return `<div data-prerender-shell><h1>${esc(h1)}</h1><p>${esc(desc)}</p><nav aria-label="${navLabel}">${nav}<a href="${altHref}" hreflang="${altLanguage}" lang="${altLanguage}">${esc(altLabel)}</a></nav>${body}</div>`;
 }
 
